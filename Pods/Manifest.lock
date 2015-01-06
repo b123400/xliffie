@@ -1,0 +1,10 @@
+PODS:
+  - RaptureXML (1.0.1)
+
+DEPENDENCIES:
+  - RaptureXML
+
+SPEC CHECKSUMS:
+  RaptureXML: b9b0aca9c68c684c189af73dd5e8f8fdeec74600
+
+COCOAPODS: 0.34.4
