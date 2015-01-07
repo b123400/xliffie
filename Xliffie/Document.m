@@ -49,7 +49,7 @@
     // NSLog(@"type name is %@", typeName);
     // Insert code here to write your document to data of the specified type. If outError != NULL, ensure that you create and set an appropriate error when returning nil.
     // You can also choose to override -fileWrapperOfType:error:, -writeToURL:ofType:error:, or -writeToURL:ofType:forSaveOperation:originalContentsURL:error: instead.
-    return nil;
+    return [self.xmlDocument XMLDataWithOptions:NSXMLNodePrettyPrint];
 }
 
 - (BOOL)readFromData:(NSData *)data ofType:(NSString *)typeName error:(NSError **)outError {

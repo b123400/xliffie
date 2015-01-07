@@ -28,4 +28,31 @@
     return self;
 }
 
+- (void)setSource:(NSString *)source {
+    NSXMLElement *sourceElement = [[self.xmlElement elementsForName:@"source"] firstObject];
+    if (!sourceElement) {
+        sourceElement = [NSXMLElement elementWithName:@"source"];
+        [self.xmlElement addChild:sourceElement];
+    }
+    [sourceElement setStringValue:source];
+    _source = source;
+}
+
+- (void)setTarget:(NSString *)target {
+    NSXMLElement *targetElement = [[self.xmlElement elementsForName:@"target"] firstObject];
+    if (!target) {
+        if (!targetElement) return;
+        
+        NSUInteger index = [[self.xmlElement children] indexOfObject:targetElement];
+        [self.xmlElement removeChildAtIndex:index];
+        return;
+    }
+    if (!targetElement && target) {
+        targetElement = [NSXMLElement elementWithName:@"target"];
+        [self.xmlElement addChild:targetElement];
+    }
+    [targetElement setStringValue:target];
+    _target = target;
+}
+
 @end
