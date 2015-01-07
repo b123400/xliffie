@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <RaptureXML/RXMLElement.h>
 
 @interface TranslationPair : NSObject
 
@@ -15,6 +14,6 @@
 @property (nonatomic, strong) NSString *target;
 @property (nonatomic, strong) NSString *note;
 
-- (instancetype)initWithXMLElement:(RXMLElement*)element;
+- (instancetype)initWithXMLElement:(NSXMLElement*)element;
 
 @end

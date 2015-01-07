@@ -10,20 +10,20 @@
 
 @interface TranslationPair ()
 
-@property (nonatomic, strong) RXMLElement *xmlElement;
+@property (nonatomic, strong) NSXMLElement *xmlElement;
 
 @end
 
 @implementation TranslationPair
 
-- (instancetype)initWithXMLElement:(RXMLElement*)element {
+- (instancetype)initWithXMLElement:(NSXMLElement*)element {
     self = [super init];
     
     self.xmlElement = element;
     
-    self.source = [element child:@"source"].text;
-    self.target = [element child:@"target"].text;
-    self.note = [element child:@"note"].text;
+    self.source = [[[element elementsForName:@"source"] firstObject] stringValue];
+    self.target = [[[element elementsForName:@"target"] firstObject] stringValue];
+    self.note = [[[element elementsForName:@"note"] firstObject] stringValue];
     
     return self;
 }

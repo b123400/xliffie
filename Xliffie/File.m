@@ -11,23 +11,24 @@
 
 @interface File ()
 
-@property (nonatomic, strong) RXMLElement *xmlElement;
+@property (nonatomic, strong) NSXMLElement *xmlElement;
 
 @end
 
 @implementation File
 
-- (instancetype) initWithXMLElement:(RXMLElement*)element {
+- (instancetype) initWithXMLElement:(NSXMLElement*)element {
     self = [super init];
     
     self.xmlElement = element;
-    self.original = [element attribute:@"original"];
+    self.original = [[element attributeForName:@"original"] stringValue];
     self.translations = [NSMutableArray array];
     
-    [element iterate:@"body.trans-unit" usingBlock:^(RXMLElement *unit) {
+    NSXMLElement *bodyElement = [[element elementsForName:@"body"] firstObject];
+    for (NSXMLElement *unit in [bodyElement elementsForName:@"trans-unit"]) {
         TranslationPair *pair = [[TranslationPair alloc] initWithXMLElement:unit];
         [self.translations addObject:pair];
-    }];
+    }
     return self;
 }
 

@@ -7,13 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <RaptureXML/RXMLElement.h>
 
 @interface File : NSObject
 
 @property (nonatomic, strong) NSString *original;
 @property (nonatomic, strong) NSMutableArray *translations;
 
-- (instancetype)initWithXMLElement:(RXMLElement*)element;
+- (instancetype)initWithXMLElement:(NSXMLElement*)element;
 
 @end

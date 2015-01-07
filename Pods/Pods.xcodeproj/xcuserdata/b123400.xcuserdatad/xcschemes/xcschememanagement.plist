@@ -3,30 +3,8 @@
 <plist version="1.0">
 <dict>
 	<key>SchemeUserState</key>
-	<dict>
-		<key>Pods-RaptureXML.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-	</dict>
+	<dict/>
 	<key>SuppressBuildableAutocreation</key>
-	<dict>
-		<key>A3BBEF7A9A8D67B5562D87EF</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D00906814940059E6DE72AA6</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-	</dict>
+	<dict/>
 </dict>
 </plist>

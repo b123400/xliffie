@@ -8,10 +8,12 @@
 
 #import "Document.h"
 #import "File.h"
-#import <RaptureXML/RXMLElement.h>
 #import "ViewController.h"
 
 @interface Document ()
+
+//@property (nonatomic, strong) RXMLElement *rootElement;
+@property (nonatomic, strong) NSXMLDocument *xmlDocument;
 
 @end
 
@@ -54,9 +56,14 @@
     // Insert code here to read your document from the given data of the specified type. If outError != NULL, ensure that you create and set an appropriate error when returning NO.
     // You can also choose to override -readFromFileWrapper:ofType:error: or -readFromURL:ofType:error: instead.
     // If you override either of these, you should also override -isEntireFileLoaded to return NO if the contents are lazily loaded.
-    RXMLElement *root = [RXMLElement elementFromXMLData:data];
-    NSArray *files = [root children:@"file"];
-    for (RXMLElement *fileElement in files) {
+    NSError *error = nil;
+    self.xmlDocument = [[NSXMLDocument alloc] initWithData:data options:0 error:&error];
+    if (error) {
+        *outError = error;
+    }
+    NSArray *elements = [self.xmlDocument.rootElement elementsForName:@"file"];
+    
+    for (NSXMLElement *fileElement in elements) {
         File *thisFile = [[File alloc] initWithXMLElement:fileElement];
         [self.files addObject:thisFile];
     }
