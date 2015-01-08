@@ -644,7 +644,7 @@
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="0.0"/>
+            <point key="canvasLocation" x="75" y="-27"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
@@ -655,6 +655,21 @@
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <toolbar key="toolbar" implicitIdentifier="166F8748-BD85-4A78-8FF8-6788C586B18B" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="XuC-uR-2Qg">
+                            <allowedToolbarItems>
+                                <toolbarItem implicitItemIdentifier="NSToolbarShowColorsItem" id="VTc-dk-U4I"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarShowFontsItem" id="Evg-H4-9T4"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarPrintItem" id="w8h-EF-wBh"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="mP7-JO-gUZ"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="fIO-7r-OQw"/>
+                            </allowedToolbarItems>
+                            <defaultToolbarItems>
+                                <toolbarItem reference="VTc-dk-U4I"/>
+                                <toolbarItem reference="Evg-H4-9T4"/>
+                                <toolbarItem reference="fIO-7r-OQw"/>
+                                <toolbarItem reference="w8h-EF-wBh"/>
+                            </defaultToolbarItems>
+                        </toolbar>
                     </window>
                     <connections>
                         <segue destination="5gI-5U-AMq" kind="relationship" relationship="window.shadowedContentViewController" id="nsd-lR-9xd"/>
@@ -678,8 +693,8 @@
                                     <rect key="frame" x="1" y="0.0" width="238" height="134"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" headerView="elG-NJ-08b" indentationPerLevel="16" outlineTableColumn="5dk-vI-VB7" id="Icz-Ge-1F8">
-                                            <rect key="frame" x="0.0" y="0.0" width="574" height="19"/>
+                                        <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" headerView="elG-NJ-08b" indentationPerLevel="16" outlineTableColumn="5dk-vI-VB7" id="Icz-Ge-1F8" customClass="XMLOutlineView">
+                                            <rect key="frame" x="0.0" y="0.0" width="596" height="19"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

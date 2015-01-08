@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "Document.h"
 
-@interface ViewController : NSViewController
+@interface ViewController : NSViewController<NSOutlineViewDataSource, NSOutlineViewDelegate>
 
 @property (nonatomic, strong) Document *document;
 

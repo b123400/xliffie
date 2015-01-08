@@ -9,10 +9,11 @@
 #import "ViewController.h"
 #import "File.h"
 #import "TranslationPair.h"
+#import "XMLOutlineView.h"
 
 @interface ViewController ()
 
-@property (weak) IBOutlet NSOutlineView *outlineView;
+@property (weak) IBOutlet XMLOutlineView *outlineView;
 
 @end
 
@@ -20,9 +21,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
     // Do any additional setup after loading the view.
 }
+
+#pragma mark OutlineView
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView
    isItemExpandable:(id)item {
@@ -84,6 +86,15 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
         }
     }
 }
+
+- (BOOL)outlineView:(NSOutlineView *)outlineView shouldEditTableColumn:(NSTableColumn *)tableColumn item:(id)item {
+    if ([[tableColumn identifier] isEqualToString:@"target"] && [item isKindOfClass:[TranslationPair class]]) {
+        return YES;
+    }
+    return NO;
+}
+
+#pragma mark Document
 
 - (void)setRepresentedObject:(id)representedObject {
     [super setRepresentedObject:representedObject];

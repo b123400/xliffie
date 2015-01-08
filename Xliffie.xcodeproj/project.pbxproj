@@ -17,6 +17,7 @@
 		CF5FC8AC1A5ABFF700538E60 /* XliffieTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5FC8AB1A5ABFF700538E60 /* XliffieTests.m */; };
 		CF94FCA51A5C365400EE8BD5 /* File.m in Sources */ = {isa = PBXBuildFile; fileRef = CF94FCA41A5C365400EE8BD5 /* File.m */; };
 		CF94FCA81A5C37A900EE8BD5 /* TranslationPair.m in Sources */ = {isa = PBXBuildFile; fileRef = CF94FCA71A5C37A900EE8BD5 /* TranslationPair.m */; };
+		CFD234FA1A5E44C700B52088 /* XMLOutlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD234F91A5E44C700B52088 /* XMLOutlineView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,8 @@
 		CF94FCA41A5C365400EE8BD5 /* File.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = File.m; sourceTree = "<group>"; };
 		CF94FCA61A5C37A900EE8BD5 /* TranslationPair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TranslationPair.h; sourceTree = "<group>"; };
 		CF94FCA71A5C37A900EE8BD5 /* TranslationPair.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TranslationPair.m; sourceTree = "<group>"; };
+		CFD234F81A5E44C700B52088 /* XMLOutlineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLOutlineView.h; sourceTree = "<group>"; };
+		CFD234F91A5E44C700B52088 /* XMLOutlineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLOutlineView.m; sourceTree = "<group>"; };
 		D9A4DB17232AB0C035770831 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -114,6 +117,8 @@
 				CF94FCA41A5C365400EE8BD5 /* File.m */,
 				CF94FCA61A5C37A900EE8BD5 /* TranslationPair.h */,
 				CF94FCA71A5C37A900EE8BD5 /* TranslationPair.m */,
+				CFD234F81A5E44C700B52088 /* XMLOutlineView.h */,
+				CFD234F91A5E44C700B52088 /* XMLOutlineView.m */,
 				CF5FC89C1A5ABFF700538E60 /* Images.xcassets */,
 				CF5FC89E1A5ABFF700538E60 /* Main.storyboard */,
 				CF5FC88F1A5ABFF700538E60 /* Supporting Files */,
@@ -255,6 +260,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF94FCA51A5C365400EE8BD5 /* File.m in Sources */,
+				CFD234FA1A5E44C700B52088 /* XMLOutlineView.m in Sources */,
 				CF5FC89B1A5ABFF700538E60 /* Document.m in Sources */,
 				CF5FC8981A5ABFF700538E60 /* ViewController.m in Sources */,
 				CF5FC8951A5ABFF700538E60 /* main.m in Sources */,
