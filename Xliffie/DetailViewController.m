@@ -21,12 +21,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do view setup here.
+    [self.outlineView expandItem:nil expandChildren:YES];
 }
 
 - (void)setRepresentedObject:(id)representedObject {
     [super setRepresentedObject:representedObject];
     [self parseRepresentedObject];
     [self.outlineView reloadData];
+    [self.outlineView expandItem:nil expandChildren:YES];
 }
 
 - (void)parseRepresentedObject {
@@ -124,6 +126,28 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 }
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView shouldEditTableColumn:(NSTableColumn *)tableColumn item:(id)item {
+    return NO;
+}
+
+- (NSCell *)outlineView:(NSOutlineView *)outlineView dataCellForTableColumn:(NSTableColumn *)tableColumn item:(id)item {
+    if (item) {
+        NSCell *cell = [tableColumn dataCell];
+        [cell setObjectValue:item];
+        [cell setWraps:YES];
+        return cell;
+    }
+    return nil;
+}
+
+- (CGFloat)outlineView:(NSOutlineView *)outlineView heightOfRowByItem:(id)item {
+    NSCell *cell = [[[outlineView tableColumns] firstObject] dataCell];
+    [cell setObjectValue:item];
+    [cell setWraps:YES];
+    CGFloat height = [cell cellSizeForBounds:CGRectMake(0, 0, self.outlineView.frame.size.width-32, CGFLOAT_MAX)].height;
+    return height;
+}
+
+- (BOOL)outlineView:(NSOutlineView *)outlineView shouldSelectItem:(id)item {
     return NO;
 }
 

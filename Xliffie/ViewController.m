@@ -104,6 +104,38 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
     }
 }
 
+- (NSCell *)outlineView:(NSOutlineView *)outlineView dataCellForTableColumn:(NSTableColumn *)tableColumn item:(id)item {
+    if (!item) return nil;
+    NSCell *cell = [tableColumn dataCell];
+    NSString *value = [self outlineView:outlineView objectValueForTableColumn:tableColumn byItem:item];
+    [cell setObjectValue:value];
+    [cell setWraps:YES];
+    return cell;
+}
+
+- (CGFloat)outlineView:(NSOutlineView *)outlineView heightOfRowByItem:(id)item {
+    
+    NSTableColumn *firstColumn = [[self.outlineView tableColumns] firstObject];
+    NSTableColumn *secondColumn = [[self.outlineView tableColumns] objectAtIndex:1];
+    NSCell *cell = [firstColumn dataCell];
+    [cell setWraps:YES];
+    
+    if ([item isKindOfClass:[File class]]) {
+        [cell setObjectValue:[item original]];
+        return [cell cellSizeForBounds:CGRectMake(0, 0, [firstColumn width], CGFLOAT_MAX)].height;
+    }
+    
+    [cell setObjectValue:[item source]];
+    CGFloat sourceHeight = [cell cellSizeForBounds:CGRectMake(0, 0, [firstColumn width], CGFLOAT_MAX)].height;
+    [cell setObjectValue:[item target]];
+    CGFloat targetHeight = [cell cellSizeForBounds:CGRectMake(0, 0, [secondColumn width], CGFLOAT_MAX)].height;
+    return MAX(sourceHeight, targetHeight);
+}
+
+- (void)outlineViewColumnDidResize:(NSNotification *)notification {
+    [self.outlineView reloadData];
+}
+
 #pragma mark Document
 
 - (void)setRepresentedObject:(id)representedObject {
