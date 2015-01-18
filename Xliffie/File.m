@@ -22,11 +22,19 @@
     
     self.xmlElement = element;
     self.original = [[element attributeForName:@"original"] stringValue];
+    NSString *sourceCode = [[element attributeForName:@"source-language"] stringValue];
+    NSString *targetCode = [[element attributeForName:@"target-language"] stringValue];
+    
+    NSLocale *locale = [NSLocale currentLocale];
+    self.sourceLanguage = [locale displayNameForKey:NSLocaleIdentifier value:sourceCode];
+    self.targetLanguage = [locale displayNameForKey:NSLocaleIdentifier value:targetCode];
+    
     self.translations = [NSMutableArray array];
     
     NSXMLElement *bodyElement = [[element elementsForName:@"body"] firstObject];
     for (NSXMLElement *unit in [bodyElement elementsForName:@"trans-unit"]) {
         TranslationPair *pair = [[TranslationPair alloc] initWithXMLElement:unit];
+        pair.file = self;
         [self.translations addObject:pair];
     }
     return self;

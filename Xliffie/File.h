@@ -11,6 +11,8 @@
 @interface File : NSObject
 
 @property (nonatomic, strong) NSString *original;
+@property (nonatomic, strong) NSString *sourceLanguage;
+@property (nonatomic, strong) NSString *targetLanguage;
 @property (nonatomic, strong) NSMutableArray *translations;
 
 - (instancetype)initWithXMLElement:(NSXMLElement*)element;

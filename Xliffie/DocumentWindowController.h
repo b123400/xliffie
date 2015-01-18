@@ -11,4 +11,6 @@
 
 @interface DocumentWindowController : NSWindowController <ViewControllerDelegate>
 
+- (void)toggleNotes;
+
 @end

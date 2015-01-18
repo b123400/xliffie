@@ -13,6 +13,7 @@
 
 @property (nonatomic, strong) ViewController *mainViewController;
 @property (nonatomic, strong) DetailViewController *detailViewController;
+@property (weak) IBOutlet NSTextField *translationField;
 
 @end
 
@@ -28,17 +29,32 @@
     self.mainViewController.delegate = self;
     
     self.detailViewController = (DetailViewController*)[[[splitVc splitViewItems] lastObject] viewController];
+    
+    [self.translationField setStringValue:@""];
 }
 
-- (IBAction)toggleNotesPressed:(id)sender {
+- (void)toggleNotes {
     NSSplitViewController *splitVc = (NSSplitViewController*)[self contentViewController];
     NSSplitViewItem *noteItem = [[splitVc splitViewItems] objectAtIndex:1];
     [[noteItem viewController] setPreferredContentSize:NSMakeSize(200, 600)];
     noteItem.animator.collapsed = !noteItem.animator.collapsed;
 }
 
+- (IBAction)toggleNotesPressed:(id)sender {
+    [self toggleNotes];
+}
+
 - (void)viewController:(id)controller didSelectedTranslation:(TranslationPair*)pair {
     [self.detailViewController setRepresentedObject:pair.note];
+}
+
+- (void)viewController:(id)controller didSelectedFileChild:(File*)file {
+    if (file.sourceLanguage && file.targetLanguage) {
+        NSString *displayString = [NSString stringWithFormat:@"%@ to %@", file.sourceLanguage, file.targetLanguage];
+        [self.translationField setStringValue:displayString];
+    } else {
+        [self.translationField setStringValue:@""];
+    }
 }
 
 @end

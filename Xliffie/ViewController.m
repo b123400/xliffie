@@ -7,7 +7,6 @@
 //
 
 #import "ViewController.h"
-#import "File.h"
 #import "TranslationPair.h"
 #import "XMLOutlineView.h"
 
@@ -99,8 +98,10 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
     id item = [self.outlineView itemAtRow:index];
     if ([item isKindOfClass:[TranslationPair class]]) {
         [self.delegate viewController:self didSelectedTranslation:item];
+        [self.delegate viewController:self didSelectedFileChild:[item file]];
     } else {
         [self.delegate viewController:self didSelectedTranslation:nil];
+        [self.delegate viewController:self didSelectedFileChild:item];
     }
 }
 

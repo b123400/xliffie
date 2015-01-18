@@ -41,9 +41,10 @@
     // Override to return the Storyboard file name of the document.
     NSWindowController *windowController = [[NSStoryboard storyboardWithName:@"Main" bundle:nil] instantiateControllerWithIdentifier:@"Document Window Controller"];
     NSSplitViewController *splitVc = (NSSplitViewController*)windowController.contentViewController;
-    ViewController *vc = [[[splitVc splitViewItems] objectAtIndex:0] viewController];
+    ViewController *vc = (ViewController*)[[[splitVc splitViewItems] objectAtIndex:0] viewController];
     [self addWindowController:windowController];
     vc.document = self;
+    [[windowController window] makeKeyWindow];
 }
 
 - (NSData *)dataOfType:(NSString *)typeName error:(NSError **)outError {

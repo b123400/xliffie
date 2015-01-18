@@ -9,9 +9,11 @@
 #import <Cocoa/Cocoa.h>
 #import "TranslationPair.h"
 #import "Document.h"
+#import "File.h"
 
 @protocol ViewControllerDelegate <NSObject>
 
+- (void)viewController:(id)controller didSelectedFileChild:(File*)file;
 - (void)viewController:(id)controller didSelectedTranslation:(TranslationPair*)pair;
 
 @end

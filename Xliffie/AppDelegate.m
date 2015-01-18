@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "DocumentWindowController.h"
 
 @interface AppDelegate ()
 
@@ -20,6 +21,11 @@
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
     // Insert code here to tear down your application
+}
+
+- (IBAction)showInfo:(id)sender {
+    DocumentWindowController *controller = (DocumentWindowController*)[[[NSApplication sharedApplication] mainWindow] delegate];
+    [controller toggleNotes];
 }
 
 @end

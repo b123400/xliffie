@@ -7,12 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "File.h"
 
 @interface TranslationPair : NSObject
 
 @property (nonatomic, strong) NSString *source;
 @property (nonatomic, strong) NSString *target;
 @property (nonatomic, strong) NSString *note;
+
+@property (nonatomic, weak) File *file;
 
 - (instancetype)initWithXMLElement:(NSXMLElement*)element;
 

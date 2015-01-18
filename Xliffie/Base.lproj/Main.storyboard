@@ -595,6 +595,11 @@
                                                 <action selector="runToolbarCustomizationPalette:" target="Ady-hI-5gd" id="pQI-g3-MTW"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem title="Show Info" keyEquivalent="d" id="EJo-G1-Lo1">
+                                            <connections>
+                                                <action selector="showInfo:" target="Voe-Tx-rLC" id="gSG-4o-89i"/>
+                                            </connections>
+                                        </menuItem>
                                     </items>
                                 </menu>
                             </menuItem>
@@ -644,7 +649,7 @@
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="-27"/>
+            <point key="canvasLocation" x="75" y="-94"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
@@ -661,7 +666,7 @@
                                 <toolbarItem implicitItemIdentifier="9B834FBA-6E5D-45E8-9E8E-FCA56F441CCE" label="Translation" paletteLabel="" id="5HX-t5-weX">
                                     <nil key="toolTip"/>
                                     <size key="minSize" width="9" height="17"/>
-                                    <size key="maxSize" width="132" height="32"/>
+                                    <size key="maxSize" width="300" height="32"/>
                                     <textField key="view" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="A6B-qh-ToQ">
                                         <rect key="frame" x="0.0" y="14" width="132" height="17"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -710,8 +715,12 @@
                                 <toolbarItem reference="z3T-JE-F8n"/>
                             </defaultToolbarItems>
                         </toolbar>
+                        <connections>
+                            <outlet property="delegate" destination="jGA-0Y-lOj" id="IIy-rK-dlD"/>
+                        </connections>
                     </window>
                     <connections>
+                        <outlet property="translationField" destination="A6B-qh-ToQ" id="syX-XD-iJR"/>
                         <segue destination="XgN-P8-apj" kind="relationship" relationship="window.shadowedContentViewController" id="7el-Lb-1pe"/>
                     </connections>
                 </windowController>
@@ -729,11 +738,11 @@
                         <subviews>
                             <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7sK-gT-OQZ">
                                 <rect key="frame" x="0.0" y="0.0" width="598" height="501"/>
-                                <clipView key="contentView" misplaced="YES" id="Gto-h8-Loe">
+                                <clipView key="contentView" id="Gto-h8-Loe">
                                     <rect key="frame" x="1" y="0.0" width="238" height="134"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" headerView="elG-NJ-08b" indentationPerLevel="16" outlineTableColumn="5dk-vI-VB7" id="Icz-Ge-1F8" customClass="XMLOutlineView">
+                                        <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" indentationPerLevel="16" outlineTableColumn="5dk-vI-VB7" id="Icz-Ge-1F8" customClass="XMLOutlineView">
                                             <rect key="frame" x="0.0" y="0.0" width="596" height="19"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
@@ -783,10 +792,6 @@
                                     <rect key="frame" x="224" y="17" width="15" height="102"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <tableHeaderView key="headerView" id="elG-NJ-08b">
-                                    <rect key="frame" x="0.0" y="0.0" width="238" height="17"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableHeaderView>
                             </scrollView>
                         </subviews>
                         <constraints>
