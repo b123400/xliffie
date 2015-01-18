@@ -94,6 +94,16 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
     return NO;
 }
 
+- (void)outlineViewSelectionDidChange:(NSNotification *)notification {
+    NSUInteger index = [self.outlineView selectedRow];
+    id item = [self.outlineView itemAtRow:index];
+    if ([item isKindOfClass:[TranslationPair class]]) {
+        [self.delegate viewController:self didSelectedTranslation:item];
+    } else {
+        [self.delegate viewController:self didSelectedTranslation:nil];
+    }
+}
+
 #pragma mark Document
 
 - (void)setRepresentedObject:(id)representedObject {

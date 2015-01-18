@@ -7,11 +7,19 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "TranslationPair.h"
 #import "Document.h"
+
+@protocol ViewControllerDelegate <NSObject>
+
+- (void)viewController:(id)controller didSelectedTranslation:(TranslationPair*)pair;
+
+@end
 
 @interface ViewController : NSViewController<NSOutlineViewDataSource, NSOutlineViewDelegate>
 
 @property (nonatomic, strong) Document *document;
+@property (nonatomic, weak) id <ViewControllerDelegate> delegate;
 
 @end
 

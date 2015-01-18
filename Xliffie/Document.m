@@ -40,7 +40,8 @@
 - (void)makeWindowControllers {
     // Override to return the Storyboard file name of the document.
     NSWindowController *windowController = [[NSStoryboard storyboardWithName:@"Main" bundle:nil] instantiateControllerWithIdentifier:@"Document Window Controller"];
-    ViewController *vc = (ViewController*)windowController.contentViewController;
+    NSSplitViewController *splitVc = (NSSplitViewController*)windowController.contentViewController;
+    ViewController *vc = [[[splitVc splitViewItems] objectAtIndex:0] viewController];
     [self addWindowController:windowController];
     vc.document = self;
 }

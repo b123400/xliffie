@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		50576349D106F92CB6EACA4F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D9A4DB17232AB0C035770831 /* libPods.a */; };
+		CF5682EB1A6AFB9800E0DEDD /* DocumentWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5682E91A6AFB9800E0DEDD /* DocumentWindowController.m */; };
+		CF5682EF1A6B11C700E0DEDD /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5682EE1A6B11C700E0DEDD /* DetailViewController.m */; };
 		CF5FC8931A5ABFF700538E60 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5FC8921A5ABFF700538E60 /* AppDelegate.m */; };
 		CF5FC8951A5ABFF700538E60 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5FC8941A5ABFF700538E60 /* main.m */; };
 		CF5FC8981A5ABFF700538E60 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5FC8971A5ABFF700538E60 /* ViewController.m */; };
@@ -33,6 +35,10 @@
 /* Begin PBXFileReference section */
 		A24FB6FB6C748EE2771A3127 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		BB660F8206041708A21FA21A /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		CF5682E81A6AFB9800E0DEDD /* DocumentWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocumentWindowController.h; sourceTree = "<group>"; };
+		CF5682E91A6AFB9800E0DEDD /* DocumentWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentWindowController.m; sourceTree = "<group>"; };
+		CF5682ED1A6B11C700E0DEDD /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		CF5682EE1A6B11C700E0DEDD /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		CF5FC88C1A5ABFF700538E60 /* Xliffie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Xliffie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF5FC8901A5ABFF700538E60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF5FC8911A5ABFF700538E60 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -109,8 +115,12 @@
 			children = (
 				CF5FC8911A5ABFF700538E60 /* AppDelegate.h */,
 				CF5FC8921A5ABFF700538E60 /* AppDelegate.m */,
+				CF5682E81A6AFB9800E0DEDD /* DocumentWindowController.h */,
+				CF5682E91A6AFB9800E0DEDD /* DocumentWindowController.m */,
 				CF5FC8961A5ABFF700538E60 /* ViewController.h */,
 				CF5FC8971A5ABFF700538E60 /* ViewController.m */,
+				CF5682ED1A6B11C700E0DEDD /* DetailViewController.h */,
+				CF5682EE1A6B11C700E0DEDD /* DetailViewController.m */,
 				CF5FC8991A5ABFF700538E60 /* Document.h */,
 				CF5FC89A1A5ABFF700538E60 /* Document.m */,
 				CF94FCA31A5C365400EE8BD5 /* File.h */,
@@ -259,7 +269,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF5682EB1A6AFB9800E0DEDD /* DocumentWindowController.m in Sources */,
 				CF94FCA51A5C365400EE8BD5 /* File.m in Sources */,
+				CF5682EF1A6B11C700E0DEDD /* DetailViewController.m in Sources */,
 				CFD234FA1A5E44C700B52088 /* XMLOutlineView.m in Sources */,
 				CF5FC89B1A5ABFF700538E60 /* Document.m in Sources */,
 				CF5FC8981A5ABFF700538E60 /* ViewController.m in Sources */,
