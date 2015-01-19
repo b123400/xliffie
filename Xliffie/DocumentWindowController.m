@@ -14,6 +14,7 @@
 @property (nonatomic, strong) ViewController *mainViewController;
 @property (nonatomic, strong) DetailViewController *detailViewController;
 @property (weak) IBOutlet NSTextField *translationField;
+@property (weak) IBOutlet NSSearchField *searchField;
 
 @end
 
@@ -31,6 +32,7 @@
     self.detailViewController = (DetailViewController*)[[[splitVc splitViewItems] lastObject] viewController];
     
     [self.translationField setStringValue:@""];
+    [(DocumentWindow*)self.window setDelegate:self];
 }
 
 - (void)toggleNotes {
@@ -40,12 +42,29 @@
     noteItem.animator.collapsed = !noteItem.animator.collapsed;
 }
 
+-(void)windowDidBecomeKey:(NSNotification *)notification {
+    
+}
+
+#pragma mark short cuts
+
+- (void)documentWindowShowInfoPressed:(id)documentWindow {
+    [self toggleNotes];
+}
+
+- (void)documentWindowSearchKeyPressed:(id)documentWindow {
+    [self.searchField selectText:self];
+}
+
 - (IBAction)toggleNotesPressed:(id)sender {
     [self toggleNotes];
 }
 
 - (void)viewController:(id)controller didSelectedTranslation:(TranslationPair*)pair {
     [self.detailViewController setRepresentedObject:pair.note];
+}
+- (IBAction)searchFilterChanged:(id)sender {
+    [self.mainViewController setSearchFilter:[sender stringValue]];
 }
 
 - (void)viewController:(id)controller didSelectedFileChild:(File*)file {

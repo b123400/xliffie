@@ -21,7 +21,10 @@
 @interface ViewController : NSViewController<NSOutlineViewDataSource, NSOutlineViewDelegate>
 
 @property (nonatomic, strong) Document *document;
+@property (nonatomic, strong) NSString *searchFilter;
 @property (nonatomic, weak) id <ViewControllerDelegate> delegate;
+
+- (Document*)documentForDisplay;
 
 @end
 

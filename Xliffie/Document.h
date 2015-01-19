@@ -12,5 +12,8 @@
 
 @property (nonatomic, strong) NSMutableArray *files;
 
+- (Document*)filteredDocumentWithSearchFilter:(NSString*)filter;
+- (NSMutableArray*)filesMatchingSearchFilter:(NSString*)filter;
+
 @end
 

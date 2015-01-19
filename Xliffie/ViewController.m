@@ -13,6 +13,7 @@
 @interface ViewController ()
 
 @property (weak) IBOutlet XMLOutlineView *outlineView;
+@property (strong, nonatomic) Document *filteredDocument;
 
 @end
 
@@ -21,6 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.outlineView.autosaveExpandedItems = YES;
 }
 
 #pragma mark OutlineView
@@ -33,7 +35,7 @@
 - (NSInteger)outlineView:(NSOutlineView *)outlineView
   numberOfChildrenOfItem:(id)item {
     if (!item) {
-        return self.document.files.count;
+        return self.documentForDisplay.files.count;
     } else if ([item isKindOfClass:[File class]]) {
         return [(File*)item translations].count;
     }
@@ -44,7 +46,7 @@
             child:(NSInteger)index
            ofItem:(id)item {
     if (!item) {
-        return self.document.files[index];
+        return self.documentForDisplay.files[index];
     } else if ([item isKindOfClass:[File class]]) {
         return [[(File*)item translations] objectAtIndex:index];
     }
@@ -148,6 +150,25 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 - (void)setDocument:(Document *)document {
     _document = document;
     [self.outlineView reloadData];
+    [self.outlineView expandItem:nil expandChildren:YES];
+}
+
+- (Document*)documentForDisplay {
+    if (self.filteredDocument) {
+        return self.filteredDocument;
+    }
+    return self.document;
+}
+
+- (void)setSearchFilter:(NSString *)searchFilter {
+    _searchFilter = searchFilter;
+    if (!_searchFilter.length) {
+        self.filteredDocument = nil;
+    } else {
+        self.filteredDocument = [self.document filteredDocumentWithSearchFilter:searchFilter];
+    }
+    [self.outlineView reloadData];
+    [self.outlineView expandItem:nil expandChildren:YES];
 }
 
 @end

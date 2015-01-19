@@ -40,4 +40,16 @@
     return self;
 }
 
+- (File *)filteredFileWithSearchFilter:(NSString*)filter {
+    File *newFile = [[File alloc] initWithXMLElement:self.xmlElement];
+    newFile.translations = [newFile translationsMatchingSearchFilter:filter].mutableCopy;
+    return newFile;
+}
+
+- (NSArray *)translationsMatchingSearchFilter:(NSString*)filter {
+    return [self.translations filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
+        return [evaluatedObject matchSearchFilter:filter];
+    }]];
+}
+
 @end

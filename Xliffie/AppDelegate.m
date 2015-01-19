@@ -23,9 +23,4 @@
     // Insert code here to tear down your application
 }
 
-- (IBAction)showInfo:(id)sender {
-    DocumentWindowController *controller = (DocumentWindowController*)[[[NSApplication sharedApplication] mainWindow] delegate];
-    [controller toggleNotes];
-}
-
 @end

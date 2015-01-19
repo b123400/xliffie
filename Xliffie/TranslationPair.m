@@ -55,4 +55,26 @@
     _target = target;
 }
 
+- (BOOL)matchSearchFilter:(NSString*)filter {
+    NSError *error = nil;
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:filter options:NSRegularExpressionCaseInsensitive error:&error];
+    if (regex && !error) {
+        if (self.source && [regex numberOfMatchesInString:self.source options:0 range:NSMakeRange(0, self.source.length)] >= 1) {
+            return YES;
+        }
+        if (self.target && [regex numberOfMatchesInString:self.target options:0 range:NSMakeRange(0, self.target.length)] >= 1) {
+            return YES;
+        }
+        if (self.note && [regex numberOfMatchesInString:self.note options:0 range:NSMakeRange(0, self.note.length)] >= 1) {
+            return YES;
+        }
+    }
+    
+    filter = filter.lowercaseString;
+    
+    return [self.source.lowercaseString containsString:filter] ||
+        [self.target.lowercaseString containsString:filter] ||
+        [self.note.lowercaseString containsString:filter];
+}
+
 @end

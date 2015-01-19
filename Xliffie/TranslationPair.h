@@ -19,4 +19,6 @@
 
 - (instancetype)initWithXMLElement:(NSXMLElement*)element;
 
+- (BOOL)matchSearchFilter:(NSString*)filter;
+
 @end

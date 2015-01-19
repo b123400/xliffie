@@ -72,4 +72,24 @@
     return YES;
 }
 
+# pragma mark filter
+
+- (Document*)filteredDocumentWithSearchFilter:(NSString*)filter {
+    Document *document = [[Document alloc] init];
+    document.xmlDocument = self.xmlDocument;
+    document.files = [self filesMatchingSearchFilter:filter];
+    return document;
+}
+
+- (NSMutableArray*)filesMatchingSearchFilter:(NSString*)filter {
+    NSMutableArray *files = [NSMutableArray array];
+    for (File *thisFile in self.files) {
+        File *filtered = [thisFile filteredFileWithSearchFilter:filter];
+        if (filtered.translations.count) {
+            [files addObject:filtered];
+        }
+    }
+    return files;
+}
+
 @end

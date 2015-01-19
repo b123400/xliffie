@@ -17,4 +17,7 @@
 
 - (instancetype)initWithXMLElement:(NSXMLElement*)element;
 
+- (File *)filteredFileWithSearchFilter:(NSString*)filter;
+- (NSArray *)translationsMatchingSearchFilter:(NSString*)filter;
+
 @end
