@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		50576349D106F92CB6EACA4F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D9A4DB17232AB0C035770831 /* libPods.a */; };
 		CF5682EB1A6AFB9800E0DEDD /* DocumentWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5682E91A6AFB9800E0DEDD /* DocumentWindowController.m */; };
 		CF5682EF1A6B11C700E0DEDD /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5682EE1A6B11C700E0DEDD /* DetailViewController.m */; };
 		CF5FC8931A5ABFF700538E60 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5FC8921A5ABFF700538E60 /* AppDelegate.m */; };
@@ -70,7 +69,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50576349D106F92CB6EACA4F /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

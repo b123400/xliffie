@@ -71,6 +71,13 @@
             [super textDidEndEditing:notification];
             return;
     }
+    
+    NSMutableDictionary *newUserInfo = [[notification userInfo] mutableCopy];
+    [newUserInfo setObject:@(NSReturnTextMovement) forKey:@"NSTextMovement"];
+    NSNotification *newNotification = [NSNotification notificationWithName:[notification name]
+                                                                    object:[notification object]
+                                                                  userInfo:newUserInfo];
+    [super textDidEndEditing:newNotification];
     if (nextRow == NSNotFound) {
         nextRow = self.editedRow;
     }
