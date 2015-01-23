@@ -17,6 +17,9 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
+    if (![[NSApplication sharedApplication] windows].count) {
+        [[NSDocumentController sharedDocumentController] openDocument:self];
+    }
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
@@ -24,7 +27,13 @@
 }
 
 - (BOOL)applicationShouldHandleReopen:(NSApplication *)theApplication hasVisibleWindows:(BOOL)flag {
-    return YES;
+    NSArray *windows = [[NSApplication sharedApplication] windows];
+    if (windows.count) {
+        [windows[0] makeKeyAndOrderFront:self];
+    } else {
+        [[NSDocumentController sharedDocumentController] openDocument:self];
+    }
+    return NO;
 }
 
 @end
