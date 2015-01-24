@@ -29,21 +29,86 @@
     self.mainViewController = (ViewController*)[mainItem viewController];
     self.mainViewController.delegate = self;
     
-    self.detailViewController = (DetailViewController*)[[[splitVc splitViewItems] lastObject] viewController];
+    NSSplitViewItem *detailItem = [[splitVc splitViewItems] lastObject];
+    self.detailViewController = (DetailViewController*)[detailItem viewController];
     
     [self.translationField setStringValue:@""];
     [(DocumentWindow*)self.window setDelegate:self];
+    
+    splitVc.splitView.delegate = self;
+    [mainItem setCollapsed:NO];
+    [detailItem setCollapsed:YES];
 }
 
 - (void)toggleNotes {
     NSSplitViewController *splitVc = (NSSplitViewController*)[self contentViewController];
-    NSSplitViewItem *noteItem = [[splitVc splitViewItems] objectAtIndex:1];
-    [[noteItem viewController] setPreferredContentSize:NSMakeSize(200, 600)];
-    noteItem.animator.collapsed = !noteItem.animator.collapsed;
+    NSSplitView *splitView = splitVc.splitView;
+    
+    BOOL rightViewCollapsed = [splitView isSubviewCollapsed:[[splitView subviews] objectAtIndex: 1]];
+    if (rightViewCollapsed) {
+        [self uncollapseRightView];
+    } else {
+        [self collapseRightView];
+    }
+}
+
+-(void)collapseRightView
+{
+    NSSplitViewController *splitVc = (NSSplitViewController*)[self contentViewController];
+    NSSplitView *splitView = splitVc.splitView;
+    NSView *right = [[splitView subviews] objectAtIndex:1];
+    NSView *left  = [[splitView subviews] objectAtIndex:0];
+    NSRect leftFrame = [left frame];
+    NSRect overallFrame = [splitView frame]; //???
+    [right setHidden:YES];
+    [left setFrameSize:NSMakeSize(overallFrame.size.width,leftFrame.size.height)];
+    [splitView display];
+}
+
+-(void)uncollapseRightView
+{
+    NSSplitViewController *splitVc = (NSSplitViewController*)[self contentViewController];
+    NSSplitView *splitView = splitVc.splitView;
+    
+    NSView *left  = [[splitView subviews] objectAtIndex:0];
+    NSView *right = [[splitView subviews] objectAtIndex:1];
+    [right setHidden:NO];
+    CGFloat dividerThickness = [splitView dividerThickness];
+    // get the different frames
+    NSRect leftFrame = [left frame];
+    NSRect rightFrame = [right frame];
+    // Adjust left frame size
+    if (rightFrame.size.width < 200) {
+        rightFrame.size.width = 200;
+    }
+    leftFrame.size.width = (leftFrame.size.width-rightFrame.size.width-dividerThickness);
+    rightFrame.origin.x = leftFrame.size.width + dividerThickness;
+    
+    [left setFrameSize:leftFrame.size];
+    [right setFrame:rightFrame];
+    [splitView display];
 }
 
 -(void)windowDidBecomeKey:(NSNotification *)notification {
     
+}
+
+- (BOOL)splitView:(NSSplitView *)splitView canCollapseSubview:(NSView *)subview {
+    NSView* rightView = [[splitView subviews] objectAtIndex:1];
+    return ([subview isEqual:rightView]);
+}
+
+- (BOOL)splitView:(NSSplitView *)splitView shouldHideDividerAtIndex:(NSInteger)dividerIndex {
+    return YES;
+}
+
+- (CGFloat)splitView:(NSSplitView *)splitView
+constrainSplitPosition:(CGFloat)proposedPosition
+         ofSubviewAt:(NSInteger)dividerIndex {
+    proposedPosition = MAX(proposedPosition, self.window.frame.size.width/2);
+    proposedPosition = MIN(proposedPosition, self.window.frame.size.width - 200);
+
+    return proposedPosition;
 }
 
 #pragma mark short cuts
@@ -59,6 +124,8 @@
 - (IBAction)toggleNotesPressed:(id)sender {
     [self toggleNotes];
 }
+
+#pragma mark selection
 
 - (void)viewController:(id)controller didSelectedTranslation:(TranslationPair*)pair {
     [self.detailViewController setRepresentedObject:pair.note];

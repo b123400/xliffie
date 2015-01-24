@@ -17,9 +17,16 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
+}
+
+- (void)didFinishRestoreWindow:(NSNotification*)notification {
     if (![[NSApplication sharedApplication] windows].count) {
         [[NSDocumentController sharedDocumentController] openDocument:self];
     }
+}
+
+- (void)applicationWillFinishLaunching:(NSNotification *)notification {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFinishRestoreWindow:) name:@"NSApplicationDidFinishRestoringWindowsNotification" object:nil];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
