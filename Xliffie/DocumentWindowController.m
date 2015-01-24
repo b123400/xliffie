@@ -59,7 +59,7 @@
     NSView *right = [[splitView subviews] objectAtIndex:1];
     NSView *left  = [[splitView subviews] objectAtIndex:0];
     NSRect leftFrame = [left frame];
-    NSRect overallFrame = [splitView frame]; //???
+    NSRect overallFrame = [splitView frame];
     [right setHidden:YES];
     [left setFrameSize:NSMakeSize(overallFrame.size.width,leftFrame.size.height)];
     [splitView display];

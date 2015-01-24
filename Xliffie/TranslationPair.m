@@ -77,4 +77,53 @@
         [self.note.lowercaseString containsString:filter];
 }
 
+- (NSArray*)formatWarningsForProposedTranslation:(NSString*)newTranslation {
+    NSDictionary *thatFormats = [self formatSpecifiersInString:newTranslation];
+    NSDictionary *thisFormats = [self formatSpecifiersInString:self.source];
+    NSMutableArray *warnings = [NSMutableArray array];
+    for (NSString *key in thisFormats) {
+        NSNumber *thatCount = [thatFormats objectForKey:key];
+        if (!thatCount) {
+            [warnings addObject:[NSString stringWithFormat:@"The source has at least one \"%%%@\", but your input doesn\'t", key]];
+            continue;
+        }
+        NSNumber *thisCount = [thisFormats objectForKey:key];
+        if (![thisCount isEqualTo:thatCount]) {
+            [warnings addObject:[NSString stringWithFormat:@"The source has %@ \"%%%@\", but your input has %@", thisCount, key, thatCount]];
+            continue;
+        }
+    }
+    for (NSString *key in thatFormats) {
+        if (![thisFormats objectForKey:key]) {
+            [warnings addObject:[NSString stringWithFormat:@"The source doesn\'t have \"%%%@\", but your input has", key]];
+        }
+    }
+    return warnings;
+}
+
+- (NSDictionary*)formatSpecifiersInString:(NSString*)input {
+    NSString *pattern = @"%(?:([0-9])\\$)?(?:[0-9]?.[0-9])?((?:h|hh|l|ll|q|L|z|t|j)?[@dDuUxXoOfeEgGcCsSpaAF])";
+    NSError *error = nil;
+    
+    NSMutableDictionary *resultDict = [NSMutableDictionary dictionary];
+    
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern options:0 error:&error];
+    [regex enumerateMatchesInString:input options:0 range:NSMakeRange(0, input.length) usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
+        
+//        NSRange indexRange = [result rangeAtIndex:1];
+        NSRange typeRange = [result rangeAtIndex:2];
+        
+//        NSInteger index = -1;
+//        if (indexRange.location != NSNotFound) {
+//            index = [[input substringWithRange:indexRange] integerValue];
+//        }
+        NSString *typeString = [input substringWithRange:typeRange];
+        if (![resultDict objectForKey:typeString]) {
+            [resultDict setObject:@0 forKey:typeString];
+        }
+        [resultDict setObject:@([resultDict[typeString] integerValue]+1) forKey:typeString];
+    }];
+    return resultDict;
+}
+
 @end

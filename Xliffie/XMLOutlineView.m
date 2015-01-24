@@ -57,31 +57,42 @@
 }
 
 - (void)textDidEndEditing:(NSNotification *)notification {
-    int movement = [[[notification userInfo] objectForKey:@"NSTextMovement"] intValue];
-    NSInteger nextRow;
+    NSString *proposed = [[[notification object] textStorage] string];
     
-    switch (movement) {
-        case NSTabTextMovement:
-            nextRow = [self nextEditableField:self.editedRow];
-            break;
-        case NSBacktabTextMovement:
-            nextRow = [self previousEditableField:self.editedRow];
-            break;
-        default:
-            [super textDidEndEditing:notification];
-            return;
+    if ([self.xmlOutlineDelegate respondsToSelector:@selector(xmlOutlineView:didEndEditingRow:proposedString:callback:)]) {
+        [self.xmlOutlineDelegate xmlOutlineView:self didEndEditingRow:self.editedRow proposedString:proposed callback:^(BOOL shouldEnd) {
+            
+            int movement = [[[notification userInfo] objectForKey:@"NSTextMovement"] intValue];
+            NSInteger nextRow;
+            
+            if (shouldEnd) {
+                switch (movement) {
+                    case NSTabTextMovement:
+                        nextRow = [self nextEditableField:self.editedRow];
+                        break;
+                    case NSBacktabTextMovement:
+                        nextRow = [self previousEditableField:self.editedRow];
+                        break;
+                    default:
+                        [super textDidEndEditing:notification];
+                        return;
+                }
+                
+                NSMutableDictionary *newUserInfo = [[notification userInfo] mutableCopy];
+                [newUserInfo setObject:@(NSReturnTextMovement) forKey:@"NSTextMovement"];
+                NSNotification *newNotification = [NSNotification notificationWithName:[notification name]
+                                                                                object:[notification object]
+                                                                              userInfo:newUserInfo];
+                [super textDidEndEditing:newNotification];
+                if (nextRow == NSNotFound) {
+                    nextRow = self.editedRow;
+                }
+                [self editColumn:1 row:nextRow withEvent:0 select:YES];
+            } else {
+                [self editColumn:1 row:self.editedRow withEvent:0 select:YES];
+            }
+        }];
     }
-    
-    NSMutableDictionary *newUserInfo = [[notification userInfo] mutableCopy];
-    [newUserInfo setObject:@(NSReturnTextMovement) forKey:@"NSTextMovement"];
-    NSNotification *newNotification = [NSNotification notificationWithName:[notification name]
-                                                                    object:[notification object]
-                                                                  userInfo:newUserInfo];
-    [super textDidEndEditing:newNotification];
-    if (nextRow == NSNotFound) {
-        nextRow = self.editedRow;
-    }
-    [self editColumn:1 row:nextRow withEvent:0 select:YES];
 }
 
 @end

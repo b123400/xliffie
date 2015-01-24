@@ -8,7 +8,6 @@
 
 #import "ViewController.h"
 #import "TranslationPair.h"
-#import "XMLOutlineView.h"
 
 @interface ViewController ()
 
@@ -23,6 +22,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.outlineView.autosaveExpandedItems = YES;
+    self.outlineView.xmlOutlineDelegate = self;
 }
 
 #pragma mark OutlineView
@@ -137,6 +137,30 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 
 - (void)outlineViewColumnDidResize:(NSNotification *)notification {
     [self.outlineView reloadData];
+}
+
+#pragma mark checking
+
+- (void)xmlOutlineView:(id)sender didEndEditingRow:(NSUInteger)row proposedString:(NSString*)proposed callback:(void (^)(BOOL))callback {
+    TranslationPair *pair = [self.outlineView itemAtRow:row];
+    NSArray *warnings = [pair formatWarningsForProposedTranslation:proposed];
+    if ([warnings count]) {
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert addButtonWithTitle:@"Apply it anyway"];
+        [alert addButtonWithTitle:@"Cancel"];
+        [alert setMessageText:@"Maybe you've make a mistake?"];
+        [alert setInformativeText:[warnings componentsJoinedByString:@"\n"]];
+        [alert setAlertStyle:NSWarningAlertStyle];
+        [alert beginSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse returnCode) {
+            if (returnCode == NSAlertFirstButtonReturn) {
+                callback(YES);
+            } else {
+                callback(NO);
+            }
+        }];
+    } else {
+        callback(YES);
+    }
 }
 
 #pragma mark Document

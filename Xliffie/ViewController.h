@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "XMLOutlineView.h"
 #import "TranslationPair.h"
 #import "Document.h"
 #import "File.h"
@@ -18,7 +19,7 @@
 
 @end
 
-@interface ViewController : NSViewController<NSOutlineViewDataSource, NSOutlineViewDelegate>
+@interface ViewController : NSViewController<NSOutlineViewDataSource, NSOutlineViewDelegate, XMLOutlineViewDelegate>
 
 @property (nonatomic, strong) Document *document;
 @property (nonatomic, strong) NSString *searchFilter;

@@ -20,5 +20,6 @@
 - (instancetype)initWithXMLElement:(NSXMLElement*)element;
 
 - (BOOL)matchSearchFilter:(NSString*)filter;
+- (NSArray*)formatWarningsForProposedTranslation:(NSString*)newTranslation;
 
 @end

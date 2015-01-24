@@ -151,4 +151,8 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
     return NO;
 }
 
+- (void)outlineViewColumnDidResize:(NSNotification *)notification {
+    [self.outlineView reloadData];
+}
+
 @end
