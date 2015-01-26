@@ -42,7 +42,10 @@
 
 - (File *)filteredFileWithSearchFilter:(NSString*)filter {
     File *newFile = [[File alloc] initWithXMLElement:self.xmlElement];
-    newFile.translations = [newFile translationsMatchingSearchFilter:filter].mutableCopy;
+    newFile.translations = [NSMutableArray array];
+    for (TranslationPair *pair in [self translationsMatchingSearchFilter:filter]) {
+        [newFile.translations addObject:pair];
+    }
     return newFile;
 }
 
