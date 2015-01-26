@@ -148,7 +148,7 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
         NSAlert *alert = [[NSAlert alloc] init];
         [alert addButtonWithTitle:@"Apply it anyway"];
         [alert addButtonWithTitle:@"Cancel"];
-        [alert setMessageText:@"Maybe you've make a mistake?"];
+        [alert setMessageText:@"Maybe you've made a mistake?"];
         [alert setInformativeText:[warnings componentsJoinedByString:@"\n"]];
         [alert setAlertStyle:NSWarningAlertStyle];
         [alert beginSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse returnCode) {

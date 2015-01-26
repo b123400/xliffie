@@ -89,7 +89,7 @@
                 }
                 [self editColumn:1 row:nextRow withEvent:0 select:YES];
             } else {
-                [self editColumn:1 row:self.editedRow withEvent:0 select:YES];
+                [self.window makeFirstResponder:[notification object]];
             }
         }];
     }

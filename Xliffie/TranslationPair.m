@@ -84,18 +84,18 @@
     for (NSString *key in thisFormats) {
         NSNumber *thatCount = [thatFormats objectForKey:key];
         if (!thatCount) {
-            [warnings addObject:[NSString stringWithFormat:@"The source has at least one \"%%%@\", but your input doesn\'t", key]];
+            [warnings addObject:[NSString stringWithFormat:@"The source contains at least one \"%%%@\", but your input doesn\'t", key]];
             continue;
         }
         NSNumber *thisCount = [thisFormats objectForKey:key];
         if (![thisCount isEqualTo:thatCount]) {
-            [warnings addObject:[NSString stringWithFormat:@"The source has %@ \"%%%@\", but your input has %@", thisCount, key, thatCount]];
+            [warnings addObject:[NSString stringWithFormat:@"The source contains %@ \"%%%@\", but your input contains %@", thisCount, key, thatCount]];
             continue;
         }
     }
     for (NSString *key in thatFormats) {
         if (![thisFormats objectForKey:key]) {
-            [warnings addObject:[NSString stringWithFormat:@"The source doesn\'t have \"%%%@\", but your input has", key]];
+            [warnings addObject:[NSString stringWithFormat:@"The source doesn\'t contain \"%%%@\", but your input does", key]];
         }
     }
     return warnings;
