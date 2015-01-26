@@ -86,6 +86,7 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
             [(TranslationPair*)item setNote:object];
         }
     }
+    [self.document updateChangeCount:NSChangeDone];
 }
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView shouldEditTableColumn:(NSTableColumn *)tableColumn item:(id)item {
@@ -146,9 +147,9 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
     NSArray *warnings = [pair formatWarningsForProposedTranslation:proposed];
     if ([warnings count]) {
         NSAlert *alert = [[NSAlert alloc] init];
-        [alert addButtonWithTitle:@"Apply it anyway"];
-        [alert addButtonWithTitle:@"Cancel"];
-        [alert setMessageText:@"Maybe you've made a mistake?"];
+        [alert addButtonWithTitle:NSLocalizedString(@"Apply it anyway",nil)];
+        [alert addButtonWithTitle:NSLocalizedString(@"Cancel",nil)];
+        [alert setMessageText:NSLocalizedString(@"Maybe you've made a mistake?",nil)];
         [alert setInformativeText:[warnings componentsJoinedByString:@"\n"]];
         [alert setAlertStyle:NSWarningAlertStyle];
         [alert beginSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse returnCode) {

@@ -20,6 +20,9 @@
 		CF94FCA81A5C37A900EE8BD5 /* TranslationPair.m in Sources */ = {isa = PBXBuildFile; fileRef = CF94FCA71A5C37A900EE8BD5 /* TranslationPair.m */; };
 		CFCD4B341A6D0C7200BA8826 /* DocumentWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCD4B331A6D0C7200BA8826 /* DocumentWindow.m */; };
 		CFD234FA1A5E44C700B52088 /* XMLOutlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD234F91A5E44C700B52088 /* XMLOutlineView.m */; };
+		CFE39F9A1A765859004644C8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CFE39F9C1A765859004644C8 /* Localizable.strings */; };
+		CFE39FA11A767252004644C8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CFE39FA31A767252004644C8 /* InfoPlist.strings */; };
+		CFE39FA61A767253004644C8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CFE39FA81A767253004644C8 /* InfoPlist.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,8 +36,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		A24FB6FB6C748EE2771A3127 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		BB660F8206041708A21FA21A /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		CF5682E81A6AFB9800E0DEDD /* DocumentWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocumentWindowController.h; sourceTree = "<group>"; };
 		CF5682E91A6AFB9800E0DEDD /* DocumentWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentWindowController.m; sourceTree = "<group>"; };
 		CF5682ED1A6B11C700E0DEDD /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
@@ -61,7 +62,12 @@
 		CFCD4B331A6D0C7200BA8826 /* DocumentWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentWindow.m; sourceTree = "<group>"; };
 		CFD234F81A5E44C700B52088 /* XMLOutlineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLOutlineView.h; sourceTree = "<group>"; };
 		CFD234F91A5E44C700B52088 /* XMLOutlineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLOutlineView.m; sourceTree = "<group>"; };
-		D9A4DB17232AB0C035770831 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		CFE39F6F1A764526004644C8 /* Xliffie.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Xliffie.entitlements; sourceTree = "<group>"; };
+		CFE39F9B1A765859004644C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		CFE39F9D1A765863004644C8 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
+		CFE39F9E1A765863004644C8 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		CFE39FA21A767252004644C8 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CFE39FA71A767253004644C8 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,23 +88,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5E38D2451872DE566AE23DC2 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				BB660F8206041708A21FA21A /* Pods.debug.xcconfig */,
-				A24FB6FB6C748EE2771A3127 /* Pods.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		CF5FC8831A5ABFF700538E60 = {
 			isa = PBXGroup;
 			children = (
 				CF5FC88E1A5ABFF700538E60 /* Xliffie */,
 				CF5FC8A81A5ABFF700538E60 /* XliffieTests */,
 				CF5FC88D1A5ABFF700538E60 /* Products */,
-				5E38D2451872DE566AE23DC2 /* Pods */,
-				FDD46047F5B06EB00BB9C51D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -114,6 +109,7 @@
 		CF5FC88E1A5ABFF700538E60 /* Xliffie */ = {
 			isa = PBXGroup;
 			children = (
+				CFE39F6F1A764526004644C8 /* Xliffie.entitlements */,
 				CF5FC8911A5ABFF700538E60 /* AppDelegate.h */,
 				CF5FC8921A5ABFF700538E60 /* AppDelegate.m */,
 				CF5682E81A6AFB9800E0DEDD /* DocumentWindowController.h */,
@@ -134,6 +130,7 @@
 				CFD234F91A5E44C700B52088 /* XMLOutlineView.m */,
 				CF5FC89C1A5ABFF700538E60 /* Images.xcassets */,
 				CF5FC89E1A5ABFF700538E60 /* Main.storyboard */,
+				CFE39F9C1A765859004644C8 /* Localizable.strings */,
 				CF5FC88F1A5ABFF700538E60 /* Supporting Files */,
 			);
 			path = Xliffie;
@@ -142,6 +139,7 @@
 		CF5FC88F1A5ABFF700538E60 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CFE39FA31A767252004644C8 /* InfoPlist.strings */,
 				CF5FC8901A5ABFF700538E60 /* Info.plist */,
 				CF5FC8941A5ABFF700538E60 /* main.m */,
 			);
@@ -160,17 +158,10 @@
 		CF5FC8A91A5ABFF700538E60 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CFE39FA81A767253004644C8 /* InfoPlist.strings */,
 				CF5FC8AA1A5ABFF700538E60 /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		FDD46047F5B06EB00BB9C51D /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				D9A4DB17232AB0C035770831 /* libPods.a */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,6 +213,11 @@
 				TargetAttributes = {
 					CF5FC88B1A5ABFF700538E60 = {
 						CreatedOnToolsVersion = 6.1.1;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 					CF5FC8A41A5ABFF700538E60 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -236,6 +232,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = CF5FC8831A5ABFF700538E60;
 			productRefGroup = CF5FC88D1A5ABFF700538E60 /* Products */;
@@ -254,6 +251,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF5FC89D1A5ABFF700538E60 /* Images.xcassets in Resources */,
+				CFE39FA11A767252004644C8 /* InfoPlist.strings in Resources */,
+				CFE39F9A1A765859004644C8 /* Localizable.strings in Resources */,
 				CF5FC8A01A5ABFF700538E60 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -262,6 +261,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFE39FA61A767253004644C8 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,8 +308,34 @@
 			isa = PBXVariantGroup;
 			children = (
 				CF5FC89F1A5ABFF700538E60 /* Base */,
+				CFE39F9D1A765863004644C8 /* ja */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		CFE39F9C1A765859004644C8 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CFE39F9B1A765859004644C8 /* Base */,
+				CFE39F9E1A765863004644C8 /* ja */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		CFE39FA31A767252004644C8 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CFE39FA21A767252004644C8 /* ja */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		CFE39FA81A767253004644C8 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CFE39FA71A767253004644C8 /* ja */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -393,9 +419,9 @@
 		};
 		CF5FC8B01A5ABFF700538E60 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BB660F8206041708A21FA21A /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Xliffie/Xliffie.entitlements;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Xliffie/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -405,9 +431,9 @@
 		};
 		CF5FC8B11A5ABFF700538E60 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A24FB6FB6C748EE2771A3127 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Xliffie/Xliffie.entitlements;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Xliffie/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";

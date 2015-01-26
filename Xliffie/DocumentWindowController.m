@@ -36,8 +36,9 @@
     [(DocumentWindow*)self.window setDelegate:self];
     
     splitVc.splitView.delegate = self;
-    [mainItem setCollapsed:NO];
-    [detailItem setCollapsed:YES];
+    [mainItem setCanCollapse:NO];
+    [detailItem setCanCollapse:YES];
+    [self collapseRightView];
 }
 
 - (void)toggleNotes {
@@ -78,9 +79,9 @@
     NSRect leftFrame = [left frame];
     NSRect rightFrame = [right frame];
     // Adjust left frame size
-    if (rightFrame.size.width < 200) {
-        rightFrame.size.width = 200;
-    }
+    rightFrame.size.width = MAX(rightFrame.size.width, 200);
+    rightFrame.size.width = MIN(self.window.frame.size.width * 0.5, 200);
+
     leftFrame.size.width = (leftFrame.size.width-rightFrame.size.width-dividerThickness);
     rightFrame.origin.x = leftFrame.size.width + dividerThickness;
     
@@ -136,7 +137,7 @@ constrainSplitPosition:(CGFloat)proposedPosition
 
 - (void)viewController:(id)controller didSelectedFileChild:(File*)file {
     if (file.sourceLanguage && file.targetLanguage) {
-        NSString *displayString = [NSString stringWithFormat:@"%@ to %@", file.sourceLanguage, file.targetLanguage];
+        NSString *displayString = [NSString stringWithFormat:NSLocalizedString(@"%@ to %@",nil), file.sourceLanguage, file.targetLanguage];
         [self.translationField setStringValue:displayString];
     } else {
         [self.translationField setStringValue:@""];

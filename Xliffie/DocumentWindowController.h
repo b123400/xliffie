@@ -10,7 +10,7 @@
 #import "ViewController.h"
 #import "DocumentWindow.h"
 
-@interface DocumentWindowController : NSWindowController <ViewControllerDelegate, DocumentWindowDelegate>
+@interface DocumentWindowController : NSWindowController <ViewControllerDelegate, DocumentWindowDelegate, NSSplitViewDelegate>
 
 - (void)toggleNotes;
 

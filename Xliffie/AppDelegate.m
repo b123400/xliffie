@@ -21,8 +21,11 @@
 
 - (void)didFinishRestoreWindow:(NSNotification*)notification {
     if (![[NSApplication sharedApplication] windows].count) {
-        [[NSDocumentController sharedDocumentController] openDocument:self];
+//        [[NSDocumentController sharedDocumentController] openDocument:self];
     }
+}
+
+- (void)applicationDidBecomeActive:(NSNotification *)aNotification {
 }
 
 - (void)applicationWillFinishLaunching:(NSNotification *)notification {

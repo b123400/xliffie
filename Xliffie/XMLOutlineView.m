@@ -75,6 +75,7 @@
                         break;
                     default:
                         [super textDidEndEditing:notification];
+                        [self selectRowIndexes:[NSIndexSet indexSetWithIndex:self.editedRow] byExtendingSelection:NO];
                         return;
                 }
                 

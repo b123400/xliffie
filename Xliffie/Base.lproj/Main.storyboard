@@ -818,7 +818,7 @@
                 <splitViewController id="XgN-P8-apj" sceneMemberID="viewController">
                     <splitViewItems>
                         <splitViewItem holdingPriority="251" id="2oG-Cu-1Px"/>
-                        <splitViewItem canCollapse="YES" collapsed="YES" id="47T-Kj-iOA"/>
+                        <splitViewItem canCollapse="YES" id="47T-Kj-iOA"/>
                     </splitViewItems>
                     <splitView key="splitView" dividerStyle="thin" vertical="YES" id="l93-T0-JKo">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
