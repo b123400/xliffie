@@ -44,7 +44,7 @@
     ViewController *vc = (ViewController*)[[[splitVc splitViewItems] objectAtIndex:0] viewController];
     [self addWindowController:windowController];
     vc.document = self;
-    [[windowController window] makeKeyWindow];
+    [[windowController window] makeKeyAndOrderFront:self];
 }
 
 - (NSData *)dataOfType:(NSString *)typeName error:(NSError **)outError {

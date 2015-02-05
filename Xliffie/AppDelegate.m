@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "DocumentWindowController.h"
+#import <Crashlytics/Crashlytics.h>
 
 @interface AppDelegate ()
 
@@ -17,6 +18,7 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
+    [Crashlytics startWithAPIKey:@"be3de76eb1918a93b4d68a8e87b983750d738aed"];
 }
 
 - (void)didFinishRestoreWindow:(NSNotification*)notification {
@@ -36,14 +38,19 @@
     // Insert code here to tear down your application
 }
 
-- (BOOL)applicationShouldHandleReopen:(NSApplication *)theApplication hasVisibleWindows:(BOOL)flag {
-    NSArray *windows = [[NSApplication sharedApplication] windows];
-    if (windows.count) {
-        [windows[0] makeKeyAndOrderFront:self];
-    } else {
-        [[NSDocumentController sharedDocumentController] openDocument:self];
-    }
+- (BOOL)applicationShouldOpenUntitledFile:(NSApplication *)sender {
     return NO;
+}
+
+- (BOOL)applicationShouldHandleReopen:(NSApplication *)theApplication hasVisibleWindows:(BOOL)flag {
+    return YES;
+//    NSArray *windows = [[NSApplication sharedApplication] windows];
+//    if (windows.count) {
+//        [windows[0] makeKeyAndOrderFront:self];
+//    } else {
+//        [[NSDocumentController sharedDocumentController] openDocument:self];
+//    }
+//    return NO;
 }
 
 @end
