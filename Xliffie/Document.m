@@ -9,11 +9,13 @@
 #import "Document.h"
 #import "File.h"
 #import "ViewController.h"
+#import "DocumentWindowController.h"
 
 @interface Document ()
 
 //@property (nonatomic, strong) RXMLElement *rootElement;
 @property (nonatomic, strong) NSXMLDocument *xmlDocument;
+@property (nonatomic, strong) DocumentWindowController *windowController;
 
 @end
 
@@ -39,11 +41,10 @@
 
 - (void)makeWindowControllers {
     // Override to return the Storyboard file name of the document.
-    NSWindowController *windowController = [[NSStoryboard storyboardWithName:@"Main" bundle:nil] instantiateControllerWithIdentifier:@"Document Window Controller"];
-    NSSplitViewController *splitVc = (NSSplitViewController*)windowController.contentViewController;
-    ViewController *vc = (ViewController*)[[[splitVc splitViewItems] objectAtIndex:0] viewController];
+    DocumentWindowController *windowController = (DocumentWindowController*)[[NSStoryboard storyboardWithName:@"Main" bundle:nil] instantiateControllerWithIdentifier:@"Document Window Controller"];
+//    windowController.document = self;
     [self addWindowController:windowController];
-    vc.document = self;
+    self.windowController = windowController;
     [[windowController window] makeKeyAndOrderFront:self];
 }
 

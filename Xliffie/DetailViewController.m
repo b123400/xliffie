@@ -33,7 +33,7 @@
 
 - (void)parseRepresentedObject {
     NSError *error = nil;
-    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"([a-zA-Z0-9]+)\\s*=\\s*\"((?:[^\"\\\\]|\\\\.)*)\";\\s*"
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"([a-zA-Z0-9\.]+)\\s*=\\s*\"((?:[^\"\\\\]|\\\\.)*)\";\\s*"
                                                                            options:NSRegularExpressionCaseInsensitive
                                                                              error:&error];
     if (error || ![self.representedObject isKindOfClass:[NSString class]]) {

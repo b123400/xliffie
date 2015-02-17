@@ -8,6 +8,7 @@
 
 #import "DocumentWindowController.h"
 #import "DetailViewController.h"
+#import "DocumentWindowSplitView.h"
 
 @interface DocumentWindowController ()
 
@@ -24,70 +25,36 @@
     [super windowDidLoad];
     
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
-    NSSplitViewController *splitVc = (NSSplitViewController*)[self contentViewController];
-    NSSplitViewItem *mainItem = [[splitVc splitViewItems] firstObject];
-    self.mainViewController = (ViewController*)[mainItem viewController];
+    self.mainViewController = [self.storyboard instantiateControllerWithIdentifier:@"ViewController"];
     self.mainViewController.delegate = self;
+    self.mainViewController.document = self.document;
     
-    NSSplitViewItem *detailItem = [[splitVc splitViewItems] lastObject];
-    self.detailViewController = (DetailViewController*)[detailItem viewController];
+    DocumentWindowSplitView *splitView = (DocumentWindowSplitView*)self.contentViewController.view.subviews[0];
+    splitView.delegate = self;
+    [splitView addSubview:self.mainViewController.view];
+    
+    self.detailViewController = [self.storyboard instantiateControllerWithIdentifier:@"DetailViewController"];
+    [splitView addSubview:self.detailViewController.view];
     
     [self.translationField setStringValue:@""];
     [(DocumentWindow*)self.window setDelegate:self];
     
-    splitVc.splitView.delegate = self;
-    [mainItem setCanCollapse:NO];
-    [detailItem setCanCollapse:YES];
-    [self collapseRightView];
+    [splitView collapseRightView];
+}
+
+- (void)setDocument:(id)document {
+    [super setDocument:document];
+    self.mainViewController.document = document;
 }
 
 - (void)toggleNotes {
-    NSSplitViewController *splitVc = (NSSplitViewController*)[self contentViewController];
-    NSSplitView *splitView = splitVc.splitView;
-    
+    DocumentWindowSplitView *splitView = self.contentViewController.view.subviews[0];
     BOOL rightViewCollapsed = [splitView isSubviewCollapsed:[[splitView subviews] objectAtIndex: 1]];
     if (rightViewCollapsed) {
-        [self uncollapseRightView];
+        [splitView uncollapseRightView];
     } else {
-        [self collapseRightView];
+        [splitView collapseRightView];
     }
-}
-
--(void)collapseRightView
-{
-    NSSplitViewController *splitVc = (NSSplitViewController*)[self contentViewController];
-    NSSplitView *splitView = splitVc.splitView;
-    NSView *right = [[splitView subviews] objectAtIndex:1];
-    NSView *left  = [[splitView subviews] objectAtIndex:0];
-    NSRect leftFrame = [left frame];
-    NSRect overallFrame = [splitView frame];
-    [right setHidden:YES];
-    [left setFrameSize:NSMakeSize(overallFrame.size.width,leftFrame.size.height)];
-    [splitView display];
-}
-
--(void)uncollapseRightView
-{
-    NSSplitViewController *splitVc = (NSSplitViewController*)[self contentViewController];
-    NSSplitView *splitView = splitVc.splitView;
-    
-    NSView *left  = [[splitView subviews] objectAtIndex:0];
-    NSView *right = [[splitView subviews] objectAtIndex:1];
-    [right setHidden:NO];
-    CGFloat dividerThickness = [splitView dividerThickness];
-    // get the different frames
-    NSRect leftFrame = [left frame];
-    NSRect rightFrame = [right frame];
-    // Adjust left frame size
-    rightFrame.size.width = MAX(rightFrame.size.width, 200);
-    rightFrame.size.width = MIN(self.window.frame.size.width * 0.5, 200);
-
-    leftFrame.size.width = (leftFrame.size.width-rightFrame.size.width-dividerThickness);
-    rightFrame.origin.x = leftFrame.size.width + dividerThickness;
-    
-    [left setFrameSize:leftFrame.size];
-    [right setFrame:rightFrame];
-    [splitView display];
 }
 
 -(void)windowDidBecomeKey:(NSNotification *)notification {
@@ -99,17 +66,22 @@
     return ([subview isEqual:rightView]);
 }
 
-- (BOOL)splitView:(NSSplitView *)splitView shouldHideDividerAtIndex:(NSInteger)dividerIndex {
+- (BOOL)splitView:(NSSplitView *)splitView
+shouldCollapseSubview:(NSView *)subview
+forDoubleClickOnDividerAtIndex:(NSInteger)dividerIndex {
     return YES;
 }
 
 - (CGFloat)splitView:(NSSplitView *)splitView
-constrainSplitPosition:(CGFloat)proposedPosition
+constrainMinCoordinate:(CGFloat)proposedMin
          ofSubviewAt:(NSInteger)dividerIndex {
-    proposedPosition = MAX(proposedPosition, self.window.frame.size.width/2);
-    proposedPosition = MIN(proposedPosition, self.window.frame.size.width - 200);
+    return splitView.frame.size.width/2.0;
+}
 
-    return proposedPosition;
+- (CGFloat)splitView:(NSSplitView *)splitView
+constrainMaxCoordinate:(CGFloat)proposedMax
+         ofSubviewAt:(NSInteger)dividerIndex {
+    return splitView.frame.size.width-200;
 }
 
 #pragma mark short cuts

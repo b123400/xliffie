@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
     </dependencies>
@@ -720,7 +720,7 @@
                     <connections>
                         <outlet property="searchField" destination="ihp-tX-qqE" id="2xv-li-MNs"/>
                         <outlet property="translationField" destination="A6B-qh-ToQ" id="syX-XD-iJR"/>
-                        <segue destination="XgN-P8-apj" kind="relationship" relationship="window.shadowedContentViewController" id="7el-Lb-1pe"/>
+                        <segue destination="rCU-qj-LTD" kind="relationship" relationship="window.shadowedContentViewController" id="9zW-Za-Z15"/>
                     </connections>
                 </windowController>
                 <customObject id="6f7-a7-6o1" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -730,7 +730,7 @@
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="5gI-5U-AMq" customClass="ViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" id="5gI-5U-AMq" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" id="ERx-hH-rdd">
                         <rect key="frame" x="0.0" y="0.0" width="598" height="501"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -812,31 +812,34 @@
             </objects>
             <point key="canvasLocation" x="-179" y="1220.5"/>
         </scene>
-        <!--Split View Controller-->
-        <scene sceneID="9Rz-ia-JdF">
+        <!--View Controller-->
+        <scene sceneID="MNe-Rm-jAe">
             <objects>
-                <splitViewController id="XgN-P8-apj" sceneMemberID="viewController">
-                    <splitViewItems>
-                        <splitViewItem holdingPriority="251" id="2oG-Cu-1Px"/>
-                        <splitViewItem canCollapse="YES" id="47T-Kj-iOA"/>
-                    </splitViewItems>
-                    <splitView key="splitView" dividerStyle="thin" vertical="YES" id="l93-T0-JKo">
+                <viewController id="rCU-qj-LTD" sceneMemberID="viewController">
+                    <view key="view" id="mDN-5k-CdB">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
-                    </splitView>
-                    <connections>
-                        <segue destination="5gI-5U-AMq" kind="relationship" relationship="splitItems" id="wf7-g2-eRr"/>
-                        <segue destination="h8b-lc-VRb" kind="relationship" relationship="splitItems" id="Rug-qi-0Eo"/>
-                    </connections>
-                </splitViewController>
-                <customObject id="IxY-Fy-RWw" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                        <subviews>
+                            <splitView dividerStyle="thin" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LOj-HR-jIe" customClass="DocumentWindowSplitView">
+                                <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                            </splitView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="LOj-HR-jIe" firstAttribute="leading" secondItem="mDN-5k-CdB" secondAttribute="leading" id="0Ji-El-Tdg"/>
+                            <constraint firstAttribute="trailing" secondItem="LOj-HR-jIe" secondAttribute="trailing" id="H6G-f6-Xgy"/>
+                            <constraint firstItem="LOj-HR-jIe" firstAttribute="top" secondItem="mDN-5k-CdB" secondAttribute="top" id="hoC-LZ-hdG"/>
+                            <constraint firstAttribute="bottom" secondItem="LOj-HR-jIe" secondAttribute="bottom" id="nO2-VP-BMP"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="8G2-KF-onG" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="660"/>
+            <point key="canvasLocation" x="75" y="666"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="veD-TA-dBh">
             <objects>
-                <viewController id="h8b-lc-VRb" customClass="DetailViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailViewController" id="h8b-lc-VRb" customClass="DetailViewController" sceneMemberID="viewController">
                     <view key="view" id="Kse-jn-KkB">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
