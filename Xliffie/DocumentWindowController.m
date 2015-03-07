@@ -9,13 +9,16 @@
 #import "DocumentWindowController.h"
 #import "DetailViewController.h"
 #import "DocumentWindowSplitView.h"
+#import "DocumentListDrawer.h"
 
-@interface DocumentWindowController ()
+@interface DocumentWindowController () <DocumentListDrawerDelegate>
 
 @property (nonatomic, strong) ViewController *mainViewController;
 @property (nonatomic, strong) DetailViewController *detailViewController;
 @property (weak) IBOutlet NSTextField *translationField;
 @property (weak) IBOutlet NSSearchField *searchField;
+@property (nonatomic, strong) NSMutableArray *documents;
+@property (nonatomic, strong) DocumentListDrawer *documentsDrawer;
 
 @end
 
@@ -40,12 +43,39 @@
     [(DocumentWindow*)self.window setDelegate:self];
     
     [splitView collapseRightView];
+    
+    self.documents = [NSMutableArray array];
+    
+    self.documentsDrawer = [[DocumentListDrawer alloc] initWithContentSize:NSMakeSize(100, self.window.frame.size.height) preferredEdge:NSMinXEdge];
+    self.documentsDrawer.delegate = self;
+    [self.documentsDrawer setParentWindow:self.window];
+    [self.documentsDrawer open];
 }
 
 - (void)setDocument:(id)document {
     [super setDocument:document];
     self.mainViewController.document = document;
+    
+    [self addDocument:document];
 }
+
+- (NSURL*)baseFolderURL {
+    return [[(NSDocument*)self.document fileURL] URLByDeletingLastPathComponent];
+}
+
+- (void)addDocument:(Document*)newDocument {
+    for (Document *document in self.documents) {
+        if ([[document fileURL]isEqualTo:[newDocument fileURL]]) return;
+    }
+    [self.documents addObject:newDocument];
+    [self.documentsDrawer reloadData];
+}
+
+-(void)windowDidBecomeKey:(NSNotification *)notification {
+    
+}
+
+#pragma mark interaction
 
 - (void)toggleNotes {
     DocumentWindowSplitView *splitView = self.contentViewController.view.subviews[0];
@@ -57,9 +87,13 @@
     }
 }
 
--(void)windowDidBecomeKey:(NSNotification *)notification {
-    
+#pragma mark drawer
+
+- (NSArray *)documentsForDrawer:(id)drawer {
+    return self.documents;
 }
+
+#pragma mark splitview
 
 - (BOOL)splitView:(NSSplitView *)splitView canCollapseSubview:(NSView *)subview {
     NSView* rightView = [[splitView subviews] objectAtIndex:1];

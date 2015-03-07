@@ -14,4 +14,7 @@
 
 - (void)toggleNotes;
 
+- (NSURL*)baseFolderURL;
+- (void)addDocument:(Document*)newDocument;
+
 @end
