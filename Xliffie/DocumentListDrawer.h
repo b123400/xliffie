@@ -11,6 +11,7 @@
 @protocol DocumentListDrawerDelegate <NSDrawerDelegate>
 
 - (NSArray*)documentsForDrawer:(id)drawer;
+- (void)documentDrawer:(id)sender didSelectedDocumentAtIndex:(NSUInteger)index;
 
 @end
 

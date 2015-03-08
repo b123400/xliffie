@@ -166,6 +166,10 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 
 #pragma mark Document
 
+- (void)encodeRestorableStateWithCoder:(NSCoder *)coder {
+    [super encodeRestorableStateWithCoder:coder];
+}
+
 - (void)setRepresentedObject:(id)representedObject {
     [super setRepresentedObject:representedObject];
 

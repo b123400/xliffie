@@ -7,6 +7,7 @@
 //
 
 #import "DocumentWindow.h"
+#import "DocumentWindowController.h"
 
 @implementation DocumentWindow
 
@@ -20,6 +21,15 @@
     if ([self.delegate respondsToSelector:@selector(documentWindowShowInfoPressed:)]) {
         [self.delegate documentWindowShowInfoPressed:self];
     }
+}
+
+- (void)encodeRestorableStateWithCoder:(NSCoder *)coder {
+    [self.windowController encodeRestorableStateWithCoder:coder];
+    [super encodeRestorableStateWithCoder:coder];
+}
+
+- (Class<NSWindowRestoration>)restorationClass {
+    return [DocumentWindowController class];
 }
 
 @end

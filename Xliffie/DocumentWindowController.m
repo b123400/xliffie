@@ -67,12 +67,49 @@
     for (Document *document in self.documents) {
         if ([[document fileURL]isEqualTo:[newDocument fileURL]]) return;
     }
-    [self.documents addObject:newDocument];
+    if (newDocument) {
+        [self.documents addObject:newDocument];
+    }
     [self.documentsDrawer reloadData];
+    [self.window invalidateRestorableState];
 }
 
 -(void)windowDidBecomeKey:(NSNotification *)notification {
     
+}
+
+#pragma mark restore
+
+- (void)encodeRestorableStateWithCoder:(NSCoder *)coder {
+    NSMutableArray *urls = [NSMutableArray array];
+    for (Document *document in self.documents) {
+        [urls addObject:document.fileURL];
+    }
+    [coder encodeObject:urls forKey:@"documents"];
+}
+
++ (void)restoreWindowWithIdentifier:(NSString *)identifier
+                              state:(NSCoder *)state
+                  completionHandler:(void (^)(NSWindow *,
+                                              NSError *))completionHandler {
+    [NSDocumentController restoreWindowWithIdentifier:identifier state:state completionHandler:^(NSWindow *window, NSError *error) {
+        if ([window isKindOfClass:[DocumentWindow class]]) {
+            NSArray *urls = [state decodeObjectForKey:@"documents"];
+            DocumentWindowController *controller = (DocumentWindowController*)[window windowController];
+            for (NSURL *url in urls) {
+                Document *document = [[Document alloc] initWithContentsOfURL:url
+                                                                      ofType:@"xliff"
+                                                                       error:nil];
+                if (document) {
+                    [controller addDocument:document];
+                }
+            }
+            if (!controller.document) {
+                controller.document = controller.documents[0];
+            }
+        }
+        completionHandler(window, error);
+    }];
 }
 
 #pragma mark interaction
@@ -91,6 +128,12 @@
 
 - (NSArray *)documentsForDrawer:(id)drawer {
     return self.documents;
+}
+
+- (void)documentDrawer:(id)sender didSelectedDocumentAtIndex:(NSUInteger)index {
+    if (index == -1) return;
+    Document *document = self.documents[index];
+    self.document = document;
 }
 
 #pragma mark splitview

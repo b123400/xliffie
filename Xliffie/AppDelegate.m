@@ -61,7 +61,7 @@
         DocumentWindowController *controller = (DocumentWindowController*)window.delegate;
         if ([[fileURL absoluteString] hasPrefix:[[controller baseFolderURL] absoluteString]]) {
             Document *newDocument = [[Document alloc] initWithContentsOfURL:fileURL
-                                                                     ofType:@"xliffie"
+                                                                     ofType:@"xliff"
                                                                       error:&error];
             [controller addDocument:newDocument];
             return;
@@ -70,9 +70,7 @@
 
     [[NSDocumentController sharedDocumentController] openDocumentWithContentsOfURL:fileURL
                                                                            display:YES completionHandler:^(NSDocument *document, BOOL documentWasAlreadyOpen, NSError *error) {
-                                                                               NSLog(@"document %@", document.description);
-                                                                               NSLog(@"already open %d", documentWasAlreadyOpen);
-                                                                               NSLog(@"error %@", error.localizedDescription);
+                                                                               
                                                                            }];
 }
 

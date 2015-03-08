@@ -44,6 +44,10 @@ objectValueForTableColumn:(NSTableColumn *)aTableColumn
     return [[document.fileURL absoluteString] lastPathComponent];
 }
 
+- (void)tableViewSelectionDidChange:(NSNotification *)aNotification {
+    [self.delegate documentDrawer:self didSelectedDocumentAtIndex:[self.tableView selectedRow]];
+}
+
 - (void)reloadData {
     [self.tableView reloadData];
     CGRect frame = self.tableView.frame;
