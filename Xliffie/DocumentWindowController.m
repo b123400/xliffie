@@ -109,6 +109,7 @@
         [urls addObject:document.fileURL];
     }
     [coder encodeObject:urls forKey:@"documents"];
+    [coder encodeObject:[self.translationSourceButton titleOfSelectedItem] forKey:@"sourceLanguage"];
 }
 
 + (void)restoreWindowWithIdentifier:(NSString *)identifier
@@ -129,6 +130,11 @@
             }
             if (!controller.document) {
                 controller.document = controller.documents[0];
+            }
+            NSString *sourceLangauge = [state decodeObjectForKey:@"sourceLanguage"];
+            if (sourceLangauge) {
+                [controller.translationSourceButton selectItemWithTitle:sourceLangauge];
+                [controller translationSourceButtonPressed:controller.translationSourceButton];
             }
         }
         completionHandler(window, error);

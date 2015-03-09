@@ -56,6 +56,7 @@ objectValueForTableColumn:(NSTableColumn *)aTableColumn
 }
 
 - (void)selectDocumentAtIndex:(NSUInteger)index {
+    if (index == -1 || index == NSNotFound) return;
     [self.tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:index] byExtendingSelection:NO];
 }
 

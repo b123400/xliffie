@@ -179,7 +179,7 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 
 - (void)setDocument:(Document *)document {
     _document = document;
-    [self.outlineView reloadData];
+    [self applyMapLanguage:self.mapLanguage];
     [self.outlineView expandItem:nil expandChildren:YES];
 }
 
@@ -209,6 +209,11 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
     if ([_mapLanguage isEqualToString:mapLanguage]) {
         return;
     }
+    _mapLanguage = mapLanguage;
+    [self applyMapLanguage:mapLanguage];
+}
+
+- (void)applyMapLanguage:(NSString*)mapLanguage {
     for (File *file in self.document.files) {
         File *alternativeFile = [self.delegate viewController:self
                                        alternativeFileForFile:file
