@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "TranslationPair.h"
+#import "TranslationTargetCell.h"
 
 @interface ViewController ()
 
@@ -88,6 +89,27 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
         }
     }
     [self.document updateChangeCount:NSChangeDone];
+}
+
+- (void)outlineView:(NSOutlineView *)outlineView
+    willDisplayCell:(TranslationTargetCell*)cell
+     forTableColumn:(NSTableColumn *)tableColumn
+               item:(id)item {
+    if ([[tableColumn identifier] isEqualToString:@"target"]) {
+        
+        if ([item isKindOfClass:[TranslationPair class]]) {
+            TranslationPair *pair = (TranslationPair*)item;
+            if (!pair.target || [pair.target isEqualToString:@""]) {
+                cell.dotColor = [NSColor colorWithDeviceRed: 1 green: 0 blue: 0.369 alpha: 1];
+            } else if ([pair.target isEqualToString:pair.source]) {
+                cell.dotColor = [NSColor colorWithDeviceRed: 1 green: 0.675 blue: 0 alpha: 1];
+            } else {
+                cell.dotColor = nil;
+            }
+        } else {
+            cell.dotColor = nil;
+        }
+    }
 }
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView shouldEditTableColumn:(NSTableColumn *)tableColumn item:(id)item {
