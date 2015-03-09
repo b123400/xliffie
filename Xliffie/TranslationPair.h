@@ -15,11 +15,15 @@
 @property (nonatomic, strong) NSString *target;
 @property (nonatomic, strong) NSString *note;
 
+@property (nonatomic, strong) TranslationPair *alternativePair; // map another langauge
+
 @property (nonatomic, weak) File *file;
 
 - (instancetype)initWithXMLElement:(NSXMLElement*)element;
 
 - (BOOL)matchSearchFilter:(NSString*)filter;
 - (NSArray*)formatWarningsForProposedTranslation:(NSString*)newTranslation;
+
+- (NSString*)sourceForDisplay;
 
 @end

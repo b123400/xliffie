@@ -55,4 +55,16 @@
     }]];
 }
 
+- (void)setSourceMapFile:(File*)anotherFile {
+    NSMutableDictionary *sourceMap = [NSMutableDictionary dictionary];
+    if (anotherFile) {
+        for (TranslationPair *pair in anotherFile.translations) {
+            [sourceMap setObject:pair forKey:pair.source];
+        }
+    }
+    for (TranslationPair *pair in self.translations) {
+        pair.alternativePair = sourceMap[pair.source];
+    }
+}
+
 @end

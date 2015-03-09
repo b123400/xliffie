@@ -644,7 +644,7 @@
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="-157"/>
+            <point key="canvasLocation" x="107" y="-242"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
@@ -658,19 +658,58 @@
                         <toolbar key="toolbar" implicitIdentifier="166F8748-BD85-4A78-8FF8-6788C586B18B" autosavesConfiguration="NO" displayMode="iconOnly" sizeMode="regular" id="XuC-uR-2Qg">
                             <allowedToolbarItems>
                                 <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="fIO-7r-OQw"/>
-                                <toolbarItem implicitItemIdentifier="9B834FBA-6E5D-45E8-9E8E-FCA56F441CCE" label="Translation" paletteLabel="" id="5HX-t5-weX">
+                                <toolbarItem implicitItemIdentifier="49F7EE2C-F5C3-4B1F-BF77-9764EB1FE684" label="Custom View" paletteLabel="Custom View" tag="-1" id="hRa-qY-UHQ">
                                     <nil key="toolTip"/>
-                                    <size key="minSize" width="9" height="17"/>
-                                    <size key="maxSize" width="300" height="32"/>
-                                    <textField key="view" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="A6B-qh-ToQ">
-                                        <rect key="frame" x="0.0" y="14" width="132" height="17"/>
+                                    <size key="minSize" width="163" height="33"/>
+                                    <size key="maxSize" width="328" height="96"/>
+                                    <customView key="view" id="0Of-8F-jfa">
+                                        <rect key="frame" x="0.0" y="14" width="328" height="37"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="English to Japanese" placeholderString="" id="btc-fI-zo4">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
+                                        <subviews>
+                                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wun-OW-N3i">
+                                                <rect key="frame" x="2" y="6" width="146" height="23"/>
+                                                <popUpButtonCell key="cell" type="roundTextured" title="Item 1" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" arrowPosition="arrowAtCenter" selectedItem="amL-Es-VUX" id="SnS-pW-MXZ">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="menu"/>
+                                                    <menu key="menu" id="i9C-T7-Xvk">
+                                                        <items>
+                                                            <menuItem title="Item 1" state="on" id="amL-Es-VUX"/>
+                                                            <menuItem title="Item 2" id="xLE-MN-kGr"/>
+                                                            <menuItem title="Item 3" id="7Iu-Ht-Nkl"/>
+                                                        </items>
+                                                    </menu>
+                                                </popUpButtonCell>
+                                                <connections>
+                                                    <action selector="translationSourceButtonPressed:" target="jGA-0Y-lOj" id="EZr-PL-G2k"/>
+                                                </connections>
+                                            </popUpButton>
+                                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rUL-3v-Ofm">
+                                                <rect key="frame" x="179" y="5" width="149" height="25"/>
+                                                <popUpButtonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="RFC-mK-LNU">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="menu"/>
+                                                    <menu key="menu" id="2Z7-sx-Fe0">
+                                                        <items>
+                                                            <menuItem title="Item 2" id="yja-FB-9wD"/>
+                                                            <menuItem title="Item 2" id="tm1-9u-NKt"/>
+                                                            <menuItem title="Item 3" id="Vnv-Wc-mWd"/>
+                                                        </items>
+                                                    </menu>
+                                                </popUpButtonCell>
+                                                <connections>
+                                                    <action selector="translationTargetButtonPressed:" target="jGA-0Y-lOj" id="w15-Rx-Xei"/>
+                                                </connections>
+                                            </popUpButton>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r0K-0V-TgZ">
+                                                <rect key="frame" x="156" y="10" width="17" height="17"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="→" id="edE-SF-cK2">
+                                                    <font key="font" size="13" name=".LucidaGrandeUI"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                        </subviews>
+                                    </customView>
                                 </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="A0E1EFD6-7CF7-4E5F-A5E2-40A8F76C9CF5" label="Search" paletteLabel="Search" id="z3T-JE-F8n">
                                     <nil key="toolTip"/>
@@ -705,9 +744,27 @@
                                         <action selector="toggleNotesPressed:" target="jGA-0Y-lOj" id="5fZ-hc-gKD"/>
                                     </connections>
                                 </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="A3BCE8A5-BC66-46B1-A978-6FB9161E2C44" label="File drawer" paletteLabel="File drawer" image="NSFolder" id="f4k-ye-JLB">
+                                    <nil key="toolTip"/>
+                                    <size key="minSize" width="29" height="25"/>
+                                    <size key="maxSize" width="29" height="25"/>
+                                    <button key="view" verticalHuggingPriority="750" id="KQV-xB-7oO">
+                                        <rect key="frame" x="0.0" y="14" width="29" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSFolder" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="FbV-xA-ZES">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="toggleDrawer:" target="jGA-0Y-lOj" id="EEJ-YA-rw2"/>
+                                        </connections>
+                                    </button>
+                                </toolbarItem>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
-                                <toolbarItem reference="5HX-t5-weX"/>
+                                <toolbarItem reference="f4k-ye-JLB"/>
+                                <toolbarItem reference="fIO-7r-OQw"/>
+                                <toolbarItem reference="hRa-qY-UHQ"/>
                                 <toolbarItem reference="fIO-7r-OQw"/>
                                 <toolbarItem reference="pRq-eI-zXo"/>
                                 <toolbarItem reference="z3T-JE-F8n"/>
@@ -719,13 +776,14 @@
                     </window>
                     <connections>
                         <outlet property="searchField" destination="ihp-tX-qqE" id="2xv-li-MNs"/>
-                        <outlet property="translationField" destination="A6B-qh-ToQ" id="syX-XD-iJR"/>
+                        <outlet property="translationSourceButton" destination="Wun-OW-N3i" id="T41-Q7-z4R"/>
+                        <outlet property="translationTargetButton" destination="rUL-3v-Ofm" id="2NR-r5-4hY"/>
                         <segue destination="rCU-qj-LTD" kind="relationship" relationship="window.shadowedContentViewController" id="9zW-Za-Z15"/>
                     </connections>
                 </windowController>
                 <customObject id="6f7-a7-6o1" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75.5" y="182"/>
+            <point key="canvasLocation" x="75.5" y="158"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
@@ -906,6 +964,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="NSFolder" width="32" height="32"/>
         <image name="NSInfo" width="32" height="32"/>
     </resources>
 </document>

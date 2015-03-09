@@ -15,10 +15,20 @@
 
 @property (nonatomic, strong) ViewController *mainViewController;
 @property (nonatomic, strong) DetailViewController *detailViewController;
-@property (weak) IBOutlet NSTextField *translationField;
+
+@property (weak) IBOutlet NSPopUpButton *translationSourceButton;
+@property (weak) IBOutlet NSPopUpButton *translationTargetButton;
+
 @property (weak) IBOutlet NSSearchField *searchField;
 @property (nonatomic, strong) NSMutableArray *documents;
 @property (nonatomic, strong) DocumentListDrawer *documentsDrawer;
+
+// { @"en" :
+//     { @"hello/world.xib" : <File>
+//       @"foo.string" : <File>
+//     }
+// }
+@property (nonatomic, strong) NSMutableDictionary *filesOfLanguages;
 
 @end
 
@@ -39,16 +49,19 @@
     self.detailViewController = [self.storyboard instantiateControllerWithIdentifier:@"DetailViewController"];
     [splitView addSubview:self.detailViewController.view];
     
-    [self.translationField setStringValue:@""];
+    
     [(DocumentWindow*)self.window setDelegate:self];
     
     [splitView collapseRightView];
     
     self.documents = [NSMutableArray array];
+    self.filesOfLanguages = [NSMutableDictionary dictionary];
     
     self.documentsDrawer = [[DocumentListDrawer alloc] initWithContentSize:NSMakeSize(100, self.window.frame.size.height) preferredEdge:NSMinXEdge];
     self.documentsDrawer.delegate = self;
     [self.documentsDrawer setParentWindow:self.window];
+    self.documentsDrawer.minContentSize = NSMakeSize(100, 200);
+    
     [self.documentsDrawer open];
 }
 
@@ -57,6 +70,8 @@
     self.mainViewController.document = document;
     
     [self addDocument:document];
+    [self.documentsDrawer selectDocumentAtIndex:[self.documents indexOfObject:document]];
+    [self.translationTargetButton selectItemWithTitle:[((Document*)document).files[0] targetLanguage]];
 }
 
 - (NSURL*)baseFolderURL {
@@ -67,9 +82,17 @@
     for (Document *document in self.documents) {
         if ([[document fileURL]isEqualTo:[newDocument fileURL]]) return;
     }
+    for (File *file in newDocument.files) {
+        NSMutableDictionary *existingFiles = self.filesOfLanguages[file.targetLanguage];
+        if (!existingFiles) {
+            self.filesOfLanguages[file.targetLanguage] = existingFiles = [NSMutableDictionary dictionary];
+        }
+        [existingFiles setObject:file forKey:file.original];
+    }
     if (newDocument) {
         [self.documents addObject:newDocument];
     }
+    [self reloadTranslationButtons];
     [self.documentsDrawer reloadData];
     [self.window invalidateRestorableState];
 }
@@ -136,6 +159,10 @@
     self.document = document;
 }
 
+- (IBAction)toggleDrawer:(id)sender {
+    [self.documentsDrawer toggle:self];
+}
+
 #pragma mark splitview
 
 - (BOOL)splitView:(NSSplitView *)splitView canCollapseSubview:(NSView *)subview {
@@ -186,10 +213,55 @@ constrainMaxCoordinate:(CGFloat)proposedMax
 
 - (void)viewController:(id)controller didSelectedFileChild:(File*)file {
     if (file.sourceLanguage && file.targetLanguage) {
-        NSString *displayString = [NSString stringWithFormat:NSLocalizedString(@"%@ to %@",nil), file.sourceLanguage, file.targetLanguage];
-        [self.translationField setStringValue:displayString];
+        [self.translationSourceButton selectItemWithTitle:NSLocalizedString(file.sourceLanguage, @"")];
+        [self.translationTargetButton selectItemWithTitle:NSLocalizedString(file.targetLanguage, @"")];
     } else {
-        [self.translationField setStringValue:@""];
+        
+    }
+}
+
+#pragma mark top langauge menu
+
+- (void)reloadTranslationButtons {
+    [self.translationSourceButton removeAllItems];
+    [self.translationTargetButton removeAllItems];
+    
+    NSMutableOrderedSet *sourceTitles = [NSMutableOrderedSet orderedSet];
+    NSMutableOrderedSet *targetTitles = [NSMutableOrderedSet orderedSet];
+    for (Document *document in self.documents) {
+        for (File *file in document.files) {
+            [sourceTitles addObject:file.sourceLanguage];
+            [targetTitles addObject:file.targetLanguage];
+        }
+    }
+    
+    [sourceTitles unionOrderedSet:targetTitles];
+    
+    [self.translationSourceButton addItemsWithTitles:[sourceTitles array]];
+    [self.translationTargetButton addItemsWithTitles:[targetTitles array]];
+}
+
+- (IBAction)translationSourceButtonPressed:(id)sender {
+    self.mainViewController.mapLanguage = [self.translationSourceButton titleOfSelectedItem];
+}
+
+- (File *)viewController:(id)controller
+      alternativeFileForFile:(File *)anotherFile
+                withLanguage:(NSString *)language {
+    NSDictionary *thisLanguageFiles = self.filesOfLanguages[language];
+    if (!thisLanguageFiles) return nil;
+    return thisLanguageFiles[anotherFile.original];
+}
+
+- (IBAction)translationTargetButtonPressed:(id)sender {
+    NSString *selectedTitle = [self.translationTargetButton titleOfSelectedItem];
+    for (Document *document in self.documents) {
+        for (File *file in document.files) {
+            if ([file.targetLanguage isEqualToString:selectedTitle]) {
+                self.document = document;
+                return;
+            }
+        }
     }
 }
 

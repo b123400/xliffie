@@ -16,6 +16,9 @@
 
 - (void)viewController:(id)controller didSelectedFileChild:(File*)file;
 - (void)viewController:(id)controller didSelectedTranslation:(TranslationPair*)pair;
+- (File*)viewController:(id)controller
+     alternativeFileForFile:(File*)anotherFile
+               withLanguage:(NSString*)language;
 
 @end
 
@@ -24,6 +27,7 @@
 @property (nonatomic, strong) Document *document;
 @property (nonatomic, strong) NSString *searchFilter;
 @property (nonatomic, weak) id <ViewControllerDelegate> delegate;
+@property (nonatomic, strong) NSString *mapLanguage;
 
 - (Document*)documentForDisplay;
 

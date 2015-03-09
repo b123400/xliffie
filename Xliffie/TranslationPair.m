@@ -28,6 +28,15 @@
     return self;
 }
 
+- (NSString*)sourceForDisplay {
+    if (self.alternativePair &&
+        self.alternativePair.target &&
+        ![self.alternativePair.target isEqualToString:@""]) {
+        return self.alternativePair.target;
+    }
+    return _source;
+}
+
 - (void)setSource:(NSString *)source {
     NSXMLElement *sourceElement = [[self.xmlElement elementsForName:@"source"] firstObject];
     if (!sourceElement) {

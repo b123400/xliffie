@@ -55,4 +55,8 @@ objectValueForTableColumn:(NSTableColumn *)aTableColumn
     self.tableView.frame = frame;
 }
 
+- (void)selectDocumentAtIndex:(NSUInteger)index {
+    [self.tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:index] byExtendingSelection:NO];
+}
+
 @end

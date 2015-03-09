@@ -20,4 +20,6 @@
 - (File *)filteredFileWithSearchFilter:(NSString*)filter;
 - (NSArray *)translationsMatchingSearchFilter:(NSString*)filter;
 
+- (void)setSourceMapFile:(File*)anotherFile;
+
 @end

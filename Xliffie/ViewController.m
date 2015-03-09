@@ -13,6 +13,7 @@
 
 @property (weak) IBOutlet XMLOutlineView *outlineView;
 @property (strong, nonatomic) Document *filteredDocument;
+@property (strong, nonatomic) Document *mappingDocument;
 
 @end
 
@@ -58,7 +59,7 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
            byItem:(id)item {
     if ([item isKindOfClass:[TranslationPair class]]) {
         if ([[tableColumn identifier] isEqualToString:@"source"]) {
-            return [(TranslationPair*)item source];
+            return [(TranslationPair*)item sourceForDisplay];
         } else if ([[tableColumn identifier] isEqualToString:@"target"]) {
             return [(TranslationPair*)item target];
         } else if ([[tableColumn identifier] isEqualToString:@"note"]) {
@@ -189,6 +190,8 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
     return self.document;
 }
 
+#pragma mark Search
+
 - (void)setSearchFilter:(NSString *)searchFilter {
     _searchFilter = searchFilter;
     if (!_searchFilter.length) {
@@ -198,6 +201,21 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
     }
     [self.outlineView reloadData];
     [self.outlineView expandItem:nil expandChildren:YES];
+}
+
+#pragma mark mapping language
+
+- (void)setMapLanguage:(NSString *)mapLanguage {
+    if ([_mapLanguage isEqualToString:mapLanguage]) {
+        return;
+    }
+    for (File *file in self.document.files) {
+        File *alternativeFile = [self.delegate viewController:self
+                                       alternativeFileForFile:file
+                                                 withLanguage:mapLanguage];
+        [file setSourceMapFile:alternativeFile];
+    }
+    [self.outlineView reloadData];
 }
 
 @end

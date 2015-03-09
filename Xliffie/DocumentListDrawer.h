@@ -20,5 +20,6 @@
 @property (atomic, weak) id<DocumentListDrawerDelegate> delegate;
 
 - (void)reloadData;
+- (void)selectDocumentAtIndex:(NSUInteger)index;
 
 @end
