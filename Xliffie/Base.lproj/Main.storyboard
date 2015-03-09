@@ -660,7 +660,7 @@
                                 <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="fIO-7r-OQw"/>
                                 <toolbarItem implicitItemIdentifier="49F7EE2C-F5C3-4B1F-BF77-9764EB1FE684" label="Custom View" paletteLabel="Custom View" tag="-1" id="hRa-qY-UHQ">
                                     <nil key="toolTip"/>
-                                    <size key="minSize" width="163" height="33"/>
+                                    <size key="minSize" width="328" height="33"/>
                                     <size key="maxSize" width="328" height="96"/>
                                     <customView key="view" id="0Of-8F-jfa">
                                         <rect key="frame" x="0.0" y="14" width="328" height="37"/>

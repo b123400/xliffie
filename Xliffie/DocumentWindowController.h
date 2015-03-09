@@ -17,4 +17,6 @@
 - (NSURL*)baseFolderURL;
 - (void)addDocument:(Document*)newDocument;
 
+- (void)openDocumentDrawer;
+
 @end

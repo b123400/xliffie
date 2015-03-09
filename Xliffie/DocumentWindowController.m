@@ -62,7 +62,13 @@
     [self.documentsDrawer setParentWindow:self.window];
     self.documentsDrawer.minContentSize = NSMakeSize(100, 200);
     
-    [self.documentsDrawer open];
+    [self.documentsDrawer close];
+    
+    self.window.minSize = NSMakeSize(480, 600);
+    NSRect frame = self.window.frame;
+    frame.size.width = MAX(480, frame.size.width);
+    frame.size.height = MAX(600, frame.size.height);
+    [self.window setFrame:frame display:YES];
 }
 
 - (void)setDocument:(id)document {
@@ -167,6 +173,10 @@
 
 - (IBAction)toggleDrawer:(id)sender {
     [self.documentsDrawer toggle:self];
+}
+
+- (void)openDocumentDrawer {
+    [self.documentsDrawer open];
 }
 
 #pragma mark splitview
