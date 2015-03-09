@@ -88,6 +88,7 @@
                 if (nextRow == NSNotFound) {
                     nextRow = self.editedRow;
                 }
+                [self selectRowIndexes:[NSIndexSet indexSetWithIndex:nextRow] byExtendingSelection:NO];
                 [self editColumn:1 row:nextRow withEvent:0 select:YES];
             } else {
                 [self.window makeFirstResponder:[notification object]];

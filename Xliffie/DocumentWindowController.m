@@ -229,7 +229,11 @@ constrainMaxCoordinate:(CGFloat)proposedMax
 
 - (void)viewController:(id)controller didSelectedFileChild:(File*)file {
     if (file.sourceLanguage && file.targetLanguage) {
-        [self.translationSourceButton selectItemWithTitle:NSLocalizedString(file.sourceLanguage, @"")];
+        if (self.mainViewController.mapLanguage) {
+            [self.translationSourceButton selectItemWithTitle:NSLocalizedString(self.mainViewController.mapLanguage, @"")];
+        } else {
+            [self.translationSourceButton selectItemWithTitle:NSLocalizedString(file.sourceLanguage, @"")];
+        }
         [self.translationTargetButton selectItemWithTitle:NSLocalizedString(file.targetLanguage, @"")];
     } else {
         
