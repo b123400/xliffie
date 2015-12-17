@@ -1,0 +1,18 @@
+/* No comment provided by engineer. */
+"Apply it anyway" = "大丈夫です";
+
+/* No comment provided by engineer. */
+"Cancel" = "キャンセル";
+
+/* No comment provided by engineer. */
+"Maybe you've made a mistake?" = "もしかしたらミスった？";
+
+/* No comment provided by engineer. */
+"The source contains %@ \"%%%@\", but your input contains %@" = "ソースに \"%%%2$@\" が%1$@つあるけど、インプットには%3$@つがあります";
+
+/* No comment provided by engineer. */
+"The source contains at least one \"%%%@\", but your input doesn't" = "ソースに \"%%%@\" があるけど、インプットにはないです";
+
+/* No comment provided by engineer. */
+"The source doesn't contain \"%%%@\", but your input does" = "ソースに \"%%%@\" がないけど、インプットにあります";
+
