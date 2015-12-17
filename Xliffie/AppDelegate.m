@@ -31,67 +31,85 @@
 }
 
 - (BOOL)application:(NSApplication *)theApplication openFile:(NSString *)filename {
-    BOOL isFolder;
-    [[NSFileManager defaultManager] fileExistsAtPath:filename isDirectory:&isFolder];
-    if (isFolder) {
-        NSError *error=nil;
-        NSArray *files = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:filename error:&error];
-        if (error) return NO;
-        
-        NSMutableArray *xliffFiles = [NSMutableArray array];
-        
-        for (NSString *file in files) {
-            if ([[file pathExtension] isEqualToString:@"xliff"] ||
-                [[file pathExtension] isEqualToString:@"xlif"] ||
-                [[file pathExtension] isEqualToString:@"xlf"]) {
-                
-                NSURL *thisURL = [NSURL fileURLWithPath:[filename stringByAppendingPathComponent:file]];
-                [xliffFiles addObject:thisURL];
-            }
-        }
-        if (!xliffFiles.count) return YES;
-        
-        // open the first document first, and things later
-        // becase we want to make sure they are in the same window
-        NSURL *lastURL = [xliffFiles lastObject];
-        [xliffFiles removeLastObject];
-        [self openFile:lastURL completion:^(NSDocument *document, BOOL documentWasAlreadyOpen, NSError *error) {
-            for (NSURL *url in xliffFiles) {
-                [self openFile:url];
-            }
-        }];
-        
-    } else {
-        [self openFile:[NSURL fileURLWithPath:filename]];
-    }
-    
+    [self application:theApplication openFiles:@[filename]];
     return YES;
 }
 
-- (void)openFile:(NSURL*)fileURL {
-    [self openFile:fileURL completion:^(NSDocument *document, BOOL documentWasAlreadyOpen, NSError *error) {
-        
-    }];
-}
-
-- (void)openFile:(NSURL*)fileURL completion:(void(^)(NSDocument* document, BOOL documentWasAlreadyOpen, NSError *error))complete {
-    NSError *error = nil;
+- (void)application:(NSApplication *)sender openFiles:(NSArray<NSString *> *)inputFilenames {
     
-    for (DocumentWindow *window in [[NSApplication sharedApplication] windows]) {
-        DocumentWindowController *controller = (DocumentWindowController*)window.delegate;
-        NSString *base = [[controller baseFolderURL] absoluteString];
-        if (base && [[fileURL absoluteString] hasPrefix:base]) {
-            Document *newDocument = [[Document alloc] initWithContentsOfURL:fileURL
-                                                                     ofType:@"xliff"
-                                                                      error:&error];
-            [controller setDocument:newDocument];
-            [controller openDocumentDrawer];
-            return;
+    NSMutableArray *inputs = [NSMutableArray arrayWithArray:inputFilenames];
+    NSMutableArray *filenames = [NSMutableArray array];
+    
+    while ([inputs count]) {
+        NSString *thisItem = inputs[0];
+        [inputs removeObjectAtIndex:0];
+        BOOL isFolder;
+        BOOL exists = [[NSFileManager defaultManager] fileExistsAtPath:thisItem isDirectory:&isFolder];
+        if (exists) {
+            if (!isFolder) {
+                if ([[thisItem pathExtension] isEqualToString:@"xliff"] ||
+                    [[thisItem pathExtension] isEqualToString:@"xlif"] ||
+                    [[thisItem pathExtension] isEqualToString:@"xlf"]) {
+                    [filenames addObject:thisItem];
+                }
+            } else {
+                NSArray *files = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:thisItem error:nil];
+                for (NSString *filename in files) {
+                    [inputs addObject:[thisItem stringByAppendingPathComponent:filename]];
+                }
+            }
         }
     }
-
-    [[NSDocumentController sharedDocumentController] openDocumentWithContentsOfURL:fileURL
-                                                                           display:YES completionHandler:complete];
+    
+    NSMutableDictionary <NSString*, NSMutableArray <NSString*>*> *basePaths = [NSMutableDictionary dictionary];
+    for (NSString *filename in filenames) {
+        NSString *basePath = [filename stringByDeletingLastPathComponent];
+        NSMutableArray <NSString*> *existingFiles = [basePaths objectForKey:basePath] ?: [NSMutableArray array];
+        [existingFiles addObject:filename];
+        [basePaths setObject:existingFiles forKey:basePath];
+    }
+    
+    NSMutableDictionary <NSString*, DocumentWindowController*> *controllers = [NSMutableDictionary dictionary];
+    for (DocumentWindow *window in [[NSApplication sharedApplication] windows]) {
+        if (![window isKindOfClass:[DocumentWindow class]]) continue;
+        DocumentWindowController *controller = (DocumentWindowController*)[window windowController];
+        NSString *basePath = [controller baseFolderPath];
+        [controllers setObject:controller forKey:basePath];
+    }
+    
+    for (NSString *openingBasePath in basePaths) {
+        NSMutableArray <NSString*> *xliffFiles = [basePaths objectForKey:openingBasePath];
+        DocumentWindowController *controller = [controllers objectForKey:openingBasePath];
+        if (!controller) {
+            // open window for this new base path
+            NSString *lastFile = [xliffFiles lastObject];
+            [xliffFiles removeLastObject];
+            
+            [[NSDocumentController sharedDocumentController] openDocumentWithContentsOfURL:[NSURL fileURLWithPath:lastFile]
+                                                                                   display:YES
+                                                                         completionHandler:^(NSDocument * _Nullable document, BOOL documentWasAlreadyOpen, NSError * _Nullable error) {
+                                                                             
+                                                                             DocumentWindowController *controller = [[document windowControllers] lastObject];
+                                                                             
+                                                                             for (NSString *xliffPath in xliffFiles) {
+                                                                                 Document *newDocument = [[Document alloc] initWithContentsOfURL:[NSURL fileURLWithPath:xliffPath]
+                                                                                                                                          ofType:@"xliff"
+                                                                                                                                           error:&error];
+                                                                                 [controller setDocument:newDocument];
+                                                                             }
+                                                                             [controller openDocumentDrawer];
+                                                                         }];
+        } else {
+            // add document into this window
+            for (NSString *xliffPath in xliffFiles) {
+                Document *newDocument = [[Document alloc] initWithContentsOfURL:[NSURL fileURLWithPath:xliffPath]
+                                                                         ofType:@"xliff"
+                                                                          error:nil];
+                [controller setDocument:newDocument];
+            }
+            [[controller window] makeKeyAndOrderFront:self];
+        }
+    }
 }
 
 - (void)applicationWillFinishLaunching:(NSNotification *)notification {

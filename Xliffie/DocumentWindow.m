@@ -11,6 +11,16 @@
 
 @implementation DocumentWindow
 
+- (instancetype)initWithContentRect:(NSRect)contentRect styleMask:(NSUInteger)aStyle backing:(NSBackingStoreType)bufferingType defer:(BOOL)flag {
+    self = [super initWithContentRect:contentRect
+                            styleMask:aStyle
+                              backing:bufferingType
+                                defer:flag];
+    self.oneShot = YES;
+    self.releasedWhenClosed = YES;
+    return self;
+}
+
 - (void)performFindPanelAction:(id)sender {
     if ([self.delegate respondsToSelector:@selector(documentWindowSearchKeyPressed:)]) {
         [self.delegate documentWindowSearchKeyPressed:self];
@@ -30,6 +40,11 @@
 
 - (Class<NSWindowRestoration>)restorationClass {
     return [DocumentWindowController class];
+}
+
+- (void)close {
+//    self.windowController = nil;
+    [super close];
 }
 
 @end

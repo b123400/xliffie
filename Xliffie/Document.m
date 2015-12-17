@@ -13,7 +13,6 @@
 
 @interface Document ()
 
-//@property (nonatomic, strong) RXMLElement *rootElement;
 @property (nonatomic, strong) NSXMLDocument *xmlDocument;
 @property (nonatomic, strong) DocumentWindowController *windowController;
 

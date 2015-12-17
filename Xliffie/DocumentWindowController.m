@@ -80,8 +80,9 @@
     [self.translationTargetButton selectItemWithTitle:[((Document*)document).files[0] targetLanguage]];
 }
 
-- (NSURL*)baseFolderURL {
-    return [[(NSDocument*)self.document fileURL] URLByDeletingLastPathComponent];
+- (NSString*)baseFolderPath {
+    Document *document = self.document ?: self.documents[0];
+    return [[[document fileURL] path] stringByDeletingLastPathComponent];
 }
 
 - (void)addDocument:(Document*)newDocument {
@@ -105,6 +106,13 @@
 
 -(void)windowDidBecomeKey:(NSNotification *)notification {
     
+}
+
+- (void)windowWillClose:(NSNotification *)notification {
+//    self.window = nil;
+//    [self.documentsDrawer close];
+//    self.documentsDrawer.delegate = nil;
+//    self.documentsDrawer = nil;
 }
 
 #pragma mark restore

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>49801EAF-B66A-4E08-9983-B822E5724833</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Xliffie</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>9E179D5487304888D4E2BD1319E87F2647BECD62</key>
+		<string>github.com:b123400/xliffie.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Xliffie.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>9E179D5487304888D4E2BD1319E87F2647BECD62</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:b123400/xliffie.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>9E179D5487304888D4E2BD1319E87F2647BECD62</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>9E179D5487304888D4E2BD1319E87F2647BECD62</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Xliffie</string>
+		</dict>
+	</array>
+</dict>
+</plist>
