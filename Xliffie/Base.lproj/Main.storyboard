@@ -679,9 +679,6 @@
                                                         </items>
                                                     </menu>
                                                 </popUpButtonCell>
-                                                <connections>
-                                                    <action selector="translationSourceButtonPressed:" target="jGA-0Y-lOj" id="EZr-PL-G2k"/>
-                                                </connections>
                                             </popUpButton>
                                             <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rUL-3v-Ofm">
                                                 <rect key="frame" x="179" y="5" width="149" height="25"/>
@@ -696,9 +693,6 @@
                                                         </items>
                                                     </menu>
                                                 </popUpButtonCell>
-                                                <connections>
-                                                    <action selector="translationTargetButtonPressed:" target="jGA-0Y-lOj" id="w15-Rx-Xei"/>
-                                                </connections>
                                             </popUpButton>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r0K-0V-TgZ">
                                                 <rect key="frame" x="156" y="10" width="17" height="17"/>

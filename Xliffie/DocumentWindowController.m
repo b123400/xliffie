@@ -96,7 +96,9 @@
     
     [self addDocument:document];
     [self.documentsDrawer selectDocumentAtIndex:[self.documents indexOfObject:document]];
-    [self.translationTargetButton selectItemWithTitle:[((Document*)document).files[0] targetLanguage]];
+    
+    [self selectMenuItemWithRepresentedObject:((Document*)document).files[0].targetLanguage
+                                inPopUpButton:self.translationTargetButton];
 }
 
 - (NSString*)baseFolderPath {
@@ -138,7 +140,7 @@
         [urls addObject:document.fileURL];
     }
     [coder encodeObject:urls forKey:@"documents"];
-    [coder encodeObject:[self.translationSourceButton titleOfSelectedItem] forKey:@"sourceLanguage"];
+    [coder encodeObject:[[self.translationSourceButton selectedItem] representedObject] forKey:@"sourceLanguage"];
 }
 
 + (void)restoreWindowWithIdentifier:(NSString *)identifier
@@ -162,8 +164,9 @@
             }
             NSString *sourceLangauge = [state decodeObjectForKey:@"sourceLanguage"];
             if (sourceLangauge) {
-                [controller.translationSourceButton selectItemWithTitle:sourceLangauge];
-                [controller translationSourceButtonPressed:controller.translationSourceButton];
+                [controller selectMenuItemWithRepresentedObject:sourceLangauge
+                                                  inPopUpButton:controller.translationSourceButton];
+                [controller selectedSourceLanguage:controller.translationSourceButton.selectedItem];
             }
         }
         completionHandler(window, error);
@@ -253,11 +256,15 @@ constrainMaxCoordinate:(CGFloat)proposedMax
 - (void)viewController:(id)controller didSelectedFileChild:(File*)file {
     if (file.sourceLanguage && file.targetLanguage) {
         if (self.mainViewController.mapLanguage) {
-            [self.translationSourceButton selectItemWithTitle:NSLocalizedString(self.mainViewController.mapLanguage, @"")];
+            [self selectMenuItemWithRepresentedObject:self.mainViewController.mapLanguage
+                                        inPopUpButton:self.translationSourceButton];
         } else {
-            [self.translationSourceButton selectItemWithTitle:NSLocalizedString(file.sourceLanguage, @"")];
+            [self selectMenuItemWithRepresentedObject:file.sourceLanguage
+                                        inPopUpButton:self.translationSourceButton];
         }
-        [self.translationTargetButton selectItemWithTitle:NSLocalizedString(file.targetLanguage, @"")];
+        
+        [self selectMenuItemWithRepresentedObject:file.targetLanguage
+                                    inPopUpButton:self.translationTargetButton];
     } else {
         
     }
@@ -281,40 +288,49 @@ constrainMaxCoordinate:(CGFloat)proposedMax
 }
 
 - (void)reloadTranslationButtons {
-    [self.translationSourceButton removeAllItems];
-    [self.translationTargetButton removeAllItems];
+    [[self.translationSourceButton menu] removeAllItems];
+    [[self.translationTargetButton menu] removeAllItems];
     
-    NSMutableOrderedSet *sourceTitles = [NSMutableOrderedSet orderedSet];
-    NSMutableOrderedSet *targetTitles = [NSMutableOrderedSet orderedSet];
+    NSMutableOrderedSet *sourceCodes = [NSMutableOrderedSet orderedSet];
+    NSMutableOrderedSet *targetCodes = [NSMutableOrderedSet orderedSet];
     for (Document *document in self.documents) {
         for (File *file in document.files) {
-            [sourceTitles addObject:file.sourceLanguage];
+            [sourceCodes addObject:file.sourceLanguage];
             if (file.targetLanguage) {
-                [targetTitles addObject:file.targetLanguage];
+                [targetCodes addObject:file.targetLanguage];
             }
         }
     }
     
-    [sourceTitles unionOrderedSet:targetTitles];
+    [sourceCodes unionOrderedSet:targetCodes];
     
-    [self.translationSourceButton addItemsWithTitles:[sourceTitles array]];
-    [self.translationTargetButton addItemsWithTitles:[targetTitles array]];
+    NSLocale *locale = [NSLocale currentLocale];
+    
+    for (NSString *languageCode in sourceCodes) {
+        NSString *languageName = [locale displayNameForKey:NSLocaleIdentifier
+                                                     value:languageCode];
+        NSMenuItem *menuItem = [[NSMenuItem alloc] initWithTitle:languageName
+                                                          action:@selector(selectedSourceLanguage:)
+                                                   keyEquivalent:@""];
+        menuItem.target = self;
+        menuItem.representedObject = languageCode;
+        [[self.translationSourceButton menu] addItem:menuItem];
+    }
+    
+    for (NSString *languageCode in targetCodes) {
+        NSString *languageName = [locale displayNameForKey:NSLocaleIdentifier
+                                                     value:languageCode];
+        NSMenuItem *menuItem = [[NSMenuItem alloc] initWithTitle:languageName
+                                                          action:@selector(selectedTargetLanguage:)
+                                                   keyEquivalent:@""];
+        menuItem.target = self;
+        menuItem.representedObject = languageCode;
+        [[self.translationTargetButton menu] addItem:menuItem];
+    }
 }
 
-- (IBAction)translationSourceButtonPressed:(id)sender {
-    self.mainViewController.mapLanguage = [self.translationSourceButton titleOfSelectedItem];
-}
-
-- (File *)viewController:(id)controller
-      alternativeFileForFile:(File *)anotherFile
-                withLanguage:(NSString *)language {
-    NSDictionary *thisLanguageFiles = self.filesOfLanguages[language];
-    if (!thisLanguageFiles) return nil;
-    return thisLanguageFiles[anotherFile.original];
-}
-
-- (IBAction)translationTargetButtonPressed:(id)sender {
-    NSString *selectedTitle = [self.translationTargetButton titleOfSelectedItem];
+- (void)selectedTargetLanguage:(NSMenuItem*)sender {
+    NSString *selectedTitle = sender.representedObject;
     for (Document *document in self.documents) {
         for (File *file in document.files) {
             if ([file.targetLanguage isEqualToString:selectedTitle]) {
@@ -323,6 +339,19 @@ constrainMaxCoordinate:(CGFloat)proposedMax
             }
         }
     }
+}
+
+- (void)selectedSourceLanguage:(NSMenuItem*)sender {
+    self.mainViewController.mapLanguage = sender.representedObject;
+    self.document = self.document; // reload content vc
+}
+
+- (File *)viewController:(id)controller
+      alternativeFileForFile:(File *)anotherFile
+                withLanguage:(NSString *)language {
+    NSDictionary *thisLanguageFiles = self.filesOfLanguages[language];
+    if (!thisLanguageFiles) return nil;
+    return thisLanguageFiles[anotherFile.original];
 }
 
 #pragma mark Target language missing
@@ -340,6 +369,19 @@ constrainMaxCoordinate:(CGFloat)proposedMax
     self.document = self.document;
     [self reloadLanguageMap];
     [self reloadTranslationButtons];
+}
+
+#pragma mark utility
+
+- (void)selectMenuItemWithRepresentedObject:(id)obj inPopUpButton:(NSPopUpButton*)button {
+    NSMenuItem *selectedMenuItem = nil;
+    for (NSMenuItem *item in [[button menu] itemArray]) {
+        if ([obj isEqualTo:[item representedObject]]) {
+            selectedMenuItem = item;
+            break;
+        }
+    }
+    [button selectItem:selectedMenuItem];
 }
 
 @end
