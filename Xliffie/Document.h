@@ -7,10 +7,11 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "File.h"
 
 @interface Document : NSDocument
 
-@property (nonatomic, strong) NSMutableArray *files;
+@property (nonatomic, strong) NSMutableArray <File*> *files;
 
 - (Document*)filteredDocumentWithSearchFilter:(NSString*)filter;
 - (NSMutableArray*)filesMatchingSearchFilter:(NSString*)filter;

@@ -10,7 +10,9 @@
 
 @interface File : NSObject
 
+// path of the original file, e.g. xx/yy/main.storyboard
 @property (nonatomic, strong) NSString *original;
+
 @property (nonatomic, strong) NSString *sourceLanguage;
 @property (nonatomic, strong) NSString *targetLanguage;
 @property (nonatomic, strong) NSMutableArray *translations;

@@ -19,6 +19,7 @@
 		CF5FC8A01A5ABFF700538E60 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF5FC89E1A5ABFF700538E60 /* Main.storyboard */; };
 		CF5FC8AC1A5ABFF700538E60 /* XliffieTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5FC8AB1A5ABFF700538E60 /* XliffieTests.m */; };
 		CF92FB911C23382100700D3E /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF92FB901C23382100700D3E /* Fabric.framework */; };
+		CF92FB941C24037B00700D3E /* TargetMissingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF92FB931C24037B00700D3E /* TargetMissingViewController.m */; };
 		CF94FCA51A5C365400EE8BD5 /* File.m in Sources */ = {isa = PBXBuildFile; fileRef = CF94FCA41A5C365400EE8BD5 /* File.m */; };
 		CF94FCA81A5C37A900EE8BD5 /* TranslationPair.m in Sources */ = {isa = PBXBuildFile; fileRef = CF94FCA71A5C37A900EE8BD5 /* TranslationPair.m */; };
 		CFAE8DD91A922BA3001F0644 /* DocumentWindowSplitView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFAE8DD81A922BA3001F0644 /* DocumentWindowSplitView.m */; };
@@ -68,6 +69,8 @@
 		CF5FC8AA1A5ABFF700538E60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF5FC8AB1A5ABFF700538E60 /* XliffieTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XliffieTests.m; sourceTree = "<group>"; };
 		CF92FB901C23382100700D3E /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		CF92FB921C24037B00700D3E /* TargetMissingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetMissingViewController.h; sourceTree = "<group>"; };
+		CF92FB931C24037B00700D3E /* TargetMissingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetMissingViewController.m; sourceTree = "<group>"; };
 		CF94FCA31A5C365400EE8BD5 /* File.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = File.h; sourceTree = "<group>"; };
 		CF94FCA41A5C365400EE8BD5 /* File.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = File.m; sourceTree = "<group>"; };
 		CF94FCA61A5C37A900EE8BD5 /* TranslationPair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TranslationPair.h; sourceTree = "<group>"; };
@@ -167,6 +170,8 @@
 				CF5FC8971A5ABFF700538E60 /* ViewController.m */,
 				CF5682ED1A6B11C700E0DEDD /* DetailViewController.h */,
 				CF5682EE1A6B11C700E0DEDD /* DetailViewController.m */,
+				CF92FB921C24037B00700D3E /* TargetMissingViewController.h */,
+				CF92FB931C24037B00700D3E /* TargetMissingViewController.m */,
 				CF34B75C1AADE02400C6A58E /* Model */,
 				CF34B75B1AADE01000C6A58E /* UI Elements */,
 				CF5FC89C1A5ABFF700538E60 /* Images.xcassets */,
@@ -332,6 +337,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF92FB941C24037B00700D3E /* TargetMissingViewController.m in Sources */,
 				CF5682EB1A6AFB9800E0DEDD /* DocumentWindowController.m in Sources */,
 				CFAE8DD91A922BA3001F0644 /* DocumentWindowSplitView.m in Sources */,
 				CF94FCA51A5C365400EE8BD5 /* File.m in Sources */,

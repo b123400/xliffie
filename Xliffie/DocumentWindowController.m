@@ -10,11 +10,15 @@
 #import "DetailViewController.h"
 #import "DocumentWindowSplitView.h"
 #import "DocumentListDrawer.h"
+#import "TargetMissingViewController.h"
 
-@interface DocumentWindowController () <DocumentListDrawerDelegate>
+@interface DocumentWindowController () <DocumentListDrawerDelegate, TargetMissingViewController>
 
+@property (nonatomic, strong) NSViewController *splitViewController;
 @property (nonatomic, strong) ViewController *mainViewController;
 @property (nonatomic, strong) DetailViewController *detailViewController;
+
+@property (nonatomic, strong) TargetMissingViewController *targetMissingViewController;
 
 @property (weak) IBOutlet NSPopUpButton *translationSourceButton;
 @property (weak) IBOutlet NSPopUpButton *translationTargetButton;
@@ -42,6 +46,7 @@
     self.mainViewController.delegate = self;
     self.mainViewController.document = self.document;
     
+    self.splitViewController = self.contentViewController;
     DocumentWindowSplitView *splitView = (DocumentWindowSplitView*)self.contentViewController.view.subviews[0];
     splitView.delegate = self;
     [splitView addSubview:self.mainViewController.view];
@@ -73,7 +78,21 @@
 
 - (void)setDocument:(id)document {
     [super setDocument:document];
-    self.mainViewController.document = document;
+    BOOL isMissingTargetLanguage = NO;
+    for (File *file in [(Document*)document files]) {
+        if (!file.targetLanguage) {
+            isMissingTargetLanguage = YES;
+            break;
+        }
+    }
+    
+    if (isMissingTargetLanguage) {
+        self.targetMissingViewController.document = document;
+        self.contentViewController = self.targetMissingViewController;
+    } else {
+        self.mainViewController.document = document;
+        self.contentViewController = self.splitViewController;
+    }
     
     [self addDocument:document];
     [self.documentsDrawer selectDocumentAtIndex:[self.documents indexOfObject:document]];
@@ -89,16 +108,12 @@
     for (Document *document in self.documents) {
         if ([[document fileURL]isEqualTo:[newDocument fileURL]]) return;
     }
-    for (File *file in newDocument.files) {
-        NSMutableDictionary *existingFiles = self.filesOfLanguages[file.targetLanguage];
-        if (!existingFiles) {
-            self.filesOfLanguages[file.targetLanguage] = existingFiles = [NSMutableDictionary dictionary];
-        }
-        [existingFiles setObject:file forKey:file.original];
-    }
+
     if (newDocument) {
         [self.documents addObject:newDocument];
     }
+    
+    [self reloadLanguageMap];
     [self reloadTranslationButtons];
     [self.documentsDrawer reloadData];
     [self.window invalidateRestorableState];
@@ -250,6 +265,21 @@ constrainMaxCoordinate:(CGFloat)proposedMax
 
 #pragma mark top langauge menu
 
+- (void)reloadLanguageMap {
+    self.filesOfLanguages = [NSMutableDictionary dictionary];
+    
+    for (Document *document in self.documents) {
+        for (File *file in document.files) {
+            if (!file.targetLanguage) continue;
+            NSMutableDictionary *existingFiles = self.filesOfLanguages[file.targetLanguage];
+            if (!existingFiles) {
+                self.filesOfLanguages[file.targetLanguage] = existingFiles = [NSMutableDictionary dictionary];
+            }
+            [existingFiles setObject:file forKey:file.original];
+        }
+    }
+}
+
 - (void)reloadTranslationButtons {
     [self.translationSourceButton removeAllItems];
     [self.translationTargetButton removeAllItems];
@@ -259,7 +289,9 @@ constrainMaxCoordinate:(CGFloat)proposedMax
     for (Document *document in self.documents) {
         for (File *file in document.files) {
             [sourceTitles addObject:file.sourceLanguage];
-            [targetTitles addObject:file.targetLanguage];
+            if (file.targetLanguage) {
+                [targetTitles addObject:file.targetLanguage];
+            }
         }
     }
     
@@ -291,6 +323,23 @@ constrainMaxCoordinate:(CGFloat)proposedMax
             }
         }
     }
+}
+
+#pragma mark Target language missing
+
+- (TargetMissingViewController*)targetMissingViewController {
+    if (!_targetMissingViewController) {
+        _targetMissingViewController = [self.storyboard instantiateControllerWithIdentifier:@"targetMissing"];
+        _targetMissingViewController.delegate = self;
+    }
+    return _targetMissingViewController;
+}
+
+- (void)targetMissingViewController:(id)sender didSetTargetLanguage:(NSString *)targetLanguage {
+    // reload current document
+    self.document = self.document;
+    [self reloadLanguageMap];
+    [self reloadTranslationButtons];
 }
 
 @end
