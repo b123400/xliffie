@@ -25,9 +25,8 @@
     NSString *sourceCode = [[element attributeForName:@"source-language"] stringValue];
     NSString *targetCode = [[element attributeForName:@"target-language"] stringValue];
     
-    NSLocale *locale = [NSLocale currentLocale];
-    self.sourceLanguage = [locale displayNameForKey:NSLocaleIdentifier value:sourceCode];
-    self.targetLanguage = [locale displayNameForKey:NSLocaleIdentifier value:targetCode];
+    self.sourceLanguage = sourceCode;
+    self.targetLanguage = targetCode;
     
     self.translations = [NSMutableArray array];
     

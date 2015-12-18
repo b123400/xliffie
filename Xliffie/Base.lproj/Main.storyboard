@@ -801,17 +801,17 @@
                                 </constraints>
                             </customView>
                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="b6z-ZM-sgM">
-                                <rect key="frame" x="115" y="116" width="221" height="26"/>
+                                <rect key="frame" x="114" y="116" width="222" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="216" id="2OA-5a-7ib"/>
                                     <constraint firstAttribute="height" constant="21" id="wbS-9M-bva"/>
                                 </constraints>
-                                <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="DwU-b4-XiA" id="QRf-xf-z1T">
+                                <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" pullsDown="YES" selectedItem="DwU-b4-XiA" id="QRf-xf-z1T">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                     <menu key="menu" id="Vqa-zW-LBv">
                                         <items>
-                                            <menuItem title="Item 1" state="on" id="DwU-b4-XiA"/>
+                                            <menuItem title="Item 1" state="on" hidden="YES" id="DwU-b4-XiA"/>
                                             <menuItem title="Item 2" id="v7F-2b-4LK"/>
                                             <menuItem title="Item 3" id="SmI-5g-D4C"/>
                                         </items>
@@ -819,17 +819,17 @@
                                 </popUpButtonCell>
                             </popUpButton>
                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lVZ-ev-Oi3">
-                                <rect key="frame" x="115" y="57" width="221" height="26"/>
+                                <rect key="frame" x="114" y="57" width="222" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="216" id="H6E-vn-usy"/>
                                     <constraint firstAttribute="height" constant="21" id="XfO-6B-vOw"/>
                                 </constraints>
-                                <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="GAj-dC-cuM">
+                                <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" pullsDown="YES" id="GAj-dC-cuM">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                     <menu key="menu" id="Br9-u6-GJ8">
                                         <items>
-                                            <menuItem title="Item 1" state="on" id="9VO-BF-sdu"/>
+                                            <menuItem title="Item 1" state="on" hidden="YES" id="9VO-BF-sdu"/>
                                             <menuItem title="Item 2" id="w1i-R1-td4"/>
                                             <menuItem title="Item 3" id="kop-nu-I4t"/>
                                         </items>
@@ -908,6 +908,7 @@ DQ
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="okButton" destination="ZHO-vf-Zc1" id="evI-yM-NXU"/>
                         <outlet property="sourceButton" destination="b6z-ZM-sgM" id="fge-iq-60h"/>
                         <outlet property="targetButton" destination="lVZ-ev-Oi3" id="LCl-oX-FAx"/>
                     </connections>
