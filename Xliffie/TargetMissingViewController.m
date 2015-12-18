@@ -48,7 +48,8 @@
     
     NSMutableOrderedSet *sourceTitles = [NSMutableOrderedSet orderedSet];
     for (File *file in self.document.files) {
-        [sourceTitles addObject:file.sourceLanguage];
+        [sourceTitles addObject:[[NSLocale currentLocale] displayNameForKey:NSLocaleIdentifier
+                                                                      value:file.sourceLanguage]];
     }
     
     [self.sourceButton addItemsWithTitles:[sourceTitles array]];
@@ -165,7 +166,7 @@
         file.targetLanguage = self.selectedLanguageCode;
     }
     [self.delegate targetMissingViewController:self
-                          didSetTargetLanguage:[self.targetButton titleOfSelectedItem]];
+                          didSetTargetLanguage:self.selectedLanguageCode];
 }
 
 @end

@@ -66,4 +66,17 @@
     }
 }
 
+#pragma mark property
+
+- (void)setTargetLanguage:(NSString *)targetLanguage {
+    NSXMLNode *targetAttribute = [self.xmlElement attributeForName:@"target-language"];
+    if (!targetAttribute) {
+        targetAttribute = [NSXMLNode attributeWithName:@"target-language" stringValue:targetLanguage];
+        [self.xmlElement addAttribute:targetAttribute];
+    } else {
+        [targetAttribute setStringValue:targetLanguage];
+    }
+    _targetLanguage = targetLanguage;
+}
+
 @end

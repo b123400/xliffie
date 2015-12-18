@@ -369,6 +369,8 @@ constrainMaxCoordinate:(CGFloat)proposedMax
     self.document = self.document;
     [self reloadLanguageMap];
     [self reloadTranslationButtons];
+    [self selectMenuItemWithRepresentedObject:targetLanguage
+                                inPopUpButton:self.translationTargetButton];
 }
 
 #pragma mark utility
