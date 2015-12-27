@@ -754,12 +754,32 @@
                                         </connections>
                                     </button>
                                 </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="E01F529A-9A85-4311-84BC-74118B4096BA" label="Translate" paletteLabel="Translate" image="NSCaution" id="7Hq-tz-Ud3">
+                                    <nil key="toolTip"/>
+                                    <size key="minSize" width="29" height="28"/>
+                                    <size key="maxSize" width="29" height="53"/>
+                                    <button key="view" verticalHuggingPriority="750" id="lmd-e1-baA">
+                                        <rect key="frame" x="14" y="14" width="29" height="28"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSCaution" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="DLF-qG-Mz6">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                            <connections>
+                                                <action selector="translateButtonPressed:" target="jGA-0Y-lOj" id="cIX-5j-ivm"/>
+                                            </connections>
+                                        </buttonCell>
+                                    </button>
+                                    <connections>
+                                        <action selector="toggleNotesPressed:" target="jGA-0Y-lOj" id="e9T-0y-Zuw"/>
+                                    </connections>
+                                </toolbarItem>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
                                 <toolbarItem reference="f4k-ye-JLB"/>
                                 <toolbarItem reference="fIO-7r-OQw"/>
                                 <toolbarItem reference="hRa-qY-UHQ"/>
                                 <toolbarItem reference="fIO-7r-OQw"/>
+                                <toolbarItem reference="7Hq-tz-Ud3"/>
                                 <toolbarItem reference="pRq-eI-zXo"/>
                                 <toolbarItem reference="z3T-JE-F8n"/>
                             </defaultToolbarItems>
@@ -1090,6 +1110,7 @@ DQ
         </scene>
     </scenes>
     <resources>
+        <image name="NSCaution" width="32" height="32"/>
         <image name="NSFolder" width="32" height="32"/>
         <image name="NSInfo" width="32" height="32"/>
     </resources>

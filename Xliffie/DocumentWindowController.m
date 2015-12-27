@@ -11,6 +11,7 @@
 #import "DocumentWindowSplitView.h"
 #import "DocumentListDrawer.h"
 #import "TargetMissingViewController.h"
+#import "TranslateServiceWindowController.h"
 
 @interface DocumentWindowController () <DocumentListDrawerDelegate, TargetMissingViewController>
 
@@ -26,7 +27,7 @@
 @property (weak) IBOutlet NSSearchField *searchField;
 @property (nonatomic, strong) NSMutableArray *documents;
 @property (nonatomic, strong) DocumentListDrawer *documentsDrawer;
-
+@property (nonatomic, strong) TranslateServiceWindowController *translateController;
 // { @"en" :
 //     { @"hello/world.xib" : <File>
 //       @"foo.string" : <File>
@@ -212,6 +213,14 @@
     }
 }
 
+- (void)showTranslateWindow {
+    self.translateController = [[TranslateServiceWindowController alloc] initWithWindowNibName:@"TranslateServiceWindowController"];
+    [self.window beginSheet:self.translateController.window
+          completionHandler:^(NSModalResponse returnCode) {
+              
+          }];
+}
+
 #pragma mark drawer
 
 - (NSArray *)documentsForDrawer:(id)drawer {
@@ -270,6 +279,11 @@ constrainMaxCoordinate:(CGFloat)proposedMax
 - (IBAction)toggleNotesPressed:(id)sender {
     [self toggleNotes];
 }
+
+- (IBAction)translateButtonPressed:(id)sender {
+    [self showTranslateWindow];
+}
+
 
 #pragma mark selection
 
