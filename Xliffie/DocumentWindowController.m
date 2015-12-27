@@ -176,6 +176,7 @@
 #pragma mark interaction
 
 - (void)toggleNotes {
+    if (self.contentViewController != self.splitViewController) return;
     DocumentWindowSplitView *splitView = self.contentViewController.view.subviews[0];
     BOOL rightViewCollapsed = [splitView isSubviewCollapsed:[[splitView subviews] objectAtIndex: 1]];
     if (rightViewCollapsed) {
