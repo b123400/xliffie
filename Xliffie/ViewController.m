@@ -251,6 +251,19 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
     [self.outlineView expandItem:nil expandChildren:YES];
 }
 
+- (BOOL)isTranslationSelected:(TranslationPair*)translation {
+    NSIndexSet *selectedIndexs = [self.outlineView selectedRowIndexes];
+    __block BOOL isSelected = NO;
+    [selectedIndexs enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL * _Nonnull stop) {
+        TranslationPair *thisTranslation = [self.outlineView itemAtRow:idx];
+        if ([thisTranslation isEqualTo:translation]) {
+            isSelected = YES;
+            *stop = YES;
+        }
+    }];
+    return isSelected;
+}
+
 #pragma mark mapping language
 
 - (void)setMapLanguage:(NSString *)mapLanguage {

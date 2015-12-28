@@ -18,6 +18,8 @@
 		CF5FC89D1A5ABFF700538E60 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF5FC89C1A5ABFF700538E60 /* Images.xcassets */; };
 		CF5FC8A01A5ABFF700538E60 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF5FC89E1A5ABFF700538E60 /* Main.storyboard */; };
 		CF5FC8AC1A5ABFF700538E60 /* XliffieTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5FC8AB1A5ABFF700538E60 /* XliffieTests.m */; };
+		CF662B361C30774300704CEA /* TranslateServiceWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF662B341C30774300704CEA /* TranslateServiceWindowController.xib */; };
+		CF662B391C307C7D00704CEA /* TranslateServiceWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF662B381C307C7D00704CEA /* TranslateServiceWindowController.m */; };
 		CF92FB911C23382100700D3E /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF92FB901C23382100700D3E /* Fabric.framework */; };
 		CF92FB941C24037B00700D3E /* TargetMissingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF92FB931C24037B00700D3E /* TargetMissingViewController.m */; };
 		CF94FCA51A5C365400EE8BD5 /* File.m in Sources */ = {isa = PBXBuildFile; fileRef = CF94FCA41A5C365400EE8BD5 /* File.m */; };
@@ -68,6 +70,9 @@
 		CF5FC8A51A5ABFF700538E60 /* XliffieTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XliffieTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF5FC8AA1A5ABFF700538E60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF5FC8AB1A5ABFF700538E60 /* XliffieTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XliffieTests.m; sourceTree = "<group>"; };
+		CF662B341C30774300704CEA /* TranslateServiceWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TranslateServiceWindowController.xib; sourceTree = "<group>"; };
+		CF662B371C307C7D00704CEA /* TranslateServiceWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TranslateServiceWindowController.h; sourceTree = "<group>"; };
+		CF662B381C307C7D00704CEA /* TranslateServiceWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TranslateServiceWindowController.m; sourceTree = "<group>"; };
 		CF92FB901C23382100700D3E /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		CF92FB921C24037B00700D3E /* TargetMissingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetMissingViewController.h; sourceTree = "<group>"; };
 		CF92FB931C24037B00700D3E /* TargetMissingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetMissingViewController.m; sourceTree = "<group>"; };
@@ -172,6 +177,7 @@
 				CF5682EE1A6B11C700E0DEDD /* DetailViewController.m */,
 				CF92FB921C24037B00700D3E /* TargetMissingViewController.h */,
 				CF92FB931C24037B00700D3E /* TargetMissingViewController.m */,
+				CFB0B8F61C3073A9004DF663 /* Translator */,
 				CF34B75C1AADE02400C6A58E /* Model */,
 				CF34B75B1AADE01000C6A58E /* UI Elements */,
 				CF5FC89C1A5ABFF700538E60 /* Images.xcassets */,
@@ -210,6 +216,16 @@
 				CF5FC8AA1A5ABFF700538E60 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CFB0B8F61C3073A9004DF663 /* Translator */ = {
+			isa = PBXGroup;
+			children = (
+				CF662B371C307C7D00704CEA /* TranslateServiceWindowController.h */,
+				CF662B381C307C7D00704CEA /* TranslateServiceWindowController.m */,
+				CF662B341C30774300704CEA /* TranslateServiceWindowController.xib */,
+			);
+			name = Translator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,11 +273,13 @@
 		CF5FC8841A5ABFF700538E60 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = b123400;
 				TargetAttributes = {
 					CF5FC88B1A5ABFF700538E60 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = CC63FD9H8S;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
 								enabled = 1;
@@ -301,6 +319,7 @@
 			files = (
 				CF5FC89D1A5ABFF700538E60 /* Images.xcassets in Resources */,
 				CFE39FA11A767252004644C8 /* InfoPlist.strings in Resources */,
+				CF662B361C30774300704CEA /* TranslateServiceWindowController.xib in Resources */,
 				CFE39F9A1A765859004644C8 /* Localizable.strings in Resources */,
 				CF5FC8A01A5ABFF700538E60 /* Main.storyboard in Resources */,
 			);
@@ -347,6 +366,7 @@
 				CF5FC89B1A5ABFF700538E60 /* Document.m in Sources */,
 				CF5FC8981A5ABFF700538E60 /* ViewController.m in Sources */,
 				CF5FC8951A5ABFF700538E60 /* main.m in Sources */,
+				CF662B391C307C7D00704CEA /* TranslateServiceWindowController.m in Sources */,
 				CF5FC8931A5ABFF700538E60 /* AppDelegate.m in Sources */,
 				CFCD4B341A6D0C7200BA8826 /* DocumentWindow.m in Sources */,
 				CF94FCA81A5C37A900EE8BD5 /* TranslationPair.m in Sources */,
@@ -495,7 +515,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Xliffie/Xliffie.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -504,6 +526,8 @@
 				INFOPLIST_FILE = Xliffie/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Xliffie/Xliffie-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -511,7 +535,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Xliffie/Xliffie.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -520,6 +546,7 @@
 				INFOPLIST_FILE = Xliffie/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Xliffie/Xliffie-Bridging-Header.h";
 			};
 			name = Release;
 		};

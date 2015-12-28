@@ -945,7 +945,7 @@ DQ
                                     <rect key="frame" x="0.0" y="0.0" width="598" height="501"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveColumns="NO" headerView="QeW-cw-sbR" indentationPerLevel="16" outlineTableColumn="5dk-vI-VB7" id="Icz-Ge-1F8" customClass="XMLOutlineView">
+                                        <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" autosaveColumns="NO" headerView="QeW-cw-sbR" indentationPerLevel="16" outlineTableColumn="5dk-vI-VB7" id="Icz-Ge-1F8" customClass="XMLOutlineView">
                                             <rect key="frame" x="0.0" y="0.0" width="598" height="478"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>

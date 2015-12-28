@@ -30,6 +30,7 @@
 @property (nonatomic, strong) NSString *mapLanguage;
 
 - (Document*)documentForDisplay;
+- (BOOL)isTranslationSelected:(TranslationPair*)translation;
 
 @end
 

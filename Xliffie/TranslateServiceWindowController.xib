@@ -6,6 +6,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TranslateServiceWindowController" customModule="Xliffie" customModuleProvider="target">
             <connections>
+                <outlet property="emptyStringOnlyButton" destination="55t-Nt-Ry0" id="97z-G2-8qF"/>
                 <outlet property="hintTextLabel" destination="N7Y-ND-cYg" id="Yz9-R7-z1e"/>
                 <outlet property="ignoreEqualButton" destination="gMD-G3-KRA" id="Oga-ds-3nm"/>
                 <outlet property="serviceButton" destination="gAw-fC-hq7" id="h2Z-3P-XYa"/>
@@ -16,16 +17,16 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" visibleAtLaunch="NO" animationBehavior="default" id="F0z-JX-Cv5">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="364" height="206"/>
+            <rect key="contentRect" x="196" y="240" width="364" height="236"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
             <view key="contentView" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="0.0" width="364" height="206"/>
+                <rect key="frame" x="0.0" y="0.0" width="364" height="236"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ztq-8R-ATL">
-                        <rect key="frame" x="18" y="126" width="60" height="17"/>
+                        <rect key="frame" x="18" y="156" width="60" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Translate" id="gzR-1b-iNx">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -33,7 +34,7 @@
                         </textFieldCell>
                     </textField>
                     <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yDH-4S-bVT">
-                        <rect key="frame" x="82" y="121.5" width="188" height="25"/>
+                        <rect key="frame" x="82" y="151.5" width="265" height="26"/>
                         <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="ZIM-zI-Jv5">
                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="menu"/>
@@ -44,16 +45,12 @@
                                 </items>
                             </menu>
                         </popUpButtonCell>
+                        <connections>
+                            <action selector="translateFilterButtonPressed:" target="-2" id="GV3-jY-qfk"/>
+                        </connections>
                     </popUpButton>
-                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gMD-G3-KRA">
-                        <rect key="frame" x="18" y="88" width="328" height="18"/>
-                        <buttonCell key="cell" type="check" title="Ignore records with same source and target string." bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="I5T-Mf-vCd">
-                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                    </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x8E-Ug-6Js">
-                        <rect key="frame" x="18" y="167" width="50" height="17"/>
+                        <rect key="frame" x="18" y="197" width="50" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Service" id="3G6-vj-KXD">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -61,21 +58,34 @@
                         </textFieldCell>
                     </textField>
                     <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gAw-fC-hq7">
-                        <rect key="frame" x="82" y="162" width="169" height="26"/>
-                        <popUpButtonCell key="cell" type="push" title="Bing Translate" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="VWE-GV-ZWC">
+                        <rect key="frame" x="82" y="192" width="265" height="26"/>
+                        <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="VWE-GV-ZWC">
                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="menu"/>
                             <menu key="menu" id="WkV-fu-3Qv">
                                 <items>
-                                    <menuItem title="Bing Translate" state="on" id="Qho-ZZ-dzT"/>
+                                    <menuItem title="Bing Translate" id="Qho-ZZ-dzT"/>
                                     <menuItem title="Google Translate" id="Cay-Et-she"/>
                                 </items>
                             </menu>
                         </popUpButtonCell>
+                        <connections>
+                            <action selector="serviceButtonPressed:" target="-2" id="zlb-7l-gxJ"/>
+                        </connections>
                     </popUpButton>
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gMD-G3-KRA">
+                        <rect key="frame" x="18" y="88" width="328" height="18"/>
+                        <buttonCell key="cell" type="check" title="Ignore records with same source and target string." bezelStyle="regularSquare" imagePosition="left" enabled="NO" state="on" inset="2" id="I5T-Mf-vCd">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="ignoreEqualButtonPressed:" target="-2" id="5qo-IO-FnT"/>
+                        </connections>
+                    </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N7Y-ND-cYg">
-                        <rect key="frame" x="18" y="57" width="328" height="17"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="%d record(s) are going to be transalted using %@." id="HbR-jO-1Ey">
+                        <rect key="frame" x="18" y="42" width="328" height="32"/>
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="%d record(s) are going to be transalted using %@." id="HbR-jO-1Ey">
                             <font key="font" metaFont="smallSystem"/>
                             <color key="textColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -107,12 +117,22 @@ DQ
                             <action selector="okPressed:" target="-2" id="EU9-sq-GQw"/>
                         </connections>
                     </button>
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="55t-Nt-Ry0">
+                        <rect key="frame" x="18" y="119" width="309" height="18"/>
+                        <buttonCell key="cell" type="check" title="Only translate records with empty target string." bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="xIa-yY-MDg">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="emptyStringOnlyButtonPressed:" target="-2" id="CLV-fL-K76"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="395" y="441"/>
+            <point key="canvasLocation" x="395" y="456"/>
         </window>
     </objects>
 </document>

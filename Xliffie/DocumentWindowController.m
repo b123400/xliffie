@@ -13,7 +13,7 @@
 #import "TargetMissingViewController.h"
 #import "TranslateServiceWindowController.h"
 
-@interface DocumentWindowController () <DocumentListDrawerDelegate, TargetMissingViewController>
+@interface DocumentWindowController () <DocumentListDrawerDelegate, TargetMissingViewController, TranslateServiceWindowControllerDelegate>
 
 @property (nonatomic, strong) NSViewController *splitViewController;
 @property (nonatomic, strong) ViewController *mainViewController;
@@ -214,10 +214,12 @@
 }
 
 - (void)showTranslateWindow {
-    self.translateController = [[TranslateServiceWindowController alloc] initWithWindowNibName:@"TranslateServiceWindowController"];
+    self.translateController = [[TranslateServiceWindowController alloc] initWithDocument:self.document];
+    self.translateController.delegate = self;
+    __weak typeof(self) weakSelf = self;
     [self.window beginSheet:self.translateController.window
           completionHandler:^(NSModalResponse returnCode) {
-              
+              weakSelf.translateController = nil;
           }];
 }
 
@@ -412,6 +414,12 @@ constrainMaxCoordinate:(CGFloat)proposedMax
     [self reloadTranslationButtons];
     [self selectMenuItemWithRepresentedObject:targetLanguage
                                 inPopUpButton:self.translationTargetButton];
+}
+
+#pragma mark Translation Service
+
+- (BOOL)translateServiceWindowController:(id)sender isTranslationPairSelected:(TranslationPair *)pair {
+    return [self.mainViewController isTranslationSelected:pair];
 }
 
 #pragma mark utility

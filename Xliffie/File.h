@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class Document;
+@class TranslationPair;
 
 @interface File : NSObject
 
@@ -17,14 +18,14 @@
 
 @property (nonatomic, strong) NSString *sourceLanguage;
 @property (nonatomic, strong) NSString *targetLanguage;
-@property (nonatomic, strong) NSMutableArray *translations;
+@property (nonatomic, strong) NSMutableArray <TranslationPair*> *translations;
 
 @property (nonatomic, weak) Document *document;
 
 - (instancetype)initWithXMLElement:(NSXMLElement*)element;
 
 - (File *)filteredFileWithSearchFilter:(NSString*)filter;
-- (NSArray *)translationsMatchingSearchFilter:(NSString*)filter;
+- (NSArray <TranslationPair*> *)translationsMatchingSearchFilter:(NSString*)filter;
 
 - (void)setSourceMapFile:(File*)anotherFile;
 

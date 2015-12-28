@@ -7,7 +7,19 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "Document.h"
+#import "TranslationPair.h"
+
+@protocol TranslateServiceWindowControllerDelegate <NSObject>
+
+- (BOOL)translateServiceWindowController:(id)sender isTranslationPairSelected:(TranslationPair*)pair;
+
+@end
 
 @interface TranslateServiceWindowController : NSWindowController
+
+- (id)initWithDocument:(Document*)document;
+
+@property (weak, nonatomic) id <TranslateServiceWindowControllerDelegate> delegate;
 
 @end
