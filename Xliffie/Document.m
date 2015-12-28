@@ -67,6 +67,7 @@
     
     for (NSXMLElement *fileElement in elements) {
         File *thisFile = [[File alloc] initWithXMLElement:fileElement];
+        thisFile.document = self;
         [self.files addObject:thisFile];
     }
     return YES;

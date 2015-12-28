@@ -8,6 +8,7 @@
 
 #import "File.h"
 #import "TranslationPair.h"
+#import "Document.h"
 
 @interface File ()
 
@@ -41,6 +42,7 @@
 
 - (File *)filteredFileWithSearchFilter:(NSString*)filter {
     File *newFile = [[File alloc] initWithXMLElement:self.xmlElement];
+    newFile.document = self.document;
     newFile.translations = [NSMutableArray array];
     for (TranslationPair *pair in [self translationsMatchingSearchFilter:filter]) {
         [newFile.translations addObject:pair];
@@ -48,7 +50,7 @@
     return newFile;
 }
 
-- (NSArray *)translationsMatchingSearchFilter:(NSString*)filter {
+- (NSArray <TranslationPair*> *)translationsMatchingSearchFilter:(NSString*)filter {
     return [self.translations filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
         return [evaluatedObject matchSearchFilter:filter];
     }]];
@@ -69,6 +71,8 @@
 #pragma mark property
 
 - (void)setTargetLanguage:(NSString *)targetLanguage {
+    if ([_targetLanguage isEqualToString:targetLanguage]) return;
+    _targetLanguage = targetLanguage;
     NSXMLNode *targetAttribute = [self.xmlElement attributeForName:@"target-language"];
     if (!targetAttribute) {
         targetAttribute = [NSXMLNode attributeWithName:@"target-language" stringValue:targetLanguage];
@@ -76,7 +80,7 @@
     } else {
         [targetAttribute setStringValue:targetLanguage];
     }
-    _targetLanguage = targetLanguage;
+    [self.document updateChangeCount:NSChangeDone];
 }
 
 @end

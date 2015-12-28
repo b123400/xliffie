@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class Document;
+
 @interface File : NSObject
 
 // path of the original file, e.g. xx/yy/main.storyboard
@@ -16,6 +18,8 @@
 @property (nonatomic, strong) NSString *sourceLanguage;
 @property (nonatomic, strong) NSString *targetLanguage;
 @property (nonatomic, strong) NSMutableArray *translations;
+
+@property (nonatomic, weak) Document *document;
 
 - (instancetype)initWithXMLElement:(NSXMLElement*)element;
 
