@@ -667,7 +667,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <subviews>
                                             <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wun-OW-N3i">
-                                                <rect key="frame" x="2" y="6" width="146" height="25"/>
+                                                <rect key="frame" x="2" y="7" width="146" height="25"/>
                                                 <popUpButtonCell key="cell" type="roundTextured" title="Item 1" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" arrowPosition="arrowAtCenter" selectedItem="amL-Es-VUX" id="SnS-pW-MXZ">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="menu"/>
@@ -681,7 +681,7 @@
                                                 </popUpButtonCell>
                                             </popUpButton>
                                             <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rUL-3v-Ofm">
-                                                <rect key="frame" x="179" y="5" width="149" height="25"/>
+                                                <rect key="frame" x="179" y="7" width="149" height="25"/>
                                                 <popUpButtonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="RFC-mK-LNU">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="menu"/>
@@ -695,7 +695,7 @@
                                                 </popUpButtonCell>
                                             </popUpButton>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r0K-0V-TgZ">
-                                                <rect key="frame" x="156" y="10" width="17" height="17"/>
+                                                <rect key="frame" x="156" y="11" width="17" height="17"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="→" id="edE-SF-cK2">
                                                     <font key="font" size="13" name=".LucidaGrandeUI"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -764,13 +764,10 @@
                                         <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSCaution" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="DLF-qG-Mz6">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
-                                            <connections>
-                                                <action selector="translateButtonPressed:" target="jGA-0Y-lOj" id="cIX-5j-ivm"/>
-                                            </connections>
                                         </buttonCell>
                                     </button>
                                     <connections>
-                                        <action selector="toggleNotesPressed:" target="jGA-0Y-lOj" id="e9T-0y-Zuw"/>
+                                        <action selector="translateButtonPressed:" target="jGA-0Y-lOj" id="N5m-Al-Lpf"/>
                                     </connections>
                                 </toolbarItem>
                             </allowedToolbarItems>

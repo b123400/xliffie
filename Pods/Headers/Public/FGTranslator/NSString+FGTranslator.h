@@ -1,0 +1,1 @@
+../../../FGTranslator/FGTranslator/NSString+FGTranslator.h

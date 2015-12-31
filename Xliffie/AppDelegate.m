@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "DocumentWindowController.h"
+#import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
 
 @interface AppDelegate ()
@@ -18,7 +19,7 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
-    [Crashlytics startWithAPIKey:@"be3de76eb1918a93b4d68a8e87b983750d738aed"];
+    [Fabric with:@[[Crashlytics class]]];
 }
 
 - (void)didFinishRestoreWindow:(NSNotification*)notification {

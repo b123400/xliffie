@@ -1,0 +1,2 @@
+echo "warning: The submit script is now located at $"{"PODS_ROOT"}"/Crashlytics/submit'. To remove this warning, update your path to point to this new location."
+sh ${PODS_ROOT}/Crashlytics/submit "$@"
