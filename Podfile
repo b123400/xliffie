@@ -7,7 +7,7 @@ platform :osx, '10.10'
 
 pod 'Fabric'
 pod 'Crashlytics'
-pod "FGTranslator", :git => "git@github.com:b123400/FGTranslator.git"
+pod "FGTranslator", :git => "git@github.com:b123400/FGTranslator.git", :branch => 'xliffie'
 
 target 'Xliffie' do
 

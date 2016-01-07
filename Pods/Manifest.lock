@@ -20,30 +20,31 @@ PODS:
   - Crashlytics (3.4.1):
     - Fabric (~> 1.6.0)
   - Fabric (1.6.1)
-  - FGTranslator (1.1.1):
-    - AFNetworking (~> 2.2)
-    - TMCache (~> 1.2)
-  - TMCache (1.2.4)
+  - FGTranslator (1.1.2):
+    - AFNetworking (~> 2.0)
+    - TMCache (~> 2.0)
+  - TMCache (2.1.0)
 
 DEPENDENCIES:
   - Crashlytics
   - Fabric
-  - FGTranslator (from `git@github.com:b123400/FGTranslator.git`)
+  - FGTranslator (from `git@github.com:b123400/FGTranslator.git`, branch `xliffie`)
 
 EXTERNAL SOURCES:
   FGTranslator:
+    :branch: xliffie
     :git: git@github.com:b123400/FGTranslator.git
 
 CHECKOUT OPTIONS:
   FGTranslator:
-    :commit: 6868dce21082f766169c7fd087f0f40877c955db
+    :commit: e288b236f16a2b9a6f426b88f8cf25ae0c888c29
     :git: git@github.com:b123400/FGTranslator.git
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
   Crashlytics: 41574a245bc6ae10c55d57f385ebd2004e5bee05
   Fabric: bf0ceb04e7c924090efc5f8c55e4fbcca189e0a0
-  FGTranslator: 63d627c746dfc3d680d8054f3cf676f99d6936a2
-  TMCache: a93984b045a5ee84bd8941bd5e0b54296059cc52
+  FGTranslator: a051c89d4b162ac2bbd351899e1ed751ff44e171
+  TMCache: 95ebcc9b3c7e90fb5fd8fc3036cba3aa781c9bed
 
 COCOAPODS: 0.39.0
