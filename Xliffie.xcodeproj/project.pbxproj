@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		16944ED79FF3BC82F844375D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 707697586225A7F3BE9B50CC /* libPods.a */; };
+		CF011B4B1C40FCBA00948323 /* TranslationUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = CF011B4A1C40FCBA00948323 /* TranslationUtility.m */; };
 		CF34B7471AAB7C2000C6A58E /* DocumentListDrawer.m in Sources */ = {isa = PBXBuildFile; fileRef = CF34B7461AAB7C2000C6A58E /* DocumentListDrawer.m */; };
 		CF34B75A1AADE00A00C6A58E /* TranslationTargetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF34B7591AADE00A00C6A58E /* TranslationTargetCell.m */; };
 		CF5682EB1A6AFB9800E0DEDD /* DocumentWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5682E91A6AFB9800E0DEDD /* DocumentWindowController.m */; };
@@ -46,6 +47,9 @@
 		30D4ECEB71F668BEB4303642 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		707697586225A7F3BE9B50CC /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A023F907004D396B2FE662AC /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		CF011B481C40F4B900948323 /* APIKeys.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIKeys.h; sourceTree = "<group>"; };
+		CF011B491C40FCBA00948323 /* TranslationUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TranslationUtility.h; sourceTree = "<group>"; };
+		CF011B4A1C40FCBA00948323 /* TranslationUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TranslationUtility.m; sourceTree = "<group>"; };
 		CF34B7451AAB7C2000C6A58E /* DocumentListDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocumentListDrawer.h; sourceTree = "<group>"; };
 		CF34B7461AAB7C2000C6A58E /* DocumentListDrawer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentListDrawer.m; sourceTree = "<group>"; };
 		CF34B7581AADE00A00C6A58E /* TranslationTargetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TranslationTargetCell.h; sourceTree = "<group>"; };
@@ -179,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				CFE39F6F1A764526004644C8 /* Xliffie.entitlements */,
+				CF011B481C40F4B900948323 /* APIKeys.h */,
 				CF5FC8911A5ABFF700538E60 /* AppDelegate.h */,
 				CF5FC8921A5ABFF700538E60 /* AppDelegate.m */,
 				CF5682E81A6AFB9800E0DEDD /* DocumentWindowController.h */,
@@ -240,6 +245,8 @@
 				CF662B371C307C7D00704CEA /* TranslateServiceWindowController.h */,
 				CF662B381C307C7D00704CEA /* TranslateServiceWindowController.m */,
 				CF662B341C30774300704CEA /* TranslateServiceWindowController.xib */,
+				CF011B491C40FCBA00948323 /* TranslationUtility.h */,
+				CF011B4A1C40FCBA00948323 /* TranslationUtility.m */,
 			);
 			name = Translator;
 			sourceTree = "<group>";
@@ -422,6 +429,7 @@
 			files = (
 				CF92FB941C24037B00700D3E /* TargetMissingViewController.m in Sources */,
 				CF5682EB1A6AFB9800E0DEDD /* DocumentWindowController.m in Sources */,
+				CF011B4B1C40FCBA00948323 /* TranslationUtility.m in Sources */,
 				CFAE8DD91A922BA3001F0644 /* DocumentWindowSplitView.m in Sources */,
 				CF94FCA51A5C365400EE8BD5 /* File.m in Sources */,
 				CF34B75A1AADE00A00C6A58E /* TranslationTargetCell.m in Sources */,

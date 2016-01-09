@@ -37,7 +37,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   FGTranslator:
-    :commit: 4c1bdfa287bcf3aa9703e47b6c51909090fd343c
+    :commit: ae0d96f986c9ec653f6ef0c4a0481f7bfdc32e20
     :git: git@github.com:b123400/FGTranslator.git
 
 SPEC CHECKSUMS:

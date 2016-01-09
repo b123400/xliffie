@@ -403,7 +403,7 @@ NSString *const FG_TRANSLATOR_AZURE_TOKEN_EXPIRY = @"FG_TRANSLATOR_AZURE_TOKEN_E
     
     [queryString appendString:@"&contentType=text/plain"];
     
-    NSURL *requestURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://api.microsofttranslator.com/V2/Ajax.svc/TranslateArray?%@", queryString]];
+    NSURL *requestURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.microsofttranslator.com/V2/Ajax.svc/TranslateArray?%@", queryString]];
 
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:requestURL];
     
