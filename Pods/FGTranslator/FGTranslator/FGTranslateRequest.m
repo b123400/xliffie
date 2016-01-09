@@ -23,17 +23,43 @@ NSString *const FG_TRANSLATOR_AZURE_TOKEN_EXPIRY = @"FG_TRANSLATOR_AZURE_TOKEN_E
 #pragma mark - Google
 
 + (AFHTTPRequestOperation *)googleTranslateMessage:(NSString *)message
-                                      withSource:(NSString *)source
-                                          target:(NSString *)target
+                                        withSource:(NSString *)source
+                                            target:(NSString *)target
                                                key:(NSString *)key
                                          quotaUser:(NSString *)quotaUser
-                                      completion:(void (^)(NSString *translatedMessage, NSString *detectedSource, NSError *error))completion
-{    
-    NSURL *base = [NSURL URLWithString:@"https://www.googleapis.com/language/translate/v2"];
+                                           referer:(NSString*)referer
+                                       completion:(void (^)(NSString *translatedMessage, NSString *detectedSource, NSError *error))completion
+{
+    return [self googleTranslateMessages:@[message]
+                              withSource:source
+                                  target:target
+                                     key:key
+                               quotaUser:quotaUser
+                                 referer:referer
+                              completion:^(NSArray<NSString *> *translatedMessages, NSArray<NSString *> *detectedSources, NSError *error) {
+                                  if (error) {
+                                      completion(nil, nil, error);
+                                      return;
+                                  }
+                                  completion([translatedMessages objectAtIndex:0], [detectedSources objectAtIndex:0], error);
+                              }];
+}
+
++ (AFHTTPRequestOperation *)googleTranslateMessages:(NSArray <NSString*> *)messages
+                                         withSource:(NSString *)source
+                                             target:(NSString *)target
+                                                key:(NSString *)key
+                                          quotaUser:(NSString *)quotaUser
+                                            referer:(NSString*)referer
+                                         completion:(void (^)(NSArray <NSString*> *translatedMessages,
+                                                              NSArray <NSString*> *detectedSources,
+                                                              NSError *error))completion {
+    
+    NSURL *requestURL = [NSURL URLWithString:@"https://www.googleapis.com/language/translate/v2"];
     
     NSMutableString *queryString = [NSMutableString string];
     // API key
-    [queryString appendFormat:@"?key=%@", key];
+    [queryString appendFormat:@"key=%@", key];
     // output style
     [queryString appendString:@"&format=text"];
     [queryString appendString:@"&prettyprint=false"];
@@ -50,23 +76,36 @@ NSString *const FG_TRANSLATOR_AZURE_TOKEN_EXPIRY = @"FG_TRANSLATOR_AZURE_TOKEN_E
         [queryString appendFormat:@"&quotaUser=%@", quotaUser];
     
     // message
-    [queryString appendFormat:@"&q=%@", [NSString urlEncodedStringFromString:message]];
+    for (NSString *message in messages) {
+        [queryString appendFormat:@"&q=%@", [NSString urlEncodedStringFromString:message]];
+    }
     
-    NSURL *requestURL = [NSURL URLWithString:queryString relativeToURL:base];
-    NSURLRequest *request = [NSURLRequest requestWithURL:requestURL];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:requestURL];
+
+    [request setHTTPMethod:@"POST"];
+    [request setValue:@"GET" forHTTPHeaderField:@"X-HTTP-Method-Override"];
+    [request setHTTPBody:[queryString dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    if (referer) {
+        [request setValue:referer forHTTPHeaderField:@"Referer"];
+    }
     
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     operation.responseSerializer = [AFJSONResponseSerializer serializer];
     
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
     {
-        NSDictionary *translation = [[[responseObject objectForKey:@"data"] objectForKey:@"translations"] objectAtIndex:0];
-        NSString *translatedText = [translation objectForKey:@"translatedText"];
-        NSString *detectedSource = [translation objectForKey:@"detectedSourceLanguage"];
-        if (!detectedSource)
-            detectedSource = source;
+        NSArray *translations = [[responseObject objectForKey:@"data"] objectForKey:@"translations"];
         
-        completion(translatedText, detectedSource, nil);
+        NSMutableArray <NSString*> *translatedTexts = [NSMutableArray arrayWithCapacity:translations.count];
+        NSMutableArray <NSString*> *detectedSources = [NSMutableArray arrayWithCapacity:translations.count];
+        
+        for (NSDictionary *translation in translations) {
+            [translatedTexts addObject:[translation objectForKey:@"translatedText"]];
+            [detectedSources addObject:[translation objectForKey:@"detectedSourceLanguage"] ?: source];
+        }
+        
+        completion(translatedTexts, detectedSources, nil);
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error)
     {
@@ -85,6 +124,7 @@ NSString *const FG_TRANSLATOR_AZURE_TOKEN_EXPIRY = @"FG_TRANSLATOR_AZURE_TOKEN_E
 + (AFHTTPRequestOperation *)googleDetectLanguage:(NSString *)text
                                              key:(NSString *)key
                                        quotaUser:(NSString *)quotaUser
+                                         referer:(NSString*)referer
                                       completion:(void (^)(NSString *detectedSource, float confidence, NSError *error))completion
 {
     NSURL *base = [NSURL URLWithString:@"https://www.googleapis.com/language/translate/v2/detect"];
@@ -104,7 +144,10 @@ NSString *const FG_TRANSLATOR_AZURE_TOKEN_EXPIRY = @"FG_TRANSLATOR_AZURE_TOKEN_E
     [queryString appendFormat:@"&q=%@", [NSString urlEncodedStringFromString:text]];
     
     NSURL *requestURL = [NSURL URLWithString:queryString relativeToURL:base];
-    NSURLRequest *request = [NSURLRequest requestWithURL:requestURL];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:requestURL];
+    if (referer) {
+        [request setValue:referer forHTTPHeaderField:@"Referer"];
+    }
     
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     operation.responseSerializer = [AFJSONResponseSerializer serializer];
@@ -133,6 +176,7 @@ NSString *const FG_TRANSLATOR_AZURE_TOKEN_EXPIRY = @"FG_TRANSLATOR_AZURE_TOKEN_E
 
 + (AFHTTPRequestOperation *)googleSupportedLanguagesWithKey:(NSString *)key
                                                   quotaUser:(NSString *)quotaUser
+                                                    referer:(NSString*)referer
                                                  completion:(void (^)(NSArray *languageCodes, NSError *error))completion
 {
     NSURL *base = [NSURL URLWithString:@"https://www.googleapis.com/language/translate/v2/languages"];
@@ -149,7 +193,10 @@ NSString *const FG_TRANSLATOR_AZURE_TOKEN_EXPIRY = @"FG_TRANSLATOR_AZURE_TOKEN_E
         [queryString appendFormat:@"&quotaUser=%@", quotaUser];
     
     NSURL *requestURL = [NSURL URLWithString:queryString relativeToURL:base];
-    NSURLRequest *request = [NSURLRequest requestWithURL:requestURL];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:requestURL];
+    if (referer) {
+        [request setValue:referer forHTTPHeaderField:@"Referer"];
+    }
     
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     operation.responseSerializer = [AFJSONResponseSerializer serializer];
@@ -184,6 +231,43 @@ NSString *const FG_TRANSLATOR_AZURE_TOKEN_EXPIRY = @"FG_TRANSLATOR_AZURE_TOKEN_E
 
 
 #pragma mark - Bing
+
++ (AFHTTPRequestOperation *)bingTranslateMessages:(NSArray <NSString*> *)messages
+                                       withSource:(NSString *)source
+                                           target:(NSString *)target
+                                         clientId:(NSString *)clientId
+                                     clientSecret:(NSString *)clientSecret
+                                       completion:(void (^)(NSArray <NSString*> *translatedMessage, NSArray <NSString*> *detectedSource, NSError *error))completion {
+    FGAzureToken *token = [FGTranslateRequest azureToken];
+    if ([token isValid])
+    {
+        return [FGTranslateRequest doBingTranslateMessages:messages
+                                                withSource:source
+                                                    target:target
+                                                     token:token
+                                                completion:completion];
+    }
+    else
+    {
+        __block AFHTTPRequestOperation *operation;
+        operation = [FGTranslateRequest getBingAuthTokenWithId:clientId secret:clientSecret completion:^(FGAzureToken *token, NSError *error) {
+            if (!error)
+            {
+                [FGTranslateRequest setAzureToken:token];
+                operation = [FGTranslateRequest doBingTranslateMessages:messages withSource:source target:target token:token completion:completion];
+            }
+            else
+            {
+                NSLog(@"FGTranslator: failed Bing translate: %@", operation.responseObject);
+                
+                NSError *fgError = [NSError errorWithDomain:FG_TRANSLATOR_ERROR_DOMAIN code:FGTranslationErrorNoToken userInfo:error.userInfo];
+                completion(nil, nil, fgError);
+            }
+        }];
+        
+        return operation;
+    }
+}
 
 + (AFHTTPRequestOperation *)bingTranslateMessage:(NSString *)message
                                       withSource:(NSString *)source
@@ -288,6 +372,69 @@ NSString *const FG_TRANSLATOR_AZURE_TOKEN_EXPIRY = @"FG_TRANSLATOR_AZURE_TOKEN_E
         
         return operation;
     }
+}
+
++ (AFHTTPRequestOperation *)doBingTranslateMessages:(NSArray <NSString*> *)messages
+                                         withSource:(NSString *)source
+                                             target:(NSString *)target
+                                              token:(FGAzureToken *)token
+                                         completion:(void (^)(NSArray <NSString*> *translatedMessages, NSArray <NSString*> *detectedSources, NSError *error))completion {
+    
+    NSMutableString *queryString = [NSMutableString string];
+    
+    // target language
+    [queryString appendFormat:@"to=%@", target];
+    
+    // source language
+    if (source)
+        [queryString appendFormat:@"&from=%@", source];
+    
+    // message
+    NSMutableArray *encodedMessages = [NSMutableArray arrayWithCapacity:messages.count];
+    for (NSString *message in messages) {
+        [encodedMessages addObject:[NSString urlEncodedStringFromString:message]];
+    }
+    NSError *error = nil;
+    [queryString appendFormat:@"&texts=%@",[NSString urlEncodedStringFromString:
+                                            [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:messages
+                                                                           options:0
+                                                                             error:&error]
+                                                                 encoding:NSUTF8StringEncoding]]];
+    
+    [queryString appendString:@"&contentType=text/plain"];
+    
+    NSURL *requestURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://api.microsofttranslator.com/V2/Ajax.svc/TranslateArray?%@", queryString]];
+
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:requestURL];
+    
+    NSString *authString = [NSString stringWithFormat:@"bearer %@", token.token];
+    [request setValue:authString forHTTPHeaderField:@"Authorization"];
+    
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    operation.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    // Microsoft doesn't like standard
+    operation.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/x-javascript"];
+    
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, NSArray *responseObject)
+     {
+         NSMutableArray *translated = [NSMutableArray array];
+         NSMutableArray *sources = [NSMutableArray array];
+         
+         for (NSDictionary *dict in responseObject) {
+             [translated addObject:[dict objectForKey:@"TranslatedText"]];
+             [sources addObject:[dict objectForKey:@"From"]];
+         }
+         completion(translated, sources, nil);
+     }
+                                     failure:^(AFHTTPRequestOperation *operation, NSError *error)
+     {
+         NSError *fgError = [NSError errorWithDomain:FG_TRANSLATOR_ERROR_DOMAIN code:FGTranslationErrorOther userInfo:error.userInfo];
+         completion(nil, nil, fgError);
+     }];
+    
+    [operation start];
+    return operation;
 }
 
 + (AFHTTPRequestOperation *)doBingTranslateMessage:(NSString *)message

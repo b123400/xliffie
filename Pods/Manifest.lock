@@ -17,13 +17,13 @@ PODS:
   - AFNetworking/Reachability (2.6.3)
   - AFNetworking/Security (2.6.3)
   - AFNetworking/Serialization (2.6.3)
-  - Crashlytics (3.4.1):
+  - Crashlytics (3.5.0):
     - Fabric (~> 1.6.0)
-  - Fabric (1.6.1)
+  - Fabric (1.6.2)
   - FGTranslator (1.1.2):
     - AFNetworking (~> 2.0)
-    - TMCache (~> 2.0)
-  - TMCache (2.1.0)
+    - PINCache (~> 2.1)
+  - PINCache (2.1.2)
 
 DEPENDENCIES:
   - Crashlytics
@@ -37,14 +37,14 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   FGTranslator:
-    :commit: e288b236f16a2b9a6f426b88f8cf25ae0c888c29
+    :commit: 4c1bdfa287bcf3aa9703e47b6c51909090fd343c
     :git: git@github.com:b123400/FGTranslator.git
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
-  Crashlytics: 41574a245bc6ae10c55d57f385ebd2004e5bee05
-  Fabric: bf0ceb04e7c924090efc5f8c55e4fbcca189e0a0
-  FGTranslator: a051c89d4b162ac2bbd351899e1ed751ff44e171
-  TMCache: 95ebcc9b3c7e90fb5fd8fc3036cba3aa781c9bed
+  Crashlytics: fabfd45d0e8b8dc936c682b97e302b9a49a1c827
+  Fabric: e8296d4a1abb3c5eed770cc86b311c862f51d340
+  FGTranslator: 280128c2b3a4a816e6d792aa168486e8c003ad3d
+  PINCache: 9e70271f1bdd60c0465b7208adcc4b6acc1fc376
 
 COCOAPODS: 0.39.0

@@ -23,8 +23,8 @@
     "AFNetworking": [
       "~> 2.0"
     ],
-    "TMCache": [
-      "~> 2.0"
+    "PINCache": [
+      "~> 2.1"
     ]
   }
 }

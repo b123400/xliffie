@@ -57,7 +57,7 @@ SOFTWARE.
 
 Fabric: Copyright 2015 Twitter, Inc. All Rights Reserved. Use of this software is subject to the terms and conditions of the Fabric Software and Services Agreement located at https://fabric.io/terms. OSS: http://get.fabric.io/terms/opensource.txt
 
-## TMCache
+## PINCache
 
                               Apache License
                         Version 2.0, January 2004

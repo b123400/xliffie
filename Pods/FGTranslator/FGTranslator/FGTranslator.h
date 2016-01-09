@@ -58,7 +58,14 @@ extern float const FGTranslatorUnknownConfidence;
  */
 @property (nonatomic) NSString *quotaUser;
 
+/**
+ * Optional referer for Google api
+ */
+
+@property (nonatomic) NSString *referer;
+
 typedef void (^FGTranslatorCompletionHandler)(NSError *error, NSString *translated, NSString *sourceLanguage);
+typedef void (^FGTranslatorMultipleCompletionHandler)(NSError *error, NSArray <NSString*> *translated, NSArray <NSString*> *sourceLanguage);
 
 /**
  * Initialize translator with Google Translate.
@@ -104,6 +111,22 @@ typedef void (^FGTranslatorCompletionHandler)(NSError *error, NSString *translat
            withSource:(NSString *)source
                target:(NSString *)target
            completion:(FGTranslatorCompletionHandler)completion;
+
+/**
+ * Translate text.
+ 
+ * @param texts Array of text to translate.
+ * @param source ISO language code of the source text. Leave 'nil' to guess.
+ * @param target ISO language code of the desired language output. Leave 'nil' to use iPhone's current locale.
+ * @param completion Completion handler.
+ 
+ * @discussion If the `preferSourceGuess` property is set to TRUE (default), the translator will ignore the passed-in `source`
+ * parameter (if any) if it determines a reliable guess can be made.
+ */
+- (void)translateTexts:(NSArray <NSString*> *)texts
+            withSource:(NSString*)source
+                target:(NSString*)target
+            completion:(FGTranslatorMultipleCompletionHandler)completion;
 
 /**
  * Detect text language.

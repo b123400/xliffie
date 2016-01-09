@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '1231E03D3935F1E946FCD004'
+               BlueprintIdentifier = '453D9B54DEB50A0E919D18A1'
                BlueprintName = 'FGTranslator'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libFGTranslator.a'>
