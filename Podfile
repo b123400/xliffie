@@ -8,6 +8,7 @@ platform :osx, '10.10'
 pod 'Fabric'
 pod 'Crashlytics'
 pod "FGTranslator", :git => "git@github.com:b123400/FGTranslator.git", :branch => 'xliffie'
+pod "BRLocaleMap", :git => "git@github.com:b123400/BRLocaleMap.git", :submodules => true
 
 target 'Xliffie' do
 

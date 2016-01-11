@@ -8,6 +8,7 @@
 
 #import "TargetMissingViewController.h"
 #import "File.h"
+#import "TranslationUtility.h"
 
 @interface LanguageSet : NSObject
 // language code, not name
@@ -81,9 +82,7 @@
             // like: zh_Hant -> zh_Hang_HK
             [lastLanguageSet.subLanguages addObject:localeIdentifier];
         }
-
-//        [targetLanguages addObject: [[NSLocale currentLocale] displayNameForKey:NSLocaleIdentifier
-//                                                                          value:localeIdentifier]];
+        NSLog(@" \"%@\" : \"%@\" // %@, %@ ", localeIdentifier, thisLanguageCode, thisLanguageScript, [locale objectForKey:NSLocaleCountryCode]);
     }
     [targetLanguages sortUsingComparator:^NSComparisonResult(LanguageSet *obj1, LanguageSet *obj2) {
         NSString *displayName1 = [[NSLocale currentLocale] displayNameForKey:NSLocaleIdentifier
@@ -157,6 +156,10 @@
     [self.targetButton setTitle:[sender title]];
     self.okButton.enabled = YES;
     self.selectedLanguageCode = [sender representedObject];
+    NSLog(@"Google: %@", [TranslationUtility isLocale:self.selectedLanguageCode
+                                  supportedForService:BRLocaleMapServiceGoogle] ? @"YES" : @"NO");
+    NSLog(@"MS: %@", [TranslationUtility isLocale:self.selectedLanguageCode
+                              supportedForService:BRLocaleMapServiceMicrosoft] ? @"YES" : @"NO");
 }
 
 - (IBAction)okClicked:(id)sender {

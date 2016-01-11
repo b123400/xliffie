@@ -8,35 +8,69 @@
 
 #import "TranslationUtility.h"
 #import <FGTranslator/FGTranslator.h>
+#import <BRLocaleMap/BRLocaleMap.h>
 #import "APIKeys.h"
 
 @implementation TranslationUtility
 
++ (BOOL)isLocale:(NSString*)locale supportedForService:(BRLocaleMapService)service {
+    return [BRLocaleMap locale:locale forService:service] != nil;
+}
+
 + (void)translateTexts:(NSArray <NSString*> *)texts
           fromLanguage:(NSString*)sourceLocaleCode
             toLanguage:(NSString*)targetLocaleCode
-           withService:(TranslationService)service
+           withService:(BRLocaleMapService)service
               callback:(void(^)(NSError*, NSArray <NSString*> *))callback {
     
     FGTranslator *translator = [self translatorWithService:service];
     
+    NSString *sourceCode = [BRLocaleMap locale:sourceLocaleCode forService:service];
+    NSString *targetCode = [BRLocaleMap locale:targetLocaleCode forService:service];
+    
+    if (!sourceCode) {
+        NSError *error = [NSError errorWithDomain:TRANSLATION_ERROR_DOMAIN
+                                             code:0
+                                         userInfo:@{
+                                                    NSLocalizedDescriptionKey: [NSString stringWithFormat:
+                                                                                NSLocalizedString(@"Cannot translate from %@",
+                                                                                                  @"Translation source not found")
+                                                                                , sourceLocaleCode]
+                                                    }];
+        callback(error, nil);
+        return;
+    }
+    
+    if (!targetCode) {
+        NSError *error = [NSError errorWithDomain:TRANSLATION_ERROR_DOMAIN
+                                             code:0
+                                         userInfo:@{
+                                                    NSLocalizedDescriptionKey: [NSString stringWithFormat:
+                                                                                NSLocalizedString(@"Cannot translate to %@",
+                                                                                                  @"Translation target not found")
+                                                                                , sourceLocaleCode]
+                                                    }];
+        callback(error, nil);
+        return;
+    }
+    
     [translator translateTexts:texts
-                    withSource:[self languageCode:sourceLocaleCode forService:service]
-                        target:[self languageCode:targetLocaleCode forService:service]
+                    withSource:sourceCode
+                        target:targetLocaleCode
                     completion:^(NSError *error, NSArray<NSString *> *translated, NSArray<NSString *> *sourceLanguage) {
                         callback(error, translated);
                     }];
 }
 
-+ (FGTranslator*)translatorWithService:(TranslationService)service {
++ (FGTranslator*)translatorWithService:(BRLocaleMapService)service {
     FGTranslator *translator;
     switch (service) {
-        case TranslationServiceBing:
+        case BRLocaleMapServiceMicrosoft:
             translator = [[FGTranslator alloc] initWithBingAzureClientId:MICROSOFT_TRANSLATE_CLIENT_ID
                                                                   secret:MICROSOFT_TRANSLATE_CLIENT_SECRET];
             break;
         
-        case TranslationServiceGoogle:
+        case BRLocaleMapServiceGoogle:
             translator = [[FGTranslator alloc] initWithGoogleAPIKey:GOOGLE_TRANSLATE_API_KEY];
             // We need to to pretend to be sending from a browser
             translator.referer = GOOGLE_TRANSLATE_REFERER;
@@ -46,32 +80,6 @@
     }
     translator.preferSourceGuess = NO;
     return translator;
-}
-
-#pragma mark - Language codes
-
-+ (NSString*)languageCode:(NSString*)language forService:(TranslationService)service {
-    switch (service) {
-        case TranslationServiceBing:
-            return [self languageCodeForBing:language];
-            break;
-        
-        case TranslationServiceGoogle:
-            return [self languageCodeForGoogle:language];
-        default:
-            break;
-    }
-    return nil;
-}
-
-+ (NSString*)languageCodeForGoogle:(NSString*)languageCode {
-    // https://cloud.google.com/translate/v2/using_rest#language-params
-    return languageCode;
-}
-
-+ (NSString*)languageCodeForBing:(NSString*)languageCode {
-    // https://msdn.microsoft.com/en-us/library/hh456380.aspx
-    return languageCode;
 }
 
 @end

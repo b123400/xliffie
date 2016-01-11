@@ -1,6 +1,0 @@
-FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Crashlytics/OSX" "${PODS_ROOT}/Fabric/OSX"
-GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/AFNetworking" "${PODS_ROOT}/Headers/Public/Crashlytics" "${PODS_ROOT}/Headers/Public/FGTranslator" "${PODS_ROOT}/Headers/Public/Fabric" "${PODS_ROOT}/Headers/Public/PINCache"
-OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/AFNetworking" -isystem "${PODS_ROOT}/Headers/Public/Crashlytics" -isystem "${PODS_ROOT}/Headers/Public/FGTranslator" -isystem "${PODS_ROOT}/Headers/Public/Fabric" -isystem "${PODS_ROOT}/Headers/Public/PINCache"
-OTHER_LDFLAGS = $(inherited) -ObjC -l"AFNetworking" -l"FGTranslator" -l"PINCache" -l"c++" -l"z" -framework "CoreServices" -framework "Crashlytics" -framework "Fabric" -framework "Foundation" -framework "Security" -framework "SystemConfiguration" -weak_framework "AppKit"
-PODS_ROOT = ${SRCROOT}/Pods

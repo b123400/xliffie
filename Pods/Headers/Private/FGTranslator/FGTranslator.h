@@ -1,1 +1,0 @@
-../../../FGTranslator/FGTranslator/FGTranslator.h

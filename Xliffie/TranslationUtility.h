@@ -7,12 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <BRLocaleMap/BRLocaleMap.h>
 
-typedef enum : NSUInteger {
-    TranslationServiceBing,
-    TranslationServiceGoogle,
-} TranslationService;
+#define TRANSLATION_ERROR_DOMAIN @"net.b123400.xliffie.translation.error"
 
 @interface TranslationUtility : NSObject
+
++ (BOOL)isLocale:(NSString*)locale supportedForService:(BRLocaleMapService)service;
+
++ (void)translateTexts:(NSArray <NSString*> *)texts
+          fromLanguage:(NSString*)sourceLocaleCode
+            toLanguage:(NSString*)targetLocaleCode
+           withService:(BRLocaleMapService)service
+              callback:(void(^)(NSError*, NSArray <NSString*> *))callback;
 
 @end
