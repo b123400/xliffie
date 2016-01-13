@@ -27,7 +27,9 @@
 @property (weak) IBOutlet NSSearchField *searchField;
 @property (nonatomic, strong) NSMutableArray *documents;
 @property (nonatomic, strong) DocumentListDrawer *documentsDrawer;
-@property (nonatomic, strong) TranslateServiceWindowController *translateController;
+@property (nonatomic, strong) TranslateServiceWindowController *translateServiceController;
+@property (nonatomic, strong) TranslationWindowController *translateController;
+
 // { @"en" :
 //     { @"hello/world.xib" : <File>
 //       @"foo.string" : <File>
@@ -214,11 +216,15 @@
 }
 
 - (void)showTranslateWindow {
-    self.translateController = [[TranslateServiceWindowController alloc] initWithDocument:self.document];
-    self.translateController.delegate = self;
+    self.translateServiceController = [[TranslateServiceWindowController alloc] initWithDocument:self.document];
+    self.translateServiceController.delegate = self;
     __weak typeof(self) weakSelf = self;
-    [self.window beginSheet:self.translateController.window
+    [self.window beginSheet:self.translateServiceController.window
           completionHandler:^(NSModalResponse returnCode) {
+              if (returnCode == NSModalResponseOK) {
+                  TranslationWindowController *controller = weakSelf.translateServiceController.translationWindowController;
+                  [weakSelf presentTranslationWindowController:controller];
+              }
               weakSelf.translateController = nil;
           }];
 }
@@ -420,6 +426,15 @@ constrainMaxCoordinate:(CGFloat)proposedMax
 
 - (BOOL)translateServiceWindowController:(id)sender isTranslationPairSelected:(TranslationPair *)pair {
     return [self.mainViewController isTranslationSelected:pair];
+}
+
+- (void)presentTranslationWindowController:(TranslationWindowController*)controller {
+    self.translateController = controller;
+    __weak typeof(self) weakSelf = self;
+    [self.window beginSheet:controller.window
+          completionHandler:^(NSModalResponse returnCode) {
+              weakSelf.translateController = nil;
+          }];
 }
 
 #pragma mark utility

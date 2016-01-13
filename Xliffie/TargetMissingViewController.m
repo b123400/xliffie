@@ -82,7 +82,6 @@
             // like: zh_Hant -> zh_Hang_HK
             [lastLanguageSet.subLanguages addObject:localeIdentifier];
         }
-        NSLog(@" \"%@\" : \"%@\" // %@, %@ ", localeIdentifier, thisLanguageCode, thisLanguageScript, [locale objectForKey:NSLocaleCountryCode]);
     }
     [targetLanguages sortUsingComparator:^NSComparisonResult(LanguageSet *obj1, LanguageSet *obj2) {
         NSString *displayName1 = [[NSLocale currentLocale] displayNameForKey:NSLocaleIdentifier

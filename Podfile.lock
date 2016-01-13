@@ -42,7 +42,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   BRLocaleMap:
-    :commit: a900c170c203e92f8564b750a9d543724dabf891
+    :commit: ce380756fc1c6a7dc7dec0b75ad7731d045c351a
     :git: git@github.com:b123400/BRLocaleMap.git
   FGTranslator:
     :commit: 3f720c44f4b3bb8f9f9ff4dc5b2c3a55a0fc8bc8

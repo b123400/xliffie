@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		16944ED79FF3BC82F844375D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 707697586225A7F3BE9B50CC /* libPods.a */; };
 		CF011B4B1C40FCBA00948323 /* TranslationUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = CF011B4A1C40FCBA00948323 /* TranslationUtility.m */; };
+		CF011B7D1C4641A400948323 /* TranslationWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF011B7B1C4641A400948323 /* TranslationWindowController.m */; };
+		CF011B7E1C4641A400948323 /* TranslationWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF011B7C1C4641A400948323 /* TranslationWindowController.xib */; };
 		CF34B7471AAB7C2000C6A58E /* DocumentListDrawer.m in Sources */ = {isa = PBXBuildFile; fileRef = CF34B7461AAB7C2000C6A58E /* DocumentListDrawer.m */; };
 		CF34B75A1AADE00A00C6A58E /* TranslationTargetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF34B7591AADE00A00C6A58E /* TranslationTargetCell.m */; };
 		CF5682EB1A6AFB9800E0DEDD /* DocumentWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5682E91A6AFB9800E0DEDD /* DocumentWindowController.m */; };
@@ -50,6 +52,9 @@
 		CF011B481C40F4B900948323 /* APIKeys.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIKeys.h; sourceTree = "<group>"; };
 		CF011B491C40FCBA00948323 /* TranslationUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TranslationUtility.h; sourceTree = "<group>"; };
 		CF011B4A1C40FCBA00948323 /* TranslationUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TranslationUtility.m; sourceTree = "<group>"; };
+		CF011B7A1C4641A400948323 /* TranslationWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TranslationWindowController.h; sourceTree = "<group>"; };
+		CF011B7B1C4641A400948323 /* TranslationWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TranslationWindowController.m; sourceTree = "<group>"; };
+		CF011B7C1C4641A400948323 /* TranslationWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TranslationWindowController.xib; sourceTree = "<group>"; };
 		CF34B7451AAB7C2000C6A58E /* DocumentListDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocumentListDrawer.h; sourceTree = "<group>"; };
 		CF34B7461AAB7C2000C6A58E /* DocumentListDrawer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentListDrawer.m; sourceTree = "<group>"; };
 		CF34B7581AADE00A00C6A58E /* TranslationTargetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TranslationTargetCell.h; sourceTree = "<group>"; };
@@ -245,6 +250,9 @@
 				CF662B371C307C7D00704CEA /* TranslateServiceWindowController.h */,
 				CF662B381C307C7D00704CEA /* TranslateServiceWindowController.m */,
 				CF662B341C30774300704CEA /* TranslateServiceWindowController.xib */,
+				CF011B7A1C4641A400948323 /* TranslationWindowController.h */,
+				CF011B7B1C4641A400948323 /* TranslationWindowController.m */,
+				CF011B7C1C4641A400948323 /* TranslationWindowController.xib */,
 				CF011B491C40FCBA00948323 /* TranslationUtility.h */,
 				CF011B4A1C40FCBA00948323 /* TranslationUtility.m */,
 			);
@@ -346,6 +354,7 @@
 				CF5FC89D1A5ABFF700538E60 /* Images.xcassets in Resources */,
 				CFE39FA11A767252004644C8 /* InfoPlist.strings in Resources */,
 				CF662B361C30774300704CEA /* TranslateServiceWindowController.xib in Resources */,
+				CF011B7E1C4641A400948323 /* TranslationWindowController.xib in Resources */,
 				CFE39F9A1A765859004644C8 /* Localizable.strings in Resources */,
 				CF5FC8A01A5ABFF700538E60 /* Main.storyboard in Resources */,
 			);
@@ -437,6 +446,7 @@
 				CFD234FA1A5E44C700B52088 /* XMLOutlineView.m in Sources */,
 				CF5FC89B1A5ABFF700538E60 /* Document.m in Sources */,
 				CF5FC8981A5ABFF700538E60 /* ViewController.m in Sources */,
+				CF011B7D1C4641A400948323 /* TranslationWindowController.m in Sources */,
 				CF5FC8951A5ABFF700538E60 /* main.m in Sources */,
 				CF662B391C307C7D00704CEA /* TranslateServiceWindowController.m in Sources */,
 				CF5FC8931A5ABFF700538E60 /* AppDelegate.m in Sources */,

@@ -9,6 +9,7 @@
                 <outlet property="emptyStringOnlyButton" destination="55t-Nt-Ry0" id="97z-G2-8qF"/>
                 <outlet property="hintTextLabel" destination="N7Y-ND-cYg" id="Yz9-R7-z1e"/>
                 <outlet property="ignoreEqualButton" destination="gMD-G3-KRA" id="Oga-ds-3nm"/>
+                <outlet property="okButton" destination="cSE-I3-1G0" id="HCv-0X-S9N"/>
                 <outlet property="serviceButton" destination="gAw-fC-hq7" id="h2Z-3P-XYa"/>
                 <outlet property="translateFilterButton" destination="yDH-4S-bVT" id="pQI-m0-dnk"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
