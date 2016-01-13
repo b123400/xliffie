@@ -103,6 +103,7 @@
         }
     }
     
+    NSRect frame = self.window.frame;
     if (isMissingTargetLanguage) {
         self.targetMissingViewController.document = document;
         self.contentViewController = self.targetMissingViewController;
@@ -110,6 +111,8 @@
         self.mainViewController.document = document;
         self.contentViewController = self.splitViewController;
     }
+    // because setting content vc will resize the window
+    [self.window setFrame:frame display:YES animate:NO];
     
     [self addDocument:document];
     [self.documentsDrawer selectDocumentAtIndex:[self.documents indexOfObject:document]];

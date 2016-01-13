@@ -802,7 +802,7 @@
                                 </constraints>
                                 <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" pullsDown="YES" selectedItem="DwU-b4-XiA" id="QRf-xf-z1T">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
+                                    <font key="font" metaFont="menu"/>
                                     <menu key="menu" id="Vqa-zW-LBv">
                                         <items>
                                             <menuItem title="Item 1" state="on" hidden="YES" id="DwU-b4-XiA"/>
@@ -820,7 +820,7 @@
                                 </constraints>
                                 <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" pullsDown="YES" id="GAj-dC-cuM">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
+                                    <font key="font" metaFont="menu"/>
                                     <menu key="menu" id="Br9-u6-GJ8">
                                         <items>
                                             <menuItem title="Item 1" state="on" hidden="YES" id="9VO-BF-sdu"/>
@@ -994,18 +994,18 @@ DQ
                 </viewController>
                 <customObject id="2Tp-Fl-jBw" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-179" y="1220.5"/>
+            <point key="canvasLocation" x="-197" y="1400.5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="MNe-Rm-jAe">
             <objects>
                 <viewController id="rCU-qj-LTD" sceneMemberID="viewController">
                     <view key="view" id="mDN-5k-CdB">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="600"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <splitView dividerStyle="thin" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LOj-HR-jIe" customClass="DocumentWindowSplitView">
-                                <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                                <rect key="frame" x="0.0" y="0.0" width="480" height="600"/>
                             </splitView>
                         </subviews>
                         <constraints>
@@ -1018,7 +1018,7 @@ DQ
                 </viewController>
                 <customObject id="8G2-KF-onG" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="666"/>
+            <point key="canvasLocation" x="75" y="761"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="veD-TA-dBh">
@@ -1086,7 +1086,7 @@ DQ
                 </viewController>
                 <customObject id="Xxj-P9-bMW" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="395" y="1120"/>
+            <point key="canvasLocation" x="377" y="1300"/>
         </scene>
     </scenes>
     <resources>
