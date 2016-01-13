@@ -39,7 +39,6 @@
     [super viewDidLoad];
     // Do view setup here.
     [self configureView];
-    self.okButton.enabled = NO;
 }
 
 - (void)configureView {
@@ -145,6 +144,7 @@
         }
     }
     [self.targetButton setTitle:@"Choose language here"];
+    self.okButton.enabled = NO;
 }
 
 - (void)setDocument:(Document *)document {

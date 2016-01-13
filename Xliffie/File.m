@@ -72,6 +72,14 @@
 
 - (void)setTargetLanguage:(NSString *)targetLanguage {
     if ([_targetLanguage isEqualToString:targetLanguage]) return;
+    if ([targetLanguage isEqualToString:@""]) {
+        targetLanguage = nil;
+    }
+    if (self.xmlElement) { // make sure it is after init
+        [[self.document undoManager] registerUndoWithTarget:self
+                                                   selector:@selector(setTargetLanguage:)
+                                                     object:_targetLanguage];
+    }
     _targetLanguage = targetLanguage;
     NSXMLNode *targetAttribute = [self.xmlElement attributeForName:@"target-language"];
     if (!targetAttribute) {
@@ -80,7 +88,6 @@
     } else {
         [targetAttribute setStringValue:targetLanguage];
     }
-    [self.document updateChangeCount:NSChangeDone];
 }
 
 @end

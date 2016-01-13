@@ -20,11 +20,37 @@
 
 @implementation ViewController
 
+- (instancetype)initWithCoder:(NSCoder *)coder {
+    self = [super initWithCoder:coder];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(documentDidUndoOrRedo:)
+                                                 name:NSUndoManagerDidUndoChangeNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(documentDidUndoOrRedo:)
+                                                 name:NSUndoManagerDidRedoChangeNotification
+                                               object:nil];
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.outlineView.autosaveExpandedItems = YES;
     self.outlineView.xmlOutlineDelegate = self;
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark Notification
+
+- (void)documentDidUndoOrRedo:(NSNotification*)notification {
+    NSUndoManager *manager = [notification object];
+    if (manager == self.documentForDisplay.undoManager) {
+        [self.outlineView reloadData];
+    }
 }
 
 #pragma mark OutlineView

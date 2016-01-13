@@ -38,6 +38,23 @@
 
 @implementation DocumentWindowController
 
+- (instancetype)initWithCoder:(NSCoder *)coder {
+    self = [super initWithCoder:coder];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(documentDidUndoOrRedo:)
+                                                 name:NSUndoManagerDidUndoChangeNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(documentDidUndoOrRedo:)
+                                                 name:NSUndoManagerDidRedoChangeNotification
+                                               object:nil];
+    return self;
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)windowDidLoad {
     [super windowDidLoad];
     
@@ -130,6 +147,12 @@
 //    [self.documentsDrawer close];
 //    self.documentsDrawer.delegate = nil;
 //    self.documentsDrawer = nil;
+}
+
+#pragma mark undo
+
+- (void)documentDidUndoOrRedo:(NSNotification*)notification {
+    [self setDocument:self.document]; // reload to missing target controller if needed.
 }
 
 #pragma mark restore

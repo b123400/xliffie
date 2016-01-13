@@ -7,6 +7,7 @@
 //
 
 #import "TranslationPair.h"
+#import <AppKit/AppKit.h>
 
 @interface TranslationPair ()
 
@@ -60,6 +61,17 @@
         targetElement = [NSXMLElement elementWithName:@"target"];
         [self.xmlElement addChild:targetElement];
     }
+    
+    NSDocument *document = (NSDocument*)[self.file document];
+    if (self.xmlElement &&         // setting target after initialization
+        document.hasUndoManager) { // can undo
+        
+        NSUndoManager *manager = [document undoManager];
+        [manager registerUndoWithTarget:self
+                               selector:@selector(setTarget:)
+                                 object:self.target];
+    }
+    
     [targetElement setStringValue:target];
     _target = target;
 }
