@@ -6,6 +6,9 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TranslationWindowController">
             <connections>
+                <outlet property="cancelButton" destination="RhG-8T-f78" id="L4K-cN-7X8"/>
+                <outlet property="documentView" destination="BA9-Ir-HU9" id="pGA-yC-sJh"/>
+                <outlet property="okButton" destination="neW-cq-pWL" id="1C5-cP-w2e"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -21,7 +24,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="neW-cq-pWL">
-                        <rect key="frame" x="338" y="13" width="128" height="32"/>
+                        <rect key="frame" x="348" y="3" width="128" height="32"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="B4Q-VY-HK2"/>
                             <constraint firstAttribute="width" constant="116" id="dow-HT-ckf"/>
@@ -38,7 +41,7 @@ DQ
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RhG-8T-f78">
-                        <rect key="frame" x="202" y="13" width="128" height="32"/>
+                        <rect key="frame" x="212" y="3" width="128" height="32"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="116" id="IPn-Fi-egl"/>
                             <constraint firstAttribute="height" constant="21" id="qNq-zG-DHa"/>
@@ -54,84 +57,19 @@ Gw
                             <action selector="cancelButtonPressed:" target="-2" id="HNJ-j5-fq4"/>
                         </connections>
                     </button>
-                    <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EYa-EX-gkm">
-                        <rect key="frame" x="20" y="61" width="440" height="214"/>
-                        <clipView key="contentView" id="8W9-8l-Wgy">
-                            <rect key="frame" x="1" y="23" width="438" height="190"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <subviews>
-                                <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" headerView="8YK-fe-VGA" indentationPerLevel="16" outlineTableColumn="TVE-wG-ryn" id="2E4-No-lIA">
-                                    <rect key="frame" x="0.0" y="0.0" width="438" height="190"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <size key="intercellSpacing" width="3" height="2"/>
-                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
-                                    <tableColumns>
-                                        <tableColumn width="208" minWidth="40" maxWidth="1000" id="TVE-wG-ryn">
-                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                <font key="font" metaFont="smallSystem"/>
-                                                <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
-                                            </tableHeaderCell>
-                                            <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="3EE-yS-NjB">
-                                                <font key="font" metaFont="system"/>
-                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                            <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                        </tableColumn>
-                                        <tableColumn identifier="" width="204" minWidth="10" maxWidth="3.4028234663852886e+38" id="d4R-7p-xD6">
-                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
-                                                <font key="font" metaFont="smallSystem"/>
-                                                <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            </tableHeaderCell>
-                                            <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="Dvd-1H-k5z">
-                                                <font key="font" metaFont="system"/>
-                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                            <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                        </tableColumn>
-                                        <tableColumn identifier="" width="17" minWidth="10" maxWidth="3.4028234663852886e+38" id="ch8-XZ-w3g">
-                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
-                                                <font key="font" metaFont="smallSystem"/>
-                                                <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            </tableHeaderCell>
-                                            <buttonCell key="dataCell" type="check" bezelStyle="regularSquare" imagePosition="left" inset="2" id="oC4-G8-1UA">
-                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                <font key="font" metaFont="system"/>
-                                            </buttonCell>
-                                        </tableColumn>
-                                    </tableColumns>
-                                </outlineView>
-                            </subviews>
-                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </clipView>
-                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="pdW-2N-VNW">
-                            <rect key="frame" x="1" y="7" width="0.0" height="16"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </scroller>
-                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="P1L-7n-k4p">
-                            <rect key="frame" x="-15" y="23" width="16" height="0.0"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </scroller>
-                        <tableHeaderView key="headerView" id="8YK-fe-VGA">
-                            <rect key="frame" x="0.0" y="0.0" width="438" height="23"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </tableHeaderView>
-                    </scrollView>
+                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="BA9-Ir-HU9">
+                        <rect key="frame" x="10" y="41" width="460" height="244"/>
+                    </customView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="RhG-8T-f78" firstAttribute="top" secondItem="EYa-EX-gkm" secondAttribute="bottom" constant="20" id="DEO-0q-Isf"/>
-                    <constraint firstAttribute="trailing" secondItem="neW-cq-pWL" secondAttribute="trailing" constant="20" id="Ktp-ZK-lNh"/>
+                    <constraint firstAttribute="trailing" secondItem="neW-cq-pWL" secondAttribute="trailing" constant="10" id="Ktp-ZK-lNh"/>
+                    <constraint firstItem="RhG-8T-f78" firstAttribute="top" secondItem="BA9-Ir-HU9" secondAttribute="bottom" constant="10" id="TVU-YF-EB9"/>
                     <constraint firstItem="neW-cq-pWL" firstAttribute="leading" secondItem="RhG-8T-f78" secondAttribute="trailing" constant="20" id="UP0-Yt-lnX"/>
-                    <constraint firstAttribute="trailing" secondItem="EYa-EX-gkm" secondAttribute="trailing" constant="20" id="VHI-PE-sOW"/>
-                    <constraint firstItem="EYa-EX-gkm" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="20" id="bSt-gq-NQ0"/>
-                    <constraint firstAttribute="bottom" secondItem="neW-cq-pWL" secondAttribute="bottom" constant="20" id="ju1-Rc-OoT"/>
-                    <constraint firstAttribute="bottom" secondItem="RhG-8T-f78" secondAttribute="bottom" constant="20" id="mHu-lg-fst"/>
-                    <constraint firstItem="EYa-EX-gkm" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="yZn-r5-ahD"/>
+                    <constraint firstItem="BA9-Ir-HU9" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="10" id="cIo-7I-gqA"/>
+                    <constraint firstItem="neW-cq-pWL" firstAttribute="top" secondItem="RhG-8T-f78" secondAttribute="top" id="g90-XW-TwA"/>
+                    <constraint firstAttribute="bottom" secondItem="RhG-8T-f78" secondAttribute="bottom" constant="10" id="mHu-lg-fst"/>
+                    <constraint firstAttribute="trailing" secondItem="BA9-Ir-HU9" secondAttribute="trailing" constant="10" id="qO9-U2-ozP"/>
+                    <constraint firstItem="BA9-Ir-HU9" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="10" id="v7q-5v-M8t"/>
                 </constraints>
             </view>
             <connections>

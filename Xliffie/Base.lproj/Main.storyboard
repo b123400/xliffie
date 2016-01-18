@@ -928,10 +928,10 @@ DQ
             </objects>
             <point key="canvasLocation" x="794" y="154"/>
         </scene>
-        <!--View Controller-->
+        <!--Document View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController storyboardIdentifier="ViewController" id="5gI-5U-AMq" customClass="ViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DocumentViewController" id="5gI-5U-AMq" customClass="DocumentViewController" sceneMemberID="viewController">
                     <view key="view" id="ERx-hH-rdd">
                         <rect key="frame" x="0.0" y="0.0" width="598" height="501"/>
                         <autoresizingMask key="autoresizingMask"/>

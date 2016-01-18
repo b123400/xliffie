@@ -7,11 +7,20 @@
 //
 
 #import "TranslationWindowController.h"
+#import "TranslationUtility.h"
+#import "DocumentViewController.h"
 
-@interface TranslationWindowController ()
+@interface TranslationWindowController () <NSOutlineViewDataSource, NSOutlineViewDelegate, DocumentViewControllerDelegate>
 
-@property (nonatomic, strong) NSArray *pairs;
+@property (nonatomic, strong) NSArray <TranslationPair*> *pairs;
 @property (nonatomic, assign) BRLocaleMapService service;
+@property (nonatomic, strong) Document *translatedDocument;
+
+@property (nonatomic, strong) NSProgressIndicator *loadingIndicator;
+@property (weak) IBOutlet NSView *documentView;
+@property (weak) IBOutlet NSButton *cancelButton;
+@property (weak) IBOutlet NSButton *okButton;
+@property (nonatomic, strong) DocumentViewController *documentViewController;
 
 @end
 
@@ -28,13 +37,128 @@
 - (void)windowDidLoad {
     [super windowDidLoad];
     
+    NSRect frame = self.window.frame;
+    frame.size.height = 150;
+    frame.size.width = 200;
+    [self.window setFrame:frame display:YES animate:NO];
+    [self.window.contentView setNeedsLayout:YES];
+    
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+    NSSize loadingSize = NSMakeSize(100, 100);
+    NSPoint cooridinate = NSMakePoint((self.window.frame.size.width - loadingSize.width)/2,
+                                      (self.window.frame.size.height - loadingSize.height)/2);
+    self.loadingIndicator = [[NSProgressIndicator alloc] initWithFrame:NSMakeRect(cooridinate.x,
+                                                                                  cooridinate.y,
+                                                                                  loadingSize.width,
+                                                                                  loadingSize.height)];
+
+    self.loadingIndicator.style = NSProgressIndicatorSpinningStyle;
+    [self.window.contentView addSubview:self.loadingIndicator];
+    [self.loadingIndicator startAnimation:self];
+    
+    self.okButton.hidden = YES;
+    self.cancelButton.hidden = YES;
+    [self startTranslate];
 }
+
+- (void)showTranslationTable {
+    self.documentViewController = [[NSStoryboard storyboardWithName:@"Main" bundle:nil] instantiateControllerWithIdentifier:@"DocumentViewController"];
+    self.documentViewController.delegate = self;
+    self.documentViewController.document = self.translatedDocument;
+    self.documentViewController.view.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable;
+    self.documentViewController.view.frame = NSMakeRect(0, 0, self.documentView.frame.size.width, self.documentView.frame.size.height);
+    [self.documentView addSubview:self.documentViewController.view];
+    [self.documentViewController expendAllItems];
+    
+    self.loadingIndicator.hidden = YES;
+    self.okButton.hidden = NO;
+    self.cancelButton.hidden = NO;
+
+    NSRect frame = self.window.frame;
+    frame.size.height = 600;
+    frame.size.width = 800;
+    [self.window setFrame:frame display:YES animate:YES];
+    [self.window.contentView setNeedsLayout:YES];
+}
+
+#pragma mark - interaction
+
 - (IBAction)cancelButtonPressed:(id)sender {
     [self.window.sheetParent endSheet:self.window returnCode:NSModalResponseCancel];
 }
 - (IBAction)okButtonPressed:(id)sender {
     
+}
+
+#pragma mark - translate
+
+- (void)startTranslate {
+    NSMutableArray *texts = [NSMutableArray arrayWithCapacity:self.pairs.count];
+    for (TranslationPair *pair in self.pairs) {
+        [texts addObject:pair.source];
+    }
+    
+    NSString *sourceLanguage = [self.pairs firstObject].file.sourceLanguage;
+    NSString *targetLanguage = [self.pairs firstObject].file.targetLanguage;
+    
+    __weak typeof(self) weakSelf = self;
+    
+    [TranslationUtility translateTexts:texts
+                          fromLanguage:sourceLanguage
+                            toLanguage:targetLanguage
+                           withService:self.service
+                              callback:^(NSError *error, NSArray<NSString *> *translatedTexts) {
+                                  dispatch_async(dispatch_get_main_queue(), ^{
+                                      if (error) {
+                                          NSAlert *alert = [NSAlert alertWithError:error];
+                                          alert.alertStyle = NSCriticalAlertStyle;
+                                          [alert runModal];
+                                          return;
+                                      }
+                                      [weakSelf finishedTranslate:translatedTexts];
+                                  });
+                              }];
+}
+
+- (void)finishedTranslate:(NSArray <NSString *> *)translatedTexts {
+    self.translatedDocument = [self documentWithTranslatedTexts:translatedTexts];
+    [self showTranslationTable];
+}
+
+#pragma mark - virtual document
+
+- (Document*)documentWithTranslatedTexts:(NSArray <NSString*> *)translatedTexts {
+    
+    NSMapTable *fileTables = [NSMapTable strongToStrongObjectsMapTable];
+    
+    // Create a map for [old file] -> [new file]
+    for (TranslationPair *pair in self.pairs) {
+        if (![fileTables objectForKey:pair.file]) {
+            File *newFile = [[File alloc] init];
+            newFile.original = pair.file.original;
+            newFile.translations = [NSMutableArray array];
+            [fileTables setObject:newFile forKey:pair.file];
+        }
+    }
+    
+    // Create new translation pair that looks like the original with new translation
+    NSMutableOrderedSet *files = [[NSMutableOrderedSet alloc] initWithCapacity:fileTables.count];
+    for (NSInteger i = 0; i < self.pairs.count; i++) {
+        TranslationPair *thisPair = self.pairs[i];
+        File *thisFile = [fileTables objectForKey:thisPair.file];
+        NSString *translated = translatedTexts[i];
+
+        TranslationPair *newPair = [[TranslationPair alloc] init];
+        newPair.file = thisFile;
+        newPair.source = thisPair.source;
+        newPair.target = translated;
+        [thisFile.translations addObject:newPair];
+        [files addObject:thisFile];
+    }
+    
+    Document *newDocument = [[Document alloc] init];
+    newDocument.files = [[files array] mutableCopy];
+    return newDocument;
 }
 
 @end

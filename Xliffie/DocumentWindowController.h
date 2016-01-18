@@ -7,10 +7,10 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "ViewController.h"
+#import "DocumentViewController.h"
 #import "DocumentWindow.h"
 
-@interface DocumentWindowController : NSWindowController <ViewControllerDelegate, DocumentWindowDelegate, NSSplitViewDelegate, NSWindowRestoration>
+@interface DocumentWindowController : NSWindowController <DocumentViewControllerDelegate, DocumentWindowDelegate, NSSplitViewDelegate, NSWindowRestoration>
 
 - (void)toggleNotes;
 

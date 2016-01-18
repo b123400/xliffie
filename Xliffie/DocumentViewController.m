@@ -6,11 +6,11 @@
 //  Copyright (c) 2015 b123400. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "DocumentViewController.h"
 #import "TranslationPair.h"
 #import "TranslationTargetCell.h"
 
-@interface ViewController ()
+@interface DocumentViewController ()
 
 @property (weak) IBOutlet XMLOutlineView *outlineView;
 @property (strong, nonatomic) Document *filteredDocument;
@@ -18,7 +18,7 @@
 
 @end
 
-@implementation ViewController
+@implementation DocumentViewController
 
 - (instancetype)initWithCoder:(NSCoder *)coder {
     self = [super initWithCoder:coder];
@@ -149,11 +149,20 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
     NSUInteger index = [self.outlineView selectedRow];
     id item = [self.outlineView itemAtRow:index];
     if ([item isKindOfClass:[TranslationPair class]]) {
-        [self.delegate viewController:self didSelectedTranslation:item];
-        [self.delegate viewController:self didSelectedFileChild:[item file]];
+        
+        if ([self.delegate respondsToSelector:@selector(viewController:didSelectedTranslation:)]) {
+            [self.delegate viewController:self didSelectedTranslation:item];
+        }
+        if ([self.delegate respondsToSelector:@selector(viewController:didSelectedFileChild:)]) {
+            [self.delegate viewController:self didSelectedFileChild:[item file]];
+        }
     } else {
-        [self.delegate viewController:self didSelectedTranslation:nil];
-        [self.delegate viewController:self didSelectedFileChild:item];
+        if ([self.delegate respondsToSelector:@selector(viewController:didSelectedTranslation:)]) {
+            [self.delegate viewController:self didSelectedTranslation:nil];
+        }
+        if ([self.delegate respondsToSelector:@selector(viewController:didSelectedFileChild:)]) {
+            [self.delegate viewController:self didSelectedFileChild:item];
+        }
     }
 }
 
@@ -228,6 +237,10 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 - (void)setDocument:(Document *)document {
     _document = document;
     [self applyMapLanguage:self.mapLanguage];
+    [self expendAllItems];
+}
+
+- (void)expendAllItems {
     [self.outlineView expandItem:nil expandChildren:YES];
 }
 
@@ -275,6 +288,9 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 }
 
 - (void)applyMapLanguage:(NSString*)mapLanguage {
+    if (![self.delegate respondsToSelector:@selector(viewController:alternativeFileForFile:withLanguage:)]) {
+        return;
+    }
     for (File *file in self.document.files) {
         File *alternativeFile = [self.delegate viewController:self
                                        alternativeFileForFile:file

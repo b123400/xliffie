@@ -16,7 +16,7 @@
 @interface DocumentWindowController () <DocumentListDrawerDelegate, TargetMissingViewController, TranslateServiceWindowControllerDelegate>
 
 @property (nonatomic, strong) NSViewController *splitViewController;
-@property (nonatomic, strong) ViewController *mainViewController;
+@property (nonatomic, strong) DocumentViewController *mainViewController;
 @property (nonatomic, strong) DetailViewController *detailViewController;
 
 @property (nonatomic, strong) TargetMissingViewController *targetMissingViewController;
@@ -62,7 +62,7 @@
     [super windowDidLoad];
     
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
-    self.mainViewController = [self.storyboard instantiateControllerWithIdentifier:@"ViewController"];
+    self.mainViewController = [self.storyboard instantiateControllerWithIdentifier:@"DocumentViewController"];
     self.mainViewController.delegate = self;
     self.mainViewController.document = self.document;
     

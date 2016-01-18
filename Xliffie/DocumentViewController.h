@@ -12,7 +12,9 @@
 #import "Document.h"
 #import "File.h"
 
-@protocol ViewControllerDelegate <NSObject>
+@protocol DocumentViewControllerDelegate <NSObject>
+
+@optional
 
 - (void)viewController:(id)controller didSelectedFileChild:(File*)file;
 - (void)viewController:(id)controller didSelectedTranslation:(TranslationPair*)pair;
@@ -22,15 +24,16 @@
 
 @end
 
-@interface ViewController : NSViewController<NSOutlineViewDataSource, NSOutlineViewDelegate, XMLOutlineViewDelegate>
+@interface DocumentViewController : NSViewController<NSOutlineViewDataSource, NSOutlineViewDelegate, XMLOutlineViewDelegate>
 
 @property (nonatomic, strong) Document *document;
 @property (nonatomic, strong) NSString *searchFilter;
-@property (nonatomic, weak) id <ViewControllerDelegate> delegate;
+@property (nonatomic, weak) id <DocumentViewControllerDelegate> delegate;
 @property (nonatomic, strong) NSString *mapLanguage;
 
 - (Document*)documentForDisplay;
 - (BOOL)isTranslationSelected:(TranslationPair*)translation;
+- (void)expendAllItems;
 
 @end
 

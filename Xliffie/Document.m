@@ -8,7 +8,7 @@
 
 #import "Document.h"
 #import "File.h"
-#import "ViewController.h"
+#import "DocumentViewController.h"
 #import "DocumentWindowController.h"
 
 @interface Document ()
