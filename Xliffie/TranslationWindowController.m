@@ -86,8 +86,10 @@
 - (IBAction)cancelButtonPressed:(id)sender {
     [self.window.sheetParent endSheet:self.window returnCode:NSModalResponseCancel];
 }
+
 - (IBAction)okButtonPressed:(id)sender {
-    
+    [self applyTranslation];
+    [self.window.sheetParent endSheet:self.window returnCode:NSModalResponseOK];
 }
 
 #pragma mark - translate
@@ -159,6 +161,18 @@
     Document *newDocument = [[Document alloc] init];
     newDocument.files = [[files array] mutableCopy];
     return newDocument;
+}
+
+- (void)applyTranslation {
+    NSMutableArray <TranslationPair*> *translatedPairs = [NSMutableArray arrayWithCapacity:self.pairs.count];
+    for (File *file in self.translatedDocument.files) {
+        [translatedPairs addObjectsFromArray:file.translations];
+    }
+    
+    for (NSInteger i = 0; i < self.pairs.count; i++) {
+        TranslationPair *pair = self.pairs[i];
+        pair.target = translatedPairs[i].target;
+    }
 }
 
 @end

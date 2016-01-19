@@ -433,6 +433,9 @@ constrainMaxCoordinate:(CGFloat)proposedMax
     __weak typeof(self) weakSelf = self;
     [self.window beginSheet:controller.window
           completionHandler:^(NSModalResponse returnCode) {
+              if (returnCode == NSModalResponseOK) {
+                  weakSelf.document = weakSelf.document; // reload vc
+              }
               weakSelf.translateController = nil;
           }];
 }

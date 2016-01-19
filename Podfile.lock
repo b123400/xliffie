@@ -17,13 +17,13 @@ PODS:
   - AFNetworking/Reachability (2.6.3)
   - AFNetworking/Security (2.6.3)
   - AFNetworking/Serialization (2.6.3)
-  - BRLocaleMap (1.0.0)
-  - Crashlytics (3.5.0):
-    - Fabric (~> 1.6.0)
-  - Fabric (1.6.2)
+  - BRLocaleMap (1.0.1)
+  - Crashlytics (3.6.0):
+    - Fabric (~> 1.6.3)
+  - Fabric (1.6.3)
   - FGTranslator (1.1.2):
     - AFNetworking (~> 2.0)
-    - PINCache (~> 2.1)
+    - PINCache
   - PINCache (2.1.2)
 
 DEPENDENCIES:
@@ -31,6 +31,7 @@ DEPENDENCIES:
   - Crashlytics
   - Fabric
   - FGTranslator (from `git@github.com:b123400/FGTranslator.git`, branch `xliffie`)
+  - PINCache (from `git@github.com:b123400/PINCache.git`, branch `escape`)
 
 EXTERNAL SOURCES:
   BRLocaleMap:
@@ -39,21 +40,27 @@ EXTERNAL SOURCES:
   FGTranslator:
     :branch: xliffie
     :git: git@github.com:b123400/FGTranslator.git
+  PINCache:
+    :branch: escape
+    :git: git@github.com:b123400/PINCache.git
 
 CHECKOUT OPTIONS:
   BRLocaleMap:
-    :commit: ce380756fc1c6a7dc7dec0b75ad7731d045c351a
+    :commit: 2913a92539602d853196de46c90973387e5383cf
     :git: git@github.com:b123400/BRLocaleMap.git
   FGTranslator:
-    :commit: 3f720c44f4b3bb8f9f9ff4dc5b2c3a55a0fc8bc8
+    :commit: 37e64ce4d348e2c9e0d2a5cb64dba6942d0aa676
     :git: git@github.com:b123400/FGTranslator.git
+  PINCache:
+    :commit: 311f1ae74baabaaaf8f799f5fc9d3c47a9a4c2de
+    :git: git@github.com:b123400/PINCache.git
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
-  BRLocaleMap: bfdecc08333024562c5caabe5b81ca25644aded9
-  Crashlytics: fabfd45d0e8b8dc936c682b97e302b9a49a1c827
-  Fabric: e8296d4a1abb3c5eed770cc86b311c862f51d340
-  FGTranslator: 280128c2b3a4a816e6d792aa168486e8c003ad3d
-  PINCache: 9e70271f1bdd60c0465b7208adcc4b6acc1fc376
+  BRLocaleMap: 4f45eee8912a117aaf5b158678442affac376e2e
+  Crashlytics: e4e8d02914f2608fbc7bf42b1a7af838b0db67a2
+  Fabric: cbe0ca6c9531bba17910052f6f105fcbc5fa7f67
+  FGTranslator: be2f6990206ef05185d1c6ccd255f2f23b526281
+  PINCache: 3e2b082d6ca9c5f68579c70cc7f30452690e04eb
 
 COCOAPODS: 0.39.0
