@@ -25,5 +25,6 @@
 - (NSArray*)formatWarningsForProposedTranslation:(NSString*)newTranslation;
 
 - (NSString*)sourceForDisplay;
+- (NSArray <NSString*> *)warningsForTarget;
 
 @end

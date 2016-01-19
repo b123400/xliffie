@@ -125,7 +125,7 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
         
         if ([item isKindOfClass:[TranslationPair class]]) {
             TranslationPair *pair = (TranslationPair*)item;
-            if (!pair.target || [pair.target isEqualToString:@""]) {
+            if (!pair.target || [pair.target isEqualToString:@""] || [pair warningsForTarget].count) {
                 cell.dotColor = [NSColor colorWithDeviceRed: 1 green: 0 blue: 0.369 alpha: 1];
             } else if ([pair.target isEqualToString:pair.source]) {
                 cell.dotColor = [NSColor colorWithDeviceRed: 1 green: 0.675 blue: 0 alpha: 1];
