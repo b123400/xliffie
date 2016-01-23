@@ -49,9 +49,6 @@ DQ
                         <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="66o-j4-Gtg">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
-                            <string key="keyEquivalent" base64-UTF8="YES">
-Gw
-</string>
                         </buttonCell>
                         <connections>
                             <action selector="cancelButtonPressed:" target="-2" id="HNJ-j5-fq4"/>

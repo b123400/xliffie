@@ -88,8 +88,24 @@
 }
 
 - (IBAction)okButtonPressed:(id)sender {
-    [self applyTranslation];
-    [self.window.sheetParent endSheet:self.window returnCode:NSModalResponseOK];
+    NSArray *pairsWithWarning = [self translationWithWarnings];
+    if (!pairsWithWarning.count) {
+        [self applyTranslation];
+        [self.window.sheetParent endSheet:self.window returnCode:NSModalResponseOK];
+    } else {
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert addButtonWithTitle:NSLocalizedString(@"Go ahead", @"")];
+        [alert addButtonWithTitle:NSLocalizedString(@"Cancel", @"")];
+        [alert setMessageText:NSLocalizedString(@"Are you sure?", @"Translate alert message")];
+        [alert setInformativeText:
+         [NSString stringWithFormat:
+          NSLocalizedString(@"There are %d records with formatting warnings, better fix them before applying.",
+                            @"Translate alert message"),
+          pairsWithWarning.count]];
+        [[[alert buttons] objectAtIndex:0] setKeyEquivalent:@""]; // make "go ahead" not a default
+        [[[alert buttons] objectAtIndex:1] setKeyEquivalent:@"\r"]; // make cancel the default
+        [alert runModal];
+    }
 }
 
 #pragma mark - translate
@@ -115,6 +131,8 @@
                                           NSAlert *alert = [NSAlert alertWithError:error];
                                           alert.alertStyle = NSCriticalAlertStyle;
                                           [alert runModal];
+                                          [weakSelf.window.sheetParent endSheet:weakSelf.window
+                                                                     returnCode:NSModalResponseAbort];
                                           return;
                                       }
                                       [weakSelf finishedTranslate:translatedTexts];
@@ -173,6 +191,20 @@
         TranslationPair *pair = self.pairs[i];
         pair.target = translatedPairs[i].target;
     }
+}
+
+#pragma mark - checking
+
+- (NSArray*)translationWithWarnings {
+    NSMutableArray <TranslationPair*> *translatedPairs = [NSMutableArray array];
+    for (File *file in self.translatedDocument.files) {
+        for (TranslationPair *pair in file.translations) {
+            if ([[pair warningsForTarget] count]) {
+                [translatedPairs addObject:pair];
+            }
+        }
+    }
+    return translatedPairs;
 }
 
 @end
