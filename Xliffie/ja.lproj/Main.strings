@@ -31,9 +31,6 @@
 /* Class = "NSMenuItem"; title = "Quit Xliffie"; ObjectID = "4sb-4s-VLi"; */
 "4sb-4s-VLi.title" = "Xliffieを終了";
 
-/* Class = "NSToolbarItem"; label = "Translation"; ObjectID = "5HX-t5-weX"; */
-"5HX-t5-weX.label" = "翻訳";
-
 /* Class = "NSMenuItem"; title = "Edit"; ObjectID = "5QF-Oa-p0T"; */
 "5QF-Oa-p0T.title" = "編集";
 
@@ -71,12 +68,12 @@
 "BOF-NM-1cW.title" = "設定...";
 
 /* Class = "NSMenuItem"; title = "\tLeft to Right"; ObjectID = "BgM-ve-c93"; */
-"BgM-ve-c93.title" = "\t左から右へ";
+"BgM-ve-c93.title" = "	左から右へ";
 
 /* Class = "NSMenuItem"; title = "Save As…"; ObjectID = "Bw7-FT-i3A"; */
 "Bw7-FT-i3A.title" = "他のファイルとして保存…";
 
-/* Class = "DocumentWindow"; title = "Window"; ObjectID = "Ckk-yw-fiv"; */
+/* Class = "NSWindow"; title = "Window"; ObjectID = "Ckk-yw-fiv"; */
 "Ckk-yw-fiv.title" = "ウインド";
 
 /* Class = "NSMenuItem"; title = "Close"; ObjectID = "DVo-aG-piG"; */
@@ -152,7 +149,7 @@
 "LVM-kO-fVI.title" = "Paste Ruler";
 
 /* Class = "NSMenuItem"; title = "\tLeft to Right"; ObjectID = "Lbh-J2-qVU"; */
-"Lbh-J2-qVU.title" = "\t左から右へ";
+"Lbh-J2-qVU.title" = "	左から右へ";
 
 /* Class = "NSMenuItem"; title = "Copy Ruler"; ObjectID = "MkV-Pr-PK5"; */
 "MkV-Pr-PK5.title" = "Copy Ruler";
@@ -161,7 +158,7 @@
 "NMo-om-nkz.title" = "サービス";
 
 /* Class = "NSMenuItem"; title = "\tDefault"; ObjectID = "Nop-cj-93Q"; */
-"Nop-cj-93Q.title" = "\tデフォルト";
+"Nop-cj-93Q.title" = "	デフォルト";
 
 /* Class = "NSMenuItem"; title = "Minimize"; ObjectID = "OY7-WF-poV"; */
 "OY7-WF-poV.title" = "Minimize";
@@ -188,7 +185,7 @@
 "R4o-n2-Eq4.title" = "ズーム";
 
 /* Class = "NSMenuItem"; title = "\tRight to Left"; ObjectID = "RB4-Sm-HuC"; */
-"RB4-Sm-HuC.title" = "\t右から左へ";
+"RB4-Sm-HuC.title" = "	右から左へ";
 
 /* Class = "NSMenuItem"; title = "Superscript"; ObjectID = "Rqc-34-cIF"; */
 "Rqc-34-cIF.title" = "Superscript";
@@ -230,7 +227,7 @@
 "YEy-JH-Tfz.title" = "検索と置換…";
 
 /* Class = "NSMenuItem"; title = "\tDefault"; ObjectID = "YGs-j5-SAR"; */
-"YGs-j5-SAR.title" = "\tデフォルト";
+"YGs-j5-SAR.title" = "	デフォルト";
 
 /* Class = "NSTextFieldCell"; title = "Text"; ObjectID = "YIz-Iw-oVL"; */
 "YIz-Iw-oVL.title" = "テキスト";
@@ -264,9 +261,6 @@
 
 /* Class = "NSMenu"; title = "File"; ObjectID = "bib-Uj-vzu"; */
 "bib-Uj-vzu.title" = "ファイル";
-
-/* Class = "NSTextFieldCell"; title = "English to Japanese"; ObjectID = "btc-fI-zo4"; */
-"btc-fI-zo4.title" = "英語から日本語へ";
 
 /* Class = "NSMenuItem"; title = "Use Selection for Find"; ObjectID = "buJ-ug-pKt"; */
 "buJ-ug-pKt.title" = "Use Selection for Find";
@@ -317,7 +311,7 @@
 "jBQ-r6-VK2.title" = "Kern";
 
 /* Class = "NSMenuItem"; title = "\tRight to Left"; ObjectID = "jFq-tB-4Kx"; */
-"jFq-tB-4Kx.title" = "\t右から左へ";
+"jFq-tB-4Kx.title" = "	右から左へ";
 
 /* Class = "NSMenuItem"; title = "Format"; ObjectID = "jxT-CU-nIS"; */
 "jxT-CU-nIS.title" = "フォーマット";

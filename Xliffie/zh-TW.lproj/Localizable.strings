@@ -1,18 +1,42 @@
-/* No comment provided by engineer. */
-"Apply it anyway" = "大丈夫です";
+/* Translation window hint */
+"%d record(s) are going to be translated using %@." = "將要用 %2$@ 來翻譯 %1$d 串字。";
 
 /* No comment provided by engineer. */
-"Cancel" = "キャンセル";
+"Apply it anyway" = "不管啦欸";
+
+/* Translate alert message */
+"Are you sure?" = "肯定？肯肯定？";
 
 /* No comment provided by engineer. */
-"Maybe you've made a mistake?" = "もしかしたらミスった？";
+"Cancel" = "取消";
+
+/* Translation source not found */
+"Cannot translate from %@" = "無法從 %@ 翻譯";
+
+/* Translation target not found */
+"Cannot translate to %@" = "無法翻譯成 %@";
 
 /* No comment provided by engineer. */
-"The source contains %@ \"%%%@\", but your input contains %@" = "ソースに \"%%%2$@\" が%1$@つあるけど、インプットには%3$@つがあります";
+"Go ahead" = "不管啦照做啦";
 
 /* No comment provided by engineer. */
-"The source contains at least one \"%%%@\", but your input doesn't" = "ソースに \"%%%@\" があるけど、インプットにはないです";
+"Maybe you've made a mistake?" = "這裏是不是有點不小心...?";
+
+/* Translation window hint */
+"No translation service support this language" = "沒有網站可以幫你翻譯這個語言耶";
+
+/* Translation window hint */
+"Nothing matches the above criteria. Nothing will be translated." = "沒有字串符合以上條件喔";
 
 /* No comment provided by engineer. */
-"The source doesn't contain \"%%%@\", but your input does" = "ソースに \"%%%@\" がないけど、インプットにあります";
+"The source contains %@ \"%%%@\", but your input contains %@" = "原文裡有 %1$@ 個 \"%%%2$@\"，但是你的輸入裏面有 %3$@個耶";
+
+/* No comment provided by engineer. */
+"The source contains at least one \"%%%@\", but your input doesn't" = "原文裡至少有一個 \"%%%@\"，但是你的輸入裡沒有耶";
+
+/* No comment provided by engineer. */
+"The source doesn't contain \"%%%@\", but your input does" = "原文裡沒有 \"%%%@\"，但是你的輸入裏有耶";
+
+/* Translate alert message */
+"There are %d records with formatting warnings, better fix them before applying." = "有 %d 個字串都有格式警告，適用之前是不是先修正比較好...？";
 

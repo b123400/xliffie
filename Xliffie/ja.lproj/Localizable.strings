@@ -1,21 +1,42 @@
-/* No comment provided by engineer. */
-"%@ to %@" = "%1$@ から %2$@ へ";
+/* Translation window hint */
+"%d record(s) are going to be translated using %@." = "これから%1$dつの文字列を %2$@ で翻訳します。";
 
 /* No comment provided by engineer. */
-"The source doesn\'t contain \"%%%@\", but your input does" = "ソースに \"%%%@\" がないけど、インプットにあります";
+"Apply it anyway" = "大丈夫です";
+
+/* Translate alert message */
+"Are you sure?" = "ホンマ？";
+
+/* No comment provided by engineer. */
+"Cancel" = "キャンセル";
+
+/* Translation source not found */
+"Cannot translate from %@" = "%@ から翻訳することはできないです。";
+
+/* Translation target not found */
+"Cannot translate to %@" = "%@ に翻訳するのできないです。";
+
+/* No comment provided by engineer. */
+"Go ahead" = "うるせえ！";
+
+/* No comment provided by engineer. */
+"Maybe you've made a mistake?" = "もしかしたらミスった？";
+
+/* Translation window hint */
+"No translation service support this language" = "この言語を翻訳できるサービスがないです。";
+
+/* Translation window hint */
+"Nothing matches the above criteria. Nothing will be translated." = "以上の条件に満たす文字列がないため、なにも翻訳しないです。";
 
 /* No comment provided by engineer. */
 "The source contains %@ \"%%%@\", but your input contains %@" = "ソースに \"%%%2$@\" が%1$@つあるけど、インプットには%3$@つがあります";
 
 /* No comment provided by engineer. */
-"The source contains at least one \"%%%@\", but your input doesn\'t" = "ソースに \"%%%@\" があるけど、インプットにはないです";
+"The source contains at least one \"%%%@\", but your input doesn't" = "ソースに \"%%%@\" があるけど、インプットにはないです";
 
 /* No comment provided by engineer. */
-"Apply it anyway" = "大丈夫です";
+"The source doesn't contain \"%%%@\", but your input does" = "ソースに \"%%%@\" がないけど、インプットにあります";
 
-/* No comment provided by engineer. */
-"Cancel" = "キャンセル";
-
-/* No comment provided by engineer. */
-"Maybe you've made a mistake?" = "もしかしたらミスった？";
+/* Translate alert message */
+"There are %d records with formatting warnings, better fix them before applying." = "問題がある文字列は %d 個もありますけど、修正した方がいいですよ。";
 

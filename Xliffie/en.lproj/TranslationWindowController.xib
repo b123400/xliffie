@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="TranslationWindowController">
+            <connections>
+                <outlet property="cancelButton" destination="RhG-8T-f78" id="L4K-cN-7X8"/>
+                <outlet property="documentView" destination="BA9-Ir-HU9" id="pGA-yC-sJh"/>
+                <outlet property="okButton" destination="neW-cq-pWL" id="1C5-cP-w2e"/>
+                <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="F0z-JX-Cv5">
+            <windowStyleMask key="styleMask" titled="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="196" y="240" width="480" height="295"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+            <view key="contentView" id="se5-gp-TjO">
+                <rect key="frame" x="0.0" y="0.0" width="480" height="295"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="neW-cq-pWL">
+                        <rect key="frame" x="348" y="3" width="128" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="B4Q-VY-HK2"/>
+                            <constraint firstAttribute="width" constant="116" id="dow-HT-ckf"/>
+                        </constraints>
+                        <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Kqq-Mb-ajx">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="okButtonPressed:" target="-2" id="iIb-68-2Cu"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RhG-8T-f78">
+                        <rect key="frame" x="212" y="3" width="128" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="116" id="IPn-Fi-egl"/>
+                            <constraint firstAttribute="height" constant="21" id="qNq-zG-DHa"/>
+                        </constraints>
+                        <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="66o-j4-Gtg">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="cancelButtonPressed:" target="-2" id="HNJ-j5-fq4"/>
+                        </connections>
+                    </button>
+                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="BA9-Ir-HU9">
+                        <rect key="frame" x="10" y="41" width="460" height="244"/>
+                    </customView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="neW-cq-pWL" secondAttribute="trailing" constant="10" id="Ktp-ZK-lNh"/>
+                    <constraint firstItem="RhG-8T-f78" firstAttribute="top" secondItem="BA9-Ir-HU9" secondAttribute="bottom" constant="10" id="TVU-YF-EB9"/>
+                    <constraint firstItem="neW-cq-pWL" firstAttribute="leading" secondItem="RhG-8T-f78" secondAttribute="trailing" constant="20" id="UP0-Yt-lnX"/>
+                    <constraint firstItem="BA9-Ir-HU9" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="10" id="cIo-7I-gqA"/>
+                    <constraint firstItem="neW-cq-pWL" firstAttribute="top" secondItem="RhG-8T-f78" secondAttribute="top" id="g90-XW-TwA"/>
+                    <constraint firstAttribute="bottom" secondItem="RhG-8T-f78" secondAttribute="bottom" constant="10" id="mHu-lg-fst"/>
+                    <constraint firstAttribute="trailing" secondItem="BA9-Ir-HU9" secondAttribute="trailing" constant="10" id="qO9-U2-ozP"/>
+                    <constraint firstItem="BA9-Ir-HU9" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="10" id="v7q-5v-M8t"/>
+                </constraints>
+            </view>
+            <connections>
+                <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
+            </connections>
+            <point key="canvasLocation" x="443" y="392.5"/>
+        </window>
+    </objects>
+</document>

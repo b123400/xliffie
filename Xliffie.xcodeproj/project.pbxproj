@@ -10,7 +10,6 @@
 		16944ED79FF3BC82F844375D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 707697586225A7F3BE9B50CC /* libPods.a */; };
 		CF011B4B1C40FCBA00948323 /* TranslationUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = CF011B4A1C40FCBA00948323 /* TranslationUtility.m */; };
 		CF011B7D1C4641A400948323 /* TranslationWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF011B7B1C4641A400948323 /* TranslationWindowController.m */; };
-		CF011B7E1C4641A400948323 /* TranslationWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF011B7C1C4641A400948323 /* TranslationWindowController.xib */; };
 		CF34B7471AAB7C2000C6A58E /* DocumentListDrawer.m in Sources */ = {isa = PBXBuildFile; fileRef = CF34B7461AAB7C2000C6A58E /* DocumentListDrawer.m */; };
 		CF34B75A1AADE00A00C6A58E /* TranslationTargetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF34B7591AADE00A00C6A58E /* TranslationTargetCell.m */; };
 		CF5682EB1A6AFB9800E0DEDD /* DocumentWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5682E91A6AFB9800E0DEDD /* DocumentWindowController.m */; };
@@ -23,7 +22,8 @@
 		CF5FC8A01A5ABFF700538E60 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF5FC89E1A5ABFF700538E60 /* Main.storyboard */; };
 		CF5FC8AC1A5ABFF700538E60 /* XliffieTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5FC8AB1A5ABFF700538E60 /* XliffieTests.m */; };
 		CF660EF31C5401B2007A0B28 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = CF660EF21C5401B2007A0B28 /* Credits.rtf */; };
-		CF662B361C30774300704CEA /* TranslateServiceWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF662B341C30774300704CEA /* TranslateServiceWindowController.xib */; };
+		CF660EF41C540E11007A0B28 /* TranslateServiceWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF660EF61C540E11007A0B28 /* TranslateServiceWindowController.xib */; };
+		CF660EFB1C540E27007A0B28 /* TranslationWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF660EFD1C540E27007A0B28 /* TranslationWindowController.xib */; };
 		CF662B391C307C7D00704CEA /* TranslateServiceWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF662B381C307C7D00704CEA /* TranslateServiceWindowController.m */; };
 		CF92FB941C24037B00700D3E /* TargetMissingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF92FB931C24037B00700D3E /* TargetMissingViewController.m */; };
 		CF94FCA51A5C365400EE8BD5 /* File.m in Sources */ = {isa = PBXBuildFile; fileRef = CF94FCA41A5C365400EE8BD5 /* File.m */; };
@@ -55,7 +55,10 @@
 		CF011B4A1C40FCBA00948323 /* TranslationUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TranslationUtility.m; sourceTree = "<group>"; };
 		CF011B7A1C4641A400948323 /* TranslationWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TranslationWindowController.h; sourceTree = "<group>"; };
 		CF011B7B1C4641A400948323 /* TranslationWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TranslationWindowController.m; sourceTree = "<group>"; };
-		CF011B7C1C4641A400948323 /* TranslationWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TranslationWindowController.xib; sourceTree = "<group>"; };
+		CF026F881C541330009A23AC /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/TranslateServiceWindowController.strings; sourceTree = "<group>"; };
+		CF026F891C54133B009A23AC /* zh-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-TW"; path = "zh-TW.lproj/TranslateServiceWindowController.strings"; sourceTree = "<group>"; };
+		CF026F8A1C54134A009A23AC /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/TranslationWindowController.strings; sourceTree = "<group>"; };
+		CF026F8B1C54134C009A23AC /* zh-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-TW"; path = "zh-TW.lproj/TranslationWindowController.strings"; sourceTree = "<group>"; };
 		CF34B7451AAB7C2000C6A58E /* DocumentListDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocumentListDrawer.h; sourceTree = "<group>"; };
 		CF34B7461AAB7C2000C6A58E /* DocumentListDrawer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentListDrawer.m; sourceTree = "<group>"; };
 		CF34B7581AADE00A00C6A58E /* TranslationTargetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TranslationTargetCell.h; sourceTree = "<group>"; };
@@ -83,7 +86,8 @@
 		CF5FC8AA1A5ABFF700538E60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF5FC8AB1A5ABFF700538E60 /* XliffieTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XliffieTests.m; sourceTree = "<group>"; };
 		CF660EF21C5401B2007A0B28 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
-		CF662B341C30774300704CEA /* TranslateServiceWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TranslateServiceWindowController.xib; sourceTree = "<group>"; };
+		CF660F081C540EFC007A0B28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TranslateServiceWindowController.xib; sourceTree = "<group>"; };
+		CF660F091C540F09007A0B28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TranslationWindowController.xib; sourceTree = "<group>"; };
 		CF662B371C307C7D00704CEA /* TranslateServiceWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TranslateServiceWindowController.h; sourceTree = "<group>"; };
 		CF662B381C307C7D00704CEA /* TranslateServiceWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TranslateServiceWindowController.m; sourceTree = "<group>"; };
 		CF92FB921C24037B00700D3E /* TargetMissingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetMissingViewController.h; sourceTree = "<group>"; };
@@ -252,10 +256,10 @@
 			children = (
 				CF662B371C307C7D00704CEA /* TranslateServiceWindowController.h */,
 				CF662B381C307C7D00704CEA /* TranslateServiceWindowController.m */,
-				CF662B341C30774300704CEA /* TranslateServiceWindowController.xib */,
+				CF660EF61C540E11007A0B28 /* TranslateServiceWindowController.xib */,
 				CF011B7A1C4641A400948323 /* TranslationWindowController.h */,
 				CF011B7B1C4641A400948323 /* TranslationWindowController.m */,
-				CF011B7C1C4641A400948323 /* TranslationWindowController.xib */,
+				CF660EFD1C540E27007A0B28 /* TranslationWindowController.xib */,
 				CF011B491C40FCBA00948323 /* TranslationUtility.h */,
 				CF011B4A1C40FCBA00948323 /* TranslationUtility.m */,
 			);
@@ -337,6 +341,7 @@
 				en,
 				Base,
 				ja,
+				"zh-TW",
 			);
 			mainGroup = CF5FC8831A5ABFF700538E60;
 			productRefGroup = CF5FC88D1A5ABFF700538E60 /* Products */;
@@ -356,8 +361,8 @@
 			files = (
 				CF5FC89D1A5ABFF700538E60 /* Images.xcassets in Resources */,
 				CFE39FA11A767252004644C8 /* InfoPlist.strings in Resources */,
-				CF662B361C30774300704CEA /* TranslateServiceWindowController.xib in Resources */,
-				CF011B7E1C4641A400948323 /* TranslationWindowController.xib in Resources */,
+				CF660EF41C540E11007A0B28 /* TranslateServiceWindowController.xib in Resources */,
+				CF660EFB1C540E27007A0B28 /* TranslationWindowController.xib in Resources */,
 				CFE39F9A1A765859004644C8 /* Localizable.strings in Resources */,
 				CF660EF31C5401B2007A0B28 /* Credits.rtf in Resources */,
 				CF5FC8A01A5ABFF700538E60 /* Main.storyboard in Resources */,
@@ -487,6 +492,26 @@
 				CF4B0C2E1BF91239007AF981 /* zh-TW */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		CF660EF61C540E11007A0B28 /* TranslateServiceWindowController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CF660F081C540EFC007A0B28 /* Base */,
+				CF026F881C541330009A23AC /* ja */,
+				CF026F891C54133B009A23AC /* zh-TW */,
+			);
+			name = TranslateServiceWindowController.xib;
+			sourceTree = "<group>";
+		};
+		CF660EFD1C540E27007A0B28 /* TranslationWindowController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CF660F091C540F09007A0B28 /* Base */,
+				CF026F8A1C54134A009A23AC /* ja */,
+				CF026F8B1C54134C009A23AC /* zh-TW */,
+			);
+			name = TranslationWindowController.xib;
 			sourceTree = "<group>";
 		};
 		CFE39F9C1A765859004644C8 /* Localizable.strings */ = {

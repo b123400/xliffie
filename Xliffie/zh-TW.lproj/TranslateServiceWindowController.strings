@@ -1,0 +1,36 @@
+/* Class = "NSTextFieldCell"; title = "Service"; ObjectID = "3G6-vj-KXD"; */
+"3G6-vj-KXD.title" = "翻譯網站";
+
+/* Class = "NSButtonCell"; title = "OK"; ObjectID = "3RB-pq-utw"; */
+"3RB-pq-utw.title" = "OK";
+
+/* Class = "NSMenuItem"; title = "Google Translate"; ObjectID = "Cay-Et-she"; */
+"Cay-Et-she.title" = "Google翻譯";
+
+/* Class = "NSWindow"; title = "Window"; ObjectID = "F0z-JX-Cv5"; */
+"F0z-JX-Cv5.title" = "Window";
+
+/* Class = "NSTextFieldCell"; title = "%d record(s) are going to be transalted using %@."; ObjectID = "HbR-jO-1Ey"; */
+"HbR-jO-1Ey.title" = "%d record(s) are going to be transalted using %@.";
+
+/* Class = "NSButtonCell"; title = "Ignore records with same source and target string."; ObjectID = "I5T-Mf-vCd"; */
+"I5T-Mf-vCd.title" = "無視原文與譯文一樣的文字";
+
+/* Class = "NSMenuItem"; title = "Bing Translate"; ObjectID = "Qho-ZZ-dzT"; */
+"Qho-ZZ-dzT.title" = "Bing翻譯";
+
+/* Class = "NSTextFieldCell"; title = "Translate"; ObjectID = "gzR-1b-iNx"; */
+"gzR-1b-iNx.title" = "翻譯範圍";
+
+/* Class = "NSMenuItem"; title = "Translate selected"; ObjectID = "qlb-4E-wzL"; */
+"qlb-4E-wzL.title" = "已選擇的字";
+
+/* Class = "NSButtonCell"; title = "Cancel"; ObjectID = "td2-Vm-CEh"; */
+"td2-Vm-CEh.title" = "取消";
+
+/* Class = "NSMenuItem"; title = "Translate all"; ObjectID = "v14-K8-Xy9"; */
+"v14-K8-Xy9.title" = "全部";
+
+/* Class = "NSButtonCell"; title = "Only translate records with empty target string."; ObjectID = "xIa-yY-MDg"; */
+"xIa-yY-MDg.title" = "只翻譯還沒有翻譯的文字";
+
