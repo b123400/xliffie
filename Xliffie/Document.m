@@ -62,6 +62,7 @@
     self.xmlDocument = [[NSXMLDocument alloc] initWithData:data options:0 error:&error];
     if (error) {
         *outError = error;
+        return NO;
     }
     NSArray *elements = [self.xmlDocument.rootElement elementsForName:@"file"];
     

@@ -22,6 +22,7 @@
 		CF5FC89D1A5ABFF700538E60 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF5FC89C1A5ABFF700538E60 /* Images.xcassets */; };
 		CF5FC8A01A5ABFF700538E60 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF5FC89E1A5ABFF700538E60 /* Main.storyboard */; };
 		CF5FC8AC1A5ABFF700538E60 /* XliffieTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5FC8AB1A5ABFF700538E60 /* XliffieTests.m */; };
+		CF660EF31C5401B2007A0B28 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = CF660EF21C5401B2007A0B28 /* Credits.rtf */; };
 		CF662B361C30774300704CEA /* TranslateServiceWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF662B341C30774300704CEA /* TranslateServiceWindowController.xib */; };
 		CF662B391C307C7D00704CEA /* TranslateServiceWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF662B381C307C7D00704CEA /* TranslateServiceWindowController.m */; };
 		CF92FB941C24037B00700D3E /* TargetMissingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF92FB931C24037B00700D3E /* TargetMissingViewController.m */; };
@@ -81,6 +82,7 @@
 		CF5FC8A51A5ABFF700538E60 /* XliffieTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XliffieTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF5FC8AA1A5ABFF700538E60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF5FC8AB1A5ABFF700538E60 /* XliffieTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XliffieTests.m; sourceTree = "<group>"; };
+		CF660EF21C5401B2007A0B28 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		CF662B341C30774300704CEA /* TranslateServiceWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TranslateServiceWindowController.xib; sourceTree = "<group>"; };
 		CF662B371C307C7D00704CEA /* TranslateServiceWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TranslateServiceWindowController.h; sourceTree = "<group>"; };
 		CF662B381C307C7D00704CEA /* TranslateServiceWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TranslateServiceWindowController.m; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 				CFE39FA31A767252004644C8 /* InfoPlist.strings */,
 				CF5FC8901A5ABFF700538E60 /* Info.plist */,
 				CF5FC8941A5ABFF700538E60 /* main.m */,
+				CF660EF21C5401B2007A0B28 /* Credits.rtf */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -356,6 +359,7 @@
 				CF662B361C30774300704CEA /* TranslateServiceWindowController.xib in Resources */,
 				CF011B7E1C4641A400948323 /* TranslationWindowController.xib in Resources */,
 				CFE39F9A1A765859004644C8 /* Localizable.strings in Resources */,
+				CF660EF31C5401B2007A0B28 /* Credits.rtf in Resources */,
 				CF5FC8A01A5ABFF700538E60 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
