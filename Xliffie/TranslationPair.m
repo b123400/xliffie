@@ -12,6 +12,7 @@
 @interface TranslationPair ()
 
 @property (nonatomic, strong) NSXMLElement *xmlElement;
+@property (nonatomic, strong) NSArray <NSString*> *cachedTargetWarnings;
 
 @end
 
@@ -39,6 +40,7 @@
 }
 
 - (void)setSource:(NSString *)source {
+    self.cachedTargetWarnings = nil;
     NSXMLElement *sourceElement = [[self.xmlElement elementsForName:@"source"] firstObject];
     if (!sourceElement) {
         sourceElement = [NSXMLElement elementWithName:@"source"];
@@ -49,6 +51,7 @@
 }
 
 - (void)setTarget:(NSString *)target {
+    self.cachedTargetWarnings = nil;
     NSXMLElement *targetElement = [[self.xmlElement elementsForName:@"target"] firstObject];
     if (!target) {
         if (!targetElement) return;
@@ -74,6 +77,13 @@
     
     [targetElement setStringValue:target];
     _target = target;
+}
+
+- (NSArray <NSString*> *)warningsForTarget {
+    if (!self.cachedTargetWarnings) {
+        self.cachedTargetWarnings = [self formatWarningsForProposedTranslation:self.target];
+    }
+    return self.cachedTargetWarnings;
 }
 
 - (BOOL)matchSearchFilter:(NSString*)filter {
