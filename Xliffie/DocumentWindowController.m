@@ -21,8 +21,7 @@
 
 @property (nonatomic, strong) TargetMissingViewController *targetMissingViewController;
 
-@property (weak) IBOutlet NSPopUpButton *translationSourceButton;
-@property (weak) IBOutlet NSPopUpButton *translationTargetButton;
+@property (weak) IBOutlet NSSegmentedControl *languagesSegment;
 
 @property (weak) IBOutlet NSSearchField *searchField;
 @property (nonatomic, strong) NSMutableArray *documents;
@@ -120,8 +119,16 @@
     [self addDocument:document];
     [self.documentsDrawer selectDocumentAtIndex:[self.documents indexOfObject:document]];
     
-    [self selectMenuItemWithRepresentedObject:((Document*)document).files[0].targetLanguage
-                                inPopUpButton:self.translationTargetButton];
+
+    if (self.mainViewController.mapLanguage) {
+        [self selectLanguage:self.mainViewController.mapLanguage
+            withSegmentIndex:0];
+    } else {
+        [self selectLanguage:((Document*)document).files[0].sourceLanguage
+            withSegmentIndex:0];
+    }
+    [self selectLanguage:((Document*)document).files[0].targetLanguage
+        withSegmentIndex:1];
 }
 
 - (NSString*)baseFolderPath {
@@ -169,7 +176,7 @@
         [urls addObject:document.fileURL];
     }
     [coder encodeObject:urls forKey:@"documents"];
-    [coder encodeObject:[[self.translationSourceButton selectedItem] representedObject] forKey:@"sourceLanguage"];
+    [coder encodeObject:[self selectedLanguageWithSegmentIndex:0] forKey:@"sourceLanguage"];
 }
 
 + (void)restoreWindowWithIdentifier:(NSString *)identifier
@@ -193,9 +200,9 @@
             }
             NSString *sourceLangauge = [state decodeObjectForKey:@"sourceLanguage"];
             if (sourceLangauge) {
-                [controller selectMenuItemWithRepresentedObject:sourceLangauge
-                                                  inPopUpButton:controller.translationSourceButton];
-                [controller selectedSourceLanguage:controller.translationSourceButton.selectedItem];
+                [controller selectLanguage:sourceLangauge
+                          withSegmentIndex:0];
+                [controller selectedSourceLanguage:[controller selectedLanguageMenuItemWithSegmentIndex:0]];
             }
         }
         completionHandler(window, error);
@@ -305,15 +312,15 @@ constrainMaxCoordinate:(CGFloat)proposedMax
 - (void)viewController:(id)controller didSelectedFileChild:(File*)file {
     if (file.sourceLanguage && file.targetLanguage) {
         if (self.mainViewController.mapLanguage) {
-            [self selectMenuItemWithRepresentedObject:self.mainViewController.mapLanguage
-                                        inPopUpButton:self.translationSourceButton];
+            [self selectLanguage:self.mainViewController.mapLanguage
+                withSegmentIndex:0];
         } else {
-            [self selectMenuItemWithRepresentedObject:file.sourceLanguage
-                                        inPopUpButton:self.translationSourceButton];
+            [self selectLanguage:file.sourceLanguage
+                withSegmentIndex:0];
         }
         
-        [self selectMenuItemWithRepresentedObject:file.targetLanguage
-                                    inPopUpButton:self.translationTargetButton];
+        [self selectLanguage:file.targetLanguage
+            withSegmentIndex:1];
     } else {
         
     }
@@ -337,8 +344,11 @@ constrainMaxCoordinate:(CGFloat)proposedMax
 }
 
 - (void)reloadTranslationButtons {
-    [[self.translationSourceButton menu] removeAllItems];
-    [[self.translationTargetButton menu] removeAllItems];
+    NSString *selectedSourceLanguage = [self selectedLanguageWithSegmentIndex:0];
+    NSString *selectedTargetLanguage = [self selectedLanguageWithSegmentIndex:1];
+    
+    [self.languagesSegment setMenu:[[NSMenu alloc] init] forSegment:0];
+    [self.languagesSegment setMenu:[[NSMenu alloc] init] forSegment:1];
     
     NSMutableOrderedSet *sourceCodes = [NSMutableOrderedSet orderedSet];
     NSMutableOrderedSet *targetCodes = [NSMutableOrderedSet orderedSet];
@@ -363,7 +373,7 @@ constrainMaxCoordinate:(CGFloat)proposedMax
                                                    keyEquivalent:@""];
         menuItem.target = self;
         menuItem.representedObject = languageCode;
-        [[self.translationSourceButton menu] addItem:menuItem];
+        [[self.languagesSegment menuForSegment:0] addItem:menuItem];
     }
     
     for (NSString *languageCode in targetCodes) {
@@ -374,8 +384,38 @@ constrainMaxCoordinate:(CGFloat)proposedMax
                                                    keyEquivalent:@""];
         menuItem.target = self;
         menuItem.representedObject = languageCode;
-        [[self.translationTargetButton menu] addItem:menuItem];
+        [[self.languagesSegment menuForSegment:1] addItem:menuItem];
     }
+    
+    [self selectLanguage:selectedSourceLanguage withSegmentIndex:0];
+    [self selectLanguage:selectedTargetLanguage withSegmentIndex:1];
+}
+
+- (void)selectLanguage:(NSString*)language withSegmentIndex:(NSInteger)index {
+    NSArray <NSMenuItem*> *items = [[self.languagesSegment menuForSegment:index] itemArray];
+    for (NSMenuItem *item in items) {
+        if ([language isEqualToString:item.representedObject]) {
+            [item setState:NSOnState];
+            [self.languagesSegment setLabel:item.title
+                                 forSegment:index];
+        } else {
+            [item setState:NSOffState];
+        }
+    }
+}
+
+- (NSMenuItem*)selectedLanguageMenuItemWithSegmentIndex:(NSInteger)index {
+    NSArray <NSMenuItem*> *items = [[self.languagesSegment menuForSegment:index] itemArray];
+    for (NSMenuItem *item in items) {
+        if (item.state == NSOnState) {
+            return item;
+        }
+    }
+    return items[0];
+}
+
+- (NSString*)selectedLanguageWithSegmentIndex:(NSInteger)index {
+    return [self selectedLanguageMenuItemWithSegmentIndex:index].representedObject;
 }
 
 - (void)selectedTargetLanguage:(NSMenuItem*)sender {
@@ -418,8 +458,8 @@ constrainMaxCoordinate:(CGFloat)proposedMax
     self.document = self.document;
     [self reloadLanguageMap];
     [self reloadTranslationButtons];
-    [self selectMenuItemWithRepresentedObject:targetLanguage
-                                inPopUpButton:self.translationTargetButton];
+
+    [self selectLanguage:targetLanguage withSegmentIndex:1];
 }
 
 #pragma mark Translation Service
@@ -438,19 +478,6 @@ constrainMaxCoordinate:(CGFloat)proposedMax
               }
               weakSelf.translateController = nil;
           }];
-}
-
-#pragma mark utility
-
-- (void)selectMenuItemWithRepresentedObject:(id)obj inPopUpButton:(NSPopUpButton*)button {
-    NSMenuItem *selectedMenuItem = nil;
-    for (NSMenuItem *item in [[button menu] itemArray]) {
-        if ([obj isEqualTo:[item representedObject]]) {
-            selectedMenuItem = item;
-            break;
-        }
-    }
-    [button selectItem:selectedMenuItem];
 }
 
 @end

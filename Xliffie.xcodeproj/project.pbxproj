@@ -10,6 +10,7 @@
 		16944ED79FF3BC82F844375D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 707697586225A7F3BE9B50CC /* libPods.a */; };
 		CF011B4B1C40FCBA00948323 /* TranslationUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = CF011B4A1C40FCBA00948323 /* TranslationUtility.m */; };
 		CF011B7D1C4641A400948323 /* TranslationWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF011B7B1C4641A400948323 /* TranslationWindowController.m */; };
+		CF0945911C54FD3600DAEB4A /* BRArrowSegmentedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0945901C54FD3600DAEB4A /* BRArrowSegmentedCell.m */; };
 		CF34B7471AAB7C2000C6A58E /* DocumentListDrawer.m in Sources */ = {isa = PBXBuildFile; fileRef = CF34B7461AAB7C2000C6A58E /* DocumentListDrawer.m */; };
 		CF34B75A1AADE00A00C6A58E /* TranslationTargetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF34B7591AADE00A00C6A58E /* TranslationTargetCell.m */; };
 		CF5682EB1A6AFB9800E0DEDD /* DocumentWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5682E91A6AFB9800E0DEDD /* DocumentWindowController.m */; };
@@ -59,6 +60,8 @@
 		CF026F891C54133B009A23AC /* zh-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-TW"; path = "zh-TW.lproj/TranslateServiceWindowController.strings"; sourceTree = "<group>"; };
 		CF026F8A1C54134A009A23AC /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/TranslationWindowController.strings; sourceTree = "<group>"; };
 		CF026F8B1C54134C009A23AC /* zh-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-TW"; path = "zh-TW.lproj/TranslationWindowController.strings"; sourceTree = "<group>"; };
+		CF09458F1C54FD3600DAEB4A /* BRArrowSegmentedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRArrowSegmentedCell.h; sourceTree = "<group>"; };
+		CF0945901C54FD3600DAEB4A /* BRArrowSegmentedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRArrowSegmentedCell.m; sourceTree = "<group>"; };
 		CF34B7451AAB7C2000C6A58E /* DocumentListDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocumentListDrawer.h; sourceTree = "<group>"; };
 		CF34B7461AAB7C2000C6A58E /* DocumentListDrawer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentListDrawer.m; sourceTree = "<group>"; };
 		CF34B7581AADE00A00C6A58E /* TranslationTargetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TranslationTargetCell.h; sourceTree = "<group>"; };
@@ -153,6 +156,8 @@
 				CFD234F91A5E44C700B52088 /* XMLOutlineView.m */,
 				CF34B7581AADE00A00C6A58E /* TranslationTargetCell.h */,
 				CF34B7591AADE00A00C6A58E /* TranslationTargetCell.m */,
+				CF09458F1C54FD3600DAEB4A /* BRArrowSegmentedCell.h */,
+				CF0945901C54FD3600DAEB4A /* BRArrowSegmentedCell.m */,
 			);
 			name = "UI Elements";
 			sourceTree = "<group>";
@@ -457,6 +462,7 @@
 				CF5FC8981A5ABFF700538E60 /* DocumentViewController.m in Sources */,
 				CF011B7D1C4641A400948323 /* TranslationWindowController.m in Sources */,
 				CF5FC8951A5ABFF700538E60 /* main.m in Sources */,
+				CF0945911C54FD3600DAEB4A /* BRArrowSegmentedCell.m in Sources */,
 				CF662B391C307C7D00704CEA /* TranslateServiceWindowController.m in Sources */,
 				CF5FC8931A5ABFF700538E60 /* AppDelegate.m in Sources */,
 				CFCD4B341A6D0C7200BA8826 /* DocumentWindow.m in Sources */,
