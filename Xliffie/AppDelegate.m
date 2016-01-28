@@ -24,11 +24,14 @@
 
 - (void)didFinishRestoreWindow:(NSNotification*)notification {
     if (![[NSApplication sharedApplication] windows].count) {
-//        [[NSDocumentController sharedDocumentController] openDocument:self];
+        [[NSDocumentController sharedDocumentController] openDocument:self];
     }
 }
 
 - (void)applicationDidBecomeActive:(NSNotification *)aNotification {
+    if (![[NSApplication sharedApplication] windows].count) {
+        [[NSDocumentController sharedDocumentController] openDocument:self];
+    }
 }
 
 - (BOOL)application:(NSApplication *)theApplication openFile:(NSString *)filename {
@@ -70,17 +73,9 @@
         [basePaths setObject:existingFiles forKey:basePath];
     }
     
-    NSMutableDictionary <NSString*, DocumentWindowController*> *controllers = [NSMutableDictionary dictionary];
-    for (DocumentWindow *window in [[NSApplication sharedApplication] windows]) {
-        if (![window isKindOfClass:[DocumentWindow class]]) continue;
-        DocumentWindowController *controller = (DocumentWindowController*)[window windowController];
-        NSString *basePath = [controller baseFolderPath];
-        [controllers setObject:controller forKey:basePath];
-    }
-    
     for (NSString *openingBasePath in basePaths) {
         NSMutableArray <NSString*> *xliffFiles = [basePaths objectForKey:openingBasePath];
-        DocumentWindowController *controller = [controllers objectForKey:openingBasePath];
+        DocumentWindowController *controller = [self openedDocumentControllerWithPath:[xliffFiles firstObject]];
         if (!controller) {
             // open window for this new base path
             NSString *lastFile = [xliffFiles lastObject];
@@ -113,6 +108,18 @@
     }
 }
 
+- (DocumentWindowController*)openedDocumentControllerWithPath:(NSString*)filePath {
+    for (DocumentWindow *window in [[NSApplication sharedApplication] windows]) {
+        if (![window isKindOfClass:[DocumentWindow class]]) continue;
+        DocumentWindowController *controller = (DocumentWindowController*)[window windowController];
+        NSString *basePath = [controller baseFolderPath];
+        if ([[filePath stringByDeletingLastPathComponent] isEqualToString:basePath]) {
+            return controller;
+        }
+    }
+    return nil;
+}
+
 - (void)applicationWillFinishLaunching:(NSNotification *)notification {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFinishRestoreWindow:) name:@"NSApplicationDidFinishRestoringWindowsNotification" object:nil];
 }
@@ -126,14 +133,14 @@
 }
 
 - (BOOL)applicationShouldHandleReopen:(NSApplication *)theApplication hasVisibleWindows:(BOOL)flag {
+
+    NSArray *windows = [[NSApplication sharedApplication] windows];
+    if (windows.count) {
+        [windows[0] makeKeyAndOrderFront:self];
+    } else {
+        [[NSDocumentController sharedDocumentController] openDocument:self];
+    }
     return YES;
-//    NSArray *windows = [[NSApplication sharedApplication] windows];
-//    if (windows.count) {
-//        [windows[0] makeKeyAndOrderFront:self];
-//    } else {
-//        [[NSDocumentController sharedDocumentController] openDocument:self];
-//    }
-//    return NO;
 }
 
 @end
