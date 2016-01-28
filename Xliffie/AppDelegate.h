@@ -8,8 +8,11 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class DocumentWindowController;
+
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
+- (DocumentWindowController*)openedDocumentControllerWithPath:(NSString*)filePath;
 
 @end
 

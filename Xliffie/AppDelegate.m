@@ -29,9 +29,9 @@
 }
 
 - (void)applicationDidBecomeActive:(NSNotification *)aNotification {
-    if (![[NSApplication sharedApplication] windows].count) {
-        [[NSDocumentController sharedDocumentController] openDocument:self];
-    }
+//    if (![[NSApplication sharedApplication] windows].count) {
+//        [[NSDocumentController sharedDocumentController] openDocument:self];
+//    }
 }
 
 - (BOOL)application:(NSApplication *)theApplication openFile:(NSString *)filename {

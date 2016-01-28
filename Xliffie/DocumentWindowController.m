@@ -117,7 +117,17 @@
     [self.window setFrame:frame display:YES animate:NO];
     
     [self addDocument:document];
-    [self.documentsDrawer selectDocumentAtIndex:[self.documents indexOfObject:document]];
+    
+    NSInteger index = NSNotFound;
+    for (NSInteger i = 0; i < self.documents.count; i++) {
+        if ([[self.documents[i] fileURL] isEqualTo:[document fileURL]]) {
+            index = i;
+            break;
+        }
+    }
+    if (index != NSNotFound) {
+        [self.documentsDrawer selectDocumentAtIndex:index];
+    }
     
 
     if (self.mainViewController.mapLanguage) {
@@ -171,6 +181,7 @@
 #pragma mark restore
 
 - (void)encodeRestorableStateWithCoder:(NSCoder *)coder {
+    [super encodeRestorableStateWithCoder:coder];
     NSMutableArray *urls = [NSMutableArray array];
     for (Document *document in self.documents) {
         [urls addObject:document.fileURL];
@@ -183,30 +194,32 @@
                               state:(NSCoder *)state
                   completionHandler:(void (^)(NSWindow *,
                                               NSError *))completionHandler {
-    [NSDocumentController restoreWindowWithIdentifier:identifier state:state completionHandler:^(NSWindow *window, NSError *error) {
-        if ([window isKindOfClass:[DocumentWindow class]]) {
-            NSArray *urls = [state decodeObjectForKey:@"documents"];
-            DocumentWindowController *controller = (DocumentWindowController*)[window windowController];
-            for (NSURL *url in urls) {
-                Document *document = [[Document alloc] initWithContentsOfURL:url
-                                                                      ofType:@"xliff"
-                                                                       error:nil];
-                if (document) {
-                    [controller addDocument:document];
-                }
-            }
-            if (!controller.document) {
-                controller.document = controller.documents[0];
-            }
-            NSString *sourceLangauge = [state decodeObjectForKey:@"sourceLanguage"];
-            if (sourceLangauge) {
-                [controller selectLanguage:sourceLangauge
-                          withSegmentIndex:0];
-                [controller selectedSourceLanguage:[controller selectedLanguageMenuItemWithSegmentIndex:0]];
+
+    DocumentWindowController *controller = (DocumentWindowController*)[[NSStoryboard storyboardWithName:@"Main" bundle:nil] instantiateControllerWithIdentifier:@"Document Window Controller"];
+    DocumentWindow *window = (DocumentWindow*)controller.window;
+    
+    NSArray *urls = [state decodeObjectForKey:@"documents"];
+    for (NSInteger i = 0; i < urls.count; i++) {
+        NSURL *url  = urls[i];
+        Document *document = [[Document alloc] initWithContentsOfURL:url
+                                                              ofType:@"xliff"
+                                                               error:nil];
+        if (document) {
+            [controller setDocument:document];
+            document.windowController = controller;
+            if (i == 0) {
+                [document addWindowController:controller];
             }
         }
-        completionHandler(window, error);
-    }];
+    }
+    
+    NSString *sourceLangauge = [state decodeObjectForKey:@"sourceLanguage"];
+    if (sourceLangauge) {
+        [controller selectLanguage:sourceLangauge
+                  withSegmentIndex:0];
+        [controller selectedSourceLanguage:[controller selectedLanguageMenuItemWithSegmentIndex:0]];
+    }
+    completionHandler(window, nil);
 }
 
 #pragma mark interaction
@@ -411,7 +424,7 @@ constrainMaxCoordinate:(CGFloat)proposedMax
             return item;
         }
     }
-    return items[0];
+    return items.count ? items[0] : nil;
 }
 
 - (NSString*)selectedLanguageWithSegmentIndex:(NSInteger)index {

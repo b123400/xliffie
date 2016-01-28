@@ -9,9 +9,12 @@
 #import <Cocoa/Cocoa.h>
 #import "File.h"
 
+@class DocumentWindowController;
+
 @interface Document : NSDocument
 
 @property (nonatomic, strong) NSMutableArray <File*> *files;
+@property (nonatomic, strong) DocumentWindowController *windowController;
 
 - (Document*)filteredDocumentWithSearchFilter:(NSString*)filter;
 - (NSMutableArray*)filesMatchingSearchFilter:(NSString*)filter;

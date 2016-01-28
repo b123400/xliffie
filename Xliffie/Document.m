@@ -10,11 +10,11 @@
 #import "File.h"
 #import "DocumentViewController.h"
 #import "DocumentWindowController.h"
+#import "AppDelegate.h"
 
 @interface Document ()
 
 @property (nonatomic, strong) NSXMLDocument *xmlDocument;
-@property (nonatomic, strong) DocumentWindowController *windowController;
 
 @end
 
@@ -40,9 +40,16 @@
 
 - (void)makeWindowControllers {
     // Override to return the Storyboard file name of the document.
-    DocumentWindowController *windowController = (DocumentWindowController*)[[NSStoryboard storyboardWithName:@"Main" bundle:nil] instantiateControllerWithIdentifier:@"Document Window Controller"];
-//    windowController.document = self;
-    [self addWindowController:windowController];
+    DocumentWindowController *windowController = [(AppDelegate*)[[NSApplication sharedApplication]
+                                                                 delegate]
+                                                  openedDocumentControllerWithPath:self.fileURL.path];
+    if (windowController) {
+        [windowController setDocument:self];
+    } else {
+        windowController = (DocumentWindowController*)[[NSStoryboard storyboardWithName:@"Main" bundle:nil] instantiateControllerWithIdentifier:@"Document Window Controller"];
+        windowController.document = self;
+        [self addWindowController:windowController];
+    }
     self.windowController = windowController;
     [[windowController window] makeKeyAndOrderFront:self];
 }
