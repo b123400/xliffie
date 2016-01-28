@@ -43,7 +43,7 @@
 }
 
 - (void)close {
-//    self.windowController = nil;
+    self.windowController = nil;
     [super close];
 }
 

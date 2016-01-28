@@ -166,10 +166,12 @@
 }
 
 - (void)windowWillClose:(NSNotification *)notification {
-//    self.window = nil;
-//    [self.documentsDrawer close];
-//    self.documentsDrawer.delegate = nil;
-//    self.documentsDrawer = nil;
+    self.window = nil;
+    self.documentsDrawer.delegate = nil;
+    self.documentsDrawer = nil;
+    for (Document *document in self.documents) {
+        document.windowController = nil;
+    }
 }
 
 #pragma mark undo
