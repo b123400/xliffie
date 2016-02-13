@@ -171,6 +171,7 @@
     self.documentsDrawer = nil;
     for (Document *document in self.documents) {
         document.windowController = nil;
+        [document close];
     }
 }
 
