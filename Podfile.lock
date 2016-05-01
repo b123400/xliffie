@@ -18,7 +18,7 @@ PODS:
   - AFNetworking/Security (2.6.3)
   - AFNetworking/Serialization (2.6.3)
   - BRLocaleMap (1.0.1)
-  - Crashlytics (3.6.0):
+  - Crashlytics (3.7.0):
     - Fabric (~> 1.6.3)
   - Fabric (1.6.3)
   - FGTranslator (1.1.2):
@@ -58,7 +58,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
   BRLocaleMap: 4f45eee8912a117aaf5b158678442affac376e2e
-  Crashlytics: e4e8d02914f2608fbc7bf42b1a7af838b0db67a2
+  Crashlytics: c3a2333dea9e2733d2777f730910321fc9e25c0d
   Fabric: cbe0ca6c9531bba17910052f6f105fcbc5fa7f67
   FGTranslator: be2f6990206ef05185d1c6ccd255f2f23b526281
   PINCache: 3e2b082d6ca9c5f68579c70cc7f30452690e04eb
