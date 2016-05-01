@@ -182,13 +182,22 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
     NSCell *cell = [firstColumn dataCell];
     [cell setWraps:YES];
     
+    CGFloat indentationWidth = [outlineView indentationPerLevel];
+    CGFloat firstColumnWidth = [firstColumn width];
+    if ([item isKindOfClass:[File class]]) {
+        firstColumnWidth -= indentationWidth;
+    } else {
+        // TranslationPair, which means indentation = 2
+        firstColumnWidth -= indentationWidth * 2;
+    }
+    
     if ([item isKindOfClass:[File class]]) {
         [cell setObjectValue:[item original]];
-        return [cell cellSizeForBounds:CGRectMake(0, 0, [firstColumn width], CGFLOAT_MAX)].height;
+        return [cell cellSizeForBounds:CGRectMake(0, 0, firstColumnWidth, CGFLOAT_MAX)].height;
     }
     
     [cell setObjectValue:[item source]];
-    CGFloat sourceHeight = [cell cellSizeForBounds:CGRectMake(0, 0, [firstColumn width], CGFLOAT_MAX)].height;
+    CGFloat sourceHeight = [cell cellSizeForBounds:CGRectMake(0, 0, firstColumnWidth, CGFLOAT_MAX)].height;
     [cell setObjectValue:[item target]];
     CGFloat targetHeight = [cell cellSizeForBounds:CGRectMake(0, 0, [secondColumn width], CGFLOAT_MAX)].height;
     return MAX(sourceHeight, targetHeight);
