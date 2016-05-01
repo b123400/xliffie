@@ -52,6 +52,25 @@
     }
     self.windowController = windowController;
     [[windowController window] makeKeyAndOrderFront:self];
+    
+    // Show Xcode 7.3 sheet
+    if ([self isXcode73]) {
+        
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert setMessageText:NSLocalizedString(@"Do you have Xcode 7.3?",@"xcode alert")];
+        [alert setInformativeText:NSLocalizedString(@"Xcode 7.3 has problem with importing XLIFF files, please consider upgrading to a newer version, or go back to Xcode 7.2.\nYou can continue editing, this is just a reminder of a known bug.", @"")];
+        [alert setAlertStyle:NSInformationalAlertStyle];
+        [alert addButtonWithTitle:NSLocalizedString(@"OK",@"")];
+        [alert addButtonWithTitle:NSLocalizedString(@"Download newer Xcode", @"")];
+        [[[alert buttons] objectAtIndex:0] setKeyEquivalent:@"\r"];
+        [alert beginSheetModalForWindow:windowController.window
+                      completionHandler:^(NSModalResponse returnCode) {
+                          if (returnCode == NSAlertSecondButtonReturn) {
+                              NSURL *url = [NSURL URLWithString:@"https://developer.apple.com/xcode/download/"];
+                              [[NSWorkspace sharedWorkspace] openURL:url];
+                          }
+                      }];
+    }
 }
 
 - (NSData *)dataOfType:(NSString *)typeName error:(NSError **)outError {
@@ -99,6 +118,28 @@
         }
     }
     return files;
+}
+
+# pragma mark - Tool
+
+- (NSXMLElement*)toolTag {
+    NSXMLElement *firstFile = [[self.xmlDocument.rootElement elementsForName:@"file"] firstObject];
+    NSXMLElement *fileHeader = [[firstFile elementsForName:@"header"] firstObject];
+    NSXMLElement *toolTag = [[fileHeader elementsForName:@"tool"] firstObject];
+    return toolTag;
+}
+
+- (NSString*)toolID {
+    return [[self.toolTag attributeForName:@"tool-id"] stringValue];
+}
+
+- (NSString*)toolVersion {
+    return [[self.toolTag attributeForName:@"tool-version"] stringValue];
+}
+
+- (BOOL)isXcode73 {
+    // this version has problem with xliff file
+    return [[self toolVersion] isEqualToString:@"7.3"] && [[self toolID] isEqualToString:@"com.apple.dt.xcode"];
 }
 
 @end

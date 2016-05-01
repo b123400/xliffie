@@ -19,5 +19,7 @@
 - (Document*)filteredDocumentWithSearchFilter:(NSString*)filter;
 - (NSMutableArray*)filesMatchingSearchFilter:(NSString*)filter;
 
-@end
+- (NSString*)toolID;
+- (NSString*)toolVersion;
 
+@end
