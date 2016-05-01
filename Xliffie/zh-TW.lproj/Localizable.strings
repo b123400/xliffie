@@ -16,6 +16,12 @@
 /* Translation target not found */
 "Cannot translate to %@" = "無法翻譯成 %@";
 
+/* xcode alert */
+"Do you have Xcode 7.3?" = "你在用 Xcode 7.3 嗎？";
+
+/* No comment provided by engineer. */
+"Download newer Xcode" = "下載更新的版本";
+
 /* No comment provided by engineer. */
 "Go ahead" = "不管啦照做啦";
 
@@ -39,4 +45,9 @@
 
 /* Translate alert message */
 "There are %d records with formatting warnings, better fix them before applying." = "有 %d 個字串都有格式警告，適用之前是不是先修正比較好...？";
+
+/* No comment provided by engineer. */
+"Xcode 7.3 has problem with importing XLIFF files, please consider upgrading to a newer version, or go back to Xcode 7.2.
+You can continue editing, this is just a reminder of a known bug." = "Xcode 7.3 有一個 bug 令到無法匯入 XLIFF 檔案，想匯入的話就要用舊的 Xcode 7.2，或者用更新的版本。
+繼續編輯這個檔案也沒有什麼問題，只是提醒一下而已啦。";
 

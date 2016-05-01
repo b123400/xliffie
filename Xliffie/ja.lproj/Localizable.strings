@@ -16,6 +16,12 @@
 /* Translation target not found */
 "Cannot translate to %@" = "%@ に翻訳するのできないです。";
 
+/* xcode alert */
+"Do you have Xcode 7.3?" = "お主、もしやXcode 7.3の使い手でござるか？";
+
+/* No comment provided by engineer. */
+"Download newer Xcode" = "新しいバージョンをダウンロード";
+
 /* No comment provided by engineer. */
 "Go ahead" = "うるせえ！";
 
@@ -29,6 +35,9 @@
 "Nothing matches the above criteria. Nothing will be translated." = "以上の条件に満たす文字列がないため、なにも翻訳しないです。";
 
 /* No comment provided by engineer. */
+"OK" = "OK";
+
+/* No comment provided by engineer. */
 "The source contains %@ \"%%%@\", but your input contains %@" = "ソースに \"%%%2$@\" が%1$@つあるけど、インプットには%3$@つがあります";
 
 /* No comment provided by engineer. */
@@ -39,4 +48,9 @@
 
 /* Translate alert message */
 "There are %d records with formatting warnings, better fix them before applying." = "問題がある文字列は %d 個もありますけど、修正した方がいいですよ。";
+
+/* No comment provided by engineer. */
+"Xcode 7.3 has problem with importing XLIFF files, please consider upgrading to a newer version, or go back to Xcode 7.2.
+You can continue editing, this is just a reminder of a known bug." = "Xcode 7.3 は XLIFF ファイルをインポートできないバグがあります、新しいバージョンをダウンロードするか、Xcode 7.2に戻るかしかないです。
+このままファイルを編集しても問題ないです、問題がありそうなところを伝いたいだけです.";
 
