@@ -627,12 +627,6 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Help" systemMenu="help" id="F2S-fz-NVQ">
                                     <items>
-                                        <menuItem title="Feedback..." id="ID6-g2-tPX">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="feedbackButtonPressed:" target="Voe-Tx-rLC" id="zHR-oU-XpQ"/>
-                                            </connections>
-                                        </menuItem>
                                         <menuItem title="Xliffie Help" keyEquivalent="?" id="FKE-Sm-Kum">
                                             <connections>
                                                 <action selector="showHelp:" target="Ady-hI-5gd" id="y7X-2Q-9no"/>

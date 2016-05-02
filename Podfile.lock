@@ -20,7 +20,6 @@ PODS:
   - BRLocaleMap (1.0.1)
   - Crashlytics (3.7.0):
     - Fabric (~> 1.6.3)
-  - DevMateKit_MAS (1.7.1)
   - Fabric (1.6.3)
   - FGTranslator (1.1.2):
     - AFNetworking (~> 2.0)
@@ -30,7 +29,6 @@ PODS:
 DEPENDENCIES:
   - BRLocaleMap (from `git@github.com:b123400/BRLocaleMap.git`)
   - Crashlytics
-  - DevMateKit_MAS
   - Fabric
   - FGTranslator (from `git@github.com:b123400/FGTranslator.git`, branch `xliffie`)
   - PINCache (from `git@github.com:b123400/PINCache.git`, branch `escape`)
@@ -61,7 +59,6 @@ SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
   BRLocaleMap: 4f45eee8912a117aaf5b158678442affac376e2e
   Crashlytics: c3a2333dea9e2733d2777f730910321fc9e25c0d
-  DevMateKit_MAS: d7dfff0fec0c8b8316da0979e3c0ce6a0fc85e3b
   Fabric: cbe0ca6c9531bba17910052f6f105fcbc5fa7f67
   FGTranslator: be2f6990206ef05185d1c6ccd255f2f23b526281
   PINCache: 3e2b082d6ca9c5f68579c70cc7f30452690e04eb

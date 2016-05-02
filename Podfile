@@ -10,7 +10,6 @@ pod 'Crashlytics'
 pod "FGTranslator", :git => "git@github.com:b123400/FGTranslator.git", :branch => 'xliffie'
 pod "BRLocaleMap", :git => "git@github.com:b123400/BRLocaleMap.git", :submodules => true
 pod 'PINCache', :git => 'git@github.com:b123400/PINCache.git', :branch => 'escape'
-pod 'DevMateKit_MAS'
 
 target 'Xliffie' do
 

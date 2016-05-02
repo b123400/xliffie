@@ -10,7 +10,6 @@
 #import "DocumentWindowController.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
-#import <DevMateKit/DevMateKit.h>
 
 @interface AppDelegate ()
 
@@ -21,7 +20,6 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
     [Fabric with:@[[Crashlytics class]]];
-    [DevMateKit sendTrackingReport:nil delegate:nil];
 }
 
 - (void)didFinishRestoreWindow:(NSNotification*)notification {
@@ -143,11 +141,6 @@
         [[NSDocumentController sharedDocumentController] openDocument:self];
     }
     return YES;
-}
-
-- (IBAction)feedbackButtonPressed:(id)sender {
-    [DevMateKit showFeedbackDialog:nil
-                            inMode:DMFeedbackIndependentMode];
 }
 
 @end
