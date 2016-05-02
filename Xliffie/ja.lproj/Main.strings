@@ -29,7 +29,7 @@
 "4EN-yA-p0u.title" = "検索";
 
 /* Class = "NSMenuItem"; title = "Quit Xliffie"; ObjectID = "4sb-4s-VLi"; */
-"4sb-4s-VLi.title" = "Xliffieを終了";
+"4sb-4s-VLi.title" = "Xliffie を終了";
 
 /* Class = "NSMenuItem"; title = "Edit"; ObjectID = "5QF-Oa-p0T"; */
 "5QF-Oa-p0T.title" = "編集";
@@ -41,10 +41,16 @@
 "5dk-vI-VB7.headerCell.title" = "ソース";
 
 /* Class = "NSMenuItem"; title = "About Xliffie"; ObjectID = "5kV-Vb-QxS"; */
-"5kV-Vb-QxS.title" = "Xliffieについて";
+"5kV-Vb-QxS.title" = "Xliffie について";
 
 /* Class = "NSMenuItem"; title = "Redo"; ObjectID = "6dh-zS-Vam"; */
 "6dh-zS-Vam.title" = "やり直す";
+
+/* Class = "NSToolbarItem"; label = "Translate"; ObjectID = "7Hq-tz-Ud3"; */
+"7Hq-tz-Ud3.label" = "翻訳";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Translate"; ObjectID = "7Hq-tz-Ud3"; */
+"7Hq-tz-Ud3.paletteLabel" = "翻訳";
 
 /* Class = "NSMenu"; title = "Writing Direction"; ObjectID = "8mr-sm-Yjd"; */
 "8mr-sm-Yjd.title" = "書き方向";
@@ -63,6 +69,9 @@
 
 /* Class = "NSMenu"; title = "Main Menu"; ObjectID = "AYu-sK-qS6"; */
 "AYu-sK-qS6.title" = "メインメニュー";
+
+/* Class = "NSTextFieldCell"; title = "Oops!"; ObjectID = "AuJ-Ku-iHN"; */
+"AuJ-Ku-iHN.title" = "やばい。";
 
 /* Class = "NSMenuItem"; title = "Preferences…"; ObjectID = "BOF-NM-1cW"; */
 "BOF-NM-1cW.title" = "設定...";
@@ -89,7 +98,7 @@
 "F2S-fz-NVQ.title" = "ヘルプ";
 
 /* Class = "NSMenuItem"; title = "Xliffie Help"; ObjectID = "FKE-Sm-Kum"; */
-"FKE-Sm-Kum.title" = "Xliffieヘルプ";
+"FKE-Sm-Kum.title" = "Xliffie ヘルプ";
 
 /* Class = "NSMenuItem"; title = "Text"; ObjectID = "Fal-I4-PZk"; */
 "Fal-I4-PZk.title" = "テキスト";
@@ -130,6 +139,9 @@
 /* Class = "NSMenuItem"; title = "Open…"; ObjectID = "IAo-SY-fd9"; */
 "IAo-SY-fd9.title" = "開く...";
 
+/* Class = "NSMenuItem"; title = "Feedback..."; ObjectID = "ID6-g2-tPX"; */
+"ID6-g2-tPX.title" = "フィードバック...";
+
 /* Class = "NSMenuItem"; title = "Justify"; ObjectID = "J5U-5w-g23"; */
 "J5U-5w-g23.title" = "Justify";
 
@@ -167,7 +179,7 @@
 "OaQ-X3-Vso.title" = "Baseline";
 
 /* Class = "NSMenuItem"; title = "Hide Xliffie"; ObjectID = "Olw-nP-bQN"; */
-"Olw-nP-bQN.title" = "Xliffieを隠す";
+"Olw-nP-bQN.title" = "Xliffie を隠す";
 
 /* Class = "NSMenuItem"; title = "Find Previous"; ObjectID = "OwM-mh-QMV"; */
 "OwM-mh-QMV.title" = "前の探す";
@@ -196,6 +208,15 @@
 /* Class = "NSMenuItem"; title = "Jump to Selection"; ObjectID = "S0p-oC-mLd"; */
 "S0p-oC-mLd.title" = "選択したところにジャンプ";
 
+/* Class = "NSMenuItem"; title = "Item 3"; ObjectID = "SmI-5g-D4C"; */
+"SmI-5g-D4C.title" = "";
+
+/* Class = "NSToolbarItem"; label = "Add spaces"; ObjectID = "Sx1-Fi-XrM"; */
+"Sx1-Fi-XrM.label" = "空白を挿入";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Add spaces"; ObjectID = "Sx1-Fi-XrM"; */
+"Sx1-Fi-XrM.paletteLabel" = "空白を挿入";
+
 /* Class = "NSMenu"; title = "Window"; ObjectID = "Td7-aD-5lo"; */
 "Td7-aD-5lo.title" = "ウインド";
 
@@ -219,6 +240,9 @@
 
 /* Class = "NSMenuItem"; title = "Paste and Match Style"; ObjectID = "WeT-3V-zwk"; */
 "WeT-3V-zwk.title" = "スタイルなしで貼り付け";
+
+/* Class = "NSTextFieldCell"; title = "This file doesn't specific which language is it translating to, would you mind to set it now?"; ObjectID = "Xdf-m9-b3a"; */
+"Xdf-m9-b3a.title" = "どの言語に翻訳するかを指定してないですけど、今指定しますか？";
 
 /* Class = "NSMenuItem"; title = "Find…"; ObjectID = "Xz5-n4-O0W"; */
 "Xz5-n4-O0W.title" = "探す...";

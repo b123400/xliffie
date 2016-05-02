@@ -1,5 +1,8 @@
 /* Translation window hint */
-"%d record(s) are going to be translated using %@." = "これから%1$dつの文字列を %2$@ で翻訳します。";
+"%d record(s) are going to be translated using %@." = "これから %1$d つの文字列を %2$@ で翻訳します。";
+
+/* confirm */
+"Add spaces to all translations?" = "英語と日本語と数字の間に空白を追加しますか？";
 
 /* No comment provided by engineer. */
 "Apply it anyway" = "大丈夫です";
@@ -17,7 +20,7 @@
 "Cannot translate to %@" = "%@ に翻訳するのできないです。";
 
 /* xcode alert */
-"Do you have Xcode 7.3?" = "お主、もしやXcode 7.3の使い手でござるか？";
+"Do you have Xcode 7.3?" = "お主、もしや Xcode 7.3 の使い手でござるか？";
 
 /* No comment provided by engineer. */
 "Download newer Xcode" = "新しいバージョンをダウンロード";
@@ -38,7 +41,7 @@
 "OK" = "OK";
 
 /* No comment provided by engineer. */
-"The source contains %@ \"%%%@\", but your input contains %@" = "ソースに \"%%%2$@\" が%1$@つあるけど、インプットには%3$@つがあります";
+"The source contains %@ \"%%%@\", but your input contains %@" = "ソースに \"%%%2$@\" が %1$@つあるけど、インプットには %3$@つがあります";
 
 /* No comment provided by engineer. */
 "The source contains at least one \"%%%@\", but your input doesn't" = "ソースに \"%%%@\" があるけど、インプットにはないです";
@@ -51,6 +54,9 @@
 
 /* No comment provided by engineer. */
 "Xcode 7.3 has problem with importing XLIFF files, please consider upgrading to a newer version, or go back to Xcode 7.2.
-You can continue editing, this is just a reminder of a known bug." = "Xcode 7.3 は XLIFF ファイルをインポートできないバグがあります、新しいバージョンをダウンロードするか、Xcode 7.2に戻るかしかないです。
+You can continue editing, this is just a reminder of a known bug." = "Xcode 7.3 は XLIFF ファイルをインポートできないバグがあります、新しいバージョンをダウンロードするか、Xcode 7.2 に戻るかしかないです。
 このままファイルを編集しても問題ないです、問題がありそうなところを伝いたいだけです.";
+
+/* confirm */
+"You can undo by pressing command+z" = "コマンド + z で復元できます。";
 

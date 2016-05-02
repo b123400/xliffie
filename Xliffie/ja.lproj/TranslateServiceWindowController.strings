@@ -5,7 +5,7 @@
 "3RB-pq-utw.title" = "OK";
 
 /* Class = "NSMenuItem"; title = "Google Translate"; ObjectID = "Cay-Et-she"; */
-"Cay-Et-she.title" = "Google翻訳";
+"Cay-Et-she.title" = "Google 翻訳";
 
 /* Class = "NSWindow"; title = "Window"; ObjectID = "F0z-JX-Cv5"; */
 "F0z-JX-Cv5.title" = "Window";
@@ -17,7 +17,7 @@
 "I5T-Mf-vCd.title" = "ソースとターゲットが同じ文字列を無視する";
 
 /* Class = "NSMenuItem"; title = "Bing Translate"; ObjectID = "Qho-ZZ-dzT"; */
-"Qho-ZZ-dzT.title" = "Bing翻訳";
+"Qho-ZZ-dzT.title" = "Bing 翻訳";
 
 /* Class = "NSTextFieldCell"; title = "Translate"; ObjectID = "gzR-1b-iNx"; */
 "gzR-1b-iNx.title" = "翻訳範囲";
