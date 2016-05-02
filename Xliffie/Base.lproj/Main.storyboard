@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -758,6 +758,22 @@
                                         <action selector="translateButtonPressed:" target="jGA-0Y-lOj" id="N5m-Al-Lpf"/>
                                     </connections>
                                 </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="E652AFEB-CB4F-4B4A-8E51-CB483C6B9503" label="Add spaces" paletteLabel="Add spaces" image="Pangu" id="Sx1-Fi-XrM">
+                                    <nil key="toolTip"/>
+                                    <size key="minSize" width="29" height="28"/>
+                                    <size key="maxSize" width="29" height="53"/>
+                                    <button key="view" verticalHuggingPriority="750" id="DKj-mn-Eal">
+                                        <rect key="frame" x="20" y="14" width="29" height="28"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="Pangu" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ebq-x1-ytS">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                    </button>
+                                    <connections>
+                                        <action selector="addSpaceButtonPressed:" target="jGA-0Y-lOj" id="Yj4-sf-jjl"/>
+                                    </connections>
+                                </toolbarItem>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
                                 <toolbarItem reference="f4k-ye-JLB"/>
@@ -766,6 +782,7 @@
                                 <toolbarItem reference="fIO-7r-OQw"/>
                                 <toolbarItem reference="7Hq-tz-Ud3"/>
                                 <toolbarItem reference="pRq-eI-zXo"/>
+                                <toolbarItem reference="Sx1-Fi-XrM"/>
                                 <toolbarItem reference="z3T-JE-F8n"/>
                             </defaultToolbarItems>
                         </toolbar>
@@ -1094,6 +1111,7 @@ DQ
         </scene>
     </scenes>
     <resources>
+        <image name="Pangu" width="700" height="605"/>
         <image name="folder" width="560" height="453"/>
         <image name="info" width="1200" height="1200"/>
         <image name="translate" width="447" height="392"/>

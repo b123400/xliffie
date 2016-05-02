@@ -12,6 +12,7 @@
 #import "DocumentListDrawer.h"
 #import "TargetMissingViewController.h"
 #import "TranslateServiceWindowController.h"
+#import "NSString+Pangu.h"
 
 @interface DocumentWindowController () <DocumentListDrawerDelegate, TargetMissingViewController, TranslateServiceWindowControllerDelegate>
 
@@ -250,6 +251,35 @@
               }
               weakSelf.translateController = nil;
           }];
+}
+
+- (IBAction)addSpaceButtonPressed:(id)sender {
+    NSAlert *alert = [[NSAlert alloc] init];
+    [alert addButtonWithTitle:NSLocalizedString(@"OK", @"")];
+    [alert addButtonWithTitle:NSLocalizedString(@"Cancel",@"")];
+    [[[alert buttons] objectAtIndex:0] setKeyEquivalent:@"\r"];
+    [[[alert buttons] objectAtIndex:1] setKeyEquivalent:@"\033"];
+    [alert setMessageText:NSLocalizedString(@"Add spaces to all translations?",@"confirm")];
+    [alert setInformativeText:NSLocalizedString(@"You can undo by pressing command+z",@"confirm")];
+    [alert setAlertStyle:NSInformationalAlertStyle];
+    
+    [alert beginSheetModalForWindow:self.window
+                  completionHandler:^(NSModalResponse returnCode) {
+                      if (returnCode == NSAlertFirstButtonReturn) {
+                          Document *document = (Document*)self.document;
+                          [[document undoManager] beginUndoGrouping];
+                          for (File *file in document.files) {
+                              for (TranslationPair *pair in file.translations) {
+                                  if (pair.target) {
+                                      pair.target = [NSString spacing:pair.target];
+                                  }
+                              }
+                          }
+                          [[document undoManager] endUndoGrouping];
+                          // reload
+                          self.document = self.document;
+                      }
+                  }];
 }
 
 #pragma mark drawer
