@@ -35,6 +35,7 @@
 		CFE39F9A1A765859004644C8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CFE39F9C1A765859004644C8 /* Localizable.strings */; };
 		CFE39FA11A767252004644C8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CFE39FA31A767252004644C8 /* InfoPlist.strings */; };
 		CFE39FA61A767253004644C8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CFE39FA81A767253004644C8 /* InfoPlist.strings */; };
+		CFE3B1761CD800AB00021D7F /* NSString+Pangu.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE3B1751CD800AB00021D7F /* NSString+Pangu.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +112,8 @@
 		CFE39F9E1A765863004644C8 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CFE39FA21A767252004644C8 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CFE39FA71A767253004644C8 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CFE3B1741CD800AB00021D7F /* NSString+Pangu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Pangu.h"; sourceTree = "<group>"; };
+		CFE3B1751CD800AB00021D7F /* NSString+Pangu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Pangu.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,6 +222,7 @@
 				CFB0B8F61C3073A9004DF663 /* Translator */,
 				CF34B75C1AADE02400C6A58E /* Model */,
 				CF34B75B1AADE01000C6A58E /* UI Elements */,
+				CFE3B1731CD8008800021D7F /* Pangu */,
 				CF5FC89C1A5ABFF700538E60 /* Images.xcassets */,
 				CF5FC89E1A5ABFF700538E60 /* Main.storyboard */,
 				CFE39F9C1A765859004644C8 /* Localizable.strings */,
@@ -269,6 +273,15 @@
 				CF011B4A1C40FCBA00948323 /* TranslationUtility.m */,
 			);
 			name = Translator;
+			sourceTree = "<group>";
+		};
+		CFE3B1731CD8008800021D7F /* Pangu */ = {
+			isa = PBXGroup;
+			children = (
+				CFE3B1741CD800AB00021D7F /* NSString+Pangu.h */,
+				CFE3B1751CD800AB00021D7F /* NSString+Pangu.m */,
+			);
+			name = Pangu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -459,6 +472,7 @@
 				CF5682EF1A6B11C700E0DEDD /* DetailViewController.m in Sources */,
 				CFD234FA1A5E44C700B52088 /* XMLOutlineView.m in Sources */,
 				CF5FC89B1A5ABFF700538E60 /* Document.m in Sources */,
+				CFE3B1761CD800AB00021D7F /* NSString+Pangu.m in Sources */,
 				CF5FC8981A5ABFF700538E60 /* DocumentViewController.m in Sources */,
 				CF011B7D1C4641A400948323 /* TranslationWindowController.m in Sources */,
 				CF5FC8951A5ABFF700538E60 /* main.m in Sources */,
