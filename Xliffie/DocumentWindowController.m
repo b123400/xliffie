@@ -86,7 +86,8 @@
     self.documents = [NSMutableArray array];
     self.filesOfLanguages = [NSMutableDictionary dictionary];
     
-    self.documentsDrawer = [[DocumentListDrawer alloc] initWithContentSize:NSMakeSize(100, self.window.frame.size.height) preferredEdge:NSMinXEdge];
+    self.documentsDrawer = [[DocumentListDrawer alloc] initWithContentSize:NSMakeSize(100, self.window.frame.size.height)
+                                                             preferredEdge:NSMinXEdge];
     self.documentsDrawer.delegate = self;
     [self.documentsDrawer setParentWindow:self.window];
     self.documentsDrawer.minContentSize = NSMakeSize(100, 200);
