@@ -265,6 +265,11 @@
             }
         }
     }
+    if (!controller.documents.count) {
+        // There is no document for the controller, not restoring
+        completionHandler(nil, nil);
+        return;
+    }
     
     NSString *sourceLangauge = [state decodeObjectForKey:@"sourceLanguage"];
     if (sourceLangauge) {
