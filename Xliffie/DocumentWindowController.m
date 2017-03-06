@@ -14,6 +14,9 @@
 #import "TranslateServiceWindowController.h"
 #import "NSString+Pangu.h"
 
+#define DOCUMENT_WINDOW_MIN_SIZE NSMakeSize(480, 600)
+#define DOCUMENT_WINDOW_LAST_FRAME_KEY @"DOCUMENT_WINDOW_LAST_FRAME_KEY"
+
 @interface DocumentWindowController () <DocumentListDrawerDelegate, TargetMissingViewController, TranslateServiceWindowControllerDelegate>
 
 @property (nonatomic, strong) NSViewController *splitViewController;
@@ -89,11 +92,26 @@
     
     [self.documentsDrawer close];
     
-    self.window.minSize = NSMakeSize(480, 600);
-    NSRect frame = self.window.frame;
-    frame.size.width = MAX(480, frame.size.width);
-    frame.size.height = MAX(600, frame.size.height);
-    [self.window setFrame:frame display:YES];
+    self.window.minSize = DOCUMENT_WINDOW_MIN_SIZE;
+    
+    NSRect lastWindowFrame = self.lastWindowFrame;
+    NSSize screenSize = [NSScreen mainScreen].frame.size;
+    
+    // Make sure the window is fully inside the frame
+    lastWindowFrame = NSIntersectionRect(lastWindowFrame, (NSRect) {
+        .origin = NSZeroPoint,
+        .size = screenSize
+    });
+    
+    // If it is empty, put it at the center of the screen
+    if (NSIsEmptyRect(lastWindowFrame)) {
+        lastWindowFrame = (NSRect) {
+            .origin.x = (screenSize.width - DOCUMENT_WINDOW_MIN_SIZE.width)/2,
+            .origin.y = (screenSize.height - DOCUMENT_WINDOW_MIN_SIZE.height)/2,
+            .size = DOCUMENT_WINDOW_MIN_SIZE
+        };
+    }
+    [self.window setFrame:lastWindowFrame display:YES];
 }
 
 - (void)setDocument:(id)document {
@@ -174,6 +192,32 @@
         document.windowController = nil;
         [document close];
     }
+}
+
+#pragma mark - Window Resizing
+
+- (void)windowDidResize:(NSNotification *)notification {
+    if (!self.window.visible) return;
+    [self setLastWindowFrame:self.window.frame];
+}
+
+- (void)windowDidMove:(NSNotification *)notification {
+    if (!self.window.visible) return;
+    [self setLastWindowFrame:self.window.frame];
+}
+
+- (CGRect)lastWindowFrame {
+    NSString *rectString = [[NSUserDefaults standardUserDefaults] stringForKey:DOCUMENT_WINDOW_LAST_FRAME_KEY];
+    if (!rectString) {
+        return CGRectZero;
+    }
+    return NSRectFromString(rectString);
+}
+
+- (void)setLastWindowFrame:(CGRect)rect {
+    [[NSUserDefaults standardUserDefaults] setObject:NSStringFromRect(rect)
+                                              forKey:DOCUMENT_WINDOW_LAST_FRAME_KEY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 #pragma mark undo
