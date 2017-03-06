@@ -125,6 +125,7 @@
                           fromLanguage:sourceLanguage
                             toLanguage:targetLanguage
                            withService:self.service
+                             autoSplit:YES
                               callback:^(NSError *error, NSArray<NSString *> *translatedTexts) {
                                   dispatch_async(dispatch_get_main_queue(), ^{
                                       if (error) {

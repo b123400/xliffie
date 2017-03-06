@@ -19,6 +19,7 @@
           fromLanguage:(NSString*)sourceLocaleCode
             toLanguage:(NSString*)targetLocaleCode
            withService:(BRLocaleMapService)service
+             autoSplit:(BOOL)autoSplit
               callback:(void(^)(NSError*, NSArray <NSString*> *))callback;
 
 @end
