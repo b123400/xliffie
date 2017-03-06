@@ -22,6 +22,7 @@
 @property (nonatomic, strong) NSViewController *splitViewController;
 @property (nonatomic, strong) DocumentViewController *mainViewController;
 @property (nonatomic, strong) DetailViewController *detailViewController;
+@property (nonatomic, assign) BOOL isWindowFrameInitialized;
 
 @property (nonatomic, strong) TargetMissingViewController *targetMissingViewController;
 
@@ -93,25 +94,28 @@
     [self.documentsDrawer close];
     
     self.window.minSize = DOCUMENT_WINDOW_MIN_SIZE;
-    
-    NSRect lastWindowFrame = self.lastWindowFrame;
-    NSSize screenSize = [NSScreen mainScreen].frame.size;
-    
-    // Make sure the window is fully inside the frame
-    lastWindowFrame = NSIntersectionRect(lastWindowFrame, (NSRect) {
-        .origin = NSZeroPoint,
-        .size = screenSize
-    });
-    
-    // If it is empty, put it at the center of the screen
-    if (NSIsEmptyRect(lastWindowFrame)) {
-        lastWindowFrame = (NSRect) {
-            .origin.x = (screenSize.width - DOCUMENT_WINDOW_MIN_SIZE.width)/2,
-            .origin.y = (screenSize.height - DOCUMENT_WINDOW_MIN_SIZE.height)/2,
-            .size = DOCUMENT_WINDOW_MIN_SIZE
-        };
+
+    if (!self.isWindowFrameInitialized) {
+        self.isWindowFrameInitialized = YES;
+        NSRect lastWindowFrame = self.lastWindowFrame;
+        NSSize screenSize = [NSScreen mainScreen].frame.size;
+        
+        // Make sure the window is fully inside the frame
+        lastWindowFrame = NSIntersectionRect(lastWindowFrame, (NSRect) {
+            .origin = NSZeroPoint,
+            .size = screenSize
+        });
+        
+        // If it is empty, put it at the center of the screen
+        if (NSIsEmptyRect(lastWindowFrame)) {
+            lastWindowFrame = (NSRect) {
+                .origin.x = (screenSize.width - DOCUMENT_WINDOW_MIN_SIZE.width)/2,
+                .origin.y = (screenSize.height - DOCUMENT_WINDOW_MIN_SIZE.height)/2,
+                .size = DOCUMENT_WINDOW_MIN_SIZE
+            };
+        }
+        [self.window setFrame:lastWindowFrame display:YES];
     }
-    [self.window setFrame:lastWindowFrame display:YES];
 }
 
 - (void)setDocument:(id)document {
@@ -236,6 +240,7 @@
     }
     [coder encodeObject:urls forKey:@"documents"];
     [coder encodeObject:[self selectedLanguageWithSegmentIndex:0] forKey:@"sourceLanguage"];
+    [coder encodeObject:NSStringFromRect(self.window.frame) forKey:@"window-frame"];
 }
 
 + (void)restoreWindowWithIdentifier:(NSString *)identifier
@@ -266,6 +271,12 @@
         [controller selectLanguage:sourceLangauge
                   withSegmentIndex:0];
         [controller selectedSourceLanguage:[controller selectedLanguageMenuItemWithSegmentIndex:0]];
+    }
+    
+    NSString *windowFrameString = [state decodeObjectForKey:@"window-frame"];
+    if (windowFrameString) {
+        [window setFrame:NSRectFromString(windowFrameString) display:YES];
+        controller.isWindowFrameInitialized = YES;
     }
     completionHandler(window, nil);
 }
