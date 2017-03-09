@@ -54,11 +54,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.3.2</string>
+	<string>1.4.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>111</string>
+	<string>112</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -80,7 +80,7 @@
 	<key>LSTypeIsPackage</key>
 	<true/>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2016 Hot Milk Tea. All rights reserved.</string>
+	<string>Copyright © 2017 b123400. All rights reserved.</string>
 	<key>NSMainStoryboardFile</key>
 	<string>Main</string>
 	<key>NSPrincipalClass</key>
