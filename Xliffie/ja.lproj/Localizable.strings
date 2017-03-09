@@ -8,7 +8,7 @@
 "Apply it anyway" = "大丈夫です";
 
 /* Translate alert message */
-"Are you sure?" = "ホンマ？";
+"Are you sure?" = "マ？";
 
 /* No comment provided by engineer. */
 "Cancel" = "キャンセル";
@@ -24,6 +24,11 @@
 
 /* No comment provided by engineer. */
 "Download newer Xcode" = "新しいバージョンをダウンロード";
+
+/* No comment provided by engineer. */
+"Errors during translation:
+%@" = "翻訳するのにエラーが起きました：
+%@";
 
 /* No comment provided by engineer. */
 "Go ahead" = "うるせえ！";

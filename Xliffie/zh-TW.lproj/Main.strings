@@ -142,9 +142,6 @@
 /* Class = "NSMenuItem"; title = "Open…"; ObjectID = "IAo-SY-fd9"; */
 "IAo-SY-fd9.title" = "打開…";
 
-/* Class = "NSMenuItem"; title = "Feedback..."; ObjectID = "ID6-g2-tPX"; */
-"ID6-g2-tPX.title" = "有什麼意見嗎？";
-
 /* Class = "NSMenuItem"; title = "Justify"; ObjectID = "J5U-5w-g23"; */
 "J5U-5w-g23.title" = "Justify";
 

@@ -10,8 +10,8 @@
 /* Class = "NSWindow"; title = "Window"; ObjectID = "F0z-JX-Cv5"; */
 "F0z-JX-Cv5.title" = "Window";
 
-/* Class = "NSTextFieldCell"; title = "%d record(s) are going to be transalted using %@."; ObjectID = "HbR-jO-1Ey"; */
-"HbR-jO-1Ey.title" = "%d record(s) are going to be transalted using %@.";
+/* Class = "NSTextFieldCell"; title = "%d record(s) are going to be translated using %@."; ObjectID = "HbR-jO-1Ey"; */
+"HbR-jO-1Ey.title" = "將要用 %2$@ 來翻譯 %1$d 串字。";
 
 /* Class = "NSButtonCell"; title = "Ignore records with same source and target string."; ObjectID = "I5T-Mf-vCd"; */
 "I5T-Mf-vCd.title" = "無視原文與譯文一樣的文字";
