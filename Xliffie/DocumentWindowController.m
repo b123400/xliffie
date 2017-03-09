@@ -14,11 +14,15 @@
 #import "TranslateServiceWindowController.h"
 #import "NSString+Pangu.h"
 
+#define DOCUMENT_WINDOW_MIN_SIZE NSMakeSize(480, 600)
+#define DOCUMENT_WINDOW_LAST_FRAME_KEY @"DOCUMENT_WINDOW_LAST_FRAME_KEY"
+
 @interface DocumentWindowController () <DocumentListDrawerDelegate, TargetMissingViewController, TranslateServiceWindowControllerDelegate>
 
 @property (nonatomic, strong) NSViewController *splitViewController;
 @property (nonatomic, strong) DocumentViewController *mainViewController;
 @property (nonatomic, strong) DetailViewController *detailViewController;
+@property (nonatomic, assign) BOOL isWindowFrameInitialized;
 
 @property (nonatomic, strong) TargetMissingViewController *targetMissingViewController;
 
@@ -82,18 +86,37 @@
     self.documents = [NSMutableArray array];
     self.filesOfLanguages = [NSMutableDictionary dictionary];
     
-    self.documentsDrawer = [[DocumentListDrawer alloc] initWithContentSize:NSMakeSize(100, self.window.frame.size.height) preferredEdge:NSMinXEdge];
+    self.documentsDrawer = [[DocumentListDrawer alloc] initWithContentSize:NSMakeSize(100, self.window.frame.size.height)
+                                                             preferredEdge:NSMinXEdge];
     self.documentsDrawer.delegate = self;
     [self.documentsDrawer setParentWindow:self.window];
     self.documentsDrawer.minContentSize = NSMakeSize(100, 200);
     
     [self.documentsDrawer close];
     
-    self.window.minSize = NSMakeSize(480, 600);
-    NSRect frame = self.window.frame;
-    frame.size.width = MAX(480, frame.size.width);
-    frame.size.height = MAX(600, frame.size.height);
-    [self.window setFrame:frame display:YES];
+    self.window.minSize = DOCUMENT_WINDOW_MIN_SIZE;
+
+    if (!self.isWindowFrameInitialized) {
+        self.isWindowFrameInitialized = YES;
+        NSRect lastWindowFrame = self.lastWindowFrame;
+        NSSize screenSize = [NSScreen mainScreen].frame.size;
+        
+        // Make sure the window is fully inside the frame
+        lastWindowFrame = NSIntersectionRect(lastWindowFrame, (NSRect) {
+            .origin = NSZeroPoint,
+            .size = screenSize
+        });
+        
+        // If it is empty, put it at the center of the screen
+        if (NSIsEmptyRect(lastWindowFrame)) {
+            lastWindowFrame = (NSRect) {
+                .origin.x = (screenSize.width - DOCUMENT_WINDOW_MIN_SIZE.width)/2,
+                .origin.y = (screenSize.height - DOCUMENT_WINDOW_MIN_SIZE.height)/2,
+                .size = DOCUMENT_WINDOW_MIN_SIZE
+            };
+        }
+        [self.window setFrame:lastWindowFrame display:YES];
+    }
 }
 
 - (void)setDocument:(id)document {
@@ -176,6 +199,32 @@
     }
 }
 
+#pragma mark - Window Resizing
+
+- (void)windowDidResize:(NSNotification *)notification {
+    if (!self.window.visible) return;
+    [self setLastWindowFrame:self.window.frame];
+}
+
+- (void)windowDidMove:(NSNotification *)notification {
+    if (!self.window.visible) return;
+    [self setLastWindowFrame:self.window.frame];
+}
+
+- (CGRect)lastWindowFrame {
+    NSString *rectString = [[NSUserDefaults standardUserDefaults] stringForKey:DOCUMENT_WINDOW_LAST_FRAME_KEY];
+    if (!rectString) {
+        return CGRectZero;
+    }
+    return NSRectFromString(rectString);
+}
+
+- (void)setLastWindowFrame:(CGRect)rect {
+    [[NSUserDefaults standardUserDefaults] setObject:NSStringFromRect(rect)
+                                              forKey:DOCUMENT_WINDOW_LAST_FRAME_KEY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
 #pragma mark undo
 
 - (void)documentDidUndoOrRedo:(NSNotification*)notification {
@@ -192,6 +241,7 @@
     }
     [coder encodeObject:urls forKey:@"documents"];
     [coder encodeObject:[self selectedLanguageWithSegmentIndex:0] forKey:@"sourceLanguage"];
+    [coder encodeObject:NSStringFromRect(self.window.frame) forKey:@"window-frame"];
 }
 
 + (void)restoreWindowWithIdentifier:(NSString *)identifier
@@ -216,12 +266,23 @@
             }
         }
     }
+    if (!controller.documents.count) {
+        // There is no document for the controller, not restoring
+        completionHandler(nil, nil);
+        return;
+    }
     
     NSString *sourceLangauge = [state decodeObjectForKey:@"sourceLanguage"];
     if (sourceLangauge) {
         [controller selectLanguage:sourceLangauge
                   withSegmentIndex:0];
         [controller selectedSourceLanguage:[controller selectedLanguageMenuItemWithSegmentIndex:0]];
+    }
+    
+    NSString *windowFrameString = [state decodeObjectForKey:@"window-frame"];
+    if (windowFrameString) {
+        [window setFrame:NSRectFromString(windowFrameString) display:YES];
+        controller.isWindowFrameInitialized = YES;
     }
     completionHandler(window, nil);
 }
