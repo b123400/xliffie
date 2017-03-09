@@ -38,6 +38,10 @@
     return YES;
 }
 
++ (BOOL)preservesVersions {
+    return YES;
+}
+
 - (void)makeWindowControllers {
     // Override to return the Storyboard file name of the document.
     DocumentWindowController *windowController = [(AppDelegate*)[[NSApplication sharedApplication]
