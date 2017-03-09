@@ -23,9 +23,12 @@
 }
 
 - (void)didFinishRestoreWindow:(NSNotification*)notification {
-    if (![[NSApplication sharedApplication] windows].count) {
-        [[NSDocumentController sharedDocumentController] openDocument:self];
-    }
+    // wait until all files are opened, because file dialog might block file opening
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        if (![[NSApplication sharedApplication] windows].count) {
+            [[NSDocumentController sharedDocumentController] openDocument:self];
+        }
+    });
 }
 
 - (void)applicationDidBecomeActive:(NSNotification *)aNotification {
@@ -51,15 +54,15 @@
         BOOL exists = [[NSFileManager defaultManager] fileExistsAtPath:thisItem isDirectory:&isFolder];
         if (exists) {
             if (!isFolder) {
-                if ([[thisItem pathExtension] isEqualToString:@"xliff"] ||
-                    [[thisItem pathExtension] isEqualToString:@"xlif"] ||
-                    [[thisItem pathExtension] isEqualToString:@"xlf"]) {
+                if ([self isFilePathXliff:thisItem]) {
                     [filenames addObject:thisItem];
                 }
             } else {
                 NSArray *files = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:thisItem error:nil];
                 for (NSString *filename in files) {
-                    [inputs addObject:[thisItem stringByAppendingPathComponent:filename]];
+                    if ([self isFilePathXliff:filename]) {
+                        [inputs addObject:[thisItem stringByAppendingPathComponent:filename]];
+                    }
                 }
             }
         }
@@ -141,6 +144,15 @@
         [[NSDocumentController sharedDocumentController] openDocument:self];
     }
     return YES;
+}
+
+- (BOOL)isFilePathXliff:(NSString*)filePath {
+    if ([[filePath pathExtension] isEqualToString:@"xliff"] ||
+        [[filePath pathExtension] isEqualToString:@"xlif"] ||
+        [[filePath pathExtension] isEqualToString:@"xlf"]) {
+        return YES;
+    }
+    return NO;
 }
 
 @end
