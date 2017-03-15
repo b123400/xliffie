@@ -32,12 +32,21 @@
     self.translations = [NSMutableArray array];
     
     NSXMLElement *bodyElement = [[element elementsForName:@"body"] firstObject];
-    for (NSXMLElement *unit in [bodyElement elementsForName:@"trans-unit"]) {
+    for (NSXMLElement *unit in [self getNestedTransUnitElements:bodyElement]) {
         TranslationPair *pair = [[TranslationPair alloc] initWithXMLElement:unit];
         pair.file = self;
         [self.translations addObject:pair];
     }
     return self;
+}
+
+- (NSArray <NSXMLElement*> *)getNestedTransUnitElements:(NSXMLElement *)bodyElement {
+    NSMutableArray *elements = [NSMutableArray array];
+    [elements addObjectsFromArray:[bodyElement elementsForName:@"trans-unit"]];
+    for (NSXMLElement *groupElement in [bodyElement elementsForName:@"group"]) {
+        [elements addObjectsFromArray:[self getNestedTransUnitElements:groupElement]];
+    }
+    return elements;
 }
 
 - (File *)filteredFileWithSearchFilter:(NSString*)filter {
