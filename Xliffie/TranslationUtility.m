@@ -24,15 +24,6 @@
            withService:(BRLocaleMapService)service
              autoSplit:(BOOL)autoSplit
               callback:(void(^)(NSError*, NSArray <NSString*> *))callback {
-
-    if (service != BRLocaleMapServiceMicrosoft) {
-        [self translateTexts:texts
-                fromLanguage:sourceLocaleCode
-                  toLanguage:targetLocaleCode
-                 withService:service
-                    callback:callback];
-        return;
-    }
     
     NSMutableArray *allTexts = [NSMutableArray arrayWithArray:texts];
     NSMutableArray <NSArray<NSString*>*> *chunks = [NSMutableArray array];
@@ -42,15 +33,23 @@
         while (allTexts.count) {
             NSString *thisText = allTexts[0];
             NSUInteger lengthIfAdded = chunkTextLength + thisText.length;
-            if (lengthIfAdded >= 10000 && thisChunkTexts.count) {
-                // If there is a single entry that has > 10000 char, just let it pass
-                break;
+            if (service == BRLocaleMapServiceMicrosoft) {
+                if (lengthIfAdded >= 10000 && thisChunkTexts.count) {
+                    // If there is a single entry that has > 10000 char, just let it pass
+                    break;
+                }
             }
             [thisChunkTexts addObject:thisText];
             lengthIfAdded += thisText.length;
             [allTexts removeObjectAtIndex:0];
-            if (thisChunkTexts.count >= 2000) {
-                break;
+            if (service == BRLocaleMapServiceMicrosoft) {
+                if (thisChunkTexts.count >= 2000) {
+                    break;
+                }
+            } else if (service == BRLocaleMapServiceGoogle) {
+                if (thisChunkTexts.count >= 128) {
+                    break;
+                }
             }
         }
         [chunks addObject:thisChunkTexts];
