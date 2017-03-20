@@ -23,18 +23,9 @@
 }
 
 - (void)didFinishRestoreWindow:(NSNotification*)notification {
-    // wait until all files are opened, because file dialog might block file opening
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        if (![[NSApplication sharedApplication] windows].count) {
-            [[NSDocumentController sharedDocumentController] openDocument:self];
-        }
-    });
 }
 
 - (void)applicationDidBecomeActive:(NSNotification *)aNotification {
-//    if (![[NSApplication sharedApplication] windows].count) {
-//        [[NSDocumentController sharedDocumentController] openDocument:self];
-//    }
 }
 
 - (BOOL)application:(NSApplication *)theApplication openFile:(NSString *)filename {
@@ -132,6 +123,9 @@
 }
 
 - (BOOL)applicationShouldOpenUntitledFile:(NSApplication *)sender {
+    if (![[NSApplication sharedApplication] windows].count) {
+        [[NSDocumentController sharedDocumentController] openDocument:self];
+    }
     return NO;
 }
 
