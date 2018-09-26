@@ -41,11 +41,21 @@
 }
 
 - (NSArray <NSXMLElement*> *)getNestedTransUnitElements:(NSXMLElement *)bodyElement {
+    if ([[bodyElement name] isEqualToString:@"group"] && [[[bodyElement attributeForName:@"translate"] stringValue] isEqualToString:@"no"]) {
+        return @[];
+    }
     NSMutableArray *elements = [NSMutableArray array];
     [elements addObjectsFromArray:[bodyElement elementsForName:@"trans-unit"]];
     for (NSXMLElement *groupElement in [bodyElement elementsForName:@"group"]) {
         [elements addObjectsFromArray:[self getNestedTransUnitElements:groupElement]];
     }
+    NSMutableArray <NSXMLElement*> *toRemove = [NSMutableArray array];
+    for (NSXMLElement *element in elements) {
+        if ([[[element attributeForName:@"translate"] stringValue] isEqualToString:@"no"]) {
+            [toRemove addObject:element];
+        }
+    }
+    [elements removeObjectsInArray:toRemove];
     return elements;
 }
 
