@@ -128,28 +128,27 @@
         callback(error, nil);
         return;
     }
-    
-    [translator translateTexts:texts
-                    withSource:sourceCode
-                        target:targetLocaleCode
-                    completion:^(NSError *error, NSArray<NSString *> *translated, NSArray<NSString *> *sourceLanguage) {
-                        callback(error, translated);
-                        if (error) {
-                            [[Crashlytics sharedInstance] recordError:error
-                                               withAdditionalUserInfo:@{
-                                                                        @"source": sourceLocaleCode,
-                                                                        @"target": targetLocaleCode
-                                                                        }];
-                        }
-                    }];
+
+    [translator chunkedTranslateTexts:texts
+                           withSource:sourceCode
+                               target:targetLocaleCode
+                           completion:^(NSError *error, NSArray<NSString *> *translated) {
+                               callback(error, translated);
+                               if (error) {
+                                   [[Crashlytics sharedInstance] recordError:error
+                                                      withAdditionalUserInfo:@{
+                                                                               @"source": sourceLocaleCode,
+                                                                               @"target": targetLocaleCode
+                                                                               }];
+                               }
+                           }];
 }
 
 + (FGTranslator*)translatorWithService:(BRLocaleMapService)service {
     FGTranslator *translator;
     switch (service) {
         case BRLocaleMapServiceMicrosoft:
-            translator = [[FGTranslator alloc] initWithBingAzureClientId:MICROSOFT_TRANSLATE_CLIENT_ID
-                                                                  secret:MICROSOFT_TRANSLATE_CLIENT_SECRET];
+            translator = [[FGTranslator alloc] initWithAzureAPIKey:MICROSOFT_TRANSLATE_API_KEY];
             break;
         
         case BRLocaleMapServiceGoogle:
