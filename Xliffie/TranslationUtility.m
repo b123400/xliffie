@@ -24,7 +24,7 @@
            withService:(BRLocaleMapService)service
              autoSplit:(BOOL)autoSplit
               callback:(void(^)(NSError*, NSArray <NSString*> *))callback {
-    
+
     NSMutableArray *allTexts = [NSMutableArray arrayWithArray:texts];
     NSMutableArray <NSArray<NSString*>*> *chunks = [NSMutableArray array];
     while (allTexts.count) {
@@ -97,12 +97,12 @@
             toLanguage:(NSString*)targetLocaleCode
            withService:(BRLocaleMapService)service
               callback:(void(^)(NSError*, NSArray <NSString*> *))callback {
-    
+
     FGTranslator *translator = [self translatorWithService:service];
-    
+
     NSString *sourceCode = [BRLocaleMap locale:sourceLocaleCode forService:service];
     NSString *targetCode = [BRLocaleMap locale:targetLocaleCode forService:service];
-    
+
     if (!sourceCode) {
         NSError *error = [NSError errorWithDomain:TRANSLATION_ERROR_DOMAIN
                                              code:0
@@ -115,7 +115,7 @@
         callback(error, nil);
         return;
     }
-    
+
     if (!targetCode) {
         NSError *error = [NSError errorWithDomain:TRANSLATION_ERROR_DOMAIN
                                              code:0
@@ -123,7 +123,7 @@
                                                     NSLocalizedDescriptionKey: [NSString stringWithFormat:
                                                                                 NSLocalizedString(@"Cannot translate to %@",
                                                                                                   @"Translation target not found")
-                                                                                , sourceLocaleCode]
+                                                                                , targetLocaleCode]
                                                     }];
         callback(error, nil);
         return;
@@ -131,7 +131,7 @@
 
     [translator chunkedTranslateTexts:texts
                            withSource:sourceCode
-                               target:targetLocaleCode
+                               target:targetCode
                            completion:^(NSError *error, NSArray<NSString *> *translated) {
                                callback(error, translated);
                                if (error) {
@@ -150,12 +150,12 @@
         case BRLocaleMapServiceMicrosoft:
             translator = [[FGTranslator alloc] initWithAzureAPIKey:MICROSOFT_TRANSLATE_API_KEY];
             break;
-        
+
         case BRLocaleMapServiceGoogle:
             translator = [[FGTranslator alloc] initWithGoogleAPIKey:GOOGLE_TRANSLATE_API_KEY];
             // We need to to pretend to be sending from a browser
             translator.referer = GOOGLE_TRANSLATE_REFERER;
-            
+
         default:
             break;
     }
