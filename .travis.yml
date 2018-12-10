@@ -1,0 +1,8 @@
+os: osx
+osx_image: xcode10.1
+before_script:
+  - pod repo update
+  - pod install
+  - mv Xliffie/APIKeys.sample.h Xliffie/APIKeys.h
+script:
+  - xcodebuild build -workspace ./Xliffie.xcworkspace -scheme Xliffie

@@ -21,16 +21,18 @@ PODS:
   - Crashlytics (3.10.7):
     - Fabric (~> 1.7.11)
   - Fabric (1.7.11)
-  - FGTranslator (1.1.2):
+  - FGTranslator (1.2):
     - AFNetworking (~> 2.0)
     - PINCache
+    - XMLDictionary (~> 1.4)
   - PINCache (2.3)
+  - XMLDictionary (1.4.1)
 
 DEPENDENCIES:
   - BRLocaleMap (~> 1.1.0)
   - Crashlytics (~> 3.10)
   - Fabric
-  - "FGTranslator (from `git@github.com:b123400/FGTranslator.git`, branch `refactor`)"
+  - FGTranslator (from `https://github.com/b123400/FGTranslator.git`, branch `refactor`)
   - PINCache (~> 2.3)
 
 SPEC REPOS:
@@ -40,25 +42,27 @@ SPEC REPOS:
     - Crashlytics
     - Fabric
     - PINCache
+    - XMLDictionary
 
 EXTERNAL SOURCES:
   FGTranslator:
     :branch: refactor
-    :git: "git@github.com:b123400/FGTranslator.git"
+    :git: https://github.com/b123400/FGTranslator.git
 
 CHECKOUT OPTIONS:
   FGTranslator:
-    :commit: 8730fe3a81b7e46ee9b15782a4a07370d1e05a1e
-    :git: "git@github.com:b123400/FGTranslator.git"
+    :commit: ecf3326ca94f2100b08f29933ac89bc0f0aca92c
+    :git: https://github.com/b123400/FGTranslator.git
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
   BRLocaleMap: d95d85d69bee230c745a2ba11730e2e99c0bf66e
   Crashlytics: ccaac42660eb9351b9960c0d66106b0bcf99f4fa
   Fabric: f233c9492b3bbc1f04e3882986740f7988a58edb
-  FGTranslator: b084cb8ebd1dd9ca10433bea75e750e04ef0afe6
+  FGTranslator: 7726c0c380beaa28cb6bb23950cd7d00ab341203
   PINCache: ce36ed282031b92fc7733ffe831f474ff80fddc2
+  XMLDictionary: fa07b6ff422b3a91d47a5de9bc82e3fc04fbd167
 
-PODFILE CHECKSUM: 5957bf41b42dc4071fa9fa15b068a66a89153a34
+PODFILE CHECKSUM: 50bf5923c04859e9eb32d5b8324f47e1af4b63de
 
 COCOAPODS: 1.5.3

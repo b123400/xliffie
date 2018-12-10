@@ -7,7 +7,7 @@ platform :osx, '10.10'
 
 pod 'Fabric'
 pod 'Crashlytics', '~>  3.10'
-pod "FGTranslator", :git => "git@github.com:b123400/FGTranslator.git", :branch => "refactor"
+pod "FGTranslator", :git => "https://github.com/b123400/FGTranslator.git", :branch => "refactor"
 pod "BRLocaleMap", '~> 1.1.0'
 pod 'PINCache', '~> 2.3'
 
