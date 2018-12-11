@@ -10,6 +10,14 @@
 
 @implementation TranslationTargetCell
 
+
+- (NSText *)setUpFieldEditorAttributes:(NSText *)textObj {
+    NSText *t = [super setUpFieldEditorAttributes:textObj];
+    t.backgroundColor = [NSColor textBackgroundColor];
+    t.textColor = [NSColor textColor];
+    return t;
+}
+
 - (void)drawWithFrame:(NSRect)cellFrame inView:(NSView *)controlView {
     
     if (self.dotColor) {
