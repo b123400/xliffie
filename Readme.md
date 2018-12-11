@@ -2,6 +2,8 @@ Xliffie is a mac application for translating XLIFF files.
 
 It's on App Store, but you can build it yourself if you don't want to pay.
 
+[![](https://api.travis-ci.org/b123400/xliffie.svg?branch=master)](https://api.travis-ci.org/b123400/xliffie)
+
 # How to build
 
 1. Get dependencies with cocoapods
