@@ -50,6 +50,13 @@
                 }
             } else {
                 NSArray *files = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:thisItem error:nil];
+                BOOL isXcloc = [self isFilePathXcloc:thisItem:files];
+                
+                if (isXcloc) {
+                    thisItem = [NSString stringWithFormat:@"%@/%@", thisItem, @"Localized Contents"];
+                    files = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:thisItem error:nil];
+                }
+
                 for (NSString *filename in files) {
                     if ([self isFilePathXliff:filename]) {
                         [inputs addObject:[thisItem stringByAppendingPathComponent:filename]];
@@ -144,6 +151,28 @@
     if ([[filePath pathExtension] isEqualToString:@"xliff"] ||
         [[filePath pathExtension] isEqualToString:@"xlif"] ||
         [[filePath pathExtension] isEqualToString:@"xlf"]) {
+        return YES;
+    }
+    return NO;
+}
+
+- (BOOL)isFilePathXcloc:(NSString*)filePath:(NSArray*)files {
+    BOOL hasLocalizedContents = false;
+    BOOL hasContentsJson = false;
+    
+    for (NSString *filename in files) {
+        if ([filename isEqualToString:@"Localized Contents"]) {
+            hasLocalizedContents = true;
+        }
+        
+        if ([filename isEqualToString:@"contents.json"]) {
+            hasContentsJson = true;
+        }
+    }
+    
+    if ([[filePath pathExtension] isEqualToString:@"xcloc"] &&
+        hasContentsJson &&
+        hasLocalizedContents) {
         return YES;
     }
     return NO;
