@@ -156,10 +156,12 @@
     return NO;
 }
 
-- (BOOL)isFilePathXcloc:(NSString*)filePath:(NSArray*)files {
+- (BOOL)isFilePathXcloc: (NSString*)filePath : (NSArray*)files {
     BOOL hasLocalizedContents = NO;
     BOOL hasContentsJson = NO;
-    
+    BOOL hasSourceContents = NO;
+    BOOL hasNotes = NO;
+
     for (NSString *filename in files) {
         if ([filename isEqualToString:@"Localized Contents"]) {
             hasLocalizedContents = YES;
@@ -168,13 +170,24 @@
         if ([filename isEqualToString:@"contents.json"]) {
             hasContentsJson = YES;
         }
+
+        if ([filename isEqualToString:@"Source Contents"]) {
+            hasSourceContents = YES;
+        }
+
+        if ([filename isEqualToString:@"Notes"]) {
+            hasNotes = YES;
+        }
     }
-    
+
     if ([[filePath pathExtension] isEqualToString:@"xcloc"] &&
         hasContentsJson &&
-        hasLocalizedContents) {
+        hasLocalizedContents &&
+        hasSourceContents &&
+        hasNotes) {
         return YES;
     }
+
     return NO;
 }
 
