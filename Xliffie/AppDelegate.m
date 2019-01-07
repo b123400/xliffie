@@ -51,7 +51,7 @@
             } else {
                 NSArray *files = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:thisItem error:nil];
                 BOOL isXcloc = [self isFilePathXcloc:thisItem:files];
-                
+
                 if (isXcloc) {
                     thisItem = [NSString stringWithFormat:@"%@/%@", thisItem, @"Localized Contents"];
                     files = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:thisItem error:nil];
