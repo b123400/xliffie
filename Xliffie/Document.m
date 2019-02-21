@@ -56,10 +56,10 @@
     }
     self.windowController = windowController;
     [[windowController window] makeKeyAndOrderFront:self];
-    
+
     // Show Xcode 7.3 sheet
     if ([self isXcode73]) {
-        
+
         NSAlert *alert = [[NSAlert alloc] init];
         [alert setMessageText:NSLocalizedString(@"Do you have Xcode 7.3?",@"xcode alert")];
         [alert setInformativeText:NSLocalizedString(@"Xcode 7.3 has problem with importing XLIFF files, please consider upgrading to a newer version, or go back to Xcode 7.2.\nYou can continue editing, this is just a reminder of a known bug.", @"")];
@@ -95,7 +95,7 @@
         return NO;
     }
     NSArray *elements = [self.xmlDocument.rootElement elementsForName:@"file"];
-    
+
     for (NSXMLElement *fileElement in elements) {
         File *thisFile = [[File alloc] initWithXMLElement:fileElement];
         thisFile.document = self;
@@ -104,46 +104,10 @@
     return YES;
 }
 
-- (BOOL)readFromFileWrapper:(NSFileWrapper *)fileWrapper ofType:(NSString *)typeName error:(NSError * _Nullable *)outError {
-//    Case for handling drag and drop
-    if ([[[fileWrapper filename] pathExtension] isEqualToString:@"xliff"] ||
-        [[[fileWrapper filename] pathExtension] isEqualToString:@"xlif"] ||
-        [[[fileWrapper filename] pathExtension] isEqualToString:@"xlf"]) {
-        NSData *xmlData = [fileWrapper regularFileContents];
-
-        [self readFromData:xmlData ofType:typeName error:outError];
-        return YES;
-    }
-
-//    Case for handling open from dialog
-    if ([fileWrapper isDirectory]) {
-        NSDictionary *fileWrappers = [fileWrapper fileWrappers];
-
-        for (id key in fileWrappers) {
-            NSFileWrapper* fw = [fileWrappers objectForKey:key];
-            if ([[fw filename] isEqualToString:@"Localized Contents"]) {
-                return [self readFromFileWrapper:fw ofType:typeName error:outError];
-            }
-
-            if ([[[fw filename] pathExtension] isEqualToString:@"xliff"] ||
-                [[[fw filename] pathExtension] isEqualToString:@"xlif"] ||
-                [[[fw filename] pathExtension] isEqualToString:@"xlf"]) {
-                NSData *xmlData = [fw regularFileContents];
-
-                [self readFromData:xmlData ofType:typeName error:outError];
-                return YES;
-            }
-        }
-    }
-
-    return NO;
-}
-
 # pragma mark filter
 
 - (Document*)filteredDocumentWithSearchFilter:(NSString*)filter {
-    Document *document = [[Document alloc] init];
-    document.xmlDocument = self.xmlDocument;
+    Document *document = [self copy];
     document.files = [self filesMatchingSearchFilter:filter];
     return document;
 }
