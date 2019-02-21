@@ -172,7 +172,10 @@
 
 - (void)addDocument:(Document*)newDocument {
     for (Document *document in self.documents) {
-        if ([[document fileURL]isEqualTo:[newDocument fileURL]]) return;
+        if ([[[[document fileURL] absoluteString] stringByStandardizingPath] isEqualTo:
+             [[[newDocument fileURL] absoluteString] stringByStandardizingPath]]) {
+            return;
+        }
     }
 
     if (newDocument) {
