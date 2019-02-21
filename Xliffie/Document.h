@@ -22,4 +22,6 @@
 - (NSString*)toolID;
 - (NSString*)toolVersion;
 
++ (BOOL)isXliffExtension:(NSString *)extension;
+
 @end
