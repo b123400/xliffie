@@ -145,4 +145,10 @@
     return [[self toolVersion] isEqualToString:@"7.3"] && [[self toolID] isEqualToString:@"com.apple.dt.xcode"];
 }
 
++ (BOOL)isXliffExtension:(NSString *)extension {
+    return [extension isEqualToString:@"xliff"] ||
+            [extension isEqualToString:@"xlif"] ||
+            [extension isEqualToString:@"xlf"];
+}
+
 @end

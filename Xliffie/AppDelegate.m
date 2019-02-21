@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "DocumentWindowController.h"
+#import "XclocDocument.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
 
@@ -34,38 +35,37 @@
 }
 
 - (void)application:(NSApplication *)sender openFiles:(NSArray<NSString *> *)inputFilenames {
-    
+
     NSMutableArray *inputs = [NSMutableArray arrayWithArray:inputFilenames];
     NSMutableArray *filenames = [NSMutableArray array];
-    
+
     while ([inputs count]) {
-        NSString *thisItem = inputs[0];
+        NSString *thisItem = [inputs firstObject];
         [inputs removeObjectAtIndex:0];
         BOOL isFolder;
         BOOL exists = [[NSFileManager defaultManager] fileExistsAtPath:thisItem isDirectory:&isFolder];
         if (exists) {
             if (!isFolder) {
-                if ([self isFilePathXliff:thisItem]) {
+                if ([Document isXliffExtension:[thisItem pathExtension]]) {
                     [filenames addObject:thisItem];
                 }
             } else {
                 NSArray *files = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:thisItem error:nil];
-                BOOL isXcloc = [self isFilePathXcloc:thisItem:files];
+                BOOL isXcloc = [XclocDocument isXclocExtension:[thisItem pathExtension]];
 
                 if (isXcloc) {
-                    thisItem = [NSString stringWithFormat:@"%@/%@", thisItem, @"Localized Contents"];
-                    files = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:thisItem error:nil];
-                }
-
-                for (NSString *filename in files) {
-                    if ([self isFilePathXliff:filename]) {
-                        [inputs addObject:[thisItem stringByAppendingPathComponent:filename]];
+                    [filenames addObject:thisItem];
+                } else {
+                    for (NSString *filename in files) {
+                        if ([Document isXliffExtension:[filename pathExtension]] || [XclocDocument isXclocExtension:[filename pathExtension]]) {
+                            [inputs addObject:[thisItem stringByAppendingPathComponent:filename]];
+                        }
                     }
                 }
             }
         }
     }
-    
+
     NSMutableDictionary <NSString*, NSMutableArray <NSString*>*> *basePaths = [NSMutableDictionary dictionary];
     for (NSString *filename in filenames) {
         NSString *basePath = [filename stringByDeletingLastPathComponent];
@@ -73,7 +73,7 @@
         [existingFiles addObject:filename];
         [basePaths setObject:existingFiles forKey:basePath];
     }
-    
+
     for (NSString *openingBasePath in basePaths) {
         NSMutableArray <NSString*> *xliffFiles = [basePaths objectForKey:openingBasePath];
         DocumentWindowController *controller = [self openedDocumentControllerWithPath:[xliffFiles firstObject]];
@@ -81,32 +81,45 @@
             // open window for this new base path
             NSString *lastFile = [xliffFiles lastObject];
             [xliffFiles removeLastObject];
-            
+
             [[NSDocumentController sharedDocumentController] openDocumentWithContentsOfURL:[NSURL fileURLWithPath:lastFile]
                                                                                    display:YES
                                                                          completionHandler:^(NSDocument * _Nullable document, BOOL documentWasAlreadyOpen, NSError * _Nullable error) {
-                                                                             
-                                                                             DocumentWindowController *controller = [[document windowControllers] lastObject];
-                                                                             
+
+                                                                             DocumentWindowController *controller = [self openedDocumentControllerWithPath:lastFile];
+
                                                                              for (NSString *xliffPath in xliffFiles) {
-                                                                                 Document *newDocument = [[Document alloc] initWithContentsOfURL:[NSURL fileURLWithPath:xliffPath]
-                                                                                                                                          ofType:@"xliff"
-                                                                                                                                           error:&error];
-                                                                                 [controller setDocument:newDocument];
+                                                                                 [self attachDocumentOfURL:[NSURL fileURLWithPath:xliffPath]
+                                                                                        toWindowController:controller
+                                                                                                 withError:&error];
                                                                              }
                                                                              [controller openDocumentDrawer];
                                                                          }];
         } else {
             // add document into this window
             for (NSString *xliffPath in xliffFiles) {
-                Document *newDocument = [[Document alloc] initWithContentsOfURL:[NSURL fileURLWithPath:xliffPath]
-                                                                         ofType:@"xliff"
-                                                                          error:nil];
-                [controller setDocument:newDocument];
+                [self attachDocumentOfURL:[NSURL fileURLWithPath:xliffPath]
+                       toWindowController:controller
+                                withError:nil];
             }
             [[controller window] makeKeyAndOrderFront:self];
         }
     }
+}
+
+- (void)attachDocumentOfURL:(NSURL *)url toWindowController:(DocumentWindowController*) controller withError:(NSError**)outError {
+    NSString *extension = [[url lastPathComponent] pathExtension];
+    Document *newDocument;
+    if ([Document isXliffExtension:extension]) {
+        newDocument = [[Document alloc] initWithContentsOfURL:url
+                                                      ofType:@"xliff"
+                                                       error:outError];
+    } else if ([XclocDocument isXclocExtension:extension]) {
+        newDocument = [[XclocDocument alloc] initWithContentsOfURL:url
+                                                            ofType:@"xcloc"
+                                                             error:outError];
+    }
+    [controller setDocument:newDocument];
 }
 
 - (DocumentWindowController*)openedDocumentControllerWithPath:(NSString*)filePath {
@@ -145,50 +158,6 @@
         [[NSDocumentController sharedDocumentController] openDocument:self];
     }
     return YES;
-}
-
-- (BOOL)isFilePathXliff:(NSString*)filePath {
-    if ([[filePath pathExtension] isEqualToString:@"xliff"] ||
-        [[filePath pathExtension] isEqualToString:@"xlif"] ||
-        [[filePath pathExtension] isEqualToString:@"xlf"]) {
-        return YES;
-    }
-    return NO;
-}
-
-- (BOOL)isFilePathXcloc: (NSString*)filePath : (NSArray*)files {
-    BOOL hasLocalizedContents = NO;
-    BOOL hasContentsJson = NO;
-    BOOL hasSourceContents = NO;
-    BOOL hasNotes = NO;
-
-    for (NSString *filename in files) {
-        if ([filename isEqualToString:@"Localized Contents"]) {
-            hasLocalizedContents = YES;
-        }
-        
-        if ([filename isEqualToString:@"contents.json"]) {
-            hasContentsJson = YES;
-        }
-
-        if ([filename isEqualToString:@"Source Contents"]) {
-            hasSourceContents = YES;
-        }
-
-        if ([filename isEqualToString:@"Notes"]) {
-            hasNotes = YES;
-        }
-    }
-
-    if ([[filePath pathExtension] isEqualToString:@"xcloc"] &&
-        hasContentsJson &&
-        hasLocalizedContents &&
-        hasSourceContents &&
-        hasNotes) {
-        return YES;
-    }
-
-    return NO;
 }
 
 @end
