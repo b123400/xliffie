@@ -8,7 +8,7 @@
 
 #import "DocumentWindowController.h"
 #import "DetailViewController.h"
-#import "DocumentWindowSplitView.h"
+#import "DocumentListViewController.h"
 #import "DocumentListDrawer.h"
 #import "TargetMissingViewController.h"
 #import "TranslateServiceWindowController.h"
@@ -19,18 +19,20 @@
 
 @interface DocumentWindowController () <DocumentListDrawerDelegate, TargetMissingViewController, TranslateServiceWindowControllerDelegate>
 
-@property (nonatomic, strong) NSViewController *splitViewController;
+@property (nonatomic, strong) NSSplitViewController *splitViewController;
 @property (nonatomic, strong) DocumentViewController *mainViewController;
 @property (nonatomic, strong) DetailViewController *detailViewController;
 @property (nonatomic, assign) BOOL isWindowFrameInitialized;
 
 @property (nonatomic, strong) TargetMissingViewController *targetMissingViewController;
 
+@property (weak) IBOutlet NSSegmentedControl *layoutSegment;
 @property (weak) IBOutlet NSSegmentedControl *languagesSegment;
 
 @property (weak) IBOutlet NSSearchField *searchField;
 @property (nonatomic, strong) NSMutableArray *documents;
-@property (nonatomic, strong) DocumentListDrawer *documentsDrawer;
+//@property (nonatomic, strong) DocumentListDrawer *documentsDrawer;
+@property (nonatomic, strong) DocumentListViewController *documentListViewController;
 @property (nonatomic, strong) TranslateServiceWindowController *translateServiceController;
 @property (nonatomic, strong) TranslationWindowController *translateController;
 
@@ -64,36 +66,42 @@
 
 - (void)windowDidLoad {
     [super windowDidLoad];
-    
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
-    self.mainViewController = [self.storyboard instantiateControllerWithIdentifier:@"DocumentViewController"];
+    self.splitViewController = (NSSplitViewController*)self.contentViewController;
+    
+    NSArray<NSSplitViewItem *> *splitViewItems = [self.splitViewController splitViewItems];
+    
+    NSSplitViewItem *documentListItem = splitViewItems[0];
+    self.documentListViewController = (DocumentListViewController*)[documentListItem viewController];
+    self.documentListViewController.delegate = self;
+    documentListItem.maximumThickness = 150;
+    documentListItem.preferredThicknessFraction = 0.2;
+    documentListItem.collapsed = YES;
+    
+    NSSplitViewItem *mainItem = splitViewItems[1];
+    self.mainViewController = (DocumentViewController*)[mainItem viewController];
     self.mainViewController.delegate = self;
     self.mainViewController.document = self.document;
     
-    self.splitViewController = self.contentViewController;
-    DocumentWindowSplitView *splitView = (DocumentWindowSplitView*)self.contentViewController.view.subviews[0];
-    splitView.delegate = self;
-    [splitView addSubview:self.mainViewController.view];
-    
-    self.detailViewController = [self.storyboard instantiateControllerWithIdentifier:@"DetailViewController"];
-    [splitView addSubview:self.detailViewController.view];
-    
-    
+    NSSplitViewItem *detailItem = splitViewItems[2];
+    detailItem.collapsed = YES;
+    detailItem.maximumThickness = 200;
+    detailItem.preferredThicknessFraction = 0.2;
+    self.detailViewController = (DetailViewController*)[detailItem viewController];
+
     [(DocumentWindow*)self.window setDelegate:self];
-    
-    [splitView collapseRightView];
     
     self.documents = [NSMutableArray array];
     self.filesOfLanguages = [NSMutableDictionary dictionary];
     
-    self.documentsDrawer = [[DocumentListDrawer alloc] initWithContentSize:NSMakeSize(100, self.window.frame.size.height)
-                                                             preferredEdge:NSMinXEdge];
-    self.documentsDrawer.delegate = self;
-    [self.documentsDrawer setParentWindow:self.window];
-    self.documentsDrawer.minContentSize = NSMakeSize(100, 200);
+//    self.documentsDrawer = [[DocumentListDrawer alloc] initWithContentSize:NSMakeSize(100, self.window.frame.size.height)
+//                                                             preferredEdge:NSMinXEdge];
+//    self.documentsDrawer.delegate = self;
+//    [self.documentsDrawer setParentWindow:self.window];
+//    self.documentsDrawer.minContentSize = NSMakeSize(100, 200);
     
-    [self.documentsDrawer close];
-    
+//    [self.documentsDrawer close];
+
     self.window.minSize = DOCUMENT_WINDOW_MIN_SIZE;
 
     if (!self.isWindowFrameInitialized) {
@@ -150,7 +158,7 @@
         }
     }
     if (index != NSNotFound) {
-        [self.documentsDrawer selectDocumentAtIndex:index];
+        [self.documentListViewController selectDocumentAtIndex:index];
     }
     
 
@@ -166,7 +174,10 @@
 }
 
 - (NSString*)baseFolderPath {
-    Document *document = self.document ?: self.documents[0];
+    Document *document = self.document;
+    if (!document && self.documents.count) {
+        document = self.documents[0];
+    }
     return [[[document fileURL] path] stringByDeletingLastPathComponent];
 }
 
@@ -184,7 +195,7 @@
     
     [self reloadLanguageMap];
     [self reloadTranslationButtons];
-    [self.documentsDrawer reloadData];
+    [self.documentListViewController reloadData];
     [self.window invalidateRestorableState];
 }
 
@@ -194,8 +205,8 @@
 
 - (void)windowWillClose:(NSNotification *)notification {
     self.window = nil;
-    self.documentsDrawer.delegate = nil;
-    self.documentsDrawer = nil;
+    self.documentListViewController.delegate = nil;
+    self.documentListViewController = nil;
     for (Document *document in self.documents) {
         document.windowController = nil;
         [document close];
@@ -292,15 +303,16 @@
 
 #pragma mark interaction
 
+- (void)toggleFileList {
+    if (self.contentViewController != self.splitViewController) return;
+    NSSplitViewItem *splitViewItem = [[self.splitViewController splitViewItems] objectAtIndex:0];
+    splitViewItem.animator.collapsed = !splitViewItem.collapsed;
+}
+
 - (void)toggleNotes {
     if (self.contentViewController != self.splitViewController) return;
-    DocumentWindowSplitView *splitView = self.contentViewController.view.subviews[0];
-    BOOL rightViewCollapsed = [splitView isSubviewCollapsed:[[splitView subviews] objectAtIndex: 1]];
-    if (rightViewCollapsed) {
-        [splitView uncollapseRightView];
-    } else {
-        [splitView collapseRightView];
-    }
+    NSSplitViewItem *splitViewItem = [[self.splitViewController splitViewItems] objectAtIndex:2];
+    splitViewItem.animator.collapsed = !splitViewItem.collapsed;
 }
 
 - (void)showTranslateWindow {
@@ -359,37 +371,49 @@
 }
 
 - (IBAction)toggleDrawer:(id)sender {
-    [self.documentsDrawer toggle:self];
+    [self toggleFileList];
 }
 
 - (void)openDocumentDrawer {
-    [self.documentsDrawer open];
+    [[[self.splitViewController splitViewItems] firstObject] animator].collapsed = NO;
 }
 
-#pragma mark splitview
+#pragma mark documen list
 
-- (BOOL)splitView:(NSSplitView *)splitView canCollapseSubview:(NSView *)subview {
-    NSView* rightView = [[splitView subviews] objectAtIndex:1];
-    return ([subview isEqual:rightView]);
+- (NSArray<NSDocument *> *)documentsForListController:(id)sender {
+    return self.documents;
 }
 
-- (BOOL)splitView:(NSSplitView *)splitView
-shouldCollapseSubview:(NSView *)subview
-forDoubleClickOnDividerAtIndex:(NSInteger)dividerIndex {
-    return YES;
+- (void)listController:(id)sender didSelectedDocumentAtIndex:(NSUInteger)index {
+    if (index == -1) return;
+    Document *document = self.documents[index];
+    self.document = document;
 }
 
-- (CGFloat)splitView:(NSSplitView *)splitView
-constrainMinCoordinate:(CGFloat)proposedMin
-         ofSubviewAt:(NSInteger)dividerIndex {
-    return splitView.frame.size.width/2.0;
-}
+//#pragma mark splitview
 
-- (CGFloat)splitView:(NSSplitView *)splitView
-constrainMaxCoordinate:(CGFloat)proposedMax
-         ofSubviewAt:(NSInteger)dividerIndex {
-    return splitView.frame.size.width-200;
-}
+//- (BOOL)splitView:(NSSplitView *)splitView canCollapseSubview:(NSView *)subview {
+//    NSView* rightView = [[splitView subviews] objectAtIndex:1];
+//    return ([subview isEqual:rightView]);
+//}
+//
+//- (BOOL)splitView:(NSSplitView *)splitView
+//shouldCollapseSubview:(NSView *)subview
+//forDoubleClickOnDividerAtIndex:(NSInteger)dividerIndex {
+//    return YES;
+//}
+//
+//- (CGFloat)splitView:(NSSplitView *)splitView
+//constrainMinCoordinate:(CGFloat)proposedMin
+//         ofSubviewAt:(NSInteger)dividerIndex {
+//    return splitView.frame.size.width/2.0;
+//}
+//
+//- (CGFloat)splitView:(NSSplitView *)splitView
+//constrainMaxCoordinate:(CGFloat)proposedMax
+//         ofSubviewAt:(NSInteger)dividerIndex {
+//    return splitView.frame.size.width-200;
+//}
 
 #pragma mark short cuts
 
