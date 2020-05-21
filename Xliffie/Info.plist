@@ -11,12 +11,18 @@
 			<array>
 				<string>xcloc</string>
 			</array>
+			<key>CFBundleTypeMIMETypes</key>
+			<array/>
 			<key>CFBundleTypeName</key>
 			<string>Xcloc file</string>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>LSHandlerRank</key>
 			<string>Default</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>com.apple.xcode.xcloc</string>
+			</array>
 			<key>LSTypeIsPackage</key>
 			<true/>
 			<key>NSDocumentClass</key>
@@ -31,12 +37,20 @@
 			</array>
 			<key>CFBundleTypeIconFile</key>
 			<string></string>
+			<key>CFBundleTypeMIMETypes</key>
+			<array>
+				<string>application/xliff+xml</string>
+			</array>
 			<key>CFBundleTypeName</key>
 			<string>XLiff file</string>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>LSHandlerRank</key>
 			<string>Default</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>org.oasis-open.xliff</string>
+			</array>
 			<key>LSTypeIsPackage</key>
 			<false/>
 			<key>NSDocumentClass</key>
@@ -89,5 +103,48 @@
 	<string>Main</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>UTImportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.xml</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>XML Localization Interchange File Format</string>
+			<key>UTTypeIdentifier</key>
+			<string>org.oasis-open.xliff</string>
+			<key>UTTypeReferenceURL</key>
+			<string>http://docs.oasis-open.org/xliff/xliff-core/xliff-core.html</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>xliff</string>
+				</array>
+				<key>public.mime-type</key>
+				<array>
+					<string>application/xliff+xml</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.directory</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>Xcode Localization Catalog</string>
+			<key>UTTypeIdentifier</key>
+			<string>com.apple.xcode.xcloc</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>xcloc</string>
+				</array>
+			</dict>
+		</dict>
+	</array>
 </dict>
 </plist>
