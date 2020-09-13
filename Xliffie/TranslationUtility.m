@@ -10,7 +10,6 @@
 #import <FGTranslator/FGTranslator.h>
 #import <BRLocaleMap/BRLocaleMap.h>
 #import "APIKeys.h"
-#import <Crashlytics/Crashlytics.h>
 
 @implementation TranslationUtility
 
@@ -134,13 +133,6 @@
                                target:targetCode
                            completion:^(NSError *error, NSArray<NSString *> *translated) {
                                callback(error, translated);
-                               if (error) {
-                                   [[Crashlytics sharedInstance] recordError:error
-                                                      withAdditionalUserInfo:@{
-                                                                               @"source": sourceLocaleCode,
-                                                                               @"target": targetLocaleCode
-                                                                               }];
-                               }
                            }];
 }
 

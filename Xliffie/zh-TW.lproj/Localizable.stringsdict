@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>%d record(s) are going to be translated using %@.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>將要用 %2$@ 來翻譯 %1$d 串字。</string>
+	</dict>
+</dict>
+</plist>
