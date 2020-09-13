@@ -36,6 +36,7 @@
 		CFE39FA11A767252004644C8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CFE39FA31A767252004644C8 /* InfoPlist.strings */; };
 		CFE39FA61A767253004644C8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CFE39FA81A767253004644C8 /* InfoPlist.strings */; };
 		CFE3B1761CD800AB00021D7F /* NSString+Pangu.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE3B1751CD800AB00021D7F /* NSString+Pangu.m */; };
+		CFEECE42250E21EE007A324C /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = CFEECE44250E21EE007A324C /* Localizable.stringsdict */; };
 		CFF70D80221E7BF2004C4C2D /* XclocDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF70D7F221E7BF2004C4C2D /* XclocDocument.m */; };
 		D42B8307A52A4CB70FEEA156 /* libPods-XliffieTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B8C7EA753A4178056B36640 /* libPods-XliffieTests.a */; };
 /* End PBXBuildFile section */
@@ -117,6 +118,9 @@
 		CFE39FA71A767253004644C8 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CFE3B1741CD800AB00021D7F /* NSString+Pangu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Pangu.h"; sourceTree = "<group>"; };
 		CFE3B1751CD800AB00021D7F /* NSString+Pangu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Pangu.m"; sourceTree = "<group>"; };
+		CFEECE43250E21EE007A324C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		CFEECE46250E2C69007A324C /* zh-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = "zh-TW"; path = "zh-TW.lproj/Localizable.stringsdict"; sourceTree = "<group>"; };
+		CFEECE47250E2C6A007A324C /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = ja; path = ja.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		CFF70D7E221E7BF2004C4C2D /* XclocDocument.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XclocDocument.h; sourceTree = "<group>"; };
 		CFF70D7F221E7BF2004C4C2D /* XclocDocument.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XclocDocument.m; sourceTree = "<group>"; };
 		E63D96FADBADA5BA423F82DD /* Pods-Xliffie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Xliffie.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Xliffie/Pods-Xliffie.debug.xcconfig"; sourceTree = "<group>"; };
@@ -239,6 +243,7 @@
 				CF5FC89C1A5ABFF700538E60 /* Images.xcassets */,
 				CF5FC89E1A5ABFF700538E60 /* Main.storyboard */,
 				CFE39F9C1A765859004644C8 /* Localizable.strings */,
+				CFEECE44250E21EE007A324C /* Localizable.stringsdict */,
 				CF5FC88F1A5ABFF700538E60 /* Supporting Files */,
 			);
 			path = Xliffie;
@@ -401,6 +406,7 @@
 				CF660EF41C540E11007A0B28 /* TranslateServiceWindowController.xib in Resources */,
 				CF660EFB1C540E27007A0B28 /* TranslationWindowController.xib in Resources */,
 				CFE39F9A1A765859004644C8 /* Localizable.strings in Resources */,
+				CFEECE42250E21EE007A324C /* Localizable.stringsdict in Resources */,
 				CF660EF31C5401B2007A0B28 /* Credits.rtf in Resources */,
 				CF5FC8A01A5ABFF700538E60 /* Main.storyboard in Resources */,
 			);
@@ -611,6 +617,16 @@
 				CF4B0C2F1BF9123A007AF981 /* zh-TW */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		CFEECE44250E21EE007A324C /* Localizable.stringsdict */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CFEECE43250E21EE007A324C /* en */,
+				CFEECE46250E2C69007A324C /* zh-TW */,
+				CFEECE47250E2C6A007A324C /* ja */,
+			);
+			name = Localizable.stringsdict;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

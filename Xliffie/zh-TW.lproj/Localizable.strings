@@ -1,6 +1,3 @@
-/* Translation window hint */
-"%d record(s) are going to be translated using %@." = "將要用 %2$@ 來翻譯 %1$d 串字。";
-
 /* confirm */
 "Add spaces to all translations?" = "要在中文和英數字之間加入空白嗎？";
 

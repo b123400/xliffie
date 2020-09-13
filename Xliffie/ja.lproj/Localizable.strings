@@ -1,6 +1,3 @@
-/* Translation window hint */
-"%d record(s) are going to be translated using %@." = "これから %1$d つの文字列を %2$@ で翻訳します。";
-
 /* confirm */
 "Add spaces to all translations?" = "英語と日本語と数字の間に空白を追加しますか？";
 
