@@ -11,7 +11,7 @@
 
 @class DocumentWindowController;
 
-@interface Document : NSDocument
+@interface Document : NSDocument<NSCopying>
 
 @property (nonatomic, strong) NSMutableArray <File*> *files;
 @property (nonatomic, strong) DocumentWindowController *windowController;

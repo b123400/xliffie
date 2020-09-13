@@ -18,6 +18,14 @@
 
 @implementation XclocDocument
 
+- (id)copyWithZone:(NSZone *)zone {
+    XclocDocument *newDocument = [super copyWithZone:zone];
+    newDocument.fileWrapper = self.fileWrapper;
+    newDocument.xliffParentFileWrapper = self.xliffParentFileWrapper;
+    newDocument.xliffFileWrapper = self.xliffFileWrapper;
+    return newDocument;
+}
+
 - (BOOL)readFromFileWrapper:(NSFileWrapper *)fileWrapper ofType:(NSString *)typeName error:(NSError * _Nullable *)outError {
     if (![fileWrapper isDirectory] || ![[[[fileWrapper filename] pathExtension] lowercaseString] isEqualToString:@"xcloc"]) {
         return NO;

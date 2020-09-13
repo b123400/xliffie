@@ -29,6 +29,14 @@
     return self;
 }
 
+- (id)copyWithZone:(nullable NSZone *)zone {
+    Document *newDocument = [[[self class] alloc] init];
+    newDocument.files = self.files;
+    newDocument.xmlDocument = self.xmlDocument;
+    newDocument.windowController = self.windowController;
+    return newDocument;
+}
+
 - (void)windowControllerDidLoadNib:(NSWindowController *)aController {
     [super windowControllerDidLoadNib:aController];
     // Add any code here that needs to be executed once the windowController has loaded the document's window.
