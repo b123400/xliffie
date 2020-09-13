@@ -313,7 +313,6 @@
 				CF5FC8881A5ABFF700538E60 /* Sources */,
 				CF5FC8891A5ABFF700538E60 /* Frameworks */,
 				CF5FC88A1A5ABFF700538E60 /* Resources */,
-				CFE39FDB1A7690E9004644C8 /* ShellScript */,
 				CBFB020D2258E9B28D4491C4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
@@ -478,19 +477,6 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Xliffie/Pods-Xliffie-resources.sh\"\n";
 			showEnvVarsInLog = 0;
-		};
-		CFE39FDB1A7690E9004644C8 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\" be3de76eb1918a93b4d68a8e87b983750d738aed 14ee308c3c10a8baa8cccc093c1c4c9c00d34c8c4b0b69aa8e7aa5dd0dae61c0";
 		};
 		D6A7F39881EBEC737CA965D7 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;

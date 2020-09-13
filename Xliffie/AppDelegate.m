@@ -9,8 +9,6 @@
 #import "AppDelegate.h"
 #import "DocumentWindowController.h"
 #import "XclocDocument.h"
-#import <Fabric/Fabric.h>
-#import <Crashlytics/Crashlytics.h>
 
 @interface AppDelegate ()
 
@@ -20,7 +18,6 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
-    [Fabric with:@[[Crashlytics class]]];
 }
 
 - (void)didFinishRestoreWindow:(NSNotification*)notification {
