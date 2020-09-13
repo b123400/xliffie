@@ -16,12 +16,6 @@
 /* Translation target not found */
 "Cannot translate to %@" = "%@ に翻訳するのできないです。";
 
-/* xcode alert */
-"Do you have Xcode 7.3?" = "お主、もしや Xcode 7.3 の使い手でござるか？";
-
-/* No comment provided by engineer. */
-"Download newer Xcode" = "新しいバージョンをダウンロード";
-
 /* No comment provided by engineer. */
 "Errors during translation:
 %@" = "翻訳するのにエラーが起きました：
@@ -53,11 +47,6 @@
 
 /* Translate alert message */
 "There are %d records with formatting warnings, better fix them before applying." = "問題がある文字列は %d 個もありますけど、修正した方がいいですよ。";
-
-/* No comment provided by engineer. */
-"Xcode 7.3 has problem with importing XLIFF files, please consider upgrading to a newer version, or go back to Xcode 7.2.
-You can continue editing, this is just a reminder of a known bug." = "Xcode 7.3 は XLIFF ファイルをインポートできないバグがあります、新しいバージョンをダウンロードするか、Xcode 7.2 に戻るかしかないです。
-このままファイルを編集しても問題ないです、問題がありそうなところを伝いたいだけです.";
 
 /* confirm */
 "You can undo by pressing command+z" = "コマンド + z で復元できます。";
