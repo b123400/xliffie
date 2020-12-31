@@ -93,6 +93,11 @@
     return YES;
 }
 
+- (BOOL)readFromFileWrapper:(NSFileWrapper *)fileWrapper ofType:(NSString *)typeName error:(NSError * _Nullable *)outError {
+    NSLog(@"Not applicable");
+    return NO;
+}
+
 # pragma mark filter
 
 - (Document*)filteredDocumentWithSearchFilter:(NSString*)filter {

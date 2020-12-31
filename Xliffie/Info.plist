@@ -11,6 +11,8 @@
 			<array>
 				<string>xcloc</string>
 			</array>
+			<key>CFBundleTypeIconSystemGenerated</key>
+			<integer>1</integer>
 			<key>CFBundleTypeMIMETypes</key>
 			<array/>
 			<key>CFBundleTypeName</key>
@@ -37,6 +39,8 @@
 			</array>
 			<key>CFBundleTypeIconFile</key>
 			<string></string>
+			<key>CFBundleTypeIconSystemGenerated</key>
+			<integer>1</integer>
 			<key>CFBundleTypeMIMETypes</key>
 			<array>
 				<string>application/xliff+xml</string>
@@ -135,6 +139,8 @@
 			</array>
 			<key>UTTypeDescription</key>
 			<string>Xcode Localization Catalog</string>
+			<key>UTTypeIcons</key>
+			<dict/>
 			<key>UTTypeIdentifier</key>
 			<string>com.apple.xcode.xcloc</string>
 			<key>UTTypeTagSpecification</key>

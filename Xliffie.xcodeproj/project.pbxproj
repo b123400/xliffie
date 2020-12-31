@@ -27,6 +27,7 @@
 		CF660EFB1C540E27007A0B28 /* TranslationWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF660EFD1C540E27007A0B28 /* TranslationWindowController.xib */; };
 		CF662B391C307C7D00704CEA /* TranslateServiceWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF662B381C307C7D00704CEA /* TranslateServiceWindowController.m */; };
 		CF7CFCC92442083D00AFC9EF /* DocumentListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7CFCC72442083D00AFC9EF /* DocumentListViewController.m */; };
+		CF846CD4259E21A300CA0713 /* CustomDocumentController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF846CD3259E21A300CA0713 /* CustomDocumentController.m */; };
 		CF92FB941C24037B00700D3E /* TargetMissingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF92FB931C24037B00700D3E /* TargetMissingViewController.m */; };
 		CF94FCA51A5C365400EE8BD5 /* File.m in Sources */ = {isa = PBXBuildFile; fileRef = CF94FCA41A5C365400EE8BD5 /* File.m */; };
 		CF94FCA81A5C37A900EE8BD5 /* TranslationPair.m in Sources */ = {isa = PBXBuildFile; fileRef = CF94FCA71A5C37A900EE8BD5 /* TranslationPair.m */; };
@@ -100,6 +101,8 @@
 		CF662B381C307C7D00704CEA /* TranslateServiceWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TranslateServiceWindowController.m; sourceTree = "<group>"; };
 		CF7CFCC62442083D00AFC9EF /* DocumentListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DocumentListViewController.h; sourceTree = "<group>"; };
 		CF7CFCC72442083D00AFC9EF /* DocumentListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DocumentListViewController.m; sourceTree = "<group>"; };
+		CF846CD2259E21A300CA0713 /* CustomDocumentController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomDocumentController.h; sourceTree = "<group>"; };
+		CF846CD3259E21A300CA0713 /* CustomDocumentController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomDocumentController.m; sourceTree = "<group>"; };
 		CF92FB921C24037B00700D3E /* TargetMissingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetMissingViewController.h; sourceTree = "<group>"; };
 		CF92FB931C24037B00700D3E /* TargetMissingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetMissingViewController.m; sourceTree = "<group>"; };
 		CF94FCA31A5C365400EE8BD5 /* File.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = File.h; sourceTree = "<group>"; };
@@ -222,6 +225,8 @@
 				CF011B481C40F4B900948323 /* APIKeys.h */,
 				CF5FC8911A5ABFF700538E60 /* AppDelegate.h */,
 				CF5FC8921A5ABFF700538E60 /* AppDelegate.m */,
+				CF846CD2259E21A300CA0713 /* CustomDocumentController.h */,
+				CF846CD3259E21A300CA0713 /* CustomDocumentController.m */,
 				CF5682E81A6AFB9800E0DEDD /* DocumentWindowController.h */,
 				CF5682E91A6AFB9800E0DEDD /* DocumentWindowController.m */,
 				CFCD4B321A6D0C7200BA8826 /* DocumentWindow.h */,
@@ -520,6 +525,7 @@
 				CF5FC8951A5ABFF700538E60 /* main.m in Sources */,
 				CF0945911C54FD3600DAEB4A /* BRArrowSegmentedCell.m in Sources */,
 				CFF70D80221E7BF2004C4C2D /* XclocDocument.m in Sources */,
+				CF846CD4259E21A300CA0713 /* CustomDocumentController.m in Sources */,
 				CF662B391C307C7D00704CEA /* TranslateServiceWindowController.m in Sources */,
 				CF5FC8931A5ABFF700538E60 /* AppDelegate.m in Sources */,
 				CFCD4B341A6D0C7200BA8826 /* DocumentWindow.m in Sources */,
