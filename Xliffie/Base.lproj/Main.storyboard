@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15705"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -629,11 +629,11 @@
             <objects>
                 <windowController storyboardIdentifier="Document Window Controller" id="jGA-0Y-lOj" customClass="DocumentWindowController" sceneMemberID="viewController">
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="Ckk-yw-fiv" customClass="DocumentWindow">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="196" y="240" width="637" height="350"/>
+                        <rect key="contentRect" x="196" y="240" width="1042" height="439"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
-                        <toolbar key="toolbar" implicitIdentifier="166F8748-BD85-4A78-8FF8-6788C586B18B" autosavesConfiguration="NO" displayMode="iconOnly" sizeMode="regular" id="XuC-uR-2Qg">
+                        <toolbar key="toolbar" implicitIdentifier="166F8748-BD85-4A78-8FF8-6788C586B18B" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="XuC-uR-2Qg">
                             <allowedToolbarItems>
                                 <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="fIO-7r-OQw"/>
                                 <toolbarItem implicitItemIdentifier="49F7EE2C-F5C3-4B1F-BF77-9764EB1FE684" label="Custom View" paletteLabel="Custom View" tag="-1" id="hRa-qY-UHQ">
@@ -645,7 +645,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <subviews>
                                             <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uLd-TS-Dl5">
-                                                <rect key="frame" x="0.0" y="7" width="287" height="23"/>
+                                                <rect key="frame" x="-1" y="6" width="291" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="22" id="kCi-ei-A8X"/>
                                                 </constraints>
@@ -770,7 +770,7 @@
                 </windowController>
                 <customObject id="6f7-a7-6o1" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75.5" y="158"/>
+            <point key="canvasLocation" x="-50" y="196"/>
         </scene>
         <!--Target Missing View Controller-->
         <scene sceneID="6OB-f2-6MG">
@@ -788,7 +788,7 @@
                                 </constraints>
                             </customView>
                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="b6z-ZM-sgM">
-                                <rect key="frame" x="114" y="116" width="222" height="25"/>
+                                <rect key="frame" x="114" y="115" width="223" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="216" id="2OA-5a-7ib"/>
                                     <constraint firstAttribute="height" constant="21" id="wbS-9M-bva"/>
@@ -806,7 +806,7 @@
                                 </popUpButtonCell>
                             </popUpButton>
                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lVZ-ev-Oi3">
-                                <rect key="frame" x="114" y="57" width="222" height="25"/>
+                                <rect key="frame" x="114" y="56" width="223" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="216" id="H6E-vn-usy"/>
                                     <constraint firstAttribute="height" constant="21" id="XfO-6B-vOw"/>
@@ -830,13 +830,13 @@
                                     <constraint firstAttribute="height" constant="29" id="zH8-6s-biB"/>
                                 </constraints>
                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Oops!" id="AuJ-Ku-iHN">
-                                    <font key="font" size="24" name=".AppleSystemUIFont"/>
+                                    <font key="font" metaFont="system" size="24"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZHO-vf-Zc1">
-                                <rect key="frame" x="142" y="14" width="167" height="32"/>
+                                <rect key="frame" x="141" y="14" width="169" height="33"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="155" id="GoI-C0-Obs"/>
                                     <constraint firstAttribute="height" constant="21" id="jut-0Y-fLX"/>
@@ -920,14 +920,13 @@ DQ
                                     <subviews>
                                         <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" autosaveColumns="NO" headerView="QeW-cw-sbR" indentationPerLevel="16" outlineTableColumn="5dk-vI-VB7" id="Icz-Ge-1F8" customClass="XMLOutlineView">
                                             <rect key="frame" x="0.0" y="0.0" width="598" height="478"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
                                                 <tableColumn identifier="source" width="229" minWidth="40" maxWidth="1000" id="5dk-vI-VB7">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Source">
-                                                        <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -938,9 +937,8 @@ DQ
                                                     </textFieldCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                 </tableColumn>
-                                                <tableColumn identifier="target" width="363" minWidth="40" maxWidth="1000" id="yxF-Xr-dO4">
+                                                <tableColumn identifier="target" width="334" minWidth="40" maxWidth="1000" id="yxF-Xr-dO4">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Target">
-                                                        <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -967,7 +965,7 @@ DQ
                                     <rect key="frame" x="224" y="17" width="15" height="102"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <tableHeaderView key="headerView" id="QeW-cw-sbR">
+                                <tableHeaderView key="headerView" wantsLayer="YES" id="QeW-cw-sbR">
                                     <rect key="frame" x="0.0" y="0.0" width="598" height="23"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableHeaderView>
@@ -993,9 +991,9 @@ DQ
             <objects>
                 <splitViewController id="MvO-m3-dew" sceneMemberID="viewController">
                     <splitViewItems>
-                        <splitViewItem id="cHG-xe-GTD"/>
+                        <splitViewItem canCollapse="YES" holdingPriority="260" behavior="sidebar" id="cHG-xe-GTD"/>
                         <splitViewItem id="4aN-Xt-NKm"/>
-                        <splitViewItem id="jva-wI-TqJ"/>
+                        <splitViewItem canCollapse="YES" id="jva-wI-TqJ"/>
                     </splitViewItems>
                     <splitView key="splitView" dividerStyle="thin" vertical="YES" id="aHC-fD-XN7">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
@@ -1057,14 +1055,13 @@ DQ
                                     <subviews>
                                         <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" indentationPerLevel="16" outlineTableColumn="IDk-7d-aFI" id="79k-Ll-AMO">
                                             <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn editable="NO" width="447" minWidth="40" maxWidth="1000" id="IDk-7d-aFI">
+                                                <tableColumn editable="NO" width="418" minWidth="40" maxWidth="1000" id="IDk-7d-aFI">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
-                                                        <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -1130,9 +1127,8 @@ DQ
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn width="445" minWidth="40" maxWidth="1000" id="tmY-WJ-Q3P">
+                                                <tableColumn width="436" minWidth="40" maxWidth="1000" id="tmY-WJ-Q3P">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                        <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
