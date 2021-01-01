@@ -265,9 +265,18 @@
     NSArray *urls = [state decodeObjectForKey:@"documents"];
     for (NSInteger i = 0; i < urls.count; i++) {
         NSURL *url  = urls[i];
-        Document *document = [[Document alloc] initWithContentsOfURL:url
-                                                              ofType:@"xliff"
-                                                               error:nil];
+        NSString *extension = [[url lastPathComponent] pathExtension];
+        Document *document = nil;
+        if ([Document isXliffExtension:extension]) {
+            document = [[Document alloc] initWithContentsOfURL:url
+                                                        ofType:@"xliff"
+                                                         error:nil];
+        } else if ([XclocDocument isXclocExtension:extension]) {
+            document = [[XclocDocument alloc] initWithContentsOfURL:url
+                                                             ofType:@"xcloc"
+                                                              error:nil];
+        }
+        
         if (document) {
             [controller setDocument:document];
             document.windowController = controller;
