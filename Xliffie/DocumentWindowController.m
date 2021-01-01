@@ -93,14 +93,6 @@
     
     self.documents = [NSMutableArray array];
     self.filesOfLanguages = [NSMutableDictionary dictionary];
-    
-//    self.documentsDrawer = [[DocumentListDrawer alloc] initWithContentSize:NSMakeSize(100, self.window.frame.size.height)
-//                                                             preferredEdge:NSMinXEdge];
-//    self.documentsDrawer.delegate = self;
-//    [self.documentsDrawer setParentWindow:self.window];
-//    self.documentsDrawer.minContentSize = NSMakeSize(100, 200);
-    
-//    [self.documentsDrawer close];
 
     self.window.minSize = DOCUMENT_WINDOW_MIN_SIZE;
 
@@ -171,6 +163,10 @@
     }
     [self selectLanguage:((Document*)document).files[0].targetLanguage
         withSegmentIndex:1];
+
+    if (self.documents.count > 1) {
+        [self showSidebar];
+    }
 }
 
 - (NSString*)baseFolderPath {
@@ -374,7 +370,7 @@
     [self toggleFileList];
 }
 
-- (void)openDocumentDrawer {
+- (void)showSidebar {
     [[[self.splitViewController splitViewItems] firstObject] animator].collapsed = NO;
 }
 

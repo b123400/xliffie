@@ -90,7 +90,6 @@
                                                                                         toWindowController:controller
                                                                                                  withError:&error];
                                                                              }
-                                                                             [controller openDocumentDrawer];
                                                                          }];
         } else {
             // add document into this window

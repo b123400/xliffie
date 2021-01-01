@@ -574,7 +574,13 @@
                                                 <action selector="toggleToolbarShown:" target="Ady-hI-5gd" id="BXY-wc-z0C"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Customize Toolbar…" id="1UK-8n-QPP">
+                                        <menuItem title="Show Sidebar" id="iCv-I4-fFo">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="toggleSidebar:" target="Ady-hI-5gd" id="BAY-za-Hvq"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Customize Toolbar…" state="on" id="1UK-8n-QPP">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="runToolbarCustomizationPalette:" target="Ady-hI-5gd" id="pQI-g3-MTW"/>
@@ -628,7 +634,7 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController storyboardIdentifier="Document Window Controller" id="jGA-0Y-lOj" customClass="DocumentWindowController" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="Ckk-yw-fiv" customClass="DocumentWindow">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" tabbingMode="disallowed" id="Ckk-yw-fiv" customClass="DocumentWindow">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="1042" height="439"/>
@@ -698,22 +704,6 @@
                                         <action selector="toggleNotesPressed:" target="jGA-0Y-lOj" id="5fZ-hc-gKD"/>
                                     </connections>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="A3BCE8A5-BC66-46B1-A978-6FB9161E2C44" label="File drawer" paletteLabel="File drawer" image="folder" id="f4k-ye-JLB">
-                                    <nil key="toolTip"/>
-                                    <size key="minSize" width="29" height="25"/>
-                                    <size key="maxSize" width="29" height="25"/>
-                                    <button key="view" verticalHuggingPriority="750" id="KQV-xB-7oO">
-                                        <rect key="frame" x="18" y="14" width="29" height="25"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="folder" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="FbV-xA-ZES">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="toggleDrawer:" target="jGA-0Y-lOj" id="EEJ-YA-rw2"/>
-                                        </connections>
-                                    </button>
-                                </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="E01F529A-9A85-4311-84BC-74118B4096BA" label="Translate" paletteLabel="Translate" image="translate" id="7Hq-tz-Ud3">
                                     <nil key="toolTip"/>
                                     <size key="minSize" width="29" height="28"/>
@@ -748,7 +738,6 @@
                                 </toolbarItem>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
-                                <toolbarItem reference="f4k-ye-JLB"/>
                                 <toolbarItem reference="fIO-7r-OQw"/>
                                 <toolbarItem reference="hRa-qY-UHQ"/>
                                 <toolbarItem reference="fIO-7r-OQw"/>
@@ -1013,32 +1002,6 @@ DQ
             </objects>
             <point key="canvasLocation" x="75" y="669"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="QvR-no-6v4">
-            <objects>
-                <viewController id="o9A-Z9-A7p" sceneMemberID="viewController">
-                    <view key="view" id="594-R3-gDr">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </view>
-                </viewController>
-                <customObject id="WW3-9N-cH3" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1059" y="577"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="57Q-8S-C2J">
-            <objects>
-                <viewController id="w77-4c-KN3" sceneMemberID="viewController">
-                    <view key="view" id="P32-vf-vm0">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </view>
-                </viewController>
-                <customObject id="twY-P1-te9" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1059" y="949"/>
-        </scene>
         <!--Detail View Controller-->
         <scene sceneID="veD-TA-dBh">
             <objects>
@@ -1116,18 +1079,18 @@ DQ
                         <subviews>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9LW-Pc-Ucu">
                                 <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                                <clipView key="contentView" id="7g9-at-gfi">
+                                <clipView key="contentView" drawsBackground="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7g9-at-gfi">
                                     <rect key="frame" x="1" y="1" width="448" height="298"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" id="RX4-Ro-jar">
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" tableStyle="sourceList" selectionHighlightStyle="sourceList" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" id="RX4-Ro-jar">
                                             <rect key="frame" x="0.0" y="0.0" width="448" height="298"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
-                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn width="436" minWidth="40" maxWidth="1000" id="tmY-WJ-Q3P">
+                                                <tableColumn width="416" minWidth="40" maxWidth="1000" id="tmY-WJ-Q3P">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -1146,9 +1109,10 @@ DQ
                                             </connections>
                                         </tableView>
                                     </subviews>
+                                    <nil key="backgroundColor"/>
                                 </clipView>
                                 <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="Xvf-bl-elm">
-                                    <rect key="frame" x="1" y="119" width="223" height="15"/>
+                                    <rect key="frame" x="1" y="283" width="448" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="Pmb-bg-3EZ">
@@ -1175,7 +1139,6 @@ DQ
     </scenes>
     <resources>
         <image name="Pangu" width="700" height="605"/>
-        <image name="folder" width="560" height="453"/>
         <image name="info" width="1200" height="1200"/>
         <image name="translate" width="447" height="392"/>
     </resources>

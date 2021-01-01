@@ -18,6 +18,6 @@
 - (NSString*)baseFolderPath;
 - (void)addDocument:(Document*)newDocument;
 
-- (void)openDocumentDrawer;
+- (void)showSidebar;
 
 @end
