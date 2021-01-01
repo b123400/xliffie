@@ -12,9 +12,10 @@
 #import "DocumentListDrawer.h"
 #import "TargetMissingViewController.h"
 #import "TranslateServiceWindowController.h"
+#import "XclocDocument.h"
 #import "NSString+Pangu.h"
 
-#define DOCUMENT_WINDOW_MIN_SIZE NSMakeSize(480, 600)
+#define DOCUMENT_WINDOW_MIN_SIZE NSMakeSize(600, 600)
 #define DOCUMENT_WINDOW_LAST_FRAME_KEY @"DOCUMENT_WINDOW_LAST_FRAME_KEY"
 
 @interface DocumentWindowController () <DocumentListDrawerDelegate, TargetMissingViewController, TranslateServiceWindowControllerDelegate>
@@ -108,7 +109,10 @@
         });
         
         // If it is empty, put it at the center of the screen
-        if (NSIsEmptyRect(lastWindowFrame)) {
+        if (NSIsEmptyRect(lastWindowFrame)
+            || lastWindowFrame.size.width < DOCUMENT_WINDOW_MIN_SIZE.width
+            || lastWindowFrame.size.height < DOCUMENT_WINDOW_MIN_SIZE.height
+            ) {
             lastWindowFrame = (NSRect) {
                 .origin.x = (screenSize.width - DOCUMENT_WINDOW_MIN_SIZE.width)/2,
                 .origin.y = (screenSize.height - DOCUMENT_WINDOW_MIN_SIZE.height)/2,
