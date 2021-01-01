@@ -754,6 +754,7 @@
                     <connections>
                         <outlet property="languagesSegment" destination="uLd-TS-Dl5" id="k3b-hE-yxQ"/>
                         <outlet property="searchField" destination="ihp-tX-qqE" id="2xv-li-MNs"/>
+                        <outlet property="translateButton" destination="7Hq-tz-Ud3" id="fwv-GZ-IIk"/>
                         <segue destination="MvO-m3-dew" kind="relationship" relationship="window.shadowedContentViewController" id="aWn-BL-51E"/>
                     </connections>
                 </windowController>

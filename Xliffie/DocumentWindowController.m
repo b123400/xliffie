@@ -29,6 +29,7 @@
 
 @property (weak) IBOutlet NSSegmentedControl *layoutSegment;
 @property (weak) IBOutlet NSSegmentedControl *languagesSegment;
+@property (weak) IBOutlet NSToolbarItem *translateButton;
 
 @property (weak) IBOutlet NSSearchField *searchField;
 @property (nonatomic, strong) NSMutableArray *documents;
@@ -170,6 +171,15 @@
 
     if (self.documents.count > 1) {
         [self showSidebar];
+    }
+    Document *doc = self.document;
+    
+    NSString *sourceLanguage = doc.files.firstObject.sourceLanguage;
+    NSString *targetLanguage = doc.files.firstObject.targetLanguage;
+    if ([sourceLanguage isEqualTo:targetLanguage]) {
+        self.translateButton.enabled = NO;
+    } else {
+        self.translateButton.enabled = YES;
     }
 }
 
