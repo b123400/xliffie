@@ -26,6 +26,7 @@
 		CF660EF41C540E11007A0B28 /* TranslateServiceWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF660EF61C540E11007A0B28 /* TranslateServiceWindowController.xib */; };
 		CF660EFB1C540E27007A0B28 /* TranslationWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF660EFD1C540E27007A0B28 /* TranslationWindowController.xib */; };
 		CF662B391C307C7D00704CEA /* TranslateServiceWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF662B381C307C7D00704CEA /* TranslateServiceWindowController.m */; };
+		CF740AA72701C6C700F31F26 /* Glossary.m in Sources */ = {isa = PBXBuildFile; fileRef = CF740AA62701C6C700F31F26 /* Glossary.m */; };
 		CF740ACF2701CE7900F31F26 /* sk.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740AA92701CE7800F31F26 /* sk.glossary */; };
 		CF740AD02701CE7900F31F26 /* zh-hk.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740AAA2701CE7800F31F26 /* zh-hk.glossary */; };
 		CF740AD12701CE7900F31F26 /* no.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740AAB2701CE7800F31F26 /* no.glossary */; };
@@ -137,6 +138,8 @@
 		CF660F091C540F09007A0B28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TranslationWindowController.xib; sourceTree = "<group>"; };
 		CF662B371C307C7D00704CEA /* TranslateServiceWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TranslateServiceWindowController.h; sourceTree = "<group>"; };
 		CF662B381C307C7D00704CEA /* TranslateServiceWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TranslateServiceWindowController.m; sourceTree = "<group>"; };
+		CF740AA52701C6C700F31F26 /* Glossary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Glossary.h; sourceTree = "<group>"; };
+		CF740AA62701C6C700F31F26 /* Glossary.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Glossary.m; sourceTree = "<group>"; };
 		CF740AA92701CE7800F31F26 /* sk.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sk.glossary; sourceTree = "<group>"; };
 		CF740AAA2701CE7800F31F26 /* zh-hk.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "zh-hk.glossary"; sourceTree = "<group>"; };
 		CF740AAB2701CE7800F31F26 /* no.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = no.glossary; sourceTree = "<group>"; };
@@ -364,6 +367,8 @@
 			isa = PBXGroup;
 			children = (
 				CF740AA82701C73A00F31F26 /* Assets */,
+				CF740AA52701C6C700F31F26 /* Glossary.h */,
+				CF740AA62701C6C700F31F26 /* Glossary.m */,
 			);
 			path = Glossary;
 			sourceTree = "<group>";
@@ -687,6 +692,7 @@
 				CF5682EF1A6B11C700E0DEDD /* DetailViewController.m in Sources */,
 				CFD234FA1A5E44C700B52088 /* XMLOutlineView.m in Sources */,
 				CF5FC89B1A5ABFF700538E60 /* Document.m in Sources */,
+				CF740AA72701C6C700F31F26 /* Glossary.m in Sources */,
 				CFE3B1761CD800AB00021D7F /* NSString+Pangu.m in Sources */,
 				CF5FC8981A5ABFF700538E60 /* DocumentViewController.m in Sources */,
 				CF011B7D1C4641A400948323 /* TranslationWindowController.m in Sources */,
