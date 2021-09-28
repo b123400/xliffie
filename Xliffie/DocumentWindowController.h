@@ -19,5 +19,6 @@
 - (void)addDocument:(Document*)newDocument;
 
 - (void)showSidebar;
+- (IBAction)translateWithGlossaryMenuPressed:(id)sender;
 
 @end

@@ -14,6 +14,7 @@
 #import "TranslateServiceWindowController.h"
 #import "XclocDocument.h"
 #import "NSString+Pangu.h"
+#import "GlossaryWindowController.h"
 
 #define DOCUMENT_WINDOW_MIN_SIZE NSMakeSize(600, 600)
 #define DOCUMENT_WINDOW_LAST_FRAME_KEY @"DOCUMENT_WINDOW_LAST_FRAME_KEY"
@@ -33,10 +34,10 @@
 
 @property (weak) IBOutlet NSSearchField *searchField;
 @property (nonatomic, strong) NSMutableArray *documents;
-//@property (nonatomic, strong) DocumentListDrawer *documentsDrawer;
 @property (nonatomic, strong) DocumentListViewController *documentListViewController;
 @property (nonatomic, strong) TranslateServiceWindowController *translateServiceController;
 @property (nonatomic, strong) TranslationWindowController *translateController;
+@property (nonatomic, strong) GlossaryWindowController *glossaryWindowController;
 
 // { @"en" :
 //     { @"hello/world.xib" : <File>
@@ -452,6 +453,13 @@
     [self showTranslateWindow];
 }
 
+- (IBAction)translateWithGlossaryMenuPressed:(id)sender {
+    GlossaryWindowController *controller = [[GlossaryWindowController alloc] initWithDocument:self.document];
+//    self.glossaryWindowController = controller;
+    [self.window beginSheet:controller.window completionHandler:^(NSModalResponse returnCode) {
+        
+    }];
+}
 
 #pragma mark selection
 

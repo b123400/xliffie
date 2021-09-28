@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18122"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -564,6 +564,20 @@
                                     </items>
                                 </menu>
                             </menuItem>
+                            <menuItem title="Translate" id="F6P-Il-9Ke">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Translate" id="BhD-Ou-uf3">
+                                    <items>
+                                        <menuItem title="Translate with Glossary..." id="ykV-Yz-4CP">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="translateWithGlossaryMenuPressed:" target="Voe-Tx-rLC" id="PU9-h7-zWz"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Translate with Glossary and web..." keyEquivalent="t" id="BQ8-JA-Vrv"/>
+                                    </items>
+                                </menu>
+                            </menuItem>
                             <menuItem title="View" id="H8h-7b-M4v">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="View" id="HyV-fh-RgO">
@@ -711,7 +725,7 @@
                                     <button key="view" verticalHuggingPriority="750" id="lmd-e1-baA">
                                         <rect key="frame" x="14" y="14" width="29" height="28"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="translate" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="DLF-qG-Mz6">
+                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="translate" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="DLF-qG-Mz6">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>

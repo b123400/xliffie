@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "DocumentWindowController.h"
 #import "XclocDocument.h"
+#import "Glossary.h"
 
 @interface AppDelegate ()
 
@@ -154,6 +155,16 @@
         [[NSDocumentController sharedDocumentController] openDocument:self];
     }
     return YES;
+}
+
+#pragma mark - Menu bar
+
+- (IBAction)translateWithGlossaryMenuPressed:(id)sender {
+    DocumentWindowController *controller = [[[NSApplication sharedApplication] keyWindow] delegate];
+    if (![controller isKindOfClass:[DocumentWindowController class]]) {
+        return;
+    }
+    [controller translateWithGlossaryMenuPressed:sender];
 }
 
 @end
