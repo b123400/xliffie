@@ -80,7 +80,7 @@
 }
 
 - (NSString *)translate:(NSString *)baseString isMenu:(BOOL)isMenu {
-    NSDictionary<NSString *, NSArray<NSString *>*> *transDict = self.translationDict[baseString];
+    NSDictionary<NSString *, NSArray<NSString *>*> *transDict = self.translationDict[baseString.lowercaseString];
     if (transDict.count == 0) {
         return nil;
     }
