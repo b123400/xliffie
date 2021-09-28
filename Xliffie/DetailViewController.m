@@ -96,7 +96,7 @@
 - (NSInteger)outlineView:(NSOutlineView *)outlineView
   numberOfChildrenOfItem:(id)item {
     if (!self.keyArray) {
-        return 1;
+        return 0;
     }
     if (!item) {
         return self.keyArray.count;
