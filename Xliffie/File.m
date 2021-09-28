@@ -40,6 +40,12 @@
     return self;
 }
 
+- (id)copyWithZone:(nullable NSZone *)zone {
+    File *newFile = [[File allocWithZone:zone] initWithXMLElement:self.xmlElement];
+    newFile.document = self.document;
+    return newFile;
+}
+
 - (NSArray <NSXMLElement*> *)getNestedTransUnitElements:(NSXMLElement *)bodyElement {
     if ([[bodyElement name] isEqualToString:@"group"] && [[[bodyElement attributeForName:@"translate"] stringValue] isEqualToString:@"no"]) {
         return @[];
@@ -60,8 +66,7 @@
 }
 
 - (File *)filteredFileWithSearchFilter:(NSString*)filter {
-    File *newFile = [[File alloc] initWithXMLElement:self.xmlElement];
-    newFile.document = self.document;
+    File *newFile = [self copy];
     newFile.translations = [NSMutableArray array];
     for (TranslationPair *pair in [self translationsMatchingSearchFilter:filter]) {
         [newFile.translations addObject:pair];

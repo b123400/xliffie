@@ -30,6 +30,13 @@
     return self;
 }
 
+- (id)copyWithZone:(nullable NSZone *)zone {
+    TranslationPair *tp = [[TranslationPair allocWithZone:zone] initWithXMLElement:self.xmlElement];
+    tp.alternativePair = self.alternativePair;
+    tp.file = self.file;
+    return tp;
+}
+
 - (NSString*)sourceForDisplay {
     if (self.alternativePair &&
         self.alternativePair.target &&
