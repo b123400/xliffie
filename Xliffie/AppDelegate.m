@@ -160,11 +160,18 @@
 #pragma mark - Menu bar
 
 - (IBAction)translateWithGlossaryMenuPressed:(id)sender {
-    DocumentWindowController *controller = [[[NSApplication sharedApplication] keyWindow] delegate];
+    DocumentWindowController *controller = (DocumentWindowController*)[[[NSApplication sharedApplication] keyWindow] delegate];
     if (![controller isKindOfClass:[DocumentWindowController class]]) {
         return;
     }
     [controller translateWithGlossaryMenuPressed:sender];
+}
+- (IBAction)translateWithGlossaryAndWebPressed:(id)sender {
+    DocumentWindowController *controller = (DocumentWindowController*)[[[NSApplication sharedApplication] keyWindow] delegate];
+    if (![controller isKindOfClass:[DocumentWindowController class]]) {
+        return;
+    }
+    [controller translateWithGlossaryAndWebPressed:sender];
 }
 
 @end

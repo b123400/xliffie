@@ -12,7 +12,6 @@
 
 @interface DocumentViewController ()
 
-@property (weak) IBOutlet XMLOutlineView *outlineView;
 @property (strong, nonatomic) Document *filteredDocument;
 @property (strong, nonatomic) Document *mappingDocument;
 

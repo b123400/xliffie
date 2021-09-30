@@ -450,15 +450,41 @@
 }
 
 - (IBAction)translateButtonPressed:(id)sender {
-    [self showTranslateWindow];
+    [self translateWithGlossaryAndWebPressed: sender];
 }
 
 - (IBAction)translateWithGlossaryMenuPressed:(id)sender {
     GlossaryWindowController *controller = [[GlossaryWindowController alloc] initWithDocument:self.document];
-//    self.glossaryWindowController = controller;
-    [self.window beginSheet:controller.window completionHandler:^(NSModalResponse returnCode) {
-        
-    }];
+    controller.showSkipButton = NO;
+    if (![controller numberOfApplicableTranslation]) {
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert setMessageText:NSLocalizedString(@"No translation available", @"")];
+        [alert addButtonWithTitle:NSLocalizedString(@"OK", @"")];
+        [alert runModal];
+    } else {
+        [self.window beginSheet:controller.window completionHandler:^(NSModalResponse returnCode) {
+            if (returnCode == NSModalResponseOK) {
+                [self.mainViewController.outlineView reloadData];
+            }
+        }];
+    }
+}
+
+- (IBAction)translateWithGlossaryAndWebPressed:(id)sender {
+    GlossaryWindowController *controller = [[GlossaryWindowController alloc] initWithDocument:self.document];
+    controller.showSkipButton = YES;
+    if (![controller numberOfApplicableTranslation]) {
+        [self showTranslateWindow];
+    } else {
+        [self.window beginSheet:controller.window completionHandler:^(NSModalResponse returnCode) {
+            if (returnCode == NSModalResponseOK) {
+                [self.mainViewController.outlineView reloadData];
+            }
+            if (returnCode == NSModalResponseOK || returnCode == NSModalResponseContinue) {
+                [self showTranslateWindow];
+            }
+        }];
+    }
 }
 
 #pragma mark selection
