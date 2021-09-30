@@ -12,10 +12,13 @@
 #import "GlossaryFileRow.h"
 
 @interface GlossaryWindowController () <NSOutlineViewDataSource, NSOutlineViewDelegate>
+
+@property (weak) IBOutlet NSButton *skipButton;
+@property (weak) IBOutlet NSTextField *descriptionLabel;
+@property (weak) IBOutlet NSOutlineView *outlineView;
+
 @property (nonatomic, strong) Glossary *glossary;
 @property (nonatomic, strong) NSArray<GlossaryFileRow*> *fileRows;
-
-@property (nonatomic, assign) BOOL replaceTranslatedPair;
 
 @end
 
@@ -25,7 +28,6 @@
     if (self = [super initWithWindowNibName:@"GlossaryWindowController"]) {
         self.xliffDocument = document;
         self.glossary = [[Glossary alloc] initWithTargetLocale:self.xliffDocument.files.firstObject.targetLanguage];
-        _replaceTranslatedPair = YES;
         [self reloadFileRows];
     }
     return self;
@@ -46,13 +48,11 @@
                 // Already same as glossary
                 continue;
             }
-            if (!pair.target || [pair.target isEqualTo:@""] || self.replaceTranslatedPair) {
-                GlossaryRow *row = [[GlossaryRow alloc] init];
-                row.glossary = translated;
-                row.translationPair = pair;
-                row.shouldApply = YES;
-                [rows addObject:row];
-            }
+            GlossaryRow *row = [[GlossaryRow alloc] init];
+            row.glossary = translated;
+            row.translationPair = pair;
+            row.shouldApply = YES;
+            [rows addObject:row];
         }
         if (rows.count) {
             GlossaryFileRow *fileRow = [[GlossaryFileRow alloc] init];
@@ -64,20 +64,25 @@
     self.fileRows = fileRows;
 }
 
+- (void)reloadUI {
+    self.descriptionLabel.stringValue = [NSString stringWithFormat:NSLocalizedString(@"%ld translations are available from the glossary.", @""), self.numberOfApplicableTranslation];
+    self.skipButton.hidden = !self.showSkipButton;
+}
+
+- (void)setShowSkipButton:(BOOL)showSkipButton {
+    _showSkipButton = showSkipButton;
+    [self reloadUI];
+}
+
 - (NSInteger)numberOfApplicableTranslation {
     return [[self.fileRows valueForKeyPath:@"@unionOfArrays.rows"] count];
 }
 
-- (void)setReplaceTranslatedPair:(BOOL)replaceTranslatedPair {
-    _replaceTranslatedPair = replaceTranslatedPair;
-    [self reloadFileRows];
-}
-
 - (void)windowDidLoad {
     [super windowDidLoad];
+    [self.outlineView expandItem:nil expandChildren:YES];
     
-    NSLog(@"translations count: %ld", self.numberOfApplicableTranslation);
-    // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+    [self reloadUI];
 }
 
 #pragma mark - Outline view
@@ -160,6 +165,53 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
         }
         [outlineView reloadData];
     }
+}
+
+#pragma mark - Interactions
+
+- (IBAction)selectAllClicked:(id)sender {
+    for (GlossaryFileRow *fileRow in self.fileRows) {
+        for (GlossaryRow *row in fileRow.rows) {
+            row.shouldApply = YES;
+        }
+    }
+    [self.outlineView reloadData];
+}
+- (IBAction)selectNoneClicked:(id)sender {
+    for (GlossaryFileRow *fileRow in self.fileRows) {
+        for (GlossaryRow *row in fileRow.rows) {
+            row.shouldApply = NO;
+        }
+    }
+    [self.outlineView reloadData];
+}
+- (IBAction)selectNonTranslatedClicked:(id)sender {
+    for (GlossaryFileRow *fileRow in self.fileRows) {
+        for (GlossaryRow *row in fileRow.rows) {
+            if (!row.translationPair.target || [row.translationPair.target isEqualTo:@""]) {
+                row.shouldApply = YES;
+            } else {
+                row.shouldApply = NO;
+            }
+        }
+    }
+    [self.outlineView reloadData];
+}
+- (IBAction)okClicked:(id)sender {
+    for (GlossaryFileRow *fileRow in self.fileRows) {
+        for (GlossaryRow *row in fileRow.rows) {
+            if (row.shouldApply) {
+                row.translationPair.target = row.glossary;
+            }
+        }
+    }
+    [self.window.sheetParent endSheet:self.window returnCode:NSModalResponseOK];
+}
+- (IBAction)cancelClicked:(id)sender {
+    [self.window.sheetParent endSheet:self.window returnCode:NSModalResponseCancel];
+}
+- (IBAction)skipClicked:(id)sender {
+    [self.window.sheetParent endSheet:self.window returnCode:NSModalResponseContinue];
 }
 
 @end

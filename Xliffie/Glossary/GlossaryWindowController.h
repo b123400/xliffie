@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface GlossaryWindowController : NSWindowController
 
 @property (nonatomic, strong) Document *xliffDocument;
+@property (nonatomic, assign) BOOL showSkipButton;
 
 - (instancetype)initWithDocument:(Document *)document;
 
