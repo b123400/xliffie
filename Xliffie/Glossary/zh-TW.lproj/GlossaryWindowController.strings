@@ -1,0 +1,48 @@
+/* Class = "NSTableColumn"; headerCell.title = "Glossary"; ObjectID = "4MG-3D-RdE"; */
+"4MG-3D-RdE.headerCell.title" = "內置字典";
+
+/* Class = "NSTextFieldCell"; title = "3 translations are available from the glossary."; ObjectID = "a9Z-Ew-xlq"; */
+"a9Z-Ew-xlq.title" = "內置字典可以自動翻譯 3 段字";
+
+/* Class = "NSTextFieldCell"; title = "Translate With Glossary"; ObjectID = "AS1-CP-jkv"; */
+"AS1-CP-jkv.title" = "使用內置字典來翻譯";
+
+/* Class = "NSTableColumn"; headerCell.title = "Target"; ObjectID = "bB2-0b-eLF"; */
+"bB2-0b-eLF.headerCell.title" = "譯文";
+
+/* Class = "NSButtonCell"; title = "Skip"; ObjectID = "CKh-N2-HOQ"; */
+"CKh-N2-HOQ.title" = "跳過";
+
+/* Class = "NSButtonCell"; title = "None"; ObjectID = "coM-Wx-vh7"; */
+"coM-Wx-vh7.title" = "消除選擇";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "dqU-0o-gwl"; */
+"dqU-0o-gwl.title" = "Text Cell";
+
+/* Class = "NSButtonCell"; title = "All"; ObjectID = "e2p-bH-OLy"; */
+"e2p-bH-OLy.title" = "全部";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "ek5-46-Ifq"; */
+"ek5-46-Ifq.title" = "Text Cell";
+
+/* Class = "NSButtonCell"; title = "Cancel"; ObjectID = "Ew7-ia-oo2"; */
+"Ew7-ia-oo2.title" = "取消";
+
+/* Class = "NSWindow"; title = "Window"; ObjectID = "F0z-JX-Cv5"; */
+"F0z-JX-Cv5.title" = "視窗";
+
+/* Class = "NSTableColumn"; headerCell.title = "Source"; ObjectID = "hic-Lv-z5p"; */
+"hic-Lv-z5p.headerCell.title" = "原文";
+
+/* Class = "NSTableColumn"; headerCell.title = "Apply"; ObjectID = "jeN-0l-WHX"; */
+"jeN-0l-WHX.headerCell.title" = "適用";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "P9f-0D-vaz"; */
+"P9f-0D-vaz.title" = "Text Cell";
+
+/* Class = "NSButtonCell"; title = "OK"; ObjectID = "u5O-gv-ueu"; */
+"u5O-gv-ueu.title" = "好";
+
+/* Class = "NSButtonCell"; title = "Non-translated"; ObjectID = "ypw-aT-PBw"; */
+"ypw-aT-PBw.title" = "未翻譯的";
+

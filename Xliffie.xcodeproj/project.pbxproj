@@ -15,6 +15,7 @@
 		CF34B75A1AADE00A00C6A58E /* TranslationTargetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF34B7591AADE00A00C6A58E /* TranslationTargetCell.m */; };
 		CF5682EB1A6AFB9800E0DEDD /* DocumentWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5682E91A6AFB9800E0DEDD /* DocumentWindowController.m */; };
 		CF5682EF1A6B11C700E0DEDD /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5682EE1A6B11C700E0DEDD /* DetailViewController.m */; };
+		CF5E5A61270744B900B8A90A /* GlossaryWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF5E5A63270744B900B8A90A /* GlossaryWindowController.xib */; };
 		CF5FC8931A5ABFF700538E60 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5FC8921A5ABFF700538E60 /* AppDelegate.m */; };
 		CF5FC8951A5ABFF700538E60 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5FC8941A5ABFF700538E60 /* main.m */; };
 		CF5FC8981A5ABFF700538E60 /* DocumentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5FC8971A5ABFF700538E60 /* DocumentViewController.m */; };
@@ -71,7 +72,6 @@
 		CF94FCA51A5C365400EE8BD5 /* File.m in Sources */ = {isa = PBXBuildFile; fileRef = CF94FCA41A5C365400EE8BD5 /* File.m */; };
 		CF94FCA81A5C37A900EE8BD5 /* TranslationPair.m in Sources */ = {isa = PBXBuildFile; fileRef = CF94FCA71A5C37A900EE8BD5 /* TranslationPair.m */; };
 		CFC6CC602702E8E300F7850C /* GlossaryWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC6CC5E2702E8E300F7850C /* GlossaryWindowController.m */; };
-		CFC6CC612702E8E300F7850C /* GlossaryWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFC6CC5F2702E8E300F7850C /* GlossaryWindowController.xib */; };
 		CFC6CC642703152400F7850C /* GlossaryRow.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC6CC632703152400F7850C /* GlossaryRow.m */; };
 		CFC6CC672703163700F7850C /* GlossaryFileRow.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC6CC662703163700F7850C /* GlossaryFileRow.m */; };
 		CFCD4B341A6D0C7200BA8826 /* DocumentWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCD4B331A6D0C7200BA8826 /* DocumentWindow.m */; };
@@ -123,6 +123,9 @@
 		CF5682E91A6AFB9800E0DEDD /* DocumentWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentWindowController.m; sourceTree = "<group>"; };
 		CF5682ED1A6B11C700E0DEDD /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		CF5682EE1A6B11C700E0DEDD /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		CF5E5A62270744B900B8A90A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/GlossaryWindowController.xib; sourceTree = "<group>"; };
+		CF5E5A65270744C100B8A90A /* zh-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-TW"; path = "zh-TW.lproj/GlossaryWindowController.strings"; sourceTree = "<group>"; };
+		CF5E5A67270744C200B8A90A /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/GlossaryWindowController.strings; sourceTree = "<group>"; };
 		CF5FC88C1A5ABFF700538E60 /* Xliffie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Xliffie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF5FC8901A5ABFF700538E60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF5FC8911A5ABFF700538E60 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -194,7 +197,6 @@
 		CF94FCA71A5C37A900EE8BD5 /* TranslationPair.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TranslationPair.m; sourceTree = "<group>"; };
 		CFC6CC5D2702E8E300F7850C /* GlossaryWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlossaryWindowController.h; sourceTree = "<group>"; };
 		CFC6CC5E2702E8E300F7850C /* GlossaryWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GlossaryWindowController.m; sourceTree = "<group>"; };
-		CFC6CC5F2702E8E300F7850C /* GlossaryWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GlossaryWindowController.xib; sourceTree = "<group>"; };
 		CFC6CC622703152400F7850C /* GlossaryRow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlossaryRow.h; sourceTree = "<group>"; };
 		CFC6CC632703152400F7850C /* GlossaryRow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GlossaryRow.m; sourceTree = "<group>"; };
 		CFC6CC652703163700F7850C /* GlossaryFileRow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlossaryFileRow.h; sourceTree = "<group>"; };
@@ -382,7 +384,7 @@
 				CF740AA62701C6C700F31F26 /* Glossary.m */,
 				CFC6CC5D2702E8E300F7850C /* GlossaryWindowController.h */,
 				CFC6CC5E2702E8E300F7850C /* GlossaryWindowController.m */,
-				CFC6CC5F2702E8E300F7850C /* GlossaryWindowController.xib */,
+				CF5E5A63270744B900B8A90A /* GlossaryWindowController.xib */,
 				CFC6CC652703163700F7850C /* GlossaryFileRow.h */,
 				CFC6CC662703163700F7850C /* GlossaryFileRow.m */,
 				CFC6CC622703152400F7850C /* GlossaryRow.h */,
@@ -569,7 +571,7 @@
 				CFE39FA11A767252004644C8 /* InfoPlist.strings in Resources */,
 				CF740AF22701CE7900F31F26 /* fr-ca.glossary in Resources */,
 				CF740AEE2701CE7900F31F26 /* ja.glossary in Resources */,
-				CFC6CC612702E8E300F7850C /* GlossaryWindowController.xib in Resources */,
+				CF5E5A61270744B900B8A90A /* GlossaryWindowController.xib in Resources */,
 				CF740AD62701CE7900F31F26 /* tr.glossary in Resources */,
 				CF740ADB2701CE7900F31F26 /* ms.glossary in Resources */,
 				CF740AF12701CE7900F31F26 /* he.glossary in Resources */,
@@ -749,6 +751,16 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		CF5E5A63270744B900B8A90A /* GlossaryWindowController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CF5E5A62270744B900B8A90A /* Base */,
+				CF5E5A65270744C100B8A90A /* zh-TW */,
+				CF5E5A67270744C200B8A90A /* ja */,
+			);
+			name = GlossaryWindowController.xib;
+			sourceTree = "<group>";
+		};
 		CF5FC89E1A5ABFF700538E60 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

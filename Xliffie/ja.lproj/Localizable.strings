@@ -1,3 +1,9 @@
+/* No comment provided by engineer. */
+"%ld translations are available from the glossary." = "%ld つの文字を用語集で翻訳できます";
+
+/* Translation window hint */
+"%lu record(s) are going to be translated using %@." = "これから %1$lu つの文字列を %2$@ で翻訳します。";
+
 /* confirm */
 "Add spaces to all translations?" = "英語と日本語と数字の間に空白を追加しますか？";
 
@@ -17,15 +23,13 @@
 "Cannot translate to %@" = "%@ に翻訳するのできないです。";
 
 /* No comment provided by engineer. */
-"Errors during translation:
-%@" = "翻訳するのにエラーが起きました：
-%@";
-
-/* No comment provided by engineer. */
 "Go ahead" = "うるせえ！";
 
 /* No comment provided by engineer. */
 "Maybe you've made a mistake?" = "もしかしたらミスった？";
+
+/* No comment provided by engineer. */
+"No translation available" = "用語集で翻訳できるものがないです";
 
 /* Translation window hint */
 "No translation service support this language" = "この言語を翻訳できるサービスがないです。";
@@ -37,16 +41,16 @@
 "OK" = "OK";
 
 /* No comment provided by engineer. */
-"The source contains %@ \"%%%@\", but your input contains %@" = "ソースに \"%%%2$@\" が %1$@つあるけど、インプットには %3$@つがあります";
+"The source contains %@ \"%%%@\", but your input contains %@" = "原文に \"%%%2$@\" が %1$@つあるけど、インプットには %3$@つがあります";
 
 /* No comment provided by engineer. */
-"The source contains at least one \"%%%@\", but your input doesn't" = "ソースに \"%%%@\" があるけど、インプットにはないです";
+"The source contains at least one \"%%%@\", but your input doesn't" = "原文に \"%%%@\" があるけど、インプットにはないです";
 
 /* No comment provided by engineer. */
 "The source doesn't contain \"%%%@\", but your input does" = "ソースに \"%%%@\" がないけど、インプットにあります";
 
 /* Translate alert message */
-"There are %d records with formatting warnings, better fix them before applying." = "問題がある文字列は %d 個もありますけど、修正した方がいいですよ。";
+"There are %lu records with formatting warnings, better fix them before applying." = "問題がある文字列は %lu 個もありますけど、修正した方がいいですよ。";
 
 /* confirm */
 "You can undo by pressing command+z" = "コマンド + z で復元できます。";

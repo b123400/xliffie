@@ -1,3 +1,9 @@
+/* No comment provided by engineer. */
+"%ld translations are available from the glossary." = "內置字典可以自動翻譯 %ld 段字";
+
+/* Translation window hint */
+"%lu record(s) are going to be translated using %@." = "將會用 %2$@ 翻譯 %1$lu 段文字";
+
 /* confirm */
 "Add spaces to all translations?" = "要在中文和英數字之間加入空白嗎？";
 
@@ -17,18 +23,13 @@
 "Cannot translate to %@" = "無法翻譯成 %@";
 
 /* No comment provided by engineer. */
-"Download newer Xcode" = "下載更新的版本";
-
-/* No comment provided by engineer. */
-"Errors during translation:
-%@" = "翻譯時出現了錯誤：
-%@";
-
-/* No comment provided by engineer. */
 "Go ahead" = "不管啦照做啦";
 
 /* No comment provided by engineer. */
 "Maybe you've made a mistake?" = "這裏是不是有點不小心...?";
+
+/* No comment provided by engineer. */
+"No translation available" = "沒有內置字典能翻譯的字串";
 
 /* Translation window hint */
 "No translation service support this language" = "沒有網站可以幫你翻譯這個語言耶";
@@ -37,7 +38,7 @@
 "Nothing matches the above criteria. Nothing will be translated." = "沒有字串符合以上條件喔";
 
 /* No comment provided by engineer. */
-"OK" = "OK";
+"OK" = "好";
 
 /* No comment provided by engineer. */
 "The source contains %@ \"%%%@\", but your input contains %@" = "原文裡有 %1$@ 個 \"%%%2$@\"，但是你的輸入裏面有 %3$@個耶";
@@ -49,7 +50,7 @@
 "The source doesn't contain \"%%%@\", but your input does" = "原文裡沒有 \"%%%@\"，但是你的輸入裏有耶";
 
 /* Translate alert message */
-"There are %d records with formatting warnings, better fix them before applying." = "有 %d 個字串都有格式警告，適用之前是不是先修正比較好...？";
+"There are %lu records with formatting warnings, better fix them before applying." = "有 %lu 個字串都有格式警告，適用之前是不是先修正比較好...？";
 
 /* confirm */
 "You can undo by pressing command+z" = "你可以按 command + z 來復原";
