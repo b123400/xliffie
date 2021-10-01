@@ -8,19 +8,22 @@
 "Cay-Et-she.title" = "Google 翻訳";
 
 /* Class = "NSWindow"; title = "Window"; ObjectID = "F0z-JX-Cv5"; */
-"F0z-JX-Cv5.title" = "Window";
+"F0z-JX-Cv5.title" = "ウインドウ";
+
+/* Class = "NSTextFieldCell"; title = "Translate"; ObjectID = "gzR-1b-iNx"; */
+"gzR-1b-iNx.title" = "翻訳範囲";
 
 /* Class = "NSTextFieldCell"; title = "%d record(s) are going to be translated using %@."; ObjectID = "HbR-jO-1Ey"; */
 "HbR-jO-1Ey.title" = "これから %1$d つの文字列を %2$@ で翻訳します。";
 
 /* Class = "NSButtonCell"; title = "Ignore records with same source and target string."; ObjectID = "I5T-Mf-vCd"; */
-"I5T-Mf-vCd.title" = "ソースとターゲットが同じ文字列を無視する";
+"I5T-Mf-vCd.title" = "原文と目標言語が同じ文字列を無視する";
+
+/* Class = "NSTextFieldCell"; title = "Translate With Web Service"; ObjectID = "INQ-qe-e9z"; */
+"INQ-qe-e9z.title" = "ウエブサービスで翻訳";
 
 /* Class = "NSMenuItem"; title = "Bing Translate"; ObjectID = "Qho-ZZ-dzT"; */
 "Qho-ZZ-dzT.title" = "Bing 翻訳";
-
-/* Class = "NSTextFieldCell"; title = "Translate"; ObjectID = "gzR-1b-iNx"; */
-"gzR-1b-iNx.title" = "翻訳範囲";
 
 /* Class = "NSMenuItem"; title = "Translate selected"; ObjectID = "qlb-4E-wzL"; */
 "qlb-4E-wzL.title" = "選択されたものだけ";

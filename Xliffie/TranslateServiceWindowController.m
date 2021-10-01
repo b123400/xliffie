@@ -88,13 +88,12 @@
                                                            @"Translation window hint");
         self.okButton.enabled = NO;
     } else {
-        self.hintTextLabel.stringValue = [NSString stringWithFormat:NSLocalizedString(@"%d record(s) are going to be translated using %@.",
+        self.hintTextLabel.stringValue = [NSString stringWithFormat:NSLocalizedString(@"%lu record(s) are going to be translated using %@.",
                                                                                       @"Translation window hint"),
-                                          [[self pairsToTranslate] count],
+                                          (unsigned long)[[self pairsToTranslate] count],
                                           [self nameOfTranslationService:[self translationService]]];
         self.okButton.enabled = YES;
     }
-    
 }
 
 - (IBAction)serviceButtonPressed:(id)sender {

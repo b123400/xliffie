@@ -31,6 +31,8 @@
 @property (nonatomic, weak) id <DocumentViewControllerDelegate> delegate;
 @property (nonatomic, strong) NSString *mapLanguage;
 
+@property (weak) IBOutlet XMLOutlineView *outlineView;
+
 - (Document*)documentForDisplay;
 - (BOOL)isTranslationSelected:(TranslationPair*)translation;
 - (void)expendAllItems;

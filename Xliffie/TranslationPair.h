@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "File.h"
 
-@interface TranslationPair : NSObject
+@interface TranslationPair : NSObject<NSCopying>
 
 @property (nonatomic, strong) NSString *source;
 @property (nonatomic, strong) NSString *target;

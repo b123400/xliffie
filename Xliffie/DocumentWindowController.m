@@ -14,6 +14,7 @@
 #import "TranslateServiceWindowController.h"
 #import "XclocDocument.h"
 #import "NSString+Pangu.h"
+#import "GlossaryWindowController.h"
 
 #define DOCUMENT_WINDOW_MIN_SIZE NSMakeSize(600, 600)
 #define DOCUMENT_WINDOW_LAST_FRAME_KEY @"DOCUMENT_WINDOW_LAST_FRAME_KEY"
@@ -33,10 +34,10 @@
 
 @property (weak) IBOutlet NSSearchField *searchField;
 @property (nonatomic, strong) NSMutableArray *documents;
-//@property (nonatomic, strong) DocumentListDrawer *documentsDrawer;
 @property (nonatomic, strong) DocumentListViewController *documentListViewController;
 @property (nonatomic, strong) TranslateServiceWindowController *translateServiceController;
 @property (nonatomic, strong) TranslationWindowController *translateController;
+@property (nonatomic, strong) GlossaryWindowController *glossaryWindowController;
 
 // { @"en" :
 //     { @"hello/world.xib" : <File>
@@ -449,9 +450,42 @@
 }
 
 - (IBAction)translateButtonPressed:(id)sender {
-    [self showTranslateWindow];
+    [self translateWithGlossaryAndWebPressed: sender];
 }
 
+- (IBAction)translateWithGlossaryMenuPressed:(id)sender {
+    GlossaryWindowController *controller = [[GlossaryWindowController alloc] initWithDocument:self.document];
+    controller.showSkipButton = NO;
+    if (![controller numberOfApplicableTranslation]) {
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert setMessageText:NSLocalizedString(@"No translation available", @"")];
+        [alert addButtonWithTitle:NSLocalizedString(@"OK", @"")];
+        [alert runModal];
+    } else {
+        [self.window beginSheet:controller.window completionHandler:^(NSModalResponse returnCode) {
+            if (returnCode == NSModalResponseOK) {
+                [self.mainViewController.outlineView reloadData];
+            }
+        }];
+    }
+}
+
+- (IBAction)translateWithGlossaryAndWebPressed:(id)sender {
+    GlossaryWindowController *controller = [[GlossaryWindowController alloc] initWithDocument:self.document];
+    controller.showSkipButton = YES;
+    if (![controller numberOfApplicableTranslation]) {
+        [self showTranslateWindow];
+    } else {
+        [self.window beginSheet:controller.window completionHandler:^(NSModalResponse returnCode) {
+            if (returnCode == NSModalResponseOK) {
+                [self.mainViewController.outlineView reloadData];
+            }
+            if (returnCode == NSModalResponseOK || returnCode == NSModalResponseContinue) {
+                [self showTranslateWindow];
+            }
+        }];
+    }
+}
 
 #pragma mark selection
 

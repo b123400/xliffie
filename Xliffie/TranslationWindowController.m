@@ -99,9 +99,9 @@
         [alert setMessageText:NSLocalizedString(@"Are you sure?", @"Translate alert message")];
         [alert setInformativeText:
          [NSString stringWithFormat:
-          NSLocalizedString(@"There are %d records with formatting warnings, better fix them before applying.",
+          NSLocalizedString(@"There are %lu records with formatting warnings, better fix them before applying.",
                             @"Translate alert message"),
-          pairsWithWarning.count]];
+          (unsigned long)pairsWithWarning.count]];
         [[[alert buttons] objectAtIndex:0] setKeyEquivalent:@""]; // make "go ahead" not a default
         [[[alert buttons] objectAtIndex:1] setKeyEquivalent:@"\r"]; // make cancel the default
         [alert runModal];

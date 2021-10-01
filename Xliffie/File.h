@@ -11,7 +11,7 @@
 @class Document;
 @class TranslationPair;
 
-@interface File : NSObject
+@interface File : NSObject<NSCopying>
 
 // path of the original file, e.g. xx/yy/main.storyboard
 @property (nonatomic, strong) NSString *original;

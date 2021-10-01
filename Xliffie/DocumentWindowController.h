@@ -19,5 +19,7 @@
 - (void)addDocument:(Document*)newDocument;
 
 - (void)showSidebar;
+- (IBAction)translateWithGlossaryMenuPressed:(id)sender;
+- (IBAction)translateWithGlossaryAndWebPressed:(id)sender;
 
 @end

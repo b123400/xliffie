@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19162"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -564,6 +564,24 @@
                                     </items>
                                 </menu>
                             </menuItem>
+                            <menuItem title="Translate" id="F6P-Il-9Ke">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Translate" id="BhD-Ou-uf3">
+                                    <items>
+                                        <menuItem title="With Glossary..." id="ykV-Yz-4CP">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="translateWithGlossaryMenuPressed:" target="Voe-Tx-rLC" id="PU9-h7-zWz"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="With Glossary and Web..." keyEquivalent="T" id="BQ8-JA-Vrv">
+                                            <connections>
+                                                <action selector="translateWithGlossaryAndWebPressed:" target="Voe-Tx-rLC" id="dan-er-U3z"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
                             <menuItem title="View" id="H8h-7b-M4v">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="View" id="HyV-fh-RgO">
@@ -642,7 +660,7 @@
                         <toolbar key="toolbar" implicitIdentifier="166F8748-BD85-4A78-8FF8-6788C586B18B" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="XuC-uR-2Qg">
                             <allowedToolbarItems>
                                 <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="fIO-7r-OQw"/>
-                                <toolbarItem implicitItemIdentifier="49F7EE2C-F5C3-4B1F-BF77-9764EB1FE684" label="Custom View" paletteLabel="Custom View" tag="-1" id="hRa-qY-UHQ">
+                                <toolbarItem implicitItemIdentifier="49F7EE2C-F5C3-4B1F-BF77-9764EB1FE684" label="" paletteLabel="Source &amp; Target" tag="-1" id="hRa-qY-UHQ">
                                     <nil key="toolTip"/>
                                     <size key="minSize" width="280" height="37"/>
                                     <size key="maxSize" width="283" height="96"/>
@@ -711,7 +729,7 @@
                                     <button key="view" verticalHuggingPriority="750" id="lmd-e1-baA">
                                         <rect key="frame" x="14" y="14" width="29" height="28"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="translate" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="DLF-qG-Mz6">
+                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="translate" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="DLF-qG-Mz6">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
