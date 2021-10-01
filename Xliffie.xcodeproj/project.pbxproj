@@ -13,8 +13,10 @@
 		CF0945911C54FD3600DAEB4A /* BRArrowSegmentedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0945901C54FD3600DAEB4A /* BRArrowSegmentedCell.m */; };
 		CF34B7471AAB7C2000C6A58E /* DocumentListDrawer.m in Sources */ = {isa = PBXBuildFile; fileRef = CF34B7461AAB7C2000C6A58E /* DocumentListDrawer.m */; };
 		CF34B75A1AADE00A00C6A58E /* TranslationTargetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF34B7591AADE00A00C6A58E /* TranslationTargetCell.m */; };
+		CF36D61E270616460056E2E8 /* Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF36D61D270616450056E2E8 /* Empty.swift */; };
 		CF5682EB1A6AFB9800E0DEDD /* DocumentWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5682E91A6AFB9800E0DEDD /* DocumentWindowController.m */; };
 		CF5682EF1A6B11C700E0DEDD /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5682EE1A6B11C700E0DEDD /* DetailViewController.m */; };
+		CF5E5A602706AEC800B8A90A /* MatomoTracker+Shared.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5E5A5F2706AEC800B8A90A /* MatomoTracker+Shared.m */; };
 		CF5E5A61270744B900B8A90A /* GlossaryWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF5E5A63270744B900B8A90A /* GlossaryWindowController.xib */; };
 		CF5FC8931A5ABFF700538E60 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5FC8921A5ABFF700538E60 /* AppDelegate.m */; };
 		CF5FC8951A5ABFF700538E60 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5FC8941A5ABFF700538E60 /* main.m */; };
@@ -115,6 +117,7 @@
 		CF34B7461AAB7C2000C6A58E /* DocumentListDrawer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentListDrawer.m; sourceTree = "<group>"; };
 		CF34B7581AADE00A00C6A58E /* TranslationTargetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TranslationTargetCell.h; sourceTree = "<group>"; };
 		CF34B7591AADE00A00C6A58E /* TranslationTargetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TranslationTargetCell.m; sourceTree = "<group>"; };
+		CF36D61D270616450056E2E8 /* Empty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Empty.swift; sourceTree = "<group>"; };
 		CF4B0C2E1BF91239007AF981 /* zh-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-TW"; path = "zh-TW.lproj/Main.strings"; sourceTree = "<group>"; };
 		CF4B0C2F1BF9123A007AF981 /* zh-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-TW"; path = "zh-TW.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		CF4B0C301BF9123A007AF981 /* zh-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-TW"; path = "zh-TW.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -123,6 +126,8 @@
 		CF5682E91A6AFB9800E0DEDD /* DocumentWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentWindowController.m; sourceTree = "<group>"; };
 		CF5682ED1A6B11C700E0DEDD /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		CF5682EE1A6B11C700E0DEDD /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		CF5E5A5E2706AEC800B8A90A /* MatomoTracker+Shared.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MatomoTracker+Shared.h"; sourceTree = "<group>"; };
+		CF5E5A5F2706AEC800B8A90A /* MatomoTracker+Shared.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MatomoTracker+Shared.m"; sourceTree = "<group>"; };
 		CF5E5A62270744B900B8A90A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/GlossaryWindowController.xib; sourceTree = "<group>"; };
 		CF5E5A65270744C100B8A90A /* zh-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-TW"; path = "zh-TW.lproj/GlossaryWindowController.strings"; sourceTree = "<group>"; };
 		CF5E5A67270744C200B8A90A /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/GlossaryWindowController.strings; sourceTree = "<group>"; };
@@ -290,6 +295,16 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		CF5E5A5C2706AE2500B8A90A /* Tracking */ = {
+			isa = PBXGroup;
+			children = (
+				CF36D61D270616450056E2E8 /* Empty.swift */,
+				CF5E5A5E2706AEC800B8A90A /* MatomoTracker+Shared.h */,
+				CF5E5A5F2706AEC800B8A90A /* MatomoTracker+Shared.m */,
+			);
+			path = Tracking;
+			sourceTree = "<group>";
+		};
 		CF5FC8831A5ABFF700538E60 = {
 			isa = PBXGroup;
 			children = (
@@ -343,6 +358,7 @@
 				CFE39F9C1A765859004644C8 /* Localizable.strings */,
 				CFEECE44250E21EE007A324C /* Localizable.stringsdict */,
 				CF5FC88F1A5ABFF700538E60 /* Supporting Files */,
+				CF5E5A5C2706AE2500B8A90A /* Tracking */,
 			);
 			path = Xliffie;
 			sourceTree = "<group>";
@@ -517,6 +533,7 @@
 					CF5FC88B1A5ABFF700538E60 = {
 						CreatedOnToolsVersion = 6.1.1;
 						DevelopmentTeam = CC63FD9H8S;
+						LastSwiftMigration = 1300;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
@@ -713,6 +730,8 @@
 				CF5682EF1A6B11C700E0DEDD /* DetailViewController.m in Sources */,
 				CFD234FA1A5E44C700B52088 /* XMLOutlineView.m in Sources */,
 				CF5FC89B1A5ABFF700538E60 /* Document.m in Sources */,
+				CF36D61E270616460056E2E8 /* Empty.swift in Sources */,
+				CF5E5A602706AEC800B8A90A /* MatomoTracker+Shared.m in Sources */,
 				CF740AA72701C6C700F31F26 /* Glossary.m in Sources */,
 				CFE3B1761CD800AB00021D7F /* NSString+Pangu.m in Sources */,
 				CF5FC8981A5ABFF700538E60 /* DocumentViewController.m in Sources */,
@@ -932,6 +951,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Xliffie/Xliffie-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -958,6 +978,7 @@
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Xliffie/Xliffie-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -965,6 +986,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F46F3EFF87AC9239B0E767A0 /* Pods-XliffieTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -986,6 +1008,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8F922AA3285E9DB3A6DBC09B /* Pods-XliffieTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (

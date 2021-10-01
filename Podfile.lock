@@ -22,18 +22,23 @@ PODS:
     - AFNetworking (~> 2.0)
     - PINCache
     - XMLDictionary (~> 1.4)
+  - MatomoTracker (7.4.1):
+    - MatomoTracker/Core (= 7.4.1)
+  - MatomoTracker/Core (7.4.1)
   - PINCache (2.3)
   - XMLDictionary (1.4.1)
 
 DEPENDENCIES:
   - BRLocaleMap (~> 1.1.0)
   - FGTranslator (from `https://github.com/b123400/FGTranslator.git`, branch `refactor`)
+  - MatomoTracker (~> 7.4)
   - PINCache (~> 2.3)
 
 SPEC REPOS:
   trunk:
     - AFNetworking
     - BRLocaleMap
+    - MatomoTracker
     - PINCache
     - XMLDictionary
 
@@ -51,9 +56,10 @@ SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
   BRLocaleMap: d95d85d69bee230c745a2ba11730e2e99c0bf66e
   FGTranslator: 7726c0c380beaa28cb6bb23950cd7d00ab341203
+  MatomoTracker: 24a846c9d3aa76933183fe9d47fd62c9efa863fb
   PINCache: ce36ed282031b92fc7733ffe831f474ff80fddc2
   XMLDictionary: fa07b6ff422b3a91d47a5de9bc82e3fc04fbd167
 
-PODFILE CHECKSUM: 2a9885997f970915a5930407e48bc9bfe03bd9c4
+PODFILE CHECKSUM: 5b3950e507fb65c3113e6e2c1d7be55c00b1b854
 
 COCOAPODS: 1.10.1
