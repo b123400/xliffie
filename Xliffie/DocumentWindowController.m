@@ -15,6 +15,7 @@
 #import "XclocDocument.h"
 #import "NSString+Pangu.h"
 #import "GlossaryWindowController.h"
+#import "MatomoTracker+Shared.h"
 
 #define DOCUMENT_WINDOW_MIN_SIZE NSMakeSize(600, 600)
 #define DOCUMENT_WINDOW_LAST_FRAME_KEY @"DOCUMENT_WINDOW_LAST_FRAME_KEY"
@@ -208,6 +209,11 @@
     [self reloadTranslationButtons];
     [self.documentListViewController reloadData];
     [self.window invalidateRestorableState];
+    [[MatomoTracker shared] trackWithEventWithCategory:@"DocumentWindowController"
+                                                action:@"addDocument"
+                                                  name:nil
+                                                number:@(self.documents.count)
+                                                   url:nil];
 }
 
 -(void)windowDidBecomeKey:(NSNotification *)notification {
@@ -350,6 +356,11 @@
 }
 
 - (IBAction)addSpaceButtonPressed:(id)sender {
+    [[MatomoTracker shared] trackWithEventWithCategory:@"DocumentWindowController"
+                                                    action:@"addSpaceButtonPressed"
+                                                      name:nil
+                                                    number:nil
+                                                       url:nil];
     NSAlert *alert = [[NSAlert alloc] init];
     [alert addButtonWithTitle:NSLocalizedString(@"OK", @"")];
     [alert addButtonWithTitle:NSLocalizedString(@"Cancel",@"")];
@@ -362,6 +373,11 @@
     [alert beginSheetModalForWindow:self.window
                   completionHandler:^(NSModalResponse returnCode) {
                       if (returnCode == NSAlertFirstButtonReturn) {
+                          [[MatomoTracker shared] trackWithEventWithCategory:@"DocumentWindowController"
+                                                                          action:@"addSpaceButtonPressed-confirmed"
+                                                                            name:nil
+                                                                          number:nil
+                                                                             url:nil];
                           Document *document = (Document*)self.document;
                           [[document undoManager] beginUndoGrouping];
                           for (File *file in document.files) {
@@ -447,10 +463,21 @@
 
 - (IBAction)toggleNotesPressed:(id)sender {
     [self toggleNotes];
+    [self translateWithGlossaryAndWebPressed: sender];
+    [[MatomoTracker shared] trackWithEventWithCategory:@"DocumentWindowController"
+                                                    action:@"toggleNotesPressed"
+                                                      name:nil
+                                                    number:nil
+                                                       url:nil];
 }
 
 - (IBAction)translateButtonPressed:(id)sender {
     [self translateWithGlossaryAndWebPressed: sender];
+    [[MatomoTracker shared] trackWithEventWithCategory:@"DocumentWindowController"
+                                                    action:@"translateButtonPressed"
+                                                      name:nil
+                                                    number:nil
+                                                       url:nil];
 }
 
 - (IBAction)translateWithGlossaryMenuPressed:(id)sender {

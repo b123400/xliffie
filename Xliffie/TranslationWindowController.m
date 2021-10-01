@@ -9,6 +9,7 @@
 #import "TranslationWindowController.h"
 #import "TranslationUtility.h"
 #import "DocumentViewController.h"
+#import "MatomoTracker+Shared.h"
 
 @interface TranslationWindowController () <NSOutlineViewDataSource, NSOutlineViewDelegate, DocumentViewControllerDelegate>
 
@@ -59,6 +60,15 @@
     self.okButton.hidden = YES;
     self.cancelButton.hidden = YES;
     [self startTranslate];
+    
+    [[MatomoTracker shared] trackWithView:@[@"TranslateWindowController"] url:nil];
+    [[MatomoTracker shared] trackWithEventWithCategory:@"TranslateWindowController"
+                                                action:@"translate"
+                                                  name:(self.service == BRLocaleMapServiceGoogle ? @"Google"
+                                                      : self.service == BRLocaleMapServiceMicrosoft ? @"Microsoft"
+                                                      : nil)
+                                                number:@(self.pairs.count)
+                                                   url:nil];
 }
 
 - (void)showTranslationTable {
@@ -85,6 +95,11 @@
 
 - (IBAction)cancelButtonPressed:(id)sender {
     [self.window.sheetParent endSheet:self.window returnCode:NSModalResponseCancel];
+    [[MatomoTracker shared] trackWithEventWithCategory:@"TranslateWindowController"
+                                                action:@"Cancel"
+                                                  name:nil
+                                                number:nil
+                                                   url:nil];
 }
 
 - (IBAction)okButtonPressed:(id)sender {

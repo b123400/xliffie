@@ -10,6 +10,7 @@
 #import "DocumentWindowController.h"
 #import "XclocDocument.h"
 #import "Glossary.h"
+#import "MatomoTracker+Shared.h"
 
 @interface AppDelegate ()
 
@@ -19,6 +20,12 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
+    NSString *versionString = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    [[MatomoTracker shared] trackWithEventWithCategory:@"AppDelegate"
+                                                action:@"applicationDidFinishLaunching"
+                                                  name:versionString
+                                                number:nil
+                                                   url:nil];
 }
 
 - (void)didFinishRestoreWindow:(NSNotification*)notification {
@@ -36,6 +43,12 @@
 
     NSMutableArray *inputs = [NSMutableArray arrayWithArray:inputFilenames];
     NSMutableArray *filenames = [NSMutableArray array];
+    
+    [[MatomoTracker shared] trackWithEventWithCategory:@"AppDelegate"
+                                                action:@"openFiles"
+                                                  name:nil
+                                                number:@(inputs.count)
+                                                   url:nil];
 
     while ([inputs count]) {
         NSString *thisItem = [inputs firstObject];
@@ -46,6 +59,12 @@
             if (!isFolder) {
                 if ([Document isXliffExtension:[thisItem pathExtension]]) {
                     [filenames addObject:thisItem];
+                    
+                    [[MatomoTracker shared] trackWithEventWithCategory:@"AppDelegate"
+                                                                action:@"openFile"
+                                                                  name:@"Xliff"
+                                                                number:nil
+                                                                   url:nil];
                 }
             } else {
                 NSArray *files = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:thisItem error:nil];
@@ -53,7 +72,17 @@
 
                 if (isXcloc) {
                     [filenames addObject:thisItem];
+                    [[MatomoTracker shared] trackWithEventWithCategory:@"AppDelegate"
+                                                                action:@"openFile"
+                                                                  name:@"Xcloc"
+                                                                number:nil
+                                                                   url:nil];
                 } else {
+                    [[MatomoTracker shared] trackWithEventWithCategory:@"AppDelegate"
+                                                                action:@"openFile"
+                                                                  name:@"Folder"
+                                                                number:nil
+                                                                   url:nil];
                     for (NSString *filename in files) {
                         if ([Document isXliffExtension:[filename pathExtension]] || [XclocDocument isXclocExtension:[filename pathExtension]]) {
                             [inputs addObject:[thisItem stringByAppendingPathComponent:filename]];
@@ -165,6 +194,11 @@
         return;
     }
     [controller translateWithGlossaryMenuPressed:sender];
+    [[MatomoTracker shared] trackWithEventWithCategory:@"AppDelegate"
+                                                action:@"translateWithGlossaryMenuPressed"
+                                                  name:nil
+                                                number:nil
+                                                   url:nil];
 }
 - (IBAction)translateWithGlossaryAndWebPressed:(id)sender {
     DocumentWindowController *controller = (DocumentWindowController*)[[[NSApplication sharedApplication] keyWindow] delegate];
@@ -172,6 +206,11 @@
         return;
     }
     [controller translateWithGlossaryAndWebPressed:sender];
+    [[MatomoTracker shared] trackWithEventWithCategory:@"AppDelegate"
+                                                action:@"translateWithGlossaryAndWebPressed"
+                                                  name:nil
+                                                number:nil
+                                                   url:nil];
 }
 
 @end
