@@ -210,26 +210,23 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
         }
     }
     [self.window.sheetParent endSheet:self.window returnCode:NSModalResponseOK];
-    [[MatomoTracker shared] trackWithEventWithCategory:@"GlossaryWindowController"
-                                                    action:@"okClicked"
-                                                      name:nil
-                                                    number:@(translatedCount)
-                                                       url:nil];
+    [[MatomoTracker shared] trackWithIsolatedEventWithCategory:@"GlossaryWindowController"
+                                                        action:@"okClicked"
+                                                        number:@(translatedCount)
+                                                           url:nil];
 }
 - (IBAction)cancelClicked:(id)sender {
     [self.window.sheetParent endSheet:self.window returnCode:NSModalResponseCancel];
-    [[MatomoTracker shared] trackWithEventWithCategory:@"GlossaryWindowController"
-                                                    action:@"cancelClicked"
-                                                      name:nil
-                                                    number:nil
-                                                       url:nil];
+    [[MatomoTracker shared] trackWithIsolatedEventWithCategory:@"GlossaryWindowController"
+                                                        action:@"cancelClicked"
+                                                          name:nil
+                                                           url:nil];
 }
 - (IBAction)skipClicked:(id)sender {
     [self.window.sheetParent endSheet:self.window returnCode:NSModalResponseContinue];
-    [[MatomoTracker shared] trackWithEventWithCategory:@"GlossaryWindowController"
+    [[MatomoTracker shared] trackWithIsolatedEventWithCategory:@"GlossaryWindowController"
                                                     action:@"skipClicked"
                                                       name:nil
-                                                    number:nil
                                                        url:nil];
 }
 

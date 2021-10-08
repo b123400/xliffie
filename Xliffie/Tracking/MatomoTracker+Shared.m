@@ -21,4 +21,38 @@
     return sharedInstance;
 }
 
+- (void)trackWithIsolatedEventWithCategory:(NSString *)category
+                                    action:(NSString *)action
+                                      name:(NSString *)name
+                                       url:(NSURL *)url {
+    [self trackWithIsolatedEventWithCategory:category
+                                      action:action
+                                        name:name
+                                      number:nil
+                                         url:url];
+}
+
+- (void)trackWithIsolatedEventWithCategory:(NSString *)category
+                                    action:(NSString *)action
+                                    number:(NSNumber * _Nullable)number
+                                       url:(NSURL * _Nullable)url {
+    [self trackWithIsolatedEventWithCategory:category
+                                      action:action
+                                        name:number.stringValue
+                                      number:number
+                                         url:url];
+}
+- (void)trackWithIsolatedEventWithCategory:(NSString *)category
+                                    action:(NSString *)action
+                                      name:(NSString *)name
+                                    number:(NSNumber *)number
+                                       url:(NSURL *)url {
+    [self startNewSession];
+    [self trackWithEventWithCategory:category
+                              action:action
+                                name:name
+                              number:number
+                                 url:url];
+}
+
 @end
