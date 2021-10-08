@@ -8,7 +8,7 @@ platform :osx, '10.12'
 pod "FGTranslator", :git => "https://github.com/b123400/FGTranslator.git", :branch => "refactor"
 pod "BRLocaleMap", '~> 1.1.0'
 pod 'PINCache', '~> 2.3'
-pod 'MatomoTracker', '~> 7.4'
+pod 'MatomoTracker', :git => 'https://github.com/b123400/matomo-sdk-ios.git', :branch => 'new-session-objc'
 
 target 'Xliffie' do
 
