@@ -1,0 +1,12 @@
+/* Class = "NSTextFieldCell"; title = "Tracking"; ObjectID = "4Ov-aS-geg"; */
+"4Ov-aS-geg.title" = "Tracking";
+
+/* Class = "NSWindow"; title = "Preferences"; ObjectID = "F0z-JX-Cv5"; */
+"F0z-JX-Cv5.title" = "偏好設定";
+
+/* Class = "NSTextFieldCell"; title = "Hi, this is Brian, the sole developer of this app.\nI dislike advertisers stalking as much as you do.\nSince the very beginning, Xliffie has had no tracking code at all.\nHowever that means I had absolutely no idea about the app's usage, not even how many people are using the app. Without any insight on the usage, it's very hard to guess how should I spend my time to improve the app.\nI've decided to add a tiny amount of tracking to the app, while respecting your privacy. You can also inspect the actual code on Github.\n\n- Your data is not identifiable, I don't know who you are\n- The analytics data is sent to my own server directly, encrypted, nobody else can see it\n- The data is only used for the developement of Xliffie.\n\nOf course, it is your choice to decide whether or not to be tracked, so here's a checkbox:"; ObjectID = "oVq-aS-Qc2"; */
+"oVq-aS-Qc2.title" = "Hi，我是這個App的開發者。\n我和你一樣，討厭被廣告公司跟蹤者，所以Xliifie由一開始就完全沒有tracking的code。\n但這樣也代表我對這個App的使用者一無所知，我連有多少用戶都不知道。\n這種狀態下我沒辦法把有效的把時間分配在重要的功能上，所以決定還是在保護用戶的私隱的情況下加入了少量的分析用的code。\n原始碼全部都在Github上歡迎隨便閱讀。\n\n- 分析用的data和你的身分沒有任何聯繫，我完全不知道你是誰\n- 分析用的data會經過加密，直接傳送到我的個人server，沒有其他人能閱覽\n- 分析用的data只會用於Xliffie的開發\n\n當然，是否被track是你的決定，所以這裡有個checkbox:";
+
+/* Class = "NSButtonCell"; title = "Enable tracking"; ObjectID = "vkc-1n-0O3"; */
+"vkc-1n-0O3.title" = "使用Tracking";
+

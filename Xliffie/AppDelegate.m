@@ -11,8 +11,11 @@
 #import "XclocDocument.h"
 #import "Glossary.h"
 #import "MatomoTracker+Shared.h"
+#import "Preferences/PreferenceWindowController.h"
 
 @interface AppDelegate ()
+
+@property (nonatomic, strong) PreferenceWindowController *preferenceWindowController;
 
 @end
 
@@ -201,6 +204,13 @@
                                                 action:@"translateWithGlossaryAndWebPressed"
                                                   name:nil
                                                    url:nil];
+}
+
+- (IBAction)preferencesPressed:(id)sender {
+    if (!self.preferenceWindowController) {
+        self.preferenceWindowController = [[PreferenceWindowController alloc] init];
+    }
+    [self.preferenceWindowController showWindow:self];
 }
 
 @end
