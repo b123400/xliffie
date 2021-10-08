@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19162" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19162"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="PreferenceWindowController">
+            <connections>
+                <outlet property="trackingEnabledCheckbox" destination="kIB-ak-nj6" id="Nle-5s-nI7"/>
+                <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="196" y="240" width="480" height="360"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
+            <view key="contentView" id="se5-gp-TjO">
+                <rect key="frame" x="0.0" y="0.0" width="480" height="312"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="qn6-P3-pOQ">
+                        <rect key="frame" x="18" y="44" width="444" height="224"/>
+                        <textFieldCell key="cell" selectable="YES" id="oVq-aS-Qc2">
+                            <font key="font" metaFont="smallSystem"/>
+                            <string key="title">Hi, this is Brian, the sole developer of this app.
+I dislike advertisers stalking as much as you do.
+Since the very beginning, Xliffie has had no tracking code at all.
+However that means I had absolutely no idea about the app's usage, not even how many people are using the app. Without any insight on the usage, it's very hard to guess how should I spend my time to improve the app.
+I've decided to add a tiny amount of tracking to the app, while respecting your privacy. You can also inspect the actual code on Github.
+
+- Your data is not identifiable, I don't know who you are
+- The analytics data is sent to my own server directly, encrypted, nobody else can see it
+- The data is only used for the developement of Xliffie.
+
+Of course, it is your choice to decide whether or not to be tracked, so here's a checkbox:</string>
+                            <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="l8D-LD-7Ir">
+                        <rect key="frame" x="18" y="276" width="61" height="16"/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" title="Tracking" id="4Ov-aS-geg">
+                            <font key="font" textStyle="headline" name=".SFNS-Bold"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kIB-ak-nj6">
+                        <rect key="frame" x="18" y="19" width="120" height="18"/>
+                        <buttonCell key="cell" type="check" title="Enable tracking" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="vkc-1n-0O3">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="trackingEnabledClicked:" target="-2" id="NFL-DY-jMY"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="qn6-P3-pOQ" firstAttribute="top" secondItem="l8D-LD-7Ir" secondAttribute="bottom" constant="8" symbolic="YES" id="Djl-gM-hYM"/>
+                    <constraint firstItem="kIB-ak-nj6" firstAttribute="top" secondItem="qn6-P3-pOQ" secondAttribute="bottom" constant="8" symbolic="YES" id="Etg-sm-Elh"/>
+                    <constraint firstItem="qn6-P3-pOQ" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" symbolic="YES" id="JKq-Nl-OJo"/>
+                    <constraint firstAttribute="trailing" secondItem="qn6-P3-pOQ" secondAttribute="trailing" constant="20" symbolic="YES" id="JnW-YM-8pL"/>
+                    <constraint firstItem="l8D-LD-7Ir" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="20" symbolic="YES" id="LaZ-vd-cQu"/>
+                    <constraint firstAttribute="bottom" secondItem="kIB-ak-nj6" secondAttribute="bottom" constant="20" symbolic="YES" id="fAO-Bx-el8"/>
+                    <constraint firstItem="l8D-LD-7Ir" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" symbolic="YES" id="mos-sb-Gbd"/>
+                    <constraint firstItem="kIB-ak-nj6" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" symbolic="YES" id="p8M-vw-W8X"/>
+                </constraints>
+            </view>
+            <connections>
+                <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
+            </connections>
+            <point key="canvasLocation" x="140" y="189"/>
+        </window>
+    </objects>
+</document>

@@ -13,9 +13,12 @@
 		CF0945911C54FD3600DAEB4A /* BRArrowSegmentedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0945901C54FD3600DAEB4A /* BRArrowSegmentedCell.m */; };
 		CF34B7471AAB7C2000C6A58E /* DocumentListDrawer.m in Sources */ = {isa = PBXBuildFile; fileRef = CF34B7461AAB7C2000C6A58E /* DocumentListDrawer.m */; };
 		CF34B75A1AADE00A00C6A58E /* TranslationTargetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF34B7591AADE00A00C6A58E /* TranslationTargetCell.m */; };
+		CF36D61E270616460056E2E8 /* Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF36D61D270616450056E2E8 /* Empty.swift */; };
 		CF5682EB1A6AFB9800E0DEDD /* DocumentWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5682E91A6AFB9800E0DEDD /* DocumentWindowController.m */; };
 		CF5682EF1A6B11C700E0DEDD /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5682EE1A6B11C700E0DEDD /* DetailViewController.m */; };
+		CF5E5A602706AEC800B8A90A /* MatomoTracker+Shared.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5E5A5F2706AEC800B8A90A /* MatomoTracker+Shared.m */; };
 		CF5E5A61270744B900B8A90A /* GlossaryWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF5E5A63270744B900B8A90A /* GlossaryWindowController.xib */; };
+		CF5E5A6C2707514400B8A90A /* PreferenceWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5E5A6A2707514400B8A90A /* PreferenceWindowController.m */; };
 		CF5FC8931A5ABFF700538E60 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5FC8921A5ABFF700538E60 /* AppDelegate.m */; };
 		CF5FC8951A5ABFF700538E60 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5FC8941A5ABFF700538E60 /* main.m */; };
 		CF5FC8981A5ABFF700538E60 /* DocumentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5FC8971A5ABFF700538E60 /* DocumentViewController.m */; };
@@ -71,6 +74,7 @@
 		CF92FB941C24037B00700D3E /* TargetMissingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF92FB931C24037B00700D3E /* TargetMissingViewController.m */; };
 		CF94FCA51A5C365400EE8BD5 /* File.m in Sources */ = {isa = PBXBuildFile; fileRef = CF94FCA41A5C365400EE8BD5 /* File.m */; };
 		CF94FCA81A5C37A900EE8BD5 /* TranslationPair.m in Sources */ = {isa = PBXBuildFile; fileRef = CF94FCA71A5C37A900EE8BD5 /* TranslationPair.m */; };
+		CFBF5390271017F7000AB78D /* PreferenceWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFBF5392271017F7000AB78D /* PreferenceWindowController.xib */; };
 		CFC6CC602702E8E300F7850C /* GlossaryWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC6CC5E2702E8E300F7850C /* GlossaryWindowController.m */; };
 		CFC6CC642703152400F7850C /* GlossaryRow.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC6CC632703152400F7850C /* GlossaryRow.m */; };
 		CFC6CC672703163700F7850C /* GlossaryFileRow.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC6CC662703163700F7850C /* GlossaryFileRow.m */; };
@@ -115,6 +119,7 @@
 		CF34B7461AAB7C2000C6A58E /* DocumentListDrawer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentListDrawer.m; sourceTree = "<group>"; };
 		CF34B7581AADE00A00C6A58E /* TranslationTargetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TranslationTargetCell.h; sourceTree = "<group>"; };
 		CF34B7591AADE00A00C6A58E /* TranslationTargetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TranslationTargetCell.m; sourceTree = "<group>"; };
+		CF36D61D270616450056E2E8 /* Empty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Empty.swift; sourceTree = "<group>"; };
 		CF4B0C2E1BF91239007AF981 /* zh-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-TW"; path = "zh-TW.lproj/Main.strings"; sourceTree = "<group>"; };
 		CF4B0C2F1BF9123A007AF981 /* zh-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-TW"; path = "zh-TW.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		CF4B0C301BF9123A007AF981 /* zh-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-TW"; path = "zh-TW.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -123,9 +128,13 @@
 		CF5682E91A6AFB9800E0DEDD /* DocumentWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentWindowController.m; sourceTree = "<group>"; };
 		CF5682ED1A6B11C700E0DEDD /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		CF5682EE1A6B11C700E0DEDD /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		CF5E5A5E2706AEC800B8A90A /* MatomoTracker+Shared.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MatomoTracker+Shared.h"; sourceTree = "<group>"; };
+		CF5E5A5F2706AEC800B8A90A /* MatomoTracker+Shared.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MatomoTracker+Shared.m"; sourceTree = "<group>"; };
 		CF5E5A62270744B900B8A90A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/GlossaryWindowController.xib; sourceTree = "<group>"; };
 		CF5E5A65270744C100B8A90A /* zh-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-TW"; path = "zh-TW.lproj/GlossaryWindowController.strings"; sourceTree = "<group>"; };
 		CF5E5A67270744C200B8A90A /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/GlossaryWindowController.strings; sourceTree = "<group>"; };
+		CF5E5A692707514400B8A90A /* PreferenceWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PreferenceWindowController.h; sourceTree = "<group>"; };
+		CF5E5A6A2707514400B8A90A /* PreferenceWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PreferenceWindowController.m; sourceTree = "<group>"; };
 		CF5FC88C1A5ABFF700538E60 /* Xliffie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Xliffie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF5FC8901A5ABFF700538E60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF5FC8911A5ABFF700538E60 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -195,6 +204,9 @@
 		CF94FCA41A5C365400EE8BD5 /* File.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = File.m; sourceTree = "<group>"; };
 		CF94FCA61A5C37A900EE8BD5 /* TranslationPair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TranslationPair.h; sourceTree = "<group>"; };
 		CF94FCA71A5C37A900EE8BD5 /* TranslationPair.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TranslationPair.m; sourceTree = "<group>"; };
+		CFBF5391271017F7000AB78D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PreferenceWindowController.xib; sourceTree = "<group>"; };
+		CFBF5394271017FB000AB78D /* zh-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-TW"; path = "zh-TW.lproj/PreferenceWindowController.strings"; sourceTree = "<group>"; };
+		CFBF5396271017FC000AB78D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/PreferenceWindowController.strings; sourceTree = "<group>"; };
 		CFC6CC5D2702E8E300F7850C /* GlossaryWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlossaryWindowController.h; sourceTree = "<group>"; };
 		CFC6CC5E2702E8E300F7850C /* GlossaryWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GlossaryWindowController.m; sourceTree = "<group>"; };
 		CFC6CC622703152400F7850C /* GlossaryRow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlossaryRow.h; sourceTree = "<group>"; };
@@ -290,6 +302,26 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		CF5E5A5C2706AE2500B8A90A /* Tracking */ = {
+			isa = PBXGroup;
+			children = (
+				CF36D61D270616450056E2E8 /* Empty.swift */,
+				CF5E5A5E2706AEC800B8A90A /* MatomoTracker+Shared.h */,
+				CF5E5A5F2706AEC800B8A90A /* MatomoTracker+Shared.m */,
+			);
+			path = Tracking;
+			sourceTree = "<group>";
+		};
+		CF5E5A682707512400B8A90A /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				CF5E5A692707514400B8A90A /* PreferenceWindowController.h */,
+				CF5E5A6A2707514400B8A90A /* PreferenceWindowController.m */,
+				CFBF5392271017F7000AB78D /* PreferenceWindowController.xib */,
+			);
+			path = Preferences;
+			sourceTree = "<group>";
+		};
 		CF5FC8831A5ABFF700538E60 = {
 			isa = PBXGroup;
 			children = (
@@ -333,6 +365,7 @@
 				CF5682EE1A6B11C700E0DEDD /* DetailViewController.m */,
 				CF92FB921C24037B00700D3E /* TargetMissingViewController.h */,
 				CF92FB931C24037B00700D3E /* TargetMissingViewController.m */,
+				CF5E5A682707512400B8A90A /* Preferences */,
 				CFB0B8F61C3073A9004DF663 /* Translator */,
 				CF34B75C1AADE02400C6A58E /* Model */,
 				CF34B75B1AADE01000C6A58E /* UI Elements */,
@@ -343,6 +376,7 @@
 				CFE39F9C1A765859004644C8 /* Localizable.strings */,
 				CFEECE44250E21EE007A324C /* Localizable.stringsdict */,
 				CF5FC88F1A5ABFF700538E60 /* Supporting Files */,
+				CF5E5A5C2706AE2500B8A90A /* Tracking */,
 			);
 			path = Xliffie;
 			sourceTree = "<group>";
@@ -517,6 +551,7 @@
 					CF5FC88B1A5ABFF700538E60 = {
 						CreatedOnToolsVersion = 6.1.1;
 						DevelopmentTeam = CC63FD9H8S;
+						LastSwiftMigration = 1300;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
@@ -586,6 +621,7 @@
 				CF740AE42701CE7900F31F26 /* hi.glossary in Resources */,
 				CF740AF32701CE7900F31F26 /* ro.glossary in Resources */,
 				CF660EF41C540E11007A0B28 /* TranslateServiceWindowController.xib in Resources */,
+				CFBF5390271017F7000AB78D /* PreferenceWindowController.xib in Resources */,
 				CF660EFB1C540E27007A0B28 /* TranslationWindowController.xib in Resources */,
 				CF740AE72701CE7900F31F26 /* fi.glossary in Resources */,
 				CF740AE12701CE7900F31F26 /* hu.glossary in Resources */,
@@ -713,6 +749,8 @@
 				CF5682EF1A6B11C700E0DEDD /* DetailViewController.m in Sources */,
 				CFD234FA1A5E44C700B52088 /* XMLOutlineView.m in Sources */,
 				CF5FC89B1A5ABFF700538E60 /* Document.m in Sources */,
+				CF36D61E270616460056E2E8 /* Empty.swift in Sources */,
+				CF5E5A602706AEC800B8A90A /* MatomoTracker+Shared.m in Sources */,
 				CF740AA72701C6C700F31F26 /* Glossary.m in Sources */,
 				CFE3B1761CD800AB00021D7F /* NSString+Pangu.m in Sources */,
 				CF5FC8981A5ABFF700538E60 /* DocumentViewController.m in Sources */,
@@ -728,6 +766,7 @@
 				CF94FCA81A5C37A900EE8BD5 /* TranslationPair.m in Sources */,
 				CFC6CC602702E8E300F7850C /* GlossaryWindowController.m in Sources */,
 				CFC6CC672703163700F7850C /* GlossaryFileRow.m in Sources */,
+				CF5E5A6C2707514400B8A90A /* PreferenceWindowController.m in Sources */,
 				CF34B7471AAB7C2000C6A58E /* DocumentListDrawer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -789,6 +828,16 @@
 				CF026F8B1C54134C009A23AC /* zh-TW */,
 			);
 			name = TranslationWindowController.xib;
+			sourceTree = "<group>";
+		};
+		CFBF5392271017F7000AB78D /* PreferenceWindowController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CFBF5391271017F7000AB78D /* Base */,
+				CFBF5394271017FB000AB78D /* zh-TW */,
+				CFBF5396271017FC000AB78D /* ja */,
+			);
+			name = PreferenceWindowController.xib;
 			sourceTree = "<group>";
 		};
 		CFE39F9C1A765859004644C8 /* Localizable.strings */ = {
@@ -927,11 +976,13 @@
 				);
 				INFOPLIST_FILE = Xliffie/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MARKETING_VERSION = 1.6.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Xliffie/Xliffie-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -953,11 +1004,13 @@
 				);
 				INFOPLIST_FILE = Xliffie/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MARKETING_VERSION = 1.6.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Xliffie/Xliffie-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -965,6 +1018,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F46F3EFF87AC9239B0E767A0 /* Pods-XliffieTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -986,6 +1040,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8F922AA3285E9DB3A6DBC09B /* Pods-XliffieTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (

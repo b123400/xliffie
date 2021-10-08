@@ -10,6 +10,7 @@
 #import "Glossary.h"
 #import "TranslationPair.h"
 #import "GlossaryFileRow.h"
+#import "MatomoTracker+Shared.h"
 
 @interface GlossaryWindowController () <NSOutlineViewDataSource, NSOutlineViewDelegate>
 
@@ -83,6 +84,7 @@
     [self.outlineView expandItem:nil expandChildren:YES];
     
     [self reloadUI];
+    [[MatomoTracker shared] trackWithView:@[@"GlossaryWindowController"] url:nil];
 }
 
 #pragma mark - Outline view
@@ -198,20 +200,34 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
     [self.outlineView reloadData];
 }
 - (IBAction)okClicked:(id)sender {
+    NSInteger translatedCount = 0;
     for (GlossaryFileRow *fileRow in self.fileRows) {
         for (GlossaryRow *row in fileRow.rows) {
             if (row.shouldApply) {
                 row.translationPair.target = row.glossary;
+                translatedCount++;
             }
         }
     }
     [self.window.sheetParent endSheet:self.window returnCode:NSModalResponseOK];
+    [[MatomoTracker shared] trackWithIsolatedEventWithCategory:@"GlossaryWindowController"
+                                                        action:@"okClicked"
+                                                        number:@(translatedCount)
+                                                           url:nil];
 }
 - (IBAction)cancelClicked:(id)sender {
     [self.window.sheetParent endSheet:self.window returnCode:NSModalResponseCancel];
+    [[MatomoTracker shared] trackWithIsolatedEventWithCategory:@"GlossaryWindowController"
+                                                        action:@"cancelClicked"
+                                                          name:nil
+                                                           url:nil];
 }
 - (IBAction)skipClicked:(id)sender {
     [self.window.sheetParent endSheet:self.window returnCode:NSModalResponseContinue];
+    [[MatomoTracker shared] trackWithIsolatedEventWithCategory:@"GlossaryWindowController"
+                                                    action:@"skipClicked"
+                                                      name:nil
+                                                       url:nil];
 }
 
 @end
