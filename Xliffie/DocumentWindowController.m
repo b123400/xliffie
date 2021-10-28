@@ -350,7 +350,7 @@
                   TranslationWindowController *controller = weakSelf.translateServiceController.translationWindowController;
                   [weakSelf presentTranslationWindowController:controller];
               }
-              weakSelf.translateController = nil;
+              weakSelf.translateServiceController = nil;
           }];
 }
 
@@ -478,16 +478,19 @@
 - (IBAction)translateWithGlossaryMenuPressed:(id)sender {
     GlossaryWindowController *controller = [[GlossaryWindowController alloc] initWithDocument:self.document];
     controller.showSkipButton = NO;
+    self.glossaryWindowController = controller;
     if (![controller numberOfApplicableTranslation]) {
         NSAlert *alert = [[NSAlert alloc] init];
         [alert setMessageText:NSLocalizedString(@"No translation available", @"")];
         [alert addButtonWithTitle:NSLocalizedString(@"OK", @"")];
         [alert runModal];
     } else {
+        __weak typeof(self) weakSelf = self;
         [self.window beginSheet:controller.window completionHandler:^(NSModalResponse returnCode) {
             if (returnCode == NSModalResponseOK) {
                 [self.mainViewController.outlineView reloadData];
             }
+            weakSelf.glossaryWindowController = nil;
         }];
     }
 }
@@ -495,9 +498,11 @@
 - (IBAction)translateWithGlossaryAndWebPressed:(id)sender {
     GlossaryWindowController *controller = [[GlossaryWindowController alloc] initWithDocument:self.document];
     controller.showSkipButton = YES;
+    self.glossaryWindowController = controller;
     if (![controller numberOfApplicableTranslation]) {
         [self showTranslateWindow];
     } else {
+        __weak typeof(self) weakSelf = self;
         [self.window beginSheet:controller.window completionHandler:^(NSModalResponse returnCode) {
             if (returnCode == NSModalResponseOK) {
                 [self.mainViewController.outlineView reloadData];
@@ -505,6 +510,7 @@
             if (returnCode == NSModalResponseOK || returnCode == NSModalResponseContinue) {
                 [self showTranslateWindow];
             }
+            weakSelf.glossaryWindowController = nil;
         }];
     }
 }
