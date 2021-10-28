@@ -31,7 +31,7 @@ PODS:
 DEPENDENCIES:
   - BRLocaleMap (~> 1.1.0)
   - FGTranslator (from `https://github.com/b123400/FGTranslator.git`, branch `refactor`)
-  - MatomoTracker (from `https://github.com/b123400/matomo-sdk-ios.git`, branch `new-session-objc`)
+  - MatomoTracker (from `https://github.com/b123400/matomo-sdk-ios.git`, branch `default-optout`)
   - PINCache (~> 2.3)
 
 SPEC REPOS:
@@ -46,7 +46,7 @@ EXTERNAL SOURCES:
     :branch: refactor
     :git: https://github.com/b123400/FGTranslator.git
   MatomoTracker:
-    :branch: new-session-objc
+    :branch: default-optout
     :git: https://github.com/b123400/matomo-sdk-ios.git
 
 CHECKOUT OPTIONS:
@@ -54,7 +54,7 @@ CHECKOUT OPTIONS:
     :commit: ecf3326ca94f2100b08f29933ac89bc0f0aca92c
     :git: https://github.com/b123400/FGTranslator.git
   MatomoTracker:
-    :commit: ee7a3f4432e073ec8abe6d48943a4f64c5934de2
+    :commit: 315ffd0c2ad52432166bb06ba82c2dd3ced3a56a
     :git: https://github.com/b123400/matomo-sdk-ios.git
 
 SPEC CHECKSUMS:
@@ -65,6 +65,6 @@ SPEC CHECKSUMS:
   PINCache: ce36ed282031b92fc7733ffe831f474ff80fddc2
   XMLDictionary: fa07b6ff422b3a91d47a5de9bc82e3fc04fbd167
 
-PODFILE CHECKSUM: 7398eea78f7f337867580748ac35f03c6ebf4b20
+PODFILE CHECKSUM: 17b5224a79db575bbbad1da7d981a79f52ce36e7
 
 COCOAPODS: 1.10.1
