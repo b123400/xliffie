@@ -8,7 +8,6 @@
 
 #import "TranslateServiceWindowController.h"
 #import "TranslationUtility.h"
-#import "MatomoTracker+Shared.h"
 
 @interface TranslateServiceWindowController ()
 
@@ -61,8 +60,6 @@
     }
     
     [self configureView];
-    
-    [[MatomoTracker shared] trackWithView:@[@"TranslateServiceWindowController"] url:nil];
 }
 
 - (void)configureView {
