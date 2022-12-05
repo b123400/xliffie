@@ -158,7 +158,6 @@
     if (index != NSNotFound) {
         [self.documentListViewController selectDocumentAtIndex:index];
     }
-    
 
     if (self.mainViewController.mapLanguage) {
         [self selectLanguage:self.mainViewController.mapLanguage

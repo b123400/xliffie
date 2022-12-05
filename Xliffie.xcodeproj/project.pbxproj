@@ -11,10 +11,14 @@
 		CF011B4B1C40FCBA00948323 /* TranslationUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = CF011B4A1C40FCBA00948323 /* TranslationUtility.m */; };
 		CF011B7D1C4641A400948323 /* TranslationWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF011B7B1C4641A400948323 /* TranslationWindowController.m */; };
 		CF0945911C54FD3600DAEB4A /* BRArrowSegmentedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0945901C54FD3600DAEB4A /* BRArrowSegmentedCell.m */; };
+		CF12DB49293E4C5F00F9C760 /* Suggestion.m in Sources */ = {isa = PBXBuildFile; fileRef = CF12DB48293E4C5F00F9C760 /* Suggestion.m */; };
+		CF12DB4C293E5A2D00F9C760 /* RoundedCornersView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF12DB4B293E5A2D00F9C760 /* RoundedCornersView.m */; };
 		CF34B7471AAB7C2000C6A58E /* DocumentListDrawer.m in Sources */ = {isa = PBXBuildFile; fileRef = CF34B7461AAB7C2000C6A58E /* DocumentListDrawer.m */; };
 		CF34B75A1AADE00A00C6A58E /* TranslationTargetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF34B7591AADE00A00C6A58E /* TranslationTargetCell.m */; };
 		CF5682EB1A6AFB9800E0DEDD /* DocumentWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5682E91A6AFB9800E0DEDD /* DocumentWindowController.m */; };
 		CF5682EF1A6B11C700E0DEDD /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5682EE1A6B11C700E0DEDD /* DetailViewController.m */; };
+		CF5AB3C2293DCE6200C8AC7B /* SuggestionsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5AB3C0293DCE6200C8AC7B /* SuggestionsWindowController.m */; };
+		CF5AB3C3293DCE6200C8AC7B /* SuggestionsWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF5AB3C1293DCE6200C8AC7B /* SuggestionsWindowController.xib */; };
 		CF5E5A61270744B900B8A90A /* GlossaryWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF5E5A63270744B900B8A90A /* GlossaryWindowController.xib */; };
 		CF5FC8931A5ABFF700538E60 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5FC8921A5ABFF700538E60 /* AppDelegate.m */; };
 		CF5FC8951A5ABFF700538E60 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5FC8941A5ABFF700538E60 /* main.m */; };
@@ -111,6 +115,10 @@
 		CF026F8B1C54134C009A23AC /* zh-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-TW"; path = "zh-TW.lproj/TranslationWindowController.strings"; sourceTree = "<group>"; };
 		CF09458F1C54FD3600DAEB4A /* BRArrowSegmentedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRArrowSegmentedCell.h; sourceTree = "<group>"; };
 		CF0945901C54FD3600DAEB4A /* BRArrowSegmentedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRArrowSegmentedCell.m; sourceTree = "<group>"; };
+		CF12DB47293E4C5F00F9C760 /* Suggestion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Suggestion.h; path = Suggestions/Suggestion.h; sourceTree = "<group>"; };
+		CF12DB48293E4C5F00F9C760 /* Suggestion.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Suggestion.m; path = Suggestions/Suggestion.m; sourceTree = "<group>"; };
+		CF12DB4A293E5A2D00F9C760 /* RoundedCornersView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RoundedCornersView.h; sourceTree = "<group>"; };
+		CF12DB4B293E5A2D00F9C760 /* RoundedCornersView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RoundedCornersView.m; sourceTree = "<group>"; };
 		CF34B7451AAB7C2000C6A58E /* DocumentListDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocumentListDrawer.h; sourceTree = "<group>"; };
 		CF34B7461AAB7C2000C6A58E /* DocumentListDrawer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentListDrawer.m; sourceTree = "<group>"; };
 		CF34B7581AADE00A00C6A58E /* TranslationTargetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TranslationTargetCell.h; sourceTree = "<group>"; };
@@ -123,6 +131,9 @@
 		CF5682E91A6AFB9800E0DEDD /* DocumentWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentWindowController.m; sourceTree = "<group>"; };
 		CF5682ED1A6B11C700E0DEDD /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		CF5682EE1A6B11C700E0DEDD /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		CF5AB3BF293DCE6200C8AC7B /* SuggestionsWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuggestionsWindowController.h; path = Suggestions/SuggestionsWindowController.h; sourceTree = "<group>"; };
+		CF5AB3C0293DCE6200C8AC7B /* SuggestionsWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SuggestionsWindowController.m; path = Suggestions/SuggestionsWindowController.m; sourceTree = "<group>"; };
+		CF5AB3C1293DCE6200C8AC7B /* SuggestionsWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SuggestionsWindowController.xib; path = Suggestions/SuggestionsWindowController.xib; sourceTree = "<group>"; };
 		CF5E5A62270744B900B8A90A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/GlossaryWindowController.xib; sourceTree = "<group>"; };
 		CF5E5A65270744C100B8A90A /* zh-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-TW"; path = "zh-TW.lproj/GlossaryWindowController.strings"; sourceTree = "<group>"; };
 		CF5E5A67270744C200B8A90A /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/GlossaryWindowController.strings; sourceTree = "<group>"; };
@@ -271,6 +282,8 @@
 				CF34B7591AADE00A00C6A58E /* TranslationTargetCell.m */,
 				CF09458F1C54FD3600DAEB4A /* BRArrowSegmentedCell.h */,
 				CF0945901C54FD3600DAEB4A /* BRArrowSegmentedCell.m */,
+				CF12DB4A293E5A2D00F9C760 /* RoundedCornersView.h */,
+				CF12DB4B293E5A2D00F9C760 /* RoundedCornersView.m */,
 			);
 			name = "UI Elements";
 			sourceTree = "<group>";
@@ -288,6 +301,18 @@
 				CF94FCA71A5C37A900EE8BD5 /* TranslationPair.m */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		CF5AB3BE293DCE4700C8AC7B /* Suggestions */ = {
+			isa = PBXGroup;
+			children = (
+				CF5AB3BF293DCE6200C8AC7B /* SuggestionsWindowController.h */,
+				CF5AB3C0293DCE6200C8AC7B /* SuggestionsWindowController.m */,
+				CF5AB3C1293DCE6200C8AC7B /* SuggestionsWindowController.xib */,
+				CF12DB47293E4C5F00F9C760 /* Suggestion.h */,
+				CF12DB48293E4C5F00F9C760 /* Suggestion.m */,
+			);
+			name = Suggestions;
 			sourceTree = "<group>";
 		};
 		CF5FC8831A5ABFF700538E60 = {
@@ -333,6 +358,7 @@
 				CF5682EE1A6B11C700E0DEDD /* DetailViewController.m */,
 				CF92FB921C24037B00700D3E /* TargetMissingViewController.h */,
 				CF92FB931C24037B00700D3E /* TargetMissingViewController.m */,
+				CF5AB3BE293DCE4700C8AC7B /* Suggestions */,
 				CFB0B8F61C3073A9004DF663 /* Translator */,
 				CF34B75C1AADE02400C6A58E /* Model */,
 				CF34B75B1AADE01000C6A58E /* UI Elements */,
@@ -600,6 +626,7 @@
 				CFE39F9A1A765859004644C8 /* Localizable.strings in Resources */,
 				CF740AF42701CE7900F31F26 /* ru.glossary in Resources */,
 				CF740AD92701CE7900F31F26 /* es-419.glossary in Resources */,
+				CF5AB3C3293DCE6200C8AC7B /* SuggestionsWindowController.xib in Resources */,
 				CF740ACF2701CE7900F31F26 /* sk.glossary in Resources */,
 				CF740AEF2701CE7900F31F26 /* es.glossary in Resources */,
 				CFEECE42250E21EE007A324C /* Localizable.stringsdict in Resources */,
@@ -714,9 +741,11 @@
 				CF5682EF1A6B11C700E0DEDD /* DetailViewController.m in Sources */,
 				CFD234FA1A5E44C700B52088 /* XMLOutlineView.m in Sources */,
 				CF5FC89B1A5ABFF700538E60 /* Document.m in Sources */,
+				CF5AB3C2293DCE6200C8AC7B /* SuggestionsWindowController.m in Sources */,
 				CF740AA72701C6C700F31F26 /* Glossary.m in Sources */,
 				CFE3B1761CD800AB00021D7F /* NSString+Pangu.m in Sources */,
 				CF5FC8981A5ABFF700538E60 /* DocumentViewController.m in Sources */,
+				CF12DB49293E4C5F00F9C760 /* Suggestion.m in Sources */,
 				CF011B7D1C4641A400948323 /* TranslationWindowController.m in Sources */,
 				CF5FC8951A5ABFF700538E60 /* main.m in Sources */,
 				CF0945911C54FD3600DAEB4A /* BRArrowSegmentedCell.m in Sources */,
@@ -726,6 +755,7 @@
 				CF5FC8931A5ABFF700538E60 /* AppDelegate.m in Sources */,
 				CFCD4B341A6D0C7200BA8826 /* DocumentWindow.m in Sources */,
 				CFC6CC642703152400F7850C /* GlossaryRow.m in Sources */,
+				CF12DB4C293E5A2D00F9C760 /* RoundedCornersView.m in Sources */,
 				CF94FCA81A5C37A900EE8BD5 /* TranslationPair.m in Sources */,
 				CFC6CC602702E8E300F7850C /* GlossaryWindowController.m in Sources */,
 				CFC6CC672703163700F7850C /* GlossaryFileRow.m in Sources */,

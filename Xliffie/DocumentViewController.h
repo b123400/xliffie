@@ -19,8 +19,9 @@
 - (void)viewController:(id)controller didSelectedFileChild:(File*)file;
 - (void)viewController:(id)controller didSelectedTranslation:(TranslationPair*)pair;
 - (File*)viewController:(id)controller
-     alternativeFileForFile:(File*)anotherFile
-               withLanguage:(NSString*)language;
+ alternativeFileForFile:(File*)anotherFile
+           withLanguage:(NSString*)language;
+- (void)viewController:(id)controller didStartEditingTranslation:(TranslationPair*)pair;
 
 @end
 

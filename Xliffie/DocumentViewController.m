@@ -9,6 +9,7 @@
 #import "DocumentViewController.h"
 #import "TranslationPair.h"
 #import "TranslationTargetCell.h"
+#import "SuggestionsWindowController.h"
 
 @interface DocumentViewController ()
 
@@ -206,9 +207,60 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
     [self.outlineView reloadData];
 }
 
+- (BOOL)control:(NSControl *)control
+       textView:(NSTextView *)textView
+doCommandBySelector:(SEL)commandSelector {
+    if (control == self.outlineView) {
+        if (commandSelector == @selector(cancelOperation:)) {
+            [control abortEditing];
+            [self.view.window makeFirstResponder:control];
+            if ([[[SuggestionsWindowController shared] window] isVisible]) {
+                [[SuggestionsWindowController shared] hide];
+            }
+            return YES;
+        }
+        if (commandSelector == @selector(moveUp:)) {
+            [[SuggestionsWindowController shared] moveUp:textView];
+            return YES;
+        }
+        if (commandSelector == @selector(moveDown:)) {
+            [[SuggestionsWindowController shared] moveDown:textView];
+            return YES;
+        }
+        if (commandSelector == @selector(insertNewline:)) {
+            Suggestion *s = [[SuggestionsWindowController shared] selectedSuggestion];
+            if (s) {
+                [textView setString:s.title];
+                [[SuggestionsWindowController shared] hide];
+                return NO; // Let it finish editing
+            }
+            return NO;
+        }
+    }
+    return NO;
+}
+
+- (void)xmlOutlineView:(id)sender
+ didStartEditingColumn:(NSInteger)column
+                   row:(NSInteger)row
+                 event:(NSEvent *)event {
+    NSRect cellRect = [self.outlineView frameOfCellAtColumn:column row:row];
+    Suggestion *s = [[Suggestion alloc] init];
+    s.title = @"test";
+    Suggestion *s2 = [[Suggestion alloc] init];
+    s2.title = @"test2";
+    [[SuggestionsWindowController shared] setSuggestions:@[
+        s, s2
+    ]];
+    [[SuggestionsWindowController shared] showAtRect:cellRect
+                                              ofView:self.outlineView];
+    [[[SuggestionsWindowController shared] window] makeKeyAndOrderFront:self];
+}
+
 #pragma mark checking
 
-- (void)xmlOutlineView:(id)sender didEndEditingRow:(NSUInteger)row proposedString:(NSString*)proposed callback:(void (^)(BOOL))callback {
+- (void)xmlOutlineView:(id)sender didEndEditingRow:(NSInteger)row proposedString:(NSString*)proposed callback:(void (^)(BOOL))callback {
+    [[SuggestionsWindowController shared] hide];
     TranslationPair *pair = [self.outlineView itemAtRow:row];
     NSArray *warnings = [pair formatWarningsForProposedTranslation:proposed];
     if ([warnings count]) {
@@ -217,7 +269,7 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
         [alert addButtonWithTitle:NSLocalizedString(@"Cancel",nil)];
         [alert setMessageText:NSLocalizedString(@"Maybe you've made a mistake?",nil)];
         [alert setInformativeText:[warnings componentsJoinedByString:@"\n"]];
-        [alert setAlertStyle:NSWarningAlertStyle];
+        [alert setAlertStyle:NSAlertStyleWarning];
         [alert beginSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse returnCode) {
             if (returnCode == NSAlertFirstButtonReturn) {
                 callback(YES);

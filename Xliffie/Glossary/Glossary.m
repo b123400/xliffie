@@ -57,6 +57,9 @@
         if ([supportedLocales containsObject:thisLocale]) {
             return thisLocale;
         }
+        if ([thisLocale isEqualTo:@"zh"]) {
+            return @"zh-hk";
+        }
     }
     return nil;
 }
