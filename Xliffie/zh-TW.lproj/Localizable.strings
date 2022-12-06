@@ -22,6 +22,12 @@
 /* Translation target not found */
 "Cannot translate to %@" = "無法翻譯成 %@";
 
+/* Suggestion popup, %@ = filename */
+"From %@" = "來自 %@";
+
+/* No comment provided by engineer. */
+"From 📚Glossary" = "來自📚內置字典";
+
 /* No comment provided by engineer. */
 "Go ahead" = "不管啦照做啦";
 

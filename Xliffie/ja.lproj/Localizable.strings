@@ -22,6 +22,12 @@
 /* Translation target not found */
 "Cannot translate to %@" = "%@ に翻訳するのできないです。";
 
+/* Suggestion popup, %@ = filename */
+"From %@" = "%@ から";
+
+/* No comment provided by engineer. */
+"From 📚Glossary" = "📚用語集から";
+
 /* No comment provided by engineer. */
 "Go ahead" = "うるせえ！";
 

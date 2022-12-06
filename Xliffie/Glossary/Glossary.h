@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSString *targetLocale;
 
++ (instancetype)sharedGlossaryWithLocale:(NSString *)locale;
 - (instancetype)initWithTargetLocale:(NSString *)locale;
 - (NSString *)translate:(NSString *)baseString isMenu:(BOOL)isMenu;
 

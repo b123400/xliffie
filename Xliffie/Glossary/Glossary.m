@@ -14,6 +14,15 @@
 
 @implementation Glossary
 
++ (instancetype)sharedGlossaryWithLocale:(NSString *)locale {
+    static Glossary *shared = nil;
+    if (![Glossary supportedLocale:locale]) return nil;
+    if (!shared || ![shared.targetLocale isEqualTo:locale]) {
+        shared = [[Glossary alloc] initWithTargetLocale:locale];
+    }
+    return shared;
+}
+
 - (instancetype)initWithTargetLocale:(NSString *)locale {
     if (self = [super init]) {
         self.targetLocale = [Glossary supportedLocale:locale];
@@ -56,6 +65,9 @@
     for (NSString *thisLocale in locales) {
         if ([supportedLocales containsObject:thisLocale]) {
             return thisLocale;
+        }
+        if ([thisLocale isEqualTo:@"zh"]) {
+            return @"zh-hk";
         }
     }
     return nil;

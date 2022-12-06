@@ -1,1 +1,12 @@
-/* No Localized Strings */
+/* Bundle name */
+"CFBundleName" = "";
+
+/* Copyright (human-readable) */
+"NSHumanReadableCopyright" = "";
+
+/* (No Comment) */
+"Xcode Localization Catalog" = "";
+
+/* (No Comment) */
+"XML Localization Interchange File Format" = "";
+

@@ -10,7 +10,8 @@
 
 @protocol XMLOutlineViewDelegate <NSObject>
 
-- (void)xmlOutlineView:(id)sender didEndEditingRow:(NSUInteger)row proposedString:(NSString*)proposed callback:(void (^)(BOOL shouldEnd))callback;
+- (void)xmlOutlineView:(id)sender didEndEditingRow:(NSInteger)row proposedString:(NSString*)proposed callback:(void (^)(BOOL shouldEnd))callback;
+- (void)xmlOutlineView:(id)sender didStartEditingColumn:(NSInteger)column row:(NSInteger)row event:(NSEvent*)event;
 
 @end
 

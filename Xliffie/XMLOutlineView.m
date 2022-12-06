@@ -24,6 +24,14 @@
     // Drawing code here.
 }
 
+- (void)editColumn:(NSInteger)column row:(NSInteger)row withEvent:(NSEvent *)event select:(BOOL)select {
+    [self.xmlOutlineDelegate xmlOutlineView:self
+                      didStartEditingColumn:column
+                                        row:row
+                                      event:event];
+    return [super editColumn:column row:row withEvent:event select:select];
+}
+
 - (NSUInteger)nextEditableField:(NSUInteger)index {
     for (NSUInteger i = index+1; i < self.numberOfRows; i++) {
         id item = [self itemAtRow:i];
