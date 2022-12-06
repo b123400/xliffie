@@ -11,9 +11,16 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol SuggestionsWindowControllerDelegate
+
+- (void)suggestionWindowController:(id)controller didSelectSuggestion:(Suggestion *)suggestion;
+
+@end
+
 @interface SuggestionsWindowController : NSWindowController
 
 @property (nonatomic, strong) NSArray<Suggestion *> *suggestions;
+@property (nonatomic, weak) id<SuggestionsWindowControllerDelegate> delegate;
 
 + (instancetype)shared;
 

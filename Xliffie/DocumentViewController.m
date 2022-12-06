@@ -10,8 +10,9 @@
 #import "TranslationPair.h"
 #import "TranslationTargetCell.h"
 #import "SuggestionsWindowController.h"
+#import "Glossary.h"
 
-@interface DocumentViewController ()
+@interface DocumentViewController () <SuggestionsWindowControllerDelegate>
 
 @property (strong, nonatomic) Document *filteredDocument;
 @property (strong, nonatomic) Document *mappingDocument;
@@ -196,7 +197,7 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
         return [cell cellSizeForBounds:CGRectMake(0, 0, firstColumnWidth, CGFLOAT_MAX)].height;
     }
     
-    [cell setObjectValue:[item source]];
+    [cell setObjectValue:[(TranslationPair*)item source]];
     CGFloat sourceHeight = [cell cellSizeForBounds:CGRectMake(0, 0, firstColumnWidth, CGFLOAT_MAX)].height;
     [cell setObjectValue:[item target]];
     CGFloat targetHeight = [cell cellSizeForBounds:CGRectMake(0, 0, [secondColumn width], CGFLOAT_MAX)].height;
@@ -206,6 +207,8 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 - (void)outlineViewColumnDidResize:(NSNotification *)notification {
     [self.outlineView reloadData];
 }
+
+# pragma mark - Suggestions
 
 - (BOOL)control:(NSControl *)control
        textView:(NSTextView *)textView
@@ -240,21 +243,59 @@ doCommandBySelector:(SEL)commandSelector {
     return NO;
 }
 
+- (void)suggestionWindowController:(id)controller didSelectSuggestion:(Suggestion *)suggestion {
+    [self.outlineView.currentEditor setString:suggestion.title];
+    [self.outlineView.window makeFirstResponder:self.outlineView]; // end editing
+    [[SuggestionsWindowController shared] hide];
+}
+
 - (void)xmlOutlineView:(id)sender
  didStartEditingColumn:(NSInteger)column
                    row:(NSInteger)row
                  event:(NSEvent *)event {
     NSRect cellRect = [self.outlineView frameOfCellAtColumn:column row:row];
-    Suggestion *s = [[Suggestion alloc] init];
-    s.title = @"test";
-    Suggestion *s2 = [[Suggestion alloc] init];
-    s2.title = @"test2";
-    [[SuggestionsWindowController shared] setSuggestions:@[
-        s, s2
-    ]];
+    TranslationPair *pair = (TranslationPair*)[self.outlineView itemAtRow:row];
+    if (![pair isKindOfClass:[TranslationPair class]]) return;
+    NSArray<Suggestion*> *suggestions = [self suggestionsForTranslationPair:pair];
+    if (!suggestions.count) return;
+    [[SuggestionsWindowController shared] setSuggestions:suggestions];
+    [SuggestionsWindowController shared].delegate = self;
     [[SuggestionsWindowController shared] showAtRect:cellRect
                                               ofView:self.outlineView];
     [[[SuggestionsWindowController shared] window] makeKeyAndOrderFront:self];
+}
+
+- (NSArray<Suggestion *> *)suggestionsForTranslationPair:(TranslationPair *)pair {
+    NSMutableArray<Suggestion*> *suggestions = [NSMutableArray array];
+    // Dedup suggestions by title
+    NSMutableSet<NSString*> *addedSuggestions = [NSMutableSet set];
+    Glossary *glossary = [Glossary sharedGlossaryWithLocale:pair.file.targetLanguage];
+    BOOL isMenu = [pair.file.original.lastPathComponent.lowercaseString containsString:@"menu"];
+    NSString *glossaryTranslation = [glossary translate:pair.source isMenu:isMenu];
+    if (glossaryTranslation && ![glossaryTranslation isEqualTo:pair.target]) {
+        Suggestion *s = [[Suggestion alloc] init];
+        s.title = glossaryTranslation;
+        s.source = SuggestionSourceGlossary;
+        [suggestions addObject:s];
+        [addedSuggestions addObject:glossaryTranslation];
+    }
+    for (File *file in self.document.files) {
+        for (TranslationPair *p in file.translations) {
+            if (p == pair) continue;
+            if (!p.target.length) continue;
+            if ([addedSuggestions containsObject:p.target]) continue;
+            if ([p.source isEqualTo:pair.source] && ![p.target isEqualTo:pair.target]) {
+                // An item with same source but different target, suggest the translated target to this item
+                Suggestion *s = [[Suggestion alloc] init];
+                s.title = p.target;
+                s.source = SuggestionSourceFile;
+                s.sourceFile = file;
+                [suggestions addObject:s];
+                [addedSuggestions addObject:p.target];
+            }
+        }
+    }
+    return suggestions;
 }
 
 #pragma mark checking

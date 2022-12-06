@@ -13,6 +13,7 @@
 		CF0945911C54FD3600DAEB4A /* BRArrowSegmentedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0945901C54FD3600DAEB4A /* BRArrowSegmentedCell.m */; };
 		CF12DB49293E4C5F00F9C760 /* Suggestion.m in Sources */ = {isa = PBXBuildFile; fileRef = CF12DB48293E4C5F00F9C760 /* Suggestion.m */; };
 		CF12DB4C293E5A2D00F9C760 /* RoundedCornersView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF12DB4B293E5A2D00F9C760 /* RoundedCornersView.m */; };
+		CF12DB4F293EF89C00F9C760 /* SuggestionsCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF12DB4E293EF89C00F9C760 /* SuggestionsCellView.m */; };
 		CF34B7471AAB7C2000C6A58E /* DocumentListDrawer.m in Sources */ = {isa = PBXBuildFile; fileRef = CF34B7461AAB7C2000C6A58E /* DocumentListDrawer.m */; };
 		CF34B75A1AADE00A00C6A58E /* TranslationTargetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF34B7591AADE00A00C6A58E /* TranslationTargetCell.m */; };
 		CF5682EB1A6AFB9800E0DEDD /* DocumentWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5682E91A6AFB9800E0DEDD /* DocumentWindowController.m */; };
@@ -119,6 +120,8 @@
 		CF12DB48293E4C5F00F9C760 /* Suggestion.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Suggestion.m; path = Suggestions/Suggestion.m; sourceTree = "<group>"; };
 		CF12DB4A293E5A2D00F9C760 /* RoundedCornersView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RoundedCornersView.h; sourceTree = "<group>"; };
 		CF12DB4B293E5A2D00F9C760 /* RoundedCornersView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RoundedCornersView.m; sourceTree = "<group>"; };
+		CF12DB4D293EF89C00F9C760 /* SuggestionsCellView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuggestionsCellView.h; path = Suggestions/SuggestionsCellView.h; sourceTree = "<group>"; };
+		CF12DB4E293EF89C00F9C760 /* SuggestionsCellView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SuggestionsCellView.m; path = Suggestions/SuggestionsCellView.m; sourceTree = "<group>"; };
 		CF34B7451AAB7C2000C6A58E /* DocumentListDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocumentListDrawer.h; sourceTree = "<group>"; };
 		CF34B7461AAB7C2000C6A58E /* DocumentListDrawer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentListDrawer.m; sourceTree = "<group>"; };
 		CF34B7581AADE00A00C6A58E /* TranslationTargetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TranslationTargetCell.h; sourceTree = "<group>"; };
@@ -311,6 +314,8 @@
 				CF5AB3C1293DCE6200C8AC7B /* SuggestionsWindowController.xib */,
 				CF12DB47293E4C5F00F9C760 /* Suggestion.h */,
 				CF12DB48293E4C5F00F9C760 /* Suggestion.m */,
+				CF12DB4D293EF89C00F9C760 /* SuggestionsCellView.h */,
+				CF12DB4E293EF89C00F9C760 /* SuggestionsCellView.m */,
 			);
 			name = Suggestions;
 			sourceTree = "<group>";
@@ -732,6 +737,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF12DB4F293EF89C00F9C760 /* SuggestionsCellView.m in Sources */,
 				CF92FB941C24037B00700D3E /* TargetMissingViewController.m in Sources */,
 				CF5682EB1A6AFB9800E0DEDD /* DocumentWindowController.m in Sources */,
 				CF7CFCC92442083D00AFC9EF /* DocumentListViewController.m in Sources */,

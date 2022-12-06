@@ -7,6 +7,7 @@
 //
 
 #import "SuggestionsWindowController.h"
+#import "SuggestionsCellView.h"
 
 @interface SuggestionsWindowController () <NSTableViewDelegate, NSTableViewDataSource>
 
@@ -46,10 +47,10 @@
     NSRect rectInWindow = [view convertRect:rect toView:nil];
     NSRect screenRect = [view.window convertRectToScreen:rectInWindow];
     
-    CGFloat height = 20 + 25 * self.suggestions.count;
+    CGFloat height = 20 + 40 * self.suggestions.count;
     CGFloat width = 300;
     NSRect selfRect = NSMakeRect(screenRect.origin.x,
-                                 screenRect.origin.y - height,
+                                 screenRect.origin.y - height - 5,
                                  width,
                                  height);
     [self.window setFrame:selfRect display:YES];
@@ -57,6 +58,7 @@
 
 - (void)hide {
     [self.window orderOut:self];
+    self.delegate = nil;
     self.suggestions = @[];
 }
 
@@ -85,6 +87,13 @@
     }
 }
 
+- (IBAction)tableViewDidDoubleClick:(id)sender {
+    NSInteger clickedRow = [self.tableView clickedRow];
+    if (clickedRow < 0 || clickedRow >= self.suggestions.count) return;
+    Suggestion *s = self.suggestions[clickedRow];
+    [self.delegate suggestionWindowController:self didSelectSuggestion:s];
+}
+
 - (Suggestion *)selectedSuggestion {
     NSInteger selected = self.tableView.selectedRow;
     if (selected == -1) return nil;
@@ -97,8 +106,9 @@
    viewForTableColumn:(NSTableColumn *)tableColumn
                   row:(NSInteger)row {
     Suggestion *suggestion = self.suggestions[row];
-    NSTableCellView *cell = [self.tableView makeViewWithIdentifier:@"cell" owner:tableView];
+    SuggestionsCellView *cell = [self.tableView makeViewWithIdentifier:@"cell" owner:tableView];
     cell.textField.stringValue = suggestion.title;
+    cell.secondaryLabel.attributedStringValue = suggestion.stringForDisplay ?: [[NSAttributedString alloc] initWithString:@""];
     return cell;
 }
 
