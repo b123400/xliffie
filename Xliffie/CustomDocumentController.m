@@ -18,7 +18,7 @@
 
 - (void)openDocument:(id)sender {
     NSOpenPanel *panel = [NSOpenPanel openPanel];
-    [panel setAllowedFileTypes:@[@"org.oasis-open.xliff"]];
+    [panel setAllowedFileTypes:@[@"org.oasis-open.xliff", @"com.apple.xcode.xcloc"]];
     [panel setCanChooseDirectories:YES];
     [panel beginWithCompletionHandler:^(NSModalResponse result) {
         if (result == NSFileHandlingPanelOKButton) {
