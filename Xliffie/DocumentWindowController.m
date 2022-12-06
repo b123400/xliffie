@@ -500,7 +500,11 @@
     [self.detailViewController setRepresentedObject:pair.note];
 }
 - (IBAction)searchFilterChanged:(id)sender {
-    [self.mainViewController setSearchFilter:[sender stringValue]];
+    if ([sender isKindOfClass:[NSTextField class]]) {
+        [self.mainViewController setSearchFilter:[sender stringValue]];
+    } else {
+        // TODO, show another search view?
+    }
 }
 
 - (void)viewController:(id)controller didSelectedFileChild:(File*)file {
