@@ -14,6 +14,7 @@
 		CF12DB49293E4C5F00F9C760 /* Suggestion.m in Sources */ = {isa = PBXBuildFile; fileRef = CF12DB48293E4C5F00F9C760 /* Suggestion.m */; };
 		CF12DB4C293E5A2D00F9C760 /* RoundedCornersView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF12DB4B293E5A2D00F9C760 /* RoundedCornersView.m */; };
 		CF12DB4F293EF89C00F9C760 /* SuggestionsCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF12DB4E293EF89C00F9C760 /* SuggestionsCellView.m */; };
+		CF12DB53293F1B8200F9C760 /* NSAttributedString+FileIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = CF12DB52293F1B8200F9C760 /* NSAttributedString+FileIcon.m */; };
 		CF34B7471AAB7C2000C6A58E /* DocumentListDrawer.m in Sources */ = {isa = PBXBuildFile; fileRef = CF34B7461AAB7C2000C6A58E /* DocumentListDrawer.m */; };
 		CF34B75A1AADE00A00C6A58E /* TranslationTargetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF34B7591AADE00A00C6A58E /* TranslationTargetCell.m */; };
 		CF5682EB1A6AFB9800E0DEDD /* DocumentWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5682E91A6AFB9800E0DEDD /* DocumentWindowController.m */; };
@@ -122,6 +123,8 @@
 		CF12DB4B293E5A2D00F9C760 /* RoundedCornersView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RoundedCornersView.m; sourceTree = "<group>"; };
 		CF12DB4D293EF89C00F9C760 /* SuggestionsCellView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuggestionsCellView.h; path = Suggestions/SuggestionsCellView.h; sourceTree = "<group>"; };
 		CF12DB4E293EF89C00F9C760 /* SuggestionsCellView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SuggestionsCellView.m; path = Suggestions/SuggestionsCellView.m; sourceTree = "<group>"; };
+		CF12DB51293F1B8200F9C760 /* NSAttributedString+FileIcon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+FileIcon.h"; sourceTree = "<group>"; };
+		CF12DB52293F1B8200F9C760 /* NSAttributedString+FileIcon.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+FileIcon.m"; sourceTree = "<group>"; };
 		CF34B7451AAB7C2000C6A58E /* DocumentListDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocumentListDrawer.h; sourceTree = "<group>"; };
 		CF34B7461AAB7C2000C6A58E /* DocumentListDrawer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentListDrawer.m; sourceTree = "<group>"; };
 		CF34B7581AADE00A00C6A58E /* TranslationTargetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TranslationTargetCell.h; sourceTree = "<group>"; };
@@ -276,6 +279,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CF12DB54293F1B9300F9C760 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				CF12DB51293F1B8200F9C760 /* NSAttributedString+FileIcon.h */,
+				CF12DB52293F1B8200F9C760 /* NSAttributedString+FileIcon.m */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		CF34B75B1AADE01000C6A58E /* UI Elements */ = {
 			isa = PBXGroup;
 			children = (
@@ -369,6 +381,7 @@
 				CF34B75B1AADE01000C6A58E /* UI Elements */,
 				CFE3B1731CD8008800021D7F /* Pangu */,
 				CF695C4C26FF5408008000E2 /* Glossary */,
+				CF12DB54293F1B9300F9C760 /* Utilities */,
 				CF5FC89C1A5ABFF700538E60 /* Images.xcassets */,
 				CF5FC89E1A5ABFF700538E60 /* Main.storyboard */,
 				CFE39F9C1A765859004644C8 /* Localizable.strings */,
@@ -755,6 +768,7 @@
 				CF011B7D1C4641A400948323 /* TranslationWindowController.m in Sources */,
 				CF5FC8951A5ABFF700538E60 /* main.m in Sources */,
 				CF0945911C54FD3600DAEB4A /* BRArrowSegmentedCell.m in Sources */,
+				CF12DB53293F1B8200F9C760 /* NSAttributedString+FileIcon.m in Sources */,
 				CFF70D80221E7BF2004C4C2D /* XclocDocument.m in Sources */,
 				CF846CD4259E21A300CA0713 /* CustomDocumentController.m in Sources */,
 				CF662B391C307C7D00704CEA /* TranslateServiceWindowController.m in Sources */,

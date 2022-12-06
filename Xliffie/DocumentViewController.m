@@ -11,6 +11,7 @@
 #import "TranslationTargetCell.h"
 #import "SuggestionsWindowController.h"
 #import "Glossary.h"
+#import "NSAttributedString+FileIcon.h"
 
 @interface DocumentViewController () <SuggestionsWindowControllerDelegate>
 
@@ -95,7 +96,8 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
         }
     } else if ([item isKindOfClass:[File class]]) {
         if ([[tableColumn identifier] isEqualToString:@"source"]) {
-            return [(File*)item original];
+            NSString *path = [(File*)item original];
+            return [NSAttributedString attributedStringWithFileIcon:path];
         }
     }
     return nil;

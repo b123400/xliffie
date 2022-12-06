@@ -7,6 +7,7 @@
 //
 
 #import "DocumentListViewController.h"
+#import "NSAttributedString+FileIcon.h"
 
 @interface DocumentListViewController ()
 
@@ -36,7 +37,7 @@
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
     NSArray<NSDocument *> *documents = [self.delegate documentsForListController:self];
     NSDocument *doc = [documents objectAtIndex:row];
-    return [[doc fileURL] lastPathComponent];
+    return [NSAttributedString attributedStringWithFileIcon:[[doc fileURL] lastPathComponent]];
 }
 
 - (void)tableView:(NSTableView *)tableView setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {

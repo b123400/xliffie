@@ -53,6 +53,11 @@
                                  screenRect.origin.y - height - 5,
                                  width,
                                  height);
+    if (selfRect.origin.y < 0) {
+        // Below screen bottom edge
+        selfRect.origin.y = screenRect.origin.y + screenRect.size.height + 5;
+    }
+    
     [self.window setFrame:selfRect display:YES];
 }
 
