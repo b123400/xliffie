@@ -104,7 +104,11 @@
           (unsigned long)pairsWithWarning.count]];
         [[[alert buttons] objectAtIndex:0] setKeyEquivalent:@""]; // make "go ahead" not a default
         [[[alert buttons] objectAtIndex:1] setKeyEquivalent:@"\r"]; // make cancel the default
-        [alert runModal];
+        NSModalResponse response = [alert runModal];
+        if (response == NSAlertFirstButtonReturn) {
+            [self applyTranslation];
+            [self.window.sheetParent endSheet:self.window returnCode:NSModalResponseOK];
+        }
     }
 }
 
