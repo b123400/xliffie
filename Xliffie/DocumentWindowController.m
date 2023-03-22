@@ -31,8 +31,9 @@
 @property (weak) IBOutlet NSSegmentedControl *layoutSegment;
 @property (weak) IBOutlet NSSegmentedControl *languagesSegment;
 @property (weak) IBOutlet NSToolbarItem *translateButton;
-
+@property (weak) IBOutlet NSProgressIndicator *progressIndicator;
 @property (weak) IBOutlet NSSearchField *searchField;
+
 @property (nonatomic, strong) NSMutableArray *documents;
 @property (nonatomic, strong) DocumentListViewController *documentListViewController;
 @property (nonatomic, strong) TranslateServiceWindowController *translateServiceController;
@@ -181,6 +182,7 @@
     } else {
         self.translateButton.enabled = YES;
     }
+    [self reloadProgress];
 }
 
 - (NSString*)baseFolderPath {
@@ -375,6 +377,23 @@
                           self.document = self.document;
                       }
                   }];
+}
+
+- (void)viewController:(id)controller didEditedTranslation:(TranslationPair *)pair {
+    [self reloadProgress];
+}
+
+- (void)viewControllerTranslationProgressUpdated:(id)controller {
+    [self reloadProgress];
+}
+
+- (void)reloadProgress {
+    self.progressIndicator.minValue = 0;
+    Document *document = self.mainViewController.document;
+    NSArray *allTranslations = [document valueForKeyPath:@"files.@unionOfArrays.translations"];
+    self.progressIndicator.maxValue = allTranslations.count;
+    NSArray *translated = [allTranslations filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"isTranslated == YES" arguments:nil]];
+    self.progressIndicator.doubleValue = translated.count;
 }
 
 #pragma mark drawer

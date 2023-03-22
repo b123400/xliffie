@@ -21,7 +21,8 @@
 - (File*)viewController:(id)controller
  alternativeFileForFile:(File*)anotherFile
            withLanguage:(NSString*)language;
-- (void)viewController:(id)controller didStartEditingTranslation:(TranslationPair*)pair;
+- (void)viewController:(id)controller didEditedTranslation:(TranslationPair*)pair;
+- (void)viewControllerTranslationProgressUpdated:(id)controller;
 
 @end
 

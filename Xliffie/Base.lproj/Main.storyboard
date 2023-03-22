@@ -655,7 +655,7 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController storyboardIdentifier="Document Window Controller" id="jGA-0Y-lOj" customClass="DocumentWindowController" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" tabbingMode="disallowed" id="Ckk-yw-fiv" customClass="DocumentWindow">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="Ckk-yw-fiv" customClass="DocumentWindow">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="1042" height="439"/>
@@ -757,6 +757,13 @@
                                         <action selector="addSpaceButtonPressed:" target="jGA-0Y-lOj" id="Yj4-sf-jjl"/>
                                     </connections>
                                 </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="336AC971-A450-4F84-936F-A68D6DC957F6" label="Progress" paletteLabel="Progress" tag="-1" bordered="YES" title="Progress" sizingBehavior="auto" id="wL4-qq-wk1">
+                                    <nil key="toolTip"/>
+                                    <progressIndicator key="view" maxValue="100" doubleValue="65" controlSize="small" style="spinning" id="fIG-sF-sNe">
+                                        <rect key="frame" x="19" y="14" width="16" height="16"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    </progressIndicator>
+                                </toolbarItem>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
                                 <toolbarItem reference="fIO-7r-OQw"/>
@@ -764,7 +771,6 @@
                                 <toolbarItem reference="fIO-7r-OQw"/>
                                 <toolbarItem reference="7Hq-tz-Ud3"/>
                                 <toolbarItem reference="pRq-eI-zXo"/>
-                                <toolbarItem reference="Sx1-Fi-XrM"/>
                                 <toolbarItem reference="z3T-JE-F8n"/>
                             </defaultToolbarItems>
                         </toolbar>
@@ -774,6 +780,7 @@
                     </window>
                     <connections>
                         <outlet property="languagesSegment" destination="uLd-TS-Dl5" id="k3b-hE-yxQ"/>
+                        <outlet property="progressIndicator" destination="fIG-sF-sNe" id="Mqg-7g-7sj"/>
                         <outlet property="searchField" destination="ihp-tX-qqE" id="2xv-li-MNs"/>
                         <outlet property="translateButton" destination="7Hq-tz-Ud3" id="fwv-GZ-IIk"/>
                         <segue destination="MvO-m3-dew" kind="relationship" relationship="window.shadowedContentViewController" id="aWn-BL-51E"/>

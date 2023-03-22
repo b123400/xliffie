@@ -116,8 +116,10 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
         } else if ([[tableColumn identifier] isEqualToString:@"note"]) {
             [(TranslationPair*)item setNote:object];
         }
+        if ([self.delegate respondsToSelector:@selector(viewController:didEditedTranslation:)]) {
+            [self.delegate viewController:self didEditedTranslation:item];
+        }
     }
-    [self.document updateChangeCount:NSChangeDone];
 }
 
 - (void)outlineView:(NSOutlineView *)outlineView
