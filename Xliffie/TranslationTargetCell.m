@@ -19,7 +19,7 @@
 }
 
 - (void)drawWithFrame:(NSRect)cellFrame inView:(NSView *)controlView {
-    
+    [super drawWithFrame:cellFrame inView:controlView];
     if (self.dotColor) {
         NSGraphicsContext *gc = [NSGraphicsContext currentContext];
         [gc saveGraphicsState];
@@ -36,8 +36,6 @@
         
         [gc restoreGraphicsState];
     }
-    
-    [super drawWithFrame:cellFrame inView:controlView];
 }
 
 - (void)setDotColor:(NSColor *)dotColor {
