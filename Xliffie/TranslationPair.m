@@ -190,13 +190,13 @@
 
 - (BOOL)isTranslated {
     switch (self.state) {
+        case TranslationPairStateTranslated:
+        case TranslationPairStateMarkedAsTranslated:
+            return YES;
         case TranslationPairStateMarkedAsNotTranslated:
         case TranslationPairStateEmpty:
         case TranslationPairStateTranslatedWithWarnings:
             return NO;
-        case TranslationPairStateTranslated:
-        case TranslationPairStateMarkedAsTranslated:
-            return YES;
     }
     return YES;
 }
