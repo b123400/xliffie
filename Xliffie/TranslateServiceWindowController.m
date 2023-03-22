@@ -13,7 +13,7 @@
 
 @property (weak) IBOutlet NSPopUpButton *serviceButton;
 @property (weak) IBOutlet NSPopUpButton *translateFilterButton;
-@property (weak) IBOutlet NSButton *emptyStringOnlyButton;
+@property (weak) IBOutlet NSButton *nonTranslatedStringOnlyButton;
 @property (weak) IBOutlet NSButton *ignoreEqualButton;
 @property (weak) IBOutlet NSTextField *hintTextLabel;
 @property (weak) IBOutlet NSButton *okButton;
@@ -71,7 +71,7 @@
         [[self serviceButton] addItemWithTitle:@"No service available"];
     }
     
-    if (self.emptyStringOnlyButton.state == NSOnState) {
+    if (self.nonTranslatedStringOnlyButton.state == NSOnState) {
         self.ignoreEqualButton.enabled = NO;
     } else {
         self.ignoreEqualButton.enabled = YES;
@@ -104,7 +104,7 @@
     [self configureView];
 }
 
-- (IBAction)emptyStringOnlyButtonPressed:(id)sender {
+- (IBAction)nonTranslatedStringOnlyButtonPressed:(id)sender {
     [self configureView];
 }
 
@@ -148,8 +148,7 @@
             }
         }
         
-        if (self.emptyStringOnlyButton.state == NSOnState &&
-            !(!pair.target || [pair.target isEqualToString:@""])) {
+        if (self.nonTranslatedStringOnlyButton.state == NSOnState && pair.isTranslated) {
             return NO;
         }
         

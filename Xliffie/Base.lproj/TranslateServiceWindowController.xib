@@ -8,9 +8,9 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TranslateServiceWindowController" customModule="Xliffie" customModuleProvider="target">
             <connections>
-                <outlet property="emptyStringOnlyButton" destination="55t-Nt-Ry0" id="97z-G2-8qF"/>
                 <outlet property="hintTextLabel" destination="N7Y-ND-cYg" id="Yz9-R7-z1e"/>
                 <outlet property="ignoreEqualButton" destination="gMD-G3-KRA" id="Oga-ds-3nm"/>
+                <outlet property="nonTranslatedStringOnlyButton" destination="55t-Nt-Ry0" id="xc3-Da-SqZ"/>
                 <outlet property="okButton" destination="cSE-I3-1G0" id="HCv-0X-S9N"/>
                 <outlet property="serviceButton" destination="gAw-fC-hq7" id="h2Z-3P-XYa"/>
                 <outlet property="translateFilterButton" destination="yDH-4S-bVT" id="pQI-m0-dnk"/>
@@ -112,12 +112,12 @@
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="55t-Nt-Ry0">
                         <rect key="frame" x="18" y="119" width="354" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="check" title="Only translate records with empty target string." bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="xIa-yY-MDg">
+                        <buttonCell key="cell" type="check" title="Only translate non-translated records." bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="xIa-yY-MDg">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="emptyStringOnlyButtonPressed:" target="-2" id="CLV-fL-K76"/>
+                            <action selector="nonTranslatedStringOnlyButtonPressed:" target="-2" id="dGc-to-RNk"/>
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gGE-WI-RHv">
