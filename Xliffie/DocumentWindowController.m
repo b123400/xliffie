@@ -446,7 +446,6 @@
 
 - (IBAction)toggleNotesPressed:(id)sender {
     [self toggleNotes];
-    [self translateWithGlossaryAndWebPressed: sender];
 }
 
 - (IBAction)translateButtonPressed:(id)sender {
