@@ -9,11 +9,23 @@
 #import <Foundation/Foundation.h>
 #import "File.h"
 
+typedef enum : NSUInteger {
+    TranslationPairStateMarkedAsNotTranslated,
+    TranslationPairStateEmpty,
+    TranslationPairStateTranslatedWithWarnings,
+    TranslationPairStateTranslated,
+    TranslationPairStateMarkedAsTranslated,
+} TranslationPairState;
+
 @interface TranslationPair : NSObject<NSCopying>
 
 @property (nonatomic, strong) NSString *source;
 @property (nonatomic, strong) NSString *target;
 @property (nonatomic, strong) NSString *note;
+
+@property (nonatomic) NSString *targetState;
+@property (nonatomic) TranslationPairState state;
+@property (nonatomic, readonly) BOOL isTranslated;
 
 @property (nonatomic, strong) TranslationPair *alternativePair; // map another langauge
 
@@ -26,5 +38,9 @@
 
 - (NSString*)sourceForDisplay;
 - (NSArray <NSString*> *)warningsForTarget;
+
+- (void)markAsTranslated;
+- (void)markAsNotTranslated;
+- (void)unmark;
 
 @end

@@ -23,9 +23,10 @@
     
     self.xmlElement = element;
     
-    self.source = [[[element elementsForName:@"source"] firstObject] stringValue];
-    self.target = [[[element elementsForName:@"target"] firstObject] stringValue];
-    self.note = [[[element elementsForName:@"note"] firstObject] stringValue];
+    _source = [[[element elementsForName:@"source"] firstObject] stringValue];
+    // Don't use setter so we don't trigger state update
+    _target = [self.targetElement stringValue];
+    _note = [[[element elementsForName:@"note"] firstObject] stringValue];
     
     return self;
 }
@@ -38,10 +39,8 @@
 }
 
 - (NSString*)sourceForDisplay {
-    if (self.alternativePair &&
-        self.alternativePair.target &&
-        ![self.alternativePair.target isEqualToString:@""]) {
-        return self.alternativePair.target;
+    if (self.alternativePair && self.alternativePair.isTranslated) {
+        return self.alternativePair.target ?: @"";
     }
     return _source;
 }
@@ -57,9 +56,14 @@
     _source = source;
 }
 
+- (NSXMLElement*)targetElement {
+    return [[self.xmlElement elementsForName:@"target"] firstObject];
+}
+
 - (void)setTarget:(NSString *)target {
     self.cachedTargetWarnings = nil;
-    NSXMLElement *targetElement = [[self.xmlElement elementsForName:@"target"] firstObject];
+    NSXMLElement *targetElement = self.targetElement;
+    
     if (!target) {
         if (!targetElement) return;
         
@@ -72,6 +76,7 @@
         [self.xmlElement addChild:targetElement];
     }
     
+    TranslationPairState state = [self state];
     NSDocument *document = (NSDocument*)[self.file document];
     if (self.xmlElement &&         // setting target after initialization
         document.hasUndoManager) { // can undo
@@ -80,10 +85,120 @@
         [manager registerUndoWithTarget:self
                                selector:@selector(setTarget:)
                                  object:self.target];
+        if (state == TranslationPairStateMarkedAsTranslated) {
+            [manager registerUndoWithTarget:self
+                                   selector:@selector(markAsTranslated)
+                                     object:nil];
+        } else if (state == TranslationPairStateMarkedAsNotTranslated) {
+            [manager registerUndoWithTarget:self
+                                   selector:@selector(markAsNotTranslated)
+                                     object:nil];
+        }
     }
     
     [targetElement setStringValue:target];
     _target = target;
+    [self unmark];
+}
+
+- (NSString *)targetState {
+    return [[[self targetElement] attributeForName:@"state"] stringValue];
+}
+
+- (void)setTargetState:(NSString *)targetState {
+    NSXMLNode *attr = [NSXMLNode attributeWithName:@"state"
+                                       stringValue:targetState];
+    [[self targetElement] addAttribute:attr];
+}
+
+- (TranslationPairState)stateFromContent {
+    if (![self.target length]) {
+        return TranslationPairStateEmpty;
+    }
+    if ([self.source isEqualTo:self.target] || [self warningsForTarget].count) {
+        return TranslationPairStateTranslatedWithWarnings;
+    }
+    return TranslationPairStateTranslated;
+}
+
+- (TranslationPairState)state {
+    NSString *targetState = self.targetState;
+    NSArray<NSString *> *translatedStates = @[@"signed-off", @"translated", @"final"];
+    NSArray<NSString *> *notTranslatedStates = @[
+        @"needs-adaptation",
+        @"needs-l10n",
+        @"needs-review-adaptation",
+        @"needs-review-l10n",
+        @"needs-review-translation",
+        @"needs-translation",
+        @"new"
+    ];
+    if ([translatedStates containsObject:targetState]) {
+        return TranslationPairStateMarkedAsTranslated;
+    }
+    if ([notTranslatedStates containsObject:targetState]) {
+        return TranslationPairStateMarkedAsNotTranslated;
+    }
+    return [self stateFromContent];
+}
+
+- (void)unmark {
+    [[self targetElement] removeAttributeForName:@"state"];
+}
+
+- (void)markAsTranslated {
+    TranslationPairState state = [self state];
+    self.targetState = @"translated";
+    
+    NSDocument *document = (NSDocument*)[self.file document];
+    if (self.xmlElement &&         // setting target after initialization
+        document.hasUndoManager) { // can undo
+        
+        NSUndoManager *manager = [document undoManager];
+        if (state == TranslationPairStateMarkedAsNotTranslated) {
+            [manager registerUndoWithTarget:self
+                                   selector:@selector(markAsNotTranslated)
+                                     object:nil];
+        } else {
+            [manager registerUndoWithTarget:self
+                                   selector:@selector(unmark)
+                                     object:nil];
+        }
+    }
+}
+
+- (void)markAsNotTranslated {
+    TranslationPairState state = [self state];
+    self.targetState = @"needs-translation";
+    
+    NSDocument *document = (NSDocument*)[self.file document];
+    if (self.xmlElement &&         // setting target after initialization
+        document.hasUndoManager) { // can undo
+        
+        NSUndoManager *manager = [document undoManager];
+        if (state == TranslationPairStateMarkedAsTranslated) {
+            [manager registerUndoWithTarget:self
+                                   selector:@selector(markAsTranslated)
+                                     object:nil];
+        } else {
+            [manager registerUndoWithTarget:self
+                                   selector:@selector(unmark)
+                                     object:nil];
+        }
+    }
+}
+
+- (BOOL)isTranslated {
+    switch (self.state) {
+        case TranslationPairStateMarkedAsNotTranslated:
+        case TranslationPairStateEmpty:
+        case TranslationPairStateTranslatedWithWarnings:
+            return NO;
+        case TranslationPairStateTranslated:
+        case TranslationPairStateMarkedAsTranslated:
+            return YES;
+    }
+    return YES;
 }
 
 - (NSArray <NSString*> *)warningsForTarget {
@@ -148,13 +263,7 @@
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern options:0 error:&error];
     [regex enumerateMatchesInString:input options:0 range:NSMakeRange(0, input.length) usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
         
-//        NSRange indexRange = [result rangeAtIndex:1];
         NSRange typeRange = [result rangeAtIndex:2];
-        
-//        NSInteger index = -1;
-//        if (indexRange.location != NSNotFound) {
-//            index = [[input substringWithRange:indexRange] integerValue];
-//        }
         NSString *typeString = [input substringWithRange:typeRange];
         if (![resultDict objectForKey:typeString]) {
             [resultDict setObject:@0 forKey:typeString];

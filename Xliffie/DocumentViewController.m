@@ -125,15 +125,20 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
      forTableColumn:(NSTableColumn *)tableColumn
                item:(id)item {
     if ([[tableColumn identifier] isEqualToString:@"target"]) {
-        
         if ([item isKindOfClass:[TranslationPair class]]) {
             TranslationPair *pair = (TranslationPair*)item;
-            if (!pair.target || [pair.target isEqualToString:@""] || [pair warningsForTarget].count) {
-                cell.dotColor = [NSColor systemRedColor];
-            } else if ([pair.target isEqualToString:pair.source]) {
-                cell.dotColor = [NSColor systemOrangeColor];
-            } else {
-                cell.dotColor = nil;
+            switch (pair.state) {
+                case TranslationPairStateEmpty:
+                    cell.dotColor = [NSColor systemOrangeColor];
+                    break;
+                case TranslationPairStateMarkedAsNotTranslated:
+                case TranslationPairStateTranslatedWithWarnings:
+                    cell.dotColor = [NSColor systemRedColor];
+                    break;
+                case TranslationPairStateTranslated:
+                case TranslationPairStateMarkedAsTranslated:
+                    cell.dotColor = nil;
+                    break;
             }
         } else {
             cell.dotColor = nil;
@@ -352,6 +357,80 @@ doCommandBySelector:(SEL)commandSelector {
         return self.filteredDocument;
     }
     return self.document;
+}
+
+- (BOOL)validateMenuItem:(NSMenuItem *)menuItem {
+    if ([[menuItem identifier] isEqualToString:@"markAsTranslated"]) {
+        NSInteger index = [self.outlineView clickedRow];
+        NSIndexSet *indexSet = [self.outlineView selectedRowIndexes];
+        NSIndexSet *targetIndexSet;
+        if ([indexSet containsIndex:index]) {
+            targetIndexSet = indexSet;
+        } else {
+            targetIndexSet = [NSIndexSet indexSetWithIndex:index];
+        }
+        
+        BOOL __block anyNotTranslated = NO;
+        BOOL __block hasNonTranslation = NO;
+        [targetIndexSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL * _Nonnull stop) {
+            id obj = [[self outlineView] itemAtRow:idx];
+            if (![obj isKindOfClass:[TranslationPair class]]) {
+                hasNonTranslation = YES;
+                return;
+            }
+            TranslationPair *pair = (TranslationPair*)obj;
+            if (!pair.isTranslated) {
+                anyNotTranslated = YES;
+                *stop = YES;
+            }
+        }];
+        if (anyNotTranslated) {
+            [menuItem setTitle:NSLocalizedString(@"Mark as translated", @"Menu item")];
+        } else {
+            [menuItem setTitle:NSLocalizedString(@"Mark as not translated", @"Menu item")];
+        }
+        if (hasNonTranslation && targetIndexSet.count == 1) {
+            return NO;
+        }
+        return YES;
+    }
+    return YES;
+}
+
+- (IBAction)markAsTranslated:(id)sender {
+    NSInteger index = [self.outlineView clickedRow];
+    NSIndexSet *indexSet = [self.outlineView selectedRowIndexes];
+    NSIndexSet *targetIndexSet;
+    if ([indexSet containsIndex:index]) {
+        targetIndexSet = indexSet;
+    } else {
+        targetIndexSet = [NSIndexSet indexSetWithIndex:index];
+    }
+    
+    BOOL __block anyNotTranslated = NO;
+    [targetIndexSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL * _Nonnull stop) {
+        id obj = [[self outlineView] itemAtRow:idx];
+        if (![obj isKindOfClass:[TranslationPair class]]) return;
+        TranslationPair *pair = (TranslationPair*)obj;
+        if (!pair.isTranslated) {
+            anyNotTranslated = YES;
+            *stop = YES;
+        }
+    }];
+    
+    [targetIndexSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL * _Nonnull stop) {
+        id obj = [[self outlineView] itemAtRow:idx];
+        if (![obj isKindOfClass:[TranslationPair class]]) return;
+        TranslationPair *pair = (TranslationPair*)obj;
+        if (anyNotTranslated) {
+            [pair markAsTranslated];
+        } else {
+            [pair markAsNotTranslated];
+        }
+    }];
+    if ([self.delegate respondsToSelector:@selector(viewControllerTranslationProgressUpdated:)]) {
+        [self.delegate viewControllerTranslationProgressUpdated:self];
+    }
 }
 
 #pragma mark Search

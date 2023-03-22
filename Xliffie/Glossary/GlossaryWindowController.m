@@ -188,11 +188,7 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 - (IBAction)selectNonTranslatedClicked:(id)sender {
     for (GlossaryFileRow *fileRow in self.fileRows) {
         for (GlossaryRow *row in fileRow.rows) {
-            if (!row.translationPair.target || [row.translationPair.target isEqualTo:@""]) {
-                row.shouldApply = YES;
-            } else {
-                row.shouldApply = NO;
-            }
+            row.shouldApply = !row.translationPair.isTranslated;
         }
     }
     [self.outlineView reloadData];

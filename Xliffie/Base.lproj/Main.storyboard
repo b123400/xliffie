@@ -596,21 +596,20 @@
                                                 <action selector="toggleToolbarShown:" target="Ady-hI-5gd" id="BXY-wc-z0C"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Show Sidebar" id="iCv-I4-fFo">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        <menuItem title="Show Sidebar" keyEquivalent="l" id="iCv-I4-fFo">
                                             <connections>
                                                 <action selector="toggleSidebar:" target="Ady-hI-5gd" id="BAY-za-Hvq"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Customize Toolbar…" state="on" id="1UK-8n-QPP">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="runToolbarCustomizationPalette:" target="Ady-hI-5gd" id="pQI-g3-MTW"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Show Info" keyEquivalent="d" id="EJo-G1-Lo1">
                                             <connections>
                                                 <action selector="showInfo:" target="Ady-hI-5gd" id="PeJ-1s-mgN"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Customize Toolbar…" id="1UK-8n-QPP">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="runToolbarCustomizationPalette:" target="Ady-hI-5gd" id="pQI-g3-MTW"/>
                                             </connections>
                                         </menuItem>
                                     </items>
@@ -965,6 +964,7 @@ DQ
                                             <connections>
                                                 <outlet property="dataSource" destination="5gI-5U-AMq" id="1nK-R0-a1Z"/>
                                                 <outlet property="delegate" destination="5gI-5U-AMq" id="tjo-9r-BCg"/>
+                                                <outlet property="menu" destination="m93-g6-3vc" id="FwL-0W-7Aa"/>
                                             </connections>
                                         </outlineView>
                                     </subviews>
@@ -995,6 +995,16 @@ DQ
                     </connections>
                 </viewController>
                 <customObject id="2Tp-Fl-jBw" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <menu id="m93-g6-3vc">
+                    <items>
+                        <menuItem title="Mark as translated" identifier="markAsTranslated" id="7je-R1-NAb">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="markAsTranslated:" target="5gI-5U-AMq" id="69G-Wr-9G4"/>
+                            </connections>
+                        </menuItem>
+                    </items>
+                </menu>
             </objects>
             <point key="canvasLocation" x="-147" y="1314"/>
         </scene>
