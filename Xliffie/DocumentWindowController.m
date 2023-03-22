@@ -15,6 +15,7 @@
 #import "XclocDocument.h"
 #import "NSString+Pangu.h"
 #import "GlossaryWindowController.h"
+#import "BRProgressButton.h"
 
 #define DOCUMENT_WINDOW_MIN_SIZE NSMakeSize(600, 600)
 #define DOCUMENT_WINDOW_LAST_FRAME_KEY @"DOCUMENT_WINDOW_LAST_FRAME_KEY"
@@ -31,7 +32,7 @@
 @property (weak) IBOutlet NSSegmentedControl *layoutSegment;
 @property (weak) IBOutlet NSSegmentedControl *languagesSegment;
 @property (weak) IBOutlet NSToolbarItem *translateButton;
-@property (weak) IBOutlet NSProgressIndicator *progressIndicator;
+@property (weak) IBOutlet BRProgressButton *progressButton;
 @property (weak) IBOutlet NSSearchField *searchField;
 
 @property (nonatomic, strong) NSMutableArray *documents;
@@ -388,12 +389,31 @@
 }
 
 - (void)reloadProgress {
-    self.progressIndicator.minValue = 0;
     Document *document = self.mainViewController.document;
-    NSArray *allTranslations = [document valueForKeyPath:@"files.@unionOfArrays.translations"];
-    self.progressIndicator.maxValue = allTranslations.count;
-    NSArray *translated = [allTranslations filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"isTranslated == YES" arguments:nil]];
-    self.progressIndicator.doubleValue = translated.count;
+    NSArray<TranslationPair*> *allTranslations = [document valueForKeyPath:@"files.@unionOfArrays.translations"];
+    
+    int completedCount = 0;
+    int warningCount = 0;
+    for (TranslationPair *pair in allTranslations) {
+        switch (pair.state) {
+            case TranslationPairStateTranslatedWithWarnings:
+                warningCount++;
+                break;
+            case TranslationPairStateTranslated:
+            case TranslationPairStateMarkedAsTranslated:
+                completedCount++;
+                break;
+            default:
+                break;
+        }
+    }
+    [self.progressButton resetSegments];
+    if (@available(macOS 10.14, *)) {
+        [self.progressButton addSegmentWithProgress:completedCount/(allTranslations.count/1.0) colour:[NSColor controlAccentColor]];
+    } else {
+        [self.progressButton addSegmentWithProgress:completedCount/(allTranslations.count/1.0) colour:[NSColor colorForControlTint:NSDefaultControlTint]];
+    }
+    [self.progressButton addSegmentWithProgress:warningCount/(allTranslations.count/1.0) colour:[NSColor systemOrangeColor]];
 }
 
 #pragma mark drawer
@@ -489,6 +509,10 @@
             weakSelf.glossaryWindowController = nil;
         }];
     }
+}
+
+- (IBAction)showProgressReport:(id)sender {
+    NSLog(@"report");
 }
 
 - (IBAction)translateWithGlossaryAndWebPressed:(id)sender {

@@ -757,18 +757,26 @@
                                         <action selector="addSpaceButtonPressed:" target="jGA-0Y-lOj" id="Yj4-sf-jjl"/>
                                     </connections>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="336AC971-A450-4F84-936F-A68D6DC957F6" label="Progress" paletteLabel="Progress" tag="-1" bordered="YES" title="Progress" sizingBehavior="auto" id="wL4-qq-wk1">
+                                <toolbarItem implicitItemIdentifier="1DCF9AC4-83DC-4369-919B-A67CCBE9A9A9" label="Progress" paletteLabel="Progress" bordered="YES" sizingBehavior="auto" id="nH5-3B-tsZ">
                                     <nil key="toolTip"/>
-                                    <progressIndicator key="view" maxValue="100" doubleValue="65" controlSize="small" style="spinning" id="fIG-sF-sNe">
-                                        <rect key="frame" x="19" y="14" width="16" height="16"/>
+                                    <button key="view" verticalHuggingPriority="750" id="4DH-6S-neu" customClass="BRProgressButton">
+                                        <rect key="frame" x="0.0" y="14" width="84" height="26"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    </progressIndicator>
+                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Qfy-2q-J9u">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                    </button>
+                                    <connections>
+                                        <action selector="showProgressReport:" target="jGA-0Y-lOj" id="eaz-Ie-r4l"/>
+                                    </connections>
                                 </toolbarItem>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
                                 <toolbarItem reference="fIO-7r-OQw"/>
                                 <toolbarItem reference="hRa-qY-UHQ"/>
                                 <toolbarItem reference="fIO-7r-OQw"/>
+                                <toolbarItem reference="nH5-3B-tsZ"/>
                                 <toolbarItem reference="7Hq-tz-Ud3"/>
                                 <toolbarItem reference="pRq-eI-zXo"/>
                                 <toolbarItem reference="z3T-JE-F8n"/>
@@ -780,7 +788,7 @@
                     </window>
                     <connections>
                         <outlet property="languagesSegment" destination="uLd-TS-Dl5" id="k3b-hE-yxQ"/>
-                        <outlet property="progressIndicator" destination="fIG-sF-sNe" id="Mqg-7g-7sj"/>
+                        <outlet property="progressButton" destination="4DH-6S-neu" id="he9-Oq-ato"/>
                         <outlet property="searchField" destination="ihp-tX-qqE" id="2xv-li-MNs"/>
                         <outlet property="translateButton" destination="7Hq-tz-Ud3" id="fwv-GZ-IIk"/>
                         <segue destination="MvO-m3-dew" kind="relationship" relationship="window.shadowedContentViewController" id="aWn-BL-51E"/>

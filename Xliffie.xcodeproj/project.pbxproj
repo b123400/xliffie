@@ -77,6 +77,7 @@
 		CF92FB941C24037B00700D3E /* TargetMissingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF92FB931C24037B00700D3E /* TargetMissingViewController.m */; };
 		CF94FCA51A5C365400EE8BD5 /* File.m in Sources */ = {isa = PBXBuildFile; fileRef = CF94FCA41A5C365400EE8BD5 /* File.m */; };
 		CF94FCA81A5C37A900EE8BD5 /* TranslationPair.m in Sources */ = {isa = PBXBuildFile; fileRef = CF94FCA71A5C37A900EE8BD5 /* TranslationPair.m */; };
+		CFA091E029CB18F800F33979 /* BRProgressButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA091DF29CB18F800F33979 /* BRProgressButton.m */; };
 		CFC6CC602702E8E300F7850C /* GlossaryWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC6CC5E2702E8E300F7850C /* GlossaryWindowController.m */; };
 		CFC6CC642703152400F7850C /* GlossaryRow.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC6CC632703152400F7850C /* GlossaryRow.m */; };
 		CFC6CC672703163700F7850C /* GlossaryFileRow.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC6CC662703163700F7850C /* GlossaryFileRow.m */; };
@@ -212,6 +213,8 @@
 		CF94FCA41A5C365400EE8BD5 /* File.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = File.m; sourceTree = "<group>"; };
 		CF94FCA61A5C37A900EE8BD5 /* TranslationPair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TranslationPair.h; sourceTree = "<group>"; };
 		CF94FCA71A5C37A900EE8BD5 /* TranslationPair.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TranslationPair.m; sourceTree = "<group>"; };
+		CFA091DE29CB18F800F33979 /* BRProgressButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRProgressButton.h; sourceTree = "<group>"; };
+		CFA091DF29CB18F800F33979 /* BRProgressButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRProgressButton.m; sourceTree = "<group>"; };
 		CFC6CC5D2702E8E300F7850C /* GlossaryWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlossaryWindowController.h; sourceTree = "<group>"; };
 		CFC6CC5E2702E8E300F7850C /* GlossaryWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GlossaryWindowController.m; sourceTree = "<group>"; };
 		CFC6CC622703152400F7850C /* GlossaryRow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlossaryRow.h; sourceTree = "<group>"; };
@@ -299,6 +302,8 @@
 				CF0945901C54FD3600DAEB4A /* BRArrowSegmentedCell.m */,
 				CF12DB4A293E5A2D00F9C760 /* RoundedCornersView.h */,
 				CF12DB4B293E5A2D00F9C760 /* RoundedCornersView.m */,
+				CFA091DE29CB18F800F33979 /* BRProgressButton.h */,
+				CFA091DF29CB18F800F33979 /* BRProgressButton.m */,
 			);
 			name = "UI Elements";
 			sourceTree = "<group>";
@@ -764,6 +769,7 @@
 				CF740AA72701C6C700F31F26 /* Glossary.m in Sources */,
 				CFE3B1761CD800AB00021D7F /* NSString+Pangu.m in Sources */,
 				CF5FC8981A5ABFF700538E60 /* DocumentViewController.m in Sources */,
+				CFA091E029CB18F800F33979 /* BRProgressButton.m in Sources */,
 				CF12DB49293E4C5F00F9C760 /* Suggestion.m in Sources */,
 				CF011B7D1C4641A400948323 /* TranslationWindowController.m in Sources */,
 				CF5FC8951A5ABFF700538E60 /* main.m in Sources */,
