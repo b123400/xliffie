@@ -129,11 +129,7 @@
 #pragma mark - document
 
 - (NSArray <TranslationPair*> *)allTranslationPairs {
-    NSMutableArray *pairs = [NSMutableArray array];
-    for (File *file in self.xliffDocument.files) {
-        [pairs addObjectsFromArray:file.translations];
-    }
-    return pairs;
+    return [self.xliffDocument valueForKeyPath:@"files.@unionOfArrays.translations"];
 }
 
 - (NSArray <TranslationPair*> *)pairsToTranslate {

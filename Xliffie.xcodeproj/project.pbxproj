@@ -15,6 +15,8 @@
 		CF12DB4C293E5A2D00F9C760 /* RoundedCornersView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF12DB4B293E5A2D00F9C760 /* RoundedCornersView.m */; };
 		CF12DB4F293EF89C00F9C760 /* SuggestionsCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF12DB4E293EF89C00F9C760 /* SuggestionsCellView.m */; };
 		CF12DB53293F1B8200F9C760 /* NSAttributedString+FileIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = CF12DB52293F1B8200F9C760 /* NSAttributedString+FileIcon.m */; };
+		CF1CE50629CB4EBD00BBFAAB /* ProgressWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1CE50429CB4EBD00BBFAAB /* ProgressWindowController.m */; };
+		CF1CE50729CB4EBD00BBFAAB /* ProgressWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF1CE50529CB4EBD00BBFAAB /* ProgressWindowController.xib */; };
 		CF34B7471AAB7C2000C6A58E /* DocumentListDrawer.m in Sources */ = {isa = PBXBuildFile; fileRef = CF34B7461AAB7C2000C6A58E /* DocumentListDrawer.m */; };
 		CF34B75A1AADE00A00C6A58E /* TranslationTargetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF34B7591AADE00A00C6A58E /* TranslationTargetCell.m */; };
 		CF5682EB1A6AFB9800E0DEDD /* DocumentWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5682E91A6AFB9800E0DEDD /* DocumentWindowController.m */; };
@@ -126,6 +128,9 @@
 		CF12DB4E293EF89C00F9C760 /* SuggestionsCellView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SuggestionsCellView.m; path = Suggestions/SuggestionsCellView.m; sourceTree = "<group>"; };
 		CF12DB51293F1B8200F9C760 /* NSAttributedString+FileIcon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+FileIcon.h"; sourceTree = "<group>"; };
 		CF12DB52293F1B8200F9C760 /* NSAttributedString+FileIcon.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+FileIcon.m"; sourceTree = "<group>"; };
+		CF1CE50329CB4EBD00BBFAAB /* ProgressWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProgressWindowController.h; sourceTree = "<group>"; };
+		CF1CE50429CB4EBD00BBFAAB /* ProgressWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProgressWindowController.m; sourceTree = "<group>"; };
+		CF1CE50529CB4EBD00BBFAAB /* ProgressWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProgressWindowController.xib; sourceTree = "<group>"; };
 		CF34B7451AAB7C2000C6A58E /* DocumentListDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocumentListDrawer.h; sourceTree = "<group>"; };
 		CF34B7461AAB7C2000C6A58E /* DocumentListDrawer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentListDrawer.m; sourceTree = "<group>"; };
 		CF34B7581AADE00A00C6A58E /* TranslationTargetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TranslationTargetCell.h; sourceTree = "<group>"; };
@@ -380,6 +385,9 @@
 				CF5682EE1A6B11C700E0DEDD /* DetailViewController.m */,
 				CF92FB921C24037B00700D3E /* TargetMissingViewController.h */,
 				CF92FB931C24037B00700D3E /* TargetMissingViewController.m */,
+				CF1CE50329CB4EBD00BBFAAB /* ProgressWindowController.h */,
+				CF1CE50429CB4EBD00BBFAAB /* ProgressWindowController.m */,
+				CF1CE50529CB4EBD00BBFAAB /* ProgressWindowController.xib */,
 				CF5AB3BE293DCE4700C8AC7B /* Suggestions */,
 				CFB0B8F61C3073A9004DF663 /* Translator */,
 				CF34B75C1AADE02400C6A58E /* Model */,
@@ -657,6 +665,7 @@
 				CF740AE32701CE7900F31F26 /* pl.glossary in Resources */,
 				CF5FC8A01A5ABFF700538E60 /* Main.storyboard in Resources */,
 				CF740AEA2701CE7900F31F26 /* en-au.glossary in Resources */,
+				CF1CE50729CB4EBD00BBFAAB /* ProgressWindowController.xib in Resources */,
 				CF740AD82701CE7900F31F26 /* pt-br.glossary in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -761,6 +770,7 @@
 				CF7CFCC92442083D00AFC9EF /* DocumentListViewController.m in Sources */,
 				CF011B4B1C40FCBA00948323 /* TranslationUtility.m in Sources */,
 				CF94FCA51A5C365400EE8BD5 /* File.m in Sources */,
+				CF1CE50629CB4EBD00BBFAAB /* ProgressWindowController.m in Sources */,
 				CF34B75A1AADE00A00C6A58E /* TranslationTargetCell.m in Sources */,
 				CF5682EF1A6B11C700E0DEDD /* DetailViewController.m in Sources */,
 				CFD234FA1A5E44C700B52088 /* XMLOutlineView.m in Sources */,

@@ -16,6 +16,7 @@
 #import "NSString+Pangu.h"
 #import "GlossaryWindowController.h"
 #import "BRProgressButton.h"
+#import "ProgressWindowController.h"
 
 #define DOCUMENT_WINDOW_MIN_SIZE NSMakeSize(600, 600)
 #define DOCUMENT_WINDOW_LAST_FRAME_KEY @"DOCUMENT_WINDOW_LAST_FRAME_KEY"
@@ -40,6 +41,7 @@
 @property (nonatomic, strong) TranslateServiceWindowController *translateServiceController;
 @property (nonatomic, strong) TranslationWindowController *translateController;
 @property (nonatomic, strong) GlossaryWindowController *glossaryWindowController;
+@property (nonatomic, strong) ProgressWindowController *progressWindowController;
 
 // { @"en" :
 //     { @"hello/world.xib" : <File>
@@ -512,7 +514,13 @@
 }
 
 - (IBAction)showProgressReport:(id)sender {
-    NSLog(@"report");
+    ProgressWindowController *controller = [[ProgressWindowController alloc] initWithDocument:self.document];
+    self.progressWindowController = controller;
+    __weak typeof(self) weakSelf = self;
+    [self.window beginSheet:controller.window
+          completionHandler:^(NSModalResponse returnCode) {
+        weakSelf.progressWindowController = nil;
+    }];
 }
 
 - (IBAction)translateWithGlossaryAndWebPressed:(id)sender {
