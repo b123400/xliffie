@@ -775,7 +775,6 @@
                             <defaultToolbarItems>
                                 <toolbarItem reference="fIO-7r-OQw"/>
                                 <toolbarItem reference="hRa-qY-UHQ"/>
-                                <toolbarItem reference="fIO-7r-OQw"/>
                                 <toolbarItem reference="nH5-3B-tsZ"/>
                                 <toolbarItem reference="7Hq-tz-Ud3"/>
                                 <toolbarItem reference="pRq-eI-zXo"/>
@@ -1028,7 +1027,6 @@ DQ
             <objects>
                 <splitViewController id="MvO-m3-dew" sceneMemberID="viewController">
                     <splitViewItems>
-                        <splitViewItem canCollapse="YES" holdingPriority="260" behavior="sidebar" id="cHG-xe-GTD"/>
                         <splitViewItem id="4aN-Xt-NKm"/>
                         <splitViewItem canCollapse="YES" id="jva-wI-TqJ"/>
                     </splitViewItems>
@@ -1041,7 +1039,6 @@ DQ
                     </splitView>
                     <connections>
                         <outlet property="splitView" destination="aHC-fD-XN7" id="jDf-b5-Zmk"/>
-                        <segue destination="a1H-F8-Ljv" kind="relationship" relationship="splitItems" id="eNY-1d-GU6"/>
                         <segue destination="5gI-5U-AMq" kind="relationship" relationship="splitItems" id="Sme-aF-Lhj"/>
                         <segue destination="h8b-lc-VRb" kind="relationship" relationship="splitItems" id="n5r-2u-vCU"/>
                     </connections>
@@ -1116,73 +1113,6 @@ DQ
                 <customObject id="Xxj-P9-bMW" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="427" y="1213"/>
-        </scene>
-        <!--Document List View Controller-->
-        <scene sceneID="WDu-YQ-czx">
-            <objects>
-                <viewController storyboardIdentifier="DocumentListViewController" id="a1H-F8-Ljv" customClass="DocumentListViewController" sceneMemberID="viewController">
-                    <view key="view" id="Aag-sH-jHW">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <subviews>
-                            <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9LW-Pc-Ucu">
-                                <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                                <clipView key="contentView" drawsBackground="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7g9-at-gfi">
-                                    <rect key="frame" x="1" y="1" width="448" height="298"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" tableStyle="sourceList" selectionHighlightStyle="sourceList" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" id="RX4-Ro-jar">
-                                            <rect key="frame" x="0.0" y="0.0" width="448" height="298"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <size key="intercellSpacing" width="3" height="2"/>
-                                            <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
-                                            <tableColumns>
-                                                <tableColumn width="416" minWidth="40" maxWidth="1000" id="tmY-WJ-Q3P">
-                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                        <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
-                                                        <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
-                                                    </tableHeaderCell>
-                                                    <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" title="Text Cell" id="Zz3-Gr-MRr">
-                                                        <font key="font" metaFont="system"/>
-                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                    </textFieldCell>
-                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                                </tableColumn>
-                                            </tableColumns>
-                                            <connections>
-                                                <outlet property="dataSource" destination="a1H-F8-Ljv" id="4Qh-Zh-p0F"/>
-                                                <outlet property="delegate" destination="a1H-F8-Ljv" id="baG-OA-2pu"/>
-                                            </connections>
-                                        </tableView>
-                                    </subviews>
-                                    <nil key="backgroundColor"/>
-                                </clipView>
-                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="Xvf-bl-elm">
-                                    <rect key="frame" x="1" y="283" width="448" height="16"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </scroller>
-                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="Pmb-bg-3EZ">
-                                    <rect key="frame" x="224" y="17" width="15" height="102"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </scroller>
-                            </scrollView>
-                        </subviews>
-                        <constraints>
-                            <constraint firstAttribute="bottom" secondItem="9LW-Pc-Ucu" secondAttribute="bottom" id="DB8-yB-Fly"/>
-                            <constraint firstAttribute="trailing" secondItem="9LW-Pc-Ucu" secondAttribute="trailing" id="EUr-45-Loj"/>
-                            <constraint firstItem="9LW-Pc-Ucu" firstAttribute="leading" secondItem="Aag-sH-jHW" secondAttribute="leading" id="i9f-b4-e4i"/>
-                            <constraint firstItem="9LW-Pc-Ucu" firstAttribute="top" secondItem="Aag-sH-jHW" secondAttribute="top" id="y1O-wy-4vh"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="tableView" destination="RX4-Ro-jar" id="qVi-ns-hHG"/>
-                    </connections>
-                </viewController>
-                <customObject id="ojU-Nn-NnP" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-714" y="1213"/>
         </scene>
     </scenes>
     <resources>

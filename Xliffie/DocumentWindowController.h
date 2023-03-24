@@ -15,8 +15,9 @@
 
 - (void)toggleNotes;
 
+- (NSString*)path;
 - (NSString*)baseFolderPath;
-- (void)addDocument:(Document*)newDocument;
+//- (void)addDocument:(Document*)newDocument;
 
 - (void)showSidebar;
 - (IBAction)translateWithGlossaryMenuPressed:(id)sender;

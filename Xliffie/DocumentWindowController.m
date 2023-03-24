@@ -37,7 +37,7 @@
 @property (weak) IBOutlet NSSearchField *searchField;
 
 @property (nonatomic, strong) NSMutableArray *documents;
-@property (nonatomic, strong) DocumentListViewController *documentListViewController;
+//@property (nonatomic, strong) DocumentListViewController *documentListViewController;
 @property (nonatomic, strong) TranslateServiceWindowController *translateServiceController;
 @property (nonatomic, strong) TranslationWindowController *translateController;
 @property (nonatomic, strong) GlossaryWindowController *glossaryWindowController;
@@ -78,19 +78,19 @@
     
     NSArray<NSSplitViewItem *> *splitViewItems = [self.splitViewController splitViewItems];
     
-    NSSplitViewItem *documentListItem = splitViewItems[0];
-    self.documentListViewController = (DocumentListViewController*)[documentListItem viewController];
-    self.documentListViewController.delegate = self;
-    documentListItem.maximumThickness = 150;
-    documentListItem.preferredThicknessFraction = 0.2;
-    documentListItem.collapsed = YES;
+//    NSSplitViewItem *documentListItem = splitViewItems[0];
+//    self.documentListViewController = (DocumentListViewController*)[documentListItem viewController];
+//    self.documentListViewController.delegate = self;
+//    documentListItem.maximumThickness = 150;
+//    documentListItem.preferredThicknessFraction = 0.2;
+//    documentListItem.collapsed = YES;
     
-    NSSplitViewItem *mainItem = splitViewItems[1];
+    NSSplitViewItem *mainItem = splitViewItems[0];
     self.mainViewController = (DocumentViewController*)[mainItem viewController];
     self.mainViewController.delegate = self;
     self.mainViewController.document = self.document;
     
-    NSSplitViewItem *detailItem = splitViewItems[2];
+    NSSplitViewItem *detailItem = splitViewItems[1];
     detailItem.collapsed = YES;
     detailItem.maximumThickness = 200;
     detailItem.preferredThicknessFraction = 0.2;
@@ -160,7 +160,7 @@
         }
     }
     if (index != NSNotFound) {
-        [self.documentListViewController selectDocumentAtIndex:index];
+//        [self.documentListViewController selectDocumentAtIndex:index];
     }
 
     if (self.mainViewController.mapLanguage) {
@@ -188,12 +188,16 @@
     [self reloadProgress];
 }
 
-- (NSString*)baseFolderPath {
+- (NSString*)path {
     Document *document = self.document;
     if (!document && self.documents.count) {
         document = self.documents[0];
     }
-    return [[[document fileURL] path] stringByDeletingLastPathComponent];
+    return [[document fileURL] path];
+}
+
+- (NSString*)baseFolderPath {
+    return [[self path] stringByDeletingLastPathComponent];
 }
 
 - (void)addDocument:(Document*)newDocument {
@@ -210,7 +214,7 @@
     
     [self reloadLanguageMap];
     [self reloadTranslationButtons];
-    [self.documentListViewController reloadData];
+//    [self.documentListViewController reloadData];
     [self.window invalidateRestorableState];
 }
 
@@ -220,8 +224,8 @@
 
 - (void)windowWillClose:(NSNotification *)notification {
     self.window = nil;
-    self.documentListViewController.delegate = nil;
-    self.documentListViewController = nil;
+//    self.documentListViewController.delegate = nil;
+//    self.documentListViewController = nil;
     for (Document *document in self.documents) {
         document.windowController = nil;
         [document close];
