@@ -760,8 +760,8 @@
                                 <toolbarItem implicitItemIdentifier="1DCF9AC4-83DC-4369-919B-A67CCBE9A9A9" label="Progress" paletteLabel="Progress" bordered="YES" sizingBehavior="auto" id="nH5-3B-tsZ">
                                     <nil key="toolTip"/>
                                     <button key="view" verticalHuggingPriority="750" id="4DH-6S-neu" customClass="BRProgressButton">
-                                        <rect key="frame" x="0.0" y="14" width="84" height="26"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <rect key="frame" x="21" y="14" width="12" height="23"/>
+                                        <autoresizingMask key="autoresizingMask"/>
                                         <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Qfy-2q-J9u">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -1186,8 +1186,8 @@ DQ
         </scene>
     </scenes>
     <resources>
-        <image name="Pangu" width="700" height="605"/>
-        <image name="info" width="1200" height="1200"/>
-        <image name="translate" width="447" height="392"/>
+        <image name="Pangu" width="23" height="20"/>
+        <image name="info" width="20" height="20"/>
+        <image name="translate" width="23" height="20"/>
     </resources>
 </document>
