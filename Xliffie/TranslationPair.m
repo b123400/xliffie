@@ -8,6 +8,7 @@
 
 #import "TranslationPair.h"
 #import <AppKit/AppKit.h>
+#import "Glossary.h"
 
 @interface TranslationPair ()
 
@@ -106,6 +107,9 @@
 }
 
 - (void)setTargetState:(NSString *)targetState {
+    if (![self targetElement]) {
+        [self setTarget:@""];
+    }
     NSXMLNode *attr = [NSXMLNode attributeWithName:@"state"
                                        stringValue:targetState];
     [[self targetElement] addAttribute:attr];
@@ -116,6 +120,12 @@
         return TranslationPairStateEmpty;
     }
     if ([self.source isEqualTo:self.target]) {
+        Glossary *glossary = [Glossary sharedGlossaryWithLocale:self.file.targetLanguage];
+        BOOL isMenu = [self.file.original.lastPathComponent.lowercaseString containsString:@"menu"];
+        NSString *glossaryTranslation = [glossary translate:self.source isMenu:isMenu];
+        if ([glossaryTranslation isEqualTo:self.target]) {
+            return TranslationPairStateTranslated;
+        }
         return TranslationPairStateSame;
     }
     if ([self warningsForTarget].count) {
