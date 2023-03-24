@@ -134,7 +134,7 @@
                                   dispatch_async(dispatch_get_main_queue(), ^{
                                       if (error) {
                                           NSAlert *alert = [NSAlert alertWithError:error];
-                                          alert.alertStyle = NSCriticalAlertStyle;
+                                          alert.alertStyle = NSAlertStyleCritical;
                                           [alert runModal];
                                           [weakSelf.window.sheetParent endSheet:weakSelf.window
                                                                      returnCode:NSModalResponseAbort];
@@ -160,6 +160,8 @@
     for (TranslationPair *pair in self.pairs) {
         if (![fileTables objectForKey:pair.file]) {
             File *newFile = [[File alloc] init];
+            newFile.sourceLanguage = pair.file.sourceLanguage;
+            newFile.targetLanguage = pair.file.targetLanguage;
             newFile.original = pair.file.original;
             newFile.translations = [NSMutableArray array];
             [fileTables setObject:newFile forKey:pair.file];

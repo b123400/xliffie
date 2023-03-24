@@ -361,7 +361,7 @@
     [[[alert buttons] objectAtIndex:1] setKeyEquivalent:@"\033"];
     [alert setMessageText:NSLocalizedString(@"Add spaces to all translations?",@"confirm")];
     [alert setInformativeText:NSLocalizedString(@"You can undo by pressing command+z",@"confirm")];
-    [alert setAlertStyle:NSInformationalAlertStyle];
+    [alert setAlertStyle:NSAlertStyleInformational];
     
     [alert beginSheetModalForWindow:self.window
                   completionHandler:^(NSModalResponse returnCode) {
