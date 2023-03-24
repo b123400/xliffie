@@ -16,7 +16,6 @@
 		CF12DB4F293EF89C00F9C760 /* SuggestionsCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF12DB4E293EF89C00F9C760 /* SuggestionsCellView.m */; };
 		CF12DB53293F1B8200F9C760 /* NSAttributedString+FileIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = CF12DB52293F1B8200F9C760 /* NSAttributedString+FileIcon.m */; };
 		CF1CE50629CB4EBD00BBFAAB /* ProgressWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1CE50429CB4EBD00BBFAAB /* ProgressWindowController.m */; };
-		CF34B7471AAB7C2000C6A58E /* DocumentListDrawer.m in Sources */ = {isa = PBXBuildFile; fileRef = CF34B7461AAB7C2000C6A58E /* DocumentListDrawer.m */; };
 		CF34B75A1AADE00A00C6A58E /* TranslationTargetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF34B7591AADE00A00C6A58E /* TranslationTargetCell.m */; };
 		CF5682EB1A6AFB9800E0DEDD /* DocumentWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5682E91A6AFB9800E0DEDD /* DocumentWindowController.m */; };
 		CF5682EF1A6B11C700E0DEDD /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5682EE1A6B11C700E0DEDD /* DetailViewController.m */; };
@@ -73,7 +72,6 @@
 		CF740AF22701CE7900F31F26 /* fr-ca.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740ACC2701CE7900F31F26 /* fr-ca.glossary */; };
 		CF740AF32701CE7900F31F26 /* ro.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740ACD2701CE7900F31F26 /* ro.glossary */; };
 		CF740AF42701CE7900F31F26 /* ru.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740ACE2701CE7900F31F26 /* ru.glossary */; };
-		CF7CFCC92442083D00AFC9EF /* DocumentListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7CFCC72442083D00AFC9EF /* DocumentListViewController.m */; };
 		CF846CD4259E21A300CA0713 /* CustomDocumentController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF846CD3259E21A300CA0713 /* CustomDocumentController.m */; };
 		CF92FB941C24037B00700D3E /* TargetMissingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF92FB931C24037B00700D3E /* TargetMissingViewController.m */; };
 		CF94FCA51A5C365400EE8BD5 /* File.m in Sources */ = {isa = PBXBuildFile; fileRef = CF94FCA41A5C365400EE8BD5 /* File.m */; };
@@ -130,8 +128,6 @@
 		CF12DB52293F1B8200F9C760 /* NSAttributedString+FileIcon.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+FileIcon.m"; sourceTree = "<group>"; };
 		CF1CE50329CB4EBD00BBFAAB /* ProgressWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProgressWindowController.h; sourceTree = "<group>"; };
 		CF1CE50429CB4EBD00BBFAAB /* ProgressWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProgressWindowController.m; sourceTree = "<group>"; };
-		CF34B7451AAB7C2000C6A58E /* DocumentListDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocumentListDrawer.h; sourceTree = "<group>"; };
-		CF34B7461AAB7C2000C6A58E /* DocumentListDrawer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentListDrawer.m; sourceTree = "<group>"; };
 		CF34B7581AADE00A00C6A58E /* TranslationTargetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TranslationTargetCell.h; sourceTree = "<group>"; };
 		CF34B7591AADE00A00C6A58E /* TranslationTargetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TranslationTargetCell.m; sourceTree = "<group>"; };
 		CF4B0C2E1BF91239007AF981 /* zh-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-TW"; path = "zh-TW.lproj/Main.strings"; sourceTree = "<group>"; };
@@ -207,8 +203,6 @@
 		CF740ACC2701CE7900F31F26 /* fr-ca.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "fr-ca.glossary"; sourceTree = "<group>"; };
 		CF740ACD2701CE7900F31F26 /* ro.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ro.glossary; sourceTree = "<group>"; };
 		CF740ACE2701CE7900F31F26 /* ru.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ru.glossary; sourceTree = "<group>"; };
-		CF7CFCC62442083D00AFC9EF /* DocumentListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DocumentListViewController.h; sourceTree = "<group>"; };
-		CF7CFCC72442083D00AFC9EF /* DocumentListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DocumentListViewController.m; sourceTree = "<group>"; };
 		CF846CD2259E21A300CA0713 /* CustomDocumentController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomDocumentController.h; sourceTree = "<group>"; };
 		CF846CD3259E21A300CA0713 /* CustomDocumentController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomDocumentController.m; sourceTree = "<group>"; };
 		CF92FB921C24037B00700D3E /* TargetMissingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetMissingViewController.h; sourceTree = "<group>"; };
@@ -378,10 +372,6 @@
 				CF5682E91A6AFB9800E0DEDD /* DocumentWindowController.m */,
 				CFCD4B321A6D0C7200BA8826 /* DocumentWindow.h */,
 				CFCD4B331A6D0C7200BA8826 /* DocumentWindow.m */,
-				CF34B7451AAB7C2000C6A58E /* DocumentListDrawer.h */,
-				CF34B7461AAB7C2000C6A58E /* DocumentListDrawer.m */,
-				CF7CFCC62442083D00AFC9EF /* DocumentListViewController.h */,
-				CF7CFCC72442083D00AFC9EF /* DocumentListViewController.m */,
 				CF5FC8961A5ABFF700538E60 /* DocumentViewController.h */,
 				CF5FC8971A5ABFF700538E60 /* DocumentViewController.m */,
 				CF5682ED1A6B11C700E0DEDD /* DetailViewController.h */,
@@ -770,7 +760,6 @@
 				CF12DB4F293EF89C00F9C760 /* SuggestionsCellView.m in Sources */,
 				CF92FB941C24037B00700D3E /* TargetMissingViewController.m in Sources */,
 				CF5682EB1A6AFB9800E0DEDD /* DocumentWindowController.m in Sources */,
-				CF7CFCC92442083D00AFC9EF /* DocumentListViewController.m in Sources */,
 				CF011B4B1C40FCBA00948323 /* TranslationUtility.m in Sources */,
 				CF94FCA51A5C365400EE8BD5 /* File.m in Sources */,
 				CF1CE50629CB4EBD00BBFAAB /* ProgressWindowController.m in Sources */,
@@ -798,7 +787,6 @@
 				CF94FCA81A5C37A900EE8BD5 /* TranslationPair.m in Sources */,
 				CFC6CC602702E8E300F7850C /* GlossaryWindowController.m in Sources */,
 				CFC6CC672703163700F7850C /* GlossaryFileRow.m in Sources */,
-				CF34B7471AAB7C2000C6A58E /* DocumentListDrawer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

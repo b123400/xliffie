@@ -8,8 +8,6 @@
 
 #import "DocumentWindowController.h"
 #import "DetailViewController.h"
-#import "DocumentListViewController.h"
-#import "DocumentListDrawer.h"
 #import "TargetMissingViewController.h"
 #import "TranslateServiceWindowController.h"
 #import "XclocDocument.h"
@@ -21,7 +19,7 @@
 #define DOCUMENT_WINDOW_MIN_SIZE NSMakeSize(600, 600)
 #define DOCUMENT_WINDOW_LAST_FRAME_KEY @"DOCUMENT_WINDOW_LAST_FRAME_KEY"
 
-@interface DocumentWindowController () <DocumentListDrawerDelegate, TargetMissingViewController, TranslateServiceWindowControllerDelegate>
+@interface DocumentWindowController () <TargetMissingViewController, TranslateServiceWindowControllerDelegate>
 
 @property (nonatomic, strong) NSSplitViewController *splitViewController;
 @property (nonatomic, strong) DocumentViewController *mainViewController;
@@ -36,8 +34,6 @@
 @property (weak) IBOutlet BRProgressButton *progressButton;
 @property (weak) IBOutlet NSSearchField *searchField;
 
-@property (nonatomic, strong) NSMutableArray *documents;
-//@property (nonatomic, strong) DocumentListViewController *documentListViewController;
 @property (nonatomic, strong) TranslateServiceWindowController *translateServiceController;
 @property (nonatomic, strong) TranslationWindowController *translateController;
 @property (nonatomic, strong) GlossaryWindowController *glossaryWindowController;
@@ -48,7 +44,7 @@
 //       @"foo.string" : <File>
 //     }
 // }
-@property (nonatomic, strong) NSMutableDictionary *filesOfLanguages;
+@property (nonatomic, strong) NSMutableDictionary<NSString*, NSMutableDictionary<NSString*, File*>*> *filesOfLanguages;
 
 @end
 
@@ -78,13 +74,6 @@
     
     NSArray<NSSplitViewItem *> *splitViewItems = [self.splitViewController splitViewItems];
     
-//    NSSplitViewItem *documentListItem = splitViewItems[0];
-//    self.documentListViewController = (DocumentListViewController*)[documentListItem viewController];
-//    self.documentListViewController.delegate = self;
-//    documentListItem.maximumThickness = 150;
-//    documentListItem.preferredThicknessFraction = 0.2;
-//    documentListItem.collapsed = YES;
-    
     NSSplitViewItem *mainItem = splitViewItems[0];
     self.mainViewController = (DocumentViewController*)[mainItem viewController];
     self.mainViewController.delegate = self;
@@ -98,7 +87,7 @@
 
     [(DocumentWindow*)self.window setDelegate:self];
     
-    self.documents = [NSMutableArray array];
+//    self.documents = [NSMutableArray array];
     self.filesOfLanguages = [NSMutableDictionary dictionary];
 
     self.window.minSize = DOCUMENT_WINDOW_MIN_SIZE;
@@ -149,19 +138,6 @@
     }
     // because setting content vc will resize the window
     [self.window setFrame:frame display:YES animate:NO];
-    
-    [self addDocument:document];
-    
-    NSInteger index = NSNotFound;
-    for (NSInteger i = 0; i < self.documents.count; i++) {
-        if ([[self.documents[i] fileURL] isEqualTo:[document fileURL]]) {
-            index = i;
-            break;
-        }
-    }
-    if (index != NSNotFound) {
-//        [self.documentListViewController selectDocumentAtIndex:index];
-    }
 
     if (self.mainViewController.mapLanguage) {
         [self selectLanguage:self.mainViewController.mapLanguage
@@ -173,9 +149,6 @@
     [self selectLanguage:((Document*)document).files[0].targetLanguage
         withSegmentIndex:1];
 
-    if (self.documents.count > 1) {
-        [self showSidebar];
-    }
     Document *doc = self.document;
     
     NSString *sourceLanguage = doc.files.firstObject.sourceLanguage;
@@ -190,9 +163,6 @@
 
 - (NSString*)path {
     Document *document = self.document;
-    if (!document && self.documents.count) {
-        document = self.documents[0];
-    }
     return [[document fileURL] path];
 }
 
@@ -200,36 +170,15 @@
     return [[self path] stringByDeletingLastPathComponent];
 }
 
-- (void)addDocument:(Document*)newDocument {
-    for (Document *document in self.documents) {
-        if ([[[[document fileURL] absoluteString] stringByStandardizingPath] isEqualTo:
-             [[[newDocument fileURL] absoluteString] stringByStandardizingPath]]) {
-            return;
-        }
-    }
-
-    if (newDocument) {
-        [self.documents addObject:newDocument];
-    }
-    
+-(void)windowDidBecomeKey:(NSNotification *)notification {
     [self reloadLanguageMap];
     [self reloadTranslationButtons];
-//    [self.documentListViewController reloadData];
-    [self.window invalidateRestorableState];
-}
-
--(void)windowDidBecomeKey:(NSNotification *)notification {
-    
 }
 
 - (void)windowWillClose:(NSNotification *)notification {
     self.window = nil;
-//    self.documentListViewController.delegate = nil;
-//    self.documentListViewController = nil;
-    for (Document *document in self.documents) {
-        document.windowController = nil;
-        [document close];
-    }
+    [self.document setWindowController:nil];
+    [self.document close];
 }
 
 #pragma mark - Window Resizing
@@ -268,11 +217,7 @@
 
 - (void)encodeRestorableStateWithCoder:(NSCoder *)coder {
     [super encodeRestorableStateWithCoder:coder];
-    NSMutableArray *urls = [NSMutableArray array];
-    for (Document *document in self.documents) {
-        [urls addObject:document.fileURL];
-    }
-    [coder encodeObject:urls forKey:@"documents"];
+    [coder encodeObject:[(Document*)self.document fileURL] forKey:@"url"];
     [coder encodeObject:[self selectedLanguageWithSegmentIndex:0] forKey:@"sourceLanguage"];
     [coder encodeObject:NSStringFromRect(self.window.frame) forKey:@"window-frame"];
 }
@@ -285,30 +230,24 @@
     DocumentWindowController *controller = (DocumentWindowController*)[[NSStoryboard storyboardWithName:@"Main" bundle:nil] instantiateControllerWithIdentifier:@"Document Window Controller"];
     DocumentWindow *window = (DocumentWindow*)controller.window;
     
-    NSArray *urls = [state decodeObjectForKey:@"documents"];
-    for (NSInteger i = 0; i < urls.count; i++) {
-        NSURL *url  = urls[i];
-        NSString *extension = [[url lastPathComponent] pathExtension];
-        Document *document = nil;
-        if ([Document isXliffExtension:extension]) {
-            document = [[Document alloc] initWithContentsOfURL:url
-                                                        ofType:@"xliff"
-                                                         error:nil];
-        } else if ([XclocDocument isXclocExtension:extension]) {
-            document = [[XclocDocument alloc] initWithContentsOfURL:url
-                                                             ofType:@"xcloc"
-                                                              error:nil];
-        }
-        
-        if (document) {
-            [controller setDocument:document];
-            document.windowController = controller;
-            if (i == 0) {
-                [document addWindowController:controller];
-            }
-        }
+    NSURL *url = [state decodeObjectForKey:@"url"];
+    NSString *extension = [[url lastPathComponent] pathExtension];
+    Document *document = nil;
+    if ([Document isXliffExtension:extension]) {
+        document = [[Document alloc] initWithContentsOfURL:url
+                                                    ofType:@"xliff"
+                                                     error:nil];
+    } else if ([XclocDocument isXclocExtension:extension]) {
+        document = [[XclocDocument alloc] initWithContentsOfURL:url
+                                                         ofType:@"xcloc"
+                                                          error:nil];
     }
-    if (!controller.documents.count) {
+    
+    if (document) {
+        [controller setDocument:document];
+        document.windowController = controller;
+        [document addWindowController:controller];
+    } else {
         // There is no document for the controller, not restoring
         completionHandler(nil, nil);
         return;
@@ -331,15 +270,9 @@
 
 #pragma mark interaction
 
-- (void)toggleFileList {
-    if (self.contentViewController != self.splitViewController) return;
-    NSSplitViewItem *splitViewItem = [[self.splitViewController splitViewItems] objectAtIndex:0];
-    splitViewItem.animator.collapsed = !splitViewItem.collapsed;
-}
-
 - (void)toggleNotes {
     if (self.contentViewController != self.splitViewController) return;
-    NSSplitViewItem *splitViewItem = [[self.splitViewController splitViewItems] objectAtIndex:2];
+    NSSplitViewItem *splitViewItem = [[self.splitViewController splitViewItems] objectAtIndex:1];
     splitViewItem.animator.collapsed = !splitViewItem.collapsed;
 }
 
@@ -420,38 +353,6 @@
         [self.progressButton addSegmentWithProgress:completedCount/(allTranslations.count/1.0) colour:[NSColor colorForControlTint:NSDefaultControlTint]];
     }
     [self.progressButton addSegmentWithProgress:warningCount/(allTranslations.count/1.0) colour:[NSColor systemRedColor]];
-}
-
-#pragma mark drawer
-
-- (NSArray *)documentsForDrawer:(id)drawer {
-    return self.documents;
-}
-
-- (void)documentDrawer:(id)sender didSelectedDocumentAtIndex:(NSUInteger)index {
-    if (index == -1) return;
-    Document *document = self.documents[index];
-    self.document = document;
-}
-
-- (IBAction)toggleDrawer:(id)sender {
-    [self toggleFileList];
-}
-
-- (void)showSidebar {
-    [[[self.splitViewController splitViewItems] firstObject] animator].collapsed = NO;
-}
-
-#pragma mark documen list
-
-- (NSArray<NSDocument *> *)documentsForListController:(id)sender {
-    return self.documents;
-}
-
-- (void)listController:(id)sender didSelectedDocumentAtIndex:(NSUInteger)index {
-    if (index == -1) return;
-    Document *document = self.documents[index];
-    self.document = document;
 }
 
 //#pragma mark splitview
@@ -581,8 +482,10 @@
 
 - (void)reloadLanguageMap {
     self.filesOfLanguages = [NSMutableDictionary dictionary];
-    
-    for (Document *document in self.documents) {
+    for (NSWindow *window in self.window.tabbedWindows) {
+        if (![window isKindOfClass:[DocumentWindow class]]) continue;
+        DocumentWindow *docWindow = (DocumentWindow*)window;
+        Document *document = docWindow.windowController.document;
         for (File *file in document.files) {
             if (!file.targetLanguage) continue;
             NSMutableDictionary *existingFiles = self.filesOfLanguages[file.targetLanguage];
@@ -603,8 +506,11 @@
     
     NSMutableOrderedSet *sourceCodes = [NSMutableOrderedSet orderedSet];
     NSMutableOrderedSet *targetCodes = [NSMutableOrderedSet orderedSet];
-    for (Document *document in self.documents) {
-        for (File *file in document.files) {
+    NSArray<NSWindow*> *windows = self.window.tabbedWindows ?: @[self.window];
+    for (NSWindow *window in windows) {
+        if (![window isKindOfClass:[DocumentWindow class]]) continue;
+        DocumentWindow *docWindow = (DocumentWindow*)window;
+        for (File *file in [docWindow.windowController.document files]) {
             [sourceCodes addObject:file.sourceLanguage];
             if (file.targetLanguage) {
                 [targetCodes addObject:file.targetLanguage];
@@ -671,10 +577,13 @@
 
 - (void)selectedTargetLanguage:(NSMenuItem*)sender {
     NSString *selectedTitle = sender.representedObject;
-    for (Document *document in self.documents) {
+    for (NSWindow *window in self.window.tabbedWindows) {
+        if (![window isKindOfClass:[DocumentWindow class]]) continue;
+        DocumentWindow *docWindow = (DocumentWindow*)window;
+        Document *document = docWindow.windowController.document;
         for (File *file in document.files) {
             if ([file.targetLanguage isEqualToString:selectedTitle]) {
-                self.document = document;
+                [docWindow makeKeyWindow];
                 return;
             }
         }
