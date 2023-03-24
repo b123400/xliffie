@@ -76,7 +76,7 @@
             case TranslationPairStateTranslated:
                 self.translatedItemCount++;
                 self.translatedWordCount += wordCount;
-                self.totalCharacterCount += p.source.length;
+                self.translatedCharacterCount += p.source.length;
                 break;
             case TranslationPairStateTranslatedWithWarnings:
                 self.warningItemCount++;
