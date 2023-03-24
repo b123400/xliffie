@@ -143,6 +143,37 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
                     cell.dotColor = nil;
                     break;
             }
+        } else if ([item isKindOfClass:[File class]]) {
+            File *file = (File*)item;
+            if (![outlineView isItemExpanded:item]) {
+                __block BOOL anyEmpty = NO;
+                __block BOOL anyWarning = NO;
+                [file.translations enumerateObjectsUsingBlock:^(TranslationPair * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    switch (obj.state) {
+                        case TranslationPairStateTranslatedWithWarnings:
+                            anyWarning = YES;
+                            *stop = YES;
+                            break;
+                        case TranslationPairStateEmpty:
+                        case TranslationPairStateSame:
+                        case TranslationPairStateMarkedAsNotTranslated:
+                            anyEmpty = YES;
+                            *stop = YES;
+                            break;
+                        case TranslationPairStateTranslated:
+                        case TranslationPairStateMarkedAsTranslated:
+                            // nothing
+                            break;
+                    }
+                }];
+                if (anyWarning) {
+                    cell.dotColor = [NSColor systemRedColor];
+                } else if (anyEmpty) {
+                    cell.dotColor = [NSColor orangeColor];
+                }
+            } else {
+                cell.dotColor = nil;
+            }
         } else {
             cell.dotColor = nil;
         }
