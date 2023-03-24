@@ -34,6 +34,6 @@
 /* Class = "NSMenuItem"; title = "Translate all"; ObjectID = "v14-K8-Xy9"; */
 "v14-K8-Xy9.title" = "全て";
 
-/* Class = "NSButtonCell"; title = "Only translate records with empty target string."; ObjectID = "xIa-yY-MDg"; */
+/* Class = "NSButtonCell"; title = "Only translate non-translated records."; ObjectID = "xIa-yY-MDg"; */
 "xIa-yY-MDg.title" = "まだ翻訳されてないもののみ";
 

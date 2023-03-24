@@ -4,6 +4,9 @@
 /* Translation window hint */
 "%lu record(s) are going to be translated using %@." = "これから %1$lu つの文字列を %2$@ で翻訳します。";
 
+/* Detail view */
+"⚠️Warnings" = "⚠️警告";
+
 /* confirm */
 "Add spaces to all translations?" = "英語と日本語と数字の間に空白を追加しますか？";
 
@@ -31,6 +34,12 @@
 /* No comment provided by engineer. */
 "Go ahead" = "うるせえ！";
 
+/* Menu item */
+"Mark as not translated" = "未翻訳にする";
+
+/* Menu item */
+"Mark as translated" = "翻訳済みにする";
+
 /* No comment provided by engineer. */
 "Maybe you've made a mistake?" = "もしかしたらミスった？";
 
@@ -39,6 +48,9 @@
 
 /* Translation window hint */
 "No translation service support this language" = "この言語を翻訳できるサービスがないです。";
+
+/* Progress report */
+"Not Translated" = "未翻訳";
 
 /* Translation window hint */
 "Nothing matches the above criteria. Nothing will be translated." = "以上の条件に満たす文字列がないため、なにも翻訳しないです。";
@@ -57,6 +69,15 @@
 
 /* Translate alert message */
 "There are %lu records with formatting warnings, better fix them before applying." = "問題がある文字列は %lu 個もありますけど、修正した方がいいですよ。";
+
+/* Progress report */
+"Total" = "全部";
+
+/* Progress report */
+"Translated" = "翻訳済み";
+
+/* Progress report */
+"Translated with warnings" = "警告ある翻訳";
 
 /* confirm */
 "You can undo by pressing command+z" = "コマンド + z で復元できます。";

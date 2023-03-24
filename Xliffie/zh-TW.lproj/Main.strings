@@ -52,6 +52,9 @@
 /* Class = "NSToolbarItem"; paletteLabel = "Translate"; ObjectID = "7Hq-tz-Ud3"; */
 "7Hq-tz-Ud3.paletteLabel" = "翻譯";
 
+/* Class = "NSMenuItem"; title = "Mark as translated"; ObjectID = "7je-R1-NAb"; */
+"7je-R1-NAb.title" = "當成已經翻譯";
+
 /* Class = "NSMenu"; title = "Writing Direction"; ObjectID = "8mr-sm-Yjd"; */
 "8mr-sm-Yjd.title" = "書寫方向";
 
@@ -62,7 +65,7 @@
 "9yt-4B-nSM.title" = "智慧型拷貝/貼上";
 
 /* Class = "NSMenuItem"; title = "Tighten"; ObjectID = "46P-cB-AYj"; */
-"46P-cB-AYj.title" = "Tighten";
+"46P-cB-AYj.title" = "緊縮字元間距";
 
 /* Class = "NSMenuItem"; title = "Correct Spelling Automatically"; ObjectID = "78Y-hA-62v"; */
 "78Y-hA-62v.title" = "自動更正拼字";
@@ -138,6 +141,9 @@
 
 /* Class = "NSMenuItem"; title = "Close"; ObjectID = "DVo-aG-piG"; */
 "DVo-aG-piG.title" = "關閉";
+
+/* Class = "NSMenuItem"; title = "Item 1"; ObjectID = "DwU-b4-XiA"; */
+"DwU-b4-XiA.title" = "";
 
 /* Class = "NSMenuItem"; title = "Show Info"; ObjectID = "EJo-G1-Lo1"; */
 "EJo-G1-Lo1.title" = "顯示信息";
@@ -215,10 +221,10 @@
 "J5U-5w-g23.title" = "齊行";
 
 /* Class = "NSMenuItem"; title = "Use None"; ObjectID = "J7y-lM-qPV"; */
-"J7y-lM-qPV.title" = "Use None";
+"J7y-lM-qPV.title" = "不使用";
 
 /* Class = "NSMenuItem"; title = "Kern"; ObjectID = "jBQ-r6-VK2"; */
-"jBQ-r6-VK2.title" = "Kern";
+"jBQ-r6-VK2.title" = "字元間距";
 
 /* Class = "NSMenuItem"; title = "\tRight to Left"; ObjectID = "jFq-tB-4Kx"; */
 "jFq-tB-4Kx.title" = "從右到左";
@@ -249,6 +255,12 @@
 
 /* Class = "NSMenuItem"; title = "Copy Ruler"; ObjectID = "MkV-Pr-PK5"; */
 "MkV-Pr-PK5.title" = "複製標尺";
+
+/* Class = "NSToolbarItem"; label = "Progress"; ObjectID = "nH5-3B-tsZ"; */
+"nH5-3B-tsZ.label" = "進度";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Progress"; ObjectID = "nH5-3B-tsZ"; */
+"nH5-3B-tsZ.paletteLabel" = "進度";
 
 /* Class = "NSMenuItem"; title = "Services"; ObjectID = "NMo-om-nkz"; */
 "NMo-om-nkz.title" = "服務";
@@ -441,4 +453,7 @@
 
 /* Class = "NSMenuItem"; title = "Paragraph"; ObjectID = "ZvO-Gk-QUH"; */
 "ZvO-Gk-QUH.title" = "段落";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "Zz3-Gr-MRr"; */
+"Zz3-Gr-MRr.title" = "";
 

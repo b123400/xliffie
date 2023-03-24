@@ -4,6 +4,9 @@
 /* Translation window hint */
 "%lu record(s) are going to be translated using %@." = "將會用 %2$@ 翻譯 %1$lu 段文字";
 
+/* Detail view */
+"⚠️Warnings" = "⚠️警告";
+
 /* confirm */
 "Add spaces to all translations?" = "要在中文和英數字之間加入空白嗎？";
 
@@ -31,6 +34,12 @@
 /* No comment provided by engineer. */
 "Go ahead" = "不管啦照做啦";
 
+/* Menu item */
+"Mark as not translated" = "當成未翻譯";
+
+/* Menu item */
+"Mark as translated" = "當成已經翻譯";
+
 /* No comment provided by engineer. */
 "Maybe you've made a mistake?" = "這裏是不是有點不小心...?";
 
@@ -39,6 +48,9 @@
 
 /* Translation window hint */
 "No translation service support this language" = "沒有網站可以幫你翻譯這個語言耶";
+
+/* Progress report */
+"Not Translated" = "未翻譯";
 
 /* Translation window hint */
 "Nothing matches the above criteria. Nothing will be translated." = "沒有字串符合以上條件喔";
@@ -57,6 +69,15 @@
 
 /* Translate alert message */
 "There are %lu records with formatting warnings, better fix them before applying." = "有 %lu 個字串都有格式警告，適用之前是不是先修正比較好...？";
+
+/* Progress report */
+"Total" = "全部";
+
+/* Progress report */
+"Translated" = "已翻譯";
+
+/* Progress report */
+"Translated with warnings" = "翻譯了但有錯誤";
 
 /* confirm */
 "You can undo by pressing command+z" = "你可以按 command + z 來復原";

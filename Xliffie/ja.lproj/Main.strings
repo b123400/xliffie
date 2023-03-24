@@ -52,11 +52,17 @@
 /* Class = "NSToolbarItem"; paletteLabel = "Translate"; ObjectID = "7Hq-tz-Ud3"; */
 "7Hq-tz-Ud3.paletteLabel" = "翻訳";
 
+/* Class = "NSMenuItem"; title = "Mark as translated"; ObjectID = "7je-R1-NAb"; */
+"7je-R1-NAb.title" = "翻訳済みにする";
+
 /* Class = "NSMenu"; title = "Writing Direction"; ObjectID = "8mr-sm-Yjd"; */
 "8mr-sm-Yjd.title" = "文章の方向";
 
 /* Class = "NSMenuItem"; title = "Substitutions"; ObjectID = "9ic-FL-obx"; */
 "9ic-FL-obx.title" = "自動置換";
+
+/* Class = "NSMenuItem"; title = "Item 1"; ObjectID = "9VO-BF-sdu"; */
+"9VO-BF-sdu.title" = "";
 
 /* Class = "NSMenuItem"; title = "Smart Copy/Paste"; ObjectID = "9yt-4B-nSM"; */
 "9yt-4B-nSM.title" = "スマートコピー/ペースト";
@@ -138,6 +144,9 @@
 
 /* Class = "NSMenuItem"; title = "Close"; ObjectID = "DVo-aG-piG"; */
 "DVo-aG-piG.title" = "閉じる";
+
+/* Class = "NSMenuItem"; title = "Item 1"; ObjectID = "DwU-b4-XiA"; */
+"DwU-b4-XiA.title" = "";
 
 /* Class = "NSMenuItem"; title = "Show Info"; ObjectID = "EJo-G1-Lo1"; */
 "EJo-G1-Lo1.title" = "詳細を表示";
@@ -232,6 +241,15 @@
 /* Class = "NSMenuItem"; title = "Show All"; ObjectID = "Kd2-mp-pUS"; */
 "Kd2-mp-pUS.title" = "すべて表示";
 
+/* Class = "NSMenuItem"; title = "Item 3"; ObjectID = "kop-nu-I4t"; */
+"kop-nu-I4t.title" = "";
+
+/* Class = "NSSegmentedCell"; KPb-6u-j63.ibShadowedLabels[0] = "AA"; ObjectID = "KPb-6u-j63"; */
+"KPb-6u-j63.ibShadowedLabels[0]" = "";
+
+/* Class = "NSSegmentedCell"; KPb-6u-j63.ibShadowedLabels[1] = "BB"; ObjectID = "KPb-6u-j63"; */
+"KPb-6u-j63.ibShadowedLabels[1]" = "";
+
 /* Class = "NSMenuItem"; title = "\tLeft to Right"; ObjectID = "Lbh-J2-qVU"; */
 "Lbh-J2-qVU.title" = "\t左から右へ";
 
@@ -249,6 +267,12 @@
 
 /* Class = "NSMenuItem"; title = "Copy Ruler"; ObjectID = "MkV-Pr-PK5"; */
 "MkV-Pr-PK5.title" = "ルーラをコピー";
+
+/* Class = "NSToolbarItem"; label = "Progress"; ObjectID = "nH5-3B-tsZ"; */
+"nH5-3B-tsZ.label" = "進捗";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Progress"; ObjectID = "nH5-3B-tsZ"; */
+"nH5-3B-tsZ.paletteLabel" = "進捗";
 
 /* Class = "NSMenuItem"; title = "Services"; ObjectID = "NMo-om-nkz"; */
 "NMo-om-nkz.title" = "サービス";
@@ -355,6 +379,9 @@
 /* Class = "NSMenuItem"; title = "Cut"; ObjectID = "uRl-iY-unG"; */
 "uRl-iY-unG.title" = "カット";
 
+/* Class = "NSMenuItem"; title = "Item 2"; ObjectID = "v7F-2b-4LK"; */
+"v7F-2b-4LK.title" = "";
+
 /* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "Vdr-fp-XzO"; */
 "Vdr-fp-XzO.title" = "ほかを非表示";
 
@@ -378,6 +405,9 @@
 
 /* Class = "NSMenu"; title = "Ligatures"; ObjectID = "w0m-vy-SC9"; */
 "w0m-vy-SC9.title" = "リガチャ";
+
+/* Class = "NSMenuItem"; title = "Item 2"; ObjectID = "w1i-R1-td4"; */
+"w1i-R1-td4.title" = "";
 
 /* Class = "NSMenu"; title = "Edit"; ObjectID = "W48-6f-4Dl"; */
 "W48-6f-4Dl.title" = "編集";
@@ -444,4 +474,7 @@
 
 /* Class = "NSMenuItem"; title = "Paragraph"; ObjectID = "ZvO-Gk-QUH"; */
 "ZvO-Gk-QUH.title" = "段落";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "Zz3-Gr-MRr"; */
+"Zz3-Gr-MRr.title" = "";
 

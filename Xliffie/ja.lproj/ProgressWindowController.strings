@@ -1,0 +1,27 @@
+/* Class = "NSButtonCell"; title = "Close"; ObjectID = "4pz-Yk-cAM"; */
+"4pz-Yk-cAM.title" = "閉じる";
+
+/* Class = "NSTableColumn"; headerCell.title = "Word Count"; ObjectID = "aIo-jA-WVn"; */
+"aIo-jA-WVn.headerCell.title" = "ワード数";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "b1e-XW-VwJ"; */
+"b1e-XW-VwJ.title" = "Text Cell";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "eCx-7y-Dxd"; */
+"eCx-7y-Dxd.title" = "Text Cell";
+
+/* Class = "NSWindow"; title = "Window"; ObjectID = "F0z-JX-Cv5"; */
+"F0z-JX-Cv5.title" = "ウインドウ";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "Lud-N8-s3D"; */
+"Lud-N8-s3D.title" = "Text Cell";
+
+/* Class = "NSTableColumn"; headerCell.title = "Character Count"; ObjectID = "p32-zw-oKA"; */
+"p32-zw-oKA.headerCell.title" = "文字数";
+
+/* Class = "NSTableColumn"; headerCell.title = "Item Count"; ObjectID = "wEs-Iq-bbN"; */
+"wEs-Iq-bbN.headerCell.title" = "項目数";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "zJo-dX-ash"; */
+"zJo-dX-ash.title" = "Text Cell";
+
