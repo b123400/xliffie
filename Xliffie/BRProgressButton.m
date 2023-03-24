@@ -33,13 +33,7 @@
     NSPoint center = NSMakePoint(self.bounds.size.width/2, self.bounds.size.height/2);
     
     CGFloat radius = (MIN(self.bounds.size.width, self.bounds.size.height) - 2) / 2;
-
     [gc saveGraphicsState];
-//    [[NSColor controlBackgroundColor] setFill];
-//    NSBezierPath *bgPath = [NSBezierPath bezierPath];
-//    [bgPath appendBezierPathWithArcWithCenter:center radius:radius startAngle:0 endAngle:360];
-//    [bgPath fill];
-    
     double startAngle = -90;
     for (int i = 0; i < self.progresses.count; i++) {
         NSNumber *progress = self.progresses[i];
@@ -48,7 +42,6 @@
         
         [colour setFill];
         NSBezierPath *path = [NSBezierPath bezierPath];
-//        [path moveToPoint:center];
         [path appendBezierPathWithArcWithCenter:center
                                          radius:radius
                                      startAngle:startAngle
@@ -59,17 +52,9 @@
                                      startAngle:endAngle
                                        endAngle:startAngle
                                       clockwise:YES];
-//        [path lineToPoint:center];
         [path fill];
         startAngle = endAngle;
     }
-    
-    [[NSColor controlBackgroundColor] setFill];
-    
-//    NSBezierPath *centerPath = [NSBezierPath bezierPath];
-//    [centerPath appendBezierPathWithArcWithCenter:center radius:radius - 5 startAngle:0 endAngle:360];
-//    [centerPath fill];
-    
     [gc restoreGraphicsState];
 }
 

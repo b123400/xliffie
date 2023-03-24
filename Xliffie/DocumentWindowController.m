@@ -411,11 +411,11 @@
     }
     [self.progressButton resetSegments];
     if (@available(macOS 10.14, *)) {
-        [self.progressButton addSegmentWithProgress:completedCount/(allTranslations.count/1.0) colour:[NSColor controlAccentColor]];
+        [self.progressButton addSegmentWithProgress:completedCount/(allTranslations.count/1.0) colour:[NSColor alternateSelectedControlColor]];
     } else {
         [self.progressButton addSegmentWithProgress:completedCount/(allTranslations.count/1.0) colour:[NSColor colorForControlTint:NSDefaultControlTint]];
     }
-    [self.progressButton addSegmentWithProgress:warningCount/(allTranslations.count/1.0) colour:[NSColor systemOrangeColor]];
+    [self.progressButton addSegmentWithProgress:warningCount/(allTranslations.count/1.0) colour:[NSColor systemRedColor]];
 }
 
 #pragma mark drawer
@@ -546,7 +546,7 @@
 #pragma mark selection
 
 - (void)viewController:(id)controller didSelectedTranslation:(TranslationPair*)pair {
-    [self.detailViewController setRepresentedObject:pair.note];
+    [self.detailViewController setRepresentedObject:pair];
 }
 - (IBAction)searchFilterChanged:(id)sender {
     if ([sender isKindOfClass:[NSTextField class]]) {
