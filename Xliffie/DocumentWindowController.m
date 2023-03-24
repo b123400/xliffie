@@ -60,6 +60,10 @@
                                              selector:@selector(documentDidUndoOrRedo:)
                                                  name:NSUndoManagerDidRedoChangeNotification
                                                object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(anotherWindowWillClose:)
+                                                 name:NSWindowWillCloseNotification
+                                               object:nil];
     return self;
 }
 
@@ -116,6 +120,7 @@
         }
         [self.window setFrame:lastWindowFrame display:YES];
     }
+    [self reloadTranslationButtons];
 }
 
 - (void)setDocument:(id)document {
@@ -159,6 +164,7 @@
         self.translateButton.enabled = YES;
     }
     [self reloadProgress];
+    [self reloadTranslationButtons];
 }
 
 - (NSString*)path {
@@ -354,31 +360,6 @@
     }
     [self.progressButton addSegmentWithProgress:warningCount/(allTranslations.count/1.0) colour:[NSColor systemRedColor]];
 }
-
-//#pragma mark splitview
-
-//- (BOOL)splitView:(NSSplitView *)splitView canCollapseSubview:(NSView *)subview {
-//    NSView* rightView = [[splitView subviews] objectAtIndex:1];
-//    return ([subview isEqual:rightView]);
-//}
-//
-//- (BOOL)splitView:(NSSplitView *)splitView
-//shouldCollapseSubview:(NSView *)subview
-//forDoubleClickOnDividerAtIndex:(NSInteger)dividerIndex {
-//    return YES;
-//}
-//
-//- (CGFloat)splitView:(NSSplitView *)splitView
-//constrainMinCoordinate:(CGFloat)proposedMin
-//         ofSubviewAt:(NSInteger)dividerIndex {
-//    return splitView.frame.size.width/2.0;
-//}
-//
-//- (CGFloat)splitView:(NSSplitView *)splitView
-//constrainMaxCoordinate:(CGFloat)proposedMax
-//         ofSubviewAt:(NSInteger)dividerIndex {
-//    return splitView.frame.size.width-200;
-//}
 
 #pragma mark short cuts
 
@@ -620,6 +601,10 @@
     [self reloadTranslationButtons];
 
     [self selectLanguage:targetLanguage withSegmentIndex:1];
+}
+
+- (void)anotherWindowWillClose:(NSNotification*)notification {
+    [self reloadTranslationButtons];
 }
 
 #pragma mark Translation Service
