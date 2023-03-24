@@ -13,10 +13,12 @@
 #import "Glossary.h"
 #import "NSAttributedString+FileIcon.h"
 
-@interface DocumentViewController () <SuggestionsWindowControllerDelegate>
+@interface DocumentViewController () <SuggestionsWindowControllerDelegate, NSTextFinderClient>
 
 @property (strong, nonatomic) Document *filteredDocument;
 @property (strong, nonatomic) Document *mappingDocument;
+
+@property (strong, nonatomic) NSTextFinder *textFinder;
 
 @end
 
@@ -40,6 +42,12 @@
     // Do any additional setup after loading the view.
     self.outlineView.autosaveExpandedItems = YES;
     self.outlineView.xmlOutlineDelegate = self;
+    
+    self.textFinder = [[NSTextFinder alloc] init];
+    self.textFinder.findBarContainer = self.outlineView.enclosingScrollView;
+    self.textFinder.incrementalSearchingEnabled = YES;
+    self.textFinder.incrementalSearchingShouldDimContentView = YES;
+    self.textFinder.client = self;
 }
 
 - (void)dealloc {
@@ -468,6 +476,31 @@ doCommandBySelector:(SEL)commandSelector {
 }
 
 #pragma mark Search
+
+- (void)performTextFinderAction:(id)sender {
+    if ([sender isKindOfClass:[NSMenuItem class]] ) {
+        NSMenuItem *menuItem = (NSMenuItem*)sender;
+        if ([self.textFinder validateAction:menuItem.tag]) {
+            if (menuItem.tag == NSTextFinderActionShowFindInterface) {
+                // This is a special tag
+                [self.textFinder performAction:NSTextFinderActionSetSearchString];
+            }
+            [self.textFinder performAction:menuItem.tag];
+        }
+    }
+}
+
+//-(NSUInteger)stringLength {
+//    return 10;
+//}
+
+- (NSString *)string {
+    return @"abcd efghi";
+}
+
+//- (NSString *)stringAtIndex:(NSUInteger)characterIndex effectiveRange:(NSRangePointer)outRange endsWithSearchBoundary:(BOOL *)outFlag {
+//
+//}
 
 - (void)setSearchFilter:(NSString *)searchFilter {
     _searchFilter = searchFilter;
