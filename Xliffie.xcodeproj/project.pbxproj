@@ -374,13 +374,10 @@
 				CFCD4B331A6D0C7200BA8826 /* DocumentWindow.m */,
 				CF5FC8961A5ABFF700538E60 /* DocumentViewController.h */,
 				CF5FC8971A5ABFF700538E60 /* DocumentViewController.m */,
-				CF5682ED1A6B11C700E0DEDD /* DetailViewController.h */,
-				CF5682EE1A6B11C700E0DEDD /* DetailViewController.m */,
-				CF92FB921C24037B00700D3E /* TargetMissingViewController.h */,
-				CF92FB931C24037B00700D3E /* TargetMissingViewController.m */,
-				CF1CE50329CB4EBD00BBFAAB /* ProgressWindowController.h */,
-				CF1CE50429CB4EBD00BBFAAB /* ProgressWindowController.m */,
-				CF9A36EF29CD8F3C00FB8763 /* ProgressWindowController.xib */,
+				CF9A36FD29CDE6AA00FB8763 /* TextFinder */,
+				CF9A36FB29CDE66900FB8763 /* Detail */,
+				CF9A36FA29CDE65C00FB8763 /* TargetMissing */,
+				CF9A36F929CDE64E00FB8763 /* Progress */,
 				CF5AB3BE293DCE4700C8AC7B /* Suggestions */,
 				CFB0B8F61C3073A9004DF663 /* Translator */,
 				CF34B75C1AADE02400C6A58E /* Model */,
@@ -486,6 +483,43 @@
 				CF740AAC2701CE7800F31F26 /* zh-tw.glossary */,
 			);
 			path = Assets;
+			sourceTree = "<group>";
+		};
+		CF9A36F929CDE64E00FB8763 /* Progress */ = {
+			isa = PBXGroup;
+			children = (
+				CF1CE50329CB4EBD00BBFAAB /* ProgressWindowController.h */,
+				CF1CE50429CB4EBD00BBFAAB /* ProgressWindowController.m */,
+				CF9A36EF29CD8F3C00FB8763 /* ProgressWindowController.xib */,
+			);
+			path = Progress;
+			sourceTree = "<group>";
+		};
+		CF9A36FA29CDE65C00FB8763 /* TargetMissing */ = {
+			isa = PBXGroup;
+			children = (
+				CF92FB921C24037B00700D3E /* TargetMissingViewController.h */,
+				CF92FB931C24037B00700D3E /* TargetMissingViewController.m */,
+			);
+			path = TargetMissing;
+			sourceTree = "<group>";
+		};
+		CF9A36FB29CDE66900FB8763 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				CF5682ED1A6B11C700E0DEDD /* DetailViewController.h */,
+				CF5682EE1A6B11C700E0DEDD /* DetailViewController.m */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		CF9A36FD29CDE6AA00FB8763 /* TextFinder */ = {
+			isa = PBXGroup;
+			children = (
+				CF9A36FE29CDE6BE00FB8763 /* DocumentTextFinderClient.h */,
+				CF9A36FF29CDE6BE00FB8763 /* DocumentTextFinderClient.m */,
+			);
+			path = TextFinder;
 			sourceTree = "<group>";
 		};
 		CFB0B8F61C3073A9004DF663 /* Translator */ = {
