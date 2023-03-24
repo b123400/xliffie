@@ -34,6 +34,21 @@
     
     CGFloat radius = (MIN(self.bounds.size.width, self.bounds.size.height) - 2) / 2;
     [gc saveGraphicsState];
+    
+    [[NSColor secondarySelectedControlColor] setFill];
+    NSBezierPath *path = [NSBezierPath bezierPath];
+    [path appendBezierPathWithArcWithCenter:center
+                                     radius:radius
+                                 startAngle:0
+                                   endAngle:360
+                                  clockwise:NO];
+    [path appendBezierPathWithArcWithCenter:center
+                                     radius:radius - 5
+                                 startAngle:360
+                                   endAngle:0
+                                  clockwise:YES];
+    [path fill];
+    
     double startAngle = -90;
     for (int i = 0; i < self.progresses.count; i++) {
         NSNumber *progress = self.progresses[i];
