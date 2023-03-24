@@ -657,10 +657,8 @@
                         <toolbar key="toolbar" implicitIdentifier="166F8748-BD85-4A78-8FF8-6788C586B18B" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="XuC-uR-2Qg">
                             <allowedToolbarItems>
                                 <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="fIO-7r-OQw"/>
-                                <toolbarItem implicitItemIdentifier="49F7EE2C-F5C3-4B1F-BF77-9764EB1FE684" label="" paletteLabel="Source &amp; Target" tag="-1" id="hRa-qY-UHQ">
+                                <toolbarItem implicitItemIdentifier="49F7EE2C-F5C3-4B1F-BF77-9764EB1FE684" label="" paletteLabel="Source &amp; Target" tag="-1" sizingBehavior="auto" id="hRa-qY-UHQ">
                                     <nil key="toolTip"/>
-                                    <size key="minSize" width="280" height="37"/>
-                                    <size key="maxSize" width="283" height="96"/>
                                     <customView key="view" misplaced="YES" id="0Of-8F-jfa">
                                         <rect key="frame" x="0.0" y="14" width="283" height="37"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -686,10 +684,8 @@
                                         </constraints>
                                     </customView>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="A0E1EFD6-7CF7-4E5F-A5E2-40A8F76C9CF5" label="Search" paletteLabel="Search" id="z3T-JE-F8n">
+                                <toolbarItem implicitItemIdentifier="A0E1EFD6-7CF7-4E5F-A5E2-40A8F76C9CF5" label="Search" paletteLabel="Search" sizingBehavior="auto" id="z3T-JE-F8n">
                                     <nil key="toolTip"/>
-                                    <size key="minSize" width="96" height="22"/>
-                                    <size key="maxSize" width="96" height="22"/>
                                     <searchField key="view" wantsLayer="YES" verticalHuggingPriority="750" id="ihp-tX-qqE">
                                         <rect key="frame" x="0.0" y="14" width="96" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -703,10 +699,8 @@
                                         </searchFieldCell>
                                     </searchField>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="B7FE7B98-B732-453D-9553-E1A4D35A57FA" label="Toggle notes" paletteLabel="Toggle notes" image="info" id="pRq-eI-zXo">
+                                <toolbarItem implicitItemIdentifier="B7FE7B98-B732-453D-9553-E1A4D35A57FA" label="Toggle notes" paletteLabel="Toggle notes" image="info" sizingBehavior="auto" id="pRq-eI-zXo">
                                     <nil key="toolTip"/>
-                                    <size key="minSize" width="29" height="28"/>
-                                    <size key="maxSize" width="29" height="53"/>
                                     <button key="view" verticalHuggingPriority="750" id="u5l-HS-aiR">
                                         <rect key="frame" x="23" y="14" width="29" height="28"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -719,10 +713,8 @@
                                         <action selector="toggleNotesPressed:" target="jGA-0Y-lOj" id="5fZ-hc-gKD"/>
                                     </connections>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="E01F529A-9A85-4311-84BC-74118B4096BA" label="Translate" paletteLabel="Translate" image="translate" id="7Hq-tz-Ud3">
+                                <toolbarItem implicitItemIdentifier="E01F529A-9A85-4311-84BC-74118B4096BA" label="Translate" paletteLabel="Translate" image="translate" sizingBehavior="auto" id="7Hq-tz-Ud3">
                                     <nil key="toolTip"/>
-                                    <size key="minSize" width="29" height="28"/>
-                                    <size key="maxSize" width="29" height="53"/>
                                     <button key="view" verticalHuggingPriority="750" id="lmd-e1-baA">
                                         <rect key="frame" x="14" y="14" width="29" height="28"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -735,10 +727,8 @@
                                         <action selector="translateButtonPressed:" target="jGA-0Y-lOj" id="N5m-Al-Lpf"/>
                                     </connections>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="E652AFEB-CB4F-4B4A-8E51-CB483C6B9503" label="Add spaces" paletteLabel="Add spaces" image="Pangu" id="Sx1-Fi-XrM">
+                                <toolbarItem implicitItemIdentifier="E652AFEB-CB4F-4B4A-8E51-CB483C6B9503" label="Add spaces" paletteLabel="Add spaces" image="Pangu" sizingBehavior="auto" id="Sx1-Fi-XrM">
                                     <nil key="toolTip"/>
-                                    <size key="minSize" width="29" height="28"/>
-                                    <size key="maxSize" width="29" height="53"/>
                                     <button key="view" verticalHuggingPriority="750" id="DKj-mn-Eal">
                                         <rect key="frame" x="20" y="14" width="29" height="28"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
