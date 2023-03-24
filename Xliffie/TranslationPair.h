@@ -12,6 +12,7 @@
 typedef enum : NSUInteger {
     TranslationPairStateMarkedAsNotTranslated,
     TranslationPairStateEmpty,
+    TranslationPairStateSame,
     TranslationPairStateTranslatedWithWarnings,
     TranslationPairStateTranslated,
     TranslationPairStateMarkedAsTranslated,

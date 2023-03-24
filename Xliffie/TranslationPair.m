@@ -115,7 +115,10 @@
     if (![self.target length]) {
         return TranslationPairStateEmpty;
     }
-    if ([self.source isEqualTo:self.target] || [self warningsForTarget].count) {
+    if ([self.source isEqualTo:self.target]) {
+        return TranslationPairStateSame;
+    }
+    if ([self warningsForTarget].count) {
         return TranslationPairStateTranslatedWithWarnings;
     }
     return TranslationPairStateTranslated;
@@ -195,6 +198,7 @@
             return YES;
         case TranslationPairStateMarkedAsNotTranslated:
         case TranslationPairStateEmpty:
+        case TranslationPairStateSame:
         case TranslationPairStateTranslatedWithWarnings:
             return NO;
     }
@@ -203,7 +207,11 @@
 
 - (NSArray <NSString*> *)warningsForTarget {
     if (!self.cachedTargetWarnings) {
-        self.cachedTargetWarnings = [self formatWarningsForProposedTranslation:self.target];
+        if (self.target) {
+            self.cachedTargetWarnings = [self formatWarningsForProposedTranslation:self.target];
+        } else {
+            self.cachedTargetWarnings = @[];
+        }
     }
     return self.cachedTargetWarnings;
 }

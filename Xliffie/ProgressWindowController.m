@@ -84,6 +84,7 @@
                 self.warningCharacterCount += p.source.length;
                 break;
             case TranslationPairStateMarkedAsNotTranslated:
+            case TranslationPairStateSame:
             case TranslationPairStateEmpty:
                 self.emptyItemCount++;
                 self.emptyWordCount += wordCount;

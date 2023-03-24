@@ -131,9 +131,10 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
             TranslationPair *pair = (TranslationPair*)item;
             switch (pair.state) {
                 case TranslationPairStateEmpty:
+                case TranslationPairStateMarkedAsNotTranslated:
+                case TranslationPairStateSame:
                     cell.dotColor = [NSColor systemOrangeColor];
                     break;
-                case TranslationPairStateMarkedAsNotTranslated:
                 case TranslationPairStateTranslatedWithWarnings: // TODO: show warning sign instead of mixing with non-translated
                     cell.dotColor = [NSColor systemRedColor];
                     break;
