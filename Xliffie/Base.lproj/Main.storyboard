@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21225"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15400"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -664,7 +664,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <subviews>
                                             <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uLd-TS-Dl5">
-                                                <rect key="frame" x="-1" y="6" width="291" height="25"/>
+                                                <rect key="frame" x="0.0" y="7" width="287" height="23"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="22" id="kCi-ei-A8X"/>
                                                 </constraints>
@@ -741,7 +741,7 @@
                                         <action selector="addSpaceButtonPressed:" target="jGA-0Y-lOj" id="Yj4-sf-jjl"/>
                                     </connections>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="1DCF9AC4-83DC-4369-919B-A67CCBE9A9A9" label="Progress" paletteLabel="Progress" bordered="YES" sizingBehavior="auto" id="nH5-3B-tsZ">
+                                <toolbarItem implicitItemIdentifier="1DCF9AC4-83DC-4369-919B-A67CCBE9A9A9" label="Progress" paletteLabel="Progress" sizingBehavior="auto" id="nH5-3B-tsZ">
                                     <nil key="toolTip"/>
                                     <button key="view" verticalHuggingPriority="750" id="4DH-6S-neu" customClass="BRProgressButton">
                                         <rect key="frame" x="21" y="14" width="12" height="23"/>
@@ -796,7 +796,7 @@
                                 </constraints>
                             </customView>
                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="b6z-ZM-sgM">
-                                <rect key="frame" x="114" y="115" width="223" height="26"/>
+                                <rect key="frame" x="114" y="116" width="222" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="216" id="2OA-5a-7ib"/>
                                     <constraint firstAttribute="height" constant="21" id="wbS-9M-bva"/>
@@ -814,7 +814,7 @@
                                 </popUpButtonCell>
                             </popUpButton>
                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lVZ-ev-Oi3">
-                                <rect key="frame" x="114" y="56" width="223" height="26"/>
+                                <rect key="frame" x="114" y="57" width="222" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="216" id="H6E-vn-usy"/>
                                     <constraint firstAttribute="height" constant="21" id="XfO-6B-vOw"/>
@@ -844,7 +844,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZHO-vf-Zc1">
-                                <rect key="frame" x="141" y="14" width="169" height="33"/>
+                                <rect key="frame" x="142" y="14" width="167" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="155" id="GoI-C0-Obs"/>
                                     <constraint firstAttribute="height" constant="21" id="jut-0Y-fLX"/>
@@ -935,6 +935,7 @@ DQ
                                             <tableColumns>
                                                 <tableColumn identifier="source" width="229" minWidth="40" maxWidth="1000" id="5dk-vI-VB7">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Source">
+                                                        <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -947,6 +948,7 @@ DQ
                                                 </tableColumn>
                                                 <tableColumn identifier="target" width="334" minWidth="40" maxWidth="1000" id="yxF-Xr-dO4">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Target">
+                                                        <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>

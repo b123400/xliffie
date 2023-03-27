@@ -44,7 +44,7 @@
     [self.window.contentView setNeedsLayout:YES];
     
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
-    NSSize loadingSize = NSMakeSize(50, 50);
+    NSSize loadingSize = NSMakeSize(25, 25);
     NSPoint cooridinate = NSMakePoint((self.window.frame.size.width - loadingSize.width)/2,
                                       (self.window.frame.size.height - loadingSize.height)/2);
     self.loadingIndicator = [[NSProgressIndicator alloc] initWithFrame:NSMakeRect(cooridinate.x,
