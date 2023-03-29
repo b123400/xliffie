@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15400"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21225"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -661,10 +661,10 @@
                                     <nil key="toolTip"/>
                                     <customView key="view" misplaced="YES" id="0Of-8F-jfa">
                                         <rect key="frame" x="0.0" y="14" width="283" height="37"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
                                             <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uLd-TS-Dl5">
-                                                <rect key="frame" x="0.0" y="7" width="287" height="23"/>
+                                                <rect key="frame" x="-1" y="6" width="291" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="22" id="kCi-ei-A8X"/>
                                                 </constraints>
@@ -688,7 +688,7 @@
                                     <nil key="toolTip"/>
                                     <searchField key="view" wantsLayer="YES" verticalHuggingPriority="750" id="ihp-tX-qqE">
                                         <rect key="frame" x="0.0" y="14" width="96" height="22"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <autoresizingMask key="autoresizingMask"/>
                                         <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="e9b-jI-J9u">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -703,7 +703,7 @@
                                     <nil key="toolTip"/>
                                     <button key="view" verticalHuggingPriority="750" id="u5l-HS-aiR">
                                         <rect key="frame" x="23" y="14" width="29" height="28"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <autoresizingMask key="autoresizingMask"/>
                                         <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="info" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="laW-Dq-Ild">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -717,7 +717,7 @@
                                     <nil key="toolTip"/>
                                     <button key="view" verticalHuggingPriority="750" id="lmd-e1-baA">
                                         <rect key="frame" x="14" y="14" width="29" height="28"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <autoresizingMask key="autoresizingMask"/>
                                         <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="translate" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="DLF-qG-Mz6">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -731,7 +731,7 @@
                                     <nil key="toolTip"/>
                                     <button key="view" verticalHuggingPriority="750" id="DKj-mn-Eal">
                                         <rect key="frame" x="20" y="14" width="29" height="28"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <autoresizingMask key="autoresizingMask"/>
                                         <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="Pangu" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ebq-x1-ytS">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -796,7 +796,7 @@
                                 </constraints>
                             </customView>
                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="b6z-ZM-sgM">
-                                <rect key="frame" x="114" y="116" width="222" height="25"/>
+                                <rect key="frame" x="114" y="115" width="223" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="216" id="2OA-5a-7ib"/>
                                     <constraint firstAttribute="height" constant="21" id="wbS-9M-bva"/>
@@ -814,7 +814,7 @@
                                 </popUpButtonCell>
                             </popUpButton>
                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lVZ-ev-Oi3">
-                                <rect key="frame" x="114" y="57" width="222" height="25"/>
+                                <rect key="frame" x="114" y="56" width="223" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="216" id="H6E-vn-usy"/>
                                     <constraint firstAttribute="height" constant="21" id="XfO-6B-vOw"/>
@@ -844,7 +844,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZHO-vf-Zc1">
-                                <rect key="frame" x="142" y="14" width="167" height="32"/>
+                                <rect key="frame" x="141" y="14" width="169" height="33"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="155" id="GoI-C0-Obs"/>
                                     <constraint firstAttribute="height" constant="21" id="jut-0Y-fLX"/>
@@ -935,7 +935,6 @@ DQ
                                             <tableColumns>
                                                 <tableColumn identifier="source" width="229" minWidth="40" maxWidth="1000" id="5dk-vI-VB7">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Source">
-                                                        <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -948,7 +947,6 @@ DQ
                                                 </tableColumn>
                                                 <tableColumn identifier="target" width="334" minWidth="40" maxWidth="1000" id="yxF-Xr-dO4">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Target">
-                                                        <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
