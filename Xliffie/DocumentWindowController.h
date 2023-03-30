@@ -9,16 +9,14 @@
 #import <Cocoa/Cocoa.h>
 #import "DocumentViewController.h"
 #import "DocumentWindow.h"
-#import "DocumentListViewController.h"
 
-@interface DocumentWindowController : NSWindowController <DocumentViewControllerDelegate, DocumentListViewControllerDelegate, DocumentWindowDelegate, NSSplitViewDelegate, NSWindowRestoration>
+@interface DocumentWindowController : NSWindowController <DocumentViewControllerDelegate, DocumentWindowDelegate, NSSplitViewDelegate, NSWindowRestoration>
 
 - (void)toggleNotes;
 
+- (NSString*)path;
 - (NSString*)baseFolderPath;
-- (void)addDocument:(Document*)newDocument;
 
-- (void)showSidebar;
 - (IBAction)translateWithGlossaryMenuPressed:(id)sender;
 - (IBAction)translateWithGlossaryAndWebPressed:(id)sender;
 

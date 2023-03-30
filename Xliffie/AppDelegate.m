@@ -64,62 +64,39 @@
         }
     }
 
-    NSMutableDictionary <NSString*, NSMutableArray <NSString*>*> *basePaths = [NSMutableDictionary dictionary];
     for (NSString *filename in filenames) {
-        NSString *basePath = [filename stringByDeletingLastPathComponent];
-        NSMutableArray <NSString*> *existingFiles = [basePaths objectForKey:basePath] ?: [NSMutableArray array];
-        [existingFiles addObject:filename];
-        [basePaths setObject:existingFiles forKey:basePath];
-    }
-
-    for (NSString *openingBasePath in basePaths) {
-        NSMutableArray <NSString*> *xliffFiles = [basePaths objectForKey:openingBasePath];
-        DocumentWindowController *controller = [self openedDocumentControllerWithPath:[xliffFiles firstObject]];
-        if (!controller) {
-            // open window for this new base path
-            NSString *lastFile = [xliffFiles lastObject];
-            [xliffFiles removeLastObject];
-
-            [[NSDocumentController sharedDocumentController] openDocumentWithContentsOfURL:[NSURL fileURLWithPath:lastFile]
-                                                                                   display:YES
-                                                                         completionHandler:^(NSDocument * _Nullable document, BOOL documentWasAlreadyOpen, NSError * _Nullable error) {
-
-                                                                             DocumentWindowController *controller = [self openedDocumentControllerWithPath:lastFile];
-
-                                                                             for (NSString *xliffPath in xliffFiles) {
-                                                                                 [self attachDocumentOfURL:[NSURL fileURLWithPath:xliffPath]
-                                                                                        toWindowController:controller
-                                                                                                 withError:&error];
-                                                                             }
-                                                                         }];
-        } else {
-            // add document into this window
-            for (NSString *xliffPath in xliffFiles) {
-                [self attachDocumentOfURL:[NSURL fileURLWithPath:xliffPath]
-                       toWindowController:controller
-                                withError:nil];
-            }
-            [[controller window] makeKeyAndOrderFront:self];
+        DocumentWindowController *existingController = [self openedDocumentControllerWithPath:filename];
+        if (existingController) {
+            [existingController.window makeKeyAndOrderFront:self];
+            continue;
         }
+        [[NSDocumentController sharedDocumentController] openDocumentWithContentsOfURL:[NSURL fileURLWithPath:filename]
+                                                                               display:YES
+                                                                     completionHandler:^(NSDocument * _Nullable document, BOOL documentWasAlreadyOpen, NSError * _Nullable error) {
+            DocumentWindowController *thisController = [(Document*)document windowController];
+            DocumentWindowController *anotherController = [self openedDocumentControllerWithBasePath:filename];
+            if (anotherController && anotherController != thisController) {
+                [anotherController.window addTabbedWindow:thisController.window ordered:NSWindowAbove];
+                [anotherController.window selectNextTab:nil];
+            } else {
+                [thisController.window makeKeyAndOrderFront:nil];
+            }
+        }];
     }
-}
-
-- (void)attachDocumentOfURL:(NSURL *)url toWindowController:(DocumentWindowController*) controller withError:(NSError**)outError {
-    NSString *extension = [[url lastPathComponent] pathExtension];
-    Document *newDocument;
-    if ([Document isXliffExtension:extension]) {
-        newDocument = [[Document alloc] initWithContentsOfURL:url
-                                                      ofType:@"xliff"
-                                                       error:outError];
-    } else if ([XclocDocument isXclocExtension:extension]) {
-        newDocument = [[XclocDocument alloc] initWithContentsOfURL:url
-                                                            ofType:@"xcloc"
-                                                             error:outError];
-    }
-    [controller setDocument:newDocument];
 }
 
 - (DocumentWindowController*)openedDocumentControllerWithPath:(NSString*)filePath {
+    for (DocumentWindow *window in [[NSApplication sharedApplication] windows]) {
+        if (![window isKindOfClass:[DocumentWindow class]]) continue;
+        DocumentWindowController *controller = (DocumentWindowController*)[window windowController];
+        if ([filePath isEqualToString:[controller path]]) {
+            return controller;
+        }
+    }
+    return nil;
+}
+
+- (DocumentWindowController*)openedDocumentControllerWithBasePath:(NSString*)filePath {
     for (DocumentWindow *window in [[NSApplication sharedApplication] windows]) {
         if (![window isKindOfClass:[DocumentWindow class]]) continue;
         DocumentWindowController *controller = (DocumentWindowController*)[window windowController];

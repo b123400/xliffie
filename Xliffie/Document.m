@@ -63,7 +63,6 @@
         [self addWindowController:windowController];
     }
     self.windowController = windowController;
-    [[windowController window] makeKeyAndOrderFront:self];
 }
 
 - (NSData *)dataOfType:(NSString *)typeName error:(NSError **)outError {
