@@ -44,7 +44,7 @@
                                    endAngle:360
                                   clockwise:NO];
     [path appendBezierPathWithArcWithCenter:center
-                                     radius:radius - 5
+                                     radius:radius - 3
                                  startAngle:360
                                    endAngle:0
                                   clockwise:YES];
@@ -64,7 +64,7 @@
                                        endAngle:endAngle
                                       clockwise:NO];
         [path appendBezierPathWithArcWithCenter:center
-                                         radius:radius - 5
+                                         radius:radius - 3
                                      startAngle:endAngle
                                        endAngle:startAngle
                                       clockwise:YES];

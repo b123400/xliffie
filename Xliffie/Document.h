@@ -23,5 +23,6 @@
 - (NSString*)toolVersion;
 
 + (BOOL)isXliffExtension:(NSString *)extension;
+- (NSArray <TranslationPair*> *)allTranslationPairs;
 
 @end

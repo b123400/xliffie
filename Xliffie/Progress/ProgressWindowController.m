@@ -60,7 +60,7 @@
     self.translatedCharacterCount = 0;
     self.emptyCharacterCount = 0;
 
-    NSArray<TranslationPair*> *allTranslations = [self.document valueForKeyPath:@"files.@unionOfArrays.translations"];
+    NSArray<TranslationPair*> *allTranslations = [self.document allTranslationPairs];
     for (TranslationPair *p in allTranslations) {
         __block NSUInteger wordCount = 0;
         [p.source enumerateSubstringsInRange:NSMakeRange(0, p.source.length)

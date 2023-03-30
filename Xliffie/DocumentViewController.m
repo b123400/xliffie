@@ -12,13 +12,15 @@
 #import "SuggestionsWindowController.h"
 #import "Glossary.h"
 #import "NSAttributedString+FileIcon.h"
+#import "DocumentTextFinderClient.h"
 
-@interface DocumentViewController () <SuggestionsWindowControllerDelegate, NSTextFinderClient>
+@interface DocumentViewController () <SuggestionsWindowControllerDelegate>
 
 @property (strong, nonatomic) Document *filteredDocument;
 @property (strong, nonatomic) Document *mappingDocument;
 
 @property (strong, nonatomic) NSTextFinder *textFinder;
+@property (strong, nonatomic) DocumentTextFinderClient *textFinderClient;
 
 @end
 
@@ -43,11 +45,14 @@
     self.outlineView.autosaveExpandedItems = YES;
     self.outlineView.xmlOutlineDelegate = self;
     
+    self.textFinderClient = [[DocumentTextFinderClient alloc] initWithDocument:self.document];
+    self.textFinderClient.outlineView = self.outlineView;
+
     self.textFinder = [[NSTextFinder alloc] init];
     self.textFinder.findBarContainer = self.outlineView.enclosingScrollView;
     self.textFinder.incrementalSearchingEnabled = YES;
     self.textFinder.incrementalSearchingShouldDimContentView = YES;
-    self.textFinder.client = self;
+    self.textFinder.client = self.textFinderClient;
 }
 
 - (void)dealloc {
@@ -99,8 +104,6 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
             return [(TranslationPair*)item sourceForDisplay];
         } else if ([[tableColumn identifier] isEqualToString:@"target"]) {
             return [(TranslationPair*)item target];
-        } else if ([[tableColumn identifier] isEqualToString:@"note"]) {
-            return [(TranslationPair*)item note];
         }
     } else if ([item isKindOfClass:[File class]]) {
         if ([[tableColumn identifier] isEqualToString:@"source"]) {
@@ -128,6 +131,7 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
             [self.delegate viewController:self didEditedTranslation:item];
         }
     }
+    [self.textFinderClient reload];
 }
 
 - (void)outlineView:(NSOutlineView *)outlineView
@@ -226,7 +230,6 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 }
 
 - (CGFloat)outlineView:(NSOutlineView *)outlineView heightOfRowByItem:(id)item {
-    
     NSTableColumn *firstColumn = [[self.outlineView tableColumns] firstObject];
     NSTableColumn *secondColumn = [[self.outlineView tableColumns] objectAtIndex:1];
     NSCell *cell = [firstColumn dataCell];
@@ -247,9 +250,9 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
     }
     
     [cell setObjectValue:[(TranslationPair*)item source]];
-    CGFloat sourceHeight = [cell cellSizeForBounds:CGRectMake(0, 0, firstColumnWidth, CGFLOAT_MAX)].height;
+    CGFloat sourceHeight = [cell cellSizeForBounds:CGRectMake(0, 0, firstColumnWidth, CGFLOAT_MAX)].height + 5;
     [cell setObjectValue:[item target]];
-    CGFloat targetHeight = [cell cellSizeForBounds:CGRectMake(0, 0, [secondColumn width], CGFLOAT_MAX)].height;
+    CGFloat targetHeight = [cell cellSizeForBounds:CGRectMake(0, 0, [secondColumn width], CGFLOAT_MAX)].height + 5;
     return MAX(sourceHeight, targetHeight);
 }
 
@@ -388,6 +391,7 @@ doCommandBySelector:(SEL)commandSelector {
     _document = document;
     [self applyMapLanguage:self.mapLanguage];
     [self expendAllItems];
+    self.textFinderClient.document = document;
 }
 
 - (void)expendAllItems {
@@ -489,18 +493,6 @@ doCommandBySelector:(SEL)commandSelector {
         }
     }
 }
-
-//-(NSUInteger)stringLength {
-//    return 10;
-//}
-
-- (NSString *)string {
-    return @"abcd efghi";
-}
-
-//- (NSString *)stringAtIndex:(NSUInteger)characterIndex effectiveRange:(NSRangePointer)outRange endsWithSearchBoundary:(BOOL *)outFlag {
-//
-//}
 
 - (void)setSearchFilter:(NSString *)searchFilter {
     _searchFilter = searchFilter;

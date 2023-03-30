@@ -134,4 +134,8 @@
             [extension isEqualToString:@"xlf"];
 }
 
+- (NSArray <TranslationPair*> *)allTranslationPairs {
+    return [self valueForKeyPath:@"files.@unionOfArrays.translations"];
+}
+
 @end

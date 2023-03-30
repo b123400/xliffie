@@ -7,10 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <AppKit/AppKit.h>
+#import "Document.h"
+#import "XMLOutlineView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DocumentTextFinderClient : NSObject
+@interface DocumentTextFinderClient : NSObject<NSTextFinderClient>
+
+@property (nonatomic, strong) Document *document;
+@property (weak, nonatomic) XMLOutlineView *outlineView;
+
+- (instancetype)initWithDocument:(Document*)document;
+- (void)reload;
 
 @end
 

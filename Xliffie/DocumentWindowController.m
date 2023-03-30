@@ -335,7 +335,7 @@
 
 - (void)reloadProgress {
     Document *document = self.mainViewController.document;
-    NSArray<TranslationPair*> *allTranslations = [document valueForKeyPath:@"files.@unionOfArrays.translations"];
+    NSArray<TranslationPair*> *allTranslations = [document allTranslationPairs];
     
     int completedCount = 0;
     int warningCount = 0;
