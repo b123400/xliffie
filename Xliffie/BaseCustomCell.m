@@ -11,18 +11,7 @@
 @implementation BaseCustomCell
 
 - (void)drawWithFrame:(NSRect)cellFrame inView:(NSView *)controlView {
-    BOOL needSetTextBlack = NO;
     if (controlView.isDrawingFindIndicator) {
-        needSetTextBlack = YES;
-        if ([self.controlView isKindOfClass:[NSOutlineView class]]) {
-            NSOutlineView *outlineView = (NSOutlineView*)self.controlView;
-            NSInteger row = [outlineView rowAtPoint:cellFrame.origin];
-            if ([[outlineView selectedRowIndexes] containsIndex:row]) {
-                needSetTextBlack = NO;
-            }
-        }
-    }
-    if (needSetTextBlack) {
         // When it's in searching mode, the background is always yellow
         // so we need to force it to black for all occasion, even if it's dark mode.
         NSColor *c = self.textColor;

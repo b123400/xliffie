@@ -150,7 +150,12 @@
     self.outlineView.usesAlternatingRowBackgroundColors = NO;
     NSArray<NSValue *> *values = [self rectsForCharacterRange:range];
     for (NSValue *v in values) {
-        [view drawRect:v.rectValue];
+        NSRect rect = v.rectValue;
+        NSInteger row = [self.outlineView rowAtPoint:rect.origin];
+        NSInteger col = [self.outlineView columnAtPoint:rect.origin];
+        NSCell *cell = [self.outlineView.tableColumns[col] dataCellForRow:row];
+        NSRect cellRect = [self.outlineView frameOfCellAtColumn:col row:row];
+        [cell drawWithFrame:cellRect inView:self.outlineView];
     }
     self.outlineView.usesAlternatingRowBackgroundColors = YES;
 }
