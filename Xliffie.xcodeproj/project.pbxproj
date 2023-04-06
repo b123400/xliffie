@@ -302,25 +302,6 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
-		CF34B75B1AADE01000C6A58E /* UI Elements */ = {
-			isa = PBXGroup;
-			children = (
-				CFD234F81A5E44C700B52088 /* XMLOutlineView.h */,
-				CFD234F91A5E44C700B52088 /* XMLOutlineView.m */,
-				CF1BEBE329D5838F0000BD59 /* BaseCustomCell.h */,
-				CF1BEBE429D5838F0000BD59 /* BaseCustomCell.m */,
-				CF34B7581AADE00A00C6A58E /* TranslationTargetCell.h */,
-				CF34B7591AADE00A00C6A58E /* TranslationTargetCell.m */,
-				CF09458F1C54FD3600DAEB4A /* BRArrowSegmentedCell.h */,
-				CF0945901C54FD3600DAEB4A /* BRArrowSegmentedCell.m */,
-				CF12DB4A293E5A2D00F9C760 /* RoundedCornersView.h */,
-				CF12DB4B293E5A2D00F9C760 /* RoundedCornersView.m */,
-				CFA091DE29CB18F800F33979 /* BRProgressButton.h */,
-				CFA091DF29CB18F800F33979 /* BRProgressButton.m */,
-			);
-			name = "UI Elements";
-			sourceTree = "<group>";
-		};
 		CF34B75C1AADE02400C6A58E /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -392,7 +373,7 @@
 				CF5AB3BE293DCE4700C8AC7B /* Suggestions */,
 				CFB0B8F61C3073A9004DF663 /* Translator */,
 				CF34B75C1AADE02400C6A58E /* Model */,
-				CF34B75B1AADE01000C6A58E /* UI Elements */,
+				CF9A3D5229DEB5E100807F3D /* UI Elements */,
 				CFE3B1731CD8008800021D7F /* Pangu */,
 				CF695C4C26FF5408008000E2 /* Glossary */,
 				CF12DB54293F1B9300F9C760 /* Utilities */,
@@ -533,6 +514,25 @@
 				CF1BEBE129D565740000BD59 /* DocumentTextFinderClientEntry.m */,
 			);
 			path = TextFinder;
+			sourceTree = "<group>";
+		};
+		CF9A3D5229DEB5E100807F3D /* UI Elements */ = {
+			isa = PBXGroup;
+			children = (
+				CFD234F81A5E44C700B52088 /* XMLOutlineView.h */,
+				CFD234F91A5E44C700B52088 /* XMLOutlineView.m */,
+				CF1BEBE329D5838F0000BD59 /* BaseCustomCell.h */,
+				CF1BEBE429D5838F0000BD59 /* BaseCustomCell.m */,
+				CF34B7581AADE00A00C6A58E /* TranslationTargetCell.h */,
+				CF34B7591AADE00A00C6A58E /* TranslationTargetCell.m */,
+				CF09458F1C54FD3600DAEB4A /* BRArrowSegmentedCell.h */,
+				CF0945901C54FD3600DAEB4A /* BRArrowSegmentedCell.m */,
+				CF12DB4A293E5A2D00F9C760 /* RoundedCornersView.h */,
+				CF12DB4B293E5A2D00F9C760 /* RoundedCornersView.m */,
+				CFA091DE29CB18F800F33979 /* BRProgressButton.h */,
+				CFA091DF29CB18F800F33979 /* BRProgressButton.m */,
+			);
+			path = "UI Elements";
 			sourceTree = "<group>";
 		};
 		CFB0B8F61C3073A9004DF663 /* Translator */ = {
