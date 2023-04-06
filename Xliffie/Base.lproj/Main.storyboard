@@ -660,11 +660,11 @@
                                 <toolbarItem implicitItemIdentifier="49F7EE2C-F5C3-4B1F-BF77-9764EB1FE684" label="" paletteLabel="Source &amp; Target" tag="-1" sizingBehavior="auto" id="hRa-qY-UHQ">
                                     <nil key="toolTip"/>
                                     <customView key="view" misplaced="YES" id="0Of-8F-jfa">
-                                        <rect key="frame" x="0.0" y="14" width="283" height="37"/>
+                                        <rect key="frame" x="0.0" y="14" width="283" height="0.0"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
                                             <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uLd-TS-Dl5">
-                                                <rect key="frame" x="-1" y="6" width="291" height="25"/>
+                                                <rect key="frame" x="-1" y="-13" width="291" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="22" id="kCi-ei-A8X"/>
                                                 </constraints>
@@ -686,10 +686,10 @@
                                 </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="A0E1EFD6-7CF7-4E5F-A5E2-40A8F76C9CF5" label="Search" paletteLabel="Search" sizingBehavior="auto" id="z3T-JE-F8n">
                                     <nil key="toolTip"/>
-                                    <searchField key="view" wantsLayer="YES" verticalHuggingPriority="750" id="ihp-tX-qqE">
+                                    <searchField key="view" wantsLayer="YES" verticalHuggingPriority="750" id="ihp-tX-qqE" customClass="BRCategorySearchField">
                                         <rect key="frame" x="0.0" y="14" width="96" height="22"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="e9b-jI-J9u">
+                                        <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="e9b-jI-J9u" customClass="BRCategorySearchFieldCell">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -702,7 +702,7 @@
                                 <toolbarItem implicitItemIdentifier="B7FE7B98-B732-453D-9553-E1A4D35A57FA" label="Toggle notes" paletteLabel="Toggle notes" image="info" sizingBehavior="auto" id="pRq-eI-zXo">
                                     <nil key="toolTip"/>
                                     <button key="view" verticalHuggingPriority="750" id="u5l-HS-aiR">
-                                        <rect key="frame" x="23" y="14" width="29" height="28"/>
+                                        <rect key="frame" x="23" y="14" width="30" height="23"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="info" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="laW-Dq-Ild">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -716,7 +716,7 @@
                                 <toolbarItem implicitItemIdentifier="E01F529A-9A85-4311-84BC-74118B4096BA" label="Translate" paletteLabel="Translate" image="translate" sizingBehavior="auto" id="7Hq-tz-Ud3">
                                     <nil key="toolTip"/>
                                     <button key="view" verticalHuggingPriority="750" id="lmd-e1-baA">
-                                        <rect key="frame" x="14" y="14" width="29" height="28"/>
+                                        <rect key="frame" x="12" y="14" width="32" height="23"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="translate" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="DLF-qG-Mz6">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -730,7 +730,7 @@
                                 <toolbarItem implicitItemIdentifier="E652AFEB-CB4F-4B4A-8E51-CB483C6B9503" label="Add spaces" paletteLabel="Add spaces" image="Pangu" sizingBehavior="auto" id="Sx1-Fi-XrM">
                                     <nil key="toolTip"/>
                                     <button key="view" verticalHuggingPriority="750" id="DKj-mn-Eal">
-                                        <rect key="frame" x="20" y="14" width="29" height="28"/>
+                                        <rect key="frame" x="19" y="14" width="32" height="23"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="Pangu" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ebq-x1-ytS">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
