@@ -15,6 +15,7 @@
 #import "GlossaryWindowController.h"
 #import "BRProgressButton.h"
 #import "ProgressWindowController.h"
+#import "NSImage+SystemImage.h"
 
 #define DOCUMENT_WINDOW_MIN_SIZE NSMakeSize(600, 600)
 #define DOCUMENT_WINDOW_LAST_FRAME_KEY @"DOCUMENT_WINDOW_LAST_FRAME_KEY"
@@ -90,8 +91,7 @@
     self.detailViewController = (DetailViewController*)[detailItem viewController];
 
     [(DocumentWindow*)self.window setDelegate:self];
-    
-//    self.documents = [NSMutableArray array];
+
     self.filesOfLanguages = [NSMutableDictionary dictionary];
 
     self.window.minSize = DOCUMENT_WINDOW_MIN_SIZE;
@@ -121,6 +121,102 @@
         [self.window setFrame:lastWindowFrame display:YES];
     }
     [self reloadTranslationButtons];
+    [self reloadSearchFieldMenuTemplate];
+}
+
+- (void)reloadSearchFieldMenuTemplate {
+    NSMenu *cellMenu = [[NSMenu alloc] initWithTitle:NSLocalizedString(@"Search Menu",@"Search menu title")];
+
+    NSMenuItem *item;
+    item = [[NSMenuItem alloc] init];
+    [item setTitle:NSLocalizedString(@"Filter", @"Search menu title")];
+    [cellMenu addItem:item];
+    
+    item = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"Not Translated", @"Search menu title") action:@selector(setTranslationPairFilterState:) keyEquivalent:@""];
+    [item setTarget:self];
+    if (self.filterState & TranslationPairStateMarkedAsNotTranslated || self.filterState & TranslationPairStateEmpty) {
+        [item setState:NSControlStateValueOn];
+    }
+    NSImage *itemImage = [NSImage systemImageWithFallbackNamed:@"circle.dashed"];
+    [item setImage:itemImage];
+    [item setTag:TranslationPairStateEmpty]; // also marked as not translated
+    [cellMenu addItem:item];
+
+    item = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"Same as source", @"Search menu title") action:@selector(setTranslationPairFilterState:) keyEquivalent:@""];
+    [item setTarget:self];
+    itemImage = [NSImage systemImageWithFallbackNamed:@"equal.circle"];
+    [item setImage:itemImage];
+    if (self.filterState & TranslationPairStateSame) {
+        [item setState:NSControlStateValueOn];
+    }
+    [item setTag:TranslationPairStateSame];
+    [cellMenu addItem:item];
+    
+    item = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"Translated", @"Search menu title") action:@selector(setTranslationPairFilterState:) keyEquivalent:@""];
+    [item setTarget:self];
+    itemImage = [NSImage systemImageWithFallbackNamed:@"checkmark.circle"];
+    [item setImage:itemImage];
+    if (self.filterState & TranslationPairStateTranslated || self.filterState & TranslationPairStateMarkedAsTranslated) {
+        [item setState:NSControlStateValueOn];
+    }
+    [item setTag:TranslationPairStateTranslated]; // also marked as translated
+    [cellMenu addItem:item];
+    
+    item = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"Translated with warnings", @"Search menu title") action:@selector(setTranslationPairFilterState:) keyEquivalent:@""];
+    [item setTarget:self];
+    itemImage = [NSImage systemImageWithFallbackNamed:@"checkmark.circle.trianglebadge.exclamationmark"];
+    [item setImage:itemImage];
+    if (self.filterState & TranslationPairStateTranslatedWithWarnings) {
+        [item setState:NSControlStateValueOn];
+    }
+    [item setTag:TranslationPairStateTranslatedWithWarnings];
+    [cellMenu addItem:item];
+    
+    [cellMenu addItem:[NSMenuItem separatorItem]];
+    
+    NSMenuItem *recentTitle = [[NSMenuItem alloc] init];
+    [recentTitle setTitle:NSLocalizedString(@"Recent Searches", @"menu item title")];
+    [recentTitle setTag:NSSearchFieldRecentsTitleMenuItemTag];
+    [cellMenu addItem:recentTitle];
+    
+    NSMenuItem *recents = [[NSMenuItem alloc] init];
+    [recents setTag:NSSearchFieldRecentsMenuItemTag];
+    [cellMenu addItem:recents];
+
+    [cellMenu addItem:[NSMenuItem separatorItem]];
+    
+    NSMenuItem *clearRecent = [[NSMenuItem alloc] init];
+    [clearRecent setTag:NSSearchFieldClearRecentsMenuItemTag];
+    [clearRecent setTitle:@"Clear Recent Searches"];
+    [cellMenu addItem:clearRecent];
+
+    id searchCell = [self.searchField cell];
+    [searchCell setSearchMenuTemplate:cellMenu];
+    
+    self.searchField.recentSearches = @[@"aaa", @"bbb"];
+}
+
+- (void)setTranslationPairFilterState:(NSMenuItem *)sender {
+    TranslationPairState itemTag = [sender tag];
+    if (self.filterState & itemTag) {
+        self.filterState ^= itemTag;
+        if (itemTag == TranslationPairStateEmpty) {
+            self.filterState ^= TranslationPairStateMarkedAsNotTranslated;
+        }
+        if (itemTag == TranslationPairStateTranslated) {
+            self.filterState ^= TranslationPairStateMarkedAsTranslated;
+        }
+    } else {
+        self.filterState |= itemTag;
+        if (itemTag == TranslationPairStateEmpty) {
+            self.filterState |= TranslationPairStateMarkedAsNotTranslated;
+        }
+        if (itemTag == TranslationPairStateTranslated) {
+            self.filterState |= TranslationPairStateMarkedAsTranslated;
+        }
+    }
+    [self reloadSearchFieldMenuTemplate];
+    [self.searchField becomeFirstResponder]; // Need this to make the search field to redraw correctly
 }
 
 - (void)setDocument:(id)document {
@@ -165,6 +261,14 @@
     }
     [self reloadProgress];
     [self reloadTranslationButtons];
+}
+
+- (TranslationPairState)filterState {
+    return self.mainViewController.filterState;
+}
+
+- (void)setFilterState:(TranslationPairState)state {
+    self.mainViewController.filterState = state;
 }
 
 - (NSString*)path {

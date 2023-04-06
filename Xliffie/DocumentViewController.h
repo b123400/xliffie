@@ -32,6 +32,7 @@
 @property (nonatomic, strong) NSString *searchFilter;
 @property (nonatomic, weak) id <DocumentViewControllerDelegate> delegate;
 @property (nonatomic, strong) NSString *mapLanguage;
+@property (nonatomic, assign) TranslationPairState filterState;
 
 @property (weak) IBOutlet XMLOutlineView *outlineView;
 

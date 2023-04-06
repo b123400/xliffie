@@ -24,7 +24,7 @@
 
 - (instancetype)initWithXMLElement:(NSXMLElement*)element;
 
-- (File *)filteredFileWithSearchFilter:(NSString*)filter;
+- (File *)filteredFileWithSearchFilter:(NSString*)filter state:(NSUInteger/*TranslationPairState*/)state;
 - (NSArray <TranslationPair*> *)translationsMatchingSearchFilter:(NSString*)filter;
 
 - (void)setSourceMapFile:(File*)anotherFile;

@@ -65,16 +65,20 @@
     return elements;
 }
 
-- (File *)filteredFileWithSearchFilter:(NSString*)filter {
+- (File *)filteredFileWithSearchFilter:(NSString*)filter state:(NSUInteger)state {
+    TranslationPairState pairState = (TranslationPairState)state;
     File *newFile = [self copy];
     newFile.translations = [NSMutableArray array];
     for (TranslationPair *pair in [self translationsMatchingSearchFilter:filter]) {
-        [newFile.translations addObject:pair];
+        if (state == 0 || pair.state & pairState) {
+            [newFile.translations addObject:pair];
+        }
     }
     return newFile;
 }
 
 - (NSArray <TranslationPair*> *)translationsMatchingSearchFilter:(NSString*)filter {
+    if (!filter.length) return [self.translations copy];
     return [self.translations filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
         return [evaluatedObject matchSearchFilter:filter];
     }]];

@@ -94,16 +94,16 @@
 
 # pragma mark filter
 
-- (Document*)filteredDocumentWithSearchFilter:(NSString*)filter {
+- (Document*)filteredDocumentWithSearchFilter:(NSString*)filter state:(TranslationPairState)state {
     Document *document = [self copy];
-    document.files = [self filesMatchingSearchFilter:filter];
+    document.files = [self filesMatchingSearchFilter:filter state:state];
     return document;
 }
 
-- (NSMutableArray*)filesMatchingSearchFilter:(NSString*)filter {
+- (NSMutableArray*)filesMatchingSearchFilter:(NSString*)filter state:(TranslationPairState)state {
     NSMutableArray *files = [NSMutableArray array];
     for (File *thisFile in self.files) {
-        File *filtered = [thisFile filteredFileWithSearchFilter:filter];
+        File *filtered = [thisFile filteredFileWithSearchFilter:filter state:state];
         if (filtered.translations.count) {
             [files addObject:filtered];
         }

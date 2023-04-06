@@ -47,7 +47,7 @@
     
     self.textFinderClient = [[DocumentTextFinderClient alloc] initWithDocument:self.document];
     self.textFinderClient.outlineView = self.outlineView;
-
+    
     self.textFinder = [[NSTextFinder alloc] init];
     self.textFinder.findBarContainer = self.outlineView.enclosingScrollView;
     self.textFinder.incrementalSearchingEnabled = YES;
@@ -383,7 +383,7 @@ doCommandBySelector:(SEL)commandSelector {
 
 - (void)setRepresentedObject:(id)representedObject {
     [super setRepresentedObject:representedObject];
-
+    
     // Update the view, if already loaded.
 }
 
@@ -494,12 +494,21 @@ doCommandBySelector:(SEL)commandSelector {
     }
 }
 
+- (void)setFilterState:(TranslationPairState)filterState {
+    _filterState = filterState;
+    [self reloadFilteredDocument];
+}
+
 - (void)setSearchFilter:(NSString *)searchFilter {
     _searchFilter = searchFilter;
-    if (!_searchFilter.length) {
+    [self reloadFilteredDocument];
+}
+
+- (void)reloadFilteredDocument {
+    if (!_searchFilter.length && !self.filterState) {
         self.filteredDocument = nil;
     } else {
-        self.filteredDocument = [self.document filteredDocumentWithSearchFilter:searchFilter];
+        self.filteredDocument = [self.document filteredDocumentWithSearchFilter:self.searchFilter state:self.filterState];
     }
     [self.outlineView reloadData];
     [self.outlineView expandItem:nil expandChildren:YES];
