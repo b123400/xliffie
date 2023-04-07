@@ -121,6 +121,7 @@
     }
     [self reloadTranslationButtons];
     [self reloadSearchFieldMenuTemplate];
+    self.searchField.maximumRecents = 5;
 }
 
 - (void)reloadSearchFieldMenuTemplate {
@@ -191,11 +192,9 @@
 
     id searchCell = [self.searchField cell];
     [searchCell setSearchMenuTemplate:cellMenu];
-
-    self.searchField.maximumRecents = 5;
 }
 
-- (void)setTranslationPairFilterState:(NSMenuItem *)sender {
+- (IBAction)setTranslationPairFilterState:(NSMenuItem *)sender {
     TranslationPairState itemTag = [sender tag];
     if (self.filterState & itemTag) {
         self.filterState ^= itemTag;
@@ -214,8 +213,6 @@
             self.filterState |= TranslationPairStateMarkedAsTranslated;
         }
     }
-    [self reloadSearchFieldMenuTemplate];
-    [self.searchField becomeFirstResponder]; // Need this to make the search field to redraw correctly
 }
 
 - (void)setDocument:(id)document {
@@ -268,6 +265,8 @@
 
 - (void)setFilterState:(TranslationPairState)state {
     self.mainViewController.filterState = state;
+    [self reloadSearchFieldMenuTemplate];
+    [self.searchField becomeFirstResponder]; // Need this to make the search field to redraw correctly
 }
 
 - (NSString*)path {

@@ -149,6 +149,11 @@
                                                 <action selector="selectAll:" target="Ady-hI-5gd" id="VNm-Mi-diN"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem title="Filter" keyEquivalent="F" id="hzg-H7-y0a">
+                                            <connections>
+                                                <action selector="filterMenuItemClicked:" target="Ady-hI-5gd" id="VNm-Mi-diO"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem isSeparatorItem="YES" id="uyl-h8-XO2"/>
                                         <menuItem title="Find" id="4EN-yA-p0u">
                                             <modifierMask key="keyEquivalentModifierMask"/>
@@ -596,11 +601,7 @@
                                                 <action selector="toggleSidebar:" target="Ady-hI-5gd" id="BAY-za-Hvq"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Show Info" keyEquivalent="d" id="EJo-G1-Lo1">
-                                            <connections>
-                                                <action selector="showInfo:" target="Ady-hI-5gd" id="PeJ-1s-mgN"/>
-                                            </connections>
-                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="0zF-cn-Bef"/>
                                         <menuItem title="Customize Toolbar…" id="1UK-8n-QPP">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
@@ -753,12 +754,12 @@
                                         <action selector="showProgressReport:" target="jGA-0Y-lOj" id="eaz-Ie-r4l"/>
                                     </connections>
                                 </toolbarItem>
-                                <searchToolbarItem implicitItemIdentifier="920B8A6B-DE65-4B42-8055-76D40AE30DA8" label="Search" paletteLabel="Search" visibilityPriority="1001" id="ngi-bY-i0Q">
+                                <searchToolbarItem implicitItemIdentifier="920B8A6B-DE65-4B42-8055-76D40AE30DA8" label="Filter" paletteLabel="Search" visibilityPriority="1001" id="ngi-bY-i0Q">
                                     <nil key="toolTip"/>
                                     <searchField key="view" verticalHuggingPriority="750" textCompletion="NO" id="3ri-Q7-ugC" customClass="BRCategorySearchField">
                                         <rect key="frame" x="0.0" y="0.0" width="100" height="21"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="iTq-RF-k3S" customClass="BRCategorySearchFieldCell">
+                                        <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Filter" usesSingleLineMode="YES" bezelStyle="round" id="iTq-RF-k3S" customClass="BRCategorySearchFieldCell">
                                             <font key="font" usesAppearanceFont="YES"/>
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
