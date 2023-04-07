@@ -20,6 +20,7 @@
     }
     return image;
 }
+
 - (NSImage *)tintedImageWithColor:(NSColor *)color {
     return [NSImage imageWithSize:self.size flipped:false drawingHandler:^BOOL(NSRect dstRect) {
         [self drawInRect:dstRect fromRect:NSZeroRect operation:NSCompositingOperationSourceOver fraction:1.0];
