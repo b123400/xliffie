@@ -634,6 +634,18 @@
                                     </items>
                                 </menu>
                             </menuItem>
+                            <menuItem title="Help" id="SLE-tB-bLJ">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Help" systemMenu="help" id="50x-Zs-B4W">
+                                    <items>
+                                        <menuItem title="Application Help" keyEquivalent="?" id="4xR-xL-1CR">
+                                            <connections>
+                                                <action selector="showHelp:" target="Ady-hI-5gd" id="dDK-0f-6zU"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
                         </items>
                     </menu>
                     <connections>
