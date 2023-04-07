@@ -20,7 +20,6 @@
     NSRect r = [super searchTextRectForBounds:rect];
     r.origin.x += offset;
     r.size.width -= offset;
-    r.size.width = MAX(90, r.size.width);
     return r;
 }
 

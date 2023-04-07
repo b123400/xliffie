@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21225"/>
+        <capability name="Search Toolbar Item" minToolsVersion="12.0" minSystemVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -696,21 +697,6 @@
                                         </constraints>
                                     </customView>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="A0E1EFD6-7CF7-4E5F-A5E2-40A8F76C9CF5" label="Search" paletteLabel="Search" sizingBehavior="auto" id="z3T-JE-F8n">
-                                    <nil key="toolTip"/>
-                                    <searchField key="view" wantsLayer="YES" verticalHuggingPriority="750" id="ihp-tX-qqE" customClass="BRCategorySearchField">
-                                        <rect key="frame" x="0.0" y="14" width="96" height="22"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="e9b-jI-J9u" customClass="BRCategorySearchFieldCell">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            <connections>
-                                                <action selector="searchFilterChanged:" target="jGA-0Y-lOj" id="e0v-Pg-glF"/>
-                                            </connections>
-                                        </searchFieldCell>
-                                    </searchField>
-                                </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="B7FE7B98-B732-453D-9553-E1A4D35A57FA" label="Toggle notes" paletteLabel="Toggle notes" image="info" sizingBehavior="auto" id="pRq-eI-zXo">
                                     <nil key="toolTip"/>
                                     <button key="view" verticalHuggingPriority="750" id="u5l-HS-aiR">
@@ -767,13 +753,28 @@
                                         <action selector="showProgressReport:" target="jGA-0Y-lOj" id="eaz-Ie-r4l"/>
                                     </connections>
                                 </toolbarItem>
+                                <searchToolbarItem implicitItemIdentifier="920B8A6B-DE65-4B42-8055-76D40AE30DA8" label="Search" paletteLabel="Search" visibilityPriority="1001" id="ngi-bY-i0Q">
+                                    <nil key="toolTip"/>
+                                    <searchField key="view" verticalHuggingPriority="750" textCompletion="NO" id="3ri-Q7-ugC" customClass="BRCategorySearchField">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="21"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="iTq-RF-k3S" customClass="BRCategorySearchFieldCell">
+                                            <font key="font" usesAppearanceFont="YES"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </searchFieldCell>
+                                        <connections>
+                                            <action selector="searchFilterChanged:" target="jGA-0Y-lOj" id="4UM-MF-9rq"/>
+                                        </connections>
+                                    </searchField>
+                                </searchToolbarItem>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
                                 <toolbarItem reference="hRa-qY-UHQ"/>
                                 <toolbarItem reference="nH5-3B-tsZ"/>
                                 <toolbarItem reference="7Hq-tz-Ud3"/>
                                 <toolbarItem reference="pRq-eI-zXo"/>
-                                <toolbarItem reference="z3T-JE-F8n"/>
+                                <searchToolbarItem reference="ngi-bY-i0Q"/>
                             </defaultToolbarItems>
                         </toolbar>
                         <connections>
@@ -783,7 +784,7 @@
                     <connections>
                         <outlet property="languagesSegment" destination="uLd-TS-Dl5" id="k3b-hE-yxQ"/>
                         <outlet property="progressButton" destination="4DH-6S-neu" id="he9-Oq-ato"/>
-                        <outlet property="searchField" destination="ihp-tX-qqE" id="2xv-li-MNs"/>
+                        <outlet property="searchField" destination="3ri-Q7-ugC" id="hqr-vh-dhL"/>
                         <outlet property="translateButton" destination="7Hq-tz-Ud3" id="fwv-GZ-IIk"/>
                         <segue destination="MvO-m3-dew" kind="relationship" relationship="window.shadowedContentViewController" id="aWn-BL-51E"/>
                     </connections>

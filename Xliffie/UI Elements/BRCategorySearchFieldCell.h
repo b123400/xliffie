@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BRCategorySearchFieldCell : NSSearchFieldCell
 
+- (CGFloat)iconsWidth;
+
 @end
 
 NS_ASSUME_NONNULL_END

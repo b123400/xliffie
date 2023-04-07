@@ -7,6 +7,7 @@
 //
 
 #import "BRCategorySearchField.h"
+#import "BRCategorySearchFieldCell.h"
 
 @implementation BRCategorySearchField
 

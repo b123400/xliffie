@@ -29,7 +29,6 @@
 
 @property (nonatomic, strong) TargetMissingViewController *targetMissingViewController;
 
-@property (weak) IBOutlet NSSegmentedControl *layoutSegment;
 @property (weak) IBOutlet NSSegmentedControl *languagesSegment;
 @property (weak) IBOutlet NSToolbarItem *translateButton;
 @property (weak) IBOutlet BRProgressButton *progressButton;
