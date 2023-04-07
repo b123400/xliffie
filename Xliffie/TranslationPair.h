@@ -10,12 +10,12 @@
 #import "File.h"
 
 typedef enum : NSUInteger {
-    TranslationPairStateMarkedAsNotTranslated,
-    TranslationPairStateEmpty,
-    TranslationPairStateSame,
-    TranslationPairStateTranslatedWithWarnings,
-    TranslationPairStateTranslated,
-    TranslationPairStateMarkedAsTranslated,
+    TranslationPairStateMarkedAsNotTranslated = 1,
+    TranslationPairStateEmpty = 1 << 1,
+    TranslationPairStateSame = 1 << 2,
+    TranslationPairStateTranslatedWithWarnings = 1 << 3,
+    TranslationPairStateTranslated = 1 << 4,
+    TranslationPairStateMarkedAsTranslated = 1 << 5,
 } TranslationPairState;
 
 @interface TranslationPair : NSObject<NSCopying>

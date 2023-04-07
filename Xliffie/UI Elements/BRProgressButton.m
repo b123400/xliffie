@@ -28,11 +28,12 @@
 
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
+    NSRect rect = [self.cell drawingRectForBounds:self.bounds];
     
     NSGraphicsContext *gc = [NSGraphicsContext currentContext];
-    NSPoint center = NSMakePoint(self.bounds.size.width/2, self.bounds.size.height/2);
+    NSPoint center = NSMakePoint(rect.origin.x + rect.size.width/2, rect.origin.y + rect.size.height/2);
     
-    CGFloat radius = (MIN(self.bounds.size.width, self.bounds.size.height) - 2) / 2;
+    CGFloat radius = (MIN(rect.size.width, rect.size.height) - 2) / 2;
     [gc saveGraphicsState];
     
     [[NSColor secondarySelectedControlColor] setFill];
@@ -43,7 +44,7 @@
                                    endAngle:360
                                   clockwise:NO];
     [path appendBezierPathWithArcWithCenter:center
-                                     radius:radius - 5
+                                     radius:radius - 3
                                  startAngle:360
                                    endAngle:0
                                   clockwise:YES];
@@ -63,7 +64,7 @@
                                        endAngle:endAngle
                                       clockwise:NO];
         [path appendBezierPathWithArcWithCenter:center
-                                         radius:radius - 5
+                                         radius:radius - 3
                                      startAngle:endAngle
                                        endAngle:startAngle
                                       clockwise:YES];

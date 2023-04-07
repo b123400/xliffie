@@ -15,8 +15,12 @@
 		CF12DB4C293E5A2D00F9C760 /* RoundedCornersView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF12DB4B293E5A2D00F9C760 /* RoundedCornersView.m */; };
 		CF12DB4F293EF89C00F9C760 /* SuggestionsCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF12DB4E293EF89C00F9C760 /* SuggestionsCellView.m */; };
 		CF12DB53293F1B8200F9C760 /* NSAttributedString+FileIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = CF12DB52293F1B8200F9C760 /* NSAttributedString+FileIcon.m */; };
+		CF1BEBE229D565740000BD59 /* DocumentTextFinderClientEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1BEBE129D565740000BD59 /* DocumentTextFinderClientEntry.m */; };
+		CF1BEBE529D5838F0000BD59 /* BaseCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1BEBE429D5838F0000BD59 /* BaseCustomCell.m */; };
 		CF1CE50629CB4EBD00BBFAAB /* ProgressWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1CE50429CB4EBD00BBFAAB /* ProgressWindowController.m */; };
 		CF34B75A1AADE00A00C6A58E /* TranslationTargetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF34B7591AADE00A00C6A58E /* TranslationTargetCell.m */; };
+		CF50085429DBADBA007EF23A /* BRCategorySearchFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF50085329DBADBA007EF23A /* BRCategorySearchFieldCell.m */; };
+		CF50085729DBB20F007EF23A /* BRCategorySearchField.m in Sources */ = {isa = PBXBuildFile; fileRef = CF50085629DBB20F007EF23A /* BRCategorySearchField.m */; };
 		CF5682EB1A6AFB9800E0DEDD /* DocumentWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5682E91A6AFB9800E0DEDD /* DocumentWindowController.m */; };
 		CF5682EF1A6B11C700E0DEDD /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5682EE1A6B11C700E0DEDD /* DetailViewController.m */; };
 		CF5AB3C2293DCE6200C8AC7B /* SuggestionsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5AB3C0293DCE6200C8AC7B /* SuggestionsWindowController.m */; };
@@ -77,6 +81,8 @@
 		CF94FCA51A5C365400EE8BD5 /* File.m in Sources */ = {isa = PBXBuildFile; fileRef = CF94FCA41A5C365400EE8BD5 /* File.m */; };
 		CF94FCA81A5C37A900EE8BD5 /* TranslationPair.m in Sources */ = {isa = PBXBuildFile; fileRef = CF94FCA71A5C37A900EE8BD5 /* TranslationPair.m */; };
 		CF9A36ED29CD8F3C00FB8763 /* ProgressWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF9A36EF29CD8F3C00FB8763 /* ProgressWindowController.xib */; };
+		CF9A370029CDE6BE00FB8763 /* DocumentTextFinderClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9A36FF29CDE6BE00FB8763 /* DocumentTextFinderClient.m */; };
+		CF9A3D5529DEB61D00807F3D /* NSImage+SystemImage.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9A3D5429DEB61D00807F3D /* NSImage+SystemImage.m */; };
 		CFA091E029CB18F800F33979 /* BRProgressButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA091DF29CB18F800F33979 /* BRProgressButton.m */; };
 		CFC6CC602702E8E300F7850C /* GlossaryWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC6CC5E2702E8E300F7850C /* GlossaryWindowController.m */; };
 		CFC6CC642703152400F7850C /* GlossaryRow.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC6CC632703152400F7850C /* GlossaryRow.m */; };
@@ -126,6 +132,10 @@
 		CF12DB4E293EF89C00F9C760 /* SuggestionsCellView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SuggestionsCellView.m; path = Suggestions/SuggestionsCellView.m; sourceTree = "<group>"; };
 		CF12DB51293F1B8200F9C760 /* NSAttributedString+FileIcon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+FileIcon.h"; sourceTree = "<group>"; };
 		CF12DB52293F1B8200F9C760 /* NSAttributedString+FileIcon.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+FileIcon.m"; sourceTree = "<group>"; };
+		CF1BEBE029D565740000BD59 /* DocumentTextFinderClientEntry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DocumentTextFinderClientEntry.h; sourceTree = "<group>"; };
+		CF1BEBE129D565740000BD59 /* DocumentTextFinderClientEntry.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DocumentTextFinderClientEntry.m; sourceTree = "<group>"; };
+		CF1BEBE329D5838F0000BD59 /* BaseCustomCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseCustomCell.h; sourceTree = "<group>"; };
+		CF1BEBE429D5838F0000BD59 /* BaseCustomCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseCustomCell.m; sourceTree = "<group>"; };
 		CF1CE50329CB4EBD00BBFAAB /* ProgressWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProgressWindowController.h; sourceTree = "<group>"; };
 		CF1CE50429CB4EBD00BBFAAB /* ProgressWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProgressWindowController.m; sourceTree = "<group>"; };
 		CF34B7581AADE00A00C6A58E /* TranslationTargetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TranslationTargetCell.h; sourceTree = "<group>"; };
@@ -134,6 +144,10 @@
 		CF4B0C2F1BF9123A007AF981 /* zh-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-TW"; path = "zh-TW.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		CF4B0C301BF9123A007AF981 /* zh-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-TW"; path = "zh-TW.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		CF4B0C311BF9123A007AF981 /* zh-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-TW"; path = "zh-TW.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		CF50085229DBADBA007EF23A /* BRCategorySearchFieldCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRCategorySearchFieldCell.h; sourceTree = "<group>"; };
+		CF50085329DBADBA007EF23A /* BRCategorySearchFieldCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRCategorySearchFieldCell.m; sourceTree = "<group>"; };
+		CF50085529DBB20F007EF23A /* BRCategorySearchField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRCategorySearchField.h; sourceTree = "<group>"; };
+		CF50085629DBB20F007EF23A /* BRCategorySearchField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRCategorySearchField.m; sourceTree = "<group>"; };
 		CF5682E81A6AFB9800E0DEDD /* DocumentWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocumentWindowController.h; sourceTree = "<group>"; };
 		CF5682E91A6AFB9800E0DEDD /* DocumentWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentWindowController.m; sourceTree = "<group>"; };
 		CF5682ED1A6B11C700E0DEDD /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
@@ -215,6 +229,10 @@
 		CF9A36F129CD8F4100FB8763 /* zh-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-TW"; path = "zh-TW.lproj/ProgressWindowController.strings"; sourceTree = "<group>"; };
 		CF9A36F529CD8F4200FB8763 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/ProgressWindowController.strings; sourceTree = "<group>"; };
 		CF9A36F729CD8F4D00FB8763 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ProgressWindowController.strings; sourceTree = "<group>"; };
+		CF9A36FE29CDE6BE00FB8763 /* DocumentTextFinderClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DocumentTextFinderClient.h; sourceTree = "<group>"; };
+		CF9A36FF29CDE6BE00FB8763 /* DocumentTextFinderClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DocumentTextFinderClient.m; sourceTree = "<group>"; };
+		CF9A3D5329DEB61D00807F3D /* NSImage+SystemImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSImage+SystemImage.h"; sourceTree = "<group>"; };
+		CF9A3D5429DEB61D00807F3D /* NSImage+SystemImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSImage+SystemImage.m"; sourceTree = "<group>"; };
 		CFA091DE29CB18F800F33979 /* BRProgressButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRProgressButton.h; sourceTree = "<group>"; };
 		CFA091DF29CB18F800F33979 /* BRProgressButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRProgressButton.m; sourceTree = "<group>"; };
 		CFC6CC5D2702E8E300F7850C /* GlossaryWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlossaryWindowController.h; sourceTree = "<group>"; };
@@ -289,25 +307,10 @@
 			children = (
 				CF12DB51293F1B8200F9C760 /* NSAttributedString+FileIcon.h */,
 				CF12DB52293F1B8200F9C760 /* NSAttributedString+FileIcon.m */,
+				CF9A3D5329DEB61D00807F3D /* NSImage+SystemImage.h */,
+				CF9A3D5429DEB61D00807F3D /* NSImage+SystemImage.m */,
 			);
 			path = Utilities;
-			sourceTree = "<group>";
-		};
-		CF34B75B1AADE01000C6A58E /* UI Elements */ = {
-			isa = PBXGroup;
-			children = (
-				CFD234F81A5E44C700B52088 /* XMLOutlineView.h */,
-				CFD234F91A5E44C700B52088 /* XMLOutlineView.m */,
-				CF34B7581AADE00A00C6A58E /* TranslationTargetCell.h */,
-				CF34B7591AADE00A00C6A58E /* TranslationTargetCell.m */,
-				CF09458F1C54FD3600DAEB4A /* BRArrowSegmentedCell.h */,
-				CF0945901C54FD3600DAEB4A /* BRArrowSegmentedCell.m */,
-				CF12DB4A293E5A2D00F9C760 /* RoundedCornersView.h */,
-				CF12DB4B293E5A2D00F9C760 /* RoundedCornersView.m */,
-				CFA091DE29CB18F800F33979 /* BRProgressButton.h */,
-				CFA091DF29CB18F800F33979 /* BRProgressButton.m */,
-			);
-			name = "UI Elements";
 			sourceTree = "<group>";
 		};
 		CF34B75C1AADE02400C6A58E /* Model */ = {
@@ -381,7 +384,7 @@
 				CF5AB3BE293DCE4700C8AC7B /* Suggestions */,
 				CFB0B8F61C3073A9004DF663 /* Translator */,
 				CF34B75C1AADE02400C6A58E /* Model */,
-				CF34B75B1AADE01000C6A58E /* UI Elements */,
+				CF9A3D5229DEB5E100807F3D /* UI Elements */,
 				CFE3B1731CD8008800021D7F /* Pangu */,
 				CF695C4C26FF5408008000E2 /* Glossary */,
 				CF12DB54293F1B9300F9C760 /* Utilities */,
@@ -518,8 +521,33 @@
 			children = (
 				CF9A36FE29CDE6BE00FB8763 /* DocumentTextFinderClient.h */,
 				CF9A36FF29CDE6BE00FB8763 /* DocumentTextFinderClient.m */,
+				CF1BEBE029D565740000BD59 /* DocumentTextFinderClientEntry.h */,
+				CF1BEBE129D565740000BD59 /* DocumentTextFinderClientEntry.m */,
 			);
 			path = TextFinder;
+			sourceTree = "<group>";
+		};
+		CF9A3D5229DEB5E100807F3D /* UI Elements */ = {
+			isa = PBXGroup;
+			children = (
+				CFD234F81A5E44C700B52088 /* XMLOutlineView.h */,
+				CFD234F91A5E44C700B52088 /* XMLOutlineView.m */,
+				CF1BEBE329D5838F0000BD59 /* BaseCustomCell.h */,
+				CF1BEBE429D5838F0000BD59 /* BaseCustomCell.m */,
+				CF34B7581AADE00A00C6A58E /* TranslationTargetCell.h */,
+				CF34B7591AADE00A00C6A58E /* TranslationTargetCell.m */,
+				CF09458F1C54FD3600DAEB4A /* BRArrowSegmentedCell.h */,
+				CF0945901C54FD3600DAEB4A /* BRArrowSegmentedCell.m */,
+				CF12DB4A293E5A2D00F9C760 /* RoundedCornersView.h */,
+				CF12DB4B293E5A2D00F9C760 /* RoundedCornersView.m */,
+				CFA091DE29CB18F800F33979 /* BRProgressButton.h */,
+				CFA091DF29CB18F800F33979 /* BRProgressButton.m */,
+				CF50085529DBB20F007EF23A /* BRCategorySearchField.h */,
+				CF50085629DBB20F007EF23A /* BRCategorySearchField.m */,
+				CF50085229DBADBA007EF23A /* BRCategorySearchFieldCell.h */,
+				CF50085329DBADBA007EF23A /* BRCategorySearchFieldCell.m */,
+			);
+			path = "UI Elements";
 			sourceTree = "<group>";
 		};
 		CFB0B8F61C3073A9004DF663 /* Translator */ = {
@@ -797,29 +825,35 @@
 				CF011B4B1C40FCBA00948323 /* TranslationUtility.m in Sources */,
 				CF94FCA51A5C365400EE8BD5 /* File.m in Sources */,
 				CF1CE50629CB4EBD00BBFAAB /* ProgressWindowController.m in Sources */,
+				CF1BEBE529D5838F0000BD59 /* BaseCustomCell.m in Sources */,
 				CF34B75A1AADE00A00C6A58E /* TranslationTargetCell.m in Sources */,
+				CF1BEBE229D565740000BD59 /* DocumentTextFinderClientEntry.m in Sources */,
 				CF5682EF1A6B11C700E0DEDD /* DetailViewController.m in Sources */,
 				CFD234FA1A5E44C700B52088 /* XMLOutlineView.m in Sources */,
 				CF5FC89B1A5ABFF700538E60 /* Document.m in Sources */,
 				CF5AB3C2293DCE6200C8AC7B /* SuggestionsWindowController.m in Sources */,
 				CF740AA72701C6C700F31F26 /* Glossary.m in Sources */,
 				CFE3B1761CD800AB00021D7F /* NSString+Pangu.m in Sources */,
+				CF9A3D5529DEB61D00807F3D /* NSImage+SystemImage.m in Sources */,
 				CF5FC8981A5ABFF700538E60 /* DocumentViewController.m in Sources */,
 				CFA091E029CB18F800F33979 /* BRProgressButton.m in Sources */,
 				CF12DB49293E4C5F00F9C760 /* Suggestion.m in Sources */,
 				CF011B7D1C4641A400948323 /* TranslationWindowController.m in Sources */,
 				CF5FC8951A5ABFF700538E60 /* main.m in Sources */,
 				CF0945911C54FD3600DAEB4A /* BRArrowSegmentedCell.m in Sources */,
+				CF9A370029CDE6BE00FB8763 /* DocumentTextFinderClient.m in Sources */,
 				CF12DB53293F1B8200F9C760 /* NSAttributedString+FileIcon.m in Sources */,
 				CFF70D80221E7BF2004C4C2D /* XclocDocument.m in Sources */,
 				CF846CD4259E21A300CA0713 /* CustomDocumentController.m in Sources */,
 				CF662B391C307C7D00704CEA /* TranslateServiceWindowController.m in Sources */,
+				CF50085729DBB20F007EF23A /* BRCategorySearchField.m in Sources */,
 				CF5FC8931A5ABFF700538E60 /* AppDelegate.m in Sources */,
 				CFCD4B341A6D0C7200BA8826 /* DocumentWindow.m in Sources */,
 				CFC6CC642703152400F7850C /* GlossaryRow.m in Sources */,
 				CF12DB4C293E5A2D00F9C760 /* RoundedCornersView.m in Sources */,
 				CF94FCA81A5C37A900EE8BD5 /* TranslationPair.m in Sources */,
 				CFC6CC602702E8E300F7850C /* GlossaryWindowController.m in Sources */,
+				CF50085429DBADBA007EF23A /* BRCategorySearchFieldCell.m in Sources */,
 				CFC6CC672703163700F7850C /* GlossaryFileRow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

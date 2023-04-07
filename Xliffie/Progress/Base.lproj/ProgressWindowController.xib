@@ -8,6 +8,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="ProgressWindowController">
             <connections>
+                <outlet property="tableView" destination="TR0-H6-Dkc" id="UGO-8X-CwI"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -85,6 +86,7 @@
                                         </tableColumn>
                                     </tableColumns>
                                     <connections>
+                                        <action trigger="doubleAction" selector="tableViewDidDoubleClick:" target="-2" id="5CD-71-SIb"/>
                                         <outlet property="dataSource" destination="-2" id="RhI-Qu-hhe"/>
                                         <outlet property="delegate" destination="-2" id="EBz-f5-aPY"/>
                                     </connections>
@@ -92,7 +94,7 @@
                             </subviews>
                         </clipView>
                         <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="k7U-rC-y8S">
-                            <rect key="frame" x="1" y="158" width="474" height="16"/>
+                            <rect key="frame" x="1" y="159" width="474" height="16"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="ifo-bx-x17">

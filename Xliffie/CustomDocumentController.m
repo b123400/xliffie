@@ -31,4 +31,12 @@
     }];
 }
 
+- (BOOL)respondsToSelector:(SEL)aSelector {
+    // Disable new tab button
+    if (aSelector == @selector(newWindowForTab:)) {
+        return NO;
+    }
+    return [super respondsToSelector:aSelector];
+}
+
 @end

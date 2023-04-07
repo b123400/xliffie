@@ -7,9 +7,12 @@
 //
 
 #import "ProgressWindowController.h"
+#import "DocumentWindowController.h"
 #import "TranslationPair.h"
 
 @interface ProgressWindowController () <NSTableViewDelegate, NSTableViewDataSource>
+
+@property (weak) IBOutlet NSTableView *tableView;
 
 @property (assign) NSUInteger totalWordCount;
 @property (assign) NSUInteger warningWordCount;
@@ -60,7 +63,7 @@
     self.translatedCharacterCount = 0;
     self.emptyCharacterCount = 0;
 
-    NSArray<TranslationPair*> *allTranslations = [self.document valueForKeyPath:@"files.@unionOfArrays.translations"];
+    NSArray<TranslationPair*> *allTranslations = [self.document allTranslationPairs];
     for (TranslationPair *p in allTranslations) {
         __block NSUInteger wordCount = 0;
         [p.source enumerateSubstringsInRange:NSMakeRange(0, p.source.length)
@@ -147,6 +150,29 @@
         }
     }
     return nil;
+}
+
+- (IBAction)tableViewDidDoubleClick:(id)sender {
+    DocumentWindowController *controller = (DocumentWindowController*)[self.window.sheetParent delegate];
+    if (![controller isKindOfClass:[DocumentWindowController class]]) return;
+    NSInteger index = [self.tableView clickedRow];
+    if (index < 0) return;
+    switch (index) {
+    case 0:
+        [controller setFilterState:0];
+        break;
+    case 1:
+        [controller setFilterState:TranslationPairStateTranslatedWithWarnings];
+        break;
+    case 2:
+        [controller setFilterState:TranslationPairStateTranslated | TranslationPairStateMarkedAsTranslated];
+        break;
+    case 3:
+        [controller setFilterState:TranslationPairStateSame | TranslationPairStateEmpty | TranslationPairStateMarkedAsNotTranslated];
+        break;
+    }
+    [self.window.sheetParent endSheet:self.window
+                           returnCode:NSModalResponseCancel];
 }
 
 @end

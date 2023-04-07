@@ -13,6 +13,7 @@
 @interface DocumentWindowController : NSWindowController <DocumentViewControllerDelegate, DocumentWindowDelegate, NSSplitViewDelegate, NSWindowRestoration>
 
 - (void)toggleNotes;
+- (void)setFilterState:(TranslationPairState)state;
 
 - (NSString*)path;
 - (NSString*)baseFolderPath;

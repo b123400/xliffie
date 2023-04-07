@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "File.h"
+#import "TranslationPair.h"
 
 @class DocumentWindowController;
 
@@ -16,12 +17,13 @@
 @property (nonatomic, strong) NSMutableArray <File*> *files;
 @property (nonatomic, strong) DocumentWindowController *windowController;
 
-- (Document*)filteredDocumentWithSearchFilter:(NSString*)filter;
+- (Document*)filteredDocumentWithSearchFilter:(NSString*)filter state:(TranslationPairState)state;
 - (NSMutableArray*)filesMatchingSearchFilter:(NSString*)filter;
 
 - (NSString*)toolID;
 - (NSString*)toolVersion;
 
 + (BOOL)isXliffExtension:(NSString *)extension;
+- (NSArray <TranslationPair*> *)allTranslationPairs;
 
 @end

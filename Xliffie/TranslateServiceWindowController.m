@@ -128,12 +128,8 @@
 
 #pragma mark - document
 
-- (NSArray <TranslationPair*> *)allTranslationPairs {
-    return [self.xliffDocument valueForKeyPath:@"files.@unionOfArrays.translations"];
-}
-
 - (NSArray <TranslationPair*> *)pairsToTranslate {
-    return [[self allTranslationPairs] filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(TranslationPair *pair,
+    return [[self.xliffDocument allTranslationPairs] filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(TranslationPair *pair,
                                                                                                          NSDictionary<NSString *,id> * _) {
         
         if (self.translateFilterButton.indexOfSelectedItem == 1) {

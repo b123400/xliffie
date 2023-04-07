@@ -7,8 +7,9 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "BaseCustomCell.h"
 
-@interface TranslationTargetCell : NSTextFieldCell
+@interface TranslationTargetCell : BaseCustomCell
 
 @property (nonatomic, strong) NSColor *dotColor;
 
