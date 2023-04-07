@@ -191,8 +191,8 @@
 
     id searchCell = [self.searchField cell];
     [searchCell setSearchMenuTemplate:cellMenu];
-    
-    self.searchField.recentSearches = @[@"aaa", @"bbb"];
+
+    self.searchField.maximumRecents = 5;
 }
 
 - (void)setTranslationPairFilterState:(NSMenuItem *)sender {
@@ -539,7 +539,11 @@
 }
 - (IBAction)searchFilterChanged:(id)sender {
     if ([sender isKindOfClass:[NSTextField class]]) {
-        [self.mainViewController setSearchFilter:[sender stringValue]];
+        NSString *searchString = [sender stringValue];
+        [self.mainViewController setSearchFilter:searchString];
+        if (searchString.length && ![self.searchField.recentSearches containsObject:searchString]) {
+            self.searchField.recentSearches = [self.searchField.recentSearches arrayByAddingObject:searchString];
+        }
     } else {
         // TODO, show another search view?
     }
