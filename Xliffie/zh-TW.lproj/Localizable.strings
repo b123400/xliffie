@@ -25,6 +25,9 @@
 /* Translation target not found */
 "Cannot translate to %@" = "無法翻譯成 %@";
 
+/* Search menu title */
+"Filter" = "篩選";
+
 /* Suggestion popup, %@ = filename */
 "From %@" = "來自 %@";
 
@@ -49,7 +52,8 @@
 /* Translation window hint */
 "No translation service support this language" = "沒有網站可以幫你翻譯這個語言耶";
 
-/* Progress report */
+/* Progress report
+   Search menu title */
 "Not Translated" = "未翻譯";
 
 /* Translation window hint */
@@ -57,6 +61,15 @@
 
 /* No comment provided by engineer. */
 "OK" = "好";
+
+/* menu item title */
+"Recent Searches" = "最近的檢索";
+
+/* Search menu title */
+"Same as source" = "與原文一樣";
+
+/* Search menu title */
+"Search Menu" = "搜尋選單";
 
 /* No comment provided by engineer. */
 "The source contains %@ \"%%%@\", but your input contains %@" = "原文裡有 %1$@ 個 \"%%%2$@\"，但是你的輸入裏面有 %3$@個耶";
@@ -73,10 +86,12 @@
 /* Progress report */
 "Total" = "全部";
 
-/* Progress report */
+/* Progress report
+   Search menu title */
 "Translated" = "已翻譯";
 
-/* Progress report */
+/* Progress report
+   Search menu title */
 "Translated with warnings" = "翻譯了但有錯誤";
 
 /* confirm */

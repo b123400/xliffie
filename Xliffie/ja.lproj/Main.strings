@@ -31,6 +31,9 @@
 /* Class = "NSMenuItem"; title = "Quit Xliffie"; ObjectID = "4sb-4s-VLi"; */
 "4sb-4s-VLi.title" = "Xliffie を終了";
 
+/* Class = "NSMenuItem"; title = "Application Help"; ObjectID = "4xR-xL-1CR"; */
+"4xR-xL-1CR.title" = "ヘルプ";
+
 /* Class = "NSTableColumn"; headerCell.title = "Source"; ObjectID = "5dk-vI-VB7"; */
 "5dk-vI-VB7.headerCell.title" = "原文";
 
@@ -70,6 +73,9 @@
 /* Class = "NSMenuItem"; title = "Tighten"; ObjectID = "46P-cB-AYj"; */
 "46P-cB-AYj.title" = "きつく";
 
+/* Class = "NSMenu"; title = "Help"; ObjectID = "50x-Zs-B4W"; */
+"50x-Zs-B4W.title" = "ヘルプ";
+
 /* Class = "NSMenuItem"; title = "Correct Spelling Automatically"; ObjectID = "78Y-hA-62v"; */
 "78Y-hA-62v.title" = "スペルを自動的に修正";
 
@@ -99,9 +105,6 @@
 
 /* Class = "NSMenu"; title = "File"; ObjectID = "bib-Uj-vzu"; */
 "bib-Uj-vzu.title" = "ファイル";
-
-/* Class = "NSMenuItem"; title = "Preferences…"; ObjectID = "BOF-NM-1cW"; */
-"BOF-NM-1cW.title" = "環境設定…";
 
 /* Class = "NSMenuItem"; title = "With Glossary and Web..."; ObjectID = "BQ8-JA-Vrv"; */
 "BQ8-JA-Vrv.title" = "用語集とウエブサービスで翻訳...";
@@ -148,9 +151,6 @@
 /* Class = "NSMenuItem"; title = "Item 1"; ObjectID = "DwU-b4-XiA"; */
 "DwU-b4-XiA.title" = "";
 
-/* Class = "NSMenuItem"; title = "Show Info"; ObjectID = "EJo-G1-Lo1"; */
-"EJo-G1-Lo1.title" = "詳細を表示";
-
 /* Class = "NSMenuItem"; title = "Translate"; ObjectID = "F6P-Il-9Ke"; */
 "F6P-Il-9Ke.title" = "翻訳";
 
@@ -162,6 +162,9 @@
 
 /* Class = "NSButtonCell"; title = "OK"; ObjectID = "FKh-MC-cK3"; */
 "FKh-MC-cK3.title" = "OK";
+
+/* Class = "NSMenu"; title = "Filter"; ObjectID = "gaQ-hf-AF8"; */
+"gaQ-hf-AF8.title" = "フィルター";
 
 /* Class = "NSMenuItem"; title = "Bold"; ObjectID = "GB9-OM-e27"; */
 "GB9-OM-e27.title" = "ボールド";
@@ -205,6 +208,9 @@
 /* Class = "NSMenu"; title = "Services"; ObjectID = "hz9-B4-Xy5"; */
 "hz9-B4-Xy5.title" = "サービス";
 
+/* Class = "NSMenuItem"; title = "Filter"; ObjectID = "hzg-H7-y0a"; */
+"hzg-H7-y0a.title" = "フィルター";
+
 /* Class = "NSMenuItem"; title = "Subscript"; ObjectID = "I0S-gh-46l"; */
 "I0S-gh-46l.title" = "下付き";
 
@@ -219,6 +225,9 @@
 
 /* Class = "NSMenu"; title = "Baseline"; ObjectID = "ijk-EB-dga"; */
 "ijk-EB-dga.title" = "ベースライン";
+
+/* Class = "NSSearchFieldCell"; placeholderString = "Filter"; ObjectID = "iTq-RF-k3S"; */
+"iTq-RF-k3S.placeholderString" = "フィルター";
 
 /* Class = "NSMenuItem"; title = "Justify"; ObjectID = "J5U-5w-g23"; */
 "J5U-5w-g23.title" = "両端揃え";
@@ -268,6 +277,15 @@
 /* Class = "NSMenuItem"; title = "Copy Ruler"; ObjectID = "MkV-Pr-PK5"; */
 "MkV-Pr-PK5.title" = "ルーラをコピー";
 
+/* Class = "NSMenuItem"; title = "Translated"; ObjectID = "NCi-bG-VS6"; */
+"NCi-bG-VS6.title" = "翻訳済み";
+
+/* Class = "NSSearchToolbarItem"; label = "Filter"; ObjectID = "ngi-bY-i0Q"; */
+"ngi-bY-i0Q.label" = "フィルター";
+
+/* Class = "NSSearchToolbarItem"; paletteLabel = "Search"; ObjectID = "ngi-bY-i0Q"; */
+"ngi-bY-i0Q.paletteLabel" = "検索";
+
 /* Class = "NSToolbarItem"; label = "Progress"; ObjectID = "nH5-3B-tsZ"; */
 "nH5-3B-tsZ.label" = "進捗";
 
@@ -294,6 +312,9 @@
 
 /* Class = "NSMenuItem"; title = "Hide Xliffie"; ObjectID = "Olw-nP-bQN"; */
 "Olw-nP-bQN.title" = "Xliffie を隠す";
+
+/* Class = "NSMenuItem"; title = "Same as source"; ObjectID = "Oun-z8-uYP"; */
+"Oun-z8-uYP.title" = "原文と同じ";
 
 /* Class = "NSMenuItem"; title = "Find Previous"; ObjectID = "OwM-mh-QMV"; */
 "OwM-mh-QMV.title" = "前の探す";
@@ -337,6 +358,9 @@
 /* Class = "NSMenuItem"; title = "Smart Dashes"; ObjectID = "rgM-f4-ycn"; */
 "rgM-f4-ycn.title" = "スマートダッシュ記号";
 
+/* Class = "NSMenuItem"; title = "Translated with warnings"; ObjectID = "rma-Qq-b0d"; */
+"rma-Qq-b0d.title" = "警告ある翻訳";
+
 /* Class = "NSMenuItem"; title = "Superscript"; ObjectID = "Rqc-34-cIF"; */
 "Rqc-34-cIF.title" = "上付き";
 
@@ -345,6 +369,9 @@
 
 /* Class = "NSMenuItem"; title = "Jump to Selection"; ObjectID = "S0p-oC-mLd"; */
 "S0p-oC-mLd.title" = "選択したところにジャンプ";
+
+/* Class = "NSMenuItem"; title = "Help"; ObjectID = "SLE-tB-bLJ"; */
+"SLE-tB-bLJ.title" = "ヘルプ";
 
 /* Class = "NSMenuItem"; title = "Item 3"; ObjectID = "SmI-5g-D4C"; */
 "SmI-5g-D4C.title" = "";
@@ -373,6 +400,9 @@
 /* Class = "NSMenuItem"; title = "Capitalize"; ObjectID = "UEZ-Bs-lqG"; */
 "UEZ-Bs-lqG.title" = "語頭を大文字にする";
 
+/* Class = "NSMenuItem"; title = "Filter"; ObjectID = "UjK-47-Lh7"; */
+"UjK-47-Lh7.title" = "フィルター";
+
 /* Class = "NSMenu"; title = "Xliffie"; ObjectID = "uQy-DD-JDr"; */
 "uQy-DD-JDr.title" = "Xliffie";
 
@@ -387,6 +417,9 @@
 
 /* Class = "NSMenuItem"; title = "Center"; ObjectID = "VIY-Ag-zcb"; */
 "VIY-Ag-zcb.title" = "中央揃え";
+
+/* Class = "NSMenuItem"; title = "Not Translated"; ObjectID = "VIz-gk-HZq"; */
+"VIz-gk-HZq.title" = "未翻訳";
 
 /* Class = "NSMenuItem"; title = "Italic"; ObjectID = "Vjx-xi-njq"; */
 "Vjx-xi-njq.title" = "イタリック";
@@ -460,12 +493,6 @@
 /* Class = "NSTableColumn"; headerCell.title = "Target"; ObjectID = "yxF-Xr-dO4"; */
 "yxF-Xr-dO4.headerCell.title" = "目標言語";
 
-/* Class = "NSToolbarItem"; label = "Search"; ObjectID = "z3T-JE-F8n"; */
-"z3T-JE-F8n.label" = "検索";
-
-/* Class = "NSToolbarItem"; paletteLabel = "Search"; ObjectID = "z3T-JE-F8n"; */
-"z3T-JE-F8n.paletteLabel" = "検索";
-
 /* Class = "NSMenuItem"; title = "Show Substitutions"; ObjectID = "z6F-FW-3nz"; */
 "z6F-FW-3nz.title" = "自動置換を表示";
 
@@ -474,7 +501,4 @@
 
 /* Class = "NSMenuItem"; title = "Paragraph"; ObjectID = "ZvO-Gk-QUH"; */
 "ZvO-Gk-QUH.title" = "段落";
-
-/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "Zz3-Gr-MRr"; */
-"Zz3-Gr-MRr.title" = "";
 

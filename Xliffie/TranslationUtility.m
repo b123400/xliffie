@@ -82,7 +82,7 @@
             NSError *error = [NSError errorWithDomain:TRANSLATION_ERROR_DOMAIN
                                                  code:0
                                              userInfo:@{NSLocalizedDescriptionKey:
-                                                            [NSString stringWithFormat:NSLocalizedString(@"Errors during translation:\n%@", nil), jointErrorString]}];
+                                                            [NSString stringWithFormat:NSLocalizedString(@"Errors during translation: %@", nil), jointErrorString]}];
             callback(error, nil);
             return;
         }

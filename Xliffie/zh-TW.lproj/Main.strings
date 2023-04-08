@@ -31,6 +31,9 @@
 /* Class = "NSMenuItem"; title = "Quit Xliffie"; ObjectID = "4sb-4s-VLi"; */
 "4sb-4s-VLi.title" = "退出 Xliffie";
 
+/* Class = "NSMenuItem"; title = "Application Help"; ObjectID = "4xR-xL-1CR"; */
+"4xR-xL-1CR.title" = "輔助說明";
+
 /* Class = "NSTableColumn"; headerCell.title = "Source"; ObjectID = "5dk-vI-VB7"; */
 "5dk-vI-VB7.headerCell.title" = "原文";
 
@@ -67,6 +70,9 @@
 /* Class = "NSMenuItem"; title = "Tighten"; ObjectID = "46P-cB-AYj"; */
 "46P-cB-AYj.title" = "緊縮字元間距";
 
+/* Class = "NSMenu"; title = "Help"; ObjectID = "50x-Zs-B4W"; */
+"50x-Zs-B4W.title" = "輔助說明";
+
 /* Class = "NSMenuItem"; title = "Correct Spelling Automatically"; ObjectID = "78Y-hA-62v"; */
 "78Y-hA-62v.title" = "自動更正拼字";
 
@@ -96,9 +102,6 @@
 
 /* Class = "NSMenu"; title = "File"; ObjectID = "bib-Uj-vzu"; */
 "bib-Uj-vzu.title" = "檔案";
-
-/* Class = "NSMenuItem"; title = "Preferences…"; ObjectID = "BOF-NM-1cW"; */
-"BOF-NM-1cW.title" = "偏好設定⋯";
 
 /* Class = "NSMenuItem"; title = "With Glossary and Web..."; ObjectID = "BQ8-JA-Vrv"; */
 "BQ8-JA-Vrv.title" = "使用內置字典和翻譯服務...";
@@ -145,9 +148,6 @@
 /* Class = "NSMenuItem"; title = "Item 1"; ObjectID = "DwU-b4-XiA"; */
 "DwU-b4-XiA.title" = "";
 
-/* Class = "NSMenuItem"; title = "Show Info"; ObjectID = "EJo-G1-Lo1"; */
-"EJo-G1-Lo1.title" = "顯示信息";
-
 /* Class = "NSMenuItem"; title = "Translate"; ObjectID = "F6P-Il-9Ke"; */
 "F6P-Il-9Ke.title" = "翻譯";
 
@@ -159,6 +159,9 @@
 
 /* Class = "NSButtonCell"; title = "OK"; ObjectID = "FKh-MC-cK3"; */
 "FKh-MC-cK3.title" = "好！";
+
+/* Class = "NSMenu"; title = "Filter"; ObjectID = "gaQ-hf-AF8"; */
+"gaQ-hf-AF8.title" = "篩選";
 
 /* Class = "NSMenuItem"; title = "Bold"; ObjectID = "GB9-OM-e27"; */
 "GB9-OM-e27.title" = "粗體";
@@ -202,6 +205,9 @@
 /* Class = "NSMenu"; title = "Services"; ObjectID = "hz9-B4-Xy5"; */
 "hz9-B4-Xy5.title" = "服務";
 
+/* Class = "NSMenuItem"; title = "Filter"; ObjectID = "hzg-H7-y0a"; */
+"hzg-H7-y0a.title" = "篩選";
+
 /* Class = "NSMenuItem"; title = "Subscript"; ObjectID = "I0S-gh-46l"; */
 "I0S-gh-46l.title" = "下標";
 
@@ -216,6 +222,9 @@
 
 /* Class = "NSMenu"; title = "Baseline"; ObjectID = "ijk-EB-dga"; */
 "ijk-EB-dga.title" = "底線";
+
+/* Class = "NSSearchFieldCell"; placeholderString = "Filter"; ObjectID = "iTq-RF-k3S"; */
+"iTq-RF-k3S.placeholderString" = "篩選";
 
 /* Class = "NSMenuItem"; title = "Justify"; ObjectID = "J5U-5w-g23"; */
 "J5U-5w-g23.title" = "齊行";
@@ -255,6 +264,15 @@
 
 /* Class = "NSMenuItem"; title = "Copy Ruler"; ObjectID = "MkV-Pr-PK5"; */
 "MkV-Pr-PK5.title" = "複製標尺";
+
+/* Class = "NSMenuItem"; title = "Translated"; ObjectID = "NCi-bG-VS6"; */
+"NCi-bG-VS6.title" = "已翻譯";
+
+/* Class = "NSSearchToolbarItem"; label = "Filter"; ObjectID = "ngi-bY-i0Q"; */
+"ngi-bY-i0Q.label" = "篩選";
+
+/* Class = "NSSearchToolbarItem"; paletteLabel = "Search"; ObjectID = "ngi-bY-i0Q"; */
+"ngi-bY-i0Q.paletteLabel" = "搜尋";
 
 /* Class = "NSToolbarItem"; label = "Progress"; ObjectID = "nH5-3B-tsZ"; */
 "nH5-3B-tsZ.label" = "進度";
@@ -325,6 +343,9 @@
 /* Class = "NSMenuItem"; title = "Smart Dashes"; ObjectID = "rgM-f4-ycn"; */
 "rgM-f4-ycn.title" = "智慧型破折號";
 
+/* Class = "NSMenuItem"; title = "Translated with warnings"; ObjectID = "rma-Qq-b0d"; */
+"rma-Qq-b0d.title" = "翻譯了但有錯誤";
+
 /* Class = "NSMenuItem"; title = "Superscript"; ObjectID = "Rqc-34-cIF"; */
 "Rqc-34-cIF.title" = "上標";
 
@@ -333,6 +354,9 @@
 
 /* Class = "NSMenuItem"; title = "Jump to Selection"; ObjectID = "S0p-oC-mLd"; */
 "S0p-oC-mLd.title" = "跳到所選";
+
+/* Class = "NSMenuItem"; title = "Help"; ObjectID = "SLE-tB-bLJ"; */
+"SLE-tB-bLJ.title" = "輔助說明";
 
 /* Class = "NSMenuItem"; title = "Show Toolbar"; ObjectID = "snW-S8-Cw5"; */
 "snW-S8-Cw5.title" = "顯示工具列";
@@ -357,6 +381,9 @@
 
 /* Class = "NSMenuItem"; title = "Capitalize"; ObjectID = "UEZ-Bs-lqG"; */
 "UEZ-Bs-lqG.title" = "首字大寫";
+
+/* Class = "NSMenuItem"; title = "Filter"; ObjectID = "UjK-47-Lh7"; */
+"UjK-47-Lh7.title" = "篩選";
 
 /* Class = "NSMenu"; title = "Xliffie"; ObjectID = "uQy-DD-JDr"; */
 "uQy-DD-JDr.title" = "Xliffie";
@@ -439,12 +466,6 @@
 /* Class = "NSTableColumn"; headerCell.title = "Target"; ObjectID = "yxF-Xr-dO4"; */
 "yxF-Xr-dO4.headerCell.title" = "譯文";
 
-/* Class = "NSToolbarItem"; label = "Search"; ObjectID = "z3T-JE-F8n"; */
-"z3T-JE-F8n.label" = "搜尋";
-
-/* Class = "NSToolbarItem"; paletteLabel = "Search"; ObjectID = "z3T-JE-F8n"; */
-"z3T-JE-F8n.paletteLabel" = "搜尋";
-
 /* Class = "NSMenuItem"; title = "Show Substitutions"; ObjectID = "z6F-FW-3nz"; */
 "z6F-FW-3nz.title" = "顯示替代項目";
 
@@ -453,7 +474,4 @@
 
 /* Class = "NSMenuItem"; title = "Paragraph"; ObjectID = "ZvO-Gk-QUH"; */
 "ZvO-Gk-QUH.title" = "段落";
-
-/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "Zz3-Gr-MRr"; */
-"Zz3-Gr-MRr.title" = "";
 
