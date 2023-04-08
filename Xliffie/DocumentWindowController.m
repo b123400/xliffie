@@ -329,6 +329,10 @@
     [self didChangeValueForKey:@"isFilterStateTranslatedWithWarningsEnabled"];
 }
 
+- (void)performTextFinderAction:(id)sender {
+    [self.mainViewController performTextFinderAction:sender];
+}
+
 - (NSString*)path {
     Document *document = self.document;
     return [[document fileURL] path];
