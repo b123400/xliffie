@@ -593,6 +593,7 @@
     
     NSMutableOrderedSet *sourceCodes = [NSMutableOrderedSet orderedSet];
     NSMutableOrderedSet *targetCodes = [NSMutableOrderedSet orderedSet];
+    if (!self.window) return;
     NSArray<NSWindow*> *windows = self.window.tabbedWindows ?: @[self.window];
     for (NSWindow *window in windows) {
         if (![window isKindOfClass:[DocumentWindow class]]) continue;
