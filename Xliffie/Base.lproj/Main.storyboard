@@ -601,6 +601,53 @@
                                                 <action selector="toggleSidebar:" target="Ady-hI-5gd" id="BAY-za-Hvq"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem title="Filter" id="UjK-47-Lh7">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <menu key="submenu" title="Filter" id="gaQ-hf-AF8">
+                                                <items>
+                                                    <menuItem title="Not Translated" image="circle.dashed" keyEquivalent="1" id="VIz-gk-HZq">
+                                                        <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                                        <connections>
+                                                            <binding destination="hnw-xV-0zn" name="value" keyPath="self.keyWindow.delegate.isFilterStateEmptyEnabled" id="sdv-fi-73E">
+                                                                <dictionary key="options">
+                                                                    <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
+                                                                </dictionary>
+                                                            </binding>
+                                                        </connections>
+                                                    </menuItem>
+                                                    <menuItem title="Same as source" image="equal.circle" keyEquivalent="2" id="Oun-z8-uYP">
+                                                        <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                                        <connections>
+                                                            <binding destination="hnw-xV-0zn" name="value" keyPath="self.keyWindow.delegate.isFilterStateSameEnabled" id="a0P-6M-YXm">
+                                                                <dictionary key="options">
+                                                                    <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
+                                                                </dictionary>
+                                                            </binding>
+                                                        </connections>
+                                                    </menuItem>
+                                                    <menuItem title="Translated" image="checkmark.circle" keyEquivalent="3" id="NCi-bG-VS6">
+                                                        <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                                        <connections>
+                                                            <binding destination="hnw-xV-0zn" name="value" keyPath="self.keyWindow.delegate.isFilterStateTranslatedEnabled" id="tk1-um-t6Y">
+                                                                <dictionary key="options">
+                                                                    <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
+                                                                </dictionary>
+                                                            </binding>
+                                                        </connections>
+                                                    </menuItem>
+                                                    <menuItem title="Translated with warnings" image="checkmark.circle.trianglebadge.exclamationmark" keyEquivalent="4" id="rma-Qq-b0d">
+                                                        <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                                        <connections>
+                                                            <binding destination="hnw-xV-0zn" name="value" keyPath="self.keyWindow.delegate.isFilterStateTranslatedWithWarningsEnabled" id="l1h-cb-yJc">
+                                                                <dictionary key="options">
+                                                                    <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
+                                                                </dictionary>
+                                                            </binding>
+                                                        </connections>
+                                                    </menuItem>
+                                                </items>
+                                            </menu>
+                                        </menuItem>
                                         <menuItem isSeparatorItem="YES" id="0zF-cn-Bef"/>
                                         <menuItem title="Customize Toolbar…" id="1UK-8n-QPP">
                                             <modifierMask key="keyEquivalentModifierMask"/>
@@ -656,6 +703,7 @@
                 </application>
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <userDefaultsController representsSharedInstance="YES" id="hpU-oG-Phe"/>
             </objects>
             <point key="canvasLocation" x="107" y="-242"/>
         </scene>
@@ -1114,6 +1162,10 @@ DQ
     </scenes>
     <resources>
         <image name="Pangu" width="23" height="20"/>
+        <image name="checkmark.circle" width="15" height="15"/>
+        <image name="checkmark.circle.trianglebadge.exclamationmark" width="18" height="15"/>
+        <image name="circle.dashed" width="15" height="15"/>
+        <image name="equal.circle" width="15" height="15"/>
         <image name="info" width="20" height="20"/>
         <image name="translate" width="23" height="20"/>
     </resources>

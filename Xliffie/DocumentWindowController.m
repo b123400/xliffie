@@ -134,7 +134,7 @@
     
     item = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"Not Translated", @"Search menu title") action:@selector(setTranslationPairFilterState:) keyEquivalent:@""];
     [item setTarget:self];
-    if (self.filterState & TranslationPairStateMarkedAsNotTranslated || self.filterState & TranslationPairStateEmpty) {
+    if ([self isFilterStateEmptyEnabled]) {
         [item setState:NSControlStateValueOn];
     }
     NSImage *itemImage = [NSImage systemImageWithFallbackNamed:@"circle.dashed"];
@@ -146,7 +146,7 @@
     [item setTarget:self];
     itemImage = [NSImage systemImageWithFallbackNamed:@"equal.circle"];
     [item setImage:itemImage];
-    if (self.filterState & TranslationPairStateSame) {
+    if ([self isFilterStateSameEnabled]) {
         [item setState:NSControlStateValueOn];
     }
     [item setTag:TranslationPairStateSame];
@@ -156,7 +156,7 @@
     [item setTarget:self];
     itemImage = [NSImage systemImageWithFallbackNamed:@"checkmark.circle"];
     [item setImage:itemImage];
-    if (self.filterState & TranslationPairStateTranslated || self.filterState & TranslationPairStateMarkedAsTranslated) {
+    if ([self isFilterStateTranslatedEnabled]) {
         [item setState:NSControlStateValueOn];
     }
     [item setTag:TranslationPairStateTranslated]; // also marked as translated
@@ -166,7 +166,7 @@
     [item setTarget:self];
     itemImage = [NSImage systemImageWithFallbackNamed:@"checkmark.circle.trianglebadge.exclamationmark"];
     [item setImage:itemImage];
-    if (self.filterState & TranslationPairStateTranslatedWithWarnings) {
+    if ([self isFilterStateTranslatedWithWarningsEnabled]) {
         [item setState:NSControlStateValueOn];
     }
     [item setTag:TranslationPairStateTranslatedWithWarnings];
@@ -212,6 +212,54 @@
         if (itemTag == TranslationPairStateTranslated) {
             self.filterState |= TranslationPairStateMarkedAsTranslated;
         }
+    }
+}
+
+- (BOOL)isFilterStateEmptyEnabled {
+    return self.filterState & TranslationPairStateMarkedAsNotTranslated || self.filterState & TranslationPairStateEmpty;
+}
+
+- (void)setIsFilterStateEmptyEnabled:(BOOL)enabled {
+    if (enabled) {
+        self.filterState |= TranslationPairStateMarkedAsNotTranslated | TranslationPairStateEmpty;
+    } else {
+        self.filterState ^= TranslationPairStateMarkedAsNotTranslated | TranslationPairStateEmpty;
+    }
+}
+
+- (BOOL)isFilterStateSameEnabled {
+    return self.filterState & TranslationPairStateSame;
+}
+
+- (void)setIsFilterStateSameEnabled:(BOOL)enabled {
+    if (enabled) {
+        self.filterState |= TranslationPairStateSame;
+    } else {
+        self.filterState ^= TranslationPairStateSame;
+    }
+}
+
+- (BOOL)isFilterStateTranslatedEnabled {
+    return self.filterState & TranslationPairStateTranslated || self.filterState & TranslationPairStateMarkedAsTranslated;
+}
+
+- (void)setIsFilterStateTranslatedEnabled:(BOOL)enabled {
+    if (enabled) {
+        self.filterState |= TranslationPairStateTranslated | TranslationPairStateMarkedAsTranslated;
+    } else {
+        self.filterState ^= TranslationPairStateTranslated | TranslationPairStateMarkedAsTranslated;
+    }
+}
+
+- (BOOL)isFilterStateTranslatedWithWarningsEnabled {
+    return self.filterState & TranslationPairStateTranslatedWithWarnings;
+}
+
+- (void)setIsFilterStateTranslatedWithWarningsEnabled:(BOOL)enabled {
+    if (enabled) {
+        self.filterState |= TranslationPairStateTranslatedWithWarnings;
+    } else {
+        self.filterState ^= TranslationPairStateTranslatedWithWarnings;
     }
 }
 
@@ -264,9 +312,21 @@
 }
 
 - (void)setFilterState:(TranslationPairState)state {
+    [self willChangeValueForKey:@"isFilterStateEmptyEnabled"];
+    [self willChangeValueForKey:@"isFilterStateSameEnabled"];
+    [self willChangeValueForKey:@"isFilterStateTranslatedEnabled"];
+    [self willChangeValueForKey:@"isFilterStateTranslatedWithWarningsEnabled"];
     self.mainViewController.filterState = state;
     [self reloadSearchFieldMenuTemplate];
-    [self.searchField becomeFirstResponder]; // Need this to make the search field to redraw correctly
+    @try {
+        [self.searchField becomeFirstResponder]; // Need this to make the search field to redraw correctly
+    } @catch (NSException *exception) {
+    
+    }
+    [self didChangeValueForKey:@"isFilterStateEmptyEnabled"];
+    [self didChangeValueForKey:@"isFilterStateSameEnabled"];
+    [self didChangeValueForKey:@"isFilterStateTranslatedEnabled"];
+    [self didChangeValueForKey:@"isFilterStateTranslatedWithWarningsEnabled"];
 }
 
 - (NSString*)path {
