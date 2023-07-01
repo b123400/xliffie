@@ -649,6 +649,8 @@
 }
 
 - (void)reloadTranslationButtons {
+    // When window is closing and we access .window, it tries to load some random nib...
+    if (![self isWindowLoaded]) return;
     NSString *selectedSourceLanguage = [self selectedLanguageWithSegmentIndex:0];
     NSString *selectedTargetLanguage = [self selectedLanguageWithSegmentIndex:1];
     

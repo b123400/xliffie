@@ -18,7 +18,7 @@
 @property (nonatomic, strong) DocumentWindowController *windowController;
 
 - (Document*)filteredDocumentWithSearchFilter:(NSString*)filter state:(TranslationPairState)state;
-- (NSMutableArray*)filesMatchingSearchFilter:(NSString*)filter;
+- (NSMutableArray*)filesMatchingSearchFilter:(NSString*)filter state:(TranslationPairState)state;
 
 - (NSString*)toolID;
 - (NSString*)toolVersion;
