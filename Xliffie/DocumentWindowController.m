@@ -454,12 +454,13 @@
     __weak typeof(self) weakSelf = self;
     [self.window beginSheet:self.translateServiceController.window
           completionHandler:^(NSModalResponse returnCode) {
-              if (returnCode == NSModalResponseOK) {
-                  TranslationWindowController *controller = weakSelf.translateServiceController.translationWindowController;
-                  [weakSelf presentTranslationWindowController:controller];
-              }
-              weakSelf.translateServiceController = nil;
-          }];
+        if (returnCode == NSModalResponseOK) {
+            TranslationWindowController *controller = weakSelf.translateServiceController.translationWindowController;
+            [weakSelf presentTranslationWindowController:controller];
+        }
+        weakSelf.translateServiceController = nil;
+        [weakSelf reloadProgress];
+    }];
 }
 
 - (IBAction)addSpaceButtonPressed:(id)sender {
@@ -585,11 +586,12 @@
         __weak typeof(self) weakSelf = self;
         [self.window beginSheet:controller.window completionHandler:^(NSModalResponse returnCode) {
             if (returnCode == NSModalResponseOK) {
-                [self.mainViewController.outlineView reloadData];
+                [weakSelf.mainViewController.outlineView reloadData];
             }
             if (returnCode == NSModalResponseOK || returnCode == NSModalResponseContinue) {
-                [self showTranslateWindow];
+                [weakSelf showTranslateWindow];
             }
+            [weakSelf reloadProgress];
             weakSelf.glossaryWindowController = nil;
         }];
     }
