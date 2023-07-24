@@ -608,7 +608,12 @@
                                                     <menuItem title="Not Translated" image="circle.dashed" keyEquivalent="1" id="VIz-gk-HZq">
                                                         <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
                                                         <connections>
-                                                            <binding destination="hnw-xV-0zn" name="value" keyPath="self.keyWindow.delegate.isFilterStateEmptyEnabled" id="sdv-fi-73E">
+                                                            <binding destination="Voe-Tx-rLC" name="enabled" keyPath="firstDocumentController" id="lNX-iT-Ahy">
+                                                                <dictionary key="options">
+                                                                    <string key="NSValueTransformerName">NSIsNotNil</string>
+                                                                </dictionary>
+                                                            </binding>
+                                                            <binding destination="Voe-Tx-rLC" name="value" keyPath="firstDocumentController.isFilterStateEmptyEnabled" id="JSM-Po-SKn">
                                                                 <dictionary key="options">
                                                                     <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
                                                                 </dictionary>
@@ -618,7 +623,12 @@
                                                     <menuItem title="Same as source" image="equal.circle" keyEquivalent="2" id="Oun-z8-uYP">
                                                         <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
                                                         <connections>
-                                                            <binding destination="hnw-xV-0zn" name="value" keyPath="self.keyWindow.delegate.isFilterStateSameEnabled" id="a0P-6M-YXm">
+                                                            <binding destination="Voe-Tx-rLC" name="enabled" keyPath="firstDocumentController" id="aBM-CV-grD">
+                                                                <dictionary key="options">
+                                                                    <string key="NSValueTransformerName">NSIsNotNil</string>
+                                                                </dictionary>
+                                                            </binding>
+                                                            <binding destination="Voe-Tx-rLC" name="value" keyPath="firstDocumentController.isFilterStateSameEnabled" id="JzU-ho-oOv">
                                                                 <dictionary key="options">
                                                                     <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
                                                                 </dictionary>
@@ -628,7 +638,12 @@
                                                     <menuItem title="Translated" image="checkmark.circle" keyEquivalent="3" id="NCi-bG-VS6">
                                                         <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
                                                         <connections>
-                                                            <binding destination="hnw-xV-0zn" name="value" keyPath="self.keyWindow.delegate.isFilterStateTranslatedEnabled" id="tk1-um-t6Y">
+                                                            <binding destination="Voe-Tx-rLC" name="enabled" keyPath="firstDocumentController" id="w0F-x4-os9">
+                                                                <dictionary key="options">
+                                                                    <string key="NSValueTransformerName">NSIsNotNil</string>
+                                                                </dictionary>
+                                                            </binding>
+                                                            <binding destination="Voe-Tx-rLC" name="value" keyPath="firstDocumentController.isFilterStateTranslatedEnabled" id="xXE-XU-xOd">
                                                                 <dictionary key="options">
                                                                     <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
                                                                 </dictionary>
@@ -638,7 +653,12 @@
                                                     <menuItem title="Translated with warnings" image="checkmark.circle.trianglebadge.exclamationmark" keyEquivalent="4" id="rma-Qq-b0d">
                                                         <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
                                                         <connections>
-                                                            <binding destination="hnw-xV-0zn" name="value" keyPath="self.keyWindow.delegate.isFilterStateTranslatedWithWarningsEnabled" id="l1h-cb-yJc">
+                                                            <binding destination="Voe-Tx-rLC" name="enabled" keyPath="firstDocumentController" id="bfO-Jd-CnX">
+                                                                <dictionary key="options">
+                                                                    <string key="NSValueTransformerName">NSIsNotNil</string>
+                                                                </dictionary>
+                                                            </binding>
+                                                            <binding destination="Voe-Tx-rLC" name="value" keyPath="firstDocumentController.isFilterStateTranslatedWithWarningsEnabled" id="kMM-T4-1v0">
                                                                 <dictionary key="options">
                                                                     <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
                                                                 </dictionary>
@@ -647,6 +667,13 @@
                                                     </menuItem>
                                                 </items>
                                             </menu>
+                                            <connections>
+                                                <binding destination="Voe-Tx-rLC" name="enabled" keyPath="firstDocumentController" id="sWi-iY-u6q">
+                                                    <dictionary key="options">
+                                                        <string key="NSValueTransformerName">NSIsNotNil</string>
+                                                    </dictionary>
+                                                </binding>
+                                            </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="0zF-cn-Bef"/>
                                         <menuItem title="Customize Toolbar…" id="1UK-8n-QPP">

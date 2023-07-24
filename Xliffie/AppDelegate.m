@@ -134,6 +134,14 @@
     return YES;
 }
 
+- (DocumentWindowController *)firstDocumentController {
+    NSWindow *window = [NSApplication sharedApplication].keyWindow;
+    if ([window.delegate isKindOfClass:[DocumentWindowController class]]) {
+        return (DocumentWindowController*)window.delegate;
+    }
+    return nil;
+}
+
 #pragma mark - Menu bar
 
 - (IBAction)translateWithGlossaryMenuPressed:(id)sender {
