@@ -125,9 +125,9 @@
 
 - (BOOL)applicationShouldHandleReopen:(NSApplication *)theApplication hasVisibleWindows:(BOOL)flag {
 
-    NSArray *windows = [[NSApplication sharedApplication] windows];
-    if (windows.count) {
-        [windows[0] makeKeyAndOrderFront:self];
+    NSWindow *window = [[NSApplication sharedApplication] keyWindow];
+    if (window) {
+        [window makeKeyAndOrderFront:self];
     } else {
         [[NSDocumentController sharedDocumentController] openDocument:self];
     }
