@@ -18,6 +18,8 @@
 		CF1BEBE229D565740000BD59 /* DocumentTextFinderClientEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1BEBE129D565740000BD59 /* DocumentTextFinderClientEntry.m */; };
 		CF1BEBE529D5838F0000BD59 /* BaseCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1BEBE429D5838F0000BD59 /* BaseCustomCell.m */; };
 		CF1CE50629CB4EBD00BBFAAB /* ProgressWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1CE50429CB4EBD00BBFAAB /* ProgressWindowController.m */; };
+		CF22255B2A5EA41D00F08515 /* GlossaryDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = CF22255A2A5EA41D00F08515 /* GlossaryDatabase.m */; };
+		CF22255D2A5EF54D00F08515 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CF22255C2A5EF53E00F08515 /* libsqlite3.tbd */; };
 		CF34B75A1AADE00A00C6A58E /* TranslationTargetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF34B7591AADE00A00C6A58E /* TranslationTargetCell.m */; };
 		CF50085429DBADBA007EF23A /* BRCategorySearchFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF50085329DBADBA007EF23A /* BRCategorySearchFieldCell.m */; };
 		CF50085729DBB20F007EF23A /* BRCategorySearchField.m in Sources */ = {isa = PBXBuildFile; fileRef = CF50085629DBB20F007EF23A /* BRCategorySearchField.m */; };
@@ -138,6 +140,9 @@
 		CF1BEBE429D5838F0000BD59 /* BaseCustomCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseCustomCell.m; sourceTree = "<group>"; };
 		CF1CE50329CB4EBD00BBFAAB /* ProgressWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProgressWindowController.h; sourceTree = "<group>"; };
 		CF1CE50429CB4EBD00BBFAAB /* ProgressWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProgressWindowController.m; sourceTree = "<group>"; };
+		CF2225592A5EA41D00F08515 /* GlossaryDatabase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlossaryDatabase.h; sourceTree = "<group>"; };
+		CF22255A2A5EA41D00F08515 /* GlossaryDatabase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GlossaryDatabase.m; sourceTree = "<group>"; };
+		CF22255C2A5EF53E00F08515 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		CF34B7581AADE00A00C6A58E /* TranslationTargetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TranslationTargetCell.h; sourceTree = "<group>"; };
 		CF34B7591AADE00A00C6A58E /* TranslationTargetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TranslationTargetCell.m; sourceTree = "<group>"; };
 		CF4B0C2E1BF91239007AF981 /* zh-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-TW"; path = "zh-TW.lproj/Main.strings"; sourceTree = "<group>"; };
@@ -267,6 +272,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF22255D2A5EF54D00F08515 /* libsqlite3.tbd in Frameworks */,
 				53532F5E187D9C2314DF98A9 /* libPods-Xliffie.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -296,6 +302,7 @@
 		B9A0E10FA89551832665D61C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CF22255C2A5EF53E00F08515 /* libsqlite3.tbd */,
 				8A857BFAEBC2315772F4E891 /* libPods-Xliffie.a */,
 				9B8C7EA753A4178056B36640 /* libPods-XliffieTests.a */,
 			);
@@ -439,6 +446,8 @@
 				CFC6CC662703163700F7850C /* GlossaryFileRow.m */,
 				CFC6CC622703152400F7850C /* GlossaryRow.h */,
 				CFC6CC632703152400F7850C /* GlossaryRow.m */,
+				CF2225592A5EA41D00F08515 /* GlossaryDatabase.h */,
+				CF22255A2A5EA41D00F08515 /* GlossaryDatabase.m */,
 			);
 			path = Glossary;
 			sourceTree = "<group>";
@@ -855,6 +864,7 @@
 				CFC6CC602702E8E300F7850C /* GlossaryWindowController.m in Sources */,
 				CF50085429DBADBA007EF23A /* BRCategorySearchFieldCell.m in Sources */,
 				CFC6CC672703163700F7850C /* GlossaryFileRow.m in Sources */,
+				CF22255B2A5EA41D00F08515 /* GlossaryDatabase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
