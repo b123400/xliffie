@@ -17,6 +17,8 @@ typedef enum : NSUInteger {
 
 @interface GlossaryDatabase : NSObject
 
+@property (nonatomic, assign) GlossaryPlatform platform;
+@property (nonatomic, strong) NSString *locale;
 @end
 
 NS_ASSUME_NONNULL_END

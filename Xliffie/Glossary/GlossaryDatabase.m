@@ -11,7 +11,7 @@
 
 @interface GlossaryDatabase ()
 
-@property (nonatomic, strong) NSString *locale;
+@property (nonatomic, strong) NSURLSessionDownloadTask *downloadTask;
 
 @end
 
@@ -376,8 +376,9 @@
     return nil;
 }
 
-- (instancetype)initWithLocale:(NSString *)locale {
+- (instancetype)initWithPlatform:(GlossaryPlatform)platform locale:(NSString *)locale {
     if (self = [super init]) {
+        self.platform = platform;
         self.locale = locale;
     }
     return self;
@@ -389,8 +390,69 @@
     }
 }
 
+- (NSURL *)databaseURL {
+    NSString *platform = self.platform == GlossaryPlatformMac ? @"macos" : @"ios";
+    return [NSURL URLWithString:[NSString stringWithFormat:@"https://b123400.net/xliffie/glossary/%@/%@.db", platform, self.locale]];
+}
+
 - (NSString *)databasePath {
-    return @"TODO";
+    NSString *platform = self.platform == GlossaryPlatformMac ? @"macos" : @"ios";
+    NSArray<NSURL *> *documentPaths = [[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask];
+    NSString *docPath = [[documentPaths lastObject] path];
+    NSString *dbPath = [[[docPath stringByAppendingPathComponent:@"glossary"]
+                         stringByAppendingPathComponent:platform]
+                        stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.db", self.locale]];
+    NSError *error = nil;
+    [[NSFileManager defaultManager] createDirectoryAtPath:[dbPath stringByDeletingLastPathComponent]
+                              withIntermediateDirectories:YES
+                                               attributes:nil
+                                                    error:&error];
+    if (error) {
+        NSLog(@"Cannot create directory %@ %@", dbPath, error);
+    }
+    return dbPath;
+}
+
+- (NSProgress *)download:(void (^)(NSError *error))callback {
+    if ([self isDownloaded]) {
+        // or delete and re-download?
+        return nil;
+    }
+    if (self.downloadTask) {
+        if (@available(macOS 10.13, *)) {
+            return self.downloadTask.progress;
+        }
+        return nil;
+    }
+    __weak typeof(self) _self = self;
+    NSURLSessionDownloadTask *task = [[NSURLSession sharedSession] downloadTaskWithURL:self.databaseURL
+                                    completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (error) {
+            callback(error);
+            return;
+        }
+        NSError *err = nil;
+        [[NSFileManager defaultManager] copyItemAtURL:location
+                                                toURL:[NSURL fileURLWithPath:_self.databasePath]
+                                                error:&err];
+        if (err) {
+            callback(err);
+            return;
+        }
+        _self.downloadTask = nil;
+        callback(nil);
+    }];
+    self.downloadTask = task;
+    [task resume];
+    if (@available(macOS 10.13, *)) {
+        return task.progress;
+    }
+    return nil;
+}
+
+- (void)cancelDownload {
+    [self.downloadTask cancel];
+    self.downloadTask = nil;
 }
 
 - (BOOL)isDownloaded {
