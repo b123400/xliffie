@@ -17,6 +17,8 @@
 		CF12DB4C293E5A2D00F9C760 /* RoundedCornersView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF12DB4B293E5A2D00F9C760 /* RoundedCornersView.m */; };
 		CF12DB4F293EF89C00F9C760 /* SuggestionsCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF12DB4E293EF89C00F9C760 /* SuggestionsCellView.m */; };
 		CF12DB53293F1B8200F9C760 /* NSAttributedString+FileIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = CF12DB52293F1B8200F9C760 /* NSAttributedString+FileIcon.m */; };
+		CF16E0852A7559CB002D5C48 /* GlossaryManagerWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF16E0832A7559CB002D5C48 /* GlossaryManagerWindowController.m */; };
+		CF16E0862A7559CB002D5C48 /* GlossaryManagerWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF16E0842A7559CB002D5C48 /* GlossaryManagerWindowController.xib */; };
 		CF1BEBE229D565740000BD59 /* DocumentTextFinderClientEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1BEBE129D565740000BD59 /* DocumentTextFinderClientEntry.m */; };
 		CF1BEBE529D5838F0000BD59 /* BaseCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1BEBE429D5838F0000BD59 /* BaseCustomCell.m */; };
 		CF1CE50629CB4EBD00BBFAAB /* ProgressWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1CE50429CB4EBD00BBFAAB /* ProgressWindowController.m */; };
@@ -139,6 +141,9 @@
 		CF12DB4E293EF89C00F9C760 /* SuggestionsCellView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SuggestionsCellView.m; path = Suggestions/SuggestionsCellView.m; sourceTree = "<group>"; };
 		CF12DB51293F1B8200F9C760 /* NSAttributedString+FileIcon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+FileIcon.h"; sourceTree = "<group>"; };
 		CF12DB52293F1B8200F9C760 /* NSAttributedString+FileIcon.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+FileIcon.m"; sourceTree = "<group>"; };
+		CF16E0822A7559CB002D5C48 /* GlossaryManagerWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlossaryManagerWindowController.h; sourceTree = "<group>"; };
+		CF16E0832A7559CB002D5C48 /* GlossaryManagerWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GlossaryManagerWindowController.m; sourceTree = "<group>"; };
+		CF16E0842A7559CB002D5C48 /* GlossaryManagerWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GlossaryManagerWindowController.xib; sourceTree = "<group>"; };
 		CF1BEBE029D565740000BD59 /* DocumentTextFinderClientEntry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DocumentTextFinderClientEntry.h; sourceTree = "<group>"; };
 		CF1BEBE129D565740000BD59 /* DocumentTextFinderClientEntry.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DocumentTextFinderClientEntry.m; sourceTree = "<group>"; };
 		CF1BEBE329D5838F0000BD59 /* BaseCustomCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseCustomCell.h; sourceTree = "<group>"; };
@@ -453,6 +458,9 @@
 				CFC6CC632703152400F7850C /* GlossaryRow.m */,
 				CF2225592A5EA41D00F08515 /* GlossaryDatabase.h */,
 				CF22255A2A5EA41D00F08515 /* GlossaryDatabase.m */,
+				CF16E0822A7559CB002D5C48 /* GlossaryManagerWindowController.h */,
+				CF16E0832A7559CB002D5C48 /* GlossaryManagerWindowController.m */,
+				CF16E0842A7559CB002D5C48 /* GlossaryManagerWindowController.xib */,
 				CF0AB58E2A755EDE00D61101 /* GlossaryDownloadWindowController.h */,
 				CF0AB58F2A755EDF00D61101 /* GlossaryDownloadWindowController.m */,
 				CF0AB5902A755EDF00D61101 /* GlossaryDownloadWindowController.xib */,
@@ -728,6 +736,7 @@
 				CF740AE02701CE7900F31F26 /* cs.glossary in Resources */,
 				CF740AD22701CE7900F31F26 /* zh-tw.glossary in Resources */,
 				CFE39F9A1A765859004644C8 /* Localizable.strings in Resources */,
+				CF16E0862A7559CB002D5C48 /* GlossaryManagerWindowController.xib in Resources */,
 				CF740AF42701CE7900F31F26 /* ru.glossary in Resources */,
 				CF740AD92701CE7900F31F26 /* es-419.glossary in Resources */,
 				CF5AB3C3293DCE6200C8AC7B /* SuggestionsWindowController.xib in Resources */,
@@ -867,6 +876,7 @@
 				CF662B391C307C7D00704CEA /* TranslateServiceWindowController.m in Sources */,
 				CF50085729DBB20F007EF23A /* BRCategorySearchField.m in Sources */,
 				CF5FC8931A5ABFF700538E60 /* AppDelegate.m in Sources */,
+				CF16E0852A7559CB002D5C48 /* GlossaryManagerWindowController.m in Sources */,
 				CFCD4B341A6D0C7200BA8826 /* DocumentWindow.m in Sources */,
 				CFC6CC642703152400F7850C /* GlossaryRow.m in Sources */,
 				CF12DB4C293E5A2D00F9C760 /* RoundedCornersView.m in Sources */,

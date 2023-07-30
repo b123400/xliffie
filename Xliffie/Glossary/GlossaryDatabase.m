@@ -19,7 +19,19 @@
     sqlite3 *_sqlite;
 }
 
-+ (NSArray<NSString*>*)databasesWithPlatform:(GlossaryPlatform)platform {
++ (NSArray<GlossaryDatabase*> *)downloadedDatabasesWithPlatform:(GlossaryPlatform)platform {
+    NSArray<NSString*> *allLocales = [GlossaryDatabase localesWithPlatform:platform];
+    NSMutableArray<GlossaryDatabase*> *dbs = [NSMutableArray array];
+    for (NSString *locale in allLocales) {
+        GlossaryDatabase *db = [[GlossaryDatabase alloc] initWithPlatform:platform locale:locale];
+        if ([db isDownloaded]) {
+            [dbs addObject:db];
+        }
+    }
+    return dbs;
+}
+
++ (NSArray<NSString*>*)localesWithPlatform:(GlossaryPlatform)platform {
     if (platform == GlossaryPlatformMac) {
         return @[
             @"Base",
@@ -206,7 +218,7 @@
 }
 
 + (NSArray<NSString*> *)relatedDatabaseForLocale:(NSString *)locale withPlatform:(GlossaryPlatform)platform {
-    NSArray<NSString*> *dbs = [GlossaryDatabase databasesWithPlatform:platform];
+    NSArray<NSString*> *dbs = [GlossaryDatabase localesWithPlatform:platform];
     NSMutableArray *result = [NSMutableArray array];
     NSMutableArray *parts = [[locale componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"-_"]] mutableCopy];
     while ([parts count]) {
@@ -472,12 +484,27 @@
     return YES;
 }
 
-- (void)findRowsWithTarget:(NSString *)target {
-    [self query:@"SELECT source, target, bundle_path FROM translations WHERE target = ?" withParams:@[target]];
+- (unsigned long long)fileSize {
+    NSError *error = nil;
+    NSDictionary<NSFileAttributeKey, id> *attributes = [[NSFileManager defaultManager] attributesOfItemAtPath:self.databasePath
+                                                                                                       error:&error];
+    if (error) {
+        NSLog(@"Cannot stat %@", self.databasePath);
+        return 0;
+    }
+    return [attributes fileSize];
 }
 
-- (void)findTargetsWithSource:(NSString *)source andBundlePath:(NSString *)bundlePath {
-    [self query:@"SELECT target FROM translations WHERE source = ? AND bundle_path = ?" withParams:@[source, bundlePath]];
+- (NSArray *)findTargetsWithSource:(NSString *)source {
+    return [self query:@"SELECT target FROM translations WHERE source = ?" withParams:@[source]];
+}
+
+- (NSArray *)findRowsWithTarget:(NSString *)target {
+    return [self query:@"SELECT source, target, bundle_path FROM translations WHERE target = ?" withParams:@[target]];
+}
+
+- (NSArray *)findTargetsWithSource:(NSString *)source andBundlePath:(NSString *)bundlePath {
+    return [self query:@"SELECT target FROM translations WHERE source = ? AND bundle_path = ?" withParams:@[source, bundlePath]];
 }
 
 - (NSArray *)query:(NSString *)sql withParams:(NSArray * _Nullable)params {
@@ -527,6 +554,15 @@
     }
     sqlite3_finalize(compiledStatement);
     return result;
+}
+
+- (void)deleteDatabase {
+    if (![self isDownloaded]) return;
+    NSError *error = nil;
+    [[NSFileManager defaultManager] removeItemAtPath:[self databasePath] error:&error];
+    if (error) {
+        NSLog(@"Cannot delete DB %@", error);
+    }
 }
 
 @end
