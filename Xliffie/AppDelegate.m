@@ -10,8 +10,11 @@
 #import "DocumentWindowController.h"
 #import "XclocDocument.h"
 #import "Glossary.h"
+#import "GlossaryManagerWindowController.h"
 
 @interface AppDelegate ()
+
+@property (nonatomic, strong) GlossaryManagerWindowController *glossaryManagerWindowController;
 
 @end
 
@@ -157,6 +160,13 @@
         return;
     }
     [controller translateWithGlossaryAndWebPressed:sender];
+}
+
+- (IBAction)glossaryMenuPressed:(id)sender {
+    if (!self.glossaryManagerWindowController) {
+        self.glossaryManagerWindowController = [[GlossaryManagerWindowController alloc] init];
+    }
+    [self.glossaryManagerWindowController showWindow:self];
 }
 
 @end

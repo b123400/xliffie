@@ -572,15 +572,21 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Translate" id="BhD-Ou-uf3">
                                     <items>
-                                        <menuItem title="With Glossary..." id="ykV-Yz-4CP">
+                                        <menuItem title="With Glossary..." identifier="translateWithGlossary" id="ykV-Yz-4CP">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="translateWithGlossaryMenuPressed:" target="Voe-Tx-rLC" id="PU9-h7-zWz"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="With Glossary and Web..." keyEquivalent="T" id="BQ8-JA-Vrv">
+                                        <menuItem title="With Glossary and Web..." keyEquivalent="T" identifier="translateWithGlossaryAndWeb" id="BQ8-JA-Vrv">
                                             <connections>
                                                 <action selector="translateWithGlossaryAndWebPressed:" target="Voe-Tx-rLC" id="dan-er-U3z"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Glossary Databases..." identifier="glossaryDatabase" id="zNp-nH-JcW">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="glossaryMenuPressed:" target="Voe-Tx-rLC" id="fgb-ij-erN"/>
                                             </connections>
                                         </menuItem>
                                     </items>
