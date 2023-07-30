@@ -61,9 +61,9 @@
 //    self.locale = [item title];
 }
 - (IBAction)downloadClicked:(id)sender {
-    [self.downloadButton setEnabled:NO];
     [self.downloadButton setTitle:NSLocalizedString(@"Downloading...", @"")];
     [self.progressIndicator setHidden:NO];
+    self.iOSButton.enabled = self.macOSXButton.enabled = self.downloadButton.enabled = self.localeButton.enabled = NO;
     GlossaryDatabase *db = [[GlossaryDatabase alloc] initWithPlatform:self.platform locale:[self.localeButton.selectedItem title]];
     self.downloadingDatabase = db;
     __weak typeof(self) _self = self;
