@@ -69,7 +69,7 @@
     __weak typeof(self) _self = self;
     NSProgress *progress = [db download:^(NSError * _Nonnull error) {
         dispatch_sync(dispatch_get_main_queue(), ^{
-            if (error) {
+            if (error && error.code != -999) {
                 [[NSAlert alertWithError:error] runModal];
                 return;
             }
