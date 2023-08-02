@@ -26,10 +26,11 @@ typedef enum : NSUInteger {
 + (NSArray<NSString*>*)localesWithPlatform:(GlossaryPlatform)platform;
 + (GlossaryDatabase *)databaseWithPlatform:(GlossaryPlatform)platform locale:(NSString *)locale;
 
-+ (GlossarySearchResults*)searchGlossariesForTerms:(NSArray<NSString *> *)terms
-                                      withPlatform:(GlossaryPlatform)platform
-                                        fromLocale:(NSString *)sourceLocale
-                                          toLocale:(NSString *)targetLocale;
++ (void)searchGlossariesForTerms:(NSArray<NSString *> *)terms
+                    withPlatform:(GlossaryPlatform)platform
+                      fromLocale:(NSString *)sourceLocale
+                        toLocale:(NSString *)targetLocale
+                        callback:(void(^)(GlossarySearchResults *results))callback;
 
 - (NSURL *)databaseURL;
 - (NSString *)databasePath;

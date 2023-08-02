@@ -253,32 +253,49 @@
     return result;
 }
 
-+ (GlossarySearchResults*)searchGlossariesForTerms:(NSArray<NSString *> *)terms
-                                      withPlatform:(GlossaryPlatform)platform
-                                        fromLocale:(NSString *)sourceLocale
-                                          toLocale:(NSString *)targetLocale {
-    // TODO: multi-thread, related DBs, case-insensitive
-    GlossarySearchResults *results = [GlossarySearchResults new];
-    GlossaryDatabase *targetDatabase = [GlossaryDatabase databaseWithPlatform:platform locale:targetLocale];
-    if ([targetDatabase isDownloaded]) {
-        NSDictionary<NSString *, NSArray<GlossarySearchRow*>*> *targetDBResults = [targetDatabase findTargetsWithSources:terms];
-        for (NSString *source in targetDBResults) {
-            NSArray<GlossarySearchRow*> *targetsInDB = targetDBResults[source];
-            [results addSearchResults:targetsInDB];
++ (dispatch_queue_t)dispatchQueue {
+    static dispatch_queue_t queue = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        dispatch_queue_attr_t queueAttrs = dispatch_queue_attr_make_with_qos_class(
+            DISPATCH_QUEUE_SERIAL,
+            QOS_CLASS_USER_INITIATED /* Same as DISPATCH_QUEUE_PRIORITY_HIGH */,
+            0
+        );
+        queue = dispatch_queue_create("net.b123400.xliffie.glossary", queueAttrs);
+    });
+    return queue;
+}
+
++ (void)searchGlossariesForTerms:(NSArray<NSString *> *)terms
+                    withPlatform:(GlossaryPlatform)platform
+                      fromLocale:(NSString *)sourceLocale
+                        toLocale:(NSString *)targetLocale
+                        callback:(void(^)(GlossarySearchResults *results))callback {
+    // TODO: related DBs, case-insensitive
+    dispatch_async([GlossaryDatabase dispatchQueue], ^{
+        GlossarySearchResults *results = [GlossarySearchResults new];
+        GlossaryDatabase *targetDatabase = [GlossaryDatabase databaseWithPlatform:platform locale:targetLocale];
+        if ([targetDatabase isDownloaded]) {
+            NSDictionary<NSString *, NSArray<GlossarySearchRow*>*> *targetDBResults = [targetDatabase findTargetsWithSources:terms];
+            for (NSString *source in targetDBResults) {
+                NSArray<GlossarySearchRow*> *targetsInDB = targetDBResults[source];
+                [results addSearchResults:targetsInDB];
+            }
         }
-    }
-    
-    GlossaryDatabase *sourceDatabase = [GlossaryDatabase databaseWithPlatform:platform locale:sourceLocale];
-    if ([sourceDatabase isDownloaded] && [targetDatabase isDownloaded]) {
-        NSDictionary<GlossaryReverseSearchResult*, NSString*> *reverseResults = [sourceDatabase findRowsWithTargets:terms];
-        NSDictionary<GlossaryReverseSearchResult *, NSString*> *newTargets = [targetDatabase findTargetsWithReverseResults:[reverseResults allKeys]];
-        for (GlossaryReverseSearchResult *revResult in newTargets) {
-            NSString *sourceResult = reverseResults[revResult];
-            NSString *newTarget = newTargets[revResult];
-            [results addResultWithSource:sourceResult target:newTarget bundlePath:revResult.bundlePath];
+        
+        GlossaryDatabase *sourceDatabase = [GlossaryDatabase databaseWithPlatform:platform locale:sourceLocale];
+        if ([sourceDatabase isDownloaded] && [targetDatabase isDownloaded]) {
+            NSDictionary<GlossaryReverseSearchResult*, NSString*> *reverseResults = [sourceDatabase findRowsWithTargets:terms];
+            NSDictionary<GlossaryReverseSearchResult *, NSString*> *newTargets = [targetDatabase findTargetsWithReverseResults:[reverseResults allKeys]];
+            for (GlossaryReverseSearchResult *revResult in newTargets) {
+                NSString *sourceResult = reverseResults[revResult];
+                NSString *newTarget = newTargets[revResult];
+                [results addResultWithSource:sourceResult target:newTarget bundlePath:revResult.bundlePath];
+            }
         }
-    }
-    return results;
+        callback(results);
+    });
 }
 
 - (instancetype)initWithPlatform:(GlossaryPlatform)platform locale:(NSString *)locale {
