@@ -332,6 +332,7 @@
     __weak typeof(self) _self = self;
     NSURLSessionDownloadTask *task = [[NSURLSession sharedSession] downloadTaskWithURL:self.databaseURL
                                     completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        _self.downloadTask = nil;
         if (error) {
             callback(error);
             return;
@@ -340,11 +341,18 @@
         [[NSFileManager defaultManager] copyItemAtURL:location
                                                 toURL:[NSURL fileURLWithPath:_self.databasePath]
                                                 error:&err];
+        if (![_self testDatabase]) {
+            [[NSFileManager defaultManager] removeItemAtPath:_self.databasePath error:nil];
+            err = [NSError errorWithDomain:@"net.b123400.xliffie" code:0 userInfo:@{
+                NSLocalizedDescriptionKey: NSLocalizedString(@"Database corrupted", @"")
+            }];
+            callback(err);
+            return;
+        }
         if (err) {
             callback(err);
             return;
         }
-        _self.downloadTask = nil;
         callback(nil);
     }];
     self.downloadTask = task;
@@ -377,6 +385,12 @@
     return YES;
 }
 
+- (void)close {
+    if (!_sqlite) return;
+    sqlite3_close_v2(_sqlite);
+    _sqlite = nil;
+}
+
 - (unsigned long long)fileSize {
     NSError *error = nil;
     NSDictionary<NSFileAttributeKey, id> *attributes = [[NSFileManager defaultManager] attributesOfItemAtPath:self.databasePath
@@ -386,6 +400,14 @@
         return 0;
     }
     return [attributes fileSize];
+}
+
+- (BOOL)testDatabase {
+    NSArray *rows = [self query:@"SELECT source, target, bundle_path FROM translations LIMIT 1" withParams:@[]];
+    if (rows.count == 1) {
+        return YES;
+    }
+    return NO;
 }
 
 - (NSArray *)findTargetsWithSource:(NSString *)source {

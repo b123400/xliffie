@@ -34,6 +34,7 @@ typedef enum : NSUInteger {
 - (NSURL *)databaseURL;
 - (NSString *)databasePath;
 - (BOOL)isDownloaded;
+- (BOOL)testDatabase;
 - (unsigned long long)fileSize;
 
 - (NSURLSessionDownloadTask *)downloadTask;

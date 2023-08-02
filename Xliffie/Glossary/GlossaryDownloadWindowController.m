@@ -71,6 +71,8 @@
         dispatch_sync(dispatch_get_main_queue(), ^{
             if (error && error.code != -999) {
                 [[NSAlert alertWithError:error] runModal];
+                [_self.window.sheetParent endSheet:_self.window
+                                        returnCode:NSModalResponseCancel];
                 return;
             }
             [_self.window.sheetParent endSheet:_self.window
