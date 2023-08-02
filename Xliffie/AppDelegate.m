@@ -147,6 +147,16 @@
 
 #pragma mark - Menu bar
 
+- (BOOL)validateMenuItem:(NSMenuItem *)menuItem {
+    if ([menuItem.identifier isEqual:@"translateWithGlossary"] || [menuItem.identifier isEqual:@"translateWithGlossaryAndWeb"]) {
+        if ([[[NSApplication sharedApplication] keyWindow].delegate isKindOfClass:[DocumentWindowController class]]) {
+            return YES;
+        }
+        return NO;
+    }
+    return YES;
+}
+
 - (IBAction)translateWithGlossaryMenuPressed:(id)sender {
     DocumentWindowController *controller = (DocumentWindowController*)[[[NSApplication sharedApplication] keyWindow] delegate];
     if (![controller isKindOfClass:[DocumentWindowController class]]) {
