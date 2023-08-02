@@ -8,6 +8,7 @@
 
 #import "GlossaryDatabase.h"
 #import <sqlite3.h>
+#import "GlossaryReverseSearchResult.h"
 
 @interface GlossaryDatabase ()
 
@@ -391,15 +392,96 @@
     return [self query:@"SELECT target FROM translations WHERE source = ?" withParams:@[source]];
 }
 
+- (NSDictionary<NSString *, NSArray<GlossarySearchRow *> *> *)findTargetsWithSources:(NSArray<NSString *> *)sources {
+    if (!sources.count) return @{};
+    // Max num of place holder is 999: https://www.sqlite.org/limits.html
+    NSArray *batches = [self batch:sources limit:999 callback:^id(NSArray *items) {
+        NSMutableArray *placeHolders = [NSMutableArray arrayWithCapacity:items.count];
+        for (int i = 0; i < items.count; i++) {
+            [placeHolders addObject:@"?"];
+        }
+        NSString *sql = [NSString stringWithFormat:@"SELECT source, target, bundle_path FROM translations WHERE source IN (%@)", [placeHolders componentsJoinedByString:@","]];
+        NSArray *targets = [self query:sql withParams:items];
+        return targets;
+    }];
+    NSArray *rows = [batches valueForKeyPath: @"@unionOfArrays.self"];
+    NSMutableDictionary<NSString*, NSMutableArray<GlossarySearchRow*>*> *dict = [NSMutableDictionary dictionary];
+    for (NSArray *row in rows) {
+        NSString *source = row[0];
+        NSString *target = row[1];
+        NSString *bundlePath = row[2];
+        if (!dict[source]) {
+            dict[source] = [NSMutableArray array];
+        }
+        GlossarySearchRow *r = [GlossarySearchRow new];
+        r.source = source;
+        r.target = target;
+        r.bundlePath = bundlePath;
+        [dict[source] addObject:r];
+    };
+    return dict;
+}
+
 - (NSArray *)findRowsWithTarget:(NSString *)target {
     return [self query:@"SELECT source, target, bundle_path FROM translations WHERE target = ?" withParams:@[target]];
+}
+
+- (NSDictionary<GlossaryReverseSearchResult*, NSString*> *)findRowsWithTargets:(NSArray<NSString *> *)targets {
+    NSArray *batches = [self batch:targets limit:999 callback:^id(NSArray *items) {
+        NSMutableArray *placeHolders = [NSMutableArray arrayWithCapacity:items.count];
+        for (int i = 0; i < items.count; i++) {
+            [placeHolders addObject:@"?"];
+        }
+        NSString *sql = [NSString stringWithFormat:@"SELECT source, target, bundle_path FROM translations WHERE target IN (%@)", [placeHolders componentsJoinedByString:@","]];
+        NSArray *targets = [self query:sql withParams:items];
+        return targets;
+    }];
+    NSArray *rows = [batches valueForKeyPath: @"@unionOfArrays.self"];
+    NSMutableDictionary<GlossaryReverseSearchResult*, NSString*> *dict = [NSMutableDictionary dictionary];
+    for (NSArray *row in rows) {
+        NSString *source = row[0];
+        NSString *target = row[1];
+        NSString *bundlePath = row[2];
+        GlossaryReverseSearchResult *r = [GlossaryReverseSearchResult new];
+        r.source = source;
+        r.bundlePath = bundlePath;
+        dict[r] = target;
+    };
+    return dict;
 }
 
 - (NSArray *)findTargetsWithSource:(NSString *)source andBundlePath:(NSString *)bundlePath {
     return [self query:@"SELECT target FROM translations WHERE source = ? AND bundle_path = ?" withParams:@[source, bundlePath]];
 }
 
+- (NSDictionary<GlossaryReverseSearchResult *, NSString *> *)findTargetsWithReverseResults:(NSArray<GlossaryReverseSearchResult*>*)reverseResults {
+    NSArray *batches = [self batch:reverseResults limit:498 callback:^id(NSArray<GlossaryReverseSearchResult*> *items) {
+        NSMutableArray *placeHolders = [NSMutableArray arrayWithCapacity:items.count];
+        NSMutableArray *values = [NSMutableArray arrayWithCapacity:items.count];
+        for (int i = 0; i < items.count; i++) {
+            [placeHolders addObject:[NSString stringWithFormat:@" (source = ? AND bundle_path = ?) "]];
+            [values addObjectsFromArray:@[items[i].source, items[i].bundlePath]];
+        }
+        NSString *sql = [NSString stringWithFormat:@"SELECT source, target, bundle_path FROM translations WHERE %@", [placeHolders componentsJoinedByString:@" OR "]];
+        NSArray *results = [self query:sql withParams:values];
+        return results;
+    }];
+    NSArray *rows = [batches valueForKeyPath: @"@unionOfArrays.self"];
+    NSMutableDictionary<GlossaryReverseSearchResult *, NSString *> *dict = [NSMutableDictionary dictionary];
+    for (NSArray *row in rows) {
+        NSString *source = row[0];
+        NSString *target = row[1];
+        NSString *bundlePath = row[2];
+        GlossaryReverseSearchResult *revResult = [GlossaryReverseSearchResult new];
+        revResult.source = source;
+        revResult.bundlePath = bundlePath;
+        dict[revResult] = target;
+    }
+    return dict;
+}
+
 - (NSArray *)query:(NSString *)sql withParams:(NSArray * _Nullable)params {
+    if (![self open]) return nil;
     sqlite3_stmt *compiledStatement = nil;
     int rc = 0;
     if ((rc = sqlite3_prepare_v2(_sqlite, [sql UTF8String], -1, &compiledStatement, nil)) != SQLITE_OK) {
@@ -455,6 +537,20 @@
     if (error) {
         NSLog(@"Cannot delete DB %@", error);
     }
+}
+
+- (NSArray *)batch:(NSArray *)items limit:(NSInteger)limit callback:(id (^)(NSArray *items))callback {
+    NSMutableArray *results = [NSMutableArray array];
+    NSInteger index = 0;
+    while (index < items.count) {
+        NSRange range = NSMakeRange(index, MIN(items.count - index, limit));
+        if (index > items.count - 1) break;
+        NSArray *thisBatch = [items subarrayWithRange:range];
+        id result = callback(thisBatch);
+        [results addObject:result];
+        index += limit;
+    }
+    return results;
 }
 
 @end

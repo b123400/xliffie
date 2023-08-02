@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "GlossarySearchRow.h"
+#import "GlossarySearchResults.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -24,6 +26,10 @@ typedef enum : NSUInteger {
 + (NSArray<NSString*>*)localesWithPlatform:(GlossaryPlatform)platform;
 + (GlossaryDatabase *)databaseWithPlatform:(GlossaryPlatform)platform locale:(NSString *)locale;
 
++ (GlossarySearchResults*)searchGlossariesForTerms:(NSArray<NSString *> *)terms
+                                      withPlatform:(GlossaryPlatform)platform
+                                        fromLocale:(NSString *)sourceLocale
+                                          toLocale:(NSString *)targetLocale;
 
 - (NSURL *)databaseURL;
 - (NSString *)databasePath;

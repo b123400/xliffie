@@ -100,6 +100,10 @@
 		CFE39FA61A767253004644C8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CFE39FA81A767253004644C8 /* InfoPlist.strings */; };
 		CFE3B1761CD800AB00021D7F /* NSString+Pangu.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE3B1751CD800AB00021D7F /* NSString+Pangu.m */; };
 		CFEECE42250E21EE007A324C /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = CFEECE44250E21EE007A324C /* Localizable.stringsdict */; };
+		CFF4AE282A790BD100C50D8A /* GlossaryReverseSearchResult.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF4AE272A790BD100C50D8A /* GlossaryReverseSearchResult.m */; };
+		CFF4AE2B2A79504800C50D8A /* GlossarySearchRow.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF4AE2A2A79504800C50D8A /* GlossarySearchRow.m */; };
+		CFF4AE2E2A79577A00C50D8A /* GlossarySearchResults.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF4AE2D2A79577A00C50D8A /* GlossarySearchResults.m */; };
+		CFF4AE312A7959BA00C50D8A /* GlossarySearchResult.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF4AE302A7959BA00C50D8A /* GlossarySearchResult.m */; };
 		CFF70D80221E7BF2004C4C2D /* XclocDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF70D7F221E7BF2004C4C2D /* XclocDocument.m */; };
 		D42B8307A52A4CB70FEEA156 /* libPods-XliffieTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B8C7EA753A4178056B36640 /* libPods-XliffieTests.a */; };
 /* End PBXBuildFile section */
@@ -271,6 +275,14 @@
 		CFEECE43250E21EE007A324C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		CFEECE46250E2C69007A324C /* zh-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = "zh-TW"; path = "zh-TW.lproj/Localizable.stringsdict"; sourceTree = "<group>"; };
 		CFEECE47250E2C6A007A324C /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = ja; path = ja.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		CFF4AE262A790BD100C50D8A /* GlossaryReverseSearchResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlossaryReverseSearchResult.h; sourceTree = "<group>"; };
+		CFF4AE272A790BD100C50D8A /* GlossaryReverseSearchResult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GlossaryReverseSearchResult.m; sourceTree = "<group>"; };
+		CFF4AE292A79504800C50D8A /* GlossarySearchRow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlossarySearchRow.h; sourceTree = "<group>"; };
+		CFF4AE2A2A79504800C50D8A /* GlossarySearchRow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GlossarySearchRow.m; sourceTree = "<group>"; };
+		CFF4AE2C2A79577A00C50D8A /* GlossarySearchResults.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlossarySearchResults.h; sourceTree = "<group>"; };
+		CFF4AE2D2A79577A00C50D8A /* GlossarySearchResults.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GlossarySearchResults.m; sourceTree = "<group>"; };
+		CFF4AE2F2A7959BA00C50D8A /* GlossarySearchResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlossarySearchResult.h; sourceTree = "<group>"; };
+		CFF4AE302A7959BA00C50D8A /* GlossarySearchResult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GlossarySearchResult.m; sourceTree = "<group>"; };
 		CFF70D7E221E7BF2004C4C2D /* XclocDocument.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XclocDocument.h; sourceTree = "<group>"; };
 		CFF70D7F221E7BF2004C4C2D /* XclocDocument.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XclocDocument.m; sourceTree = "<group>"; };
 		E63D96FADBADA5BA423F82DD /* Pods-Xliffie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Xliffie.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Xliffie/Pods-Xliffie.debug.xcconfig"; sourceTree = "<group>"; };
@@ -458,6 +470,14 @@
 				CFC6CC632703152400F7850C /* GlossaryRow.m */,
 				CF2225592A5EA41D00F08515 /* GlossaryDatabase.h */,
 				CF22255A2A5EA41D00F08515 /* GlossaryDatabase.m */,
+				CFF4AE292A79504800C50D8A /* GlossarySearchRow.h */,
+				CFF4AE2A2A79504800C50D8A /* GlossarySearchRow.m */,
+				CFF4AE2F2A7959BA00C50D8A /* GlossarySearchResult.h */,
+				CFF4AE302A7959BA00C50D8A /* GlossarySearchResult.m */,
+				CFF4AE2C2A79577A00C50D8A /* GlossarySearchResults.h */,
+				CFF4AE2D2A79577A00C50D8A /* GlossarySearchResults.m */,
+				CFF4AE262A790BD100C50D8A /* GlossaryReverseSearchResult.h */,
+				CFF4AE272A790BD100C50D8A /* GlossaryReverseSearchResult.m */,
 				CF16E0822A7559CB002D5C48 /* GlossaryManagerWindowController.h */,
 				CF16E0832A7559CB002D5C48 /* GlossaryManagerWindowController.m */,
 				CF16E0842A7559CB002D5C48 /* GlossaryManagerWindowController.xib */,
@@ -848,17 +868,21 @@
 			files = (
 				CF12DB4F293EF89C00F9C760 /* SuggestionsCellView.m in Sources */,
 				CF92FB941C24037B00700D3E /* TargetMissingViewController.m in Sources */,
+				CFF4AE2E2A79577A00C50D8A /* GlossarySearchResults.m in Sources */,
 				CF5682EB1A6AFB9800E0DEDD /* DocumentWindowController.m in Sources */,
 				CF011B4B1C40FCBA00948323 /* TranslationUtility.m in Sources */,
 				CF94FCA51A5C365400EE8BD5 /* File.m in Sources */,
 				CF1CE50629CB4EBD00BBFAAB /* ProgressWindowController.m in Sources */,
 				CF1BEBE529D5838F0000BD59 /* BaseCustomCell.m in Sources */,
 				CF34B75A1AADE00A00C6A58E /* TranslationTargetCell.m in Sources */,
+				CFF4AE2B2A79504800C50D8A /* GlossarySearchRow.m in Sources */,
 				CF1BEBE229D565740000BD59 /* DocumentTextFinderClientEntry.m in Sources */,
+				CFF4AE312A7959BA00C50D8A /* GlossarySearchResult.m in Sources */,
 				CF5682EF1A6B11C700E0DEDD /* DetailViewController.m in Sources */,
 				CFD234FA1A5E44C700B52088 /* XMLOutlineView.m in Sources */,
 				CF0AB5912A755EDF00D61101 /* GlossaryDownloadWindowController.m in Sources */,
 				CF5FC89B1A5ABFF700538E60 /* Document.m in Sources */,
+				CFF4AE282A790BD100C50D8A /* GlossaryReverseSearchResult.m in Sources */,
 				CF5AB3C2293DCE6200C8AC7B /* SuggestionsWindowController.m in Sources */,
 				CF740AA72701C6C700F31F26 /* Glossary.m in Sources */,
 				CFE3B1761CD800AB00021D7F /* NSString+Pangu.m in Sources */,
