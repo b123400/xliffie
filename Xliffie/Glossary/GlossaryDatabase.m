@@ -19,11 +19,28 @@
     sqlite3 *_sqlite;
 }
 
++ (GlossaryDatabase *)databaseWithPlatform:(GlossaryPlatform)platform locale:(NSString *)locale {
+    static NSMutableDictionary<NSString *, GlossaryDatabase *> *iosDatabases = nil;
+    static NSMutableDictionary<NSString *, GlossaryDatabase *> *macDatabases = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        iosDatabases = [NSMutableDictionary dictionary];
+        macDatabases = [NSMutableDictionary dictionary];
+    });
+    NSMutableDictionary<NSString *, GlossaryDatabase *> *dict = platform == GlossaryPlatformIOS ? iosDatabases : macDatabases;
+    if (dict[locale]) {
+        return dict[locale];
+    }
+    GlossaryDatabase *db = [[GlossaryDatabase alloc] initWithPlatform:platform locale:locale];
+    dict[locale] = db;
+    return db;
+}
+
 + (NSArray<GlossaryDatabase*> *)downloadedDatabasesWithPlatform:(GlossaryPlatform)platform {
     NSArray<NSString*> *allLocales = [GlossaryDatabase localesWithPlatform:platform];
     NSMutableArray<GlossaryDatabase*> *dbs = [NSMutableArray array];
     for (NSString *locale in allLocales) {
-        GlossaryDatabase *db = [[GlossaryDatabase alloc] initWithPlatform:platform locale:locale];
+        GlossaryDatabase *db = [GlossaryDatabase databaseWithPlatform:platform locale:locale];
         if ([db isDownloaded]) {
             [dbs addObject:db];
         }
@@ -235,157 +252,32 @@
     return result;
 }
 
-+ (NSString *)fileSizeForLocale:(NSString *)locale withPlatform:(GlossaryPlatform)platform {
-    if (platform == GlossaryPlatformMac) {
-        NSDictionary *dict = @{
-            @"Base": @"32K",
-            @"Dutch": @"200K",
-            @"English": @"1M",
-            @"French": @"204K",
-            @"German": @"204K",
-            @"Italian": @"200K",
-            @"Japanese": @"212K",
-            @"Spanish": @"200K",
-            @"ar": @"41M",
-            @"ca": @"38M",
-            @"cs": @"37M",
-            @"da": @"37M",
-            @"de": @"38M",
-            @"el": @"45M",
-            @"en-GB": @"24K",
-            @"en": @"31M",
-            @"en_AU": @"36M",
-            @"en_CA": @"120K",
-            @"en_GB": @"36M",
-            @"en_IN": @"120K",
-            @"es": @"37M",
-            @"es_419": @"37M",
-            @"es_MX": @"212K",
-            @"fi": @"37M",
-            @"fr-CA": @"28K",
-            @"fr": @"38M",
-            @"fr_CA": @"38M",
-            @"he": @"40M",
-            @"hi": @"48M",
-            @"hi_Latn": @"464K",
-            @"hr": @"37M",
-            @"hu": @"38M",
-            @"id": @"37M",
-            @"it": @"37M",
-            @"ja": @"39M",
-            @"ko": @"38M",
-            @"ms": @"37M",
-            @"nb": @"28K",
-            @"nl": @"37M",
-            @"no": @"36M",
-            @"pl": @"37M",
-            @"pt-PT": @"28K",
-            @"pt": @"23M",
-            @"pt_BR": @"15M",
-            @"pt_PT": @"37M",
-            @"ro": @"38M",
-            @"ru": @"44M",
-            @"sk": @"38M",
-            @"sv": @"37M",
-            @"ta": @"12K",
-            @"th": @"48M",
-            @"tr": @"37M",
-            @"uk": @"43M",
-            @"vi": @"39M",
-            @"yue_CN": @"6M",
-            @"zh-Hans": @"24K",
-            @"zh-Hant": @"24K",
-            @"zh_CN": @"36M",
-            @"zh_HK": @"35M",
-            @"zh_TW": @"36M",
-        };
-        return dict[locale];
-    } else if (GlossaryPlatformIOS) {
-        NSDictionary *dict = @{
-            @"Base": @"12K",
-            @"Dutch": @"96K",
-            @"English": @"92K",
-            @"French": @"96K",
-            @"German": @"96K",
-            @"Italian": @"96K",
-            @"Japanese": @"104K",
-            @"Spanish": @"96K",
-            @"ar": @"18M",
-            @"ar_AE": @"12K",
-            @"ar_SA": @"12K",
-            @"bn_Latn": @"48K",
-            @"ca": @"17M",
-            @"cs": @"17M",
-            @"da": @"16M",
-            @"de": @"17M",
-            @"de_AT": @"12K",
-            @"de_CH": @"12K",
-            @"el": @"20M",
-            @"en": @"17M",
-            @"en_AU": @"16M",
-            @"en_CA": @"120K",
-            @"en_GB": @"16M",
-            @"en_ID": @"12K",
-            @"en_IN": @"192K",
-            @"en_MY": @"12K",
-            @"en_NZ": @"12K",
-            @"en_SG": @"12K",
-            @"es": @"16M",
-            @"es_419": @"16M",
-            @"es_AR": @"12K",
-            @"es_CL": @"12K",
-            @"es_CO": @"12K",
-            @"es_CR": @"12K",
-            @"es_GT": @"12K",
-            @"es_MX": @"12K",
-            @"es_PA": @"12K",
-            @"es_PE": @"12K",
-            @"fi": @"16M",
-            @"fr": @"17M",
-            @"fr_BE": @"12K",
-            @"fr_CA": @"17M",
-            @"fr_CH": @"12K",
-            @"gu_Latn": @"48K",
-            @"he": @"17M",
-            @"hi": @"21M",
-            @"hi_Latn": @"496K",
-            @"hr": @"16M",
-            @"hu": @"17M",
-            @"id": @"16M",
-            @"it": @"16M",
-            @"it_CH": @"12K",
-            @"ja": @"17M",
-            @"kn_Latn": @"48K",
-            @"ko": @"17M",
-            @"ml_Latn": @"52K",
-            @"mr_Latn": @"48K",
-            @"ms": @"16M",
-            @"nl": @"16M",
-            @"no": @"16M",
-            @"or_Latn": @"48K",
-            @"pa_Latn": @"48K",
-            @"pl": @"16M",
-            @"pt": @"9.5M",
-            @"pt_BR": @"6.9M",
-            @"pt_PT": @"16M",
-            @"ro": @"17M",
-            @"ru": @"20M",
-            @"sk": @"17M",
-            @"sv": @"16M",
-            @"ta_Latn": @"52K",
-            @"te_Latn": @"48K",
-            @"th": @"21M",
-            @"tr": @"16M",
-            @"uk": @"19M",
-            @"vi": @"17M",
-            @"yue_CN": @"988K",
-            @"zh_CN": @"16M",
-            @"zh_HK": @"16M",
-            @"zh_TW": @"16M",
-        };
-        return dict[locale];
++ (GlossarySearchResults*)searchGlossariesForTerms:(NSArray<NSString *> *)terms
+                                      withPlatform:(GlossaryPlatform)platform
+                                        fromLocale:(NSString *)sourceLocale
+                                          toLocale:(NSString *)targetLocale {
+    // TODO: multi-thread, related DBs, case-insensitive
+    GlossarySearchResults *results = [GlossarySearchResults new];
+    GlossaryDatabase *targetDatabase = [GlossaryDatabase databaseWithPlatform:platform locale:targetLocale];
+    if ([targetDatabase isDownloaded]) {
+        NSDictionary<NSString *, NSArray<GlossarySearchRow*>*> *targetDBResults = [targetDatabase findTargetsWithSources:terms];
+        for (NSString *source in targetDBResults) {
+            NSArray<GlossarySearchRow*> *targetsInDB = targetDBResults[source];
+            [results addSearchResults:targetsInDB];
+        }
     }
-    return nil;
+    
+    GlossaryDatabase *sourceDatabase = [GlossaryDatabase databaseWithPlatform:platform locale:sourceLocale];
+    if ([sourceDatabase isDownloaded] && [targetDatabase isDownloaded]) {
+        NSDictionary<GlossaryReverseSearchResult*, NSString*> *reverseResults = [sourceDatabase findRowsWithTargets:terms];
+        NSDictionary<GlossaryReverseSearchResult *, NSString*> *newTargets = [targetDatabase findTargetsWithReverseResults:[reverseResults allKeys]];
+        for (GlossaryReverseSearchResult *revResult in newTargets) {
+            NSString *sourceResult = reverseResults[revResult];
+            NSString *newTarget = newTargets[revResult];
+            [results addResultWithSource:sourceResult target:newTarget bundlePath:revResult.bundlePath];
+        }
+    }
+    return results;
 }
 
 - (instancetype)initWithPlatform:(GlossaryPlatform)platform locale:(NSString *)locale {

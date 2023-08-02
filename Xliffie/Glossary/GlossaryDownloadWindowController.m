@@ -38,7 +38,7 @@
 - (void)reloadLocales {
     NSMutableArray<NSMenuItem *> *items = [NSMutableArray array];
     for (NSString *locale in [GlossaryDatabase localesWithPlatform:self.platform]) {
-        GlossaryDatabase *db = [[GlossaryDatabase alloc] initWithPlatform:self.platform locale:locale];
+        GlossaryDatabase *db = [GlossaryDatabase databaseWithPlatform:self.platform locale:locale];
         if (![db isDownloaded]) {
             NSMenuItem *item = [[NSMenuItem alloc] init];
             [item setTitle:locale];
@@ -64,7 +64,7 @@
     [self.downloadButton setTitle:NSLocalizedString(@"Downloading...", @"")];
     [self.progressIndicator setHidden:NO];
     self.iOSButton.enabled = self.macOSXButton.enabled = self.downloadButton.enabled = self.localeButton.enabled = NO;
-    GlossaryDatabase *db = [[GlossaryDatabase alloc] initWithPlatform:self.platform locale:[self.localeButton.selectedItem title]];
+    GlossaryDatabase *db = [GlossaryDatabase databaseWithPlatform:self.platform locale:[self.localeButton.selectedItem title]];
     self.downloadingDatabase = db;
     __weak typeof(self) _self = self;
     NSProgress *progress = [db download:^(NSError * _Nonnull error) {

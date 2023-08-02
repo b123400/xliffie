@@ -22,8 +22,8 @@ typedef enum : NSUInteger {
 
 + (NSArray<GlossaryDatabase*> *)downloadedDatabasesWithPlatform:(GlossaryPlatform)platform;
 + (NSArray<NSString*>*)localesWithPlatform:(GlossaryPlatform)platform;
++ (GlossaryDatabase *)databaseWithPlatform:(GlossaryPlatform)platform locale:(NSString *)locale;
 
-- (instancetype)initWithPlatform:(GlossaryPlatform)platform locale:(NSString *)locale;
 
 - (NSURL *)databaseURL;
 - (NSString *)databasePath;
