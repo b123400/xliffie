@@ -275,23 +275,50 @@
     // TODO: related DBs, case-insensitive
     dispatch_async([GlossaryDatabase dispatchQueue], ^{
         GlossarySearchResults *results = [GlossarySearchResults new];
-        GlossaryDatabase *targetDatabase = [GlossaryDatabase databaseWithPlatform:platform locale:targetLocale];
-        if ([targetDatabase isDownloaded]) {
-            NSDictionary<NSString *, NSArray<GlossarySearchRow*>*> *targetDBResults = [targetDatabase findTargetsWithSources:terms];
-            for (NSString *source in targetDBResults) {
-                NSArray<GlossarySearchRow*> *targetsInDB = targetDBResults[source];
-                [results addSearchResults:targetsInDB];
+        NSMutableOrderedSet<NSString *> *allRelatedTargetLocale = [NSMutableOrderedSet orderedSet];
+        [allRelatedTargetLocale addObject:sourceLocale];
+        [allRelatedTargetLocale addObjectsFromArray:[self recommendedRelatedDatabaseForLocale:targetLocale withPlatform:platform]];
+        [allRelatedTargetLocale addObjectsFromArray:[self relatedDatabaseForLocale:targetLocale withPlatform:platform]];
+        
+        BOOL anyTargetDBDownloaded = NO;
+        for (NSString *thisTargetLocale in allRelatedTargetLocale) {
+            GlossaryDatabase *targetDatabase = [GlossaryDatabase databaseWithPlatform:platform locale:thisTargetLocale];
+            if ([targetDatabase isDownloaded]) {
+                anyTargetDBDownloaded = YES;
+                NSDictionary<NSString *, NSArray<GlossarySearchRow*>*> *targetDBResults = [targetDatabase findTargetsWithSources:terms];
+                for (NSString *source in targetDBResults) {
+                    NSArray<GlossarySearchRow*> *targetsInDB = targetDBResults[source];
+                    [results addSearchResults:targetsInDB];
+                }
             }
         }
         
-        GlossaryDatabase *sourceDatabase = [GlossaryDatabase databaseWithPlatform:platform locale:sourceLocale];
-        if ([sourceDatabase isDownloaded] && [targetDatabase isDownloaded]) {
-            NSDictionary<GlossaryReverseSearchResult*, NSString*> *reverseResults = [sourceDatabase findRowsWithTargets:terms];
-            NSDictionary<GlossaryReverseSearchResult *, NSString*> *newTargets = [targetDatabase findTargetsWithReverseResults:[reverseResults allKeys]];
-            for (GlossaryReverseSearchResult *revResult in newTargets) {
-                NSString *sourceResult = reverseResults[revResult];
-                NSString *newTarget = newTargets[revResult];
-                [results addResultWithSource:sourceResult target:newTarget bundlePath:revResult.bundlePath];
+        if (!anyTargetDBDownloaded) {
+            callback(results);
+            return;
+        }
+        
+        NSMutableOrderedSet<NSString *> *sourceLocales = [NSMutableOrderedSet orderedSetWithArray:@[sourceLocale]];
+        [sourceLocales addObjectsFromArray:[self relatedDatabaseForLocale:sourceLocale withPlatform:platform]];
+        [sourceLocales addObjectsFromArray:[self recommendedRelatedDatabaseForLocale:sourceLocale withPlatform:platform]];
+        [sourceLocales addObjectsFromArray:@[@"en", @"English", @"Base"]];
+        NSMutableDictionary<GlossaryReverseSearchResult*, NSString *> *reverseResults = [NSMutableDictionary dictionary];
+        for (NSString *thisSourceLocale in sourceLocales) {
+            GlossaryDatabase *sourceDatabase = [GlossaryDatabase databaseWithPlatform:platform locale:thisSourceLocale];
+            if ([sourceDatabase isDownloaded]) {
+                NSDictionary<GlossaryReverseSearchResult*, NSString*> *thisReverseResults = [sourceDatabase findRowsWithTargets:terms];
+                [reverseResults addEntriesFromDictionary:thisReverseResults];
+            }
+        }
+        for (NSString *thisTargetLocale in allRelatedTargetLocale) {
+            GlossaryDatabase *targetDatabase = [GlossaryDatabase databaseWithPlatform:platform locale:thisTargetLocale];
+            if ([targetDatabase isDownloaded]) {
+                NSDictionary<GlossaryReverseSearchResult *, NSString*> *newTargets = [targetDatabase findTargetsWithReverseResults:[reverseResults allKeys]];
+                for (GlossaryReverseSearchResult *revResult in newTargets) {
+                    NSString *sourceResult = reverseResults[revResult];
+                    NSString *newTarget = newTargets[revResult];
+                    [results addResultWithSource:sourceResult target:newTarget bundlePath:revResult.bundlePath];
+                }
             }
         }
         callback(results);
