@@ -317,7 +317,9 @@
                 for (GlossaryReverseSearchResult *revResult in newTargets) {
                     NSString *sourceResult = reverseResults[revResult];
                     NSString *newTarget = newTargets[revResult];
-                    [results addResultWithSource:sourceResult target:newTarget bundlePath:revResult.bundlePath];
+                    if (sourceResult && newTarget) {
+                        [results addResultWithSource:sourceResult target:newTarget bundlePath:revResult.bundlePath];
+                    }
                 }
             }
         }
