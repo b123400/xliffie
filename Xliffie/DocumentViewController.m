@@ -13,6 +13,7 @@
 #import "Glossary.h"
 #import "NSAttributedString+FileIcon.h"
 #import "DocumentTextFinderClient.h"
+#import "GlossaryDatabase.h"
 
 @interface DocumentViewController () <SuggestionsWindowControllerDelegate>
 
@@ -322,29 +323,22 @@ doCommandBySelector:(SEL)commandSelector {
     NSRect cellRect = [self.outlineView frameOfCellAtColumn:column row:row];
     TranslationPair *pair = (TranslationPair*)[self.outlineView itemAtRow:row];
     if (![pair isKindOfClass:[TranslationPair class]]) return;
-    NSArray<Suggestion*> *suggestions = [self suggestionsForTranslationPair:pair];
-    if (!suggestions.count) return;
-    [[SuggestionsWindowController shared] setSuggestions:suggestions];
-    [SuggestionsWindowController shared].delegate = self;
-    [[SuggestionsWindowController shared] showAtRect:cellRect
-                                              ofView:self.outlineView];
-    [[[SuggestionsWindowController shared] window] makeKeyAndOrderFront:self];
+    [self suggestionsForTranslationPair:pair callback:^(NSArray<Suggestion *> *suggestions) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (!suggestions.count) return;
+            [[SuggestionsWindowController shared] setSuggestions:suggestions];
+            [SuggestionsWindowController shared].delegate = self;
+            [[SuggestionsWindowController shared] showAtRect:cellRect
+                                                      ofView:self.outlineView];
+            [[[SuggestionsWindowController shared] window] makeKeyAndOrderFront:self];
+        });
+    }];
 }
 
-- (NSArray<Suggestion *> *)suggestionsForTranslationPair:(TranslationPair *)pair {
+- (void)suggestionsForTranslationPair:(TranslationPair *)pair callback:(void(^)(NSArray<Suggestion *> *suggestions))callback {
     NSMutableArray<Suggestion*> *suggestions = [NSMutableArray array];
     // Dedup suggestions by title
     NSMutableSet<NSString*> *addedSuggestions = [NSMutableSet set];
-    Glossary *glossary = [Glossary sharedGlossaryWithLocale:pair.file.targetLanguage];
-    BOOL isMenu = [pair.file.original.lastPathComponent.lowercaseString containsString:@"menu"];
-    NSString *glossaryTranslation = [glossary translate:pair.source isMenu:isMenu];
-    if (glossaryTranslation && ![glossaryTranslation isEqualTo:pair.target]) {
-        Suggestion *s = [[Suggestion alloc] init];
-        s.title = glossaryTranslation;
-        s.source = SuggestionSourceGlossary;
-        [suggestions addObject:s];
-        [addedSuggestions addObject:glossaryTranslation];
-    }
     for (File *file in self.document.files) {
         for (TranslationPair *p in file.translations) {
             if (p == pair) continue;
@@ -361,7 +355,22 @@ doCommandBySelector:(SEL)commandSelector {
             }
         }
     }
-    return suggestions;
+    [GlossaryDatabase searchGlossariesForTerms:@[pair.source]
+                                  withPlatform:GlossaryPlatformMac // TODO
+                                    fromLocale:pair.file.sourceLanguage
+                                      toLocale:pair.file.targetLanguage
+                                      callback:^(GlossarySearchResults * _Nonnull results) {
+        NSArray *thisResults = [results targetsWithSource:pair.source];
+        for (GlossarySearchResult *r in thisResults) {
+            if ([r.target isEqual:pair.target] || [r.target isEqual:pair.source] || [addedSuggestions containsObject:r.target]) continue;
+            Suggestion *s = [[Suggestion alloc] init];
+            s.title = r.target;
+            s.source = SuggestionSourceGlossary;
+            [addedSuggestions addObject:r.target];
+            [suggestions addObject:s];
+        }
+        callback(suggestions);
+    }];
 }
 
 #pragma mark checking

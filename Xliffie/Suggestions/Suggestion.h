@@ -12,8 +12,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 typedef enum : NSUInteger {
-    SuggestionSourceGlossary,
-    SuggestionSourceFile,
+    SuggestionSourceGlossary = 0,
+    SuggestionSourceFile = 1,
 } SuggestionSource;
 
 @interface Suggestion : NSObject
