@@ -57,6 +57,10 @@
         // Below screen bottom edge
         selfRect.origin.y = screenRect.origin.y + screenRect.size.height + 5;
     }
+    if (selfRect.origin.y + selfRect.size.height > view.window.screen.visibleFrame.size.height) {
+        selfRect.origin.y = 0;
+        selfRect.size.height = view.window.screen.visibleFrame.size.height;
+    }
     
     [self.window setFrame:selfRect display:YES];
 }
