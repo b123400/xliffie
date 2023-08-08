@@ -14,6 +14,7 @@
 #import "NSAttributedString+FileIcon.h"
 #import "DocumentTextFinderClient.h"
 #import "GlossaryDatabase.h"
+#import "XclocDocument.h"
 
 @interface DocumentViewController () <SuggestionsWindowControllerDelegate>
 
@@ -355,8 +356,11 @@ doCommandBySelector:(SEL)commandSelector {
             }
         }
     }
+    GlossaryPlatform platform = [self.document isKindOfClass:[XclocDocument class]]
+        ? [(XclocDocument*)self.document glossaryPlatformWithSourcePath:pair.file.original]
+        : GlossaryPlatformAny;
     [GlossaryDatabase searchGlossariesForTerms:@[pair.source]
-                                  withPlatform:GlossaryPlatformMac // TODO
+                                  withPlatform:platform
                                     fromLocale:pair.file.sourceLanguage
                                       toLocale:pair.file.targetLanguage
                                       callback:^(GlossarySearchResults * _Nonnull results) {

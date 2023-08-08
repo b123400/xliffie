@@ -13,6 +13,7 @@
 @property (nonatomic, strong) NSFileWrapper *fileWrapper;
 @property (nonatomic, strong) NSFileWrapper *xliffParentFileWrapper;
 @property (nonatomic, strong) NSFileWrapper *xliffFileWrapper;
+@property (nonatomic, strong) NSFileWrapper *sourceContentsFileWrapper;
 
 @end
 
@@ -36,6 +37,7 @@
     if (![localisedContents isDirectory]) {
         return NO;
     }
+    self.sourceContentsFileWrapper = fileWrappers[@"Source Contents"];
     NSDictionary<NSString *, NSFileWrapper *> *localisedContentsDict = [localisedContents fileWrappers];
     for (NSString *filename in localisedContentsDict) {
         NSFileWrapper *xliffFileWrapper = localisedContentsDict[filename];
@@ -65,6 +67,39 @@
     self.xliffFileWrapper = newFileWrapper;
 
     return self.fileWrapper;
+}
+
+- (NSFileWrapper *)sourceContentAtPath:(NSString *)path {
+    if (![self.sourceContentsFileWrapper isDirectory]) return nil;
+    NSArray<NSString *> *pathComponents = [path pathComponents];
+    NSFileWrapper *currentWrapper = self.sourceContentsFileWrapper;
+    for (NSString *p in pathComponents) {
+        NSDictionary<NSString*, NSFileWrapper *> *folderContent = [currentWrapper fileWrappers];
+        currentWrapper = folderContent[p];
+    }
+    return currentWrapper;
+}
+
+- (GlossaryPlatform)findPlatformFromUIFile:(NSFileWrapper *)fileWrapper {
+    if (![fileWrapper isRegularFile]) return GlossaryPlatformAny;
+    NSString *extension = [[fileWrapper filename] pathExtension];
+    if (![extension.lowercaseString isEqual:@"storyboard"] && ![extension.lowercaseString isEqual:@"xib"]) return GlossaryPlatformAny;
+    NSData *data = [fileWrapper regularFileContents];
+    NSError *error = nil;
+    NSXMLDocument *doc = [[NSXMLDocument alloc] initWithData:data options:0 error:&error];
+    if (error) {
+        NSLog(@"Cannot read file as xml %@", error);
+        return GlossaryPlatformAny;
+    }
+    NSString *runtime = [[[doc rootElement] attributeForName:@"targetRuntime"] stringValue];
+    if ([runtime isEqual:@"MacOSX.Cocoa"]) return GlossaryPlatformMac;
+    if ([runtime isEqual:@"iOS.CocoaTouch"]) return GlossaryPlatformIOS;
+    return GlossaryPlatformAny;
+}
+
+- (GlossaryPlatform)glossaryPlatformWithSourcePath:(NSString *)pathInSourceContents {
+    NSFileWrapper *file = [self sourceContentAtPath:pathInSourceContents];
+    return [self findPlatformFromUIFile:file];
 }
 
 + (BOOL)isXclocExtension:(NSString *)extension {
