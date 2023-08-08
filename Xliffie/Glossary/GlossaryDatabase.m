@@ -473,7 +473,7 @@
 - (NSDictionary<NSString *, NSArray<GlossarySearchRow *> *> *)findTargetsWithSources:(NSArray<NSString *> *)sources {
     if (!sources.count) return @{};
     // Max num of place holder is 999: https://www.sqlite.org/limits.html
-    NSArray *batches = [self batch:sources limit:999 callback:^id(NSArray *items) {
+    NSArray *batches = [GlossaryDatabase batch:sources limit:999 callback:^id(NSArray *items) {
         NSMutableArray *placeHolders = [NSMutableArray arrayWithCapacity:items.count];
         for (int i = 0; i < items.count; i++) {
             [placeHolders addObject:@"?"];
@@ -505,7 +505,7 @@
 }
 
 - (NSDictionary<GlossaryReverseSearchResult*, NSString*> *)findRowsWithTargets:(NSArray<NSString *> *)targets {
-    NSArray *batches = [self batch:targets limit:999 callback:^id(NSArray *items) {
+    NSArray *batches = [GlossaryDatabase batch:targets limit:999 callback:^id(NSArray *items) {
         NSMutableArray *placeHolders = [NSMutableArray arrayWithCapacity:items.count];
         for (int i = 0; i < items.count; i++) {
             [placeHolders addObject:@"?"];
@@ -533,7 +533,7 @@
 }
 
 - (NSDictionary<GlossaryReverseSearchResult *, NSString *> *)findTargetsWithReverseResults:(NSArray<GlossaryReverseSearchResult*>*)reverseResults {
-    NSArray *batches = [self batch:reverseResults limit:498 callback:^id(NSArray<GlossaryReverseSearchResult*> *items) {
+    NSArray *batches = [GlossaryDatabase batch:reverseResults limit:498 callback:^id(NSArray<GlossaryReverseSearchResult*> *items) {
         NSMutableArray *placeHolders = [NSMutableArray arrayWithCapacity:items.count];
         NSMutableArray *values = [NSMutableArray arrayWithCapacity:items.count];
         for (int i = 0; i < items.count; i++) {
@@ -617,7 +617,7 @@
     }
 }
 
-- (NSArray *)batch:(NSArray *)items limit:(NSInteger)limit callback:(id (^)(NSArray *items))callback {
++ (NSArray *)batch:(NSArray *)items limit:(NSInteger)limit callback:(id (^)(NSArray *items))callback {
     NSMutableArray *results = [NSMutableArray array];
     NSInteger index = 0;
     while (index < items.count) {

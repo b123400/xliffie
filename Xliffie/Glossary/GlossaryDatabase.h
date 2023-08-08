@@ -26,6 +26,7 @@ typedef enum : NSUInteger {
 + (NSArray<GlossaryDatabase*> *)downloadedDatabasesWithPlatform:(GlossaryPlatform)platform;
 + (NSArray<NSString*>*)localesWithPlatform:(GlossaryPlatform)platform;
 + (GlossaryDatabase *)databaseWithPlatform:(GlossaryPlatform)platform locale:(NSString *)locale;
++ (NSArray *)batch:(NSArray *)items limit:(NSInteger)limit callback:(id (^)(NSArray *items))callback;
 
 + (void)searchGlossariesForTerms:(NSArray<NSString *> *)terms
                     withPlatform:(GlossaryPlatform)platform

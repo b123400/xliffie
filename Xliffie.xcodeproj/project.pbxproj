@@ -24,6 +24,7 @@
 		CF1CE50629CB4EBD00BBFAAB /* ProgressWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1CE50429CB4EBD00BBFAAB /* ProgressWindowController.m */; };
 		CF22255B2A5EA41D00F08515 /* GlossaryDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = CF22255A2A5EA41D00F08515 /* GlossaryDatabase.m */; };
 		CF22255D2A5EF54D00F08515 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CF22255C2A5EF53E00F08515 /* libsqlite3.tbd */; };
+		CF2DF14B2A8272DE00346BE9 /* GlossaryDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = CF22255A2A5EA41D00F08515 /* GlossaryDatabase.m */; };
 		CF34B75A1AADE00A00C6A58E /* TranslationTargetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF34B7591AADE00A00C6A58E /* TranslationTargetCell.m */; };
 		CF50085429DBADBA007EF23A /* BRCategorySearchFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF50085329DBADBA007EF23A /* BRCategorySearchFieldCell.m */; };
 		CF50085729DBB20F007EF23A /* BRCategorySearchField.m in Sources */ = {isa = PBXBuildFile; fileRef = CF50085629DBB20F007EF23A /* BRCategorySearchField.m */; };
@@ -687,6 +688,7 @@
 					};
 					CF5FC8A41A5ABFF700538E60 = {
 						CreatedOnToolsVersion = 6.1.1;
+						ProvisioningStyle = Automatic;
 						TestTargetID = CF5FC88B1A5ABFF700538E60;
 					};
 				};
@@ -916,6 +918,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF2DF14B2A8272DE00346BE9 /* GlossaryDatabase.m in Sources */,
 				CF5FC8AC1A5ABFF700538E60 /* XliffieTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1164,7 +1167,10 @@
 			baseConfigurationReference = F46F3EFF87AC9239B0E767A0 /* Pods-XliffieTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
@@ -1176,6 +1182,7 @@
 				INFOPLIST_FILE = XliffieTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Xliffie.app/Contents/MacOS/Xliffie";
 			};
 			name = Debug;
@@ -1185,7 +1192,10 @@
 			baseConfigurationReference = 8F922AA3285E9DB3A6DBC09B /* Pods-XliffieTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
@@ -1193,6 +1203,7 @@
 				INFOPLIST_FILE = XliffieTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Xliffie.app/Contents/MacOS/Xliffie";
 			};
 			name = Release;
