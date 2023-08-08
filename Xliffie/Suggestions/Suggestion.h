@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 typedef enum : NSUInteger {
     SuggestionSourceGlossary = 0,
     SuggestionSourceFile = 1,
+    SuggestionSourceAppleGlossary = 2,
 } SuggestionSource;
 
 @interface Suggestion : NSObject
@@ -21,6 +22,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, assign) SuggestionSource source;
 @property (nonatomic, strong) File *sourceFile;
+@property (nonatomic, assign) NSInteger appleGlossaryHitCount;
 
 - (NSAttributedString *)stringForDisplay;
 

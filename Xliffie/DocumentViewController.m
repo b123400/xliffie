@@ -366,10 +366,11 @@ doCommandBySelector:(SEL)commandSelector {
                                       callback:^(GlossarySearchResults * _Nonnull results) {
         NSArray *thisResults = [results targetsWithSource:pair.source];
         for (GlossarySearchResult *r in thisResults) {
-            if ([r.target isEqual:pair.target] || [r.target isEqual:pair.source] || [addedSuggestions containsObject:r.target]) continue;
+            if ([r.target isEqual:pair.source] || [addedSuggestions containsObject:r.target]) continue;
             Suggestion *s = [[Suggestion alloc] init];
             s.title = r.target;
-            s.source = SuggestionSourceGlossary;
+            s.source = SuggestionSourceAppleGlossary;
+            s.appleGlossaryHitCount = r.bundlePaths.count;
             [addedSuggestions addObject:r.target];
             [suggestions addObject:s];
         }
