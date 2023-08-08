@@ -13,6 +13,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 typedef enum : NSUInteger {
+    GlossaryPlatformAny,
     GlossaryPlatformMac,
     GlossaryPlatformIOS,
 } GlossaryPlatform;

@@ -197,7 +197,7 @@
             @"zh_TW",
         ];
     }
-    return nil;
+    return @[];
 }
 
 + (NSArray<NSString*>*)recommendedRelatedDatabaseForLocale:(NSString *)locale withPlatform:(GlossaryPlatform)platform {
@@ -232,7 +232,7 @@
             return [group filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"self != %@", locale]];
         }
     }
-    return nil;
+    return @[];
 }
 
 + (NSArray<NSString*> *)relatedDatabaseForLocale:(NSString *)locale withPlatform:(GlossaryPlatform)platform {
@@ -251,6 +251,26 @@
         [parts removeLastObject];
     }
     return result;
+}
+
++ (NSArray<GlossaryDatabase *> *)allRelatedDatabasesWithLocale:(NSString *)locale platform:(GlossaryPlatform)platform extraLocales:(NSArray<NSString*> *)extraLocales{
+    if (platform == GlossaryPlatformAny) {
+        return [[self allRelatedDatabasesWithLocale:locale platform:GlossaryPlatformMac extraLocales:extraLocales]
+                arrayByAddingObjectsFromArray:[self allRelatedDatabasesWithLocale:locale platform:GlossaryPlatformIOS extraLocales:extraLocales]];
+    }
+    NSMutableOrderedSet<NSString *> *locales = [NSMutableOrderedSet orderedSet];
+    [locales addObject:locale];
+    [locales addObjectsFromArray:[self recommendedRelatedDatabaseForLocale:locale withPlatform:platform]];
+    [locales addObjectsFromArray:[self relatedDatabaseForLocale:locale withPlatform:platform]];
+    [locales addObjectsFromArray:extraLocales];
+    NSMutableArray *dbs = [NSMutableArray array];
+    for (NSString *locale in locales) {
+        GlossaryDatabase *db = [GlossaryDatabase databaseWithPlatform:platform locale:locale];
+        if ([db isDownloaded]) {
+            [dbs addObject:db];
+        }
+    }
+    return dbs;
 }
 
 + (dispatch_queue_t)dispatchQueue {
@@ -272,17 +292,12 @@
                       fromLocale:(NSString *)sourceLocale
                         toLocale:(NSString *)targetLocale
                         callback:(void(^)(GlossarySearchResults *results))callback {
-    // TODO: related DBs, case-insensitive
     dispatch_async([GlossaryDatabase dispatchQueue], ^{
         GlossarySearchResults *results = [GlossarySearchResults new];
-        NSMutableOrderedSet<NSString *> *allRelatedTargetLocale = [NSMutableOrderedSet orderedSet];
-        [allRelatedTargetLocale addObject:sourceLocale];
-        [allRelatedTargetLocale addObjectsFromArray:[self recommendedRelatedDatabaseForLocale:targetLocale withPlatform:platform]];
-        [allRelatedTargetLocale addObjectsFromArray:[self relatedDatabaseForLocale:targetLocale withPlatform:platform]];
+        NSArray<GlossaryDatabase *> *targetDatabases = [GlossaryDatabase allRelatedDatabasesWithLocale:targetLocale platform:platform extraLocales:@[]];
         
         BOOL anyTargetDBDownloaded = NO;
-        for (NSString *thisTargetLocale in allRelatedTargetLocale) {
-            GlossaryDatabase *targetDatabase = [GlossaryDatabase databaseWithPlatform:platform locale:thisTargetLocale];
+        for (GlossaryDatabase *targetDatabase in targetDatabases) {
             if ([targetDatabase isDownloaded]) {
                 anyTargetDBDownloaded = YES;
                 NSDictionary<NSString *, NSArray<GlossarySearchRow*>*> *targetDBResults = [targetDatabase findTargetsWithSources:terms];
@@ -298,20 +313,15 @@
             return;
         }
         
-        NSMutableOrderedSet<NSString *> *sourceLocales = [NSMutableOrderedSet orderedSetWithArray:@[sourceLocale]];
-        [sourceLocales addObjectsFromArray:[self relatedDatabaseForLocale:sourceLocale withPlatform:platform]];
-        [sourceLocales addObjectsFromArray:[self recommendedRelatedDatabaseForLocale:sourceLocale withPlatform:platform]];
-        [sourceLocales addObjectsFromArray:@[@"en", @"English", @"Base"]];
+        NSArray<GlossaryDatabase *> *sourceDatabases = [GlossaryDatabase allRelatedDatabasesWithLocale:sourceLocale platform:platform extraLocales:@[@"en", @"English", @"Base"]];
         NSMutableDictionary<GlossaryReverseSearchResult*, NSString *> *reverseResults = [NSMutableDictionary dictionary];
-        for (NSString *thisSourceLocale in sourceLocales) {
-            GlossaryDatabase *sourceDatabase = [GlossaryDatabase databaseWithPlatform:platform locale:thisSourceLocale];
+        for (GlossaryDatabase *sourceDatabase in sourceDatabases) {
             if ([sourceDatabase isDownloaded]) {
                 NSDictionary<GlossaryReverseSearchResult*, NSString*> *thisReverseResults = [sourceDatabase findRowsWithTargets:terms];
                 [reverseResults addEntriesFromDictionary:thisReverseResults];
             }
         }
-        for (NSString *thisTargetLocale in allRelatedTargetLocale) {
-            GlossaryDatabase *targetDatabase = [GlossaryDatabase databaseWithPlatform:platform locale:thisTargetLocale];
+        for (GlossaryDatabase *targetDatabase in targetDatabases) {
             if ([targetDatabase isDownloaded]) {
                 NSDictionary<GlossaryReverseSearchResult *, NSString*> *newTargets = [targetDatabase findTargetsWithReverseResults:[reverseResults allKeys]];
                 for (GlossaryReverseSearchResult *revResult in newTargets) {
