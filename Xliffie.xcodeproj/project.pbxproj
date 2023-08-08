@@ -25,6 +25,7 @@
 		CF22255B2A5EA41D00F08515 /* GlossaryDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = CF22255A2A5EA41D00F08515 /* GlossaryDatabase.m */; };
 		CF22255D2A5EF54D00F08515 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CF22255C2A5EF53E00F08515 /* libsqlite3.tbd */; };
 		CF2DF14B2A8272DE00346BE9 /* GlossaryDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = CF22255A2A5EA41D00F08515 /* GlossaryDatabase.m */; };
+		CF2DF14E2A827B0D00346BE9 /* SuggestionTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2DF14D2A827B0D00346BE9 /* SuggestionTableView.m */; };
 		CF34B75A1AADE00A00C6A58E /* TranslationTargetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF34B7591AADE00A00C6A58E /* TranslationTargetCell.m */; };
 		CF50085429DBADBA007EF23A /* BRCategorySearchFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF50085329DBADBA007EF23A /* BRCategorySearchFieldCell.m */; };
 		CF50085729DBB20F007EF23A /* BRCategorySearchField.m in Sources */ = {isa = PBXBuildFile; fileRef = CF50085629DBB20F007EF23A /* BRCategorySearchField.m */; };
@@ -158,6 +159,8 @@
 		CF2225592A5EA41D00F08515 /* GlossaryDatabase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlossaryDatabase.h; sourceTree = "<group>"; };
 		CF22255A2A5EA41D00F08515 /* GlossaryDatabase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GlossaryDatabase.m; sourceTree = "<group>"; };
 		CF22255C2A5EF53E00F08515 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		CF2DF14C2A827B0D00346BE9 /* SuggestionTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuggestionTableView.h; path = Suggestions/SuggestionTableView.h; sourceTree = "<group>"; };
+		CF2DF14D2A827B0D00346BE9 /* SuggestionTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SuggestionTableView.m; path = Suggestions/SuggestionTableView.m; sourceTree = "<group>"; };
 		CF34B7581AADE00A00C6A58E /* TranslationTargetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TranslationTargetCell.h; sourceTree = "<group>"; };
 		CF34B7591AADE00A00C6A58E /* TranslationTargetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TranslationTargetCell.m; sourceTree = "<group>"; };
 		CF4B0C2E1BF91239007AF981 /* zh-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-TW"; path = "zh-TW.lproj/Main.strings"; sourceTree = "<group>"; };
@@ -368,6 +371,8 @@
 				CF12DB48293E4C5F00F9C760 /* Suggestion.m */,
 				CF12DB4D293EF89C00F9C760 /* SuggestionsCellView.h */,
 				CF12DB4E293EF89C00F9C760 /* SuggestionsCellView.m */,
+				CF2DF14C2A827B0D00346BE9 /* SuggestionTableView.h */,
+				CF2DF14D2A827B0D00346BE9 /* SuggestionTableView.m */,
 			);
 			name = Suggestions;
 			sourceTree = "<group>";
@@ -883,6 +888,7 @@
 				CF5682EF1A6B11C700E0DEDD /* DetailViewController.m in Sources */,
 				CFD234FA1A5E44C700B52088 /* XMLOutlineView.m in Sources */,
 				CF0AB5912A755EDF00D61101 /* GlossaryDownloadWindowController.m in Sources */,
+				CF2DF14E2A827B0D00346BE9 /* SuggestionTableView.m in Sources */,
 				CF5FC89B1A5ABFF700538E60 /* Document.m in Sources */,
 				CFF4AE282A790BD100C50D8A /* GlossaryReverseSearchResult.m in Sources */,
 				CF5AB3C2293DCE6200C8AC7B /* SuggestionsWindowController.m in Sources */,
