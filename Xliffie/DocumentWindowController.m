@@ -318,11 +318,7 @@
     [self willChangeValueForKey:@"isFilterStateTranslatedWithWarningsEnabled"];
     self.mainViewController.filterState = state;
     [self reloadSearchFieldMenuTemplate];
-    @try {
-        [self.searchField becomeFirstResponder]; // Need this to make the search field to redraw correctly
-    } @catch (NSException *exception) {
-    
-    }
+    [self.searchField.window makeFirstResponder:self.searchField]; // Need this to make the search field to redraw correctly
     [self didChangeValueForKey:@"isFilterStateEmptyEnabled"];
     [self didChangeValueForKey:@"isFilterStateSameEnabled"];
     [self didChangeValueForKey:@"isFilterStateTranslatedEnabled"];
