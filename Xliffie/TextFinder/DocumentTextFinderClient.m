@@ -156,6 +156,11 @@
         NSCell *cell = [self.outlineView.tableColumns[col] dataCellForRow:row];
         NSRect cellRect = [self.outlineView frameOfCellAtColumn:col row:row];
         [cell drawWithFrame:cellRect inView:self.outlineView];
+        
+        NSInteger selectedRow = [self.outlineView selectedRow];
+        if (selectedRow != row) {
+            [self.outlineView selectRowIndexes:[NSIndexSet indexSetWithIndex:row] byExtendingSelection:NO];
+        }
     }
     self.outlineView.usesAlternatingRowBackgroundColors = YES;
 }

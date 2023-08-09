@@ -53,9 +53,23 @@
     self.textFinder.incrementalSearchingEnabled = YES;
     self.textFinder.incrementalSearchingShouldDimContentView = YES;
     self.textFinder.client = self.textFinderClient;
+    
+    [self.outlineView.enclosingScrollView addObserver:self forKeyPath:@"findBarVisible" options:NSKeyValueObservingOptionNew context:nil];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+    if (object == self.outlineView.enclosingScrollView && [keyPath isEqual:@"findBarVisible"]) {
+        NSNumber *newValue = change[NSKeyValueChangeNewKey];
+        if ([newValue isKindOfClass:[NSNumber class]]) {
+            if (![newValue boolValue]) {
+                [self.outlineView.window makeFirstResponder:self.outlineView];
+            }
+        }
+    }
 }
 
 - (void)dealloc {
+    [self.outlineView.enclosingScrollView removeObserver:self forKeyPath:@"findBarVisible"];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
