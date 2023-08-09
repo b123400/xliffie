@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import <XCTest/XCTest.h>
-#import "GlossaryDatabase.h"
+#import "Utilities.h"
 
 @interface XliffieTests : XCTestCase
 
@@ -29,7 +29,7 @@
 - (void)testBatch {
     NSArray *arr = @[@1, @2, @3, @4, @5];
     __block NSInteger i = 0;
-    NSArray *result = [GlossaryDatabase batch:arr limit:2 callback:^id _Nonnull(NSArray * _Nonnull items) {
+    NSArray *result = [Utilities batch:arr limit:2 callback:^id _Nonnull(NSArray * _Nonnull items) {
         if (i == 0) {
             XCTAssert(([items isEqual:@[@1, @2]]), @"first batch");
             i++;

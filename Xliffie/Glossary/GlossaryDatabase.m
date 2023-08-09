@@ -9,6 +9,7 @@
 #import "GlossaryDatabase.h"
 #import <sqlite3.h>
 #import "GlossaryReverseSearchResult.h"
+#import "Utilities.h"
 
 @interface GlossaryDatabase ()
 
@@ -473,7 +474,7 @@
 - (NSDictionary<NSString *, NSArray<GlossarySearchRow *> *> *)findTargetsWithSources:(NSArray<NSString *> *)sources {
     if (!sources.count) return @{};
     // Max num of place holder is 999: https://www.sqlite.org/limits.html
-    NSArray *batches = [GlossaryDatabase batch:sources limit:999 callback:^id(NSArray *items) {
+    NSArray *batches = [Utilities  batch:sources limit:999 callback:^id(NSArray *items) {
         NSMutableArray *placeHolders = [NSMutableArray arrayWithCapacity:items.count];
         for (int i = 0; i < items.count; i++) {
             [placeHolders addObject:@"?"];
@@ -505,7 +506,7 @@
 }
 
 - (NSDictionary<GlossaryReverseSearchResult*, NSString*> *)findRowsWithTargets:(NSArray<NSString *> *)targets {
-    NSArray *batches = [GlossaryDatabase batch:targets limit:999 callback:^id(NSArray *items) {
+    NSArray *batches = [Utilities  batch:targets limit:999 callback:^id(NSArray *items) {
         NSMutableArray *placeHolders = [NSMutableArray arrayWithCapacity:items.count];
         for (int i = 0; i < items.count; i++) {
             [placeHolders addObject:@"?"];
@@ -533,7 +534,7 @@
 }
 
 - (NSDictionary<GlossaryReverseSearchResult *, NSString *> *)findTargetsWithReverseResults:(NSArray<GlossaryReverseSearchResult*>*)reverseResults {
-    NSArray *batches = [GlossaryDatabase batch:reverseResults limit:498 callback:^id(NSArray<GlossaryReverseSearchResult*> *items) {
+    NSArray *batches = [Utilities  batch:reverseResults limit:498 callback:^id(NSArray<GlossaryReverseSearchResult*> *items) {
         NSMutableArray *placeHolders = [NSMutableArray arrayWithCapacity:items.count];
         NSMutableArray *values = [NSMutableArray arrayWithCapacity:items.count];
         for (int i = 0; i < items.count; i++) {
@@ -615,20 +616,6 @@
     if (error) {
         NSLog(@"Cannot delete DB %@", error);
     }
-}
-
-+ (NSArray *)batch:(NSArray *)items limit:(NSInteger)limit callback:(id (^)(NSArray *items))callback {
-    NSMutableArray *results = [NSMutableArray array];
-    NSInteger index = 0;
-    while (index < items.count) {
-        NSRange range = NSMakeRange(index, MIN(items.count - index, limit));
-        if (index > items.count - 1) break;
-        NSArray *thisBatch = [items subarrayWithRange:range];
-        id result = callback(thisBatch);
-        [results addObject:result];
-        index += limit;
-    }
-    return results;
 }
 
 @end
