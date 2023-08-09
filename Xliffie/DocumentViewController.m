@@ -150,11 +150,42 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
     [self.textFinderClient reload];
 }
 
-- (void)outlineView:(NSOutlineView *)outlineView
-    willDisplayCell:(TranslationTargetCell*)cell
-     forTableColumn:(NSTableColumn *)tableColumn
-               item:(id)item {
-    if ([[tableColumn identifier] isEqualToString:@"target"]) {
+- (BOOL)outlineView:(NSOutlineView *)outlineView shouldEditTableColumn:(NSTableColumn *)tableColumn item:(id)item {
+    if ([[tableColumn identifier] isEqualToString:@"target"] && [item isKindOfClass:[TranslationPair class]]) {
+        return YES;
+    }
+    return NO;
+}
+
+- (void)outlineViewSelectionDidChange:(NSNotification *)notification {
+    NSUInteger index = [self.outlineView selectedRow];
+    id item = [self.outlineView itemAtRow:index];
+    if ([item isKindOfClass:[TranslationPair class]]) {
+        
+        if ([self.delegate respondsToSelector:@selector(viewController:didSelectedTranslation:)]) {
+            [self.delegate viewController:self didSelectedTranslation:item];
+        }
+        if ([self.delegate respondsToSelector:@selector(viewController:didSelectedFileChild:)]) {
+            [self.delegate viewController:self didSelectedFileChild:[item file]];
+        }
+    } else {
+        if ([self.delegate respondsToSelector:@selector(viewController:didSelectedTranslation:)]) {
+            [self.delegate viewController:self didSelectedTranslation:nil];
+        }
+        if ([self.delegate respondsToSelector:@selector(viewController:didSelectedFileChild:)]) {
+            [self.delegate viewController:self didSelectedFileChild:item];
+        }
+    }
+}
+
+- (NSCell *)outlineView:(NSOutlineView *)outlineView dataCellForTableColumn:(NSTableColumn *)tableColumn item:(id)item {
+    if (!item) return nil;
+    NSCell *dataCell = [tableColumn dataCell];
+    NSString *value = [self outlineView:outlineView objectValueForTableColumn:tableColumn byItem:item];
+    [dataCell setObjectValue:value];
+    [dataCell setWraps:YES];
+    if ([[tableColumn identifier] isEqualToString:@"target"] && [dataCell isKindOfClass:[TranslationTargetCell class]]) {
+        TranslationTargetCell *cell = (TranslationTargetCell *)dataCell;
         if ([item isKindOfClass:[TranslationPair class]]) {
             TranslationPair *pair = (TranslationPair*)item;
             switch (pair.state) {
@@ -206,43 +237,7 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
             cell.dotColor = nil;
         }
     }
-}
-
-- (BOOL)outlineView:(NSOutlineView *)outlineView shouldEditTableColumn:(NSTableColumn *)tableColumn item:(id)item {
-    if ([[tableColumn identifier] isEqualToString:@"target"] && [item isKindOfClass:[TranslationPair class]]) {
-        return YES;
-    }
-    return NO;
-}
-
-- (void)outlineViewSelectionDidChange:(NSNotification *)notification {
-    NSUInteger index = [self.outlineView selectedRow];
-    id item = [self.outlineView itemAtRow:index];
-    if ([item isKindOfClass:[TranslationPair class]]) {
-        
-        if ([self.delegate respondsToSelector:@selector(viewController:didSelectedTranslation:)]) {
-            [self.delegate viewController:self didSelectedTranslation:item];
-        }
-        if ([self.delegate respondsToSelector:@selector(viewController:didSelectedFileChild:)]) {
-            [self.delegate viewController:self didSelectedFileChild:[item file]];
-        }
-    } else {
-        if ([self.delegate respondsToSelector:@selector(viewController:didSelectedTranslation:)]) {
-            [self.delegate viewController:self didSelectedTranslation:nil];
-        }
-        if ([self.delegate respondsToSelector:@selector(viewController:didSelectedFileChild:)]) {
-            [self.delegate viewController:self didSelectedFileChild:item];
-        }
-    }
-}
-
-- (NSCell *)outlineView:(NSOutlineView *)outlineView dataCellForTableColumn:(NSTableColumn *)tableColumn item:(id)item {
-    if (!item) return nil;
-    NSCell *cell = [tableColumn dataCell];
-    NSString *value = [self outlineView:outlineView objectValueForTableColumn:tableColumn byItem:item];
-    [cell setObjectValue:value];
-    [cell setWraps:YES];
-    return cell;
+    return dataCell;
 }
 
 - (CGFloat)outlineView:(NSOutlineView *)outlineView heightOfRowByItem:(id)item {
@@ -324,22 +319,52 @@ doCommandBySelector:(SEL)commandSelector {
     NSRect cellRect = [self.outlineView frameOfCellAtColumn:column row:row];
     TranslationPair *pair = (TranslationPair*)[self.outlineView itemAtRow:row];
     if (![pair isKindOfClass:[TranslationPair class]]) return;
-    [self suggestionsForTranslationPair:pair callback:^(NSArray<Suggestion *> *suggestions) {
+    SuggestionsWindowController *suggestionController = [SuggestionsWindowController shared];
+    // TODO: if no related db is available, don't search at all, so it doesn't flicker
+    NSArray<Suggestion *> *suggestions = [self suggestionsForTranslationPair:pair callback:^(NSArray<Suggestion *> *allSuggestions) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            if (!suggestions.count) return;
-            [[SuggestionsWindowController shared] setSuggestions:suggestions];
-            [SuggestionsWindowController shared].delegate = self;
-            [[SuggestionsWindowController shared] showAtRect:cellRect
-                                                      ofView:self.outlineView];
-            [[[SuggestionsWindowController shared] window] makeKeyAndOrderFront:self];
+            if (![self.view.window isKeyWindow] || [self.view.window sheets].count) {
+                return;
+            }
+            if (suggestionController.searchingObject != pair) {
+                // It's loading for something newer, ignore this result
+                return;
+            }
+            if (!allSuggestions.count) {
+                [[SuggestionsWindowController shared] hide];
+                return;
+            }
+            suggestionController.isLoadingMore = NO;
+            [suggestionController setSuggestions:allSuggestions];
+            suggestionController.delegate = self;
+            [suggestionController showAtRect:cellRect
+                                      ofView:self.outlineView];
+            [[suggestionController window] makeKeyAndOrderFront:self];
         });
     }];
+    suggestionController.searchingObject = pair;
+    suggestionController.isLoadingMore = YES;
+    [suggestionController setSuggestions:suggestions];
+    suggestionController.delegate = self;
+    [suggestionController showAtRect:cellRect
+                              ofView:self.outlineView];
+    [[suggestionController window] makeKeyAndOrderFront:self];
 }
 
-- (void)suggestionsForTranslationPair:(TranslationPair *)pair callback:(void(^)(NSArray<Suggestion *> *suggestions))callback {
+- (NSArray<Suggestion *> *)suggestionsForTranslationPair:(TranslationPair *)pair callback:(void(^)(NSArray<Suggestion *> *allSuggestions))callback {
     NSMutableArray<Suggestion*> *suggestions = [NSMutableArray array];
     // Dedup suggestions by title
     NSMutableSet<NSString*> *addedSuggestions = [NSMutableSet set];
+    Glossary *glossary = [Glossary sharedGlossaryWithLocale:pair.file.targetLanguage];
+    BOOL isMenu = [pair.file.original.lastPathComponent.lowercaseString containsString:@"menu"];
+    NSString *glossaryTranslation = [glossary translate:pair.source isMenu:isMenu];
+    if (glossaryTranslation && ![glossaryTranslation isEqualTo:pair.target]) {
+        Suggestion *s = [[Suggestion alloc] init];
+        s.title = glossaryTranslation;
+        s.source = SuggestionSourceGlossary;
+        [suggestions addObject:s];
+        [addedSuggestions addObject:glossaryTranslation];
+    }
     for (File *file in self.document.files) {
         for (TranslationPair *p in file.translations) {
             if (p == pair) continue;
@@ -376,6 +401,7 @@ doCommandBySelector:(SEL)commandSelector {
         }
         callback(suggestions);
     }];
+    return suggestions;
 }
 
 #pragma mark checking

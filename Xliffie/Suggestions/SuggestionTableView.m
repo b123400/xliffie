@@ -28,6 +28,7 @@
 {
     NSPoint point = [self convertPoint:[theEvent locationInWindow] fromView:nil];
     NSInteger row = [self rowAtPoint:point];
+    if (![self.delegate tableView:self shouldSelectRow:row]) return;
     if (row == -1) {
         [self selectRowIndexes:[NSIndexSet indexSet] byExtendingSelection:NO];
         return;
