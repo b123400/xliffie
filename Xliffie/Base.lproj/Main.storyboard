@@ -667,13 +667,6 @@
                                                     </menuItem>
                                                 </items>
                                             </menu>
-                                            <connections>
-                                                <binding destination="Voe-Tx-rLC" name="enabled" keyPath="firstDocumentController" id="sWi-iY-u6q">
-                                                    <dictionary key="options">
-                                                        <string key="NSValueTransformerName">NSIsNotNil</string>
-                                                    </dictionary>
-                                                </binding>
-                                            </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="0zF-cn-Bef"/>
                                         <menuItem title="Customize Toolbar…" id="1UK-8n-QPP">
