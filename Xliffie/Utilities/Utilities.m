@@ -24,5 +24,47 @@
     return results;
 }
 
++ (StringFormat)detectFormatOfString:(NSString *)string {
+    if ([string length] <= 2) return StringFormatUnknown;
+    BOOL isAllUpper = YES;
+    BOOL isAllLower = YES;
+    BOOL isPrevSpace = YES;
+    BOOL isFirstCap = YES;
+    for (NSUInteger i = 0; i < [string length]; i++) {
+        unichar character = [string characterAtIndex:i];
+        BOOL isWhitespace = [[NSCharacterSet whitespaceAndNewlineCharacterSet] characterIsMember:character];
+        BOOL isLower = [[NSCharacterSet lowercaseLetterCharacterSet] characterIsMember:character];
+        BOOL isUpper = [[NSCharacterSet uppercaseLetterCharacterSet] characterIsMember:character];
+        if (!isLower && !isWhitespace) {
+            isAllLower = NO;
+        }
+        if (!isUpper && !isWhitespace) {
+            isAllUpper = NO;
+        }
+        if (isPrevSpace && !isUpper && !isWhitespace) {
+            isFirstCap = NO;
+        } else if (!isPrevSpace && !isLower && !isWhitespace) {
+            isFirstCap = NO;
+        }
+        isPrevSpace = isWhitespace;
+    }
+    if (isFirstCap) return StringFormatInitialUpper;
+    if (isAllUpper) return StringFormatAllUpper;
+    if (isAllLower) return StringFormatAllLower;
+    return StringFormatUnknown;
+}
+
++ (NSString *)applyFormat:(StringFormat)format toString:(NSString *)string {
+    switch (format) {
+        case StringFormatInitialUpper:
+            return [string capitalizedString];
+        case StringFormatAllLower:
+            return [string lowercaseString];
+        case StringFormatAllUpper:
+            return [string uppercaseString];
+        case StringFormatUnknown:
+            return string;
+    }
+}
 
 @end

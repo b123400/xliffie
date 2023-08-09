@@ -519,7 +519,14 @@
     NSMutableDictionary<GlossaryReverseSearchResult*, NSString*> *dict = [NSMutableDictionary dictionary];
     for (NSArray *row in rows) {
         NSString *source = row[0];
-        NSString *target = row[1];
+        NSString *dbTarget = row[1]; // case can be different from our input
+        NSString *target = dbTarget;
+        for (NSString *t in targets) {
+            if ([[t lowercaseString] isEqual:dbTarget.lowercaseString]) {
+                target = t;
+                break;
+            }
+        }
         NSString *bundlePath = row[2];
         GlossaryReverseSearchResult *r = [GlossaryReverseSearchResult new];
         r.source = source;
