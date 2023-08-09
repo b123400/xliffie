@@ -72,11 +72,15 @@
         [self.xmlElement removeChildAtIndex:index];
         return;
     }
+    
+    NSString *oldTarget = _target;
     if (!targetElement && target) {
         targetElement = [NSXMLElement elementWithName:@"target"];
         [self.xmlElement addChild:targetElement];
     }
     
+    [targetElement setStringValue:target];
+    _target = target;
     TranslationPairState state = [self state];
     NSDocument *document = (NSDocument*)[self.file document];
     if (self.xmlElement &&         // setting target after initialization
@@ -85,7 +89,7 @@
         NSUndoManager *manager = [document undoManager];
         [manager registerUndoWithTarget:self
                                selector:@selector(setTarget:)
-                                 object:self.target];
+                                 object:oldTarget];
         if (state == TranslationPairStateMarkedAsTranslated) {
             [manager registerUndoWithTarget:self
                                    selector:@selector(markAsTranslated)
@@ -96,9 +100,6 @@
                                      object:nil];
         }
     }
-    
-    [targetElement setStringValue:target];
-    _target = target;
     [self unmark];
 }
 
