@@ -82,6 +82,11 @@
     }
 }
 
+- (void)tableView:(NSTableView *)tableView sortDescriptorsDidChange:(NSArray<NSSortDescriptor *> *)oldDescriptors {
+    self.downloadedDatabases = [self.downloadedDatabases sortedArrayUsingDescriptors:tableView.sortDescriptors];
+    [self.tableView reloadData];
+}
+
 - (IBAction)addGlossaryClicked:(id)sender {
     GlossaryDownloadWindowController *downloadController = [[GlossaryDownloadWindowController alloc] init];
     self.downloadController = downloadController;
