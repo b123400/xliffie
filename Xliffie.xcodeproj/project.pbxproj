@@ -25,7 +25,6 @@
 		CF22255B2A5EA41D00F08515 /* GlossaryDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = CF22255A2A5EA41D00F08515 /* GlossaryDatabase.m */; };
 		CF22255D2A5EF54D00F08515 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CF22255C2A5EF53E00F08515 /* libsqlite3.tbd */; };
 		CF2DF14E2A827B0D00346BE9 /* SuggestionTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2DF14D2A827B0D00346BE9 /* SuggestionTableView.m */; };
-		CF2DF1542A83BC6E00346BE9 /* SuggestionLoadingCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2DF1532A83BC6E00346BE9 /* SuggestionLoadingCellView.m */; };
 		CF2DF1572A83DAAA00346BE9 /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2DF1562A83DAAA00346BE9 /* Utilities.m */; };
 		CF2DF1582A83DAEF00346BE9 /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2DF1562A83DAAA00346BE9 /* Utilities.m */; };
 		CF34B75A1AADE00A00C6A58E /* TranslationTargetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF34B7591AADE00A00C6A58E /* TranslationTargetCell.m */; };
@@ -163,8 +162,6 @@
 		CF22255C2A5EF53E00F08515 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		CF2DF14C2A827B0D00346BE9 /* SuggestionTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuggestionTableView.h; path = Suggestions/SuggestionTableView.h; sourceTree = "<group>"; };
 		CF2DF14D2A827B0D00346BE9 /* SuggestionTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SuggestionTableView.m; path = Suggestions/SuggestionTableView.m; sourceTree = "<group>"; };
-		CF2DF1522A83BC6E00346BE9 /* SuggestionLoadingCellView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuggestionLoadingCellView.h; path = Suggestions/SuggestionLoadingCellView.h; sourceTree = "<group>"; };
-		CF2DF1532A83BC6E00346BE9 /* SuggestionLoadingCellView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SuggestionLoadingCellView.m; path = Suggestions/SuggestionLoadingCellView.m; sourceTree = "<group>"; };
 		CF2DF1552A83DAAA00346BE9 /* Utilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
 		CF2DF1562A83DAAA00346BE9 /* Utilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
 		CF34B7581AADE00A00C6A58E /* TranslationTargetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TranslationTargetCell.h; sourceTree = "<group>"; };
@@ -379,8 +376,6 @@
 				CF12DB48293E4C5F00F9C760 /* Suggestion.m */,
 				CF12DB4D293EF89C00F9C760 /* SuggestionsCellView.h */,
 				CF12DB4E293EF89C00F9C760 /* SuggestionsCellView.m */,
-				CF2DF1522A83BC6E00346BE9 /* SuggestionLoadingCellView.h */,
-				CF2DF1532A83BC6E00346BE9 /* SuggestionLoadingCellView.m */,
 				CF2DF14C2A827B0D00346BE9 /* SuggestionTableView.h */,
 				CF2DF14D2A827B0D00346BE9 /* SuggestionTableView.m */,
 			);
@@ -905,7 +900,6 @@
 				CF5AB3C2293DCE6200C8AC7B /* SuggestionsWindowController.m in Sources */,
 				CF740AA72701C6C700F31F26 /* Glossary.m in Sources */,
 				CFE3B1761CD800AB00021D7F /* NSString+Pangu.m in Sources */,
-				CF2DF1542A83BC6E00346BE9 /* SuggestionLoadingCellView.m in Sources */,
 				CF9A3D5529DEB61D00807F3D /* NSImage+SystemImage.m in Sources */,
 				CF5FC8981A5ABFF700538E60 /* DocumentViewController.m in Sources */,
 				CFA091E029CB18F800F33979 /* BRProgressButton.m in Sources */,

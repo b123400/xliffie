@@ -320,9 +320,26 @@ doCommandBySelector:(SEL)commandSelector {
     TranslationPair *pair = (TranslationPair*)[self.outlineView itemAtRow:row];
     if (![pair isKindOfClass:[TranslationPair class]]) return;
     SuggestionsWindowController *suggestionController = [SuggestionsWindowController shared];
+    NSText *currentEditor = [self.outlineView currentEditor];
+    NSProgressIndicator *loadingView = nil;
+    for (NSView *view in [currentEditor subviews]) {
+        if ([view isKindOfClass:[NSProgressIndicator class]]) {
+            loadingView = (NSProgressIndicator*)view;
+            break;
+        }
+    }
+    if (!loadingView) {
+        loadingView = [[NSProgressIndicator alloc] initWithFrame:NSMakeRect(0, 0, 20, 20)];
+        loadingView.style = NSProgressIndicatorStyleSpinning;
+        [loadingView setDisplayedWhenStopped:NO];
+        [currentEditor addSubview:loadingView];
+    }
+    CGFloat loadingSize = 18;
+    loadingView.frame = NSMakeRect(currentEditor.frame.size.width - loadingSize, 2, loadingSize, loadingSize);
     // TODO: if no related db is available, don't search at all, so it doesn't flicker
     NSArray<Suggestion *> *suggestions = [self suggestionsForTranslationPair:pair callback:^(NSArray<Suggestion *> *allSuggestions) {
         dispatch_async(dispatch_get_main_queue(), ^{
+            [loadingView stopAnimation:self];
             if (![self.view.window isKeyWindow] || [self.view.window sheets].count) {
                 return;
             }
@@ -334,7 +351,6 @@ doCommandBySelector:(SEL)commandSelector {
                 [[SuggestionsWindowController shared] hide];
                 return;
             }
-            suggestionController.isLoadingMore = NO;
             [suggestionController setSuggestions:allSuggestions];
             suggestionController.delegate = self;
             [suggestionController showAtRect:cellRect
@@ -342,13 +358,15 @@ doCommandBySelector:(SEL)commandSelector {
             [[suggestionController window] makeKeyAndOrderFront:self];
         });
     }];
+    [loadingView startAnimation:self];
     suggestionController.searchingObject = pair;
-    suggestionController.isLoadingMore = YES;
-    [suggestionController setSuggestions:suggestions];
-    suggestionController.delegate = self;
-    [suggestionController showAtRect:cellRect
-                              ofView:self.outlineView];
-    [[suggestionController window] makeKeyAndOrderFront:self];
+    if (suggestions.count) {
+        [suggestionController setSuggestions:suggestions];
+        suggestionController.delegate = self;
+        [suggestionController showAtRect:cellRect
+                                  ofView:self.outlineView];
+        [[suggestionController window] makeKeyAndOrderFront:self];
+    }
 }
 
 - (NSArray<Suggestion *> *)suggestionsForTranslationPair:(TranslationPair *)pair callback:(void(^)(NSArray<Suggestion *> *allSuggestions))callback {
@@ -391,7 +409,7 @@ doCommandBySelector:(SEL)commandSelector {
                                       callback:^(GlossarySearchResults * _Nonnull results) {
         NSArray *thisResults = [results targetsWithSource:pair.source];
         for (GlossarySearchResult *r in thisResults) {
-            if ([r.target isEqual:pair.source] || [addedSuggestions containsObject:r.target]) continue;
+            if ([r.target isEqual:pair.source] || [r.target isEqual:pair.target] || [addedSuggestions containsObject:r.target]) continue;
             Suggestion *s = [[Suggestion alloc] init];
             s.title = r.target;
             s.source = SuggestionSourceAppleGlossary;

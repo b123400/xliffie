@@ -18,7 +18,7 @@
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="205" height="176"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1055"/>
-            <view key="contentView" id="se5-gp-TjO" customClass="RoundedCornersView">
+            <view key="contentView" misplaced="YES" id="se5-gp-TjO" customClass="RoundedCornersView">
                 <rect key="frame" x="0.0" y="0.0" width="205" height="176"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
@@ -73,44 +73,6 @@
                                                     <connections>
                                                         <outlet property="secondaryLabel" destination="kxt-Co-mv5" id="UWm-X1-WQU"/>
                                                         <outlet property="textField" destination="k4W-lU-SFY" id="3at-dL-ThN"/>
-                                                    </connections>
-                                                </tableCellView>
-                                                <tableCellView identifier="loading" id="8Ts-CE-8Vy" customClass="SuggestionLoadingCellView">
-                                                    <rect key="frame" x="18" y="40" width="168" height="20"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                    <subviews>
-                                                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="t5c-oo-TIM">
-                                                            <rect key="frame" x="13" y="0.0" width="143" height="20"/>
-                                                            <subviews>
-                                                                <progressIndicator maxValue="100" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="WXK-6C-Ja0">
-                                                                    <rect key="frame" x="0.0" y="2" width="16" height="16"/>
-                                                                </progressIndicator>
-                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="939-Pi-tfm">
-                                                                    <rect key="frame" x="18" y="4" width="127" height="13"/>
-                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Loading Apple Glossary..." id="WHk-Y2-4yE">
-                                                                        <font key="font" textStyle="footnote" name=".SFNS-Regular"/>
-                                                                        <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
-                                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                                    </textFieldCell>
-                                                                </textField>
-                                                            </subviews>
-                                                            <constraints>
-                                                                <constraint firstItem="939-Pi-tfm" firstAttribute="centerY" secondItem="t5c-oo-TIM" secondAttribute="centerY" id="Fkf-SN-qxp"/>
-                                                                <constraint firstAttribute="height" constant="20" id="Ypj-7p-O1c"/>
-                                                                <constraint firstItem="WXK-6C-Ja0" firstAttribute="centerY" secondItem="t5c-oo-TIM" secondAttribute="centerY" id="ZBJ-1t-HDV"/>
-                                                                <constraint firstItem="939-Pi-tfm" firstAttribute="leading" secondItem="WXK-6C-Ja0" secondAttribute="trailing" constant="4" id="Zsn-kl-rsr"/>
-                                                                <constraint firstAttribute="trailing" secondItem="939-Pi-tfm" secondAttribute="trailing" id="flW-Vx-Jsb"/>
-                                                                <constraint firstItem="WXK-6C-Ja0" firstAttribute="leading" secondItem="t5c-oo-TIM" secondAttribute="leading" id="jpk-H5-EcW"/>
-                                                            </constraints>
-                                                        </customView>
-                                                    </subviews>
-                                                    <constraints>
-                                                        <constraint firstItem="t5c-oo-TIM" firstAttribute="centerX" secondItem="8Ts-CE-8Vy" secondAttribute="centerX" id="DMT-qa-Bko"/>
-                                                        <constraint firstItem="t5c-oo-TIM" firstAttribute="centerY" secondItem="8Ts-CE-8Vy" secondAttribute="centerY" id="tfv-5f-QFj"/>
-                                                    </constraints>
-                                                    <connections>
-                                                        <outlet property="loadingSign" destination="WXK-6C-Ja0" id="jDD-ny-ws4"/>
-                                                        <outlet property="textField" destination="939-Pi-tfm" id="dlT-h7-hk9"/>
                                                     </connections>
                                                 </tableCellView>
                                             </prototypeCellViews>

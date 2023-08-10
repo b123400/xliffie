@@ -48,9 +48,6 @@
     NSRect screenRect = [view.window convertRectToScreen:rectInWindow];
     
     CGFloat height = 20 + 40 * self.suggestions.count;
-    if (self.isLoadingMore) {
-        height += 20;
-    }
     CGFloat width = 300;
     NSRect selfRect = NSMakeRect(screenRect.origin.x,
                                  screenRect.origin.y - height - 5,
@@ -117,22 +114,15 @@
 - (NSView *)tableView:(NSTableView *)tableView
    viewForTableColumn:(NSTableColumn *)tableColumn
                   row:(NSInteger)row {
-    if (row < self.suggestions.count) {
-        Suggestion *suggestion = self.suggestions[row];
-        SuggestionsCellView *cell = [self.tableView makeViewWithIdentifier:@"cell" owner:tableView];
-        cell.textField.stringValue = suggestion.title;
-        cell.secondaryLabel.attributedStringValue = suggestion.stringForDisplay ?: [[NSAttributedString alloc] initWithString:@""];
-        return cell;
-    }
-    NSTableCellView *cell = [self.tableView makeViewWithIdentifier:@"loading" owner:tableView];
+    Suggestion *suggestion = self.suggestions[row];
+    SuggestionsCellView *cell = [self.tableView makeViewWithIdentifier:@"cell" owner:tableView];
+    cell.textField.stringValue = suggestion.title;
+    cell.secondaryLabel.attributedStringValue = suggestion.stringForDisplay ?: [[NSAttributedString alloc] initWithString:@""];
     return cell;
 }
 
 - (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row {
-    if (row < self.suggestions.count) {
-        return 40;
-    }
-    return 20;
+    return 40;
 }
 
 - (BOOL)tableView:(NSTableView *)tableView shouldSelectRow:(NSInteger)row {
@@ -141,7 +131,7 @@
 }
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
-    return self.suggestions.count + (self.isLoadingMore ? 1 : 0);
+    return self.suggestions.count;
 }
 
 @end

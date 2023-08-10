@@ -25,11 +25,11 @@
 }
 
 - (void)editColumn:(NSInteger)column row:(NSInteger)row withEvent:(NSEvent *)event select:(BOOL)select {
+    [super editColumn:column row:row withEvent:event select:select];
     [self.xmlOutlineDelegate xmlOutlineView:self
                       didStartEditingColumn:column
                                         row:row
                                       event:event];
-    return [super editColumn:column row:row withEvent:event select:select];
 }
 
 - (NSUInteger)nextEditableField:(NSUInteger)index {
