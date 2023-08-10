@@ -67,4 +67,8 @@
     }
 }
 
++ (NSString *)applyFormatOfString:(NSString *)formatString toString:(NSString *)targetString {
+    return [Utilities applyFormat:[Utilities detectFormatOfString:formatString] toString:targetString];
+}
+
 @end

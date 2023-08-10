@@ -7,6 +7,7 @@
 //
 
 #import "Glossary.h"
+#import "Utilities.h"
 
 @interface Glossary ()
 @property (nonatomic, strong) NSDictionary<NSString*, NSDictionary<NSString *, NSArray<NSString *>*>*> *translationDict;
@@ -97,19 +98,19 @@
         return nil;
     }
     if (transDict.count == 1) {
-        return [transDict allKeys].firstObject;
+        return [Utilities applyFormatOfString:baseString toString:[transDict allKeys].firstObject];
     }
     for (NSString *tran in transDict) {
         NSArray *positions = transDict[tran];
         BOOL isTranBelongsToMenu = [[positions filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"self CONTAINS[cd] 'menu'"]] count] > 0;
         if (isTranBelongsToMenu && isMenu) {
-            return tran;
+            return [Utilities applyFormatOfString:baseString toString:tran];
         }
         if (!isTranBelongsToMenu && !isMenu) {
-            return tran;
+            return [Utilities applyFormatOfString:baseString toString:tran];
         }
     }
-    return [transDict allKeys].firstObject;
+    return [Utilities applyFormatOfString:baseString toString:[transDict allKeys].firstObject];
 }
 
 @end

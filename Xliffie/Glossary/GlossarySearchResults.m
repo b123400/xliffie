@@ -31,8 +31,7 @@
 }
 
 - (void)addResultWithSource:(NSString *)source target:(NSString *)target bundlePath:(NSString *)bundlePath {
-    StringFormat sourceFormat = [Utilities detectFormatOfString:source];
-    target = [Utilities applyFormat:sourceFormat toString:target];
+    target = [Utilities applyFormatOfString:source toString:target];
     source = [source lowercaseString];
     if (!self.results[source]) {
         self.results[source] = [NSMutableDictionary dictionary];

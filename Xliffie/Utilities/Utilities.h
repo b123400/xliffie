@@ -23,6 +23,7 @@ typedef enum : NSUInteger {
 
 + (StringFormat)detectFormatOfString:(NSString *)string;
 + (NSString *)applyFormat:(StringFormat)format toString:(NSString *)string;
++ (NSString *)applyFormatOfString:(NSString *)formatString toString:(NSString *)targetString;
 
 @end
 
