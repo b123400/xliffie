@@ -486,7 +486,14 @@
     NSArray *rows = [batches valueForKeyPath: @"@unionOfArrays.self"];
     NSMutableDictionary<NSString*, NSMutableArray<GlossarySearchRow*>*> *dict = [NSMutableDictionary dictionary];
     for (NSArray *row in rows) {
-        NSString *source = row[0];
+        NSString *databaseSource = row[0]; // source from db may from different case as input
+        NSString *source = databaseSource;
+        for (NSString *s in sources) {
+            if ([[s lowercaseString] isEqual:databaseSource.lowercaseString]) {
+                source = s;
+                break;
+            }
+        }
         NSString *target = row[1];
         NSString *bundlePath = row[2];
         if (!dict[source]) {
