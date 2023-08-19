@@ -46,6 +46,7 @@
 
 - (NSArray<GlossarySearchResult*> *)targetsWithSource:(NSString *)source {
     source = [source lowercaseString];
+    source = [source stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     NSMutableDictionary<NSString *, GlossarySearchResult*> *targets = self.results[source];
     NSArray *r = [[targets allValues] sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"bundlePathCount" ascending:NO]]];
     return r;

@@ -293,6 +293,12 @@
                       fromLocale:(NSString *)sourceLocale
                         toLocale:(NSString *)targetLocale
                         callback:(void(^)(GlossarySearchResults *results))callback {
+    NSMutableArray *trimmedTerms = [NSMutableArray array];
+    for (NSString *term in terms) {
+        NSString *t = [term stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        [trimmedTerms addObject:t];
+    }
+    terms = trimmedTerms;
     dispatch_async([GlossaryDatabase dispatchQueue], ^{
         GlossarySearchResults *results = [GlossarySearchResults new];
         NSArray<GlossaryDatabase *> *targetDatabases = [GlossaryDatabase allRelatedDatabasesWithLocale:targetLocale platform:platform extraLocales:@[]];
@@ -314,7 +320,8 @@
             return;
         }
         
-        NSArray<GlossaryDatabase *> *sourceDatabases = [GlossaryDatabase allRelatedDatabasesWithLocale:sourceLocale platform:platform extraLocales:@[@"en", @"English", @"Base"]];
+        NSArray<GlossaryDatabase *> *sourceDatabases = [GlossaryDatabase allRelatedDatabasesWithLocale:sourceLocale platform:platform
+                                                                                          extraLocales:@[@"en", @"English", @"Base"]];
         NSMutableDictionary<GlossaryReverseSearchResult*, NSString *> *reverseResults = [NSMutableDictionary dictionary];
         for (GlossaryDatabase *sourceDatabase in sourceDatabases) {
             if ([sourceDatabase isDownloaded]) {
