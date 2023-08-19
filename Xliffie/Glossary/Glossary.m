@@ -53,10 +53,10 @@
 
 + (NSArray<NSString *> *)glossaryFilenames {
     return @[
-        @"ar", @"ca", @"cs", @"da", @"de", @"el", @"en-au", @"en-gb", @"es-419",
-        @"es", @"fi", @"fr-ca", @"fr", @"he", @"hi", @"hr", @"hu", @"id", @"it",
-        @"ja", @"ko", @"ms", @"nl", @"no", @"pl", @"pt-br", @"pt-pt", @"ro", @"ru",
-        @"sk", @"sv", @"th", @"tr", @"uk", @"vi", @"zh-cn", @"zh-hk", @"zh-tw",
+        @"ar", @"ca", @"cs", @"da", @"de", @"el", @"en_au", @"en_gb", @"es_419",
+        @"es", @"fi", @"fr_ca", @"fr", @"he", @"hi", @"hr", @"hu", @"id", @"it",
+        @"ja", @"ko", @"ms", @"nl", @"no", @"pl", @"pt_br", @"pt_pt", @"ro", @"ru",
+        @"sk", @"sv", @"th", @"tr", @"uk", @"vi", @"zh_cn", @"zh_hk", @"zh_tw",
     ];
 }
 
@@ -68,7 +68,7 @@
             return thisLocale;
         }
         if ([thisLocale isEqualTo:@"zh"]) {
-            return @"zh-hk";
+            return @"zh_hk";
         }
     }
     return nil;
@@ -82,35 +82,29 @@
 + (NSArray<NSString*> *)fallbacksWithLocale:(NSString*)localeCode {
     NSArray *components = [localeCode.lowercaseString componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"_-"]];
     NSMutableOrderedSet *result = [NSMutableOrderedSet orderedSet];
-    [result addObject:[components componentsJoinedByString:@"-"]];
+    [result addObject:[components componentsJoinedByString:@"_"]];
     if (components.count >= 2) {
-        [result addObject:[NSString stringWithFormat:@"%@-%@", components.firstObject, components.lastObject]];
+        [result addObject:[NSString stringWithFormat:@"%@_%@", components.firstObject, components.lastObject]];
     }
     for (NSInteger i = components.count; i >= 1; i--) {
-        [result addObject:[[components subarrayWithRange:NSMakeRange(0, i)] componentsJoinedByString:@"-"]];
+        [result addObject:[[components subarrayWithRange:NSMakeRange(0, i)] componentsJoinedByString:@"_"]];
     }
     return [result array];
 }
 
-- (NSString *)translate:(NSString *)baseString isMenu:(BOOL)isMenu {
-    NSDictionary<NSString *, NSArray<NSString *>*> *transDict = self.translationDict[baseString.lowercaseString];
-    if (transDict.count == 0) {
-        return nil;
+- (NSArray<NSString *> *)translate:(NSString *)baseString {
+    id result = self.translationDict[[baseString.lowercaseString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
+    if ([result isKindOfClass:[NSString class]]) {
+        return @[[Utilities applyFormatOfString:baseString toString:result]];
     }
-    if (transDict.count == 1) {
-        return [Utilities applyFormatOfString:baseString toString:[transDict allKeys].firstObject];
-    }
-    for (NSString *tran in transDict) {
-        NSArray *positions = transDict[tran];
-        BOOL isTranBelongsToMenu = [[positions filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"self CONTAINS[cd] 'menu'"]] count] > 0;
-        if (isTranBelongsToMenu && isMenu) {
-            return [Utilities applyFormatOfString:baseString toString:tran];
+    if ([result isKindOfClass:[NSArray class]]) {
+        NSMutableArray *r = [NSMutableArray array];
+        for (NSString *thisResult in (NSArray*)result) {
+            [r addObject:[Utilities applyFormatOfString:baseString toString:thisResult]];
         }
-        if (!isTranBelongsToMenu && !isMenu) {
-            return [Utilities applyFormatOfString:baseString toString:tran];
-        }
+        return r;
     }
-    return [Utilities applyFormatOfString:baseString toString:[transDict allKeys].firstObject];
+    return nil;
 }
 
 @end

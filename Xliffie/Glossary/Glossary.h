@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (instancetype)sharedGlossaryWithLocale:(NSString *)locale;
 - (instancetype)initWithTargetLocale:(NSString *)locale;
-- (NSString *)translate:(NSString *)baseString isMenu:(BOOL)isMenu;
+- (NSArray<NSString *> *)translate:(NSString *)baseString;
 
 @end
 

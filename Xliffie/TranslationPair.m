@@ -122,10 +122,11 @@
     }
     if ([self.source isEqualTo:self.target]) {
         Glossary *glossary = [Glossary sharedGlossaryWithLocale:self.file.targetLanguage];
-        BOOL isMenu = [self.file.original.lastPathComponent.lowercaseString containsString:@"menu"];
-        NSString *glossaryTranslation = [glossary translate:self.source isMenu:isMenu];
-        if ([glossaryTranslation isEqualTo:self.target]) {
-            return TranslationPairStateTranslated;
+        NSArray<NSString *>*glossaryTranslations = [glossary translate:self.source];
+        for (NSString *glossaryTranslation in glossaryTranslations) {
+            if ([glossaryTranslation isEqualTo:self.target]) {
+                return TranslationPairStateTranslated;
+            }
         }
         return TranslationPairStateSame;
     }

@@ -374,14 +374,15 @@ doCommandBySelector:(SEL)commandSelector {
     // Dedup suggestions by title
     NSMutableSet<NSString*> *addedSuggestions = [NSMutableSet set];
     Glossary *glossary = [Glossary sharedGlossaryWithLocale:pair.file.targetLanguage];
-    BOOL isMenu = [pair.file.original.lastPathComponent.lowercaseString containsString:@"menu"];
-    NSString *glossaryTranslation = [glossary translate:pair.source isMenu:isMenu];
-    if (glossaryTranslation && ![glossaryTranslation isEqualTo:pair.target]) {
-        Suggestion *s = [[Suggestion alloc] init];
-        s.title = glossaryTranslation;
-        s.source = SuggestionSourceGlossary;
-        [suggestions addObject:s];
-        [addedSuggestions addObject:glossaryTranslation];
+    NSArray<NSString *> *glossaryTranslations = [glossary translate:pair.source];
+    for (NSString *glossaryTranslation in glossaryTranslations) {
+        if (glossaryTranslation && ![glossaryTranslation isEqualTo:pair.target] && ![addedSuggestions containsObject:glossaryTranslation]) {
+            Suggestion *s = [[Suggestion alloc] init];
+            s.title = glossaryTranslation;
+            s.source = SuggestionSourceGlossary;
+            [suggestions addObject:s];
+            [addedSuggestions addObject:glossaryTranslation];
+        }
     }
     for (File *file in self.document.files) {
         for (TranslationPair *p in file.translations) {
