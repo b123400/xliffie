@@ -124,7 +124,7 @@
         if (matches.count) {
             return @[[NSString stringWithFormat:matches.firstObject, rest]];
         }
-    } else if ([baseString hasPrefix:@" Help"]) {
+    } else if ([baseString hasSuffix:@" Help"]) {
         NSString *rest = [baseString substringToIndex:baseString.length - 5];
         NSArray<NSString *> *matches = [self translate:@"%@ Help"];
         if (matches.count) {
