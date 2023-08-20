@@ -48,21 +48,15 @@
 		CF662B391C307C7D00704CEA /* TranslateServiceWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF662B381C307C7D00704CEA /* TranslateServiceWindowController.m */; };
 		CF740AA72701C6C700F31F26 /* Glossary.m in Sources */ = {isa = PBXBuildFile; fileRef = CF740AA62701C6C700F31F26 /* Glossary.m */; };
 		CF740ACF2701CE7900F31F26 /* sk.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740AA92701CE7800F31F26 /* sk.glossary */; };
-		CF740AD02701CE7900F31F26 /* zh-hk.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740AAA2701CE7800F31F26 /* zh-hk.glossary */; };
 		CF740AD12701CE7900F31F26 /* no.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740AAB2701CE7800F31F26 /* no.glossary */; };
-		CF740AD22701CE7900F31F26 /* zh-tw.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740AAC2701CE7800F31F26 /* zh-tw.glossary */; };
 		CF740AD32701CE7900F31F26 /* nl.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740AAD2701CE7800F31F26 /* nl.glossary */; };
 		CF740AD42701CE7900F31F26 /* sv.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740AAE2701CE7800F31F26 /* sv.glossary */; };
 		CF740AD52701CE7900F31F26 /* de.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740AAF2701CE7800F31F26 /* de.glossary */; };
 		CF740AD62701CE7900F31F26 /* tr.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740AB02701CE7800F31F26 /* tr.glossary */; };
 		CF740AD72701CE7900F31F26 /* hr.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740AB12701CE7800F31F26 /* hr.glossary */; };
-		CF740AD82701CE7900F31F26 /* pt-br.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740AB22701CE7800F31F26 /* pt-br.glossary */; };
-		CF740AD92701CE7900F31F26 /* es-419.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740AB32701CE7800F31F26 /* es-419.glossary */; };
-		CF740ADA2701CE7900F31F26 /* pt-pt.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740AB42701CE7800F31F26 /* pt-pt.glossary */; };
 		CF740ADB2701CE7900F31F26 /* ms.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740AB52701CE7800F31F26 /* ms.glossary */; };
 		CF740ADC2701CE7900F31F26 /* id.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740AB62701CE7800F31F26 /* id.glossary */; };
 		CF740ADD2701CE7900F31F26 /* th.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740AB72701CE7900F31F26 /* th.glossary */; };
-		CF740ADE2701CE7900F31F26 /* zh-cn.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740AB82701CE7900F31F26 /* zh-cn.glossary */; };
 		CF740ADF2701CE7900F31F26 /* da.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740AB92701CE7900F31F26 /* da.glossary */; };
 		CF740AE02701CE7900F31F26 /* cs.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740ABA2701CE7900F31F26 /* cs.glossary */; };
 		CF740AE12701CE7900F31F26 /* hu.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740ABB2701CE7900F31F26 /* hu.glossary */; };
@@ -74,17 +68,23 @@
 		CF740AE72701CE7900F31F26 /* fi.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740AC12701CE7900F31F26 /* fi.glossary */; };
 		CF740AE82701CE7900F31F26 /* uk.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740AC22701CE7900F31F26 /* uk.glossary */; };
 		CF740AE92701CE7900F31F26 /* vi.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740AC32701CE7900F31F26 /* vi.glossary */; };
-		CF740AEA2701CE7900F31F26 /* en-au.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740AC42701CE7900F31F26 /* en-au.glossary */; };
 		CF740AEB2701CE7900F31F26 /* fr.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740AC52701CE7900F31F26 /* fr.glossary */; };
 		CF740AEC2701CE7900F31F26 /* ca.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740AC62701CE7900F31F26 /* ca.glossary */; };
 		CF740AED2701CE7900F31F26 /* el.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740AC72701CE7900F31F26 /* el.glossary */; };
 		CF740AEE2701CE7900F31F26 /* ja.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740AC82701CE7900F31F26 /* ja.glossary */; };
 		CF740AEF2701CE7900F31F26 /* es.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740AC92701CE7900F31F26 /* es.glossary */; };
-		CF740AF02701CE7900F31F26 /* en-gb.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740ACA2701CE7900F31F26 /* en-gb.glossary */; };
 		CF740AF12701CE7900F31F26 /* he.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740ACB2701CE7900F31F26 /* he.glossary */; };
-		CF740AF22701CE7900F31F26 /* fr-ca.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740ACC2701CE7900F31F26 /* fr-ca.glossary */; };
 		CF740AF32701CE7900F31F26 /* ro.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740ACD2701CE7900F31F26 /* ro.glossary */; };
 		CF740AF42701CE7900F31F26 /* ru.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740ACE2701CE7900F31F26 /* ru.glossary */; };
+		CF78DC452A91090F000B33B5 /* pt_br.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF78DC3C2A91090E000B33B5 /* pt_br.glossary */; };
+		CF78DC462A91090F000B33B5 /* fr_ca.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF78DC3D2A91090E000B33B5 /* fr_ca.glossary */; };
+		CF78DC472A91090F000B33B5 /* zh_tw.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF78DC3E2A91090E000B33B5 /* zh_tw.glossary */; };
+		CF78DC482A91090F000B33B5 /* pt_pt.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF78DC3F2A91090E000B33B5 /* pt_pt.glossary */; };
+		CF78DC492A91090F000B33B5 /* zh_hk.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF78DC402A91090E000B33B5 /* zh_hk.glossary */; };
+		CF78DC4A2A91090F000B33B5 /* en_gb.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF78DC412A91090E000B33B5 /* en_gb.glossary */; };
+		CF78DC4B2A91090F000B33B5 /* en_au.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF78DC422A91090E000B33B5 /* en_au.glossary */; };
+		CF78DC4C2A91090F000B33B5 /* es_419.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF78DC432A91090E000B33B5 /* es_419.glossary */; };
+		CF78DC4D2A91090F000B33B5 /* zh_cn.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF78DC442A91090E000B33B5 /* zh_cn.glossary */; };
 		CF846CD4259E21A300CA0713 /* CustomDocumentController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF846CD3259E21A300CA0713 /* CustomDocumentController.m */; };
 		CF92FB941C24037B00700D3E /* TargetMissingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF92FB931C24037B00700D3E /* TargetMissingViewController.m */; };
 		CF94FCA51A5C365400EE8BD5 /* File.m in Sources */ = {isa = PBXBuildFile; fileRef = CF94FCA41A5C365400EE8BD5 /* File.m */; };
@@ -206,21 +206,15 @@
 		CF740AA52701C6C700F31F26 /* Glossary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Glossary.h; sourceTree = "<group>"; };
 		CF740AA62701C6C700F31F26 /* Glossary.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Glossary.m; sourceTree = "<group>"; };
 		CF740AA92701CE7800F31F26 /* sk.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sk.glossary; sourceTree = "<group>"; };
-		CF740AAA2701CE7800F31F26 /* zh-hk.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "zh-hk.glossary"; sourceTree = "<group>"; };
 		CF740AAB2701CE7800F31F26 /* no.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = no.glossary; sourceTree = "<group>"; };
-		CF740AAC2701CE7800F31F26 /* zh-tw.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "zh-tw.glossary"; sourceTree = "<group>"; };
 		CF740AAD2701CE7800F31F26 /* nl.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = nl.glossary; sourceTree = "<group>"; };
 		CF740AAE2701CE7800F31F26 /* sv.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sv.glossary; sourceTree = "<group>"; };
 		CF740AAF2701CE7800F31F26 /* de.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = de.glossary; sourceTree = "<group>"; };
 		CF740AB02701CE7800F31F26 /* tr.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tr.glossary; sourceTree = "<group>"; };
 		CF740AB12701CE7800F31F26 /* hr.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hr.glossary; sourceTree = "<group>"; };
-		CF740AB22701CE7800F31F26 /* pt-br.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "pt-br.glossary"; sourceTree = "<group>"; };
-		CF740AB32701CE7800F31F26 /* es-419.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "es-419.glossary"; sourceTree = "<group>"; };
-		CF740AB42701CE7800F31F26 /* pt-pt.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "pt-pt.glossary"; sourceTree = "<group>"; };
 		CF740AB52701CE7800F31F26 /* ms.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ms.glossary; sourceTree = "<group>"; };
 		CF740AB62701CE7800F31F26 /* id.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = id.glossary; sourceTree = "<group>"; };
 		CF740AB72701CE7900F31F26 /* th.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = th.glossary; sourceTree = "<group>"; };
-		CF740AB82701CE7900F31F26 /* zh-cn.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "zh-cn.glossary"; sourceTree = "<group>"; };
 		CF740AB92701CE7900F31F26 /* da.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = da.glossary; sourceTree = "<group>"; };
 		CF740ABA2701CE7900F31F26 /* cs.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cs.glossary; sourceTree = "<group>"; };
 		CF740ABB2701CE7900F31F26 /* hu.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hu.glossary; sourceTree = "<group>"; };
@@ -232,17 +226,23 @@
 		CF740AC12701CE7900F31F26 /* fi.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fi.glossary; sourceTree = "<group>"; };
 		CF740AC22701CE7900F31F26 /* uk.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = uk.glossary; sourceTree = "<group>"; };
 		CF740AC32701CE7900F31F26 /* vi.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vi.glossary; sourceTree = "<group>"; };
-		CF740AC42701CE7900F31F26 /* en-au.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "en-au.glossary"; sourceTree = "<group>"; };
 		CF740AC52701CE7900F31F26 /* fr.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fr.glossary; sourceTree = "<group>"; };
 		CF740AC62701CE7900F31F26 /* ca.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ca.glossary; sourceTree = "<group>"; };
 		CF740AC72701CE7900F31F26 /* el.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = el.glossary; sourceTree = "<group>"; };
 		CF740AC82701CE7900F31F26 /* ja.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ja.glossary; sourceTree = "<group>"; };
 		CF740AC92701CE7900F31F26 /* es.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = es.glossary; sourceTree = "<group>"; };
-		CF740ACA2701CE7900F31F26 /* en-gb.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "en-gb.glossary"; sourceTree = "<group>"; };
 		CF740ACB2701CE7900F31F26 /* he.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = he.glossary; sourceTree = "<group>"; };
-		CF740ACC2701CE7900F31F26 /* fr-ca.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "fr-ca.glossary"; sourceTree = "<group>"; };
 		CF740ACD2701CE7900F31F26 /* ro.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ro.glossary; sourceTree = "<group>"; };
 		CF740ACE2701CE7900F31F26 /* ru.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ru.glossary; sourceTree = "<group>"; };
+		CF78DC3C2A91090E000B33B5 /* pt_br.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pt_br.glossary; sourceTree = "<group>"; };
+		CF78DC3D2A91090E000B33B5 /* fr_ca.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fr_ca.glossary; sourceTree = "<group>"; };
+		CF78DC3E2A91090E000B33B5 /* zh_tw.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = zh_tw.glossary; sourceTree = "<group>"; };
+		CF78DC3F2A91090E000B33B5 /* pt_pt.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pt_pt.glossary; sourceTree = "<group>"; };
+		CF78DC402A91090E000B33B5 /* zh_hk.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = zh_hk.glossary; sourceTree = "<group>"; };
+		CF78DC412A91090E000B33B5 /* en_gb.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = en_gb.glossary; sourceTree = "<group>"; };
+		CF78DC422A91090E000B33B5 /* en_au.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = en_au.glossary; sourceTree = "<group>"; };
+		CF78DC432A91090E000B33B5 /* es_419.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = es_419.glossary; sourceTree = "<group>"; };
+		CF78DC442A91090E000B33B5 /* zh_cn.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = zh_cn.glossary; sourceTree = "<group>"; };
 		CF846CD2259E21A300CA0713 /* CustomDocumentController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomDocumentController.h; sourceTree = "<group>"; };
 		CF846CD3259E21A300CA0713 /* CustomDocumentController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomDocumentController.m; sourceTree = "<group>"; };
 		CF92FB921C24037B00700D3E /* TargetMissingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetMissingViewController.h; sourceTree = "<group>"; };
@@ -508,12 +508,8 @@
 				CF740AB92701CE7900F31F26 /* da.glossary */,
 				CF740AAF2701CE7800F31F26 /* de.glossary */,
 				CF740AC72701CE7900F31F26 /* el.glossary */,
-				CF740AC42701CE7900F31F26 /* en-au.glossary */,
-				CF740ACA2701CE7900F31F26 /* en-gb.glossary */,
-				CF740AB32701CE7800F31F26 /* es-419.glossary */,
 				CF740AC92701CE7900F31F26 /* es.glossary */,
 				CF740AC12701CE7900F31F26 /* fi.glossary */,
-				CF740ACC2701CE7900F31F26 /* fr-ca.glossary */,
 				CF740AC52701CE7900F31F26 /* fr.glossary */,
 				CF740ACB2701CE7900F31F26 /* he.glossary */,
 				CF740ABE2701CE7900F31F26 /* hi.glossary */,
@@ -527,8 +523,6 @@
 				CF740AAD2701CE7800F31F26 /* nl.glossary */,
 				CF740AAB2701CE7800F31F26 /* no.glossary */,
 				CF740ABD2701CE7900F31F26 /* pl.glossary */,
-				CF740AB22701CE7800F31F26 /* pt-br.glossary */,
-				CF740AB42701CE7800F31F26 /* pt-pt.glossary */,
 				CF740ACD2701CE7900F31F26 /* ro.glossary */,
 				CF740ACE2701CE7900F31F26 /* ru.glossary */,
 				CF740AA92701CE7800F31F26 /* sk.glossary */,
@@ -537,9 +531,15 @@
 				CF740AB02701CE7800F31F26 /* tr.glossary */,
 				CF740AC22701CE7900F31F26 /* uk.glossary */,
 				CF740AC32701CE7900F31F26 /* vi.glossary */,
-				CF740AB82701CE7900F31F26 /* zh-cn.glossary */,
-				CF740AAA2701CE7800F31F26 /* zh-hk.glossary */,
-				CF740AAC2701CE7800F31F26 /* zh-tw.glossary */,
+				CF78DC422A91090E000B33B5 /* en_au.glossary */,
+				CF78DC412A91090E000B33B5 /* en_gb.glossary */,
+				CF78DC432A91090E000B33B5 /* es_419.glossary */,
+				CF78DC3D2A91090E000B33B5 /* fr_ca.glossary */,
+				CF78DC3C2A91090E000B33B5 /* pt_br.glossary */,
+				CF78DC3F2A91090E000B33B5 /* pt_pt.glossary */,
+				CF78DC442A91090E000B33B5 /* zh_cn.glossary */,
+				CF78DC402A91090E000B33B5 /* zh_hk.glossary */,
+				CF78DC3E2A91090E000B33B5 /* zh_tw.glossary */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -731,21 +731,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF740AED2701CE7900F31F26 /* el.glossary in Resources */,
-				CF740ADE2701CE7900F31F26 /* zh-cn.glossary in Resources */,
 				CF740AEC2701CE7900F31F26 /* ca.glossary in Resources */,
-				CF740AF02701CE7900F31F26 /* en-gb.glossary in Resources */,
 				CF740AE52701CE7900F31F26 /* ar.glossary in Resources */,
-				CF740AD02701CE7900F31F26 /* zh-hk.glossary in Resources */,
+				CF78DC472A91090F000B33B5 /* zh_tw.glossary in Resources */,
 				CF740AEB2701CE7900F31F26 /* fr.glossary in Resources */,
 				CF5FC89D1A5ABFF700538E60 /* Images.xcassets in Resources */,
 				CFE39FA11A767252004644C8 /* InfoPlist.strings in Resources */,
-				CF740AF22701CE7900F31F26 /* fr-ca.glossary in Resources */,
 				CF740AEE2701CE7900F31F26 /* ja.glossary in Resources */,
 				CF5E5A61270744B900B8A90A /* GlossaryWindowController.xib in Resources */,
 				CF740AD62701CE7900F31F26 /* tr.glossary in Resources */,
 				CF740ADB2701CE7900F31F26 /* ms.glossary in Resources */,
 				CF740AF12701CE7900F31F26 /* he.glossary in Resources */,
 				CF740AE62701CE7900F31F26 /* ko.glossary in Resources */,
+				CF78DC482A91090F000B33B5 /* pt_pt.glossary in Resources */,
 				CF740AE22701CE7900F31F26 /* it.glossary in Resources */,
 				CF740AD52701CE7900F31F26 /* de.glossary in Resources */,
 				CF740AD72701CE7900F31F26 /* hr.glossary in Resources */,
@@ -753,34 +751,36 @@
 				CF740AE92701CE7900F31F26 /* vi.glossary in Resources */,
 				CF740ADF2701CE7900F31F26 /* da.glossary in Resources */,
 				CF740ADC2701CE7900F31F26 /* id.glossary in Resources */,
+				CF78DC4B2A91090F000B33B5 /* en_au.glossary in Resources */,
 				CF740AE42701CE7900F31F26 /* hi.glossary in Resources */,
 				CF740AF32701CE7900F31F26 /* ro.glossary in Resources */,
 				CF660EF41C540E11007A0B28 /* TranslateServiceWindowController.xib in Resources */,
 				CF660EFB1C540E27007A0B28 /* TranslationWindowController.xib in Resources */,
 				CF740AE72701CE7900F31F26 /* fi.glossary in Resources */,
 				CF740AE12701CE7900F31F26 /* hu.glossary in Resources */,
-				CF740ADA2701CE7900F31F26 /* pt-pt.glossary in Resources */,
+				CF78DC4C2A91090F000B33B5 /* es_419.glossary in Resources */,
+				CF78DC4A2A91090F000B33B5 /* en_gb.glossary in Resources */,
 				CF0AB5922A755EDF00D61101 /* GlossaryDownloadWindowController.xib in Resources */,
 				CF740ADD2701CE7900F31F26 /* th.glossary in Resources */,
 				CF740AE82701CE7900F31F26 /* uk.glossary in Resources */,
 				CF740AD42701CE7900F31F26 /* sv.glossary in Resources */,
 				CF740AD12701CE7900F31F26 /* no.glossary in Resources */,
 				CF740AE02701CE7900F31F26 /* cs.glossary in Resources */,
-				CF740AD22701CE7900F31F26 /* zh-tw.glossary in Resources */,
 				CFE39F9A1A765859004644C8 /* Localizable.strings in Resources */,
 				CF16E0862A7559CB002D5C48 /* GlossaryManagerWindowController.xib in Resources */,
 				CF740AF42701CE7900F31F26 /* ru.glossary in Resources */,
-				CF740AD92701CE7900F31F26 /* es-419.glossary in Resources */,
+				CF78DC492A91090F000B33B5 /* zh_hk.glossary in Resources */,
 				CF5AB3C3293DCE6200C8AC7B /* SuggestionsWindowController.xib in Resources */,
 				CF740ACF2701CE7900F31F26 /* sk.glossary in Resources */,
 				CF740AEF2701CE7900F31F26 /* es.glossary in Resources */,
 				CFEECE42250E21EE007A324C /* Localizable.stringsdict in Resources */,
+				CF78DC452A91090F000B33B5 /* pt_br.glossary in Resources */,
+				CF78DC462A91090F000B33B5 /* fr_ca.glossary in Resources */,
 				CF660EF31C5401B2007A0B28 /* Credits.rtf in Resources */,
 				CF740AE32701CE7900F31F26 /* pl.glossary in Resources */,
+				CF78DC4D2A91090F000B33B5 /* zh_cn.glossary in Resources */,
 				CF5FC8A01A5ABFF700538E60 /* Main.storyboard in Resources */,
-				CF740AEA2701CE7900F31F26 /* en-au.glossary in Resources */,
 				CF9A36ED29CD8F3C00FB8763 /* ProgressWindowController.xib in Resources */,
-				CF740AD82701CE7900F31F26 /* pt-br.glossary in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
