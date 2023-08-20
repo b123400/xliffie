@@ -8,6 +8,7 @@
 
 #import "Glossary.h"
 #import "Utilities.h"
+#import "TranslationPair.h"
 
 @interface Glossary ()
 @property (nonatomic, strong) NSDictionary<NSString*, NSDictionary<NSString *, NSArray<NSString *>*>*> *translationDict;
@@ -103,6 +104,32 @@
             [r addObject:[Utilities applyFormatOfString:baseString toString:thisResult]];
         }
         return r;
+    }
+    // Handle build-in menu items with app name, like "Quit Xliffie"
+    if ([baseString hasPrefix:@"Quit "]) {
+        NSString *rest = [baseString substringFromIndex:5];
+        NSArray<NSString *> *matches = [self translate:@"Quit %@"];
+        if (matches.count) {
+            return @[[NSString stringWithFormat:matches.firstObject, rest]];
+        }
+    } else if ([baseString hasPrefix:@"About "]) {
+        NSString *rest = [baseString substringFromIndex:6];
+        NSArray<NSString *> *matches = [self translate:@"About %@"];
+        if (matches.count) {
+            return @[[NSString stringWithFormat:matches.firstObject, rest]];
+        }
+    } else if ([baseString hasPrefix:@"Hide "]) {
+        NSString *rest = [baseString substringFromIndex:5];
+        NSArray<NSString *> *matches = [self translate:@"Hide %@"];
+        if (matches.count) {
+            return @[[NSString stringWithFormat:matches.firstObject, rest]];
+        }
+    } else if ([baseString hasPrefix:@" Help"]) {
+        NSString *rest = [baseString substringToIndex:baseString.length - 5];
+        NSArray<NSString *> *matches = [self translate:@"%@ Help"];
+        if (matches.count) {
+            return @[[NSString stringWithFormat:matches.firstObject, rest]];
+        }
     }
     return nil;
 }
