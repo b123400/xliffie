@@ -7,10 +7,13 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "GlossaryDatabase.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface GlossaryDownloadWindowController : NSWindowController
+
+- (instancetype)initWithLocales:(NSArray<NSString *> *)locales platform:(GlossaryPlatform)platform;
 
 @end
 

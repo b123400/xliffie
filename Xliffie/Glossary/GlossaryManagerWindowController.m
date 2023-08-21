@@ -99,12 +99,13 @@
 }
 
 - (IBAction)addGlossaryClicked:(id)sender {
-    GlossaryDownloadWindowController *downloadController = [[GlossaryDownloadWindowController alloc] init];
+    GlossaryDownloadWindowController *downloadController = [[GlossaryDownloadWindowController alloc] initWithLocales:@[] platform:GlossaryPlatformAny];
     self.downloadController = downloadController;
     __weak typeof(self) _self = self;
     [self.window beginSheet:downloadController.window
           completionHandler:^(NSModalResponse returnCode) {
         [_self reload];
+        _self.downloadController = nil;
     }];
 }
 
