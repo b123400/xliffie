@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "DocumentViewController.h"
 #import "DocumentWindow.h"
+#import "GlossaryDatabase.h"
 
 @interface DocumentWindowController : NSWindowController <DocumentViewControllerDelegate, DocumentWindowDelegate, NSSplitViewDelegate, NSWindowRestoration>
 
@@ -17,6 +18,10 @@
 
 - (NSString*)path;
 - (NSString*)baseFolderPath;
+
+- (GlossaryPlatform)detectedPlatform;
+- (NSString *)detectedSourceLocale;
+- (NSString *)detectedTargetLocale;
 
 - (IBAction)translateWithGlossaryMenuPressed:(id)sender;
 - (IBAction)translateWithGlossaryAndWebPressed:(id)sender;

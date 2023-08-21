@@ -336,7 +336,6 @@ doCommandBySelector:(SEL)commandSelector {
     }
     CGFloat loadingSize = 18;
     loadingView.frame = NSMakeRect(currentEditor.frame.size.width - loadingSize, 2, loadingSize, loadingSize);
-    // TODO: if no related db is available, don't search at all, so it doesn't flicker
     NSArray<Suggestion *> *suggestions = [self suggestionsForTranslationPair:pair callback:^(NSArray<Suggestion *> *allSuggestions) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [loadingView stopAnimation:self];

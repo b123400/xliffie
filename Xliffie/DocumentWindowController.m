@@ -349,6 +349,22 @@
     [self.document close];
 }
 
+- (GlossaryPlatform)detectedPlatform {
+    if ([self.document isKindOfClass:[XclocDocument class]]) {
+        XclocDocument *doc = self.document;
+        return [doc findAnyGlossaryPlatformInFileWrapper:nil];
+    }
+    return GlossaryPlatformAny;
+}
+
+- (NSString *)detectedSourceLocale {
+    return [(Document*)self.document files].firstObject.sourceLanguage;
+}
+
+- (NSString *)detectedTargetLocale {
+    return [(Document*)self.document files].firstObject.targetLanguage;
+}
+
 #pragma mark - Window Resizing
 
 - (void)windowDidResize:(NSNotification *)notification {

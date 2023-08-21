@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (BOOL)isXclocExtension:(NSString *)extension;
 - (GlossaryPlatform)glossaryPlatformWithSourcePath:(NSString *)pathInSourceContents;
+- (GlossaryPlatform)findAnyGlossaryPlatformInFileWrapper:(NSFileWrapper * _Nullable)wrapper;
 
 @end
 

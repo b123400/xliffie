@@ -9,6 +9,8 @@
 #import "GlossaryManagerWindowController.h"
 #import "GlossaryDatabase.h"
 #import "GlossaryDownloadWindowController.h"
+#import "DocumentWindow.h"
+#import "DocumentWindowController.h"
 
 @interface GlossaryManagerWindowController ()<NSTableViewDelegate, NSTableViewDataSource>
 
@@ -99,7 +101,19 @@
 }
 
 - (IBAction)addGlossaryClicked:(id)sender {
-    GlossaryDownloadWindowController *downloadController = [[GlossaryDownloadWindowController alloc] initWithLocales:@[] platform:GlossaryPlatformAny];
+    NSMutableArray *locales = [NSMutableArray array];
+    GlossaryPlatform platform = GlossaryPlatformAny;
+    for (NSWindow *window in [[NSApplication sharedApplication] windows]) {
+        if ([window isKindOfClass:[DocumentWindow class]] && [window.windowController isKindOfClass:[DocumentWindowController class]]) {
+            DocumentWindowController *docWinController = (DocumentWindowController*)window.windowController;
+            [locales addObject:[docWinController detectedSourceLocale]];
+            NSString *target = [docWinController detectedTargetLocale];
+            [locales addObject:target];
+            platform = [docWinController detectedPlatform];
+        }
+    }
+    GlossaryDownloadWindowController *downloadController = [[GlossaryDownloadWindowController alloc] initWithLocales:locales
+                                                                                                            platform:platform];
     self.downloadController = downloadController;
     __weak typeof(self) _self = self;
     [self.window beginSheet:downloadController.window

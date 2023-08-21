@@ -102,6 +102,28 @@
     return [self findPlatformFromUIFile:file];
 }
 
+- (GlossaryPlatform)findAnyGlossaryPlatformInFileWrapper:(NSFileWrapper*)wrapper {
+    if (!wrapper) {
+        wrapper = self.sourceContentsFileWrapper;
+    }
+    if ([wrapper isRegularFile]) {
+        GlossaryPlatform platform = [self findPlatformFromUIFile:wrapper];
+        if (platform != GlossaryPlatformAny) {
+            return platform;
+        }
+    } else if ([wrapper isDirectory]) {
+        NSDictionary<NSString*, NSFileWrapper*> *folderContent = [wrapper fileWrappers];
+        for (NSString *name in folderContent) {
+            NSFileWrapper *item = folderContent[name];
+            GlossaryPlatform platform = [self findAnyGlossaryPlatformInFileWrapper:item];
+            if (platform != GlossaryPlatformAny) {
+                return platform;
+            }
+        }
+    }
+    return GlossaryPlatformAny;
+}
+
 + (BOOL)isXclocExtension:(NSString *)extension {
     return [[extension lowercaseString] isEqualToString:@"xcloc"];
 }

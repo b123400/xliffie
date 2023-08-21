@@ -70,9 +70,23 @@
     NSArray<NSString *> *allLocales = [GlossaryDatabase localesWithPlatform:self.platform];
     NSSet<NSString *> *downloadedLocales = [NSSet setWithArray:[[GlossaryDatabase downloadedDatabasesWithPlatform:self.platform] valueForKeyPath:@"locale"]];
     NSMutableOrderedSet *relatedLocales = [NSMutableOrderedSet orderedSet];
+    
+    // Find the locales that matches exactly (w/o considering -_) and select them
     for (NSString *preferredLocale in self.preferedLocales) {
-        [relatedLocales addObject:preferredLocale];
-        [self.selectedLocales addObject:preferredLocale];
+        NSString *replacedPreferred = [[[preferredLocale componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"-_"]] componentsJoinedByString:@"_"] lowercaseString];
+        for (NSString *locale in allLocales) {
+            NSString *replacedAll = [[[locale componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"-_"]] componentsJoinedByString:@"_"] lowercaseString];
+            if ([replacedPreferred isEqual:replacedAll]) {
+                if (![downloadedLocales containsObject:locale]) {
+                    [relatedLocales addObject:locale];
+                    [self.selectedLocales addObject:locale];
+                }
+                break;
+            }
+        }
+    }
+    // Find recommended locales based on the ones selected
+    for (NSString *preferredLocale in [relatedLocales array]) {
         for (NSString *recommended in [GlossaryDatabase recommendedRelatedDatabaseForLocale:preferredLocale withPlatform:self.platform]) {
             if (![downloadedLocales containsObject:recommended]) {
                 [relatedLocales addObject:recommended];
@@ -86,6 +100,7 @@
             [self.selectedLocales addObject:recommended];
         }
     }
+    // Related but not necessarily recommended
     for (NSString *preferredLocale in self.preferedLocales) {
         for (NSString *related in [GlossaryDatabase relatedDatabaseForLocale:preferredLocale withPlatform:self.platform]) {
             if (![downloadedLocales containsObject:related]) {

@@ -405,6 +405,10 @@
         [[NSFileManager defaultManager] copyItemAtURL:location
                                                 toURL:[NSURL fileURLWithPath:_self.databasePath]
                                                 error:&err];
+        if (err) {
+            callback(err);
+            return;
+        }
         if (![_self testDatabase]) {
             [[NSFileManager defaultManager] removeItemAtPath:_self.databasePath error:nil];
             err = [NSError errorWithDomain:@"net.b123400.xliffie" code:0 userInfo:@{
