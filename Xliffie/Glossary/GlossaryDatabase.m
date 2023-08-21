@@ -632,6 +632,9 @@
 
 - (void)deleteDatabase {
     if (![self isDownloaded]) return;
+    if (_sqlite) {
+        [self close];
+    }
     NSError *error = nil;
     [[NSFileManager defaultManager] removeItemAtPath:[self databasePath] error:&error];
     if (error) {
