@@ -16,6 +16,7 @@
 
 @property (weak) IBOutlet NSTableView *tableView;
 @property (weak) IBOutlet NSButton *deleteButton;
+@property (weak) IBOutlet NSTextField *glossaryDescriptionLabel;
 
 @property NSArray<GlossaryDatabase*> *downloadedDatabases;
 
@@ -33,6 +34,16 @@
 - (void)windowDidLoad {
     [super windowDidLoad];
     [self reload];
+    
+    NSString *baseStr = NSLocalizedString(@"These databases are generated with the same source of applelocalization.com, you can read more about the generation here",@"");
+    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:baseStr attributes:@{
+        NSForegroundColorAttributeName: [NSColor secondaryLabelColor],
+        NSFontAttributeName: self.glossaryDescriptionLabel.font,
+    }];
+    [str addAttributes:@{NSLinkAttributeName: [NSURL URLWithString:@"https://applelocalization.com"]} range:[baseStr rangeOfString:@"applelocalization.com"]];
+    [str addAttributes:@{NSLinkAttributeName: [NSURL URLWithString:@"https://github.com/b123400/applelocalization-tools"]} range:[baseStr rangeOfString:@"here"]];
+    
+    self.glossaryDescriptionLabel.attributedStringValue = str;
 }
 
 - (void)reload {

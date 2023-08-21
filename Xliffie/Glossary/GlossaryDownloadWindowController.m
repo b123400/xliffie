@@ -15,6 +15,7 @@
 @property (weak) IBOutlet NSPopUpButton *localeButton;
 @property (weak) IBOutlet NSProgressIndicator *progressIndicator;
 @property (weak) IBOutlet NSButton *downloadButton;
+@property (weak) IBOutlet NSTextField *glossaryDescriptionLabel;
 
 @property (assign, nonatomic) GlossaryPlatform platform;
 @property (strong, nonatomic) GlossaryDatabase *downloadingDatabase;
@@ -33,6 +34,15 @@
 - (void)windowDidLoad {
     [super windowDidLoad];
     [self reloadLocales];
+    NSString *baseStr = NSLocalizedString(@"These databases are generated with the same source of applelocalization.com, you can read more about the generation here",@"");
+    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:baseStr attributes:@{
+        NSForegroundColorAttributeName: [NSColor secondaryLabelColor],
+        NSFontAttributeName: self.glossaryDescriptionLabel.font,
+    }];
+    [str addAttributes:@{NSLinkAttributeName: [NSURL URLWithString:@"https://applelocalization.com"]} range:[baseStr rangeOfString:@"applelocalization.com"]];
+    [str addAttributes:@{NSLinkAttributeName: [NSURL URLWithString:@"https://github.com/b123400/applelocalization-tools"]} range:[baseStr rangeOfString:@"here"]];
+    
+    self.glossaryDescriptionLabel.attributedStringValue = str;
 }
 
 - (void)reloadLocales {

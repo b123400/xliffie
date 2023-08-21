@@ -9,6 +9,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="GlossaryManagerWindowController">
             <connections>
                 <outlet property="deleteButton" destination="uD9-zU-dBK" id="bf4-Iv-d7z"/>
+                <outlet property="glossaryDescriptionLabel" destination="aKO-jo-4qS" id="Foh-Je-gge"/>
                 <outlet property="tableView" destination="i7W-RF-Ipr" id="Cfo-dM-aUF"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
@@ -17,20 +18,20 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <window title="Glossary Databases" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-            <rect key="contentRect" x="196" y="240" width="508" height="299"/>
+            <rect key="contentRect" x="196" y="240" width="508" height="280"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1055"/>
-            <view key="contentView" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="0.0" width="508" height="299"/>
+            <view key="contentView" misplaced="YES" id="se5-gp-TjO">
+                <rect key="frame" x="0.0" y="0.0" width="508" height="294"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <scrollView autohidesScrollers="YES" horizontalLineScroll="24" horizontalPageScroll="10" verticalLineScroll="24" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jDO-nS-My2">
-                        <rect key="frame" x="20" y="40" width="468" height="215"/>
+                        <rect key="frame" x="20" y="40" width="468" height="188"/>
                         <clipView key="contentView" id="aIX-Oq-ayF">
-                            <rect key="frame" x="1" y="1" width="466" height="213"/>
+                            <rect key="frame" x="1" y="1" width="466" height="186"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" rowHeight="24" rowSizeStyle="automatic" headerView="KAs-7e-xVA" viewBased="YES" id="i7W-RF-Ipr">
-                                    <rect key="frame" x="0.0" y="0.0" width="466" height="185"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="466" height="158"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <size key="intercellSpacing" width="17" height="0.0"/>
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -157,7 +158,7 @@
                         </tableHeaderView>
                     </scrollView>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="M9B-EA-o8A">
-                        <rect key="frame" x="18" y="263" width="472" height="16"/>
+                        <rect key="frame" x="18" y="258" width="472" height="16"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" title="Downloaded Glossaries" id="69H-Ng-ccN">
                             <font key="font" textStyle="headline" name=".SFNS-Bold"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -199,6 +200,14 @@
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                     </button>
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="aKO-jo-4qS">
+                        <rect key="frame" x="18" y="236" width="472" height="14"/>
+                        <textFieldCell key="cell" selectable="YES" title="&lt;DNT - glossary description &gt;" id="qEv-cX-p5Q">
+                            <font key="font" textStyle="subheadline" name=".SFNS-Regular"/>
+                            <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                 </subviews>
                 <constraints>
                     <constraint firstItem="uD9-zU-dBK" firstAttribute="top" secondItem="jDO-nS-My2" secondAttribute="bottom" id="05Y-ab-n8m"/>
@@ -207,21 +216,24 @@
                     <constraint firstItem="eKP-In-Hry" firstAttribute="trailing" secondItem="i7W-RF-Ipr" secondAttribute="trailing" id="3c2-9h-zQQ"/>
                     <constraint firstAttribute="trailing" secondItem="M9B-EA-o8A" secondAttribute="trailing" constant="20" symbolic="YES" id="BYB-dS-Hnl"/>
                     <constraint firstAttribute="trailing" secondItem="jDO-nS-My2" secondAttribute="trailing" constant="20" symbolic="YES" id="ENz-Fi-tsO"/>
+                    <constraint firstItem="jDO-nS-My2" firstAttribute="top" secondItem="aKO-jo-4qS" secondAttribute="bottom" constant="8" symbolic="YES" id="FeE-Pm-ZCz"/>
                     <constraint firstItem="eKP-In-Hry" firstAttribute="bottom" secondItem="uD9-zU-dBK" secondAttribute="bottom" id="FzZ-fz-RTo"/>
                     <constraint firstAttribute="bottom" secondItem="uxK-xX-7B7" secondAttribute="bottom" constant="20" symbolic="YES" id="JjK-eD-S3a"/>
                     <constraint firstItem="uxK-xX-7B7" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" symbolic="YES" id="K5J-g2-Qkv"/>
                     <constraint firstItem="eKP-In-Hry" firstAttribute="leading" secondItem="uD9-zU-dBK" secondAttribute="trailing" id="NE3-ez-FYr"/>
+                    <constraint firstItem="aKO-jo-4qS" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" symbolic="YES" id="QkC-M5-Eqc"/>
+                    <constraint firstItem="aKO-jo-4qS" firstAttribute="top" secondItem="M9B-EA-o8A" secondAttribute="bottom" constant="8" symbolic="YES" id="Yza-uL-H3b"/>
                     <constraint firstItem="uD9-zU-dBK" firstAttribute="leading" secondItem="uxK-xX-7B7" secondAttribute="trailing" id="ar4-G3-i1B"/>
+                    <constraint firstAttribute="trailing" secondItem="aKO-jo-4qS" secondAttribute="trailing" constant="20" symbolic="YES" id="k0D-38-p03"/>
                     <constraint firstItem="eKP-In-Hry" firstAttribute="top" secondItem="uD9-zU-dBK" secondAttribute="top" id="laH-yr-fLn"/>
                     <constraint firstItem="jDO-nS-My2" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" symbolic="YES" id="qRt-zg-oBe"/>
                     <constraint firstItem="uxK-xX-7B7" firstAttribute="top" secondItem="jDO-nS-My2" secondAttribute="bottom" id="vsX-VH-rnl"/>
-                    <constraint firstItem="jDO-nS-My2" firstAttribute="top" secondItem="M9B-EA-o8A" secondAttribute="bottom" constant="8" symbolic="YES" id="zMX-YT-ueE"/>
                 </constraints>
             </view>
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="153" y="111.5"/>
+            <point key="canvasLocation" x="153" y="226"/>
         </window>
     </objects>
     <resources>

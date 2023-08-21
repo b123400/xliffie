@@ -9,6 +9,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="GlossaryDownloadWindowController">
             <connections>
                 <outlet property="downloadButton" destination="B6Y-uZ-xwJ" id="5NK-QJ-c8F"/>
+                <outlet property="glossaryDescriptionLabel" destination="Lgf-XG-bJq" id="UDO-Sn-Xq4"/>
                 <outlet property="iOSButton" destination="rZt-Wd-N7X" id="Mxg-MB-4no"/>
                 <outlet property="localeButton" destination="xoM-5G-mg0" id="YZM-R6-AhD"/>
                 <outlet property="macOSXButton" destination="Y3w-NC-EaP" id="Oud-FF-dIS"/>
@@ -20,10 +21,10 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-            <rect key="contentRect" x="209" y="320" width="401" height="141"/>
+            <rect key="contentRect" x="209" y="320" width="401" height="272"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1055"/>
             <view key="contentView" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="0.0" width="401" height="155"/>
+                <rect key="frame" x="0.0" y="0.0" width="401" height="177"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VLa-9F-gUI">
@@ -43,7 +44,7 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Kk9-1T-fRr">
-                        <rect key="frame" x="18" y="119" width="365" height="16"/>
+                        <rect key="frame" x="18" y="141" width="365" height="16"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" title="Download Glossary" id="bK5-Ga-XSo">
                             <font key="font" textStyle="headline" name=".SFNS-Bold"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -119,10 +120,17 @@ Gw
                     <progressIndicator hidden="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="yAT-dW-7Yn">
                         <rect key="frame" x="20" y="19" width="179" height="20"/>
                     </progressIndicator>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Lgf-XG-bJq">
+                        <rect key="frame" x="18" y="119" width="365" height="14"/>
+                        <textFieldCell key="cell" selectable="YES" allowsUndo="NO" title="&lt;DNT - glossary description&gt;" allowsEditingTextAttributes="YES" id="eq1-O9-CGa">
+                            <font key="font" textStyle="subheadline" name=".SFNS-Regular"/>
+                            <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Y3w-NC-EaP" firstAttribute="centerY" secondItem="VLa-9F-gUI" secondAttribute="centerY" id="14f-l8-xWg"/>
-                    <constraint firstItem="VLa-9F-gUI" firstAttribute="top" secondItem="Kk9-1T-fRr" secondAttribute="bottom" constant="15" id="1Am-ig-s2o"/>
                     <constraint firstItem="xoM-5G-mg0" firstAttribute="top" secondItem="Y3w-NC-EaP" secondAttribute="bottom" constant="8" id="45v-75-GKQ"/>
                     <constraint firstItem="Y3w-NC-EaP" firstAttribute="centerY" secondItem="rZt-Wd-N7X" secondAttribute="centerY" id="9TD-ae-d95"/>
                     <constraint firstItem="VLa-9F-gUI" firstAttribute="trailing" secondItem="YXt-lO-vsw" secondAttribute="trailing" id="9yq-7s-FXu"/>
@@ -136,11 +144,15 @@ Gw
                     <constraint firstItem="B6Y-uZ-xwJ" firstAttribute="leading" secondItem="2vJ-OQ-5JU" secondAttribute="trailing" constant="12" symbolic="YES" id="Rvr-Mk-f7K"/>
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="xoM-5G-mg0" secondAttribute="trailing" constant="20" symbolic="YES" id="SHA-VX-3pg"/>
                     <constraint firstItem="Kk9-1T-fRr" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="20" symbolic="YES" id="TeK-iO-onw"/>
+                    <constraint firstAttribute="trailing" secondItem="Lgf-XG-bJq" secondAttribute="trailing" constant="20" symbolic="YES" id="Yqv-Sr-sCh"/>
                     <constraint firstItem="2vJ-OQ-5JU" firstAttribute="top" secondItem="xoM-5G-mg0" secondAttribute="bottom" constant="20" id="ZD5-Zi-i9G"/>
                     <constraint firstItem="VLa-9F-gUI" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" symbolic="YES" id="Zh2-PC-EVw"/>
                     <constraint firstItem="yAT-dW-7Yn" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" symbolic="YES" id="aDZ-nW-8DL"/>
+                    <constraint firstItem="Lgf-XG-bJq" firstAttribute="top" secondItem="Kk9-1T-fRr" secondAttribute="bottom" constant="8" symbolic="YES" id="etT-ls-oxu"/>
                     <constraint firstItem="Kk9-1T-fRr" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" symbolic="YES" id="gIp-pU-CQT"/>
                     <constraint firstAttribute="trailing" secondItem="B6Y-uZ-xwJ" secondAttribute="trailing" constant="20" symbolic="YES" id="gMb-8M-qLF"/>
+                    <constraint firstItem="Lgf-XG-bJq" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" symbolic="YES" id="oW4-Ql-FX2"/>
+                    <constraint firstItem="VLa-9F-gUI" firstAttribute="top" secondItem="Lgf-XG-bJq" secondAttribute="bottom" constant="15" id="qtu-nA-gVU"/>
                     <constraint firstItem="xoM-5G-mg0" firstAttribute="leading" secondItem="YXt-lO-vsw" secondAttribute="trailing" constant="8" symbolic="YES" id="vuK-qH-5cg"/>
                     <constraint firstItem="rZt-Wd-N7X" firstAttribute="centerY" secondItem="VLa-9F-gUI" secondAttribute="centerY" id="xuH-ee-bhS"/>
                     <constraint firstItem="rZt-Wd-N7X" firstAttribute="leading" secondItem="VLa-9F-gUI" secondAttribute="trailing" constant="6" symbolic="YES" id="yAY-ce-r95"/>
@@ -150,7 +162,7 @@ Gw
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="99.5" y="143.5"/>
+            <point key="canvasLocation" x="99.5" y="78"/>
         </window>
     </objects>
 </document>
