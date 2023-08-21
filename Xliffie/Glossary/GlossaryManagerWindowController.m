@@ -110,10 +110,11 @@
 }
 
 - (IBAction)deleteGlossaryClicked:(id)sender {
-    NSInteger selected = [self.tableView selectedRow];
-    if (selected < 0) return;
-    GlossaryDatabase *db = self.downloadedDatabases[selected];
-    [db deleteDatabase];
+    NSIndexSet *selectedIndexSets = [self.tableView selectedRowIndexes];
+    [selectedIndexSets enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL * _Nonnull stop) {
+        GlossaryDatabase *db = self.downloadedDatabases[idx];
+        [db deleteDatabase];
+    }];
     [self reload];
 }
 
