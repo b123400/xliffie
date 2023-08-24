@@ -334,12 +334,13 @@ doCommandBySelector:(SEL)commandSelector {
         [loadingView setDisplayedWhenStopped:NO];
         [currentEditor addSubview:loadingView];
     }
+    typeof(self) __weak _self = self;
     CGFloat loadingSize = 18;
     loadingView.frame = NSMakeRect(currentEditor.frame.size.width - loadingSize, 2, loadingSize, loadingSize);
     NSArray<Suggestion *> *suggestions = [self suggestionsForTranslationPair:pair callback:^(NSArray<Suggestion *> *allSuggestions) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [loadingView stopAnimation:self];
-            if (![self.view.window isKeyWindow] || [self.view.window sheets].count) {
+            [loadingView stopAnimation:_self];
+            if (![_self.view.window isKeyWindow] || [_self.view.window sheets].count || [_self.outlineView editedRow] != row) {
                 return;
             }
             if (suggestionController.searchingObject != pair) {
@@ -351,10 +352,10 @@ doCommandBySelector:(SEL)commandSelector {
                 return;
             }
             [suggestionController setSuggestions:allSuggestions];
-            suggestionController.delegate = self;
+            suggestionController.delegate = _self;
             [suggestionController showAtRect:cellRect
-                                      ofView:self.outlineView];
-            [[suggestionController window] makeKeyAndOrderFront:self];
+                                      ofView:_self.outlineView];
+            [[suggestionController window] makeKeyAndOrderFront:_self];
         });
     }];
     [loadingView startAnimation:self];
