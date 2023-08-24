@@ -21,6 +21,21 @@
     sqlite3 *_sqlite;
 }
 
++ (NSString*)normalizedLocale:(NSString *)locale withPlatform:(GlossaryPlatform)platform {
+    NSArray *allLocales = [[GlossaryDatabase localesWithPlatform:platform] valueForKeyPath:@"lowercaseString"];
+    if ([allLocales containsObject:locale.lowercaseString]) {
+        return locale;
+    }
+    NSString *replaced = [[[locale componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"-_"]] componentsJoinedByString:@"_"] lowercaseString];
+    for (NSString *thisLocale in allLocales) {
+        NSString *replacedAll = [[[thisLocale componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"-_"]] componentsJoinedByString:@"_"] lowercaseString];
+        if ([replaced isEqual:replacedAll]) {
+            return replacedAll;
+        }
+    }
+    return locale;
+}
+
 + (GlossaryDatabase *)databaseWithPlatform:(GlossaryPlatform)platform locale:(NSString *)locale {
     static NSMutableDictionary<NSString *, GlossaryDatabase *> *iosDatabases = nil;
     static NSMutableDictionary<NSString *, GlossaryDatabase *> *macDatabases = nil;
@@ -33,6 +48,7 @@
     if (dict[locale]) {
         return dict[locale];
     }
+    locale = [GlossaryDatabase normalizedLocale:locale withPlatform:platform];
     GlossaryDatabase *db = [[GlossaryDatabase alloc] initWithPlatform:platform locale:locale];
     dict[locale] = db;
     return db;

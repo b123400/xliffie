@@ -637,8 +637,10 @@
         if ([window isKindOfClass:[DocumentWindow class]] && [window.windowController isKindOfClass:[DocumentWindowController class]]) {
             DocumentWindowController *docWinController = (DocumentWindowController*)window.windowController;
             GlossaryPlatform platform = [docWinController detectedPlatform];
-            NSArray *downloadedLocales = [[GlossaryDatabase downloadedDatabasesWithPlatform:platform] valueForKeyPath:@"locale"];
-            if (![downloadedLocales containsObject:[docWinController detectedSourceLocale]] || ![downloadedLocales containsObject:[docWinController detectedTargetLocale]]) {
+            NSString *source = [GlossaryDatabase normalizedLocale:[docWinController detectedSourceLocale] withPlatform:platform];
+            NSString *target = [GlossaryDatabase normalizedLocale:[docWinController detectedTargetLocale] withPlatform:platform];
+            NSArray *downloadedLocales = [[GlossaryDatabase downloadedDatabasesWithPlatform:platform] valueForKeyPath:@"locale.lowercaseString"];
+            if (![downloadedLocales containsObject:source] || ![downloadedLocales containsObject:target]) {
                 needDot = YES;
                 break;
             }

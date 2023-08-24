@@ -16,15 +16,19 @@
 NS_ASSUME_NONNULL_BEGIN
 
 typedef enum : NSUInteger {
-    GlossaryPlatformAny,
-    GlossaryPlatformMac,
-    GlossaryPlatformIOS,
+    GlossaryPlatformAny = 0,
+    GlossaryPlatformMac = 1,
+    GlossaryPlatformIOS = 2,
 } GlossaryPlatform;
 
 @interface GlossaryDatabase : NSObject
 
 @property (nonatomic, assign) GlossaryPlatform platform;
 @property (nonatomic, strong) NSString *locale;
+
+// Sometimes we see locale like "zh-TW" which should actually be "zh_TW"
+// This method tries to correct it.
++ (NSString*)normalizedLocale:(NSString *)locale withPlatform:(GlossaryPlatform)platform;
 
 + (NSArray<GlossaryDatabase*> *)downloadedDatabasesWithPlatform:(GlossaryPlatform)platform;
 + (NSArray<NSString*>*)localesWithPlatform:(GlossaryPlatform)platform;
