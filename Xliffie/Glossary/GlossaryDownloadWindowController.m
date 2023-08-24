@@ -51,7 +51,7 @@
         NSFontAttributeName: self.glossaryDescriptionLabel.font,
     }];
     [str addAttributes:@{NSLinkAttributeName: [NSURL URLWithString:@"https://applelocalization.com"]} range:[baseStr rangeOfString:@"applelocalization.com"]];
-    [str addAttributes:@{NSLinkAttributeName: [NSURL URLWithString:@"https://github.com/b123400/applelocalization-tools"]} range:[baseStr rangeOfString:@"here"]];
+    [str addAttributes:@{NSLinkAttributeName: [NSURL URLWithString:@"https://b123400.net/xliffie/glosseries"]} range:[baseStr rangeOfString:@"here"]];
     
     self.glossaryDescriptionLabel.attributedStringValue = str;
     [self.outlineView expandItem:nil expandChildren:YES];
