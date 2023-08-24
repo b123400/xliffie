@@ -26,6 +26,15 @@
 
 @implementation GlossaryManagerWindowController
 
++ (instancetype)shared {
+    static GlossaryManagerWindowController *shared = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        shared = [[GlossaryManagerWindowController alloc] init];
+    });
+    return shared;
+}
+
 - (instancetype)init {
     if (self = [super initWithWindowNibName:@"GlossaryManagerWindowController"]) {
         
@@ -37,13 +46,12 @@
     [super windowDidLoad];
     [self reload];
     
-    NSString *baseStr = NSLocalizedString(@"These databases are generated with the same source of applelocalization.com, you can read more about the generation here",@"");
+    NSString *baseStr = NSLocalizedString(@"Apart from the built-in glossaries, you can download larger localization databases with apple-endorsed translations. For more info please click here.",@"");
     NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:baseStr attributes:@{
         NSForegroundColorAttributeName: [NSColor secondaryLabelColor],
         NSFontAttributeName: self.glossaryDescriptionLabel.font,
     }];
-    [str addAttributes:@{NSLinkAttributeName: [NSURL URLWithString:@"https://applelocalization.com"]} range:[baseStr rangeOfString:@"applelocalization.com"]];
-    [str addAttributes:@{NSLinkAttributeName: [NSURL URLWithString:@"https://github.com/b123400/applelocalization-tools"]} range:[baseStr rangeOfString:@"here"]];
+    [str addAttributes:@{NSLinkAttributeName: [NSURL URLWithString:@"https://github.com/b123400/applelocalization-tools"]} range:[baseStr rangeOfString:@"click here"]];
     
     self.glossaryDescriptionLabel.attributedStringValue = str;
 }
@@ -101,19 +109,30 @@
 }
 
 - (IBAction)addGlossaryClicked:(id)sender {
-    NSMutableArray *locales = [NSMutableArray array];
-    GlossaryPlatform platform = GlossaryPlatformAny;
+    [self showDownloadSheet];
+}
+
+- (void)showDownloadSheet {
+    if (self.downloadController) return;
+    NSMutableArray *iOSLocales = [NSMutableArray array];
+    NSMutableArray *macOSLocales = [NSMutableArray array];
     for (NSWindow *window in [[NSApplication sharedApplication] windows]) {
         if ([window isKindOfClass:[DocumentWindow class]] && [window.windowController isKindOfClass:[DocumentWindowController class]]) {
             DocumentWindowController *docWinController = (DocumentWindowController*)window.windowController;
-            [locales addObject:[docWinController detectedSourceLocale]];
+            GlossaryPlatform platform = [docWinController detectedPlatform];
+            NSString *source = [docWinController detectedSourceLocale];
             NSString *target = [docWinController detectedTargetLocale];
-            [locales addObject:target];
-            platform = [docWinController detectedPlatform];
+            NSMutableArray<NSString*> *localesForPlatform = platform == GlossaryPlatformIOS ? iOSLocales : platform == GlossaryPlatformMac ? macOSLocales : nil;
+            if (![[GlossaryDatabase databaseWithPlatform:platform locale:source] isDownloaded]) {
+                [localesForPlatform addObject:source];
+            }
+            if (![[GlossaryDatabase databaseWithPlatform:platform locale:target] isDownloaded]) {
+                [localesForPlatform addObject:target];
+            }
         }
     }
-    GlossaryDownloadWindowController *downloadController = [[GlossaryDownloadWindowController alloc] initWithLocales:locales
-                                                                                                            platform:platform];
+    GlossaryDownloadWindowController *downloadController = [[GlossaryDownloadWindowController alloc] initWithiOSLocales:iOSLocales
+                                                                                                           macOSLocales:macOSLocales];
     self.downloadController = downloadController;
     __weak typeof(self) _self = self;
     [self.window beginSheet:downloadController.window

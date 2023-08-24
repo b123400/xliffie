@@ -17,9 +17,10 @@
 @property (weak) IBOutlet NSTextField *glossaryDescriptionLabel;
 
 // User Input
-@property (assign, nonatomic) GlossaryPlatform platform;
-@property (strong, nonatomic) NSArray<NSString*> *preferedLocales;
-// Calculated Output
+@property (strong, nonatomic) NSArray<NSString*> *preferediOSLocales;
+@property (strong, nonatomic) NSArray<NSString*> *preferedMacOSLocales;
+@property (assign, nonatomic) GlossaryPlatform selectedPlatform;
+// Calculated, visible Output
 @property (strong, nonatomic) NSArray<NSString*> *relatedLocales;
 @property (strong, nonatomic) NSArray<NSString*> *otherAvailableLocales;
 @property (strong, nonatomic) NSMutableSet<NSString*> *selectedLocales;
@@ -32,14 +33,11 @@
 
 @implementation GlossaryDownloadWindowController
 
-- (instancetype)initWithLocales:(NSArray<NSString *> *)locales platform:(GlossaryPlatform)platform {
+- (instancetype)initWithiOSLocales:(NSArray<NSString *> *)iOSLocales macOSLocales:(NSArray<NSString*> *)macOSLocales {
     if (self = [super initWithWindowNibName:@"GlossaryDownloadWindowController"]) {
-        if (platform == GlossaryPlatformAny) {
-            self.platform = GlossaryPlatformIOS;
-        } else {
-            self.platform = platform;
-        }
-        self.preferedLocales = locales;
+        self.preferediOSLocales = iOSLocales;
+        self.preferedMacOSLocales = macOSLocales;
+        self.selectedPlatform = iOSLocales.count > macOSLocales.count ? GlossaryPlatformIOS : GlossaryPlatformMac;
         [self calculateLocales];
     }
     return self;
@@ -47,7 +45,7 @@
 
 - (void)windowDidLoad {
     [super windowDidLoad];
-    NSString *baseStr = NSLocalizedString(@"These databases are generated with the same source of applelocalization.com, you can read more about the generation here",@"");
+    NSString *baseStr = NSLocalizedString(@"These databases are generated with the same source of applelocalization.com, you can read more about the that here",@"");
     NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:baseStr attributes:@{
         NSForegroundColorAttributeName: [NSColor secondaryLabelColor],
         NSFontAttributeName: self.glossaryDescriptionLabel.font,
@@ -58,21 +56,24 @@
     self.glossaryDescriptionLabel.attributedStringValue = str;
     [self.outlineView expandItem:nil expandChildren:YES];
     
-    if (self.platform == GlossaryPlatformIOS) {
+    if (self.selectedPlatform == GlossaryPlatformIOS) {
         [self.platformSegment setSelectedSegment:0];
-    } else if (self.platform == GlossaryPlatformMac) {
+    } else if (self.selectedPlatform == GlossaryPlatformMac) {
         [self.platformSegment setSelectedSegment:1];
     }
 }
 
 - (void)calculateLocales {
     self.selectedLocales = [NSMutableSet set];
-    NSArray<NSString *> *allLocales = [GlossaryDatabase localesWithPlatform:self.platform];
-    NSSet<NSString *> *downloadedLocales = [NSSet setWithArray:[[GlossaryDatabase downloadedDatabasesWithPlatform:self.platform] valueForKeyPath:@"locale"]];
+    NSArray<NSString *> *allLocales = [GlossaryDatabase localesWithPlatform:self.selectedPlatform];
+    NSSet<NSString *> *downloadedLocales = [NSSet setWithArray:[[GlossaryDatabase downloadedDatabasesWithPlatform:self.selectedPlatform] valueForKeyPath:@"locale"]];
     NSMutableOrderedSet *relatedLocales = [NSMutableOrderedSet orderedSet];
+    NSArray<NSString*> *preferredLocales =
+        self.selectedPlatform == GlossaryPlatformIOS ? self.preferediOSLocales :
+        self.selectedPlatform == GlossaryPlatformMac ? self.preferedMacOSLocales : @[];
     
     // Find the locales that matches exactly (w/o considering -_) and select them
-    for (NSString *preferredLocale in self.preferedLocales) {
+    for (NSString *preferredLocale in preferredLocales) {
         NSString *replacedPreferred = [[[preferredLocale componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"-_"]] componentsJoinedByString:@"_"] lowercaseString];
         for (NSString *locale in allLocales) {
             NSString *replacedAll = [[[locale componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"-_"]] componentsJoinedByString:@"_"] lowercaseString];
@@ -87,7 +88,7 @@
     }
     // Find recommended locales based on the ones selected
     for (NSString *preferredLocale in [relatedLocales array]) {
-        for (NSString *recommended in [GlossaryDatabase recommendedRelatedDatabaseForLocale:preferredLocale withPlatform:self.platform]) {
+        for (NSString *recommended in [GlossaryDatabase recommendedRelatedDatabaseForLocale:preferredLocale withPlatform:self.selectedPlatform]) {
             if (![downloadedLocales containsObject:recommended]) {
                 [relatedLocales addObject:recommended];
                 [self.selectedLocales addObject:recommended];
@@ -101,8 +102,8 @@
         }
     }
     // Related but not necessarily recommended
-    for (NSString *preferredLocale in self.preferedLocales) {
-        for (NSString *related in [GlossaryDatabase relatedDatabaseForLocale:preferredLocale withPlatform:self.platform]) {
+    for (NSString *preferredLocale in preferredLocales) {
+        for (NSString *related in [GlossaryDatabase relatedDatabaseForLocale:preferredLocale withPlatform:self.selectedPlatform]) {
             if (![downloadedLocales containsObject:related]) {
                 [relatedLocales addObject:related];
             }
@@ -204,7 +205,7 @@
 }
 
 - (IBAction)platformSegmentClicked:(id)sender {
-    self.platform = self.platformSegment.selectedSegment == 0 ? GlossaryPlatformIOS : self.platformSegment.selectedSegment == 1 ? GlossaryPlatformMac : GlossaryPlatformAny;
+    self.selectedPlatform = self.platformSegment.selectedSegment == 0 ? GlossaryPlatformIOS : self.platformSegment.selectedSegment == 1 ? GlossaryPlatformMac : GlossaryPlatformAny;
     [self calculateLocales];
 }
 
@@ -231,7 +232,7 @@
     }
     NSString *locale = [self.localesDownloadQueue firstObject];
     [self.localesDownloadQueue removeObjectAtIndex:0];
-    GlossaryDatabase *db = [GlossaryDatabase databaseWithPlatform:self.platform locale:locale];
+    GlossaryDatabase *db = [GlossaryDatabase databaseWithPlatform:self.selectedPlatform locale:locale];
     self.downloadingDatabase = db;
     __weak typeof(self) _self = self;
     [self.progress becomeCurrentWithPendingUnitCount:1];

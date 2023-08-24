@@ -12,6 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface GlossaryManagerWindowController : NSWindowController
 
++ (instancetype)shared;
+- (void)showDownloadSheet;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -585,6 +585,9 @@
 - (IBAction)glossaryButtonPressed:(id)sender {
     GlossaryManagerWindowController *controller = [GlossaryManagerWindowController shared];
     [controller showWindow:self];
+    if ([self hasGlossaryToDownload]) {
+        [controller showDownloadSheet];
+    }
 }
 
 - (IBAction)showProgressReport:(id)sender {

@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface GlossaryDownloadWindowController : NSWindowController
 
-- (instancetype)initWithLocales:(NSArray<NSString *> *)locales platform:(GlossaryPlatform)platform;
+- (instancetype)initWithiOSLocales:(NSArray<NSString *> *)iOSLocales macOSLocales:(NSArray<NSString*> *)macOSLocales;
 
 @end
 
