@@ -11,6 +11,12 @@
 "Add spaces to all translations?" = "要在中文和英數字之間加入空白嗎？";
 
 /* No comment provided by engineer. */
+"All" = "全部";
+
+/* No comment provided by engineer. */
+"Apart from the built-in glossaries, you can download larger localization databases with apple-endorsed translations. For more info please click here." = "除了內置詞庫以外，你還可以下載額外的，從蘋果官方抽出來的詞庫，詳情請按這裡。";
+
+/* No comment provided by engineer. */
 "Apply it anyway" = "不管啦欸";
 
 /* Translate alert message */
@@ -25,6 +31,18 @@
 /* Translation target not found */
 "Cannot translate to %@" = "無法翻譯成 %@";
 
+/* link replacement */
+"click here" = "按這裡";
+
+/* No comment provided by engineer. */
+"Database corrupted" = "詞庫發生錯誤";
+
+/* No comment provided by engineer. */
+"Downloading..." = "下載中⋯";
+
+/* No comment provided by engineer. */
+"Errors during translation: %@" = "翻譯是發生錯誤：%@";
+
 /* Search menu title */
 "Filter" = "篩選";
 
@@ -32,10 +50,16 @@
 "From %@" = "來自 %@";
 
 /* No comment provided by engineer. */
-"From 📚Glossary" = "來自📚內置字典";
+"From 📚Glossary" = "來自📚內置詞庫";
+
+/* No comment provided by engineer. */
+"From  Apple Glossary (%ld)" = "來自  蘋果詞庫 (%ld)";
 
 /* No comment provided by engineer. */
 "Go ahead" = "不管啦照做啦";
+
+/* link replacement */
+"here" = "按這裡";
 
 /* Menu item */
 "Mark as not translated" = "當成未翻譯";
@@ -62,8 +86,14 @@
 /* No comment provided by engineer. */
 "OK" = "好";
 
+/* No comment provided by engineer. */
+"Other" = "其他";
+
 /* menu item title */
 "Recent Searches" = "最近的檢索";
+
+/* No comment provided by engineer. */
+"Recommended Locales" = "推薦的詞庫";
 
 /* Search menu title */
 "Same as source" = "與原文一樣";
@@ -83,8 +113,11 @@
 /* Translate alert message */
 "There are %lu records with formatting warnings, better fix them before applying." = "有 %lu 個字串都有格式警告，適用之前是不是先修正比較好...？";
 
+/* No comment provided by engineer. */
+"These databases are generated with the same source of applelocalization.com, you can read more about the that here" = "這些詞庫來自和 applelocalization.com 一樣的來源，詳情請按這裡。";
+
 /* Progress report */
-"Total" = "全部";
+"Total" = "總計";
 
 /* Progress report
    Search menu title */

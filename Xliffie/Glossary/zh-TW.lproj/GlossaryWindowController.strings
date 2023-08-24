@@ -1,5 +1,5 @@
 /* Class = "NSTableColumn"; headerCell.title = "Glossary"; ObjectID = "4MG-3D-RdE"; */
-"4MG-3D-RdE.headerCell.title" = "內置字典";
+"4MG-3D-RdE.headerCell.title" = "內置詞庫";
 
 /* Class = "NSTextFieldCell"; title = "3 translations are available from the glossary."; ObjectID = "a9Z-Ew-xlq"; */
 "a9Z-Ew-xlq.title" = "內置字典可以自動翻譯 3 段字";

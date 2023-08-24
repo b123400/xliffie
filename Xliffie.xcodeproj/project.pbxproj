@@ -12,13 +12,11 @@
 		CF011B7D1C4641A400948323 /* TranslationWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF011B7B1C4641A400948323 /* TranslationWindowController.m */; };
 		CF0945911C54FD3600DAEB4A /* BRArrowSegmentedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0945901C54FD3600DAEB4A /* BRArrowSegmentedCell.m */; };
 		CF0AB5912A755EDF00D61101 /* GlossaryDownloadWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0AB58F2A755EDF00D61101 /* GlossaryDownloadWindowController.m */; };
-		CF0AB5922A755EDF00D61101 /* GlossaryDownloadWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF0AB5902A755EDF00D61101 /* GlossaryDownloadWindowController.xib */; };
 		CF12DB49293E4C5F00F9C760 /* Suggestion.m in Sources */ = {isa = PBXBuildFile; fileRef = CF12DB48293E4C5F00F9C760 /* Suggestion.m */; };
 		CF12DB4C293E5A2D00F9C760 /* RoundedCornersView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF12DB4B293E5A2D00F9C760 /* RoundedCornersView.m */; };
 		CF12DB4F293EF89C00F9C760 /* SuggestionsCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF12DB4E293EF89C00F9C760 /* SuggestionsCellView.m */; };
 		CF12DB53293F1B8200F9C760 /* NSAttributedString+FileIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = CF12DB52293F1B8200F9C760 /* NSAttributedString+FileIcon.m */; };
 		CF16E0852A7559CB002D5C48 /* GlossaryManagerWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF16E0832A7559CB002D5C48 /* GlossaryManagerWindowController.m */; };
-		CF16E0862A7559CB002D5C48 /* GlossaryManagerWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF16E0842A7559CB002D5C48 /* GlossaryManagerWindowController.xib */; };
 		CF1BEBE229D565740000BD59 /* DocumentTextFinderClientEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1BEBE129D565740000BD59 /* DocumentTextFinderClientEntry.m */; };
 		CF1BEBE529D5838F0000BD59 /* BaseCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1BEBE429D5838F0000BD59 /* BaseCustomCell.m */; };
 		CF1CE50629CB4EBD00BBFAAB /* ProgressWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1CE50429CB4EBD00BBFAAB /* ProgressWindowController.m */; };
@@ -42,6 +40,8 @@
 		CF5FC89D1A5ABFF700538E60 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF5FC89C1A5ABFF700538E60 /* Images.xcassets */; };
 		CF5FC8A01A5ABFF700538E60 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF5FC89E1A5ABFF700538E60 /* Main.storyboard */; };
 		CF5FC8AC1A5ABFF700538E60 /* XliffieTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5FC8AB1A5ABFF700538E60 /* XliffieTests.m */; };
+		CF610CF72A978AC00026AAC5 /* GlossaryManagerWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF610CF92A978AC00026AAC5 /* GlossaryManagerWindowController.xib */; };
+		CF610CFA2A978AC50026AAC5 /* GlossaryDownloadWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF610CFC2A978AC50026AAC5 /* GlossaryDownloadWindowController.xib */; };
 		CF660EF31C5401B2007A0B28 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = CF660EF21C5401B2007A0B28 /* Credits.rtf */; };
 		CF660EF41C540E11007A0B28 /* TranslateServiceWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF660EF61C540E11007A0B28 /* TranslateServiceWindowController.xib */; };
 		CF660EFB1C540E27007A0B28 /* TranslationWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF660EFD1C540E27007A0B28 /* TranslationWindowController.xib */; };
@@ -139,7 +139,6 @@
 		CF0945901C54FD3600DAEB4A /* BRArrowSegmentedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRArrowSegmentedCell.m; sourceTree = "<group>"; };
 		CF0AB58E2A755EDE00D61101 /* GlossaryDownloadWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlossaryDownloadWindowController.h; sourceTree = "<group>"; };
 		CF0AB58F2A755EDF00D61101 /* GlossaryDownloadWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GlossaryDownloadWindowController.m; sourceTree = "<group>"; };
-		CF0AB5902A755EDF00D61101 /* GlossaryDownloadWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GlossaryDownloadWindowController.xib; sourceTree = "<group>"; };
 		CF12DB47293E4C5F00F9C760 /* Suggestion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Suggestion.h; path = Suggestions/Suggestion.h; sourceTree = "<group>"; };
 		CF12DB48293E4C5F00F9C760 /* Suggestion.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Suggestion.m; path = Suggestions/Suggestion.m; sourceTree = "<group>"; };
 		CF12DB4A293E5A2D00F9C760 /* RoundedCornersView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RoundedCornersView.h; sourceTree = "<group>"; };
@@ -150,7 +149,6 @@
 		CF12DB52293F1B8200F9C760 /* NSAttributedString+FileIcon.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+FileIcon.m"; sourceTree = "<group>"; };
 		CF16E0822A7559CB002D5C48 /* GlossaryManagerWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlossaryManagerWindowController.h; sourceTree = "<group>"; };
 		CF16E0832A7559CB002D5C48 /* GlossaryManagerWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GlossaryManagerWindowController.m; sourceTree = "<group>"; };
-		CF16E0842A7559CB002D5C48 /* GlossaryManagerWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GlossaryManagerWindowController.xib; sourceTree = "<group>"; };
 		CF1BEBE029D565740000BD59 /* DocumentTextFinderClientEntry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DocumentTextFinderClientEntry.h; sourceTree = "<group>"; };
 		CF1BEBE129D565740000BD59 /* DocumentTextFinderClientEntry.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DocumentTextFinderClientEntry.m; sourceTree = "<group>"; };
 		CF1BEBE329D5838F0000BD59 /* BaseCustomCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseCustomCell.h; sourceTree = "<group>"; };
@@ -198,6 +196,12 @@
 		CF5FC8A51A5ABFF700538E60 /* XliffieTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XliffieTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF5FC8AA1A5ABFF700538E60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF5FC8AB1A5ABFF700538E60 /* XliffieTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XliffieTests.m; sourceTree = "<group>"; };
+		CF610CF82A978AC00026AAC5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/GlossaryManagerWindowController.xib; sourceTree = "<group>"; };
+		CF610CFB2A978AC50026AAC5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/GlossaryDownloadWindowController.xib; sourceTree = "<group>"; };
+		CF610CFE2A978ACA0026AAC5 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/GlossaryManagerWindowController.strings; sourceTree = "<group>"; };
+		CF610D002A978ACB0026AAC5 /* zh-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-TW"; path = "zh-TW.lproj/GlossaryManagerWindowController.strings"; sourceTree = "<group>"; };
+		CF610D022A978ACF0026AAC5 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/GlossaryDownloadWindowController.strings; sourceTree = "<group>"; };
+		CF610D042A978AD10026AAC5 /* zh-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-TW"; path = "zh-TW.lproj/GlossaryDownloadWindowController.strings"; sourceTree = "<group>"; };
 		CF660EF21C5401B2007A0B28 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		CF660F081C540EFC007A0B28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TranslateServiceWindowController.xib; sourceTree = "<group>"; };
 		CF660F091C540F09007A0B28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TranslationWindowController.xib; sourceTree = "<group>"; };
@@ -491,10 +495,10 @@
 				CFF4AE272A790BD100C50D8A /* GlossaryReverseSearchResult.m */,
 				CF16E0822A7559CB002D5C48 /* GlossaryManagerWindowController.h */,
 				CF16E0832A7559CB002D5C48 /* GlossaryManagerWindowController.m */,
-				CF16E0842A7559CB002D5C48 /* GlossaryManagerWindowController.xib */,
+				CF610CF92A978AC00026AAC5 /* GlossaryManagerWindowController.xib */,
 				CF0AB58E2A755EDE00D61101 /* GlossaryDownloadWindowController.h */,
 				CF0AB58F2A755EDF00D61101 /* GlossaryDownloadWindowController.m */,
-				CF0AB5902A755EDF00D61101 /* GlossaryDownloadWindowController.xib */,
+				CF610CFC2A978AC50026AAC5 /* GlossaryDownloadWindowController.xib */,
 			);
 			path = Glossary;
 			sourceTree = "<group>";
@@ -760,14 +764,14 @@
 				CF740AE12701CE7900F31F26 /* hu.glossary in Resources */,
 				CF78DC4C2A91090F000B33B5 /* es_419.glossary in Resources */,
 				CF78DC4A2A91090F000B33B5 /* en_gb.glossary in Resources */,
-				CF0AB5922A755EDF00D61101 /* GlossaryDownloadWindowController.xib in Resources */,
+				CF610CFA2A978AC50026AAC5 /* GlossaryDownloadWindowController.xib in Resources */,
 				CF740ADD2701CE7900F31F26 /* th.glossary in Resources */,
 				CF740AE82701CE7900F31F26 /* uk.glossary in Resources */,
 				CF740AD42701CE7900F31F26 /* sv.glossary in Resources */,
 				CF740AD12701CE7900F31F26 /* no.glossary in Resources */,
 				CF740AE02701CE7900F31F26 /* cs.glossary in Resources */,
 				CFE39F9A1A765859004644C8 /* Localizable.strings in Resources */,
-				CF16E0862A7559CB002D5C48 /* GlossaryManagerWindowController.xib in Resources */,
+				CF610CF72A978AC00026AAC5 /* GlossaryManagerWindowController.xib in Resources */,
 				CF740AF42701CE7900F31F26 /* ru.glossary in Resources */,
 				CF78DC492A91090F000B33B5 /* zh_hk.glossary in Resources */,
 				CF5AB3C3293DCE6200C8AC7B /* SuggestionsWindowController.xib in Resources */,
@@ -964,6 +968,26 @@
 				CF4B0C2E1BF91239007AF981 /* zh-TW */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		CF610CF92A978AC00026AAC5 /* GlossaryManagerWindowController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CF610CF82A978AC00026AAC5 /* Base */,
+				CF610CFE2A978ACA0026AAC5 /* ja */,
+				CF610D002A978ACB0026AAC5 /* zh-TW */,
+			);
+			name = GlossaryManagerWindowController.xib;
+			sourceTree = "<group>";
+		};
+		CF610CFC2A978AC50026AAC5 /* GlossaryDownloadWindowController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CF610CFB2A978AC50026AAC5 /* Base */,
+				CF610D022A978ACF0026AAC5 /* ja */,
+				CF610D042A978AD10026AAC5 /* zh-TW */,
+			);
+			name = GlossaryDownloadWindowController.xib;
 			sourceTree = "<group>";
 		};
 		CF660EF61C540E11007A0B28 /* TranslateServiceWindowController.xib */ = {

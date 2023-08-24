@@ -11,6 +11,12 @@
 "Add spaces to all translations?" = "英語と日本語と数字の間に空白を追加しますか？";
 
 /* No comment provided by engineer. */
+"All" = "全部";
+
+/* No comment provided by engineer. */
+"Apart from the built-in glossaries, you can download larger localization databases with apple-endorsed translations. For more info please click here." = "アプリに内蔵されてる用語集とは他に、アップリ公式のアプリから抽出された用語集をダウンロードできます、詳しくはこちら。";
+
+/* No comment provided by engineer. */
 "Apply it anyway" = "大丈夫です";
 
 /* Translate alert message */
@@ -25,6 +31,18 @@
 /* Translation target not found */
 "Cannot translate to %@" = "%@ に翻訳するのできないです。";
 
+/* link replacement */
+"click here" = "こちら";
+
+/* No comment provided by engineer. */
+"Database corrupted" = "用語集が壊れてます";
+
+/* No comment provided by engineer. */
+"Downloading..." = "ダウンロード中…";
+
+/* No comment provided by engineer. */
+"Errors during translation: %@" = "翻訳時にエラーが起きました %@";
+
 /* Search menu title */
 "Filter" = "フィルター";
 
@@ -35,7 +53,13 @@
 "From 📚Glossary" = "📚用語集から";
 
 /* No comment provided by engineer. */
+"From  Apple Glossary (%ld)" = " アップルの用語集から (%ld)";
+
+/* No comment provided by engineer. */
 "Go ahead" = "うるせえ！";
+
+/* link replacement */
+"here" = "こちら";
 
 /* Menu item */
 "Mark as not translated" = "未翻訳にする";
@@ -62,8 +86,14 @@
 /* No comment provided by engineer. */
 "OK" = "OK";
 
+/* No comment provided by engineer. */
+"Other" = "その他";
+
 /* menu item title */
 "Recent Searches" = "検索履歴";
+
+/* No comment provided by engineer. */
+"Recommended Locales" = "おすすめの用語集";
 
 /* Search menu title */
 "Same as source" = "原文と同じ";
@@ -82,6 +112,9 @@
 
 /* Translate alert message */
 "There are %lu records with formatting warnings, better fix them before applying." = "問題がある文字列は %lu 個もありますけど、修正した方がいいですよ。";
+
+/* No comment provided by engineer. */
+"These databases are generated with the same source of applelocalization.com, you can read more about the that here" = "これらのデータベースはアップルの公式アプリから抽出されてます、 applelocalization.com と同じソースを使ってます、詳しくはこちら。";
 
 /* Progress report */
 "Total" = "全部";
