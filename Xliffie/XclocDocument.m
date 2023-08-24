@@ -14,6 +14,7 @@
 @property (nonatomic, strong) NSFileWrapper *xliffParentFileWrapper;
 @property (nonatomic, strong) NSFileWrapper *xliffFileWrapper;
 @property (nonatomic, strong) NSFileWrapper *sourceContentsFileWrapper;
+@property (nonatomic, assign) GlossaryPlatform cachedAnyFilePlatform;
 
 @end
 
@@ -24,6 +25,7 @@
     newDocument.fileWrapper = self.fileWrapper;
     newDocument.xliffParentFileWrapper = self.xliffParentFileWrapper;
     newDocument.xliffFileWrapper = self.xliffFileWrapper;
+    newDocument.sourceContentsFileWrapper = self.sourceContentsFileWrapper;
     return newDocument;
 }
 
@@ -104,6 +106,9 @@
 
 - (GlossaryPlatform)findAnyGlossaryPlatformInFileWrapper:(NSFileWrapper*)wrapper {
     if (!wrapper) {
+        if (self.cachedAnyFilePlatform) {
+            return self.cachedAnyFilePlatform;
+        }
         wrapper = self.sourceContentsFileWrapper;
     }
     if ([wrapper isRegularFile]) {
@@ -117,6 +122,9 @@
             NSFileWrapper *item = folderContent[name];
             GlossaryPlatform platform = [self findAnyGlossaryPlatformInFileWrapper:item];
             if (platform != GlossaryPlatformAny) {
+                if (wrapper == self.sourceContentsFileWrapper) {
+                    self.cachedAnyFilePlatform = platform;
+                }
                 return platform;
             }
         }
