@@ -422,6 +422,7 @@
             return;
         }
         callback(nil);
+        [[NSNotificationCenter defaultCenter] postNotificationName:GLOSSARY_DATABASE_DOWNLOADED_NOTIFICATION object:_self];
     }];
     self.downloadTask = task;
     [task resume];
@@ -643,6 +644,8 @@
     [[NSFileManager defaultManager] removeItemAtPath:[self databasePath] error:&error];
     if (error) {
         NSLog(@"Cannot delete DB %@", error);
+    } else {
+        [[NSNotificationCenter defaultCenter] postNotificationName:GLOSSARY_DATABASE_DELETED_NOTIFICATION object:self];
     }
 }
 
