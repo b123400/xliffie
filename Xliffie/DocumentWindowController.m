@@ -16,6 +16,8 @@
 #import "BRProgressButton.h"
 #import "ProgressWindowController.h"
 #import "NSImage+SystemImage.h"
+#import "GlossaryManagerWindowController.h"
+#import "RoundedCornersView.h"
 
 #define DOCUMENT_WINDOW_MIN_SIZE NSMakeSize(600, 600)
 #define DOCUMENT_WINDOW_LAST_FRAME_KEY @"DOCUMENT_WINDOW_LAST_FRAME_KEY"
@@ -305,6 +307,7 @@
     }
     [self reloadProgress];
     [self reloadTranslationButtons];
+    [self reloadGlossaryDot];
 }
 
 - (TranslationPairState)filterState {
@@ -341,6 +344,7 @@
 -(void)windowDidBecomeKey:(NSNotification *)notification {
     [self reloadLanguageMap];
     [self reloadTranslationButtons];
+    [self reloadGlossaryDot];
 }
 
 - (void)windowWillClose:(NSNotification *)notification {
@@ -578,6 +582,11 @@
     }
 }
 
+- (IBAction)glossaryButtonPressed:(id)sender {
+    GlossaryManagerWindowController *controller = [GlossaryManagerWindowController shared];
+    [controller showWindow:self];
+}
+
 - (IBAction)showProgressReport:(id)sender {
     ProgressWindowController *controller = [[ProgressWindowController alloc] initWithDocument:self.document];
     self.progressWindowController = controller;
@@ -606,6 +615,54 @@
             [weakSelf reloadProgress];
             weakSelf.glossaryWindowController = nil;
         }];
+    }
+}
+
+#pragma mark : Glossary
+
+- (BOOL)hasGlossaryToDownload {
+    BOOL needDot = NO;
+    for (NSWindow *window in self.window.tabbedWindows) {
+        if ([window isKindOfClass:[DocumentWindow class]] && [window.windowController isKindOfClass:[DocumentWindowController class]]) {
+            DocumentWindowController *docWinController = (DocumentWindowController*)window.windowController;
+            GlossaryPlatform platform = [docWinController detectedPlatform];
+            NSArray *downloadedLocales = [[GlossaryDatabase downloadedDatabasesWithPlatform:platform] valueForKeyPath:@"locale"];
+            if (![downloadedLocales containsObject:[docWinController detectedSourceLocale]] || ![downloadedLocales containsObject:[docWinController detectedTargetLocale]]) {
+                needDot = YES;
+                break;
+            }
+        }
+    }
+    return needDot;
+}
+
+- (void)reloadGlossaryDot {
+    if (![NSThread isMainThread]) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self reloadGlossaryDot];
+        });
+        return;
+    }
+    BOOL needDot = [self hasGlossaryToDownload];
+    for (NSToolbarItem *item in [self.window.toolbar items]) {
+        if ([[item itemIdentifier] isEqual:@"glossaries"]) {
+            NSView *view = [item view];
+            RoundedCornersView *currentDot = nil;
+            for (NSView *subview in [view subviews]) {
+                if ([subview isKindOfClass:[RoundedCornersView class]]) {
+                    currentDot = (RoundedCornersView*)subview;
+                    break;
+                }
+            }
+            if (needDot && !currentDot) {
+                RoundedCornersView *dot = [[RoundedCornersView alloc] initWithFrame:NSMakeRect(view.frame.size.width - 8, 0, 8, 8)];
+                dot.backgroundColor = [NSColor redColor];
+                dot.radius = 4;
+                [view addSubview:dot];
+            } else if (!needDot && currentDot) {
+                [currentDot removeFromSuperview];
+            }
+        }
     }
 }
 
@@ -792,6 +849,7 @@
 
 - (void)anotherWindowWillClose:(NSNotification*)notification {
     [self reloadTranslationButtons];
+    [self reloadGlossaryDot];
 }
 
 #pragma mark Translation Service

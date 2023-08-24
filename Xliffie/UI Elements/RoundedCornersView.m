@@ -10,9 +10,18 @@
 
 @implementation RoundedCornersView
 
+
+- (CGFloat)radius {
+    return _radius ?: 16;
+}
+
+- (NSColor *)backgroundColor {
+    return _backgroundColor ?: [NSColor windowBackgroundColor];
+}
+
 - (void)drawRect:(NSRect)dirtyRect {
-    NSBezierPath *borderPath = [NSBezierPath bezierPathWithRoundedRect:self.bounds xRadius:16 yRadius:16];
-    [[NSColor windowBackgroundColor] setFill];
+    NSBezierPath *borderPath = [NSBezierPath bezierPathWithRoundedRect:self.bounds xRadius:self.radius yRadius:self.radius];
+    [self.backgroundColor setFill];
     [borderPath fill];
 }
 

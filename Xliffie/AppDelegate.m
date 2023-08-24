@@ -14,8 +14,6 @@
 
 @interface AppDelegate ()
 
-@property (nonatomic, strong) GlossaryManagerWindowController *glossaryManagerWindowController;
-
 @end
 
 @implementation AppDelegate
@@ -173,10 +171,7 @@
 }
 
 - (IBAction)glossaryMenuPressed:(id)sender {
-    if (!self.glossaryManagerWindowController) {
-        self.glossaryManagerWindowController = [[GlossaryManagerWindowController alloc] init];
-    }
-    [self.glossaryManagerWindowController showWindow:self];
+    [[GlossaryManagerWindowController shared] showWindow:self];
 }
 
 @end
