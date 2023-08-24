@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21225"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21701"/>
         <capability name="Search Toolbar Item" minToolsVersion="12.0" minSystemVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -843,10 +843,27 @@
                                         </connections>
                                     </searchField>
                                 </searchToolbarItem>
+                                <toolbarItem implicitItemIdentifier="407B7541-ABC2-40B3-9254-C2B3F61B4799" explicitItemIdentifier="glossaries" label="Glossaries" paletteLabel="Glossaries" image="character.book.closed" title="Glossaries" id="5KP-hs-koi">
+                                    <nil key="toolTip"/>
+                                    <size key="minSize" width="32" height="32"/>
+                                    <size key="maxSize" width="32" height="32"/>
+                                    <button key="view" verticalHuggingPriority="750" id="hgK-pp-Lfg">
+                                        <rect key="frame" x="15" y="14" width="32" height="32"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <buttonCell key="cell" type="roundTextured" title="Glossaries" bezelStyle="texturedRounded" image="character.book.closed" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="4mo-Yg-t75">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                    </button>
+                                    <connections>
+                                        <action selector="glossaryButtonPressed:" target="jGA-0Y-lOj" id="tQj-m7-p9S"/>
+                                    </connections>
+                                </toolbarItem>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
                                 <toolbarItem reference="hRa-qY-UHQ"/>
                                 <toolbarItem reference="nH5-3B-tsZ"/>
+                                <toolbarItem reference="5KP-hs-koi"/>
                                 <toolbarItem reference="7Hq-tz-Ud3"/>
                                 <toolbarItem reference="pRq-eI-zXo"/>
                                 <searchToolbarItem reference="ngi-bY-i0Q"/>
@@ -1188,6 +1205,7 @@ DQ
     </scenes>
     <resources>
         <image name="Pangu" width="23" height="20"/>
+        <image name="character.book.closed" width="15" height="19"/>
         <image name="checkmark.circle" width="15" height="15"/>
         <image name="checkmark.circle.trianglebadge.exclamationmark" width="18" height="15"/>
         <image name="circle.dashed" width="15" height="15"/>
