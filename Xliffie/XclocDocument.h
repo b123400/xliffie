@@ -7,12 +7,15 @@
 //
 
 #import "Document.h"
+#import "GlossaryDatabase.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface XclocDocument : Document
 
 + (BOOL)isXclocExtension:(NSString *)extension;
+- (GlossaryPlatform)glossaryPlatformWithSourcePath:(NSString *)pathInSourceContents;
+- (GlossaryPlatform)findAnyGlossaryPlatformInFileWrapper:(NSFileWrapper * _Nullable)wrapper;
 
 @end
 

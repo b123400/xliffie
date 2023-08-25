@@ -13,6 +13,8 @@
 @property (nonatomic, strong) NSFileWrapper *fileWrapper;
 @property (nonatomic, strong) NSFileWrapper *xliffParentFileWrapper;
 @property (nonatomic, strong) NSFileWrapper *xliffFileWrapper;
+@property (nonatomic, strong) NSFileWrapper *sourceContentsFileWrapper;
+@property (nonatomic, assign) GlossaryPlatform cachedAnyFilePlatform;
 
 @end
 
@@ -23,6 +25,7 @@
     newDocument.fileWrapper = self.fileWrapper;
     newDocument.xliffParentFileWrapper = self.xliffParentFileWrapper;
     newDocument.xliffFileWrapper = self.xliffFileWrapper;
+    newDocument.sourceContentsFileWrapper = self.sourceContentsFileWrapper;
     return newDocument;
 }
 
@@ -36,6 +39,7 @@
     if (![localisedContents isDirectory]) {
         return NO;
     }
+    self.sourceContentsFileWrapper = fileWrappers[@"Source Contents"];
     NSDictionary<NSString *, NSFileWrapper *> *localisedContentsDict = [localisedContents fileWrappers];
     for (NSString *filename in localisedContentsDict) {
         NSFileWrapper *xliffFileWrapper = localisedContentsDict[filename];
@@ -65,6 +69,67 @@
     self.xliffFileWrapper = newFileWrapper;
 
     return self.fileWrapper;
+}
+
+- (NSFileWrapper *)sourceContentAtPath:(NSString *)path {
+    if (![self.sourceContentsFileWrapper isDirectory]) return nil;
+    NSArray<NSString *> *pathComponents = [path pathComponents];
+    NSFileWrapper *currentWrapper = self.sourceContentsFileWrapper;
+    for (NSString *p in pathComponents) {
+        NSDictionary<NSString*, NSFileWrapper *> *folderContent = [currentWrapper fileWrappers];
+        currentWrapper = folderContent[p];
+    }
+    return currentWrapper;
+}
+
+- (GlossaryPlatform)findPlatformFromUIFile:(NSFileWrapper *)fileWrapper {
+    if (![fileWrapper isRegularFile]) return GlossaryPlatformAny;
+    NSString *extension = [[fileWrapper filename] pathExtension];
+    if (![extension.lowercaseString isEqual:@"storyboard"] && ![extension.lowercaseString isEqual:@"xib"]) return GlossaryPlatformAny;
+    NSData *data = [fileWrapper regularFileContents];
+    NSError *error = nil;
+    NSXMLDocument *doc = [[NSXMLDocument alloc] initWithData:data options:0 error:&error];
+    if (error) {
+        NSLog(@"Cannot read file as xml %@", error);
+        return GlossaryPlatformAny;
+    }
+    NSString *runtime = [[[doc rootElement] attributeForName:@"targetRuntime"] stringValue];
+    if ([runtime isEqual:@"MacOSX.Cocoa"]) return GlossaryPlatformMac;
+    if ([runtime isEqual:@"iOS.CocoaTouch"]) return GlossaryPlatformIOS;
+    return GlossaryPlatformAny;
+}
+
+- (GlossaryPlatform)glossaryPlatformWithSourcePath:(NSString *)pathInSourceContents {
+    NSFileWrapper *file = [self sourceContentAtPath:pathInSourceContents];
+    return [self findPlatformFromUIFile:file];
+}
+
+- (GlossaryPlatform)findAnyGlossaryPlatformInFileWrapper:(NSFileWrapper*)wrapper {
+    if (!wrapper) {
+        if (self.cachedAnyFilePlatform) {
+            return self.cachedAnyFilePlatform;
+        }
+        wrapper = self.sourceContentsFileWrapper;
+    }
+    if ([wrapper isRegularFile]) {
+        GlossaryPlatform platform = [self findPlatformFromUIFile:wrapper];
+        if (platform != GlossaryPlatformAny) {
+            return platform;
+        }
+    } else if ([wrapper isDirectory]) {
+        NSDictionary<NSString*, NSFileWrapper*> *folderContent = [wrapper fileWrappers];
+        for (NSString *name in folderContent) {
+            NSFileWrapper *item = folderContent[name];
+            GlossaryPlatform platform = [self findAnyGlossaryPlatformInFileWrapper:item];
+            if (platform != GlossaryPlatformAny) {
+                if (wrapper == self.sourceContentsFileWrapper) {
+                    self.cachedAnyFilePlatform = platform;
+                }
+                return platform;
+            }
+        }
+    }
+    return GlossaryPlatformAny;
 }
 
 + (BOOL)isXclocExtension:(NSString *)extension {

@@ -14,11 +14,11 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="F0z-JX-Cv5">
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" titleVisibility="hidden" id="F0z-JX-Cv5">
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="205" height="176"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1055"/>
-            <view key="contentView" id="se5-gp-TjO" customClass="RoundedCornersView">
+            <view key="contentView" misplaced="YES" id="se5-gp-TjO" customClass="RoundedCornersView">
                 <rect key="frame" x="0.0" y="0.0" width="205" height="176"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
@@ -28,7 +28,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="205" height="176"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="40" rowSizeStyle="automatic" viewBased="YES" id="2KH-Lm-lrw">
+                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="40" rowSizeStyle="automatic" viewBased="YES" id="2KH-Lm-lrw" customClass="SuggestionTableView">
                                     <rect key="frame" x="0.0" y="0.0" width="205" height="176"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <size key="intercellSpacing" width="17" height="0.0"/>
@@ -79,7 +79,7 @@
                                         </tableColumn>
                                     </tableColumns>
                                     <connections>
-                                        <action trigger="doubleAction" selector="tableViewDidDoubleClick:" target="-2" id="qsh-RN-DWq"/>
+                                        <action selector="tableViewDidDoubleClick:" target="-2" id="4mJ-X9-RU3"/>
                                         <outlet property="dataSource" destination="-2" id="PUu-pZ-Q1F"/>
                                         <outlet property="delegate" destination="-2" id="UhB-x9-hqz"/>
                                     </connections>

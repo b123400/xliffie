@@ -10,12 +10,4 @@
 
 @implementation SuggestionsCellView
 
-- (void)drawRect:(NSRect)dirtyRect {
-    [super drawRect:dirtyRect];
-    
-    // Drawing code here.
-}
-
-- (IBAction)secondaryLabel:(id)sender {
-}
 @end

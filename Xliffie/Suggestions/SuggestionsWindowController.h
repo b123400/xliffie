@@ -21,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSArray<Suggestion *> *suggestions;
 @property (nonatomic, weak) id<SuggestionsWindowControllerDelegate> delegate;
+@property (nonatomic, weak) id searchingObject;
 
 + (instancetype)shared;
 

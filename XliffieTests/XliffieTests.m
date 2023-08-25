@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import <XCTest/XCTest.h>
+#import "Utilities.h"
 
 @interface XliffieTests : XCTestCase
 
@@ -23,6 +24,29 @@
 - (void)tearDown {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
+}
+
+- (void)testBatch {
+    NSArray *arr = @[@1, @2, @3, @4, @5];
+    __block NSInteger i = 0;
+    NSArray *result = [Utilities batch:arr limit:2 callback:^id _Nonnull(NSArray * _Nonnull items) {
+        if (i == 0) {
+            XCTAssert(([items isEqual:@[@1, @2]]), @"first batch");
+            i++;
+            return @"a";
+        } else if (i == 1) {
+            XCTAssert(([items isEqual:@[@3, @4]]), @"second batch");
+            i++;
+            return @"b";
+        } else if (i == 2) {
+            XCTAssert(([items isEqual:@[@5]]), @"third batch");
+            i++;
+            return @"c";
+        }
+        i++;
+        return @"d";
+    }];
+    XCTAssert(([result isEqual:@[@"a", @"b", @"c"]]), @"result");
 }
 
 - (void)testExample {

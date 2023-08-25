@@ -57,6 +57,10 @@
         // Below screen bottom edge
         selfRect.origin.y = screenRect.origin.y + screenRect.size.height + 5;
     }
+    if (selfRect.origin.y + selfRect.size.height > view.window.screen.visibleFrame.size.height) {
+        selfRect.origin.y = 0;
+        selfRect.size.height = view.window.screen.visibleFrame.size.height;
+    }
     
     [self.window setFrame:selfRect display:YES];
 }
@@ -115,6 +119,15 @@
     cell.textField.stringValue = suggestion.title;
     cell.secondaryLabel.attributedStringValue = suggestion.stringForDisplay ?: [[NSAttributedString alloc] initWithString:@""];
     return cell;
+}
+
+- (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row {
+    return 40;
+}
+
+- (BOOL)tableView:(NSTableView *)tableView shouldSelectRow:(NSInteger)row {
+    if (row < self.suggestions.count) return YES;
+    return NO;
 }
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {

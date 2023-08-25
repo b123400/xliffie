@@ -12,6 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface RoundedCornersView : NSView
 
+@property (nonatomic, assign) CGFloat radius;
+@property (nonatomic, strong, nullable) NSColor *backgroundColor;
+
 @end
 
 NS_ASSUME_NONNULL_END

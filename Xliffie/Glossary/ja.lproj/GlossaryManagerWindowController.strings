@@ -1,0 +1,36 @@
+/* Class = "NSTextFieldCell"; title = "Downloaded Glossaries"; ObjectID = "69H-Ng-ccN"; */
+"69H-Ng-ccN.title" = "ダウンロード済みの用語集";
+
+/* Class = "NSTextFieldCell"; title = "Table View Cell"; ObjectID = "D5j-3d-NLY"; */
+"D5j-3d-NLY.title" = "Table View Cell";
+
+/* Class = "NSWindow"; title = "Glossary Databases"; ObjectID = "F0z-JX-Cv5"; */
+"F0z-JX-Cv5.title" = "用語集";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "FEk-wH-kgZ"; */
+"FEk-wH-kgZ.title" = "Text Cell";
+
+/* Class = "NSTableColumn"; headerCell.title = "File Size"; ObjectID = "gBP-Zs-G71"; */
+"gBP-Zs-G71.headerCell.title" = "ファイルサイズ";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "GEw-Fp-gNp"; */
+"GEw-Fp-gNp.title" = "Text Cell";
+
+/* Class = "NSTableColumn"; headerCell.title = "Locale"; ObjectID = "h9N-rs-tWY"; */
+"h9N-rs-tWY.headerCell.title" = "ロケール";
+
+/* Class = "NSTextFieldCell"; title = "Table View Cell"; ObjectID = "hZj-DT-3em"; */
+"hZj-DT-3em.title" = "Table View Cell";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "izM-iL-Opb"; */
+"izM-iL-Opb.title" = "Text Cell";
+
+/* Class = "NSTextFieldCell"; title = "Table View Cell"; ObjectID = "nfV-Ep-ukA"; */
+"nfV-Ep-ukA.title" = "Table View Cell";
+
+/* Class = "NSTextFieldCell"; title = "<DNT - glossary description >"; ObjectID = "qEv-cX-p5Q"; */
+"qEv-cX-p5Q.title" = "<DNT - glossary description >";
+
+/* Class = "NSTableColumn"; headerCell.title = "Platform"; ObjectID = "QxC-cT-T7s"; */
+"QxC-cT-T7s.headerCell.title" = "プラットフォーム";
+

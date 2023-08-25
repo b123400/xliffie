@@ -11,13 +11,20 @@
 		CF011B4B1C40FCBA00948323 /* TranslationUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = CF011B4A1C40FCBA00948323 /* TranslationUtility.m */; };
 		CF011B7D1C4641A400948323 /* TranslationWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF011B7B1C4641A400948323 /* TranslationWindowController.m */; };
 		CF0945911C54FD3600DAEB4A /* BRArrowSegmentedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0945901C54FD3600DAEB4A /* BRArrowSegmentedCell.m */; };
+		CF0AB5912A755EDF00D61101 /* GlossaryDownloadWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0AB58F2A755EDF00D61101 /* GlossaryDownloadWindowController.m */; };
 		CF12DB49293E4C5F00F9C760 /* Suggestion.m in Sources */ = {isa = PBXBuildFile; fileRef = CF12DB48293E4C5F00F9C760 /* Suggestion.m */; };
 		CF12DB4C293E5A2D00F9C760 /* RoundedCornersView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF12DB4B293E5A2D00F9C760 /* RoundedCornersView.m */; };
 		CF12DB4F293EF89C00F9C760 /* SuggestionsCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF12DB4E293EF89C00F9C760 /* SuggestionsCellView.m */; };
 		CF12DB53293F1B8200F9C760 /* NSAttributedString+FileIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = CF12DB52293F1B8200F9C760 /* NSAttributedString+FileIcon.m */; };
+		CF16E0852A7559CB002D5C48 /* GlossaryManagerWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF16E0832A7559CB002D5C48 /* GlossaryManagerWindowController.m */; };
 		CF1BEBE229D565740000BD59 /* DocumentTextFinderClientEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1BEBE129D565740000BD59 /* DocumentTextFinderClientEntry.m */; };
 		CF1BEBE529D5838F0000BD59 /* BaseCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1BEBE429D5838F0000BD59 /* BaseCustomCell.m */; };
 		CF1CE50629CB4EBD00BBFAAB /* ProgressWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1CE50429CB4EBD00BBFAAB /* ProgressWindowController.m */; };
+		CF22255B2A5EA41D00F08515 /* GlossaryDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = CF22255A2A5EA41D00F08515 /* GlossaryDatabase.m */; };
+		CF22255D2A5EF54D00F08515 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CF22255C2A5EF53E00F08515 /* libsqlite3.tbd */; };
+		CF2DF14E2A827B0D00346BE9 /* SuggestionTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2DF14D2A827B0D00346BE9 /* SuggestionTableView.m */; };
+		CF2DF1572A83DAAA00346BE9 /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2DF1562A83DAAA00346BE9 /* Utilities.m */; };
+		CF2DF1582A83DAEF00346BE9 /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2DF1562A83DAAA00346BE9 /* Utilities.m */; };
 		CF34B75A1AADE00A00C6A58E /* TranslationTargetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF34B7591AADE00A00C6A58E /* TranslationTargetCell.m */; };
 		CF50085429DBADBA007EF23A /* BRCategorySearchFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF50085329DBADBA007EF23A /* BRCategorySearchFieldCell.m */; };
 		CF50085729DBB20F007EF23A /* BRCategorySearchField.m in Sources */ = {isa = PBXBuildFile; fileRef = CF50085629DBB20F007EF23A /* BRCategorySearchField.m */; };
@@ -33,27 +40,23 @@
 		CF5FC89D1A5ABFF700538E60 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF5FC89C1A5ABFF700538E60 /* Images.xcassets */; };
 		CF5FC8A01A5ABFF700538E60 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF5FC89E1A5ABFF700538E60 /* Main.storyboard */; };
 		CF5FC8AC1A5ABFF700538E60 /* XliffieTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5FC8AB1A5ABFF700538E60 /* XliffieTests.m */; };
+		CF610CF72A978AC00026AAC5 /* GlossaryManagerWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF610CF92A978AC00026AAC5 /* GlossaryManagerWindowController.xib */; };
+		CF610CFA2A978AC50026AAC5 /* GlossaryDownloadWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF610CFC2A978AC50026AAC5 /* GlossaryDownloadWindowController.xib */; };
 		CF660EF31C5401B2007A0B28 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = CF660EF21C5401B2007A0B28 /* Credits.rtf */; };
 		CF660EF41C540E11007A0B28 /* TranslateServiceWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF660EF61C540E11007A0B28 /* TranslateServiceWindowController.xib */; };
 		CF660EFB1C540E27007A0B28 /* TranslationWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF660EFD1C540E27007A0B28 /* TranslationWindowController.xib */; };
 		CF662B391C307C7D00704CEA /* TranslateServiceWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF662B381C307C7D00704CEA /* TranslateServiceWindowController.m */; };
 		CF740AA72701C6C700F31F26 /* Glossary.m in Sources */ = {isa = PBXBuildFile; fileRef = CF740AA62701C6C700F31F26 /* Glossary.m */; };
 		CF740ACF2701CE7900F31F26 /* sk.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740AA92701CE7800F31F26 /* sk.glossary */; };
-		CF740AD02701CE7900F31F26 /* zh-hk.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740AAA2701CE7800F31F26 /* zh-hk.glossary */; };
 		CF740AD12701CE7900F31F26 /* no.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740AAB2701CE7800F31F26 /* no.glossary */; };
-		CF740AD22701CE7900F31F26 /* zh-tw.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740AAC2701CE7800F31F26 /* zh-tw.glossary */; };
 		CF740AD32701CE7900F31F26 /* nl.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740AAD2701CE7800F31F26 /* nl.glossary */; };
 		CF740AD42701CE7900F31F26 /* sv.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740AAE2701CE7800F31F26 /* sv.glossary */; };
 		CF740AD52701CE7900F31F26 /* de.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740AAF2701CE7800F31F26 /* de.glossary */; };
 		CF740AD62701CE7900F31F26 /* tr.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740AB02701CE7800F31F26 /* tr.glossary */; };
 		CF740AD72701CE7900F31F26 /* hr.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740AB12701CE7800F31F26 /* hr.glossary */; };
-		CF740AD82701CE7900F31F26 /* pt-br.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740AB22701CE7800F31F26 /* pt-br.glossary */; };
-		CF740AD92701CE7900F31F26 /* es-419.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740AB32701CE7800F31F26 /* es-419.glossary */; };
-		CF740ADA2701CE7900F31F26 /* pt-pt.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740AB42701CE7800F31F26 /* pt-pt.glossary */; };
 		CF740ADB2701CE7900F31F26 /* ms.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740AB52701CE7800F31F26 /* ms.glossary */; };
 		CF740ADC2701CE7900F31F26 /* id.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740AB62701CE7800F31F26 /* id.glossary */; };
 		CF740ADD2701CE7900F31F26 /* th.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740AB72701CE7900F31F26 /* th.glossary */; };
-		CF740ADE2701CE7900F31F26 /* zh-cn.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740AB82701CE7900F31F26 /* zh-cn.glossary */; };
 		CF740ADF2701CE7900F31F26 /* da.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740AB92701CE7900F31F26 /* da.glossary */; };
 		CF740AE02701CE7900F31F26 /* cs.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740ABA2701CE7900F31F26 /* cs.glossary */; };
 		CF740AE12701CE7900F31F26 /* hu.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740ABB2701CE7900F31F26 /* hu.glossary */; };
@@ -65,17 +68,23 @@
 		CF740AE72701CE7900F31F26 /* fi.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740AC12701CE7900F31F26 /* fi.glossary */; };
 		CF740AE82701CE7900F31F26 /* uk.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740AC22701CE7900F31F26 /* uk.glossary */; };
 		CF740AE92701CE7900F31F26 /* vi.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740AC32701CE7900F31F26 /* vi.glossary */; };
-		CF740AEA2701CE7900F31F26 /* en-au.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740AC42701CE7900F31F26 /* en-au.glossary */; };
 		CF740AEB2701CE7900F31F26 /* fr.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740AC52701CE7900F31F26 /* fr.glossary */; };
 		CF740AEC2701CE7900F31F26 /* ca.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740AC62701CE7900F31F26 /* ca.glossary */; };
 		CF740AED2701CE7900F31F26 /* el.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740AC72701CE7900F31F26 /* el.glossary */; };
 		CF740AEE2701CE7900F31F26 /* ja.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740AC82701CE7900F31F26 /* ja.glossary */; };
 		CF740AEF2701CE7900F31F26 /* es.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740AC92701CE7900F31F26 /* es.glossary */; };
-		CF740AF02701CE7900F31F26 /* en-gb.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740ACA2701CE7900F31F26 /* en-gb.glossary */; };
 		CF740AF12701CE7900F31F26 /* he.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740ACB2701CE7900F31F26 /* he.glossary */; };
-		CF740AF22701CE7900F31F26 /* fr-ca.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740ACC2701CE7900F31F26 /* fr-ca.glossary */; };
 		CF740AF32701CE7900F31F26 /* ro.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740ACD2701CE7900F31F26 /* ro.glossary */; };
 		CF740AF42701CE7900F31F26 /* ru.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF740ACE2701CE7900F31F26 /* ru.glossary */; };
+		CF78DC452A91090F000B33B5 /* pt_br.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF78DC3C2A91090E000B33B5 /* pt_br.glossary */; };
+		CF78DC462A91090F000B33B5 /* fr_ca.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF78DC3D2A91090E000B33B5 /* fr_ca.glossary */; };
+		CF78DC472A91090F000B33B5 /* zh_tw.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF78DC3E2A91090E000B33B5 /* zh_tw.glossary */; };
+		CF78DC482A91090F000B33B5 /* pt_pt.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF78DC3F2A91090E000B33B5 /* pt_pt.glossary */; };
+		CF78DC492A91090F000B33B5 /* zh_hk.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF78DC402A91090E000B33B5 /* zh_hk.glossary */; };
+		CF78DC4A2A91090F000B33B5 /* en_gb.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF78DC412A91090E000B33B5 /* en_gb.glossary */; };
+		CF78DC4B2A91090F000B33B5 /* en_au.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF78DC422A91090E000B33B5 /* en_au.glossary */; };
+		CF78DC4C2A91090F000B33B5 /* es_419.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF78DC432A91090E000B33B5 /* es_419.glossary */; };
+		CF78DC4D2A91090F000B33B5 /* zh_cn.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF78DC442A91090E000B33B5 /* zh_cn.glossary */; };
 		CF846CD4259E21A300CA0713 /* CustomDocumentController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF846CD3259E21A300CA0713 /* CustomDocumentController.m */; };
 		CF92FB941C24037B00700D3E /* TargetMissingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF92FB931C24037B00700D3E /* TargetMissingViewController.m */; };
 		CF94FCA51A5C365400EE8BD5 /* File.m in Sources */ = {isa = PBXBuildFile; fileRef = CF94FCA41A5C365400EE8BD5 /* File.m */; };
@@ -94,6 +103,10 @@
 		CFE39FA61A767253004644C8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CFE39FA81A767253004644C8 /* InfoPlist.strings */; };
 		CFE3B1761CD800AB00021D7F /* NSString+Pangu.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE3B1751CD800AB00021D7F /* NSString+Pangu.m */; };
 		CFEECE42250E21EE007A324C /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = CFEECE44250E21EE007A324C /* Localizable.stringsdict */; };
+		CFF4AE282A790BD100C50D8A /* GlossaryReverseSearchResult.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF4AE272A790BD100C50D8A /* GlossaryReverseSearchResult.m */; };
+		CFF4AE2B2A79504800C50D8A /* GlossarySearchRow.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF4AE2A2A79504800C50D8A /* GlossarySearchRow.m */; };
+		CFF4AE2E2A79577A00C50D8A /* GlossarySearchResults.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF4AE2D2A79577A00C50D8A /* GlossarySearchResults.m */; };
+		CFF4AE312A7959BA00C50D8A /* GlossarySearchResult.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF4AE302A7959BA00C50D8A /* GlossarySearchResult.m */; };
 		CFF70D80221E7BF2004C4C2D /* XclocDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF70D7F221E7BF2004C4C2D /* XclocDocument.m */; };
 		D42B8307A52A4CB70FEEA156 /* libPods-XliffieTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B8C7EA753A4178056B36640 /* libPods-XliffieTests.a */; };
 /* End PBXBuildFile section */
@@ -124,6 +137,8 @@
 		CF026F8B1C54134C009A23AC /* zh-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-TW"; path = "zh-TW.lproj/TranslationWindowController.strings"; sourceTree = "<group>"; };
 		CF09458F1C54FD3600DAEB4A /* BRArrowSegmentedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRArrowSegmentedCell.h; sourceTree = "<group>"; };
 		CF0945901C54FD3600DAEB4A /* BRArrowSegmentedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRArrowSegmentedCell.m; sourceTree = "<group>"; };
+		CF0AB58E2A755EDE00D61101 /* GlossaryDownloadWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlossaryDownloadWindowController.h; sourceTree = "<group>"; };
+		CF0AB58F2A755EDF00D61101 /* GlossaryDownloadWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GlossaryDownloadWindowController.m; sourceTree = "<group>"; };
 		CF12DB47293E4C5F00F9C760 /* Suggestion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Suggestion.h; path = Suggestions/Suggestion.h; sourceTree = "<group>"; };
 		CF12DB48293E4C5F00F9C760 /* Suggestion.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Suggestion.m; path = Suggestions/Suggestion.m; sourceTree = "<group>"; };
 		CF12DB4A293E5A2D00F9C760 /* RoundedCornersView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RoundedCornersView.h; sourceTree = "<group>"; };
@@ -132,12 +147,21 @@
 		CF12DB4E293EF89C00F9C760 /* SuggestionsCellView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SuggestionsCellView.m; path = Suggestions/SuggestionsCellView.m; sourceTree = "<group>"; };
 		CF12DB51293F1B8200F9C760 /* NSAttributedString+FileIcon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+FileIcon.h"; sourceTree = "<group>"; };
 		CF12DB52293F1B8200F9C760 /* NSAttributedString+FileIcon.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+FileIcon.m"; sourceTree = "<group>"; };
+		CF16E0822A7559CB002D5C48 /* GlossaryManagerWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlossaryManagerWindowController.h; sourceTree = "<group>"; };
+		CF16E0832A7559CB002D5C48 /* GlossaryManagerWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GlossaryManagerWindowController.m; sourceTree = "<group>"; };
 		CF1BEBE029D565740000BD59 /* DocumentTextFinderClientEntry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DocumentTextFinderClientEntry.h; sourceTree = "<group>"; };
 		CF1BEBE129D565740000BD59 /* DocumentTextFinderClientEntry.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DocumentTextFinderClientEntry.m; sourceTree = "<group>"; };
 		CF1BEBE329D5838F0000BD59 /* BaseCustomCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseCustomCell.h; sourceTree = "<group>"; };
 		CF1BEBE429D5838F0000BD59 /* BaseCustomCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseCustomCell.m; sourceTree = "<group>"; };
 		CF1CE50329CB4EBD00BBFAAB /* ProgressWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProgressWindowController.h; sourceTree = "<group>"; };
 		CF1CE50429CB4EBD00BBFAAB /* ProgressWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProgressWindowController.m; sourceTree = "<group>"; };
+		CF2225592A5EA41D00F08515 /* GlossaryDatabase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlossaryDatabase.h; sourceTree = "<group>"; };
+		CF22255A2A5EA41D00F08515 /* GlossaryDatabase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GlossaryDatabase.m; sourceTree = "<group>"; };
+		CF22255C2A5EF53E00F08515 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		CF2DF14C2A827B0D00346BE9 /* SuggestionTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuggestionTableView.h; path = Suggestions/SuggestionTableView.h; sourceTree = "<group>"; };
+		CF2DF14D2A827B0D00346BE9 /* SuggestionTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SuggestionTableView.m; path = Suggestions/SuggestionTableView.m; sourceTree = "<group>"; };
+		CF2DF1552A83DAAA00346BE9 /* Utilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
+		CF2DF1562A83DAAA00346BE9 /* Utilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
 		CF34B7581AADE00A00C6A58E /* TranslationTargetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TranslationTargetCell.h; sourceTree = "<group>"; };
 		CF34B7591AADE00A00C6A58E /* TranslationTargetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TranslationTargetCell.m; sourceTree = "<group>"; };
 		CF4B0C2E1BF91239007AF981 /* zh-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-TW"; path = "zh-TW.lproj/Main.strings"; sourceTree = "<group>"; };
@@ -172,6 +196,12 @@
 		CF5FC8A51A5ABFF700538E60 /* XliffieTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XliffieTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF5FC8AA1A5ABFF700538E60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF5FC8AB1A5ABFF700538E60 /* XliffieTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XliffieTests.m; sourceTree = "<group>"; };
+		CF610CF82A978AC00026AAC5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/GlossaryManagerWindowController.xib; sourceTree = "<group>"; };
+		CF610CFB2A978AC50026AAC5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/GlossaryDownloadWindowController.xib; sourceTree = "<group>"; };
+		CF610CFE2A978ACA0026AAC5 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/GlossaryManagerWindowController.strings; sourceTree = "<group>"; };
+		CF610D002A978ACB0026AAC5 /* zh-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-TW"; path = "zh-TW.lproj/GlossaryManagerWindowController.strings"; sourceTree = "<group>"; };
+		CF610D022A978ACF0026AAC5 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/GlossaryDownloadWindowController.strings; sourceTree = "<group>"; };
+		CF610D042A978AD10026AAC5 /* zh-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-TW"; path = "zh-TW.lproj/GlossaryDownloadWindowController.strings"; sourceTree = "<group>"; };
 		CF660EF21C5401B2007A0B28 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		CF660F081C540EFC007A0B28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TranslateServiceWindowController.xib; sourceTree = "<group>"; };
 		CF660F091C540F09007A0B28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TranslationWindowController.xib; sourceTree = "<group>"; };
@@ -180,21 +210,15 @@
 		CF740AA52701C6C700F31F26 /* Glossary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Glossary.h; sourceTree = "<group>"; };
 		CF740AA62701C6C700F31F26 /* Glossary.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Glossary.m; sourceTree = "<group>"; };
 		CF740AA92701CE7800F31F26 /* sk.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sk.glossary; sourceTree = "<group>"; };
-		CF740AAA2701CE7800F31F26 /* zh-hk.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "zh-hk.glossary"; sourceTree = "<group>"; };
 		CF740AAB2701CE7800F31F26 /* no.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = no.glossary; sourceTree = "<group>"; };
-		CF740AAC2701CE7800F31F26 /* zh-tw.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "zh-tw.glossary"; sourceTree = "<group>"; };
 		CF740AAD2701CE7800F31F26 /* nl.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = nl.glossary; sourceTree = "<group>"; };
 		CF740AAE2701CE7800F31F26 /* sv.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sv.glossary; sourceTree = "<group>"; };
 		CF740AAF2701CE7800F31F26 /* de.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = de.glossary; sourceTree = "<group>"; };
 		CF740AB02701CE7800F31F26 /* tr.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tr.glossary; sourceTree = "<group>"; };
 		CF740AB12701CE7800F31F26 /* hr.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hr.glossary; sourceTree = "<group>"; };
-		CF740AB22701CE7800F31F26 /* pt-br.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "pt-br.glossary"; sourceTree = "<group>"; };
-		CF740AB32701CE7800F31F26 /* es-419.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "es-419.glossary"; sourceTree = "<group>"; };
-		CF740AB42701CE7800F31F26 /* pt-pt.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "pt-pt.glossary"; sourceTree = "<group>"; };
 		CF740AB52701CE7800F31F26 /* ms.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ms.glossary; sourceTree = "<group>"; };
 		CF740AB62701CE7800F31F26 /* id.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = id.glossary; sourceTree = "<group>"; };
 		CF740AB72701CE7900F31F26 /* th.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = th.glossary; sourceTree = "<group>"; };
-		CF740AB82701CE7900F31F26 /* zh-cn.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "zh-cn.glossary"; sourceTree = "<group>"; };
 		CF740AB92701CE7900F31F26 /* da.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = da.glossary; sourceTree = "<group>"; };
 		CF740ABA2701CE7900F31F26 /* cs.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cs.glossary; sourceTree = "<group>"; };
 		CF740ABB2701CE7900F31F26 /* hu.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hu.glossary; sourceTree = "<group>"; };
@@ -206,17 +230,23 @@
 		CF740AC12701CE7900F31F26 /* fi.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fi.glossary; sourceTree = "<group>"; };
 		CF740AC22701CE7900F31F26 /* uk.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = uk.glossary; sourceTree = "<group>"; };
 		CF740AC32701CE7900F31F26 /* vi.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vi.glossary; sourceTree = "<group>"; };
-		CF740AC42701CE7900F31F26 /* en-au.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "en-au.glossary"; sourceTree = "<group>"; };
 		CF740AC52701CE7900F31F26 /* fr.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fr.glossary; sourceTree = "<group>"; };
 		CF740AC62701CE7900F31F26 /* ca.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ca.glossary; sourceTree = "<group>"; };
 		CF740AC72701CE7900F31F26 /* el.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = el.glossary; sourceTree = "<group>"; };
 		CF740AC82701CE7900F31F26 /* ja.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ja.glossary; sourceTree = "<group>"; };
 		CF740AC92701CE7900F31F26 /* es.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = es.glossary; sourceTree = "<group>"; };
-		CF740ACA2701CE7900F31F26 /* en-gb.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "en-gb.glossary"; sourceTree = "<group>"; };
 		CF740ACB2701CE7900F31F26 /* he.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = he.glossary; sourceTree = "<group>"; };
-		CF740ACC2701CE7900F31F26 /* fr-ca.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "fr-ca.glossary"; sourceTree = "<group>"; };
 		CF740ACD2701CE7900F31F26 /* ro.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ro.glossary; sourceTree = "<group>"; };
 		CF740ACE2701CE7900F31F26 /* ru.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ru.glossary; sourceTree = "<group>"; };
+		CF78DC3C2A91090E000B33B5 /* pt_br.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pt_br.glossary; sourceTree = "<group>"; };
+		CF78DC3D2A91090E000B33B5 /* fr_ca.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fr_ca.glossary; sourceTree = "<group>"; };
+		CF78DC3E2A91090E000B33B5 /* zh_tw.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = zh_tw.glossary; sourceTree = "<group>"; };
+		CF78DC3F2A91090E000B33B5 /* pt_pt.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pt_pt.glossary; sourceTree = "<group>"; };
+		CF78DC402A91090E000B33B5 /* zh_hk.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = zh_hk.glossary; sourceTree = "<group>"; };
+		CF78DC412A91090E000B33B5 /* en_gb.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = en_gb.glossary; sourceTree = "<group>"; };
+		CF78DC422A91090E000B33B5 /* en_au.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = en_au.glossary; sourceTree = "<group>"; };
+		CF78DC432A91090E000B33B5 /* es_419.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = es_419.glossary; sourceTree = "<group>"; };
+		CF78DC442A91090E000B33B5 /* zh_cn.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = zh_cn.glossary; sourceTree = "<group>"; };
 		CF846CD2259E21A300CA0713 /* CustomDocumentController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomDocumentController.h; sourceTree = "<group>"; };
 		CF846CD3259E21A300CA0713 /* CustomDocumentController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomDocumentController.m; sourceTree = "<group>"; };
 		CF92FB921C24037B00700D3E /* TargetMissingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetMissingViewController.h; sourceTree = "<group>"; };
@@ -256,6 +286,14 @@
 		CFEECE43250E21EE007A324C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		CFEECE46250E2C69007A324C /* zh-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = "zh-TW"; path = "zh-TW.lproj/Localizable.stringsdict"; sourceTree = "<group>"; };
 		CFEECE47250E2C6A007A324C /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = ja; path = ja.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		CFF4AE262A790BD100C50D8A /* GlossaryReverseSearchResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlossaryReverseSearchResult.h; sourceTree = "<group>"; };
+		CFF4AE272A790BD100C50D8A /* GlossaryReverseSearchResult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GlossaryReverseSearchResult.m; sourceTree = "<group>"; };
+		CFF4AE292A79504800C50D8A /* GlossarySearchRow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlossarySearchRow.h; sourceTree = "<group>"; };
+		CFF4AE2A2A79504800C50D8A /* GlossarySearchRow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GlossarySearchRow.m; sourceTree = "<group>"; };
+		CFF4AE2C2A79577A00C50D8A /* GlossarySearchResults.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlossarySearchResults.h; sourceTree = "<group>"; };
+		CFF4AE2D2A79577A00C50D8A /* GlossarySearchResults.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GlossarySearchResults.m; sourceTree = "<group>"; };
+		CFF4AE2F2A7959BA00C50D8A /* GlossarySearchResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlossarySearchResult.h; sourceTree = "<group>"; };
+		CFF4AE302A7959BA00C50D8A /* GlossarySearchResult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GlossarySearchResult.m; sourceTree = "<group>"; };
 		CFF70D7E221E7BF2004C4C2D /* XclocDocument.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XclocDocument.h; sourceTree = "<group>"; };
 		CFF70D7F221E7BF2004C4C2D /* XclocDocument.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XclocDocument.m; sourceTree = "<group>"; };
 		E63D96FADBADA5BA423F82DD /* Pods-Xliffie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Xliffie.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Xliffie/Pods-Xliffie.debug.xcconfig"; sourceTree = "<group>"; };
@@ -267,6 +305,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF22255D2A5EF54D00F08515 /* libsqlite3.tbd in Frameworks */,
 				53532F5E187D9C2314DF98A9 /* libPods-Xliffie.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -296,6 +335,7 @@
 		B9A0E10FA89551832665D61C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CF22255C2A5EF53E00F08515 /* libsqlite3.tbd */,
 				8A857BFAEBC2315772F4E891 /* libPods-Xliffie.a */,
 				9B8C7EA753A4178056B36640 /* libPods-XliffieTests.a */,
 			);
@@ -309,6 +349,8 @@
 				CF12DB52293F1B8200F9C760 /* NSAttributedString+FileIcon.m */,
 				CF9A3D5329DEB61D00807F3D /* NSImage+SystemImage.h */,
 				CF9A3D5429DEB61D00807F3D /* NSImage+SystemImage.m */,
+				CF2DF1552A83DAAA00346BE9 /* Utilities.h */,
+				CF2DF1562A83DAAA00346BE9 /* Utilities.m */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -338,6 +380,8 @@
 				CF12DB48293E4C5F00F9C760 /* Suggestion.m */,
 				CF12DB4D293EF89C00F9C760 /* SuggestionsCellView.h */,
 				CF12DB4E293EF89C00F9C760 /* SuggestionsCellView.m */,
+				CF2DF14C2A827B0D00346BE9 /* SuggestionTableView.h */,
+				CF2DF14D2A827B0D00346BE9 /* SuggestionTableView.m */,
 			);
 			name = Suggestions;
 			sourceTree = "<group>";
@@ -439,6 +483,22 @@
 				CFC6CC662703163700F7850C /* GlossaryFileRow.m */,
 				CFC6CC622703152400F7850C /* GlossaryRow.h */,
 				CFC6CC632703152400F7850C /* GlossaryRow.m */,
+				CF2225592A5EA41D00F08515 /* GlossaryDatabase.h */,
+				CF22255A2A5EA41D00F08515 /* GlossaryDatabase.m */,
+				CFF4AE292A79504800C50D8A /* GlossarySearchRow.h */,
+				CFF4AE2A2A79504800C50D8A /* GlossarySearchRow.m */,
+				CFF4AE2F2A7959BA00C50D8A /* GlossarySearchResult.h */,
+				CFF4AE302A7959BA00C50D8A /* GlossarySearchResult.m */,
+				CFF4AE2C2A79577A00C50D8A /* GlossarySearchResults.h */,
+				CFF4AE2D2A79577A00C50D8A /* GlossarySearchResults.m */,
+				CFF4AE262A790BD100C50D8A /* GlossaryReverseSearchResult.h */,
+				CFF4AE272A790BD100C50D8A /* GlossaryReverseSearchResult.m */,
+				CF16E0822A7559CB002D5C48 /* GlossaryManagerWindowController.h */,
+				CF16E0832A7559CB002D5C48 /* GlossaryManagerWindowController.m */,
+				CF610CF92A978AC00026AAC5 /* GlossaryManagerWindowController.xib */,
+				CF0AB58E2A755EDE00D61101 /* GlossaryDownloadWindowController.h */,
+				CF0AB58F2A755EDF00D61101 /* GlossaryDownloadWindowController.m */,
+				CF610CFC2A978AC50026AAC5 /* GlossaryDownloadWindowController.xib */,
 			);
 			path = Glossary;
 			sourceTree = "<group>";
@@ -452,12 +512,8 @@
 				CF740AB92701CE7900F31F26 /* da.glossary */,
 				CF740AAF2701CE7800F31F26 /* de.glossary */,
 				CF740AC72701CE7900F31F26 /* el.glossary */,
-				CF740AC42701CE7900F31F26 /* en-au.glossary */,
-				CF740ACA2701CE7900F31F26 /* en-gb.glossary */,
-				CF740AB32701CE7800F31F26 /* es-419.glossary */,
 				CF740AC92701CE7900F31F26 /* es.glossary */,
 				CF740AC12701CE7900F31F26 /* fi.glossary */,
-				CF740ACC2701CE7900F31F26 /* fr-ca.glossary */,
 				CF740AC52701CE7900F31F26 /* fr.glossary */,
 				CF740ACB2701CE7900F31F26 /* he.glossary */,
 				CF740ABE2701CE7900F31F26 /* hi.glossary */,
@@ -471,8 +527,6 @@
 				CF740AAD2701CE7800F31F26 /* nl.glossary */,
 				CF740AAB2701CE7800F31F26 /* no.glossary */,
 				CF740ABD2701CE7900F31F26 /* pl.glossary */,
-				CF740AB22701CE7800F31F26 /* pt-br.glossary */,
-				CF740AB42701CE7800F31F26 /* pt-pt.glossary */,
 				CF740ACD2701CE7900F31F26 /* ro.glossary */,
 				CF740ACE2701CE7900F31F26 /* ru.glossary */,
 				CF740AA92701CE7800F31F26 /* sk.glossary */,
@@ -481,9 +535,15 @@
 				CF740AB02701CE7800F31F26 /* tr.glossary */,
 				CF740AC22701CE7900F31F26 /* uk.glossary */,
 				CF740AC32701CE7900F31F26 /* vi.glossary */,
-				CF740AB82701CE7900F31F26 /* zh-cn.glossary */,
-				CF740AAA2701CE7800F31F26 /* zh-hk.glossary */,
-				CF740AAC2701CE7800F31F26 /* zh-tw.glossary */,
+				CF78DC422A91090E000B33B5 /* en_au.glossary */,
+				CF78DC412A91090E000B33B5 /* en_gb.glossary */,
+				CF78DC432A91090E000B33B5 /* es_419.glossary */,
+				CF78DC3D2A91090E000B33B5 /* fr_ca.glossary */,
+				CF78DC3C2A91090E000B33B5 /* pt_br.glossary */,
+				CF78DC3F2A91090E000B33B5 /* pt_pt.glossary */,
+				CF78DC442A91090E000B33B5 /* zh_cn.glossary */,
+				CF78DC402A91090E000B33B5 /* zh_hk.glossary */,
+				CF78DC3E2A91090E000B33B5 /* zh_tw.glossary */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -642,6 +702,7 @@
 					};
 					CF5FC8A41A5ABFF700538E60 = {
 						CreatedOnToolsVersion = 6.1.1;
+						ProvisioningStyle = Automatic;
 						TestTargetID = CF5FC88B1A5ABFF700538E60;
 					};
 				};
@@ -674,21 +735,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF740AED2701CE7900F31F26 /* el.glossary in Resources */,
-				CF740ADE2701CE7900F31F26 /* zh-cn.glossary in Resources */,
 				CF740AEC2701CE7900F31F26 /* ca.glossary in Resources */,
-				CF740AF02701CE7900F31F26 /* en-gb.glossary in Resources */,
 				CF740AE52701CE7900F31F26 /* ar.glossary in Resources */,
-				CF740AD02701CE7900F31F26 /* zh-hk.glossary in Resources */,
+				CF78DC472A91090F000B33B5 /* zh_tw.glossary in Resources */,
 				CF740AEB2701CE7900F31F26 /* fr.glossary in Resources */,
 				CF5FC89D1A5ABFF700538E60 /* Images.xcassets in Resources */,
 				CFE39FA11A767252004644C8 /* InfoPlist.strings in Resources */,
-				CF740AF22701CE7900F31F26 /* fr-ca.glossary in Resources */,
 				CF740AEE2701CE7900F31F26 /* ja.glossary in Resources */,
 				CF5E5A61270744B900B8A90A /* GlossaryWindowController.xib in Resources */,
 				CF740AD62701CE7900F31F26 /* tr.glossary in Resources */,
 				CF740ADB2701CE7900F31F26 /* ms.glossary in Resources */,
 				CF740AF12701CE7900F31F26 /* he.glossary in Resources */,
 				CF740AE62701CE7900F31F26 /* ko.glossary in Resources */,
+				CF78DC482A91090F000B33B5 /* pt_pt.glossary in Resources */,
 				CF740AE22701CE7900F31F26 /* it.glossary in Resources */,
 				CF740AD52701CE7900F31F26 /* de.glossary in Resources */,
 				CF740AD72701CE7900F31F26 /* hr.glossary in Resources */,
@@ -696,32 +755,36 @@
 				CF740AE92701CE7900F31F26 /* vi.glossary in Resources */,
 				CF740ADF2701CE7900F31F26 /* da.glossary in Resources */,
 				CF740ADC2701CE7900F31F26 /* id.glossary in Resources */,
+				CF78DC4B2A91090F000B33B5 /* en_au.glossary in Resources */,
 				CF740AE42701CE7900F31F26 /* hi.glossary in Resources */,
 				CF740AF32701CE7900F31F26 /* ro.glossary in Resources */,
 				CF660EF41C540E11007A0B28 /* TranslateServiceWindowController.xib in Resources */,
 				CF660EFB1C540E27007A0B28 /* TranslationWindowController.xib in Resources */,
 				CF740AE72701CE7900F31F26 /* fi.glossary in Resources */,
 				CF740AE12701CE7900F31F26 /* hu.glossary in Resources */,
-				CF740ADA2701CE7900F31F26 /* pt-pt.glossary in Resources */,
+				CF78DC4C2A91090F000B33B5 /* es_419.glossary in Resources */,
+				CF78DC4A2A91090F000B33B5 /* en_gb.glossary in Resources */,
+				CF610CFA2A978AC50026AAC5 /* GlossaryDownloadWindowController.xib in Resources */,
 				CF740ADD2701CE7900F31F26 /* th.glossary in Resources */,
 				CF740AE82701CE7900F31F26 /* uk.glossary in Resources */,
 				CF740AD42701CE7900F31F26 /* sv.glossary in Resources */,
 				CF740AD12701CE7900F31F26 /* no.glossary in Resources */,
 				CF740AE02701CE7900F31F26 /* cs.glossary in Resources */,
-				CF740AD22701CE7900F31F26 /* zh-tw.glossary in Resources */,
 				CFE39F9A1A765859004644C8 /* Localizable.strings in Resources */,
+				CF610CF72A978AC00026AAC5 /* GlossaryManagerWindowController.xib in Resources */,
 				CF740AF42701CE7900F31F26 /* ru.glossary in Resources */,
-				CF740AD92701CE7900F31F26 /* es-419.glossary in Resources */,
+				CF78DC492A91090F000B33B5 /* zh_hk.glossary in Resources */,
 				CF5AB3C3293DCE6200C8AC7B /* SuggestionsWindowController.xib in Resources */,
 				CF740ACF2701CE7900F31F26 /* sk.glossary in Resources */,
 				CF740AEF2701CE7900F31F26 /* es.glossary in Resources */,
 				CFEECE42250E21EE007A324C /* Localizable.stringsdict in Resources */,
+				CF78DC452A91090F000B33B5 /* pt_br.glossary in Resources */,
+				CF78DC462A91090F000B33B5 /* fr_ca.glossary in Resources */,
 				CF660EF31C5401B2007A0B28 /* Credits.rtf in Resources */,
 				CF740AE32701CE7900F31F26 /* pl.glossary in Resources */,
+				CF78DC4D2A91090F000B33B5 /* zh_cn.glossary in Resources */,
 				CF5FC8A01A5ABFF700538E60 /* Main.storyboard in Resources */,
-				CF740AEA2701CE7900F31F26 /* en-au.glossary in Resources */,
 				CF9A36ED29CD8F3C00FB8763 /* ProgressWindowController.xib in Resources */,
-				CF740AD82701CE7900F31F26 /* pt-br.glossary in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -821,16 +884,23 @@
 			files = (
 				CF12DB4F293EF89C00F9C760 /* SuggestionsCellView.m in Sources */,
 				CF92FB941C24037B00700D3E /* TargetMissingViewController.m in Sources */,
+				CFF4AE2E2A79577A00C50D8A /* GlossarySearchResults.m in Sources */,
 				CF5682EB1A6AFB9800E0DEDD /* DocumentWindowController.m in Sources */,
 				CF011B4B1C40FCBA00948323 /* TranslationUtility.m in Sources */,
 				CF94FCA51A5C365400EE8BD5 /* File.m in Sources */,
+				CF2DF1572A83DAAA00346BE9 /* Utilities.m in Sources */,
 				CF1CE50629CB4EBD00BBFAAB /* ProgressWindowController.m in Sources */,
 				CF1BEBE529D5838F0000BD59 /* BaseCustomCell.m in Sources */,
 				CF34B75A1AADE00A00C6A58E /* TranslationTargetCell.m in Sources */,
+				CFF4AE2B2A79504800C50D8A /* GlossarySearchRow.m in Sources */,
 				CF1BEBE229D565740000BD59 /* DocumentTextFinderClientEntry.m in Sources */,
+				CFF4AE312A7959BA00C50D8A /* GlossarySearchResult.m in Sources */,
 				CF5682EF1A6B11C700E0DEDD /* DetailViewController.m in Sources */,
 				CFD234FA1A5E44C700B52088 /* XMLOutlineView.m in Sources */,
+				CF0AB5912A755EDF00D61101 /* GlossaryDownloadWindowController.m in Sources */,
+				CF2DF14E2A827B0D00346BE9 /* SuggestionTableView.m in Sources */,
 				CF5FC89B1A5ABFF700538E60 /* Document.m in Sources */,
+				CFF4AE282A790BD100C50D8A /* GlossaryReverseSearchResult.m in Sources */,
 				CF5AB3C2293DCE6200C8AC7B /* SuggestionsWindowController.m in Sources */,
 				CF740AA72701C6C700F31F26 /* Glossary.m in Sources */,
 				CFE3B1761CD800AB00021D7F /* NSString+Pangu.m in Sources */,
@@ -848,6 +918,7 @@
 				CF662B391C307C7D00704CEA /* TranslateServiceWindowController.m in Sources */,
 				CF50085729DBB20F007EF23A /* BRCategorySearchField.m in Sources */,
 				CF5FC8931A5ABFF700538E60 /* AppDelegate.m in Sources */,
+				CF16E0852A7559CB002D5C48 /* GlossaryManagerWindowController.m in Sources */,
 				CFCD4B341A6D0C7200BA8826 /* DocumentWindow.m in Sources */,
 				CFC6CC642703152400F7850C /* GlossaryRow.m in Sources */,
 				CF12DB4C293E5A2D00F9C760 /* RoundedCornersView.m in Sources */,
@@ -855,6 +926,7 @@
 				CFC6CC602702E8E300F7850C /* GlossaryWindowController.m in Sources */,
 				CF50085429DBADBA007EF23A /* BRCategorySearchFieldCell.m in Sources */,
 				CFC6CC672703163700F7850C /* GlossaryFileRow.m in Sources */,
+				CF22255B2A5EA41D00F08515 /* GlossaryDatabase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -862,6 +934,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF2DF1582A83DAEF00346BE9 /* Utilities.m in Sources */,
 				CF5FC8AC1A5ABFF700538E60 /* XliffieTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -895,6 +968,26 @@
 				CF4B0C2E1BF91239007AF981 /* zh-TW */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		CF610CF92A978AC00026AAC5 /* GlossaryManagerWindowController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CF610CF82A978AC00026AAC5 /* Base */,
+				CF610CFE2A978ACA0026AAC5 /* ja */,
+				CF610D002A978ACB0026AAC5 /* zh-TW */,
+			);
+			name = GlossaryManagerWindowController.xib;
+			sourceTree = "<group>";
+		};
+		CF610CFC2A978AC50026AAC5 /* GlossaryDownloadWindowController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CF610CFB2A978AC50026AAC5 /* Base */,
+				CF610D022A978ACF0026AAC5 /* ja */,
+				CF610D042A978AD10026AAC5 /* zh-TW */,
+			);
+			name = GlossaryDownloadWindowController.xib;
 			sourceTree = "<group>";
 		};
 		CF660EF61C540E11007A0B28 /* TranslateServiceWindowController.xib */ = {
@@ -1110,7 +1203,10 @@
 			baseConfigurationReference = F46F3EFF87AC9239B0E767A0 /* Pods-XliffieTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
@@ -1122,6 +1218,7 @@
 				INFOPLIST_FILE = XliffieTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Xliffie.app/Contents/MacOS/Xliffie";
 			};
 			name = Debug;
@@ -1131,7 +1228,10 @@
 			baseConfigurationReference = 8F922AA3285E9DB3A6DBC09B /* Pods-XliffieTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
@@ -1139,6 +1239,7 @@
 				INFOPLIST_FILE = XliffieTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Xliffie.app/Contents/MacOS/Xliffie";
 			};
 			name = Release;

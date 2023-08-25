@@ -7,6 +7,8 @@
 //
 
 #import "Glossary.h"
+#import "Utilities.h"
+#import "TranslationPair.h"
 
 @interface Glossary ()
 @property (nonatomic, strong) NSDictionary<NSString*, NSDictionary<NSString *, NSArray<NSString *>*>*> *translationDict;
@@ -52,10 +54,10 @@
 
 + (NSArray<NSString *> *)glossaryFilenames {
     return @[
-        @"ar", @"ca", @"cs", @"da", @"de", @"el", @"en-au", @"en-gb", @"es-419",
-        @"es", @"fi", @"fr-ca", @"fr", @"he", @"hi", @"hr", @"hu", @"id", @"it",
-        @"ja", @"ko", @"ms", @"nl", @"no", @"pl", @"pt-br", @"pt-pt", @"ro", @"ru",
-        @"sk", @"sv", @"th", @"tr", @"uk", @"vi", @"zh-cn", @"zh-hk", @"zh-tw",
+        @"ar", @"ca", @"cs", @"da", @"de", @"el", @"en_au", @"en_gb", @"es_419",
+        @"es", @"fi", @"fr_ca", @"fr", @"he", @"hi", @"hr", @"hu", @"id", @"it",
+        @"ja", @"ko", @"ms", @"nl", @"no", @"pl", @"pt_br", @"pt_pt", @"ro", @"ru",
+        @"sk", @"sv", @"th", @"tr", @"uk", @"vi", @"zh_cn", @"zh_hk", @"zh_tw",
     ];
 }
 
@@ -67,7 +69,7 @@
             return thisLocale;
         }
         if ([thisLocale isEqualTo:@"zh"]) {
-            return @"zh-hk";
+            return @"zh_hk";
         }
     }
     return nil;
@@ -81,35 +83,55 @@
 + (NSArray<NSString*> *)fallbacksWithLocale:(NSString*)localeCode {
     NSArray *components = [localeCode.lowercaseString componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"_-"]];
     NSMutableOrderedSet *result = [NSMutableOrderedSet orderedSet];
-    [result addObject:[components componentsJoinedByString:@"-"]];
+    [result addObject:[components componentsJoinedByString:@"_"]];
     if (components.count >= 2) {
-        [result addObject:[NSString stringWithFormat:@"%@-%@", components.firstObject, components.lastObject]];
+        [result addObject:[NSString stringWithFormat:@"%@_%@", components.firstObject, components.lastObject]];
     }
     for (NSInteger i = components.count; i >= 1; i--) {
-        [result addObject:[[components subarrayWithRange:NSMakeRange(0, i)] componentsJoinedByString:@"-"]];
+        [result addObject:[[components subarrayWithRange:NSMakeRange(0, i)] componentsJoinedByString:@"_"]];
     }
     return [result array];
 }
 
-- (NSString *)translate:(NSString *)baseString isMenu:(BOOL)isMenu {
-    NSDictionary<NSString *, NSArray<NSString *>*> *transDict = self.translationDict[baseString.lowercaseString];
-    if (transDict.count == 0) {
-        return nil;
+- (NSArray<NSString *> *)translate:(NSString *)baseString {
+    id result = self.translationDict[[baseString.lowercaseString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
+    if ([result isKindOfClass:[NSString class]]) {
+        return @[[Utilities applyFormatOfString:baseString toString:result]];
     }
-    if (transDict.count == 1) {
-        return [transDict allKeys].firstObject;
-    }
-    for (NSString *tran in transDict) {
-        NSArray *positions = transDict[tran];
-        BOOL isTranBelongsToMenu = [[positions filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"self CONTAINS[cd] 'menu'"]] count] > 0;
-        if (isTranBelongsToMenu && isMenu) {
-            return tran;
+    if ([result isKindOfClass:[NSArray class]]) {
+        NSMutableArray *r = [NSMutableArray array];
+        for (NSString *thisResult in (NSArray*)result) {
+            [r addObject:[Utilities applyFormatOfString:baseString toString:thisResult]];
         }
-        if (!isTranBelongsToMenu && !isMenu) {
-            return tran;
+        return r;
+    }
+    // Handle build-in menu items with app name, like "Quit Xliffie"
+    if ([baseString hasPrefix:@"Quit "]) {
+        NSString *rest = [baseString substringFromIndex:5];
+        NSArray<NSString *> *matches = [self translate:@"Quit %@"];
+        if (matches.count) {
+            return @[[NSString stringWithFormat:matches.firstObject, rest]];
+        }
+    } else if ([baseString hasPrefix:@"About "]) {
+        NSString *rest = [baseString substringFromIndex:6];
+        NSArray<NSString *> *matches = [self translate:@"About %@"];
+        if (matches.count) {
+            return @[[NSString stringWithFormat:matches.firstObject, rest]];
+        }
+    } else if ([baseString hasPrefix:@"Hide "]) {
+        NSString *rest = [baseString substringFromIndex:5];
+        NSArray<NSString *> *matches = [self translate:@"Hide %@"];
+        if (matches.count) {
+            return @[[NSString stringWithFormat:matches.firstObject, rest]];
+        }
+    } else if ([baseString hasSuffix:@" Help"]) {
+        NSString *rest = [baseString substringToIndex:baseString.length - 5];
+        NSArray<NSString *> *matches = [self translate:@"%@ Help"];
+        if (matches.count) {
+            return @[[NSString stringWithFormat:matches.firstObject, rest]];
         }
     }
-    return [transDict allKeys].firstObject;
+    return nil;
 }
 
 @end

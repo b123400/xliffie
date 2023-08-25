@@ -15,6 +15,8 @@
 - (NSAttributedString *)stringForDisplay {
     if (self.source == SuggestionSourceGlossary) {
         return [[NSAttributedString alloc] initWithString:NSLocalizedString(@"From 📚Glossary", @"")];
+    } else if (self.source == SuggestionSourceAppleGlossary) {
+        return [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:NSLocalizedString(@"From  Apple Glossary (%ld)", @""), (long)self.appleGlossaryHitCount]];
     }
     if (self.source == SuggestionSourceFile && self.sourceFile) {
         NSString *path = self.sourceFile.original;

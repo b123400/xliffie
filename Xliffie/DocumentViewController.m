@@ -13,6 +13,8 @@
 #import "Glossary.h"
 #import "NSAttributedString+FileIcon.h"
 #import "DocumentTextFinderClient.h"
+#import "GlossaryDatabase.h"
+#import "XclocDocument.h"
 
 @interface DocumentViewController () <SuggestionsWindowControllerDelegate>
 
@@ -148,11 +150,42 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
     [self.textFinderClient reload];
 }
 
-- (void)outlineView:(NSOutlineView *)outlineView
-    willDisplayCell:(TranslationTargetCell*)cell
-     forTableColumn:(NSTableColumn *)tableColumn
-               item:(id)item {
-    if ([[tableColumn identifier] isEqualToString:@"target"]) {
+- (BOOL)outlineView:(NSOutlineView *)outlineView shouldEditTableColumn:(NSTableColumn *)tableColumn item:(id)item {
+    if ([[tableColumn identifier] isEqualToString:@"target"] && [item isKindOfClass:[TranslationPair class]]) {
+        return YES;
+    }
+    return NO;
+}
+
+- (void)outlineViewSelectionDidChange:(NSNotification *)notification {
+    NSUInteger index = [self.outlineView selectedRow];
+    id item = [self.outlineView itemAtRow:index];
+    if ([item isKindOfClass:[TranslationPair class]]) {
+        
+        if ([self.delegate respondsToSelector:@selector(viewController:didSelectedTranslation:)]) {
+            [self.delegate viewController:self didSelectedTranslation:item];
+        }
+        if ([self.delegate respondsToSelector:@selector(viewController:didSelectedFileChild:)]) {
+            [self.delegate viewController:self didSelectedFileChild:[item file]];
+        }
+    } else {
+        if ([self.delegate respondsToSelector:@selector(viewController:didSelectedTranslation:)]) {
+            [self.delegate viewController:self didSelectedTranslation:nil];
+        }
+        if ([self.delegate respondsToSelector:@selector(viewController:didSelectedFileChild:)]) {
+            [self.delegate viewController:self didSelectedFileChild:item];
+        }
+    }
+}
+
+- (NSCell *)outlineView:(NSOutlineView *)outlineView dataCellForTableColumn:(NSTableColumn *)tableColumn item:(id)item {
+    if (!item) return nil;
+    NSCell *dataCell = [tableColumn dataCell];
+    NSString *value = [self outlineView:outlineView objectValueForTableColumn:tableColumn byItem:item];
+    [dataCell setObjectValue:value];
+    [dataCell setWraps:YES];
+    if ([[tableColumn identifier] isEqualToString:@"target"] && [dataCell isKindOfClass:[TranslationTargetCell class]]) {
+        TranslationTargetCell *cell = (TranslationTargetCell *)dataCell;
         if ([item isKindOfClass:[TranslationPair class]]) {
             TranslationPair *pair = (TranslationPair*)item;
             switch (pair.state) {
@@ -204,43 +237,7 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
             cell.dotColor = nil;
         }
     }
-}
-
-- (BOOL)outlineView:(NSOutlineView *)outlineView shouldEditTableColumn:(NSTableColumn *)tableColumn item:(id)item {
-    if ([[tableColumn identifier] isEqualToString:@"target"] && [item isKindOfClass:[TranslationPair class]]) {
-        return YES;
-    }
-    return NO;
-}
-
-- (void)outlineViewSelectionDidChange:(NSNotification *)notification {
-    NSUInteger index = [self.outlineView selectedRow];
-    id item = [self.outlineView itemAtRow:index];
-    if ([item isKindOfClass:[TranslationPair class]]) {
-        
-        if ([self.delegate respondsToSelector:@selector(viewController:didSelectedTranslation:)]) {
-            [self.delegate viewController:self didSelectedTranslation:item];
-        }
-        if ([self.delegate respondsToSelector:@selector(viewController:didSelectedFileChild:)]) {
-            [self.delegate viewController:self didSelectedFileChild:[item file]];
-        }
-    } else {
-        if ([self.delegate respondsToSelector:@selector(viewController:didSelectedTranslation:)]) {
-            [self.delegate viewController:self didSelectedTranslation:nil];
-        }
-        if ([self.delegate respondsToSelector:@selector(viewController:didSelectedFileChild:)]) {
-            [self.delegate viewController:self didSelectedFileChild:item];
-        }
-    }
-}
-
-- (NSCell *)outlineView:(NSOutlineView *)outlineView dataCellForTableColumn:(NSTableColumn *)tableColumn item:(id)item {
-    if (!item) return nil;
-    NSCell *cell = [tableColumn dataCell];
-    NSString *value = [self outlineView:outlineView objectValueForTableColumn:tableColumn byItem:item];
-    [cell setObjectValue:value];
-    [cell setWraps:YES];
-    return cell;
+    return dataCell;
 }
 
 - (CGFloat)outlineView:(NSOutlineView *)outlineView heightOfRowByItem:(id)item {
@@ -322,28 +319,70 @@ doCommandBySelector:(SEL)commandSelector {
     NSRect cellRect = [self.outlineView frameOfCellAtColumn:column row:row];
     TranslationPair *pair = (TranslationPair*)[self.outlineView itemAtRow:row];
     if (![pair isKindOfClass:[TranslationPair class]]) return;
-    NSArray<Suggestion*> *suggestions = [self suggestionsForTranslationPair:pair];
-    if (!suggestions.count) return;
-    [[SuggestionsWindowController shared] setSuggestions:suggestions];
-    [SuggestionsWindowController shared].delegate = self;
-    [[SuggestionsWindowController shared] showAtRect:cellRect
-                                              ofView:self.outlineView];
-    [[[SuggestionsWindowController shared] window] makeKeyAndOrderFront:self];
+    SuggestionsWindowController *suggestionController = [SuggestionsWindowController shared];
+    NSText *currentEditor = [self.outlineView currentEditor];
+    NSProgressIndicator *loadingView = nil;
+    for (NSView *view in [currentEditor subviews]) {
+        if ([view isKindOfClass:[NSProgressIndicator class]]) {
+            loadingView = (NSProgressIndicator*)view;
+            break;
+        }
+    }
+    if (!loadingView) {
+        loadingView = [[NSProgressIndicator alloc] initWithFrame:NSMakeRect(0, 0, 20, 20)];
+        loadingView.style = NSProgressIndicatorStyleSpinning;
+        [loadingView setDisplayedWhenStopped:NO];
+        [currentEditor addSubview:loadingView];
+    }
+    typeof(self) __weak _self = self;
+    CGFloat loadingSize = 18;
+    loadingView.frame = NSMakeRect(currentEditor.frame.size.width - loadingSize, 2, loadingSize, loadingSize);
+    NSArray<Suggestion *> *suggestions = [self suggestionsForTranslationPair:pair callback:^(NSArray<Suggestion *> *allSuggestions) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [loadingView stopAnimation:_self];
+            if (![_self.view.window isKeyWindow] || [_self.view.window sheets].count || [_self.outlineView editedRow] != row) {
+                return;
+            }
+            if (suggestionController.searchingObject != pair) {
+                // It's loading for something newer, ignore this result
+                return;
+            }
+            if (!allSuggestions.count) {
+                [[SuggestionsWindowController shared] hide];
+                return;
+            }
+            [suggestionController setSuggestions:allSuggestions];
+            suggestionController.delegate = _self;
+            [suggestionController showAtRect:cellRect
+                                      ofView:_self.outlineView];
+            [[suggestionController window] makeKeyAndOrderFront:_self];
+        });
+    }];
+    [loadingView startAnimation:self];
+    suggestionController.searchingObject = pair;
+    if (suggestions.count) {
+        [suggestionController setSuggestions:suggestions];
+        suggestionController.delegate = self;
+        [suggestionController showAtRect:cellRect
+                                  ofView:self.outlineView];
+        [[suggestionController window] makeKeyAndOrderFront:self];
+    }
 }
 
-- (NSArray<Suggestion *> *)suggestionsForTranslationPair:(TranslationPair *)pair {
+- (NSArray<Suggestion *> *)suggestionsForTranslationPair:(TranslationPair *)pair callback:(void(^)(NSArray<Suggestion *> *allSuggestions))callback {
     NSMutableArray<Suggestion*> *suggestions = [NSMutableArray array];
     // Dedup suggestions by title
     NSMutableSet<NSString*> *addedSuggestions = [NSMutableSet set];
     Glossary *glossary = [Glossary sharedGlossaryWithLocale:pair.file.targetLanguage];
-    BOOL isMenu = [pair.file.original.lastPathComponent.lowercaseString containsString:@"menu"];
-    NSString *glossaryTranslation = [glossary translate:pair.source isMenu:isMenu];
-    if (glossaryTranslation && ![glossaryTranslation isEqualTo:pair.target]) {
-        Suggestion *s = [[Suggestion alloc] init];
-        s.title = glossaryTranslation;
-        s.source = SuggestionSourceGlossary;
-        [suggestions addObject:s];
-        [addedSuggestions addObject:glossaryTranslation];
+    NSArray<NSString *> *glossaryTranslations = [glossary translate:pair.source];
+    for (NSString *glossaryTranslation in glossaryTranslations) {
+        if (glossaryTranslation && ![glossaryTranslation isEqualTo:pair.target] && ![addedSuggestions containsObject:glossaryTranslation]) {
+            Suggestion *s = [[Suggestion alloc] init];
+            s.title = glossaryTranslation;
+            s.source = SuggestionSourceGlossary;
+            [suggestions addObject:s];
+            [addedSuggestions addObject:glossaryTranslation];
+        }
     }
     for (File *file in self.document.files) {
         for (TranslationPair *p in file.translations) {
@@ -361,6 +400,26 @@ doCommandBySelector:(SEL)commandSelector {
             }
         }
     }
+    GlossaryPlatform platform = [self.document isKindOfClass:[XclocDocument class]]
+        ? [(XclocDocument*)self.document glossaryPlatformWithSourcePath:pair.file.original]
+        : GlossaryPlatformAny;
+    [GlossaryDatabase searchGlossariesForTerms:@[pair.source]
+                                  withPlatform:platform
+                                    fromLocale:pair.file.sourceLanguage
+                                      toLocale:pair.file.targetLanguage
+                                      callback:^(GlossarySearchResults * _Nonnull results) {
+        NSArray *thisResults = [results targetsWithSource:pair.source];
+        for (GlossarySearchResult *r in thisResults) {
+            if ([r.target isEqual:pair.source] || [r.target isEqual:pair.target] || [addedSuggestions containsObject:r.target]) continue;
+            Suggestion *s = [[Suggestion alloc] init];
+            s.title = r.target;
+            s.source = SuggestionSourceAppleGlossary;
+            s.appleGlossaryHitCount = r.bundlePaths.count;
+            [addedSuggestions addObject:r.target];
+            [suggestions addObject:s];
+        }
+        callback(suggestions);
+    }];
     return suggestions;
 }
 

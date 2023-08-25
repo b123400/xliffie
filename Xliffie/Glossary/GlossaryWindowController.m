@@ -36,23 +36,24 @@
 - (void)reloadFileRows {
     NSMutableArray<GlossaryFileRow*> *fileRows = [NSMutableArray array];
     for (File *file in self.xliffDocument.files) {
-        BOOL isMenu = [file.original.lastPathComponent.lowercaseString containsString:@"menu"];
         NSMutableArray *rows = [NSMutableArray array];
         for (TranslationPair *pair in file.translations) {
-            NSString *translated = [self.glossary translate:pair.source isMenu:isMenu];
-            if (!translated) {
+            NSArray<NSString *>*translatedStrings = [self.glossary translate:pair.source];
+            if (!translatedStrings.count) {
                 // Not available in glossary
                 continue;
             }
-            if ([pair.target isEqualTo:translated]) {
-                // Already same as glossary
-                continue;
+            for (NSString *translated in translatedStrings) {
+                if ([pair.target isEqualTo:translated]) {
+                    // Already same as glossary
+                    continue;
+                }
+                GlossaryRow *row = [[GlossaryRow alloc] init];
+                row.glossary = translated;
+                row.translationPair = pair;
+                row.shouldApply = YES;
+                [rows addObject:row];
             }
-            GlossaryRow *row = [[GlossaryRow alloc] init];
-            row.glossary = translated;
-            row.translationPair = pair;
-            row.shouldApply = YES;
-            [rows addObject:row];
         }
         if (rows.count) {
             GlossaryFileRow *fileRow = [[GlossaryFileRow alloc] init];

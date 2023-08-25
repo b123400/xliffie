@@ -1,0 +1,24 @@
+/* Class = "NSTextFieldCell"; title = "Download Glossary"; ObjectID = "bK5-Ga-XSo"; */
+"bK5-Ga-XSo.title" = "下載詞庫";
+
+/* Class = "NSTextFieldCell"; title = "<DNT - glossary description>"; ObjectID = "eq1-O9-CGa"; */
+"eq1-O9-CGa.title" = "<DNT - glossary description>";
+
+/* Class = "NSWindow"; title = "Window"; ObjectID = "F0z-JX-Cv5"; */
+"F0z-JX-Cv5.title" = "視窗";
+
+/* Class = "NSButtonCell"; title = "Cancel"; ObjectID = "Gag-7I-ejr"; */
+"Gag-7I-ejr.title" = "取消";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "JTU-w7-2ef"; */
+"JTU-w7-2ef.title" = "Text Cell";
+
+/* Class = "NSButtonCell"; title = "Download"; ObjectID = "KZQ-4j-S4P"; */
+"KZQ-4j-S4P.title" = "下載";
+
+/* Class = "NSSegmentedCell"; qRl-i4-Uje.ibShadowedLabels[0] = "iOS"; ObjectID = "qRl-i4-Uje"; */
+"qRl-i4-Uje.ibShadowedLabels[0]" = "iOS";
+
+/* Class = "NSSegmentedCell"; qRl-i4-Uje.ibShadowedLabels[1] = "macOS"; ObjectID = "qRl-i4-Uje"; */
+"qRl-i4-Uje.ibShadowedLabels[1]" = "macOS";
+
