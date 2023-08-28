@@ -1150,7 +1150,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 170;
+				CURRENT_PROJECT_VERSION = 181;
 				DEVELOPMENT_TEAM = CC63FD9H8S;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1158,9 +1158,11 @@
 					"$(PROJECT_DIR)/Xliffie",
 				);
 				INFOPLIST_FILE = Xliffie/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Xliffie;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 1.9.1;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Xliffie/Xliffie-Bridging-Header.h";
@@ -1179,7 +1181,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 170;
+				CURRENT_PROJECT_VERSION = 181;
 				DEVELOPMENT_TEAM = CC63FD9H8S;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1187,9 +1189,11 @@
 					"$(PROJECT_DIR)/Xliffie",
 				);
 				INFOPLIST_FILE = Xliffie/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Xliffie;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 1.9.1;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
