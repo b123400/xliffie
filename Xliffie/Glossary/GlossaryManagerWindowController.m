@@ -51,7 +51,7 @@
         NSForegroundColorAttributeName: [NSColor secondaryLabelColor],
         NSFontAttributeName: self.glossaryDescriptionLabel.font,
     }];
-    [str addAttributes:@{NSLinkAttributeName: [NSURL URLWithString:@"https://b123400.net/xliffie/glosseries"]} range:[baseStr rangeOfString:NSLocalizedString(@"click here", @"link replacement")]];
+    [str addAttributes:@{NSLinkAttributeName: [NSURL URLWithString:@"https://b123400.net/xliffie/glossary"]} range:[baseStr rangeOfString:NSLocalizedString(@"click here", @"link replacement")]];
     
     self.glossaryDescriptionLabel.attributedStringValue = str;
 }
