@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22154"/>
         <capability name="Search Toolbar Item" minToolsVersion="12.0" minSystemVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -830,7 +830,7 @@
                                 </toolbarItem>
                                 <searchToolbarItem implicitItemIdentifier="920B8A6B-DE65-4B42-8055-76D40AE30DA8" label="Filter" paletteLabel="Search" visibilityPriority="1001" id="ngi-bY-i0Q">
                                     <nil key="toolTip"/>
-                                    <searchField key="view" verticalHuggingPriority="750" textCompletion="NO" id="3ri-Q7-ugC" customClass="BRCategorySearchField">
+                                    <searchField key="view" focusRingType="none" verticalHuggingPriority="750" textCompletion="NO" id="3ri-Q7-ugC" customClass="BRCategorySearchField">
                                         <rect key="frame" x="0.0" y="0.0" width="100" height="21"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Filter" usesSingleLineMode="YES" bezelStyle="round" id="iTq-RF-k3S" customClass="BRCategorySearchFieldCell">
@@ -843,10 +843,8 @@
                                         </connections>
                                     </searchField>
                                 </searchToolbarItem>
-                                <toolbarItem implicitItemIdentifier="407B7541-ABC2-40B3-9254-C2B3F61B4799" explicitItemIdentifier="glossaries" label="Glossaries" paletteLabel="Glossaries" image="character.book.closed" title="Glossaries" id="5KP-hs-koi">
+                                <toolbarItem implicitItemIdentifier="407B7541-ABC2-40B3-9254-C2B3F61B4799" explicitItemIdentifier="glossaries" label="Glossaries" paletteLabel="Glossaries" image="character.book.closed" title="Glossaries" sizingBehavior="auto" id="5KP-hs-koi">
                                     <nil key="toolTip"/>
-                                    <size key="minSize" width="32" height="32"/>
-                                    <size key="maxSize" width="32" height="32"/>
                                     <button key="view" verticalHuggingPriority="750" id="hgK-pp-Lfg">
                                         <rect key="frame" x="15" y="14" width="32" height="32"/>
                                         <autoresizingMask key="autoresizingMask"/>
@@ -902,10 +900,6 @@
                             </customView>
                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="b6z-ZM-sgM">
                                 <rect key="frame" x="114" y="115" width="223" height="26"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="216" id="2OA-5a-7ib"/>
-                                    <constraint firstAttribute="height" constant="21" id="wbS-9M-bva"/>
-                                </constraints>
                                 <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" pullsDown="YES" selectedItem="DwU-b4-XiA" id="QRf-xf-z1T">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
@@ -917,13 +911,13 @@
                                         </items>
                                     </menu>
                                 </popUpButtonCell>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="216" id="2OA-5a-7ib"/>
+                                    <constraint firstAttribute="height" constant="21" id="wbS-9M-bva"/>
+                                </constraints>
                             </popUpButton>
                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lVZ-ev-Oi3">
                                 <rect key="frame" x="114" y="56" width="223" height="26"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="216" id="H6E-vn-usy"/>
-                                    <constraint firstAttribute="height" constant="21" id="XfO-6B-vOw"/>
-                                </constraints>
                                 <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" pullsDown="YES" id="GAj-dC-cuM">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
@@ -935,8 +929,12 @@
                                         </items>
                                     </menu>
                                 </popUpButtonCell>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="216" id="H6E-vn-usy"/>
+                                    <constraint firstAttribute="height" constant="21" id="XfO-6B-vOw"/>
+                                </constraints>
                             </popUpButton>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="P7f-Ad-tvF">
+                            <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="P7f-Ad-tvF">
                                 <rect key="frame" x="93" y="251" width="264" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="260" id="rFV-qk-geO"/>
@@ -950,10 +948,6 @@
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZHO-vf-Zc1">
                                 <rect key="frame" x="141" y="14" width="169" height="33"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="155" id="GoI-C0-Obs"/>
-                                    <constraint firstAttribute="height" constant="21" id="jut-0Y-fLX"/>
-                                </constraints>
                                 <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="FKh-MC-cK3">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -961,11 +955,15 @@
 DQ
 </string>
                                 </buttonCell>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="155" id="GoI-C0-Obs"/>
+                                    <constraint firstAttribute="height" constant="21" id="jut-0Y-fLX"/>
+                                </constraints>
                                 <connections>
                                     <action selector="okClicked:" target="mnY-ir-nI3" id="5qA-3h-Wvr"/>
                                 </connections>
                             </button>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="qB4-Zb-HdZ">
+                            <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="qB4-Zb-HdZ">
                                 <rect key="frame" x="93" y="166" width="264" height="69"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="260" id="Ird-Qm-hzI"/>
@@ -977,7 +975,7 @@ DQ
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Xyr-Z8-8Jk">
+                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Xyr-Z8-8Jk">
                                 <rect key="frame" x="203" y="88" width="45" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="DOD-aC-wFl"/>
