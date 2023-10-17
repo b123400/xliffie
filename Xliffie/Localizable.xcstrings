@@ -1,0 +1,977 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "%d record(s) are going to be translated using %@." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%#@record@ going to be translated using %@."
+          },
+          "substitutions" : {
+            "record" : {
+              "formatSpecifier" : "d",
+              "variations" : {
+                "plural" : {
+                  "one" : {
+                    "stringUnit" : {
+                      "state" : "translated",
+                      "value" : "1 record is"
+                    }
+                  },
+                  "other" : {
+                    "stringUnit" : {
+                      "state" : "translated",
+                      "value" : "%arg records are"
+                    }
+                  },
+                  "zero" : {
+                    "stringUnit" : {
+                      "state" : "translated",
+                      "value" : "No record is"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "これから %1$d つの文字列を %2$@ で翻訳します。"
+          },
+          "substitutions" : {
+            "record" : {
+              "formatSpecifier" : "d",
+              "variations" : {
+                "plural" : {
+                  "other" : {
+                    "stringUnit" : {
+                      "state" : "translated",
+                      "value" : "%arg records are"
+                    }
+                  },
+                  "zero" : {
+                    "stringUnit" : {
+                      "state" : "translated",
+                      "value" : "No record is"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "將要用 %2$@ 來翻譯 %1$d 串字。"
+          },
+          "substitutions" : {
+            "record" : {
+              "formatSpecifier" : "d",
+              "variations" : {
+                "plural" : {
+                  "few" : {
+                    "stringUnit" : {
+                      "state" : "translated",
+                      "value" : "%arg records are"
+                    }
+                  },
+                  "many" : {
+                    "stringUnit" : {
+                      "state" : "translated",
+                      "value" : "%arg records are"
+                    }
+                  },
+                  "one" : {
+                    "stringUnit" : {
+                      "state" : "translated",
+                      "value" : "1 record is"
+                    }
+                  },
+                  "other" : {
+                    "stringUnit" : {
+                      "state" : "translated",
+                      "value" : "%arg records are"
+                    }
+                  },
+                  "two" : {
+                    "stringUnit" : {
+                      "state" : "translated",
+                      "value" : "%arg records are"
+                    }
+                  },
+                  "zero" : {
+                    "stringUnit" : {
+                      "state" : "translated",
+                      "value" : "No record is"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "%ld translations are available from the glossary." : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "device" : {
+              "iphone" : {
+                "variations" : {
+                  "plural" : {
+                    "one" : {
+                      "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "%ld translation is available from the glossary.(iOS)"
+                      }
+                    },
+                    "other" : {
+                      "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "%ld translations are available from the glossary.(iOS)"
+                      }
+                    }
+                  }
+                }
+              },
+              "mac" : {
+                "variations" : {
+                  "plural" : {
+                    "one" : {
+                      "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "%ld translation is available from the glossary.(mac)"
+                      }
+                    },
+                    "other" : {
+                      "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "%ld translations are available from the glossary.(mac)"
+                      }
+                    }
+                  }
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "needs_review",
+                  "value" : "%ld translations are available from the glossary."
+                }
+              }
+            }
+          }
+        },
+        "ja" : {
+          "variations" : {
+            "device" : {
+              "iphone" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%ld つの文字を用語集で翻訳できます。xx"
+                }
+              },
+              "mac" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%ld つの文字を用語集で翻訳できます。xy"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%ld つの文字を用語集で翻訳できます。yy  "
+                }
+              }
+            }
+          }
+        },
+        "zh-TW" : {
+          "variations" : {
+            "device" : {
+              "iphone" : {
+                "variations" : {
+                  "plural" : {
+                    "one" : {
+                      "stringUnit" : {
+                        "state" : "needs_review",
+                        "value" : "內置字典可以自動翻譯 %ld 段字"
+                      }
+                    },
+                    "other" : {
+                      "stringUnit" : {
+                        "state" : "needs_review",
+                        "value" : "內置字典可以自動翻譯 %ld 段字"
+                      }
+                    }
+                  }
+                }
+              },
+              "mac" : {
+                "variations" : {
+                  "plural" : {
+                    "one" : {
+                      "stringUnit" : {
+                        "state" : "needs_review",
+                        "value" : "內置字典可以自動翻譯 %ld 段字"
+                      }
+                    },
+                    "other" : {
+                      "stringUnit" : {
+                        "state" : "needs_review",
+                        "value" : "內置字典可以自動翻譯 %ld 段字"
+                      }
+                    }
+                  }
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "needs_review",
+                  "value" : "內置字典可以自動翻譯 %ld 段字"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "%lu record(s) are going to be translated using %@." : {
+      "comment" : "Translation window hint",
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lu record is going to be translated using %@."
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lu records are going to be translated using %@."
+                }
+              }
+            }
+          }
+        },
+        "ja" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "これから %1$lu つの文字列を %2$@ で翻訳します。本当です。"
+                }
+              }
+            }
+          }
+        },
+        "zh-TW" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "needs_review",
+                  "value" : "將會用 %2$@ 翻譯 %1$lu 段文字"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "needs_review",
+                  "value" : "將會用 %2$@ 翻譯 %1$lu 段文字"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "⚠️Warnings" : {
+      "comment" : "Detail view",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠️警告"
+          }
+        },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠️警告"
+          }
+        }
+      }
+    },
+    "Add spaces to all translations?" : {
+      "comment" : "confirm",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "英語と日本語と数字の間に空白を追加しますか？"
+          }
+        },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "要在中文和英數字之間加入空白嗎？"
+          }
+        }
+      }
+    },
+    "All" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "全部"
+          }
+        },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "全部"
+          }
+        }
+      }
+    },
+    "Apart from the built-in glossaries, you can download larger localization databases with apple-endorsed translations. For more info please click here." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アプリに内蔵されてる用語集とは他に、アップリ公式のアプリから抽出された用語集をダウンロードできます、詳しくはこちら。"
+          }
+        },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "除了內置詞庫以外，你還可以下載額外的，從蘋果官方抽出來的詞庫，詳情請按這裡。"
+          }
+        }
+      }
+    },
+    "Apply it anyway" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "大丈夫です"
+          }
+        },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "不管啦欸"
+          }
+        }
+      }
+    },
+    "Are you sure?" : {
+      "comment" : "Translate alert message",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "マ？"
+          }
+        },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "肯定？"
+          }
+        }
+      }
+    },
+    "Cancel" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "キャンセル"
+          }
+        },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "取消"
+          }
+        }
+      }
+    },
+    "Cannot translate from %@" : {
+      "comment" : "Translation source not found",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ から翻訳することはできないです。"
+          }
+        },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "無法從 %@ 翻譯"
+          }
+        }
+      }
+    },
+    "Cannot translate to %@" : {
+      "comment" : "Translation target not found",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ に翻訳するのできないです。"
+          }
+        },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "無法翻譯成 %@"
+          }
+        }
+      }
+    },
+    "click here" : {
+      "comment" : "link replacement",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "こちら"
+          }
+        },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "按這裡"
+          }
+        }
+      }
+    },
+    "Database corrupted" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "用語集が壊れてます"
+          }
+        },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "詞庫發生錯誤"
+          }
+        }
+      }
+    },
+    "Downloading..." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ダウンロード中…"
+          }
+        },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "下載中⋯"
+          }
+        }
+      }
+    },
+    "Errors during translation: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "翻訳時にエラーが起きました %@"
+          }
+        },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "翻譯是發生錯誤：%@"
+          }
+        }
+      }
+    },
+    "Filter" : {
+      "comment" : "Search menu title",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "フィルター"
+          }
+        },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "篩選"
+          }
+        }
+      }
+    },
+    "From %@" : {
+      "comment" : "Suggestion popup, %@ = filename",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ から"
+          }
+        },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "來自 %@"
+          }
+        }
+      }
+    },
+    "From 📚Glossary" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "📚用語集から"
+          }
+        },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "來自📚內置詞庫"
+          }
+        }
+      }
+    },
+    "From  Apple Glossary (%ld)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " アップルの用語集から (%ld)"
+          }
+        },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "來自  蘋果詞庫 (%ld)"
+          }
+        }
+      }
+    },
+    "Go ahead" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "うるせえ！"
+          }
+        },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "不管啦照做啦"
+          }
+        }
+      }
+    },
+    "here" : {
+      "comment" : "link replacement",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "こちら"
+          }
+        },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "按這裡"
+          }
+        }
+      }
+    },
+    "Mark as not translated" : {
+      "comment" : "Menu item",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "未翻訳にする"
+          }
+        },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "當成未翻譯"
+          }
+        }
+      }
+    },
+    "Mark as translated" : {
+      "comment" : "Menu item",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "翻訳済みにする"
+          }
+        },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "當成已經翻譯"
+          }
+        }
+      }
+    },
+    "Maybe you've made a mistake?" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "もしかしたらミスった？"
+          }
+        },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "這裏是不是有點不小心...?"
+          }
+        }
+      }
+    },
+    "No translation available" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "用語集で翻訳できるものがないです"
+          }
+        },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "沒有內置字典能翻譯的字串"
+          }
+        }
+      }
+    },
+    "No translation service support this language" : {
+      "comment" : "Translation window hint",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "この言語を翻訳できるサービスがないです。"
+          }
+        },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "沒有網站可以幫你翻譯這個語言耶"
+          }
+        }
+      }
+    },
+    "Not Translated" : {
+      "comment" : "Search menu title\nProgress report",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "未翻訳"
+          }
+        },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "未翻譯"
+          }
+        }
+      }
+    },
+    "Nothing matches the above criteria. Nothing will be translated." : {
+      "comment" : "Translation window hint",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "以上の条件に満たす文字列がないため、なにも翻訳しないです。"
+          }
+        },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "沒有字串符合以上條件喔"
+          }
+        }
+      }
+    },
+    "OK" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "好"
+          }
+        }
+      }
+    },
+    "Other" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "その他"
+          }
+        },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "其他"
+          }
+        }
+      }
+    },
+    "Recent Searches" : {
+      "comment" : "menu item title",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "検索履歴"
+          }
+        },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "最近的檢索"
+          }
+        }
+      }
+    },
+    "Recommended Locales" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "おすすめの用語集"
+          }
+        },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "推薦的詞庫"
+          }
+        }
+      }
+    },
+    "Same as source" : {
+      "comment" : "Search menu title",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "原文と同じ"
+          }
+        },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "與原文一樣"
+          }
+        }
+      }
+    },
+    "Search Menu" : {
+      "comment" : "Search menu title",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "検索メニュー"
+          }
+        },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "搜尋選單"
+          }
+        }
+      }
+    },
+    "The source contains %@ \"%%%@\", but your input contains %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "原文に \"%%%2$@\" が %1$@つあるけど、インプットには %3$@つがあります"
+          }
+        },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "原文裡有 %1$@ 個 \"%%%2$@\"，但是你的輸入裏面有 %3$@個耶"
+          }
+        }
+      }
+    },
+    "The source contains at least one \"%%%@\", but your input doesn't" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "原文に \"%%%@\" があるけど、インプットにはないです"
+          }
+        },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "原文裡至少有一個 \"%%%@\"，但是你的輸入裡沒有耶"
+          }
+        }
+      }
+    },
+    "The source doesn't contain \"%%%@\", but your input does" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ソースに \"%%%@\" がないけど、インプットにあります"
+          }
+        },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "原文裡沒有 \"%%%@\"，但是你的輸入裏有耶"
+          }
+        }
+      }
+    },
+    "There are %lu records with formatting warnings, better fix them before applying." : {
+      "comment" : "Translate alert message",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "問題がある文字列は %lu 個もありますけど、修正した方がいいですよ。"
+          }
+        },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "有 %lu 個字串都有格式警告，適用之前是不是先修正比較好...？"
+          }
+        }
+      }
+    },
+    "These databases are generated with the same source of applelocalization.com, you can read more about the that here" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "これらのデータベースはアップルの公式アプリから抽出されてます、 applelocalization.com と同じソースを使ってます、詳しくはこちら。"
+          }
+        },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "這些詞庫來自和 applelocalization.com 一樣的來源，詳情請按這裡。"
+          }
+        }
+      }
+    },
+    "Total" : {
+      "comment" : "Progress report",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "全部"
+          }
+        },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "總計"
+          }
+        }
+      }
+    },
+    "Translated" : {
+      "comment" : "Search menu title\nProgress report",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "翻訳済み"
+          }
+        },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已翻譯"
+          }
+        }
+      }
+    },
+    "Translated with warnings" : {
+      "comment" : "Search menu title\nProgress report",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "警告ある翻訳"
+          }
+        },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "翻譯了但有錯誤"
+          }
+        }
+      }
+    },
+    "You can undo by pressing command+z" : {
+      "comment" : "confirm",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "コマンド + z で復元できます。"
+          }
+        },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "你可以按 command + z 來復原"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
