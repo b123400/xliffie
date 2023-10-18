@@ -9,6 +9,9 @@
 #import "TranslationPair.h"
 #import <AppKit/AppKit.h>
 #import "Glossary.h"
+#import "BRTextAttachmentCell.h"
+
+#define FORMAT_SPECIFIER_REGEX @"%(?:([0-9])\\$)?(?:[0-9]?.[0-9])?((?:h|hh|l|ll|q|L|z|t|j)?([@dDuUxXoOfeEgGcCsSpaAF]|#@[a-zA-Z0-9]+@))"
 
 @interface TranslationPair ()
 
@@ -101,6 +104,44 @@
         }
     }
     [self unmark];
+}
+
+- (void)setAttributedTarget:(NSAttributedString *)attrStr {
+    self.target = [BRTextAttachmentCell stringForAttributedString:attrStr];
+}
+
+- (NSAttributedString *)targetWithFormatSpecifierReplaced {
+    return [TranslationPair stringWithFormatSpecifiersReplaced:self.target];
+}
+
+- (NSAttributedString *)sourceForDisplayWithFormatSpecifierReplaced {
+    return [TranslationPair stringWithFormatSpecifiersReplaced:self.sourceForDisplay];
+}
+
++ (NSAttributedString *)stringWithFormatSpecifiersReplaced:(NSString *)input {
+    // tokens like %d %@ are highlighted by NSTextAttachment
+    NSString *pattern = FORMAT_SPECIFIER_REGEX;
+    NSError *error = nil;
+    
+    NSMutableAttributedString *m = [[NSMutableAttributedString alloc] initWithString:input];
+    NSMutableArray<NSValue*> *matches = [NSMutableArray array];
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern options:0 error:&error];
+    [regex enumerateMatchesInString:input
+                            options:0
+                              range:NSMakeRange(0, input.length)
+                         usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
+        NSRange range = [result rangeAtIndex:0];
+        [matches addObject:[NSValue valueWithRange:range]];
+    }];
+    for (NSInteger i = matches.count - 1; i >= 0; i--) {
+        NSValue *match = matches[i];
+        NSRange range = [match rangeValue];
+        NSTextAttachment *attachment = [[NSTextAttachment alloc] init];
+        BRTextAttachmentCell *cell = [[BRTextAttachmentCell alloc] initTextCell:[input substringWithRange:range]];
+        attachment.attachmentCell = cell;
+        [m replaceCharactersInRange:range withAttributedString:[NSAttributedString attributedStringWithAttachment:attachment]];
+    }
+    return m;
 }
 
 - (NSString *)targetState {

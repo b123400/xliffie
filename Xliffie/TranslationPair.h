@@ -44,4 +44,9 @@ typedef enum : NSUInteger {
 - (void)markAsNotTranslated;
 - (void)unmark;
 
+- (void)setAttributedTarget:(NSAttributedString *)attrStr;
+- (NSAttributedString *)sourceForDisplayWithFormatSpecifierReplaced;
+- (NSAttributedString *)targetWithFormatSpecifierReplaced;
++ (NSAttributedString *)stringWithFormatSpecifiersReplaced:(NSString *)input;
+
 @end
