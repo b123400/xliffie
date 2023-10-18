@@ -7,6 +7,7 @@
 //
 
 #import "TranslationTargetCell.h"
+#import "NSTextView+CopyAttachment.h"
 
 @implementation TranslationTargetCell
 
