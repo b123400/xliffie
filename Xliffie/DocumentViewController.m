@@ -117,9 +117,9 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
            byItem:(id)item {
     if ([item isKindOfClass:[TranslationPair class]]) {
         if ([[tableColumn identifier] isEqualToString:@"source"]) {
-            return [(TranslationPair*)item sourceForDisplay];
+            return [(TranslationPair*)item sourceForDisplayWithFormatSpecifierReplaced];
         } else if ([[tableColumn identifier] isEqualToString:@"target"]) {
-            return [(TranslationPair*)item target];
+            return [(TranslationPair*)item targetWithFormatSpecifierReplaced];
         }
     } else if ([item isKindOfClass:[File class]]) {
         if ([[tableColumn identifier] isEqualToString:@"source"]) {
@@ -138,8 +138,8 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
     if ([item isKindOfClass:[TranslationPair class]]) {
         if ([[tableColumn identifier] isEqualToString:@"source"]) {
             [(TranslationPair*)item setSource:object];
-        } else if ([[tableColumn identifier] isEqualToString:@"target"]) {
-            [(TranslationPair*)item setTarget:object];
+        } else if ([[tableColumn identifier] isEqualToString:@"target"] && [object isKindOfClass:[NSAttributedString class]]) {
+            [(TranslationPair*)item setAttributedTarget:object];
         } else if ([[tableColumn identifier] isEqualToString:@"note"]) {
             [(TranslationPair*)item setNote:object];
         }
