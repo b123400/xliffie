@@ -23,6 +23,7 @@
 		CF1CE50629CB4EBD00BBFAAB /* ProgressWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1CE50429CB4EBD00BBFAAB /* ProgressWindowController.m */; };
 		CF22255B2A5EA41D00F08515 /* GlossaryDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = CF22255A2A5EA41D00F08515 /* GlossaryDatabase.m */; };
 		CF22255D2A5EF54D00F08515 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CF22255C2A5EF53E00F08515 /* libsqlite3.tbd */; };
+		CF2498492ADF6F5300285DB2 /* NSTextView+CopyAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2498482ADF6F5300285DB2 /* NSTextView+CopyAttachment.m */; };
 		CF2DF14E2A827B0D00346BE9 /* SuggestionTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2DF14D2A827B0D00346BE9 /* SuggestionTableView.m */; };
 		CF2DF1572A83DAAA00346BE9 /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2DF1562A83DAAA00346BE9 /* Utilities.m */; };
 		CF2DF1582A83DAEF00346BE9 /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2DF1562A83DAAA00346BE9 /* Utilities.m */; };
@@ -160,6 +161,8 @@
 		CF2225592A5EA41D00F08515 /* GlossaryDatabase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlossaryDatabase.h; sourceTree = "<group>"; };
 		CF22255A2A5EA41D00F08515 /* GlossaryDatabase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GlossaryDatabase.m; sourceTree = "<group>"; };
 		CF22255C2A5EF53E00F08515 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		CF2498472ADF6F5300285DB2 /* NSTextView+CopyAttachment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSTextView+CopyAttachment.h"; sourceTree = "<group>"; };
+		CF2498482ADF6F5300285DB2 /* NSTextView+CopyAttachment.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSTextView+CopyAttachment.m"; sourceTree = "<group>"; };
 		CF2DF14C2A827B0D00346BE9 /* SuggestionTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuggestionTableView.h; path = Suggestions/SuggestionTableView.h; sourceTree = "<group>"; };
 		CF2DF14D2A827B0D00346BE9 /* SuggestionTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SuggestionTableView.m; path = Suggestions/SuggestionTableView.m; sourceTree = "<group>"; };
 		CF2DF1552A83DAAA00346BE9 /* Utilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
@@ -604,6 +607,8 @@
 				CF50085329DBADBA007EF23A /* BRCategorySearchFieldCell.m */,
 				CF02E0562ADE376D00F06091 /* BRTextAttachmentCell.h */,
 				CF02E0572ADE376D00F06091 /* BRTextAttachmentCell.m */,
+				CF2498472ADF6F5300285DB2 /* NSTextView+CopyAttachment.h */,
+				CF2498482ADF6F5300285DB2 /* NSTextView+CopyAttachment.m */,
 			);
 			path = "UI Elements";
 			sourceTree = "<group>";
@@ -885,6 +890,7 @@
 				CF5682EB1A6AFB9800E0DEDD /* DocumentWindowController.m in Sources */,
 				CF011B4B1C40FCBA00948323 /* TranslationUtility.m in Sources */,
 				CF94FCA51A5C365400EE8BD5 /* File.m in Sources */,
+				CF2498492ADF6F5300285DB2 /* NSTextView+CopyAttachment.m in Sources */,
 				CF2DF1572A83DAAA00346BE9 /* Utilities.m in Sources */,
 				CF1CE50629CB4EBD00BBFAAB /* ProgressWindowController.m in Sources */,
 				CF1BEBE529D5838F0000BD59 /* BaseCustomCell.m in Sources */,
