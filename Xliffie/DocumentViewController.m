@@ -263,9 +263,9 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
         return [cell cellSizeForBounds:CGRectMake(0, 0, firstColumnWidth, CGFLOAT_MAX)].height;
     }
     
-    [cell setObjectValue:[(TranslationPair*)item source]];
+    [cell setObjectValue:[(TranslationPair*)item sourceForDisplayWithFormatSpecifierReplaced]];
     CGFloat sourceHeight = [cell cellSizeForBounds:CGRectMake(0, 0, firstColumnWidth, CGFLOAT_MAX)].height + 5;
-    [cell setObjectValue:[item target]];
+    [cell setObjectValue:[item targetWithFormatSpecifierReplaced]];
     CGFloat targetHeight = [cell cellSizeForBounds:CGRectMake(0, 0, [secondColumn width], CGFLOAT_MAX)].height + 5;
     return MAX(sourceHeight, targetHeight);
 }
