@@ -79,9 +79,12 @@
 
 - (void)documentDidUndoOrRedo:(NSNotification*)notification {
     NSUndoManager *manager = [notification object];
-    if (manager == self.documentForDisplay.undoManager) {
-        [self.outlineView reloadData];
-    }
+    __weak typeof(self) _self = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (manager == _self.documentForDisplay.undoManager) {
+            [_self.outlineView reloadData];
+        }
+    });
 }
 
 #pragma mark OutlineView

@@ -86,6 +86,9 @@
                     default:
                         [super textDidEndEditing:notification];
                         [self selectRowIndexes:[NSIndexSet indexSetWithIndex:self.editedRow] byExtendingSelection:NO];
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [self.window makeFirstResponder:self];
+                        });
                         return;
                 }
                 
@@ -117,6 +120,7 @@
     
     [[textView textStorage] setAttributedString:replaced];
     [textView setSelectedRange:NSMakeRange(replaced.length - charCountAfterCursor, 0)];
+    [super textDidChange:notification];
 }
 
 @end
