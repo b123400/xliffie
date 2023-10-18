@@ -11,7 +11,7 @@
 #import "Glossary.h"
 #import "BRTextAttachmentCell.h"
 
-#define FORMAT_SPECIFIER_REGEX @"%(?:([0-9])\\$)?(?:[0-9]?.[0-9])?((?:h|hh|l|ll|q|L|z|t|j)?([@dDuUxXoOfeEgGcCsSpaAF]|#@[a-zA-Z0-9]+@))"
+#define FORMAT_SPECIFIER_REGEX @"%(?:([0-9])\\$)?(?:[0-9]?.[0-9])?((?:h|hh|l|ll|q|L|z|t|j)?([@dDuUxXoOfeEgGcCsSpaAF]|#@[a-zA-Z0-9_-]+@))"
 
 @interface TranslationPair ()
 
@@ -111,7 +111,7 @@
 }
 
 - (NSAttributedString *)targetWithFormatSpecifierReplaced {
-    return [TranslationPair stringWithFormatSpecifiersReplaced:self.target];
+    return [TranslationPair stringWithFormatSpecifiersReplaced:self.target ?: @""];
 }
 
 - (NSAttributedString *)sourceForDisplayWithFormatSpecifierReplaced {
