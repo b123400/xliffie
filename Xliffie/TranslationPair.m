@@ -42,6 +42,32 @@
     return tp;
 }
 
+- (NSString *)transUnitId {
+    return [[self.xmlElement attributeForName:@"id"] stringValue];
+}
+
+- (NSString *)transUnitIdWithoutModifiers {
+    NSString *transUnitId = [self transUnitId];
+    NSArray *parts = [transUnitId componentsSeparatedByString:@"|==|"];
+    return [parts firstObject];
+}
+
+- (NSDictionary *)transUnitModifiers {
+    NSString *transUnitId = [self transUnitId];
+    NSArray *parts = [transUnitId componentsSeparatedByString:@"|==|"];
+    NSMutableDictionary *result = [NSMutableDictionary dictionary];
+    if (parts.count > 1) {
+        NSString *modifierString = [parts objectAtIndex:1];
+        NSArray<NSString*> *modifierParts = [modifierString componentsSeparatedByString:@"."];
+        for (NSInteger i = 0; i < modifierParts.count; i += 2) {
+            NSString *key = modifierParts[i];
+            NSString *value = modifierParts[i+1];
+            [result setObject:value forKey:key];
+        }
+    }
+    return result;
+}
+
 - (NSString*)sourceForDisplay {
     if (self.alternativePair && self.alternativePair.isTranslated) {
         return self.alternativePair.target ?: @"";

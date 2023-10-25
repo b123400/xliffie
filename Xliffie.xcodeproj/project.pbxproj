@@ -94,6 +94,7 @@
 		CF9A36ED29CD8F3C00FB8763 /* ProgressWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF9A36EF29CD8F3C00FB8763 /* ProgressWindowController.xib */; };
 		CF9A370029CDE6BE00FB8763 /* DocumentTextFinderClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9A36FF29CDE6BE00FB8763 /* DocumentTextFinderClient.m */; };
 		CF9A3D5529DEB61D00807F3D /* NSImage+SystemImage.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9A3D5429DEB61D00807F3D /* NSImage+SystemImage.m */; };
+		CF9FDB8E2AE8D73B00D76DEA /* TranslationPairGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9FDB8D2AE8D73B00D76DEA /* TranslationPairGroup.m */; };
 		CFA091E029CB18F800F33979 /* BRProgressButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA091DF29CB18F800F33979 /* BRProgressButton.m */; };
 		CFC6CC602702E8E300F7850C /* GlossaryWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC6CC5E2702E8E300F7850C /* GlossaryWindowController.m */; };
 		CFC6CC642703152400F7850C /* GlossaryRow.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC6CC632703152400F7850C /* GlossaryRow.m */; };
@@ -109,6 +110,7 @@
 		CFF4AE2E2A79577A00C50D8A /* GlossarySearchResults.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF4AE2D2A79577A00C50D8A /* GlossarySearchResults.m */; };
 		CFF4AE312A7959BA00C50D8A /* GlossarySearchResult.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF4AE302A7959BA00C50D8A /* GlossarySearchResult.m */; };
 		CFF70D80221E7BF2004C4C2D /* XclocDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF70D7F221E7BF2004C4C2D /* XclocDocument.m */; };
+		CFFBCA792AE93568003E9D80 /* TranslationSubstitutionGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = CFFBCA782AE93568003E9D80 /* TranslationSubstitutionGroup.m */; };
 		D42B8307A52A4CB70FEEA156 /* libPods-XliffieTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B8C7EA753A4178056B36640 /* libPods-XliffieTests.a */; };
 /* End PBXBuildFile section */
 
@@ -267,6 +269,8 @@
 		CF9A36FF29CDE6BE00FB8763 /* DocumentTextFinderClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DocumentTextFinderClient.m; sourceTree = "<group>"; };
 		CF9A3D5329DEB61D00807F3D /* NSImage+SystemImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSImage+SystemImage.h"; sourceTree = "<group>"; };
 		CF9A3D5429DEB61D00807F3D /* NSImage+SystemImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSImage+SystemImage.m"; sourceTree = "<group>"; };
+		CF9FDB8C2AE8D73B00D76DEA /* TranslationPairGroup.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TranslationPairGroup.h; sourceTree = "<group>"; };
+		CF9FDB8D2AE8D73B00D76DEA /* TranslationPairGroup.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TranslationPairGroup.m; sourceTree = "<group>"; };
 		CFA091DE29CB18F800F33979 /* BRProgressButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRProgressButton.h; sourceTree = "<group>"; };
 		CFA091DF29CB18F800F33979 /* BRProgressButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRProgressButton.m; sourceTree = "<group>"; };
 		CFC6CC5D2702E8E300F7850C /* GlossaryWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlossaryWindowController.h; sourceTree = "<group>"; };
@@ -296,6 +300,8 @@
 		CFF4AE302A7959BA00C50D8A /* GlossarySearchResult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GlossarySearchResult.m; sourceTree = "<group>"; };
 		CFF70D7E221E7BF2004C4C2D /* XclocDocument.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XclocDocument.h; sourceTree = "<group>"; };
 		CFF70D7F221E7BF2004C4C2D /* XclocDocument.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XclocDocument.m; sourceTree = "<group>"; };
+		CFFBCA772AE93568003E9D80 /* TranslationSubstitutionGroup.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TranslationSubstitutionGroup.h; sourceTree = "<group>"; };
+		CFFBCA782AE93568003E9D80 /* TranslationSubstitutionGroup.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TranslationSubstitutionGroup.m; sourceTree = "<group>"; };
 		E63D96FADBADA5BA423F82DD /* Pods-Xliffie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Xliffie.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Xliffie/Pods-Xliffie.debug.xcconfig"; sourceTree = "<group>"; };
 		F46F3EFF87AC9239B0E767A0 /* Pods-XliffieTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XliffieTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XliffieTests/Pods-XliffieTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -366,6 +372,10 @@
 				CF94FCA41A5C365400EE8BD5 /* File.m */,
 				CF94FCA61A5C37A900EE8BD5 /* TranslationPair.h */,
 				CF94FCA71A5C37A900EE8BD5 /* TranslationPair.m */,
+				CF9FDB8C2AE8D73B00D76DEA /* TranslationPairGroup.h */,
+				CF9FDB8D2AE8D73B00D76DEA /* TranslationPairGroup.m */,
+				CFFBCA772AE93568003E9D80 /* TranslationSubstitutionGroup.h */,
+				CFFBCA782AE93568003E9D80 /* TranslationSubstitutionGroup.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -897,6 +907,7 @@
 				CF34B75A1AADE00A00C6A58E /* TranslationTargetCell.m in Sources */,
 				CFF4AE2B2A79504800C50D8A /* GlossarySearchRow.m in Sources */,
 				CF1BEBE229D565740000BD59 /* DocumentTextFinderClientEntry.m in Sources */,
+				CF9FDB8E2AE8D73B00D76DEA /* TranslationPairGroup.m in Sources */,
 				CFF4AE312A7959BA00C50D8A /* GlossarySearchResult.m in Sources */,
 				CF5682EF1A6B11C700E0DEDD /* DetailViewController.m in Sources */,
 				CFD234FA1A5E44C700B52088 /* XMLOutlineView.m in Sources */,
@@ -906,6 +917,7 @@
 				CFF4AE282A790BD100C50D8A /* GlossaryReverseSearchResult.m in Sources */,
 				CF5AB3C2293DCE6200C8AC7B /* SuggestionsWindowController.m in Sources */,
 				CF740AA72701C6C700F31F26 /* Glossary.m in Sources */,
+				CFFBCA792AE93568003E9D80 /* TranslationSubstitutionGroup.m in Sources */,
 				CF02E0582ADE376D00F06091 /* BRTextAttachmentCell.m in Sources */,
 				CFE3B1761CD800AB00021D7F /* NSString+Pangu.m in Sources */,
 				CF9A3D5529DEB61D00807F3D /* NSImage+SystemImage.m in Sources */,

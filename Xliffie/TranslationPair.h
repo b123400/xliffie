@@ -49,4 +49,7 @@ typedef enum : NSUInteger {
 - (NSAttributedString *)targetWithFormatSpecifierReplaced;
 + (NSAttributedString *)stringWithFormatSpecifiersReplaced:(NSString *)input;
 
+- (NSString *)transUnitIdWithoutModifiers;
+- (NSDictionary *)transUnitModifiers;
+
 @end
