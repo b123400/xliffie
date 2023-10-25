@@ -29,4 +29,6 @@
 
 - (void)setSourceMapFile:(File*)anotherFile;
 
+- (NSArray *)groupedTranslations;
+
 @end
