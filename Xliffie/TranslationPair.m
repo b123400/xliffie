@@ -12,7 +12,7 @@
 #import "BRTextAttachmentCell.h"
 #import "Utilities/Utilities.h"
 
-#define FORMAT_SPECIFIER_REGEX @"%(?:([0-9])\\$)?(?:[0-9]?.[0-9])?((?:h|hh|l|ll|q|L|z|t|j)?([@dDuUxXoOfeEgGcCsSpaAF]|#@[a-zA-Z0-9_-]+@))"
+#define FORMAT_SPECIFIER_REGEX @"%(?:([0-9])\\$)?(?:[0-9]?.[0-9])?((?:h|hh|l|ll|q|L|z|t|j)?([@dDuUxXoOfeEgGcCsSpaAF]|#@([a-zA-Z0-9_-]+)@))"
 
 @interface TranslationPair ()
 
@@ -53,7 +53,25 @@
     return [parts firstObject];
 }
 
-- (NSDictionary *)transUnitModifiers {
+- (NSArray<NSString*> *)transUnitModifierPath {
+    NSString *transUnitId = [self transUnitId];
+    NSArray *parts = [transUnitId componentsSeparatedByString:@"|==|"];
+    if (parts.count <= 1) return nil;
+    return [[parts objectAtIndex:1] componentsSeparatedByString:@"."];
+}
+
+- (NSArray<NSArray<NSString*>*> *)transUnitModifiers {
+    NSArray *modifierParts = [self transUnitModifierPath];
+    NSMutableArray *result = [NSMutableArray array];
+    for (NSInteger i = 0; i < modifierParts.count; i += 2) {
+        NSString *key = modifierParts[i];
+        NSString *value = modifierParts[i+1];
+        [result addObject:@[key, value]];
+    }
+    return result;
+}
+
+- (NSDictionary *)transUnitModifiersDict {
     NSString *transUnitId = [self transUnitId];
     NSArray *parts = [transUnitId componentsSeparatedByString:@"|==|"];
     NSMutableDictionary *result = [NSMutableDictionary dictionary];
@@ -175,20 +193,30 @@
     
     NSMutableAttributedString *m = [[NSMutableAttributedString alloc] initWithString:input];
     NSMutableArray<NSValue*> *matches = [NSMutableArray array];
+    NSMutableArray<NSNumber*> *isSubstitutions = [NSMutableArray array];
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern options:0 error:&error];
     [regex enumerateMatchesInString:input
                             options:0
                               range:NSMakeRange(0, input.length)
                          usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
         NSRange range = [result rangeAtIndex:0];
+        if ([result numberOfRanges] >= 5 && [result rangeAtIndex:4].location != NSNotFound) {
+            [isSubstitutions addObject:@1];
+        } else {
+            [isSubstitutions addObject:@0];
+        }
         [matches addObject:[NSValue valueWithRange:range]];
     }];
     for (NSInteger i = matches.count - 1; i >= 0; i--) {
         NSValue *match = matches[i];
         NSRange range = [match rangeValue];
         NSTextAttachment *attachment = [[NSTextAttachment alloc] init];
-        BRTextAttachmentCell *cell = [[BRTextAttachmentCell alloc] initTextCell:[input substringWithRange:range]];
+        NSString *matchString = [input substringWithRange:range];
+        BRTextAttachmentCell *cell = [[BRTextAttachmentCell alloc] initTextCell:matchString];
         attachment.attachmentCell = cell;
+        if ([isSubstitutions[i] boolValue]) {
+            cell.backgroundColor = [NSColor systemPurpleColor];
+        }
         [m replaceCharactersInRange:range withAttributedString:[NSAttributedString attributedStringWithAttachment:attachment]];
     }
     return m;

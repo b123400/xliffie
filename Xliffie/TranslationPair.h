@@ -50,6 +50,8 @@ typedef enum : NSUInteger {
 + (NSAttributedString *)stringWithFormatSpecifiersReplaced:(NSString *)input;
 
 - (NSString *)transUnitIdWithoutModifiers;
-- (NSDictionary *)transUnitModifiers;
+- (NSArray<NSArray<NSString*>*> *)transUnitModifiers;
+- (NSArray<NSString*> *)transUnitModifierPath;
+- (NSDictionary *)transUnitModifiersDict;
 
 @end
