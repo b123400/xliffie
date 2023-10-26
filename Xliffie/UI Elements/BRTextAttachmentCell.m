@@ -26,11 +26,16 @@
 
 - (void)drawWithFrame:(NSRect)cellFrame inView:(NSView *)controlView {
     NSBezierPath *path = [NSBezierPath bezierPath];
-    [path appendBezierPathWithRoundedRect:NSMakeRect(cellFrame.origin.x, cellFrame.origin.y + 5, cellFrame.size.width, cellFrame.size.height - 1) xRadius:5 yRadius:5];
-    [self.backgroundColor setFill];
-    [path fill];
+    [path appendBezierPathWithRoundedRect:NSMakeRect(cellFrame.origin.x, cellFrame.origin.y + 3, cellFrame.size.width, cellFrame.size.height) xRadius:5 yRadius:5];
+    if (self.strokeInsteadOfFill) {
+        [self.backgroundColor setStroke];
+        [path stroke];
+    } else {
+        [self.backgroundColor setFill];
+        [path fill];
+    }
     
-    [self.text drawAtPoint:NSMakePoint(cellFrame.origin.x + 5, cellFrame.origin.y + 6) withAttributes:@{
+    [self.text drawAtPoint:NSMakePoint(cellFrame.origin.x + 5, cellFrame.origin.y + 4) withAttributes:@{
         NSForegroundColorAttributeName: self.textColor
     }];
 }

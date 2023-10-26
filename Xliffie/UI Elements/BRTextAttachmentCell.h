@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSColor *backgroundColor;
 @property (nonatomic, strong) NSColor *textColor;
 @property (nonatomic, strong) NSString *text;
+@property (nonatomic, assign) BOOL strokeInsteadOfFill;
 
 + (NSString *)stringForAttributedString:(NSAttributedString *)input;
 
