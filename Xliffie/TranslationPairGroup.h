@@ -8,25 +8,24 @@
 
 #import <Foundation/Foundation.h>
 #import "TranslationPair.h"
-#import "TranslationSubstitutionGroup.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TranslationPairGroup : NSObject
 
-@property (nonatomic, strong) NSString *transUnitId;
-
-@property (nonatomic, strong) NSMutableArray<TranslationPair*> *devicePairs;
-@property (nonatomic, strong) NSMutableArray<TranslationSubstitutionGroup*> *substitutionGroups;
-@property (nonatomic, strong) NSMutableArray<TranslationPair*> *pluralPairs;
+@property (nonatomic, strong) NSMutableArray *children;
 
 // For when there's a pair with exactly the id, and without any modifier
-@property (nonatomic, strong) TranslationPair *mainPair;
+@property (nonatomic, nullable, strong) TranslationPair *mainPair;
+@property (nonatomic, nullable, strong) NSString *pathName;
+
+@property (nonatomic, nullable, strong) NSString *groupModifierKey;
 
 + (NSArray*)groupsWithTranslationPairs:(NSArray<TranslationPair*>*)pairs;
 
-// NSArray of Either<TranslationPair | TranslationSubstitutionGroup>
-- (NSArray *)children;
+- (NSString *)transUnitIdWithoutModifiers;
+
+- (id)stringForSourceColumn;
 
 @end
 

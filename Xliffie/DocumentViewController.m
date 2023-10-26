@@ -16,8 +16,6 @@
 #import "GlossaryDatabase.h"
 #import "XclocDocument.h"
 #import "TranslationPairGroup.h"
-#import "TranslationSubstitutionGroup.h"
-#import "BRTextAttachmentCell.h"
 
 @interface DocumentViewController () <SuggestionsWindowControllerDelegate>
 
@@ -95,8 +93,7 @@
 - (BOOL)outlineView:(NSOutlineView *)outlineView
    isItemExpandable:(id)item {
     return [item isKindOfClass:[File class]]
-        || [item isKindOfClass:[TranslationPairGroup class]]
-        || [item isKindOfClass:[TranslationSubstitutionGroup class]];
+        || [item isKindOfClass:[TranslationPairGroup class]];
 }
 
 - (NSInteger)outlineView:(NSOutlineView *)outlineView
@@ -107,8 +104,6 @@
         return [(File*)item groupedTranslations].count;
     } else if ([item isKindOfClass:[TranslationPairGroup class]]) {
         return [(TranslationPairGroup*)item children].count;
-    } else if ([item isKindOfClass:[TranslationSubstitutionGroup class]]) {
-        return [(TranslationSubstitutionGroup*)item translationPairs].count;
     }
     return 0;
 }
@@ -122,8 +117,6 @@
         return [[(File*)item groupedTranslations] objectAtIndex:index];
     } else if ([item isKindOfClass:[TranslationPairGroup class]]) {
         return [(TranslationPairGroup*)item children][index];
-    } else if ([item isKindOfClass:[TranslationSubstitutionGroup class]]) {
-        return [(TranslationSubstitutionGroup*)item translationPairs][index];
     }
     return nil;
 }
@@ -145,21 +138,9 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
     } else if ([item isKindOfClass:[TranslationPairGroup class]]) {
         TranslationPairGroup *group = (TranslationPairGroup*)item;
         if ([[tableColumn identifier] isEqualToString:@"source"]) {
-            return [group.mainPair sourceForDisplayWithFormatSpecifierReplaced] ?: group.transUnitId;
+            return [group stringForSourceColumn];
         } else if ([[tableColumn identifier] isEqualToString:@"target"]) {
             return [group.mainPair targetWithFormatSpecifierReplaced];
-        }
-    } else if ([item isKindOfClass:[TranslationSubstitutionGroup class]]) {
-        TranslationSubstitutionGroup *group = (TranslationSubstitutionGroup*)item;
-        if ([[tableColumn identifier] isEqualToString:@"source"]) {
-            NSTextAttachment *attachment = [[NSTextAttachment alloc] init];
-            BRTextAttachmentCell *cell = [[BRTextAttachmentCell alloc] initTextCell:group.substitutionToken];
-            cell.backgroundColor = [NSColor purpleColor];
-            attachment.attachmentCell = cell;
-            return [NSAttributedString attributedStringWithAttachment:attachment];
-            return nil; // TODO
-        } else if ([[tableColumn identifier] isEqualToString:@"target"]) {
-            return nil;
         }
     }
     return nil;
@@ -198,7 +179,6 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
     NSUInteger index = [self.outlineView selectedRow];
     id item = [self.outlineView itemAtRow:index];
     if ([item isKindOfClass:[TranslationPair class]]) {
-        
         if ([self.delegate respondsToSelector:@selector(viewController:didSelectedTranslation:)]) {
             [self.delegate viewController:self didSelectedTranslation:item];
         }
@@ -294,7 +274,6 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
     
     if ([item isKindOfClass:[File class]]
         || [item isKindOfClass:[TranslationPairGroup class]]
-        || [item isKindOfClass:[TranslationSubstitutionGroup class]]
         ) {
         id obj = [self outlineView:outlineView objectValueForTableColumn:firstColumn byItem:item];
         [cell setObjectValue:obj];

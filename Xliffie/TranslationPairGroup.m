@@ -7,92 +7,151 @@
 //
 
 #import "TranslationPairGroup.h"
+#import "BRTextAttachmentCell.h"
+#import "Utilities/Utilities.h"
 
 @implementation TranslationPairGroup
 
 /// Array of Either<TranslationPair | TranslationPairGroup>
 + (NSArray*)groupsWithTranslationPairs:(NSArray<TranslationPair*>*)pairs {
-    NSMutableDictionary<NSString*, TranslationPairGroup*> *idToGroup = [NSMutableDictionary dictionary];
-    NSMutableArray *results = [NSMutableArray array];
+    NSMutableArray<TranslationPairGroup*> *results = [NSMutableArray array];
+    
     for (TranslationPair *pair in pairs) {
-        NSString *transUnitId = [pair transUnitIdWithoutModifiers];
-        NSDictionary *modifiers = [pair transUnitModifiers];
-        if (modifiers.count) {
-            TranslationPairGroup *group = idToGroup[transUnitId];
-            if (!group) {
-                group = idToGroup[transUnitId] = [[TranslationPairGroup alloc] initWithId:transUnitId];
-                [results addObject:group];
-                
-                // It's possible to have id="x" and then id="x|==|modifiers"
-                // we have to search for previous existing pair and add it first
-                for (id result in results) {
-                    if ([result isKindOfClass:[TranslationPair class]]) {
-                        TranslationPair *p = (TranslationPair*)result;
-                        if ([[p transUnitIdWithoutModifiers] isEqual:transUnitId]) {
-                            group.mainPair = p;
-                            [results removeObject:result];
-                            break;
-                        }
-                    }
+        NSArray<NSArray<NSString *>*> *modifiers = [pair transUnitModifiers];
+        if (![modifiers count]) {
+            [results addObject:[[TranslationPairGroup alloc] initWithMainPair:pair]];
+            continue;
+        }
+        TranslationPairGroup *lastGroup = [results lastObject];
+        if (![lastGroup tryAddPair:pair]) {
+            TranslationPairGroup *group = [[TranslationPairGroup alloc] initWithChild:pair];
+            [results addObject:group];
+        }
+    }
+    for (TranslationPairGroup *rootGroup in results) {
+        NSMutableArray *newChildren = [NSMutableArray array];
+        for (TranslationPairGroup *group in rootGroup.children) {
+            if ([group.pathName isEqual:@"device"]) {
+                for (TranslationPairGroup *groupChild in group.children) {
+                    groupChild.groupModifierKey = group.pathName;
                 }
-            }
-            [group addPair:pair];
-        } else {
-            [results addObject:pair];
-        }
-    }
-    return results;
-}
-
-- (instancetype)initWithId:(NSString *)transUnitId {
-    if (self = [super init]) {
-        self.transUnitId = transUnitId;
-        self.devicePairs = [NSMutableArray array];
-        self.substitutionGroups = [NSMutableArray array];
-        self.pluralPairs = [NSMutableArray array];
-    }
-    return self;
-}
-
-- (instancetype)initSubstitutionGroupWithPair:(TranslationPair *)pair {
-    if (self = [super init]) {
-        NSDictionary *modifiers = [pair transUnitModifiers];
-        self.transUnitId = [pair transUnitIdWithoutModifiers];
-        self.pluralPairs = [NSMutableArray array];
-    }
-    return self;
-}
-
-- (void)addPair:(TranslationPair *)pair {
-    NSDictionary *modifiers = [pair transUnitModifiers];
-    if (modifiers[@"device"]) {
-        [self.devicePairs addObject:pair];
-    } else if (modifiers[@"substitutions"]) {
-        NSString *token = modifiers[@"substitutions"];
-        BOOL addedToGroup = NO;
-        for (TranslationSubstitutionGroup *group in self.substitutionGroups) {
-            if ([group.substitutionToken isEqual:token]) {
-                [group addPair:pair];
-                addedToGroup = YES;
-                break;
+                [newChildren addObjectsFromArray:group.children];
+            } else if ([group.pathName isEqual:@"substitutions"]) {
+                for (TranslationPairGroup *groupChild in group.children) {
+                    groupChild.groupModifierKey = group.pathName;
+                }
+                [newChildren addObjectsFromArray:group.children];
+            } else {
+                [newChildren addObject:group];
             }
         }
-        if (!addedToGroup) {
-            TranslationSubstitutionGroup *group = [[TranslationSubstitutionGroup alloc] initWithSubstitutionToken:token];
-            [group addPair:pair];
-            [self.substitutionGroups addObject:group];
-        }
-    } else if (modifiers[@"plural"]) {
-        [self.pluralPairs addObject:pair];
+        rootGroup.children = newChildren;
     }
+    return [TranslationPairGroup flattened:results];
 }
 
-- (NSArray *)children {
++ (NSMutableArray *)flattened:(NSArray<TranslationPairGroup *> *)groups {
     NSMutableArray *results = [NSMutableArray array];
-    [results addObjectsFromArray:self.devicePairs];
-    [results addObjectsFromArray:self.substitutionGroups];
-    [results addObjectsFromArray:self.pluralPairs];
+    for (TranslationPairGroup *group in groups) {
+        [group removePluralLevel];
+        if (group.mainPair && !group.children.count) {
+            [results addObject:group.mainPair];
+            continue;
+        }
+        group.children = [TranslationPairGroup flattened:group.children];
+        [results addObject:group];
+    }
     return results;
+}
+
+- (BOOL)removePluralLevel {
+    if (self.children.count == 1 && [[self.children.firstObject pathName] isEqual:@"plural"]) {
+        self.children = (NSMutableArray *)[[self.children firstObject] children];
+        return YES;
+    } else {
+        for (TranslationPairGroup *group in self.children) {
+            if ([group removePluralLevel]) return YES;
+        }
+    }
+    return NO;
+}
+
+- (instancetype)initWithPathName:(NSString *)pathName {
+    if (self = [super init]) {
+        self.children = [NSMutableArray array];
+        self.groupModifierKey = nil;
+        self.pathName = pathName;
+    }
+    return self;
+}
+
+- (instancetype)initWithMainPair:(TranslationPair *)pair {
+    if (self = [super init]) {
+        self.children = [NSMutableArray array];
+        self.groupModifierKey = nil;
+        self.mainPair = pair;
+    }
+    return self;
+}
+
+- (instancetype)initWithChild:(TranslationPair *)pair {
+    if (self = [super init]) {
+        self.children = [NSMutableArray array];
+        self.groupModifierKey = nil;
+        TranslationPairGroup *child = [self ensureChildPath:[pair transUnitModifierPath]];
+        child.mainPair = pair;
+    }
+    return self;
+}
+
+- (TranslationPairGroup *)ensureChildPath:(NSArray<NSString*> *)path {
+    if ([path count] == 0) {
+        return self;
+    }
+    NSString *currentName = [path firstObject];
+    NSArray *rest = [path subarrayWithRange:NSMakeRange(1, path.count - 1)];
+    for (TranslationPairGroup *group in self.children) {
+        if ([group.pathName isEqual:currentName]) {
+            return [group ensureChildPath:rest];
+        }
+    }
+    TranslationPairGroup *newGroup = [[TranslationPairGroup alloc] initWithPathName:currentName];
+    [self.children addObject:newGroup];
+    return [newGroup ensureChildPath:rest];
+}
+
+- (BOOL)tryAddPair:(TranslationPair *)pair {
+    if (![pair.transUnitIdWithoutModifiers isEqual:self.transUnitIdWithoutModifiers]) {
+        return NO;
+    }
+    TranslationPairGroup *group = [self ensureChildPath:[pair transUnitModifierPath]];
+    group.mainPair = pair;
+    return YES;
+}
+
+- (NSString *)transUnitIdWithoutModifiers {
+    if (self.mainPair) {
+        return self.mainPair.transUnitIdWithoutModifiers;
+    }
+    for (TranslationPairGroup *child in self.children) {
+        NSString *tuId = [child transUnitIdWithoutModifiers];
+        if (tuId) return tuId;
+    }
+    return nil;
+}
+
+- (id)stringForSourceColumn {
+    if ([self.groupModifierKey isEqual:@"substitutions"]) {
+        NSTextAttachment *attachment = [[NSTextAttachment alloc] init];
+        BRTextAttachmentCell *cell = [[BRTextAttachmentCell alloc] initTextCell:self.pathName];
+        cell.backgroundColor = [NSColor systemPurpleColor];
+        attachment.attachmentCell = cell;
+        return [NSAttributedString attributedStringWithAttachment:attachment];
+    } else if ([self.groupModifierKey isEqual:@"device"]) {
+        NSString *s = [Utilities stringForDevice:self.pathName];
+        if (s) return s;
+    }
+    return [self.mainPair sourceForDisplayWithFormatSpecifierReplaced] ?: self.pathName ?: [self transUnitIdWithoutModifiers];
 }
 
 @end
