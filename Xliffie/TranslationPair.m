@@ -10,6 +10,7 @@
 #import <AppKit/AppKit.h>
 #import "Glossary.h"
 #import "BRTextAttachmentCell.h"
+#import "Utilities/Utilities.h"
 
 #define FORMAT_SPECIFIER_REGEX @"%(?:([0-9])\\$)?(?:[0-9]?.[0-9])?((?:h|hh|l|ll|q|L|z|t|j)?([@dDuUxXoOfeEgGcCsSpaAF]|#@[a-zA-Z0-9_-]+@))"
 
@@ -141,7 +142,30 @@
 }
 
 - (NSAttributedString *)sourceForDisplayWithFormatSpecifierReplaced {
-    return [TranslationPair stringWithFormatSpecifiersReplaced:self.sourceForDisplay];
+    NSMutableAttributedString *s = [[NSMutableAttributedString alloc] init];
+    NSDictionary *modifiers = [self transUnitModifiersDict];
+    if (modifiers[@"plural"]) {
+        NSTextAttachment *attachment = [[NSTextAttachment alloc] init];
+        BRTextAttachmentCell *cell = [[BRTextAttachmentCell alloc] initTextCell:modifiers[@"plural"]];
+        cell.strokeInsteadOfFill = YES;
+        cell.textColor = [NSColor systemBlueColor];
+        attachment.attachmentCell = cell;
+        NSAttributedString *attr = [NSAttributedString attributedStringWithAttachment:attachment];
+        [s appendAttributedString:attr];
+        [s appendAttributedString:[[NSAttributedString alloc] initWithString:@" "]];
+    } else if (modifiers[@"device"]) {
+        NSTextAttachment *attachment = [[NSTextAttachment alloc] init];
+        NSString *deviceString = [Utilities stringForDevice:modifiers[@"device"]];
+        BRTextAttachmentCell *cell = [[BRTextAttachmentCell alloc] initTextCell:deviceString ?: modifiers[@"device"]];
+        cell.strokeInsteadOfFill = YES;
+        cell.textColor = [NSColor systemBlueColor];
+        attachment.attachmentCell = cell;
+        NSAttributedString *attr = [NSAttributedString attributedStringWithAttachment:attachment];
+        [s appendAttributedString:attr];
+        [s appendAttributedString:[[NSAttributedString alloc] initWithString:@" "]];
+    }
+    [s appendAttributedString:[TranslationPair stringWithFormatSpecifiersReplaced:self.sourceForDisplay]];
+    return s;
 }
 
 + (NSAttributedString *)stringWithFormatSpecifiersReplaced:(NSString *)input {

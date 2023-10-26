@@ -25,6 +25,8 @@ typedef enum : NSUInteger {
 + (NSString *)applyFormat:(StringFormat)format toString:(NSString *)string;
 + (NSString *)applyFormatOfString:(NSString *)formatString toString:(NSString *)targetString;
 
++ (NSString *)stringForDevice:(NSString *)deviceString;
+
 @end
 
 NS_ASSUME_NONNULL_END
