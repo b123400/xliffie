@@ -44,7 +44,7 @@
         class_replaceMethod(class,
                             originalSelector,
                             swizzledImp,
-                            method_getTypeEncoding(swizzledSelector));
+                            method_getTypeEncoding(swizzledMethod));
     });
 }
 
