@@ -28,6 +28,8 @@
     NSBezierPath *path = [NSBezierPath bezierPath];
     [path appendBezierPathWithRoundedRect:NSMakeRect(cellFrame.origin.x, cellFrame.origin.y + 3, cellFrame.size.width, cellFrame.size.height) xRadius:5 yRadius:5];
     if (self.strokeInsteadOfFill) {
+        [[NSColor controlBackgroundColor] setFill];
+        [path fill];
         [self.backgroundColor setStroke];
         [path stroke];
     } else {

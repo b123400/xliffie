@@ -166,7 +166,8 @@
         NSTextAttachment *attachment = [[NSTextAttachment alloc] init];
         BRTextAttachmentCell *cell = [[BRTextAttachmentCell alloc] initTextCell:modifiers[@"plural"]];
         cell.strokeInsteadOfFill = YES;
-        cell.textColor = [NSColor systemBlueColor];
+        cell.textColor = [NSColor linkColor];
+        cell.backgroundColor = [NSColor linkColor];
         attachment.attachmentCell = cell;
         NSAttributedString *attr = [NSAttributedString attributedStringWithAttachment:attachment];
         [s appendAttributedString:attr];
@@ -176,7 +177,8 @@
         NSString *deviceString = [Utilities stringForDevice:modifiers[@"device"]];
         BRTextAttachmentCell *cell = [[BRTextAttachmentCell alloc] initTextCell:deviceString ?: modifiers[@"device"]];
         cell.strokeInsteadOfFill = YES;
-        cell.textColor = [NSColor systemBlueColor];
+        cell.textColor = [NSColor linkColor];
+        cell.backgroundColor = [NSColor linkColor];
         attachment.attachmentCell = cell;
         NSAttributedString *attr = [NSAttributedString attributedStringWithAttachment:attachment];
         [s appendAttributedString:attr];
