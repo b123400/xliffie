@@ -448,6 +448,9 @@ doCommandBySelector:(SEL)commandSelector {
 - (void)xmlOutlineView:(id)sender didEndEditingRow:(NSInteger)row proposedString:(NSString*)proposed callback:(void (^)(BOOL))callback {
     [[SuggestionsWindowController shared] hide];
     TranslationPair *pair = [self.outlineView itemAtRow:row];
+    if ([pair isKindOfClass:[TranslationPairGroup class]]) {
+        pair = [(TranslationPairGroup*)pair mainPair];
+    }
     NSArray *warnings = [pair formatWarningsForProposedTranslation:proposed];
     if ([warnings count]) {
         NSAlert *alert = [[NSAlert alloc] init];
