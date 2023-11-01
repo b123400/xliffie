@@ -25,11 +25,52 @@
 }
 
 - (BOOL)isSelectable {
-    return NO;
+    return YES;
+}
+
+- (NSArray<NSValue *> *)selectedRanges {
+    NSInteger row = [self.outlineView selectedRow];
+    if (row < 0) return @[];
+    id item = [self.outlineView itemAtRow:row];
+    NSMutableArray *result = [NSMutableArray array];
+    for (DocumentTextFinderClientEntry *entry in self.entries) {
+        if (entry.pair == item) {
+            [result addObject:[NSValue valueWithRange:entry.range]];
+        }
+    }
+    return result;
+}
+
+- (NSRange)firstSelectedRange {
+    NSInteger row = [self.outlineView selectedRow];
+    if (row > 0) {
+        id item = [self.outlineView itemAtRow:row];
+        for (DocumentTextFinderClientEntry *entry in self.entries) {
+            if (entry.pair == item) {
+                return entry.range;
+            }
+        }
+    }
+    return NSMakeRange(0, 0);
 }
 
 - (BOOL)allowsMultipleSelection {
     return NO;
+}
+
+- (void)setSelectedRanges:(NSArray<NSValue *> *)selectedRanges {
+    if (![selectedRanges count]) {
+        [self.outlineView deselectAll:self];
+        return;
+    }
+    NSRange selectedRange = [[selectedRanges firstObject] rangeValue];
+    for (DocumentTextFinderClientEntry *entry in self.entries) {
+        NSRange intersection = NSIntersectionRange(selectedRange, entry.range);
+        if (intersection.length > 0) {
+            [self.outlineView selectRowIndexes:[NSIndexSet indexSetWithIndex:[self.outlineView rowForItem:entry.pair]] byExtendingSelection:NO];
+            break;
+        }
+    }
 }
 
 - (void)setDocument:(Document *)document {
@@ -155,12 +196,17 @@
         NSInteger col = [self.outlineView columnAtPoint:rect.origin];
         NSCell *cell = [self.outlineView.tableColumns[col] dataCellForRow:row];
         NSRect cellRect = [self.outlineView frameOfCellAtColumn:col row:row];
-        [cell drawWithFrame:cellRect inView:self.outlineView];
         
-        NSInteger selectedRow = [self.outlineView selectedRow];
-        if (selectedRow != row) {
-            [self.outlineView selectRowIndexes:[NSIndexSet indexSetWithIndex:row] byExtendingSelection:NO];
+        DocumentTextFinderClientEntry *entry = nil;
+        for (DocumentTextFinderClientEntry *e in self.entries) {
+            if (NSLocationInRange(range.location, e.range)) {
+                entry = e;
+                break;
+            }
         }
+        [cell setAttributedStringValue:entry.attributedString];
+
+        [cell drawWithFrame:cellRect inView:self.outlineView];
     }
     self.outlineView.usesAlternatingRowBackgroundColors = YES;
 }
