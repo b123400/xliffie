@@ -81,43 +81,58 @@
 }
 
 - (void)reload {
-    int currentCharacterIndex = 0;
+    NSUInteger currentCharacterIndex = 0;
     NSMutableArray<DocumentTextFinderClientEntry *> *entries = [[NSMutableArray alloc] init];
     for (File *file in self.document.files) {
         for (id pairOrGroup in [file groupedTranslations]) {
-            TranslationPair *pair = nil;
-            TranslationPairGroup *group = nil;
-            if ([pairOrGroup isKindOfClass:[TranslationPair class]]) {
-                pair = pairOrGroup;
-            } else if ([pairOrGroup isKindOfClass:[TranslationPairGroup class]] && [pairOrGroup mainPair]) {
-                group = pairOrGroup;
-                pair = [group mainPair];
-            }
-            if (!pair) {
-                // Groups without pair are not searched
-                continue;
-            }
-            DocumentTextFinderClientEntry *sourceEntry = [[DocumentTextFinderClientEntry alloc] init];
-            sourceEntry.type = DocumentTextFinderClientEntryTypeSource;
-            sourceEntry.pair = pair;
-            sourceEntry.pairGroup = group;
-            NSString *actualString = [pair plainSourceForDisplayWithModifier];
-            sourceEntry.range = NSMakeRange(currentCharacterIndex, actualString.length);
-            currentCharacterIndex += actualString.length;
-            [entries addObject:sourceEntry];
-
-            if (pair.target.length) {
-                DocumentTextFinderClientEntry *targetEntry = [[DocumentTextFinderClientEntry alloc] init];
-                targetEntry.type = DocumentTextFinderClientEntryTypeTarget;
-                targetEntry.pair = pair;
-                targetEntry.pairGroup = group;
-                targetEntry.range = NSMakeRange(currentCharacterIndex, pair.target.length);
-                currentCharacterIndex += pair.target.length;
-                [entries addObject:targetEntry];
-            }
+            currentCharacterIndex = [self addTranslationPairOrGroup:pairOrGroup
+                                                   withCurrentIndex:currentCharacterIndex
+                                                            toArray:entries];
         }
     }
     self.entries = entries;
+}
+
+- (NSUInteger)addTranslationPairOrGroup:(id)pairOrGroup 
+                       withCurrentIndex:(NSUInteger)currentCharacterIndex
+                                toArray:(NSMutableArray<DocumentTextFinderClientEntry*>*)entries {
+    TranslationPair *pair = nil;
+    TranslationPairGroup *group = nil;
+    if ([pairOrGroup isKindOfClass:[TranslationPair class]]) {
+        pair = pairOrGroup;
+    } else if ([pairOrGroup isKindOfClass:[TranslationPairGroup class]]) {
+        group = pairOrGroup;
+        pair = [group mainPair];
+    }
+    if (pair) {
+        DocumentTextFinderClientEntry *sourceEntry = [[DocumentTextFinderClientEntry alloc] init];
+        sourceEntry.type = DocumentTextFinderClientEntryTypeSource;
+        sourceEntry.pair = pair;
+        sourceEntry.pairGroup = group;
+        NSString *actualString = [pair plainSourceForDisplayWithModifier];
+        sourceEntry.range = NSMakeRange(currentCharacterIndex, actualString.length);
+        currentCharacterIndex += actualString.length;
+        [entries addObject:sourceEntry];
+        
+        if (pair.target.length) {
+            DocumentTextFinderClientEntry *targetEntry = [[DocumentTextFinderClientEntry alloc] init];
+            targetEntry.type = DocumentTextFinderClientEntryTypeTarget;
+            targetEntry.pair = pair;
+            targetEntry.pairGroup = group;
+            targetEntry.range = NSMakeRange(currentCharacterIndex, pair.target.length);
+            currentCharacterIndex += pair.target.length;
+            [entries addObject:targetEntry];
+        }
+    }
+    if (group) {
+        NSArray *children = [group children];
+        for (id pairOrGroup in children) {
+            currentCharacterIndex = [self addTranslationPairOrGroup:pairOrGroup
+                                                   withCurrentIndex:currentCharacterIndex
+                                                            toArray:entries];
+        }
+    }
+    return currentCharacterIndex;
 }
 
 - (NSUInteger)stringLength {
