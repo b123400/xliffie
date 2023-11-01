@@ -74,6 +74,8 @@
 - (void)dealloc {
     [self.outlineView.enclosingScrollView removeObserver:self forKeyPath:@"findBarVisible"];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [self.textFinder cancelFindIndicator];
+    self.textFinder.client = nil;
 }
 
 #pragma mark Notification
