@@ -43,9 +43,30 @@
     }];
 }
 
-- (NSRect)rectOfTextRange:(NSRange)range {
-    // TODO
-    return NSMakeRect(10, 0, 20, 20);
+- (NSArray<NSValue*> *)rectsOfTextRange:(NSRange)range withCellFrame:(NSRect)cellFrame {
+    NSRect textBounds = NSOffsetRect(cellFrame, 0, 4);
+    NSTextContainer* textContainer = [[NSTextContainer alloc] init];
+    NSLayoutManager* layoutManager = [[NSLayoutManager alloc] init];
+    NSTextStorage* textStorage = [[NSTextStorage alloc] init];
+    [layoutManager addTextContainer:textContainer];
+    [textStorage addLayoutManager:layoutManager];
+    textContainer.lineFragmentPadding = 2;
+    layoutManager.typesetterBehavior = NSTypesetterBehavior_10_2_WithCompatibility;
+    textContainer.containerSize = textBounds.size;
+    [textStorage beginEditing];
+    textStorage.attributedString = self.attributedStringValue;
+    textStorage.font = self.font;
+    [textStorage endEditing];
+    NSUInteger count;
+    NSRectArray rects = [layoutManager rectArrayForGlyphRange:range
+                                     withinSelectedGlyphRange:range
+                                              inTextContainer:textContainer
+                                                    rectCount:&count];
+    NSMutableArray<NSValue*> *result = [NSMutableArray array];
+    for (int i = 0; i < count; i++) {
+        [result addObject:[NSValue valueWithRect:rects[i]]];
+    }
+    return result;
 }
 
 /// Turn tokens back into normal string

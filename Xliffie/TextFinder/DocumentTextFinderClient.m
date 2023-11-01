@@ -185,11 +185,16 @@
                                              withinSelectedCharacterRange:findResult.rangeOfAttachment
                                                           inTextContainer:textContainer
                                                                 rectCount:&count];
-            // TODO, rect in attachement
-            for (NSUInteger i = 0; i < count; i++)
-            {
-                NSRect rect = NSOffsetRect(rects[i], textBounds.origin.x, textBounds.origin.y);
-                [outRects addObject:[NSValue valueWithRect:rect]];
+            if (count > 0) {
+                NSRect rect = NSOffsetRect(rects[0], textBounds.origin.x, textBounds.origin.y);
+                if (findResult.cell.text.length == findResult.range.length) {
+                    [outRects addObject:[NSValue valueWithRect:rect]];
+                } else {
+                    NSArray *rectsInAttachment = [findResult.cell rectsOfTextRange:findResult.range withCellFrame:cellFrame];
+                    for (NSValue *rectInAttachment in rectsInAttachment) {
+                        [outRects addObject:[NSValue valueWithRect:NSOffsetRect(rectInAttachment.rectValue, rect.origin.x, rect.origin.y)]];
+                    }
+                }
             }
         } else {
             NSLog(@"non-attributed substring: %@", [[entryAttributedString attributedSubstringFromRange:findResult.range] string]);

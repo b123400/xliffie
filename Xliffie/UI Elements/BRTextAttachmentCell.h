@@ -21,7 +21,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSString *)stringForAttributedString:(NSAttributedString *)input;
 + (NSArray<BRTextAttachmentFindResult*> *)findTextRangesWithPlainTextRange:(NSRange)inputRange fromAttributedString:(NSAttributedString *)attrString;
-- (NSRect)rectOfTextRange:(NSRange)range;
+
+- (NSArray<NSValue*> *)rectsOfTextRange:(NSRange)range withCellFrame:(NSRect)cellFrame;
 
 @end
 
