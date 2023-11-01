@@ -159,6 +159,22 @@
     return [TranslationPair stringWithFormatSpecifiersReplaced:self.target ?: @""];
 }
 
+// We need this for text finder
+- (NSString *)plainSourceForDisplayWithModifier {
+    NSMutableString *s = [[NSMutableString alloc] init];
+    NSDictionary *modifiers = [self transUnitModifiersDict];
+    if (modifiers[@"plural"]) {
+        [s appendString:modifiers[@"plural"]];
+        [s appendString:@" "];
+    } else if (modifiers[@"device"]) {
+        NSString *deviceString = [Utilities stringForDevice:modifiers[@"device"]];
+        [s appendString:deviceString ?: modifiers[@"device"]];
+        [s appendString:@" "];
+    }
+    [s appendString:self.sourceForDisplay];
+    return s;
+}
+
 - (NSAttributedString *)sourceForDisplayWithFormatSpecifierReplaced {
     NSMutableAttributedString *s = [[NSMutableAttributedString alloc] init];
     NSDictionary *modifiers = [self transUnitModifiersDict];

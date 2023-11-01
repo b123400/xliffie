@@ -38,6 +38,7 @@ typedef enum : NSUInteger {
 - (NSArray*)formatWarningsForProposedTranslation:(NSString*)newTranslation;
 
 - (NSString*)sourceForDisplay;
+- (NSString*)plainSourceForDisplayWithModifier;
 - (NSArray <NSString*> *)warningsForTarget;
 
 - (void)markAsTranslated;

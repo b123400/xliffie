@@ -23,6 +23,7 @@ typedef enum : NSUInteger {
 @property (assign, nonatomic) NSRange range;
 
 - (NSString *)string;
+- (NSAttributedString *)attributedString;
 
 @end
 

@@ -8,6 +8,8 @@
 
 #import "DocumentTextFinderClient.h"
 #import "DocumentTextFinderClientEntry.h"
+#import "BRTextAttachmentCell.h"
+#import "BRTextAttachmentFindResult.h"
 
 @interface DocumentTextFinderClient ()
 
@@ -81,12 +83,14 @@
 - (void)reload {
     int currentCharacterIndex = 0;
     NSMutableArray<DocumentTextFinderClientEntry *> *entries = [[NSMutableArray alloc] init];
+    // TODO: handle pair group
     for (TranslationPair *pair in [self.document allTranslationPairs]) {
         DocumentTextFinderClientEntry *sourceEntry = [[DocumentTextFinderClientEntry alloc] init];
         sourceEntry.type = DocumentTextFinderClientEntryTypeSource;
         sourceEntry.pair = pair;
-        sourceEntry.range = NSMakeRange(currentCharacterIndex, pair.source.length);
-        currentCharacterIndex += pair.source.length;
+        NSString *actualString = [pair plainSourceForDisplayWithModifier];
+        sourceEntry.range = NSMakeRange(currentCharacterIndex, actualString.length);
+        currentCharacterIndex += actualString.length;
         [entries addObject:sourceEntry];
 
         if (pair.target.length) {
@@ -153,38 +157,56 @@
     NSRect cellFrame = [self.outlineView frameOfCellAtColumn:entry.type == DocumentTextFinderClientEntryTypeSource ? 0 : 1 row:row];
     NSCell *cell = [column dataCellForRow:row];
     NSRange range = NSMakeRange(inRange.location - entry.range.location, inRange.length);
+    
+    NSAttributedString *entryAttributedString = entry.attributedString;
+    NSArray<BRTextAttachmentFindResult*> *findResults = [BRTextAttachmentCell findTextRangesWithPlainTextRange:range fromAttributedString:entryAttributedString];
 
-    if ([cell isKindOfClass:[NSTextFieldCell class]]) {
-        NSRect textBounds = [cell titleRectForBounds:cellFrame];
-        [cell setStringValue:entry.string];
-        NSTextContainer* textContainer = [[NSTextContainer alloc] init];
-        NSLayoutManager* layoutManager = [[NSLayoutManager alloc] init];
-        NSTextStorage* textStorage = [[NSTextStorage alloc] init];
-        [layoutManager addTextContainer:textContainer];
-        [textStorage addLayoutManager:layoutManager];
-        textContainer.lineFragmentPadding = 2;
-        layoutManager.typesetterBehavior = NSTypesetterBehavior_10_2_WithCompatibility;
+    
+    NSRect textBounds = [cell titleRectForBounds:cellFrame];
+    NSTextContainer* textContainer = [[NSTextContainer alloc] init];
+    NSLayoutManager* layoutManager = [[NSLayoutManager alloc] init];
+    NSTextStorage* textStorage = [[NSTextStorage alloc] init];
+    [layoutManager addTextContainer:textContainer];
+    [textStorage addLayoutManager:layoutManager];
+    textContainer.lineFragmentPadding = 2;
+    layoutManager.typesetterBehavior = NSTypesetterBehavior_10_2_WithCompatibility;
+    textContainer.containerSize = textBounds.size;
+    
+    NSMutableArray<NSValue *> *outRects = [NSMutableArray array];
 
-        textContainer.containerSize = textBounds.size;
+    for (BRTextAttachmentFindResult *findResult in findResults) {
         [textStorage beginEditing];
-        textStorage.attributedString = cell.attributedStringValue;
+        textStorage.attributedString = entryAttributedString;
+        textStorage.font = cell.font;
         [textStorage endEditing];
-
-        NSUInteger count;
-        NSRectArray rects = [layoutManager rectArrayForCharacterRange:range
-                                         withinSelectedCharacterRange:range
-                                                      inTextContainer:textContainer
-                                                            rectCount:&count];
-        NSMutableArray<NSValue *> *values = [NSMutableArray array];
-        for (NSUInteger i = 0; i < count; i++)
-        {
-            NSRect rect = NSOffsetRect(rects[i], textBounds.origin.x, textBounds.origin.y);
-            [values addObject:[NSValue valueWithRect:rect]];
+        if (findResult.cell) {
+            NSUInteger count;
+            NSRectArray rects = [layoutManager rectArrayForCharacterRange:findResult.rangeOfAttachment
+                                             withinSelectedCharacterRange:findResult.rangeOfAttachment
+                                                          inTextContainer:textContainer
+                                                                rectCount:&count];
+            // TODO, rect in attachement
+            for (NSUInteger i = 0; i < count; i++)
+            {
+                NSRect rect = NSOffsetRect(rects[i], textBounds.origin.x, textBounds.origin.y);
+                [outRects addObject:[NSValue valueWithRect:rect]];
+            }
+        } else {
+            NSLog(@"non-attributed substring: %@", [[entryAttributedString attributedSubstringFromRange:findResult.range] string]);
+            
+            NSUInteger count;
+            NSRectArray rects = [layoutManager rectArrayForCharacterRange:findResult.range
+                                             withinSelectedCharacterRange:findResult.range
+                                                          inTextContainer:textContainer
+                                                                rectCount:&count];
+            for (NSUInteger i = 0; i < count; i++)
+            {
+                NSRect rect = NSOffsetRect(rects[i], textBounds.origin.x, textBounds.origin.y);
+                [outRects addObject:[NSValue valueWithRect:rect]];
+            }
         }
-        return values;
-    } else {
-        return nil;
     }
+    return outRects;
 }
 
 - (void)drawCharactersInRange:(NSRange)range forContentView:(NSView *)view {
