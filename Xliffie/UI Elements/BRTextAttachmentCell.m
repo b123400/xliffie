@@ -7,6 +7,7 @@
 //
 
 #import "BRTextAttachmentCell.h"
+#import "BRTextAttachmentFindResult.h"
 
 @implementation BRTextAttachmentCell
 
@@ -42,8 +43,13 @@
     }];
 }
 
+- (NSRect)rectOfTextRange:(NSRange)range {
+    // TODO
+    return NSMakeRect(10, 0, 20, 20);
+}
+
+/// Turn tokens back into normal string
 + (NSString *)stringForAttributedString:(NSAttributedString *)input {
-    // Turn tokens back into normal string
     NSMutableAttributedString *m = [input mutableCopy];
     [input enumerateAttribute:NSAttachmentAttributeName
                                inRange:NSMakeRange(0, m.length)
@@ -55,6 +61,54 @@
         }
     }];
     return [[m string] stringByReplacingOccurrencesOfString:@"\U0000fffc" withString:@""];
+}
+
+/// Given an attributedString, and the a range of its plaintext representation, returns an array of find result with range relative to the attributed string, for NSTextFinder highlight
++ (NSArray<BRTextAttachmentFindResult*> *)findTextRangesWithPlainTextRange:(NSRange)inputRange fromAttributedString:(NSAttributedString *)attrString {
+    __block NSUInteger delta = 0;
+    NSString *plainText = [BRTextAttachmentCell stringForAttributedString:attrString];
+    NSMutableArray<BRTextAttachmentFindResult*> *results = [NSMutableArray array];
+    __block NSUInteger nonAttributedStartAt = 0;
+    [attrString enumerateAttribute:NSAttachmentAttributeName
+                           inRange:NSMakeRange(0, attrString.length)
+                           options:0
+                        usingBlock:^(id  _Nullable value, NSRange range, BOOL * _Nonnull stop) {
+        if ([value isKindOfClass:[NSTextAttachment class]] && [[(NSTextAttachment*)value attachmentCell] isKindOfClass:[BRTextAttachmentCell class]]) {
+            BRTextAttachmentCell *cell = (BRTextAttachmentCell*)[(NSTextAttachment*)value attachmentCell];
+            NSRange plainTextRange = NSMakeRange(range.location + delta, cell.text.length);
+            
+            NSRange nonAttributedPlainTextRange = NSMakeRange(nonAttributedStartAt, plainTextRange.location - nonAttributedStartAt);
+            nonAttributedStartAt = NSMaxRange(plainTextRange);
+
+            NSRange intersection = NSIntersectionRange(inputRange, plainTextRange);
+            if (intersection.length) {
+                BRTextAttachmentFindResult *result = [[BRTextAttachmentFindResult alloc] init];
+                result.cell = cell;
+                result.rangeOfAttachment = range;
+                result.range = NSMakeRange(intersection.location - plainTextRange.location, intersection.length);
+                [results addObject:result];
+            }
+            
+            intersection = NSIntersectionRange(inputRange, nonAttributedPlainTextRange);
+            if (intersection.length) {
+                BRTextAttachmentFindResult *result = [[BRTextAttachmentFindResult alloc] init];
+                result.range = NSMakeRange(intersection.location - delta, intersection.length);
+                result.sourceText = attrString;
+                [results addObject:result];
+            }
+
+            delta += cell.text.length - 1;
+        }
+    }];
+    NSRange lastNonAttributedRange = NSMakeRange(nonAttributedStartAt, plainText.length - nonAttributedStartAt);
+    NSRange lastIntersection = NSIntersectionRange(lastNonAttributedRange, inputRange);
+    if (lastIntersection.length) {
+        BRTextAttachmentFindResult *result = [[BRTextAttachmentFindResult alloc] init];
+        result.range = NSMakeRange(lastIntersection.location - delta, lastIntersection.length);
+        result.sourceText = attrString;
+        [results addObject:result];
+    }
+    return results;
 }
 
 @end

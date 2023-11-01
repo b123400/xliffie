@@ -10,6 +10,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class BRTextAttachmentFindResult;
+
 @interface BRTextAttachmentCell : NSTextAttachmentCell
 
 @property (nonatomic, strong) NSColor *backgroundColor;
@@ -18,6 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) BOOL strokeInsteadOfFill;
 
 + (NSString *)stringForAttributedString:(NSAttributedString *)input;
++ (NSArray<BRTextAttachmentFindResult*> *)findTextRangesWithPlainTextRange:(NSRange)inputRange fromAttributedString:(NSAttributedString *)attrString;
+- (NSRect)rectOfTextRange:(NSRange)range;
 
 @end
 

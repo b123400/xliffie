@@ -28,6 +28,7 @@
 		CF2DF1572A83DAAA00346BE9 /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2DF1562A83DAAA00346BE9 /* Utilities.m */; };
 		CF2DF1582A83DAEF00346BE9 /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2DF1562A83DAAA00346BE9 /* Utilities.m */; };
 		CF34B75A1AADE00A00C6A58E /* TranslationTargetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF34B7591AADE00A00C6A58E /* TranslationTargetCell.m */; };
+		CF46776C2AF12A5E00DA47F2 /* BRTextAttachmentFindResult.m in Sources */ = {isa = PBXBuildFile; fileRef = CF46776B2AF12A5E00DA47F2 /* BRTextAttachmentFindResult.m */; };
 		CF50085429DBADBA007EF23A /* BRCategorySearchFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF50085329DBADBA007EF23A /* BRCategorySearchFieldCell.m */; };
 		CF50085729DBB20F007EF23A /* BRCategorySearchField.m in Sources */ = {isa = PBXBuildFile; fileRef = CF50085629DBB20F007EF23A /* BRCategorySearchField.m */; };
 		CF5682EB1A6AFB9800E0DEDD /* DocumentWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5682E91A6AFB9800E0DEDD /* DocumentWindowController.m */; };
@@ -170,6 +171,8 @@
 		CF2DF1562A83DAAA00346BE9 /* Utilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
 		CF34B7581AADE00A00C6A58E /* TranslationTargetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TranslationTargetCell.h; sourceTree = "<group>"; };
 		CF34B7591AADE00A00C6A58E /* TranslationTargetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TranslationTargetCell.m; sourceTree = "<group>"; };
+		CF46776A2AF12A5E00DA47F2 /* BRTextAttachmentFindResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRTextAttachmentFindResult.h; sourceTree = "<group>"; };
+		CF46776B2AF12A5E00DA47F2 /* BRTextAttachmentFindResult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRTextAttachmentFindResult.m; sourceTree = "<group>"; };
 		CF4B0C2E1BF91239007AF981 /* zh-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-TW"; path = "zh-TW.lproj/Main.strings"; sourceTree = "<group>"; };
 		CF4B0C2F1BF9123A007AF981 /* zh-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-TW"; path = "zh-TW.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		CF4B0C301BF9123A007AF981 /* zh-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-TW"; path = "zh-TW.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -612,6 +615,8 @@
 				CF50085329DBADBA007EF23A /* BRCategorySearchFieldCell.m */,
 				CF02E0562ADE376D00F06091 /* BRTextAttachmentCell.h */,
 				CF02E0572ADE376D00F06091 /* BRTextAttachmentCell.m */,
+				CF46776A2AF12A5E00DA47F2 /* BRTextAttachmentFindResult.h */,
+				CF46776B2AF12A5E00DA47F2 /* BRTextAttachmentFindResult.m */,
 				CF2498472ADF6F5300285DB2 /* NSTextView+CopyAttachment.h */,
 				CF2498482ADF6F5300285DB2 /* NSTextView+CopyAttachment.m */,
 			);
@@ -901,6 +906,7 @@
 				CF1BEBE529D5838F0000BD59 /* BaseCustomCell.m in Sources */,
 				CF34B75A1AADE00A00C6A58E /* TranslationTargetCell.m in Sources */,
 				CFF4AE2B2A79504800C50D8A /* GlossarySearchRow.m in Sources */,
+				CF46776C2AF12A5E00DA47F2 /* BRTextAttachmentFindResult.m in Sources */,
 				CF1BEBE229D565740000BD59 /* DocumentTextFinderClientEntry.m in Sources */,
 				CF9FDB8E2AE8D73B00D76DEA /* TranslationPairGroup.m in Sources */,
 				CFF4AE312A7959BA00C50D8A /* GlossarySearchResult.m in Sources */,
