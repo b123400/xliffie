@@ -58,10 +58,10 @@
     textStorage.font = self.font;
     [textStorage endEditing];
     NSUInteger count;
-    NSRectArray rects = [layoutManager rectArrayForGlyphRange:range
-                                     withinSelectedGlyphRange:range
-                                              inTextContainer:textContainer
-                                                    rectCount:&count];
+    NSRectArray rects = [layoutManager rectArrayForCharacterRange:range
+                                     withinSelectedCharacterRange:range
+                                                  inTextContainer:textContainer
+                                                        rectCount:&count];
     NSMutableArray<NSValue*> *result = [NSMutableArray array];
     for (int i = 0; i < count; i++) {
         [result addObject:[NSValue valueWithRect:rects[i]]];

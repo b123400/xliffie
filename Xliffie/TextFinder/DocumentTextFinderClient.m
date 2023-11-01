@@ -36,7 +36,7 @@
     id item = [self.outlineView itemAtRow:row];
     NSMutableArray *result = [NSMutableArray array];
     for (DocumentTextFinderClientEntry *entry in self.entries) {
-        if (entry.pair == item) {
+        if (entry.pair == item || entry.pairGroup == item) {
             [result addObject:[NSValue valueWithRange:entry.range]];
         }
     }
@@ -48,7 +48,7 @@
     if (row > 0) {
         id item = [self.outlineView itemAtRow:row];
         for (DocumentTextFinderClientEntry *entry in self.entries) {
-            if (entry.pair == item) {
+            if (entry.pair == item || entry.pairGroup == item) {
                 return entry.range;
             }
         }
@@ -69,7 +69,7 @@
     for (DocumentTextFinderClientEntry *entry in self.entries) {
         NSRange intersection = NSIntersectionRange(selectedRange, entry.range);
         if (intersection.length > 0) {
-            [self.outlineView selectRowIndexes:[NSIndexSet indexSetWithIndex:[self.outlineView rowForItem:entry.pair]] byExtendingSelection:NO];
+            [self.outlineView selectRowIndexes:[NSIndexSet indexSetWithIndex:[self.outlineView rowForItem:entry.pairGroup ?: entry.pair]] byExtendingSelection:NO];
             break;
         }
     }
@@ -83,23 +83,38 @@
 - (void)reload {
     int currentCharacterIndex = 0;
     NSMutableArray<DocumentTextFinderClientEntry *> *entries = [[NSMutableArray alloc] init];
-    // TODO: handle pair group
-    for (TranslationPair *pair in [self.document allTranslationPairs]) {
-        DocumentTextFinderClientEntry *sourceEntry = [[DocumentTextFinderClientEntry alloc] init];
-        sourceEntry.type = DocumentTextFinderClientEntryTypeSource;
-        sourceEntry.pair = pair;
-        NSString *actualString = [pair plainSourceForDisplayWithModifier];
-        sourceEntry.range = NSMakeRange(currentCharacterIndex, actualString.length);
-        currentCharacterIndex += actualString.length;
-        [entries addObject:sourceEntry];
+    for (File *file in self.document.files) {
+        for (id pairOrGroup in [file groupedTranslations]) {
+            TranslationPair *pair = nil;
+            TranslationPairGroup *group = nil;
+            if ([pairOrGroup isKindOfClass:[TranslationPair class]]) {
+                pair = pairOrGroup;
+            } else if ([pairOrGroup isKindOfClass:[TranslationPairGroup class]] && [pairOrGroup mainPair]) {
+                group = pairOrGroup;
+                pair = [group mainPair];
+            }
+            if (!pair) {
+                // Groups without pair are not searched
+                continue;
+            }
+            DocumentTextFinderClientEntry *sourceEntry = [[DocumentTextFinderClientEntry alloc] init];
+            sourceEntry.type = DocumentTextFinderClientEntryTypeSource;
+            sourceEntry.pair = pair;
+            sourceEntry.pairGroup = group;
+            NSString *actualString = [pair plainSourceForDisplayWithModifier];
+            sourceEntry.range = NSMakeRange(currentCharacterIndex, actualString.length);
+            currentCharacterIndex += actualString.length;
+            [entries addObject:sourceEntry];
 
-        if (pair.target.length) {
-            DocumentTextFinderClientEntry *targetEntry = [[DocumentTextFinderClientEntry alloc] init];
-            targetEntry.type = DocumentTextFinderClientEntryTypeTarget;
-            targetEntry.pair = pair;
-            targetEntry.range = NSMakeRange(currentCharacterIndex, pair.target.length);
-            currentCharacterIndex += pair.target.length;
-            [entries addObject:targetEntry];
+            if (pair.target.length) {
+                DocumentTextFinderClientEntry *targetEntry = [[DocumentTextFinderClientEntry alloc] init];
+                targetEntry.type = DocumentTextFinderClientEntryTypeTarget;
+                targetEntry.pair = pair;
+                targetEntry.pairGroup = group;
+                targetEntry.range = NSMakeRange(currentCharacterIndex, pair.target.length);
+                currentCharacterIndex += pair.target.length;
+                [entries addObject:targetEntry];
+            }
         }
     }
     self.entries = entries;
@@ -123,7 +138,7 @@
 - (void)scrollRangeToVisible:(NSRange)range {
     for (DocumentTextFinderClientEntry *entry in self.entries) {
         if (!NSLocationInRange(range.location, entry.range)) continue;
-        NSInteger index = [self.outlineView rowForItem:entry.pair];
+        NSInteger index = [self.outlineView rowForItem:entry.pairGroup ?: entry.pair];
         if (index != -1) {
             [self.outlineView scrollRowToVisible:index];
         }
@@ -133,7 +148,7 @@
 - (NSView *)contentViewAtIndex:(NSUInteger)characterIndex effectiveCharacterRange:(NSRangePointer)outRange {
     for (DocumentTextFinderClientEntry *entry in self.entries) {
         if (!NSLocationInRange(characterIndex, entry.range)) continue;
-        NSInteger index = [self.outlineView rowForItem:entry.pair];
+        NSInteger index = [self.outlineView rowForItem:entry.pairGroup ?: entry.pair];
         if (index != -1) {
             *outRange = entry.range;
             return self.outlineView;
@@ -153,7 +168,7 @@
     NSTableColumn *column = entry.type == DocumentTextFinderClientEntryTypeSource
         ? [self.outlineView tableColumnWithIdentifier:@"source"]
         : [self.outlineView tableColumnWithIdentifier:@"target"];
-    NSInteger row = [self.outlineView rowForItem:entry.pair];
+    NSInteger row = [self.outlineView rowForItem:entry.pairGroup ?: entry.pair];
     NSRect cellFrame = [self.outlineView frameOfCellAtColumn:entry.type == DocumentTextFinderClientEntryTypeSource ? 0 : 1 row:row];
     NSCell *cell = [column dataCellForRow:row];
     NSRange range = NSMakeRange(inRange.location - entry.range.location, inRange.length);
@@ -161,7 +176,6 @@
     NSAttributedString *entryAttributedString = entry.attributedString;
     NSArray<BRTextAttachmentFindResult*> *findResults = [BRTextAttachmentCell findTextRangesWithPlainTextRange:range fromAttributedString:entryAttributedString];
 
-    
     NSRect textBounds = [cell titleRectForBounds:cellFrame];
     NSTextContainer* textContainer = [[NSTextContainer alloc] init];
     NSLayoutManager* layoutManager = [[NSLayoutManager alloc] init];
@@ -197,8 +211,6 @@
                 }
             }
         } else {
-            NSLog(@"non-attributed substring: %@", [[entryAttributedString attributedSubstringFromRange:findResult.range] string]);
-            
             NSUInteger count;
             NSRectArray rects = [layoutManager rectArrayForCharacterRange:findResult.range
                                              withinSelectedCharacterRange:findResult.range

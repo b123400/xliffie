@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "TranslationPair.h"
+#import "TranslationPairGroup.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -20,6 +21,7 @@ typedef enum : NSUInteger {
 
 @property (assign, nonatomic) DocumentTextFinderClientEntryType type;
 @property (strong, nonatomic) TranslationPair *pair;
+@property (strong, nonatomic) TranslationPairGroup *pairGroup;
 @property (assign, nonatomic) NSRange range;
 
 - (NSString *)string;

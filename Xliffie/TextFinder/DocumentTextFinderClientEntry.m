@@ -24,4 +24,11 @@
     return [self.pair targetWithFormatSpecifierReplaced];
 }
 
+- (TranslationPair *)pair {
+    if (!_pair) {
+        return self.pairGroup.mainPair;
+    }
+    return _pair;
+}
+
 @end
