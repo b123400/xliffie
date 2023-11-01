@@ -20,6 +20,8 @@ typedef enum : NSUInteger {
 
 @interface TranslationPair : NSObject<NSCopying>
 
+@property (nonatomic, strong) NSXMLElement *xmlElement;
+
 @property (nonatomic, strong) NSString *source;
 @property (nonatomic, strong) NSString *target;
 @property (nonatomic, strong) NSString *note;

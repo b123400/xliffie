@@ -16,7 +16,6 @@
 
 @interface TranslationPair ()
 
-@property (nonatomic, strong) NSXMLElement *xmlElement;
 @property (nonatomic, strong) NSArray <NSString*> *cachedTargetWarnings;
 
 @end
