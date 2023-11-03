@@ -163,7 +163,7 @@
     NSMutableString *s = [[NSMutableString alloc] init];
     NSDictionary *modifiers = [self transUnitModifiersDict];
     if (modifiers[@"plural"]) {
-        [s appendString:modifiers[@"plural"]];
+        [s appendString:[Utilities applyFormat:StringFormatInitialUpper toString:modifiers[@"plural"]]];
         [s appendString:@" "];
     } else if (modifiers[@"device"]) {
         NSString *deviceString = [Utilities stringForDevice:modifiers[@"device"]];
@@ -179,7 +179,7 @@
     NSDictionary *modifiers = [self transUnitModifiersDict];
     if (modifiers[@"plural"]) {
         NSTextAttachment *attachment = [[NSTextAttachment alloc] init];
-        BRTextAttachmentCell *cell = [[BRTextAttachmentCell alloc] initTextCell:modifiers[@"plural"]];
+        BRTextAttachmentCell *cell = [[BRTextAttachmentCell alloc] initTextCell:[Utilities applyFormat:StringFormatInitialUpper toString:modifiers[@"plural"]]];
         cell.strokeInsteadOfFill = YES;
         cell.textColor = [NSColor linkColor];
         cell.backgroundColor = [NSColor linkColor];
