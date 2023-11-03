@@ -8,6 +8,8 @@
 
 #import "XMLOutlineView.h"
 #import "TranslationPair.h"
+#import "BRTextAttachmentCell.h"
+#import "TranslationTargetCell.h"
 
 @interface XMLOutlineView ()
 
@@ -65,8 +67,8 @@
 }
 
 - (void)textDidEndEditing:(NSNotification *)notification {
-    NSString *proposed = [[[notification object] textStorage] string];
-    
+    NSAttributedString *attributedString = [[notification object] attributedString];
+    NSString *proposed = [BRTextAttachmentCell stringForAttributedString:attributedString];
     if ([self.xmlOutlineDelegate respondsToSelector:@selector(xmlOutlineView:didEndEditingRow:proposedString:callback:)]) {
         [self.xmlOutlineDelegate xmlOutlineView:self didEndEditingRow:self.editedRow proposedString:proposed callback:^(BOOL shouldEnd) {
             
@@ -84,6 +86,9 @@
                     default:
                         [super textDidEndEditing:notification];
                         [self selectRowIndexes:[NSIndexSet indexSetWithIndex:self.editedRow] byExtendingSelection:NO];
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [self.window makeFirstResponder:self];
+                        });
                         return;
                 }
                 
@@ -99,10 +104,23 @@
                 [self selectRowIndexes:[NSIndexSet indexSetWithIndex:nextRow] byExtendingSelection:NO];
                 [self editColumn:1 row:nextRow withEvent:0 select:YES];
             } else {
-                [self.window makeFirstResponder:[notification object]];
+                [self.window makeFirstResponder:self];
             }
         }];
     }
+}
+
+- (void)textDidChange:(NSNotification *)notification {
+    NSTextView *textView = [notification object];
+    NSAttributedString *originalString = [textView attributedString];
+    NSMutableAttributedString *m = [originalString mutableCopy];
+    NSRange selection = [textView selectedRange];
+    NSUInteger charCountAfterCursor = originalString.length - (selection.location + selection.length);
+    NSAttributedString *replaced = [TranslationPair stringWithFormatSpecifiersReplaced:[BRTextAttachmentCell stringForAttributedString:m]];
+    
+    [[textView textStorage] setAttributedString:replaced];
+    [textView setSelectedRange:NSMakeRange(replaced.length - charCountAfterCursor, 0)];
+    [super textDidChange:notification];
 }
 
 @end

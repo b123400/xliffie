@@ -15,6 +15,7 @@
 #import "DocumentTextFinderClient.h"
 #import "GlossaryDatabase.h"
 #import "XclocDocument.h"
+#import "TranslationPairGroup.h"
 
 @interface DocumentViewController () <SuggestionsWindowControllerDelegate>
 
@@ -73,22 +74,28 @@
 - (void)dealloc {
     [self.outlineView.enclosingScrollView removeObserver:self forKeyPath:@"findBarVisible"];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [self.textFinder cancelFindIndicator];
+    self.textFinder.client = nil;
 }
 
 #pragma mark Notification
 
 - (void)documentDidUndoOrRedo:(NSNotification*)notification {
     NSUndoManager *manager = [notification object];
-    if (manager == self.documentForDisplay.undoManager) {
-        [self.outlineView reloadData];
-    }
+    __weak typeof(self) _self = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (manager == _self.documentForDisplay.undoManager) {
+            [_self.outlineView reloadData];
+        }
+    });
 }
 
 #pragma mark OutlineView
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView
    isItemExpandable:(id)item {
-    return [item isKindOfClass:[File class]];
+    return [item isKindOfClass:[File class]]
+        || [item isKindOfClass:[TranslationPairGroup class]];
 }
 
 - (NSInteger)outlineView:(NSOutlineView *)outlineView
@@ -96,7 +103,9 @@
     if (!item) {
         return self.documentForDisplay.files.count;
     } else if ([item isKindOfClass:[File class]]) {
-        return [(File*)item translations].count;
+        return [(File*)item groupedTranslations].count;
+    } else if ([item isKindOfClass:[TranslationPairGroup class]]) {
+        return [(TranslationPairGroup*)item children].count;
     }
     return 0;
 }
@@ -107,7 +116,9 @@
     if (!item) {
         return self.documentForDisplay.files[index];
     } else if ([item isKindOfClass:[File class]]) {
-        return [[(File*)item translations] objectAtIndex:index];
+        return [[(File*)item groupedTranslations] objectAtIndex:index];
+    } else if ([item isKindOfClass:[TranslationPairGroup class]]) {
+        return [(TranslationPairGroup*)item children][index];
     }
     return nil;
 }
@@ -117,14 +128,21 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
            byItem:(id)item {
     if ([item isKindOfClass:[TranslationPair class]]) {
         if ([[tableColumn identifier] isEqualToString:@"source"]) {
-            return [(TranslationPair*)item sourceForDisplay];
+            return [(TranslationPair*)item sourceForDisplayWithFormatSpecifierReplaced];
         } else if ([[tableColumn identifier] isEqualToString:@"target"]) {
-            return [(TranslationPair*)item target];
+            return [(TranslationPair*)item targetWithFormatSpecifierReplaced];
         }
     } else if ([item isKindOfClass:[File class]]) {
         if ([[tableColumn identifier] isEqualToString:@"source"]) {
             NSString *path = [(File*)item original];
             return [NSAttributedString attributedStringWithFileIcon:path];
+        }
+    } else if ([item isKindOfClass:[TranslationPairGroup class]]) {
+        TranslationPairGroup *group = (TranslationPairGroup*)item;
+        if ([[tableColumn identifier] isEqualToString:@"source"]) {
+            return [group stringForSourceColumn];
+        } else if ([[tableColumn identifier] isEqualToString:@"target"]) {
+            return [group.mainPair targetWithFormatSpecifierReplaced];
         }
     }
     return nil;
@@ -134,12 +152,11 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
      setObjectValue:(id)object
      forTableColumn:(NSTableColumn *)tableColumn
              byItem:(id)item {
-    
     if ([item isKindOfClass:[TranslationPair class]]) {
         if ([[tableColumn identifier] isEqualToString:@"source"]) {
             [(TranslationPair*)item setSource:object];
-        } else if ([[tableColumn identifier] isEqualToString:@"target"]) {
-            [(TranslationPair*)item setTarget:object];
+        } else if ([[tableColumn identifier] isEqualToString:@"target"] && [object isKindOfClass:[NSAttributedString class]]) {
+            [(TranslationPair*)item setAttributedTarget:object];
         } else if ([[tableColumn identifier] isEqualToString:@"note"]) {
             [(TranslationPair*)item setNote:object];
         }
@@ -154,6 +171,9 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
     if ([[tableColumn identifier] isEqualToString:@"target"] && [item isKindOfClass:[TranslationPair class]]) {
         return YES;
     }
+    if ([[tableColumn identifier] isEqualToString:@"target"] && [item isKindOfClass:[TranslationPairGroup class]] && [(TranslationPairGroup*)item mainPair]) {
+        return YES;
+    }
     return NO;
 }
 
@@ -161,14 +181,13 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
     NSUInteger index = [self.outlineView selectedRow];
     id item = [self.outlineView itemAtRow:index];
     if ([item isKindOfClass:[TranslationPair class]]) {
-        
         if ([self.delegate respondsToSelector:@selector(viewController:didSelectedTranslation:)]) {
             [self.delegate viewController:self didSelectedTranslation:item];
         }
         if ([self.delegate respondsToSelector:@selector(viewController:didSelectedFileChild:)]) {
             [self.delegate viewController:self didSelectedFileChild:[item file]];
         }
-    } else {
+    } else if ([item isKindOfClass:[File class]]) {
         if ([self.delegate respondsToSelector:@selector(viewController:didSelectedTranslation:)]) {
             [self.delegate viewController:self didSelectedTranslation:nil];
         }
@@ -246,23 +265,25 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
     NSCell *cell = [firstColumn dataCell];
     [cell setWraps:YES];
     
-    CGFloat indentationWidth = [outlineView indentationPerLevel];
     CGFloat firstColumnWidth = [firstColumn width];
-    if ([item isKindOfClass:[File class]]) {
-        firstColumnWidth -= indentationWidth;
-    } else {
-        // TranslationPair, which means indentation = 2
-        firstColumnWidth -= indentationWidth * 2;
+    NSInteger row = [self.outlineView rowForItem:item];
+    if (row >= 0) {
+        CGFloat indentationWidth = [outlineView indentationPerLevel];
+        NSInteger level = [self.outlineView levelForRow:row];
+        firstColumnWidth -= indentationWidth * level;
     }
     
-    if ([item isKindOfClass:[File class]]) {
-        [cell setObjectValue:[item original]];
+    if ([item isKindOfClass:[File class]]
+        || [item isKindOfClass:[TranslationPairGroup class]]
+        ) {
+        id obj = [self outlineView:outlineView objectValueForTableColumn:firstColumn byItem:item];
+        [cell setObjectValue:obj];
         return [cell cellSizeForBounds:CGRectMake(0, 0, firstColumnWidth, CGFLOAT_MAX)].height;
     }
     
-    [cell setObjectValue:[(TranslationPair*)item source]];
+    [cell setObjectValue:[(TranslationPair*)item sourceForDisplayWithFormatSpecifierReplaced]];
     CGFloat sourceHeight = [cell cellSizeForBounds:CGRectMake(0, 0, firstColumnWidth, CGFLOAT_MAX)].height + 5;
-    [cell setObjectValue:[item target]];
+    [cell setObjectValue:[item targetWithFormatSpecifierReplaced]];
     CGFloat targetHeight = [cell cellSizeForBounds:CGRectMake(0, 0, [secondColumn width], CGFLOAT_MAX)].height + 5;
     return MAX(sourceHeight, targetHeight);
 }
@@ -428,6 +449,9 @@ doCommandBySelector:(SEL)commandSelector {
 - (void)xmlOutlineView:(id)sender didEndEditingRow:(NSInteger)row proposedString:(NSString*)proposed callback:(void (^)(BOOL))callback {
     [[SuggestionsWindowController shared] hide];
     TranslationPair *pair = [self.outlineView itemAtRow:row];
+    if ([pair isKindOfClass:[TranslationPairGroup class]]) {
+        pair = [(TranslationPairGroup*)pair mainPair];
+    }
     NSArray *warnings = [pair formatWarningsForProposedTranslation:proposed];
     if ([warnings count]) {
         NSAlert *alert = [[NSAlert alloc] init];

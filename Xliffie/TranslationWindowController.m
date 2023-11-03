@@ -175,7 +175,7 @@
         File *thisFile = [fileTables objectForKey:thisPair.file];
         NSString *translated = translatedTexts[i];
 
-        TranslationPair *newPair = [[TranslationPair alloc] init];
+        TranslationPair *newPair = [[TranslationPair alloc] initWithXMLElement:[thisPair.xmlElement copy]];
         newPair.file = thisFile;
         newPair.source = thisPair.source;
         newPair.target = translated;

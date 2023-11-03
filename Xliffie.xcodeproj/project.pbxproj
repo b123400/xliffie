@@ -10,6 +10,7 @@
 		53532F5E187D9C2314DF98A9 /* libPods-Xliffie.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A857BFAEBC2315772F4E891 /* libPods-Xliffie.a */; };
 		CF011B4B1C40FCBA00948323 /* TranslationUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = CF011B4A1C40FCBA00948323 /* TranslationUtility.m */; };
 		CF011B7D1C4641A400948323 /* TranslationWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF011B7B1C4641A400948323 /* TranslationWindowController.m */; };
+		CF02E0582ADE376D00F06091 /* BRTextAttachmentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF02E0572ADE376D00F06091 /* BRTextAttachmentCell.m */; };
 		CF0945911C54FD3600DAEB4A /* BRArrowSegmentedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0945901C54FD3600DAEB4A /* BRArrowSegmentedCell.m */; };
 		CF0AB5912A755EDF00D61101 /* GlossaryDownloadWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0AB58F2A755EDF00D61101 /* GlossaryDownloadWindowController.m */; };
 		CF12DB49293E4C5F00F9C760 /* Suggestion.m in Sources */ = {isa = PBXBuildFile; fileRef = CF12DB48293E4C5F00F9C760 /* Suggestion.m */; };
@@ -22,10 +23,12 @@
 		CF1CE50629CB4EBD00BBFAAB /* ProgressWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1CE50429CB4EBD00BBFAAB /* ProgressWindowController.m */; };
 		CF22255B2A5EA41D00F08515 /* GlossaryDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = CF22255A2A5EA41D00F08515 /* GlossaryDatabase.m */; };
 		CF22255D2A5EF54D00F08515 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CF22255C2A5EF53E00F08515 /* libsqlite3.tbd */; };
+		CF2498492ADF6F5300285DB2 /* NSTextView+CopyAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2498482ADF6F5300285DB2 /* NSTextView+CopyAttachment.m */; };
 		CF2DF14E2A827B0D00346BE9 /* SuggestionTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2DF14D2A827B0D00346BE9 /* SuggestionTableView.m */; };
 		CF2DF1572A83DAAA00346BE9 /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2DF1562A83DAAA00346BE9 /* Utilities.m */; };
 		CF2DF1582A83DAEF00346BE9 /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2DF1562A83DAAA00346BE9 /* Utilities.m */; };
 		CF34B75A1AADE00A00C6A58E /* TranslationTargetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF34B7591AADE00A00C6A58E /* TranslationTargetCell.m */; };
+		CF46776C2AF12A5E00DA47F2 /* BRTextAttachmentFindResult.m in Sources */ = {isa = PBXBuildFile; fileRef = CF46776B2AF12A5E00DA47F2 /* BRTextAttachmentFindResult.m */; };
 		CF50085429DBADBA007EF23A /* BRCategorySearchFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF50085329DBADBA007EF23A /* BRCategorySearchFieldCell.m */; };
 		CF50085729DBB20F007EF23A /* BRCategorySearchField.m in Sources */ = {isa = PBXBuildFile; fileRef = CF50085629DBB20F007EF23A /* BRCategorySearchField.m */; };
 		CF5682EB1A6AFB9800E0DEDD /* DocumentWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5682E91A6AFB9800E0DEDD /* DocumentWindowController.m */; };
@@ -92,6 +95,7 @@
 		CF9A36ED29CD8F3C00FB8763 /* ProgressWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF9A36EF29CD8F3C00FB8763 /* ProgressWindowController.xib */; };
 		CF9A370029CDE6BE00FB8763 /* DocumentTextFinderClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9A36FF29CDE6BE00FB8763 /* DocumentTextFinderClient.m */; };
 		CF9A3D5529DEB61D00807F3D /* NSImage+SystemImage.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9A3D5429DEB61D00807F3D /* NSImage+SystemImage.m */; };
+		CF9FDB8E2AE8D73B00D76DEA /* TranslationPairGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9FDB8D2AE8D73B00D76DEA /* TranslationPairGroup.m */; };
 		CFA091E029CB18F800F33979 /* BRProgressButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA091DF29CB18F800F33979 /* BRProgressButton.m */; };
 		CFC6CC602702E8E300F7850C /* GlossaryWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC6CC5E2702E8E300F7850C /* GlossaryWindowController.m */; };
 		CFC6CC642703152400F7850C /* GlossaryRow.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC6CC632703152400F7850C /* GlossaryRow.m */; };
@@ -134,6 +138,8 @@
 		CF026F891C54133B009A23AC /* zh-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-TW"; path = "zh-TW.lproj/TranslateServiceWindowController.strings"; sourceTree = "<group>"; };
 		CF026F8A1C54134A009A23AC /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/TranslationWindowController.strings; sourceTree = "<group>"; };
 		CF026F8B1C54134C009A23AC /* zh-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-TW"; path = "zh-TW.lproj/TranslationWindowController.strings"; sourceTree = "<group>"; };
+		CF02E0562ADE376D00F06091 /* BRTextAttachmentCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRTextAttachmentCell.h; sourceTree = "<group>"; };
+		CF02E0572ADE376D00F06091 /* BRTextAttachmentCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRTextAttachmentCell.m; sourceTree = "<group>"; };
 		CF09458F1C54FD3600DAEB4A /* BRArrowSegmentedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRArrowSegmentedCell.h; sourceTree = "<group>"; };
 		CF0945901C54FD3600DAEB4A /* BRArrowSegmentedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRArrowSegmentedCell.m; sourceTree = "<group>"; };
 		CF0AB58E2A755EDE00D61101 /* GlossaryDownloadWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlossaryDownloadWindowController.h; sourceTree = "<group>"; };
@@ -157,12 +163,16 @@
 		CF2225592A5EA41D00F08515 /* GlossaryDatabase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlossaryDatabase.h; sourceTree = "<group>"; };
 		CF22255A2A5EA41D00F08515 /* GlossaryDatabase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GlossaryDatabase.m; sourceTree = "<group>"; };
 		CF22255C2A5EF53E00F08515 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		CF2498472ADF6F5300285DB2 /* NSTextView+CopyAttachment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSTextView+CopyAttachment.h"; sourceTree = "<group>"; };
+		CF2498482ADF6F5300285DB2 /* NSTextView+CopyAttachment.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSTextView+CopyAttachment.m"; sourceTree = "<group>"; };
 		CF2DF14C2A827B0D00346BE9 /* SuggestionTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuggestionTableView.h; path = Suggestions/SuggestionTableView.h; sourceTree = "<group>"; };
 		CF2DF14D2A827B0D00346BE9 /* SuggestionTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SuggestionTableView.m; path = Suggestions/SuggestionTableView.m; sourceTree = "<group>"; };
 		CF2DF1552A83DAAA00346BE9 /* Utilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
 		CF2DF1562A83DAAA00346BE9 /* Utilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
 		CF34B7581AADE00A00C6A58E /* TranslationTargetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TranslationTargetCell.h; sourceTree = "<group>"; };
 		CF34B7591AADE00A00C6A58E /* TranslationTargetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TranslationTargetCell.m; sourceTree = "<group>"; };
+		CF46776A2AF12A5E00DA47F2 /* BRTextAttachmentFindResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRTextAttachmentFindResult.h; sourceTree = "<group>"; };
+		CF46776B2AF12A5E00DA47F2 /* BRTextAttachmentFindResult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRTextAttachmentFindResult.m; sourceTree = "<group>"; };
 		CF4B0C2E1BF91239007AF981 /* zh-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-TW"; path = "zh-TW.lproj/Main.strings"; sourceTree = "<group>"; };
 		CF4B0C2F1BF9123A007AF981 /* zh-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-TW"; path = "zh-TW.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		CF4B0C301BF9123A007AF981 /* zh-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-TW"; path = "zh-TW.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -261,6 +271,8 @@
 		CF9A36FF29CDE6BE00FB8763 /* DocumentTextFinderClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DocumentTextFinderClient.m; sourceTree = "<group>"; };
 		CF9A3D5329DEB61D00807F3D /* NSImage+SystemImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSImage+SystemImage.h"; sourceTree = "<group>"; };
 		CF9A3D5429DEB61D00807F3D /* NSImage+SystemImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSImage+SystemImage.m"; sourceTree = "<group>"; };
+		CF9FDB8C2AE8D73B00D76DEA /* TranslationPairGroup.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TranslationPairGroup.h; sourceTree = "<group>"; };
+		CF9FDB8D2AE8D73B00D76DEA /* TranslationPairGroup.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TranslationPairGroup.m; sourceTree = "<group>"; };
 		CFA091DE29CB18F800F33979 /* BRProgressButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRProgressButton.h; sourceTree = "<group>"; };
 		CFA091DF29CB18F800F33979 /* BRProgressButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRProgressButton.m; sourceTree = "<group>"; };
 		CFC6CC5D2702E8E300F7850C /* GlossaryWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlossaryWindowController.h; sourceTree = "<group>"; };
@@ -360,6 +372,8 @@
 				CF94FCA41A5C365400EE8BD5 /* File.m */,
 				CF94FCA61A5C37A900EE8BD5 /* TranslationPair.h */,
 				CF94FCA71A5C37A900EE8BD5 /* TranslationPair.m */,
+				CF9FDB8C2AE8D73B00D76DEA /* TranslationPairGroup.h */,
+				CF9FDB8D2AE8D73B00D76DEA /* TranslationPairGroup.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -599,6 +613,12 @@
 				CF50085629DBB20F007EF23A /* BRCategorySearchField.m */,
 				CF50085229DBADBA007EF23A /* BRCategorySearchFieldCell.h */,
 				CF50085329DBADBA007EF23A /* BRCategorySearchFieldCell.m */,
+				CF02E0562ADE376D00F06091 /* BRTextAttachmentCell.h */,
+				CF02E0572ADE376D00F06091 /* BRTextAttachmentCell.m */,
+				CF46776A2AF12A5E00DA47F2 /* BRTextAttachmentFindResult.h */,
+				CF46776B2AF12A5E00DA47F2 /* BRTextAttachmentFindResult.m */,
+				CF2498472ADF6F5300285DB2 /* NSTextView+CopyAttachment.h */,
+				CF2498482ADF6F5300285DB2 /* NSTextView+CopyAttachment.m */,
 			);
 			path = "UI Elements";
 			sourceTree = "<group>";
@@ -880,12 +900,15 @@
 				CF5682EB1A6AFB9800E0DEDD /* DocumentWindowController.m in Sources */,
 				CF011B4B1C40FCBA00948323 /* TranslationUtility.m in Sources */,
 				CF94FCA51A5C365400EE8BD5 /* File.m in Sources */,
+				CF2498492ADF6F5300285DB2 /* NSTextView+CopyAttachment.m in Sources */,
 				CF2DF1572A83DAAA00346BE9 /* Utilities.m in Sources */,
 				CF1CE50629CB4EBD00BBFAAB /* ProgressWindowController.m in Sources */,
 				CF1BEBE529D5838F0000BD59 /* BaseCustomCell.m in Sources */,
 				CF34B75A1AADE00A00C6A58E /* TranslationTargetCell.m in Sources */,
 				CFF4AE2B2A79504800C50D8A /* GlossarySearchRow.m in Sources */,
+				CF46776C2AF12A5E00DA47F2 /* BRTextAttachmentFindResult.m in Sources */,
 				CF1BEBE229D565740000BD59 /* DocumentTextFinderClientEntry.m in Sources */,
+				CF9FDB8E2AE8D73B00D76DEA /* TranslationPairGroup.m in Sources */,
 				CFF4AE312A7959BA00C50D8A /* GlossarySearchResult.m in Sources */,
 				CF5682EF1A6B11C700E0DEDD /* DetailViewController.m in Sources */,
 				CFD234FA1A5E44C700B52088 /* XMLOutlineView.m in Sources */,
@@ -895,6 +918,7 @@
 				CFF4AE282A790BD100C50D8A /* GlossaryReverseSearchResult.m in Sources */,
 				CF5AB3C2293DCE6200C8AC7B /* SuggestionsWindowController.m in Sources */,
 				CF740AA72701C6C700F31F26 /* Glossary.m in Sources */,
+				CF02E0582ADE376D00F06091 /* BRTextAttachmentCell.m in Sources */,
 				CFE3B1761CD800AB00021D7F /* NSString+Pangu.m in Sources */,
 				CF9A3D5529DEB61D00807F3D /* NSImage+SystemImage.m in Sources */,
 				CF5FC8981A5ABFF700538E60 /* DocumentViewController.m in Sources */,

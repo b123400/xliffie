@@ -9,10 +9,12 @@
 #import "File.h"
 #import "TranslationPair.h"
 #import "Document.h"
+#import "TranslationPairGroup.h"
 
 @interface File ()
 
 @property (nonatomic, strong) NSXMLElement *xmlElement;
+@property (nonatomic, strong) NSArray *cachedGroups;
 
 @end
 
@@ -116,6 +118,13 @@
     } else {
         [targetAttribute setStringValue:targetLanguage];
     }
+}
+
+- (NSArray *)groupedTranslations {
+    if (!self.cachedGroups) {
+        self.cachedGroups = [TranslationPairGroup groupsWithTranslationPairs:self.translations];
+    }
+    return self.cachedGroups;
 }
 
 @end

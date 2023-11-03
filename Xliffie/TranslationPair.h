@@ -20,6 +20,8 @@ typedef enum : NSUInteger {
 
 @interface TranslationPair : NSObject<NSCopying>
 
+@property (nonatomic, strong) NSXMLElement *xmlElement;
+
 @property (nonatomic, strong) NSString *source;
 @property (nonatomic, strong) NSString *target;
 @property (nonatomic, strong) NSString *note;
@@ -38,10 +40,21 @@ typedef enum : NSUInteger {
 - (NSArray*)formatWarningsForProposedTranslation:(NSString*)newTranslation;
 
 - (NSString*)sourceForDisplay;
+- (NSString*)plainSourceForDisplayWithModifier;
 - (NSArray <NSString*> *)warningsForTarget;
 
 - (void)markAsTranslated;
 - (void)markAsNotTranslated;
 - (void)unmark;
+
+- (void)setAttributedTarget:(NSAttributedString *)attrStr;
+- (NSAttributedString *)sourceForDisplayWithFormatSpecifierReplaced;
+- (NSAttributedString *)targetWithFormatSpecifierReplaced;
++ (NSAttributedString *)stringWithFormatSpecifiersReplaced:(NSString *)input;
+
+- (NSString *)transUnitIdWithoutModifiers;
+- (NSArray<NSArray<NSString*>*> *)transUnitModifiers;
+- (NSArray<NSString*> *)transUnitModifierPath;
+- (NSDictionary *)transUnitModifiersDict;
 
 @end

@@ -71,4 +71,23 @@
     return [Utilities applyFormat:[Utilities detectFormatOfString:formatString] toString:targetString];
 }
 
++ (NSString *)stringForDevice:(NSString *)deviceString {
+    if ([deviceString isEqual:@"iphone"]) {
+        return @"􀟜 iPhone";
+    } else if ([deviceString isEqual:@"mac"]) {
+        return @"􀙗 Mac";
+    } else if ([deviceString isEqual:@"appletv"]) {
+        return @"􀡴 Apple TV";
+    } else if ([deviceString isEqual:@"applevision"]) {
+        return @"Apple Vision";
+    } else if ([deviceString isEqual:@"applewatch"]) {
+        return @"􀟤 Apple Watch";
+    } else if ([deviceString isEqual:@"ipad"]) {
+        return @"􀟠 iPad";
+    } else if ([deviceString isEqual:@"ipod"]) {
+        return @"􀢺 iPod";
+    }
+    return nil;
+}
+
 @end

@@ -49,6 +49,28 @@
     XCTAssert(([result isEqual:@[@"a", @"b", @"c"]]), @"result");
 }
 
+- (void)testDetectCaseDetection {
+    StringFormat stringFormat1 = [Utilities detectFormatOfString:@"Hello"];
+    XCTAssert(stringFormat1 == StringFormatInitialUpper);
+    
+    StringFormat stringFormat2 = [Utilities detectFormatOfString:@"hello"];
+    XCTAssert(stringFormat2 == StringFormatAllLower);
+    
+    StringFormat stringFormat3 = [Utilities detectFormatOfString:@"HELLO"];
+    XCTAssert(stringFormat3 == StringFormatAllUpper);
+}
+
+- (void)testStringFormatApply {
+    NSString *str = [Utilities applyFormat:StringFormatAllLower toString:@"heLLo"];
+    XCTAssert([str isEqual:@"hello"]);
+    
+    str = [Utilities applyFormat:StringFormatAllUpper toString:@"heLLo"];
+    XCTAssert([str isEqual:@"HELLO"]);
+    
+    str = [Utilities applyFormat:StringFormatInitialUpper toString:@"heLLo"];
+    XCTAssert([str isEqual:@"Hello"]);
+}
+
 - (void)testExample {
     // This is an example of a functional test case.
     XCTAssert(YES, @"Pass");

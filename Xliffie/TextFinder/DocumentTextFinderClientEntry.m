@@ -12,9 +12,23 @@
 
 - (NSString *)string {
     if (self.type == DocumentTextFinderClientEntryTypeSource) {
-        return self.pair.source;
+        return [self.pair plainSourceForDisplayWithModifier];
     }
     return self.pair.target;
+}
+
+- (NSAttributedString *)attributedString {
+    if (self.type == DocumentTextFinderClientEntryTypeSource) {
+        return [self.pair sourceForDisplayWithFormatSpecifierReplaced];
+    }
+    return [self.pair targetWithFormatSpecifierReplaced];
+}
+
+- (TranslationPair *)pair {
+    if (!_pair) {
+        return self.pairGroup.mainPair;
+    }
+    return _pair;
 }
 
 @end
