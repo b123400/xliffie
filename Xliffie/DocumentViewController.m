@@ -265,13 +265,12 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
     NSCell *cell = [firstColumn dataCell];
     [cell setWraps:YES];
     
-    CGFloat indentationWidth = [outlineView indentationPerLevel];
     CGFloat firstColumnWidth = [firstColumn width];
-    if ([item isKindOfClass:[File class]]) {
-        firstColumnWidth -= indentationWidth;
-    } else {
-        // TranslationPair, which means indentation = 2
-        firstColumnWidth -= indentationWidth * 2;
+    NSInteger row = [self.outlineView rowForItem:item];
+    if (row >= 0) {
+        CGFloat indentationWidth = [outlineView indentationPerLevel];
+        NSInteger level = [self.outlineView levelForRow:row];
+        firstColumnWidth -= indentationWidth * level;
     }
     
     if ([item isKindOfClass:[File class]]
