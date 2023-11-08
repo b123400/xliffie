@@ -388,7 +388,8 @@
 
 - (NSArray*)formatWarningsForProposedTranslation:(NSString*)newTranslation {
     NSDictionary *thatFormats = [self formatSpecifiersInString:newTranslation];
-    NSDictionary *thisFormats = [self formatSpecifiersInString:self.source];
+    NSString *alternativeSource = self.alternativePair.target.length ? self.alternativePair.target : nil;
+    NSDictionary *thisFormats = [self formatSpecifiersInString:alternativeSource ?: self.source];
     NSMutableArray *warnings = [NSMutableArray array];
     for (NSString *key in thisFormats) {
         NSNumber *thatCount = [thatFormats objectForKey:key];
