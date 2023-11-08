@@ -16,6 +16,9 @@
     NSText *t = [super setUpFieldEditorAttributes:textObj];
     t.backgroundColor = [NSColor textBackgroundColor];
     t.textColor = [NSColor textColor];
+    if ([t isKindOfClass:[NSTextView class]]) {
+        [(NSTextView*)t setUsesAdaptiveColorMappingForDarkAppearance:YES];
+    }
     return t;
 }
 
