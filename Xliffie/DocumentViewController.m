@@ -544,7 +544,9 @@ doCommandBySelector:(SEL)commandSelector {
     NSInteger index = [self.outlineView clickedRow];
     NSIndexSet *indexSet = [self.outlineView selectedRowIndexes];
     NSIndexSet *targetIndexSet;
-    if ([indexSet containsIndex:index]) {
+    if (index < 0) {
+        targetIndexSet = indexSet;
+    } else if ([indexSet containsIndex:index]) {
         targetIndexSet = indexSet;
     } else {
         targetIndexSet = [NSIndexSet indexSetWithIndex:index];
@@ -574,6 +576,7 @@ doCommandBySelector:(SEL)commandSelector {
     if ([self.delegate respondsToSelector:@selector(viewControllerTranslationProgressUpdated:)]) {
         [self.delegate viewControllerTranslationProgressUpdated:self];
     }
+    [self.outlineView reloadDataForRowIndexes:targetIndexSet columnIndexes:[NSIndexSet indexSetWithIndex:1]];
 }
 
 - (IBAction)copySourceToTarget:(id)sender {

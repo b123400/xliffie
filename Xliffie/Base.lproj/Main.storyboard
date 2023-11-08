@@ -154,6 +154,11 @@
                                                 <action selector="filterMenuItemClicked:" target="Ady-hI-5gd" id="VNm-Mi-diO"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem title="Mark as translated" keyEquivalent="M" id="2dG-1e-JjQ">
+                                            <connections>
+                                                <action selector="markAsTranslated:" target="Ady-hI-5gd" id="70G-Wr-9G4"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem title="Copy Selected Source to Target" keyEquivalent="C" id="glI-te-e0N">
                                             <connections>
                                                 <action selector="copySourceToTarget:" target="Ady-hI-5gd" id="VNm-Mi-daO"/>
