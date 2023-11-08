@@ -488,7 +488,7 @@ doCommandBySelector:(SEL)commandSelector {
     _document = document;
     [self applyMapLanguage:self.mapLanguage];
     [self expendAllItems];
-    self.textFinderClient.document = document;
+    self.textFinderClient.document = [self documentForDisplay];
 }
 
 - (void)expendAllItems {
@@ -607,6 +607,7 @@ doCommandBySelector:(SEL)commandSelector {
     } else {
         self.filteredDocument = [self.document filteredDocumentWithSearchFilter:self.searchFilter state:self.filterState];
     }
+    self.textFinderClient.document = [self documentForDisplay];
     [self.outlineView reloadData];
     [self.outlineView expandItem:nil expandChildren:YES];
 }
