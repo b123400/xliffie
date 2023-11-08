@@ -35,6 +35,7 @@
 @property (weak) IBOutlet NSToolbarItem *translateButton;
 @property (weak) IBOutlet BRProgressButton *progressButton;
 @property (weak) IBOutlet NSSearchField *searchField;
+@property (weak) IBOutlet NSSearchToolbarItem *searchToolbarItem;
 
 @property (nonatomic, strong) TranslateServiceWindowController *translateServiceController;
 @property (nonatomic, strong) TranslationWindowController *translateController;
@@ -629,7 +630,7 @@
     }
 }
 
-#pragma mark : Glossary
+#pragma mark - Glossary
 
 - (BOOL)hasGlossaryToDownload {
     BOOL needDot = NO;
@@ -694,6 +695,9 @@
     } else {
         // TODO, show another search view?
     }
+}
+- (IBAction)filterMenuItemClicked:(id)sender {
+    [self.searchToolbarItem beginSearchInteraction];
 }
 
 - (void)viewController:(id)controller didSelectedFileChild:(File*)file {
