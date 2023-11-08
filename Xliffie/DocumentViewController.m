@@ -576,6 +576,18 @@ doCommandBySelector:(SEL)commandSelector {
     }
 }
 
+- (IBAction)copySourceToTarget:(id)sender {
+    NSIndexSet *indexSet = [self.outlineView selectedRowIndexes];
+    [indexSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL * _Nonnull stop) {
+        id item = [self.outlineView itemAtRow:idx];
+        if ([item isKindOfClass:[TranslationPair class]]) {
+            TranslationPair *pair = (TranslationPair*)item;
+            pair.target = [pair sourceForDisplay];
+        }
+    }];
+    [self.outlineView reloadData];
+}
+
 #pragma mark Search
 
 - (void)performTextFinderAction:(id)sender {

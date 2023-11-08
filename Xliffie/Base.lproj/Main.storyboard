@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22155"/>
         <capability name="Search Toolbar Item" minToolsVersion="12.0" minSystemVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -152,6 +152,11 @@
                                         <menuItem title="Filter" keyEquivalent="F" id="hzg-H7-y0a">
                                             <connections>
                                                 <action selector="filterMenuItemClicked:" target="Ady-hI-5gd" id="VNm-Mi-diO"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Copy Selected Source to Target" keyEquivalent="C" id="glI-te-e0N">
+                                            <connections>
+                                                <action selector="copySourceToTarget:" target="Ady-hI-5gd" id="VNm-Mi-daO"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="uyl-h8-XO2"/>
