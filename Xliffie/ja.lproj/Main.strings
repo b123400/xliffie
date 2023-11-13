@@ -10,6 +10,9 @@
 /* Class = "NSMenuItem"; title = "Xliffie"; ObjectID = "1Xt-HY-uBw"; */
 "1Xt-HY-uBw.title" = "Xliffie";
 
+/* Class = "NSMenuItem"; title = "Mark as translated"; ObjectID = "2dG-1e-JjQ"; */
+"2dG-1e-JjQ.title" = "翻訳済みにする";
+
 /* Class = "NSMenuItem"; title = "Raise"; ObjectID = "2h7-ER-AoG"; */
 "2h7-ER-AoG.title" = "上げる";
 
@@ -183,6 +186,9 @@
 
 /* Class = "NSMenuItem"; title = "Font"; ObjectID = "Gi5-1S-RQB"; */
 "Gi5-1S-RQB.title" = "フォント";
+
+/* Class = "NSMenuItem"; title = "Copy Selected Source to Target"; ObjectID = "glI-te-e0N"; */
+"glI-te-e0N.title" = "選択された原文を訳文にコピー";
 
 /* Class = "NSMenuItem"; title = "Use Default"; ObjectID = "GUa-eO-cwY"; */
 "GUa-eO-cwY.title" = "デフォルトを使用";

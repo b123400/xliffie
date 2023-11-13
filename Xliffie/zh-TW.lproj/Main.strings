@@ -10,6 +10,9 @@
 /* Class = "NSMenuItem"; title = "Xliffie"; ObjectID = "1Xt-HY-uBw"; */
 "1Xt-HY-uBw.title" = "Xliffie";
 
+/* Class = "NSMenuItem"; title = "Mark as translated"; ObjectID = "2dG-1e-JjQ"; */
+"2dG-1e-JjQ.title" = "當成已經翻譯";
+
 /* Class = "NSMenuItem"; title = "Raise"; ObjectID = "2h7-ER-AoG"; */
 "2h7-ER-AoG.title" = "調高";
 
@@ -184,6 +187,9 @@
 /* Class = "NSMenuItem"; title = "Font"; ObjectID = "Gi5-1S-RQB"; */
 "Gi5-1S-RQB.title" = "字體";
 
+/* Class = "NSMenuItem"; title = "Copy Selected Source to Target"; ObjectID = "glI-te-e0N"; */
+"glI-te-e0N.title" = "把原文複製到譯文";
+
 /* Class = "NSMenuItem"; title = "Use Default"; ObjectID = "GUa-eO-cwY"; */
 "GUa-eO-cwY.title" = "使用預設值";
 
@@ -349,11 +355,11 @@
 /* Class = "NSMenuItem"; title = "Save…"; ObjectID = "pxx-59-PXV"; */
 "pxx-59-PXV.title" = "儲存⋯";
 
-/* Class = "NSMenuItem"; title = "Show Fonts"; ObjectID = "Q5e-8K-NDq"; */
-"Q5e-8K-NDq.title" = "顯示字體";
-
 /* Class = "NSMenuItem"; title = "Find Next"; ObjectID = "q09-fT-Sye"; */
 "q09-fT-Sye.title" = "尋找下一個";
+
+/* Class = "NSMenuItem"; title = "Show Fonts"; ObjectID = "Q5e-8K-NDq"; */
+"Q5e-8K-NDq.title" = "顯示字體";
 
 /* Class = "NSMenuItem"; title = "Zoom"; ObjectID = "R4o-n2-Eq4"; */
 "R4o-n2-Eq4.title" = "縮放";

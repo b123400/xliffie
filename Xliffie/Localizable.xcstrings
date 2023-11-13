@@ -74,40 +74,10 @@
               "formatSpecifier" : "d",
               "variations" : {
                 "plural" : {
-                  "few" : {
-                    "stringUnit" : {
-                      "state" : "translated",
-                      "value" : "%arg records are"
-                    }
-                  },
-                  "many" : {
-                    "stringUnit" : {
-                      "state" : "translated",
-                      "value" : "%arg records are"
-                    }
-                  },
-                  "one" : {
-                    "stringUnit" : {
-                      "state" : "translated",
-                      "value" : "1 record is"
-                    }
-                  },
                   "other" : {
                     "stringUnit" : {
                       "state" : "translated",
                       "value" : "%arg records are"
-                    }
-                  },
-                  "two" : {
-                    "stringUnit" : {
-                      "state" : "translated",
-                      "value" : "%arg records are"
-                    }
-                  },
-                  "zero" : {
-                    "stringUnit" : {
-                      "state" : "translated",
-                      "value" : "No record is"
                     }
                   }
                 }
@@ -120,123 +90,21 @@
     "%ld translations are available from the glossary." : {
       "localizations" : {
         "en" : {
-          "variations" : {
-            "device" : {
-              "iphone" : {
-                "variations" : {
-                  "plural" : {
-                    "one" : {
-                      "stringUnit" : {
-                        "state" : "translated",
-                        "value" : "%ld translation is available from the glossary.(iOS)"
-                      }
-                    },
-                    "other" : {
-                      "stringUnit" : {
-                        "state" : "translated",
-                        "value" : "%ld translations are available from the glossary.(iOS)"
-                      }
-                    }
-                  }
-                }
-              },
-              "mac" : {
-                "variations" : {
-                  "plural" : {
-                    "one" : {
-                      "stringUnit" : {
-                        "state" : "translated",
-                        "value" : "%ld translation is available from the glossary.(mac)"
-                      }
-                    },
-                    "other" : {
-                      "stringUnit" : {
-                        "state" : "translated",
-                        "value" : "%ld translations are available from the glossary.(mac)"
-                      }
-                    }
-                  }
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "needs_review",
-                  "value" : "%ld translations are available from the glossary."
-                }
-              }
-            }
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "%ld translations are available from the glossary."
           }
         },
         "ja" : {
-          "variations" : {
-            "device" : {
-              "iphone" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%ld つの文字を用語集で翻訳できます。xx"
-                }
-              },
-              "mac" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%ld つの文字を用語集で翻訳できます。xy"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%ld つの文字を用語集で翻訳できます。yy  "
-                }
-              }
-            }
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%ld つの文字を用語集で翻訳できます。yy  "
           }
         },
         "zh-TW" : {
-          "variations" : {
-            "device" : {
-              "iphone" : {
-                "variations" : {
-                  "plural" : {
-                    "one" : {
-                      "stringUnit" : {
-                        "state" : "needs_review",
-                        "value" : "內置字典可以自動翻譯 %ld 段字"
-                      }
-                    },
-                    "other" : {
-                      "stringUnit" : {
-                        "state" : "needs_review",
-                        "value" : "內置字典可以自動翻譯 %ld 段字"
-                      }
-                    }
-                  }
-                }
-              },
-              "mac" : {
-                "variations" : {
-                  "plural" : {
-                    "one" : {
-                      "stringUnit" : {
-                        "state" : "needs_review",
-                        "value" : "內置字典可以自動翻譯 %ld 段字"
-                      }
-                    },
-                    "other" : {
-                      "stringUnit" : {
-                        "state" : "needs_review",
-                        "value" : "內置字典可以自動翻譯 %ld 段字"
-                      }
-                    }
-                  }
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "needs_review",
-                  "value" : "內置字典可以自動翻譯 %ld 段字"
-                }
-              }
-            }
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "內置字典可以自動翻譯 %ld 段字"
           }
         }
       }
@@ -277,15 +145,9 @@
         "zh-TW" : {
           "variations" : {
             "plural" : {
-              "one" : {
-                "stringUnit" : {
-                  "state" : "needs_review",
-                  "value" : "將會用 %2$@ 翻譯 %1$lu 段文字"
-                }
-              },
               "other" : {
                 "stringUnit" : {
-                  "state" : "needs_review",
+                  "state" : "translated",
                   "value" : "將會用 %2$@ 翻譯 %1$lu 段文字"
                 }
               }
