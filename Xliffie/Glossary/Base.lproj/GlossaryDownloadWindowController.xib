@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="22505" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22505"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -26,7 +26,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="421" height="313"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Kk9-1T-fRr">
+                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Kk9-1T-fRr">
                         <rect key="frame" x="18" y="277" width="385" height="16"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" title="Download Glossary" id="bK5-Ga-XSo">
                             <font key="font" textStyle="headline" name=".SFNS-Bold"/>
@@ -36,9 +36,6 @@
                     </textField>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="B6Y-uZ-xwJ">
                         <rect key="frame" x="294" y="13" width="114" height="32"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="100" id="wSH-o2-yAR"/>
-                        </constraints>
                         <buttonCell key="cell" type="push" title="Download" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="KZQ-4j-S4P">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -46,6 +43,9 @@
 DQ
 </string>
                         </buttonCell>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="100" id="wSH-o2-yAR"/>
+                        </constraints>
                         <connections>
                             <action selector="downloadClicked:" target="-2" id="Jfd-HM-OVV"/>
                         </connections>
@@ -66,7 +66,7 @@ Gw
                     <progressIndicator hidden="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="yAT-dW-7Yn">
                         <rect key="frame" x="20" y="19" width="199" height="20"/>
                     </progressIndicator>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Lgf-XG-bJq">
+                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Lgf-XG-bJq">
                         <rect key="frame" x="18" y="255" width="385" height="14"/>
                         <textFieldCell key="cell" selectable="YES" allowsUndo="NO" title="&lt;DNT - glossary description&gt;" allowsEditingTextAttributes="YES" id="eq1-O9-CGa">
                             <font key="font" textStyle="subheadline" name=".SFNS-Regular"/>

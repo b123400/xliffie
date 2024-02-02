@@ -92,6 +92,8 @@
 		CF92FB941C24037B00700D3E /* TargetMissingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF92FB931C24037B00700D3E /* TargetMissingViewController.m */; };
 		CF94FCA51A5C365400EE8BD5 /* File.m in Sources */ = {isa = PBXBuildFile; fileRef = CF94FCA41A5C365400EE8BD5 /* File.m */; };
 		CF94FCA81A5C37A900EE8BD5 /* TranslationPair.m in Sources */ = {isa = PBXBuildFile; fileRef = CF94FCA71A5C37A900EE8BD5 /* TranslationPair.m */; };
+		CF99B3412B6BE0480025B1C2 /* CustomGlossaryWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF99B33F2B6BE0480025B1C2 /* CustomGlossaryWindowController.m */; };
+		CF99B3422B6BE0480025B1C2 /* CustomGlossaryWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF99B3402B6BE0480025B1C2 /* CustomGlossaryWindowController.xib */; };
 		CF9A36ED29CD8F3C00FB8763 /* ProgressWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF9A36EF29CD8F3C00FB8763 /* ProgressWindowController.xib */; };
 		CF9A370029CDE6BE00FB8763 /* DocumentTextFinderClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9A36FF29CDE6BE00FB8763 /* DocumentTextFinderClient.m */; };
 		CF9A3D5529DEB61D00807F3D /* NSImage+SystemImage.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9A3D5429DEB61D00807F3D /* NSImage+SystemImage.m */; };
@@ -263,6 +265,9 @@
 		CF94FCA41A5C365400EE8BD5 /* File.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = File.m; sourceTree = "<group>"; };
 		CF94FCA61A5C37A900EE8BD5 /* TranslationPair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TranslationPair.h; sourceTree = "<group>"; };
 		CF94FCA71A5C37A900EE8BD5 /* TranslationPair.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TranslationPair.m; sourceTree = "<group>"; };
+		CF99B33E2B6BE0480025B1C2 /* CustomGlossaryWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomGlossaryWindowController.h; sourceTree = "<group>"; };
+		CF99B33F2B6BE0480025B1C2 /* CustomGlossaryWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomGlossaryWindowController.m; sourceTree = "<group>"; };
+		CF99B3402B6BE0480025B1C2 /* CustomGlossaryWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomGlossaryWindowController.xib; sourceTree = "<group>"; };
 		CF9A36EE29CD8F3C00FB8763 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ProgressWindowController.xib; sourceTree = "<group>"; };
 		CF9A36F129CD8F4100FB8763 /* zh-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-TW"; path = "zh-TW.lproj/ProgressWindowController.strings"; sourceTree = "<group>"; };
 		CF9A36F529CD8F4200FB8763 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/ProgressWindowController.strings; sourceTree = "<group>"; };
@@ -506,6 +511,9 @@
 				CF0AB58E2A755EDE00D61101 /* GlossaryDownloadWindowController.h */,
 				CF0AB58F2A755EDF00D61101 /* GlossaryDownloadWindowController.m */,
 				CF610CFC2A978AC50026AAC5 /* GlossaryDownloadWindowController.xib */,
+				CF99B33E2B6BE0480025B1C2 /* CustomGlossaryWindowController.h */,
+				CF99B33F2B6BE0480025B1C2 /* CustomGlossaryWindowController.m */,
+				CF99B3402B6BE0480025B1C2 /* CustomGlossaryWindowController.xib */,
 			);
 			path = Glossary;
 			sourceTree = "<group>";
@@ -785,6 +793,7 @@
 				CFE1AF972ADCF60100093FD1 /* Localizable.xcstrings in Resources */,
 				CF740AD12701CE7900F31F26 /* no.glossary in Resources */,
 				CF740AE02701CE7900F31F26 /* cs.glossary in Resources */,
+				CF99B3422B6BE0480025B1C2 /* CustomGlossaryWindowController.xib in Resources */,
 				CF610CF72A978AC00026AAC5 /* GlossaryManagerWindowController.xib in Resources */,
 				CF740AF42701CE7900F31F26 /* ru.glossary in Resources */,
 				CF78DC492A91090F000B33B5 /* zh_hk.glossary in Resources */,
@@ -915,6 +924,7 @@
 				CFD234FA1A5E44C700B52088 /* XMLOutlineView.m in Sources */,
 				CF0AB5912A755EDF00D61101 /* GlossaryDownloadWindowController.m in Sources */,
 				CF2DF14E2A827B0D00346BE9 /* SuggestionTableView.m in Sources */,
+				CF99B3412B6BE0480025B1C2 /* CustomGlossaryWindowController.m in Sources */,
 				CF5FC89B1A5ABFF700538E60 /* Document.m in Sources */,
 				CFF4AE282A790BD100C50D8A /* GlossaryReverseSearchResult.m in Sources */,
 				CF5AB3C2293DCE6200C8AC7B /* SuggestionsWindowController.m in Sources */,

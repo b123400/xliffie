@@ -11,8 +11,11 @@
 #import "XclocDocument.h"
 #import "Glossary.h"
 #import "GlossaryManagerWindowController.h"
+#import "CustomGlossaryWindowController.h"
 
 @interface AppDelegate ()
+
+@property (nonatomic, strong) CustomGlossaryWindowController *customGlossaryController;
 
 @end
 
@@ -172,6 +175,13 @@
 
 - (IBAction)glossaryMenuPressed:(id)sender {
     [[GlossaryManagerWindowController shared] showWindow:self];
+}
+
+- (IBAction)customGlossaryMenuPressed:(id)sender {
+    if (!self.customGlossaryController) {
+        self.customGlossaryController = [[CustomGlossaryWindowController alloc] init];
+    }
+    [self.customGlossaryController showWindow:self];
 }
 
 @end

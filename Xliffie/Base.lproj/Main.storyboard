@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22155"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22505"/>
         <capability name="Search Toolbar Item" minToolsVersion="12.0" minSystemVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -599,6 +599,12 @@
                                                 <action selector="glossaryMenuPressed:" target="Voe-Tx-rLC" id="fgb-ij-erN"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem title="Custom Glossary..." id="M2z-fQ-iSb">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="customGlossaryMenuPressed:" target="Voe-Tx-rLC" id="4b4-Ft-cDP"/>
+                                            </connections>
+                                        </menuItem>
                                     </items>
                                 </menu>
                             </menuItem>
@@ -840,7 +846,7 @@
                                 </toolbarItem>
                                 <searchToolbarItem implicitItemIdentifier="920B8A6B-DE65-4B42-8055-76D40AE30DA8" label="Filter" paletteLabel="Search" visibilityPriority="1001" id="ngi-bY-i0Q">
                                     <nil key="toolTip"/>
-                                    <searchField key="view" focusRingType="none" verticalHuggingPriority="750" textCompletion="NO" id="3ri-Q7-ugC" customClass="BRCategorySearchField">
+                                    <searchField key="view" verticalHuggingPriority="750" textCompletion="NO" id="3ri-Q7-ugC" customClass="BRCategorySearchField">
                                         <rect key="frame" x="0.0" y="0.0" width="100" height="21"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Filter" usesSingleLineMode="YES" bezelStyle="round" id="iTq-RF-k3S" customClass="BRCategorySearchFieldCell">
@@ -945,7 +951,7 @@
                                     <constraint firstAttribute="height" constant="21" id="XfO-6B-vOw"/>
                                 </constraints>
                             </popUpButton>
-                            <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="P7f-Ad-tvF">
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="P7f-Ad-tvF">
                                 <rect key="frame" x="93" y="251" width="264" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="260" id="rFV-qk-geO"/>
@@ -974,7 +980,7 @@ DQ
                                     <action selector="okClicked:" target="mnY-ir-nI3" id="5qA-3h-Wvr"/>
                                 </connections>
                             </button>
-                            <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="qB4-Zb-HdZ">
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="qB4-Zb-HdZ">
                                 <rect key="frame" x="93" y="166" width="264" height="69"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="260" id="Ird-Qm-hzI"/>
@@ -986,7 +992,7 @@ DQ
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Xyr-Z8-8Jk">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Xyr-Z8-8Jk">
                                 <rect key="frame" x="203" y="88" width="45" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="DOD-aC-wFl"/>

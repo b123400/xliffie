@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="22505" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22505"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -108,9 +108,6 @@
                     </scrollView>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Nme-2q-hgK">
                         <rect key="frame" x="457" y="13" width="94" height="32"/>
-                        <constraints>
-                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="K49-ln-Mx4"/>
-                        </constraints>
                         <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="u5O-gv-ueu">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -118,15 +115,15 @@
 DQ
 </string>
                         </buttonCell>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="K49-ln-Mx4"/>
+                        </constraints>
                         <connections>
                             <action selector="okClicked:" target="-2" id="Mut-E9-WMA"/>
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6ml-0A-bV3">
                         <rect key="frame" x="365" y="13" width="94" height="32"/>
-                        <constraints>
-                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="Xzf-ZQ-CBj"/>
-                        </constraints>
                         <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ew7-ia-oo2">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -134,24 +131,27 @@ DQ
 Gw
 </string>
                         </buttonCell>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="Xzf-ZQ-CBj"/>
+                        </constraints>
                         <connections>
                             <action selector="cancelClicked:" target="-2" id="PEy-qx-cT7"/>
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vZh-Dl-RrS">
                         <rect key="frame" x="273" y="13" width="94" height="32"/>
-                        <constraints>
-                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="vSD-Hz-tkP"/>
-                        </constraints>
                         <buttonCell key="cell" type="push" title="Skip" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="CKh-N2-HOQ">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="vSD-Hz-tkP"/>
+                        </constraints>
                         <connections>
                             <action selector="skipClicked:" target="-2" id="WbO-o5-UNZ"/>
                         </connections>
                     </button>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0t5-kF-HSw">
+                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0t5-kF-HSw">
                         <rect key="frame" x="18" y="255" width="278" height="16"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" title="3 translations are available from the glossary." id="a9Z-Ew-xlq">
                             <font key="font" metaFont="system"/>
@@ -160,7 +160,7 @@ Gw
                         </textFieldCell>
                     </textField>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yOf-HY-lL4">
-                        <rect key="frame" x="380" y="255" width="26" height="18"/>
+                        <rect key="frame" x="383" y="255" width="25" height="18"/>
                         <buttonCell key="cell" type="inline" title="All" bezelStyle="inline" alignment="center" borderStyle="border" inset="2" id="e2p-bH-OLy">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="smallSystemBold"/>
@@ -170,7 +170,7 @@ Gw
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VEX-XG-MIi">
-                        <rect key="frame" x="408" y="255" width="40" height="18"/>
+                        <rect key="frame" x="410" y="255" width="39" height="18"/>
                         <buttonCell key="cell" type="inline" title="None" bezelStyle="inline" alignment="center" borderStyle="border" inset="2" id="coM-Wx-vh7">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="smallSystemBold"/>
@@ -180,7 +180,7 @@ Gw
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PGk-RG-zED">
-                        <rect key="frame" x="450" y="255" width="94" height="18"/>
+                        <rect key="frame" x="451" y="255" width="93" height="18"/>
                         <buttonCell key="cell" type="inline" title="Non-translated" bezelStyle="inline" alignment="center" borderStyle="border" inset="2" id="ypw-aT-PBw">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="smallSystemBold"/>
@@ -189,7 +189,7 @@ Gw
                             <action selector="selectNonTranslatedClicked:" target="-2" id="e7f-In-sfU"/>
                         </connections>
                     </button>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="84l-J9-ur1">
+                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="84l-J9-ur1">
                         <rect key="frame" x="18" y="279" width="148" height="16"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" title="Translate With Glossary" id="AS1-CP-jkv">
                             <font key="font" usesAppearanceFont="YES"/>
