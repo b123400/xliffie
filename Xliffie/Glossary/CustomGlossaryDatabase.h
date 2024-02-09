@@ -20,9 +20,9 @@ NS_ASSUME_NONNULL_BEGIN
                                        source:(NSString *)source
                                        target:(NSString *)target;
 
-- (NSArray<CustomGlossaryRow *> *)deleteRow:(CustomGlossaryRow *)row;
+- (void)deleteRow:(CustomGlossaryRow *)row;
 
-- (CustomGlossaryRow *)updateRow:(CustomGlossaryRow *)row;
+- (void)updateRow:(CustomGlossaryRow *)row;
 
 - (NSArray<CustomGlossaryRow *> *)rowsWithSourceLocale:(NSString * _Nullable)sourceLocale
                                           targetLocale:(NSString * _Nullable)targetLocale

@@ -46,8 +46,7 @@
         return NO;
     }
     _sqlite = dbConnection;
-    NSArray *createTableResult = [self query:@"CREATE TABLE IF NOT EXISTS glossary (id INTEGER PRIMARY KEY AUTOINCREMENT, source_locale varchar(255) NULL, target_locale varchar(255) NULL, source text NOT NULL, target text NOT NULL);" withParams:@[]];
-    NSLog(@"createTableResult %@", createTableResult);
+    [self query:@"CREATE TABLE IF NOT EXISTS glossary (id INTEGER PRIMARY KEY AUTOINCREMENT, source_locale varchar(255) NULL, target_locale varchar(255) NULL, source text NOT NULL, target text NOT NULL);" withParams:@[]];
     return YES;
 }
 
@@ -55,32 +54,27 @@
                                  targetLocale:(NSString * _Nullable)targetLocale
                                        source:(NSString *)source
                                        target:(NSString *)target {
-    NSArray *insertResult = [self query:@"INSERT INTO glossary (source_locale, target_locale, source, target) VALUES (?, ?, ?, ?)" withParams:@[
+    NSArray *insertResult = [self query:@"INSERT INTO glossary (source_locale, target_locale, source, target) VALUES (?, ?, ?, ?) RETURNING id, source_locale, target_locale, source, target" withParams:@[
         sourceLocale ?: [NSNull null],
         targetLocale ?: [NSNull null],
         source,
         target,
     ]];
-    NSLog(@"insertResult %@", insertResult);
-    return nil;
+    return [[self rowsToObjects:insertResult] firstObject];
 }
 
-- (NSArray<CustomGlossaryRow *> *)deleteRow:(CustomGlossaryRow *)row {
-    NSArray *deleteResult = [self query:@"DELETE FROM glossary WHERE id = ?" withParams:@[row.id]];
-    NSLog(@"deleteResult %@", deleteResult);
-    return nil;
+- (void)deleteRow:(CustomGlossaryRow *)row {
+    [self query:@"DELETE FROM glossary WHERE id = ?" withParams:@[row.id]];
 }
 
-- (CustomGlossaryRow *)updateRow:(CustomGlossaryRow *)row {
-    NSArray *updateResult = [self query:@"UPDATE glossary SET source_locale = ?, target_locale = ?, source = ?, target = ? WHERE id = ?" withParams:@[
+- (void)updateRow:(CustomGlossaryRow *)row {
+    [self query:@"UPDATE glossary SET source_locale = ?, target_locale = ?, source = ?, target = ? WHERE id = ?" withParams:@[
         row.sourceLocale ?: [NSNull null],
         row.targetLocale ?: [NSNull null],
         row.source,
         row.target,
         row.id,
     ]];
-    NSLog(@"updateResult %@", updateResult);
-    return nil;
 }
 
 - (NSArray<CustomGlossaryRow *> *)rowsWithSourceLocale:(NSString * _Nullable)sourceLocale
