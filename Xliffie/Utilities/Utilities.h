@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <AppKit/AppKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -26,6 +27,8 @@ typedef enum : NSUInteger {
 + (NSString *)applyFormatOfString:(NSString *)formatString toString:(NSString *)targetString;
 
 + (NSString *)stringForDevice:(NSString *)deviceString;
+
++ (NSMenu *)menuOfAllAvailableLocalesWithTarget:(id)target action:(SEL)action;
 
 @end
 

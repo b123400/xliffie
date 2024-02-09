@@ -7,6 +7,7 @@
 //
 
 #import "Utilities.h"
+#import "LanguageSet.h"
 
 @implementation Utilities
 
@@ -88,6 +89,100 @@
         return @"􀢺 iPod";
     }
     return nil;
+}
+
++ (NSMenu *)menuOfAllAvailableLocalesWithTarget:(id)target action:(SEL)action {
+    NSMenu *result = [[NSMenu alloc] init];
+    NSMutableArray <LanguageSet*> *targetLanguages = [[NSMutableArray alloc] init];
+    
+    for (NSString *localeIdentifier in [[NSLocale availableLocaleIdentifiers] sortedArrayUsingSelector:@selector(compare:)]) {
+        NSLocale *locale = [NSLocale localeWithLocaleIdentifier:localeIdentifier];
+        NSString *thisLanguageCode = [locale objectForKey:NSLocaleLanguageCode];
+        NSString *thisLanguageScript = [locale objectForKey:NSLocaleScriptCode];
+        
+        LanguageSet *lastLanguageSet = [targetLanguages lastObject];
+        NSString *lastLanguageIdentifier = [lastLanguageSet mainLanguage];
+        NSLocale *lastLocale = [NSLocale localeWithLocaleIdentifier:lastLanguageIdentifier];
+        NSString *lastLanguageCode = [lastLocale objectForKey:NSLocaleLanguageCode];
+        NSString *lastLanguageScript = [lastLocale objectForKey:NSLocaleScriptCode];
+        
+        if (![lastLanguageCode isEqualToString:thisLanguageCode] ||
+            ([lastLanguageCode isEqualToString:thisLanguageCode] &&
+             thisLanguageScript &&
+             ![lastLanguageScript isEqualToString:thisLanguageScript])) {
+            
+            // make new language set
+            LanguageSet *thisLanguageSet = [[LanguageSet alloc] init];
+            thisLanguageSet.mainLanguage = localeIdentifier;
+            [targetLanguages addObject:thisLanguageSet];
+            
+        } else {
+            // this code is same as last code, means this is a sub-language of the last one
+            // like: zh_Hant -> zh_Hang_HK
+            [lastLanguageSet.subLanguages addObject:localeIdentifier];
+        }
+    }
+    [targetLanguages sortUsingComparator:^NSComparisonResult(LanguageSet *obj1, LanguageSet *obj2) {
+        NSString *displayName1 = [[NSLocale currentLocale] displayNameForKey:NSLocaleIdentifier
+                                                                       value:obj1.mainLanguage];
+        NSString *displayName2 = [[NSLocale currentLocale] displayNameForKey:NSLocaleIdentifier
+                                                                       value:obj2.mainLanguage];
+        return [displayName1 compare:displayName2];
+    }];
+    
+    for (LanguageSet *languageSet in targetLanguages) {
+        NSString *languageName = [[NSLocale currentLocale] displayNameForKey:NSLocaleIdentifier
+                                                                       value:languageSet.mainLanguage];
+        NSMenuItem *thisItem = [[NSMenuItem alloc] initWithTitle:languageName
+                                                          action:action
+                                                   keyEquivalent:@""];
+        thisItem.target = target;
+        thisItem.representedObject = languageSet.mainLanguage;
+        
+        if (languageSet.subLanguages.count) {
+            // one more same item in sub menu
+            NSMenu *subMenu = [[NSMenu alloc] init];
+            [thisItem setSubmenu:subMenu];
+            NSMenuItem *subItem = [[NSMenuItem alloc] initWithTitle:languageName
+                                                              action:action
+                                                       keyEquivalent:@""];
+            thisItem.target = target;
+            thisItem.representedObject = languageSet.mainLanguage;
+            [subMenu addItem:subItem];
+            
+            // all sub languages
+            for (NSString *subLanguage in languageSet.subLanguages) {
+                NSString *subLanguageName = [[NSLocale currentLocale] displayNameForKey:NSLocaleIdentifier
+                                                                                  value:subLanguage];
+                NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:subLanguageName
+                                                              action:action
+                                                       keyEquivalent:@""];
+                item.target = target;
+                item.representedObject = subLanguage;
+                [subMenu addItem:item];
+            }
+        }
+        
+        [result addItem:thisItem];
+    }
+    
+    // preferred language in systems
+    if ([[NSLocale preferredLanguages] count] > 0) {
+        [result insertItem:[NSMenuItem separatorItem] atIndex:0];
+        // more likely to be selected, so put to top
+        for (NSString *preferredLangaugeIdentifier in [[NSLocale preferredLanguages] reverseObjectEnumerator]) {
+            NSString *preferredLanguage = [[NSLocale currentLocale] displayNameForKey:NSLocaleIdentifier
+                                                                                value:preferredLangaugeIdentifier];
+            
+            NSMenuItem *menuItem = [result insertItemWithTitle:preferredLanguage
+                                                        action:action
+                                                 keyEquivalent:@""
+                                                       atIndex:0];
+            menuItem.target = target;
+            menuItem.representedObject = preferredLangaugeIdentifier;
+        }
+    }
+    return result;
 }
 
 @end
