@@ -206,6 +206,9 @@
         }
       }
     },
+    "Any" : {
+      "comment" : "Custom glossary locale"
+    },
     "Apart from the built-in glossaries, you can download larger localization databases with apple-endorsed translations. For more info please click here." : {
       "localizations" : {
         "ja" : {

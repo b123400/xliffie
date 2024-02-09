@@ -8,6 +8,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="CustomGlossaryWindowController">
             <connections>
+                <outlet property="tableView" destination="gqR-qB-URv" id="ajD-re-zbp"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -22,20 +23,20 @@
                 <rect key="frame" x="0.0" y="0.0" width="738" height="447"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <scrollView autohidesScrollers="YES" horizontalLineScroll="24" horizontalPageScroll="10" verticalLineScroll="24" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NpG-Ua-Kmn">
+                    <scrollView focusRingType="none" autohidesScrollers="YES" horizontalLineScroll="24" horizontalPageScroll="10" verticalLineScroll="24" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NpG-Ua-Kmn">
                         <rect key="frame" x="20" y="40" width="698" height="387"/>
-                        <clipView key="contentView" id="6LV-y2-0C1">
+                        <clipView key="contentView" drawsBackground="NO" id="6LV-y2-0C1">
                             <rect key="frame" x="1" y="1" width="696" height="385"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" rowHeight="24" headerView="Zmh-JB-QFw" id="gqR-qB-URv">
+                                <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" autosaveColumns="NO" rowHeight="24" headerView="Zmh-JB-QFw" id="gqR-qB-URv">
                                     <rect key="frame" x="0.0" y="0.0" width="696" height="357"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <size key="intercellSpacing" width="17" height="0.0"/>
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                     <tableColumns>
-                                        <tableColumn identifier="AutomaticTableColumnIdentifier.0" width="92" minWidth="40" maxWidth="1000" id="5hc-98-zoN">
+                                        <tableColumn identifier="sourceLocale" width="92" minWidth="40" maxWidth="1000" id="5hc-98-zoN">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Source Locale">
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -53,7 +54,7 @@
                                             </popUpButtonCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         </tableColumn>
-                                        <tableColumn identifier="AutomaticTableColumnIdentifier.0" width="94" minWidth="40" maxWidth="1000" id="qKK-mn-aou">
+                                        <tableColumn identifier="targetLocale" width="94" minWidth="40" maxWidth="1000" id="qKK-mn-aou">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Target Locale">
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -71,7 +72,7 @@
                                             </popUpButtonCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         </tableColumn>
-                                        <tableColumn identifier="AutomaticTableColumnIdentifier.1" width="182" minWidth="40" maxWidth="1000" id="79r-Si-EHo">
+                                        <tableColumn identifier="source" width="182" minWidth="40" maxWidth="1000" id="79r-Si-EHo">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Source">
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -83,7 +84,7 @@
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         </tableColumn>
-                                        <tableColumn width="260" minWidth="10" maxWidth="3.4028234663852886e+38" id="ZdN-T6-0Hz">
+                                        <tableColumn identifier="target" width="265" minWidth="10" maxWidth="3.4028234663852886e+38" id="ZdN-T6-0Hz">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Target">
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -102,6 +103,7 @@
                                     </connections>
                                 </tableView>
                             </subviews>
+                            <nil key="backgroundColor"/>
                         </clipView>
                         <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="f0B-4h-G6h">
                             <rect key="frame" x="1" y="370" width="696" height="16"/>
@@ -126,6 +128,9 @@
                             <constraint firstAttribute="height" constant="20" id="UxH-Tp-pZ9"/>
                             <constraint firstAttribute="width" constant="20" id="tAX-uc-dci"/>
                         </constraints>
+                        <connections>
+                            <action selector="addButtonPressed:" target="-2" id="1on-TA-MHC"/>
+                        </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hcS-xT-XUd">
                         <rect key="frame" x="40" y="19" width="20" height="22"/>
@@ -137,6 +142,9 @@
                             <constraint firstAttribute="height" constant="20" id="OKY-fL-GfL"/>
                             <constraint firstAttribute="width" constant="20" id="w4H-zg-g3S"/>
                         </constraints>
+                        <connections>
+                            <action selector="deleteButtonPressed:" target="-2" id="1db-De-nwq"/>
+                        </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IRt-Yc-SHg">
                         <rect key="frame" x="652" y="19" width="66" height="22"/>
