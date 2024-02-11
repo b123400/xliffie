@@ -52,6 +52,7 @@
                                                     </items>
                                                 </menu>
                                             </popUpButtonCell>
+                                            <sortDescriptor key="sortDescriptorPrototype" selector="compare:" sortKey="sourceLocale"/>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         </tableColumn>
                                         <tableColumn identifier="targetLocale" width="94" minWidth="40" maxWidth="1000" id="qKK-mn-aou">
@@ -70,6 +71,7 @@
                                                     </items>
                                                 </menu>
                                             </popUpButtonCell>
+                                            <sortDescriptor key="sortDescriptorPrototype" selector="compare:" sortKey="targetLocale"/>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         </tableColumn>
                                         <tableColumn identifier="source" width="182" minWidth="40" maxWidth="1000" id="79r-Si-EHo">
@@ -82,6 +84,7 @@
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
+                                            <sortDescriptor key="sortDescriptorPrototype" selector="compare:" sortKey="source"/>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         </tableColumn>
                                         <tableColumn identifier="target" width="265" minWidth="10" maxWidth="3.4028234663852886e+38" id="ZdN-T6-0Hz">
@@ -94,6 +97,7 @@
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
+                                            <sortDescriptor key="sortDescriptorPrototype" selector="compare:" sortKey="target"/>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         </tableColumn>
                                     </tableColumns>

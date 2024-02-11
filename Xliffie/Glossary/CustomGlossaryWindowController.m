@@ -23,7 +23,6 @@
 
 - (instancetype)init {
     if (self = [super initWithWindowNibName:@"CustomGlossaryWindowController"]) {
-        [CustomGlossaryDatabase shared];
         self.rows = [NSArray array];
         self.numberFormatter = [[NSNumberFormatter alloc] init];
     }
@@ -37,7 +36,7 @@
 }
 
 - (void)reload {
-    self.rows = [[CustomGlossaryDatabase shared] allRows];
+    self.rows = [[[CustomGlossaryDatabase shared] allRows] sortedArrayUsingDescriptors:self.tableView.sortDescriptors];
     [self.tableView reloadData];
 }
 
@@ -105,6 +104,10 @@
             }
         }
     }
+}
+
+- (void)tableView:(NSTableView *)tableView sortDescriptorsDidChange:(NSArray<NSSortDescriptor *> *)oldDescriptors {
+    [self reload];
 }
 
 - (void)selectedSourceLocale:(NSMenuItem *)sender {
