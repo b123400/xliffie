@@ -144,6 +144,7 @@
                                                      source:@""
                                                      target:@""];
     [self reload];
+    [self.tableView editColumn:2 row:self.rows.count - 1 withEvent:nil select:YES];
 }
 
 - (IBAction)deleteButtonPressed:(id)sender {
