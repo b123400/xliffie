@@ -112,6 +112,9 @@
 
 - (void)selectedSourceLocale:(NSMenuItem *)sender {
     NSString *locale = sender.representedObject;
+    while (sender.parentItem) {
+        sender = sender.parentItem;
+    }
     NSInteger row = [[self.numberFormatter numberFromString:sender.menu.identifier] integerValue];
     CustomGlossaryRow *obj = self.rows[row];
     obj.sourceLocale = locale;
@@ -121,6 +124,9 @@
 
 - (void)selectedTargetLocale:(NSMenuItem *)sender {
     NSString *locale = sender.representedObject;
+    while (sender.parentItem) {
+        sender = sender.parentItem;
+    }
     NSInteger row = [[self.numberFormatter numberFromString:sender.menu.identifier] integerValue];
     CustomGlossaryRow *obj = self.rows[row];
     obj.targetLocale = locale;
