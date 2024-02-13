@@ -185,4 +185,21 @@
     return result;
 }
 
+/**
+ * Generates a list of fallback locale code, e.g.
+ * Input: zh_Hant_HK
+ * Outout: [zh_Hant_HK, zh_Hant, zh]
+ */
++ (NSArray<NSString*> *)fallbacksWithLocale:(NSString*)localeCode {
+    NSMutableArray *results = [NSMutableArray array];
+    [results addObject: localeCode];
+    for (NSInteger i = localeCode.length - 1; i >= 0; i--) {
+        NSString *lastChar = [localeCode substringWithRange: NSMakeRange(i, 1)];
+        if ([lastChar isEqualToString: @"-"] || [lastChar isEqualToString: @"_"]) {
+            [results addObject: [localeCode substringToIndex: i]];
+        }
+    }
+    return results;
+}
+
 @end
