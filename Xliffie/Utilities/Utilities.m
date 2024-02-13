@@ -146,8 +146,8 @@
             NSMenuItem *subItem = [[NSMenuItem alloc] initWithTitle:languageName
                                                               action:action
                                                        keyEquivalent:@""];
-            thisItem.target = target;
-            thisItem.representedObject = languageSet.mainLanguage;
+            subItem.target = target;
+            subItem.representedObject = languageSet.mainLanguage;
             [subMenu addItem:subItem];
             
             // all sub languages
