@@ -400,6 +400,7 @@ doCommandBySelector:(SEL)commandSelector {
                                                                              targetLocale:pair.file.targetLanguage
                                                                                    source:pair.source];
     for (CustomGlossaryRow *customRow in customRows) {
+        if ([customRow.target isEqual:pair.target]) continue;
         Suggestion *s = [[Suggestion alloc] init];
         s.title = customRow.target;
         s.source = SuggestionSourceCustomGlossary;
