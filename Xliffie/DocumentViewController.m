@@ -16,6 +16,7 @@
 #import "GlossaryDatabase.h"
 #import "XclocDocument.h"
 #import "TranslationPairGroup.h"
+#import "CustomGlossaryDatabase.h"
 
 @interface DocumentViewController () <SuggestionsWindowControllerDelegate>
 
@@ -394,6 +395,18 @@ doCommandBySelector:(SEL)commandSelector {
     NSMutableArray<Suggestion*> *suggestions = [NSMutableArray array];
     // Dedup suggestions by title
     NSMutableSet<NSString*> *addedSuggestions = [NSMutableSet set];
+    
+    NSArray<CustomGlossaryRow *> *customRows = [[CustomGlossaryDatabase shared] rowsWithSourceLocale:pair.file.sourceLanguage
+                                                                             targetLocale:pair.file.targetLanguage
+                                                                                   source:pair.source];
+    for (CustomGlossaryRow *customRow in customRows) {
+        Suggestion *s = [[Suggestion alloc] init];
+        s.title = customRow.target;
+        s.source = SuggestionSourceCustomGlossary;
+        [suggestions addObject:s];
+        [addedSuggestions addObject:customRow.target];
+    }
+    
     Glossary *glossary = [Glossary sharedGlossaryWithLocale:pair.file.targetLanguage];
     NSArray<NSString *> *glossaryTranslations = [glossary translate:pair.source];
     for (NSString *glossaryTranslation in glossaryTranslations) {
@@ -421,6 +434,7 @@ doCommandBySelector:(SEL)commandSelector {
             }
         }
     }
+    
     GlossaryPlatform platform = [self.document isKindOfClass:[XclocDocument class]]
         ? [(XclocDocument*)self.document glossaryPlatformWithSourcePath:pair.file.original]
         : GlossaryPlatformAny;

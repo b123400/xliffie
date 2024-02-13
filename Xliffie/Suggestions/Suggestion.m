@@ -24,6 +24,8 @@
         NSMutableAttributedString *fullString = [[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"From %@",@"Suggestion popup, %@ = filename")];
         [fullString replaceCharactersInRange:[fullString.string rangeOfString:@"%@"] withAttributedString:fileString];
         return fullString;
+    } else if (self.source == SuggestionSourceCustomGlossary) {
+        return [[NSAttributedString alloc] initWithString:NSLocalizedString(@"From 📖Custom Glossary", @"")];
     }
     return nil;
 }

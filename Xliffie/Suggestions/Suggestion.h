@@ -15,6 +15,7 @@ typedef enum : NSUInteger {
     SuggestionSourceGlossary = 0,
     SuggestionSourceFile = 1,
     SuggestionSourceAppleGlossary = 2,
+    SuggestionSourceCustomGlossary = 3,
 } SuggestionSource;
 
 @interface Suggestion : NSObject
