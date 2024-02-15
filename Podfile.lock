@@ -18,6 +18,7 @@ PODS:
   - AFNetworking/Security (2.6.3)
   - AFNetworking/Serialization (2.6.3)
   - BRLocaleMap (1.1.0)
+  - CHCSVParser (2.1.0)
   - FGTranslator (1.2):
     - AFNetworking (~> 2.0)
     - PINCache
@@ -27,6 +28,7 @@ PODS:
 
 DEPENDENCIES:
   - BRLocaleMap (~> 1.1.0)
+  - CHCSVParser (~> 2.1)
   - FGTranslator (from `https://github.com/b123400/FGTranslator.git`, branch `refactor`)
   - PINCache (~> 2.3)
 
@@ -34,6 +36,7 @@ SPEC REPOS:
   trunk:
     - AFNetworking
     - BRLocaleMap
+    - CHCSVParser
     - PINCache
     - XMLDictionary
 
@@ -48,12 +51,13 @@ CHECKOUT OPTIONS:
     :git: https://github.com/b123400/FGTranslator.git
 
 SPEC CHECKSUMS:
-  AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
+  AFNetworking: a926f9357e3bc39d2c49c547e8e8dc90b36259b6
   BRLocaleMap: d95d85d69bee230c745a2ba11730e2e99c0bf66e
+  CHCSVParser: 3bcc7bdb72111a31222e95d57eacceefe4e537e8
   FGTranslator: 7726c0c380beaa28cb6bb23950cd7d00ab341203
   PINCache: ce36ed282031b92fc7733ffe831f474ff80fddc2
   XMLDictionary: fa07b6ff422b3a91d47a5de9bc82e3fc04fbd167
 
-PODFILE CHECKSUM: faf8e736f1d74f131adcbccb4d1a2dcb83dc1d4b
+PODFILE CHECKSUM: f3e98ad456d84016842e8feb85aa7a75a4b3edac
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.13.0
