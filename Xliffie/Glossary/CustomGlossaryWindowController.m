@@ -134,6 +134,8 @@
     [self reload];
 }
 
+#pragma mark - Buttons
+
 - (void)tableView:(NSTableView *)tableView setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
     CustomGlossaryRow *obj = self.rows[row];
     if ([tableColumn.identifier isEqual:@"source"]) {
@@ -162,5 +164,16 @@
     [self reload];
 }
 
+- (IBAction)exportButtonPressed:(id)sender {
+    NSSavePanel *panel = [[NSSavePanel alloc] init];
+    [panel setNameFieldStringValue:@"glossary.csv"];
+    NSModalResponse response = [panel runModal];
+    if (response == NSModalResponseOK) {
+        [[CustomGlossaryDatabase shared] exportToFile:[[panel URL] path]];
+    }
+}
+
+- (IBAction)importButtonPressed:(id)sender {
+}
 
 @end

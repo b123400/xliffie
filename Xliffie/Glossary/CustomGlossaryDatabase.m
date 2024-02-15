@@ -9,6 +9,7 @@
 #import "CustomGlossaryDatabase.h"
 #import <sqlite3.h>
 #import "Utilities.h"
+#import "CHCSVParser.h"
 
 @implementation CustomGlossaryDatabase {
     sqlite3 *_sqlite;
@@ -184,6 +185,41 @@
     }
     sqlite3_finalize(compiledStatement);
     return result;
+}
+
+#pragma mark - CSV
+
+- (void)exportToFile:(NSString *)path {
+    if (![self open]) return;
+
+    CHCSVWriter *writer = [[CHCSVWriter alloc] initForWritingToCSVFile:path];
+    [writer writeLineOfFields:@[@"source_locale", @"target_locale", @"source", @"target"]];
+    
+    NSString *sql = @"SELECT source_locale, target_locale, source, target FROM glossary";
+    
+    sqlite3_stmt *compiledStatement = nil;
+    int rc = 0;
+    if ((rc = sqlite3_prepare_v2(_sqlite, [sql UTF8String], -1, &compiledStatement, nil)) != SQLITE_OK) {
+        NSLog(@"Cannot prepare sql (%d) : %@", rc, sql);
+        return;
+    }
+
+    while (sqlite3_step(compiledStatement) == SQLITE_ROW) {
+        for (int i = 0; i < sqlite3_column_count(compiledStatement); i++) {
+            int colType = sqlite3_column_type(compiledStatement, i);
+            if (colType == SQLITE_TEXT) {
+                const char *col = (const char *)sqlite3_column_text(compiledStatement, i);
+                id value = [[NSString alloc] initWithUTF8String:col];
+                [writer writeField:value];
+            } else if (colType == SQLITE_NULL) {
+                [writer writeField:@""];
+            } else {
+                NSLog(@"%s Unknown data type.", __FUNCTION__);
+            }
+        }
+        [writer finishLine];
+    }
+    sqlite3_finalize(compiledStatement);
 }
 
 @end

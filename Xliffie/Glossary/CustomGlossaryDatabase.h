@@ -29,6 +29,8 @@ NS_ASSUME_NONNULL_BEGIN
                                                 source:(NSString *)source;
 - (NSArray<CustomGlossaryRow *> *)allRows;
 
+- (void)exportToFile:(NSString *)path;
+
 @end
 
 NS_ASSUME_NONNULL_END

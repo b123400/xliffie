@@ -159,6 +159,9 @@
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="M8x-1p-Mow"/>
                         </constraints>
+                        <connections>
+                            <action selector="importButtonPressed:" target="-2" id="rhO-wZ-crL"/>
+                        </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CfW-sr-Bdu">
                         <rect key="frame" x="587" y="19" width="65" height="22"/>
@@ -169,6 +172,9 @@
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="bZo-gX-0gc"/>
                         </constraints>
+                        <connections>
+                            <action selector="exportButtonPressed:" target="-2" id="8Z9-hR-O3Z"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>
