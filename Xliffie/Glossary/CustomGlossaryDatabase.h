@@ -8,10 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "CustomGlossaryRow.h"
+#import "CustomGlossaryImporter.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CustomGlossaryDatabase : NSObject
+@interface CustomGlossaryDatabase : NSObject <CustomGlossaryImporterDelegate>
 
 + (instancetype)shared;
 
@@ -30,6 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSArray<CustomGlossaryRow *> *)allRows;
 
 - (void)exportToFile:(NSString *)path;
+- (void)importWithFile:(NSURL *)url;
 
 @end
 

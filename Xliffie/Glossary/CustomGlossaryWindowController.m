@@ -94,7 +94,7 @@
             } else {
                 NSString *languageName = [[NSLocale currentLocale] displayNameForKey:NSLocaleIdentifier
                                                                                value:targetLocale];
-                NSMenuItem *newSelectedItem = [[NSMenuItem alloc] initWithTitle:languageName
+                NSMenuItem *newSelectedItem = [[NSMenuItem alloc] initWithTitle:languageName ?: @""
                                                                          action:targetMethod
                                                                   keyEquivalent:@""];
                 newSelectedItem.target = self;
@@ -174,6 +174,15 @@
 }
 
 - (IBAction)importButtonPressed:(id)sender {
+    NSOpenPanel *panel = [[NSOpenPanel alloc] init];
+    panel.canChooseFiles = YES;
+    panel.canChooseDirectories = NO;
+    panel.allowsMultipleSelection = NO;
+    panel.allowedFileTypes = @[@"csv"];
+    if ([panel runModal] == NSModalResponseOK) {
+        [[CustomGlossaryDatabase shared] importWithFile:panel.URL];
+        [self reload];
+    }
 }
 
 @end

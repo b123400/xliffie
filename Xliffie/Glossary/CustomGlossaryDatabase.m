@@ -57,10 +57,10 @@
                                        source:(NSString *)source
                                        target:(NSString *)target {
     NSArray *insertResult = [self query:@"INSERT INTO glossary (source_locale, target_locale, source, target) VALUES (?, ?, ?, ?) RETURNING id, source_locale, target_locale, source, target" withParams:@[
-        sourceLocale,
-        targetLocale,
-        source,
-        target,
+        sourceLocale ?: [NSNull null],
+        targetLocale ?: [NSNull null],
+        source ?: @"",
+        target ?: @"",
     ]];
     return [[self rowsToObjects:insertResult] firstObject];
 }
@@ -220,6 +220,19 @@
         [writer finishLine];
     }
     sqlite3_finalize(compiledStatement);
+}
+
+- (void)importWithFile:(NSURL *)url {
+    CustomGlossaryImporter *importer = [[CustomGlossaryImporter alloc] init];
+    importer.delegate = self;
+    [importer importFromFile:url];
+}
+
+- (void)didReadRow:(CustomGlossaryRow *)row fromImporter:(id)importer {
+    [self insertWithSourceLocale:row.sourceLocale
+                    targetLocale:row.targetLocale
+                          source:row.source
+                          target:row.target];
 }
 
 @end
