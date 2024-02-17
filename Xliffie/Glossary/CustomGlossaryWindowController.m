@@ -25,13 +25,20 @@
     if (self = [super initWithWindowNibName:@"CustomGlossaryWindowController"]) {
         self.rows = [NSArray array];
         self.numberFormatter = [[NSNumberFormatter alloc] init];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(customGlossaryDatabaseUpdated:)
+                                                     name:CUSTOM_GLOSSARY_DATABASE_UPDATED_NOTIFICATION
+                                                   object:[CustomGlossaryDatabase shared]];
     }
     return self;
 }
 
 - (void)windowDidLoad {
     [super windowDidLoad];
-    
+    [self reload];
+}
+
+- (void)customGlossaryDatabaseUpdated:(NSNotification *)notification {
     [self reload];
 }
 
@@ -119,7 +126,6 @@
     CustomGlossaryRow *obj = self.rows[row];
     obj.sourceLocale = locale;
     [[CustomGlossaryDatabase shared] updateRow:obj];
-    [self reload];
 }
 
 - (void)selectedTargetLocale:(NSMenuItem *)sender {
@@ -131,7 +137,6 @@
     CustomGlossaryRow *obj = self.rows[row];
     obj.targetLocale = locale;
     [[CustomGlossaryDatabase shared] updateRow:obj];
-    [self reload];
 }
 
 #pragma mark - Buttons
@@ -151,17 +156,16 @@
                                                targetLocale:nil
                                                      source:@""
                                                      target:@""];
-    [self reload];
     [self.tableView editColumn:2 row:self.rows.count - 1 withEvent:nil select:YES];
 }
 
 - (IBAction)deleteButtonPressed:(id)sender {
     NSIndexSet *indexes = [self.tableView selectedRowIndexes];
+    NSArray *rows = self.rows;
     [indexes enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL * _Nonnull stop) {
-        CustomGlossaryRow *row = self.rows[idx];
+        CustomGlossaryRow *row = rows[idx];
         [[CustomGlossaryDatabase shared] deleteRow:row];
     }];
-    [self reload];
 }
 
 - (IBAction)exportButtonPressed:(id)sender {
@@ -181,7 +185,6 @@
     panel.allowedFileTypes = @[@"csv"];
     if ([panel runModal] == NSModalResponseOK) {
         [[CustomGlossaryDatabase shared] importWithFile:panel.URL];
-        [self reload];
     }
 }
 

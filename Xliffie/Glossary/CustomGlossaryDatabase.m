@@ -62,11 +62,13 @@
         source ?: @"",
         target ?: @"",
     ]];
+    [[NSNotificationCenter defaultCenter] postNotificationName:CUSTOM_GLOSSARY_DATABASE_UPDATED_NOTIFICATION object:self];
     return [[self rowsToObjects:insertResult] firstObject];
 }
 
 - (void)deleteRow:(CustomGlossaryRow *)row {
     [self query:@"DELETE FROM glossary WHERE id = ?" withParams:@[row.id]];
+    [[NSNotificationCenter defaultCenter] postNotificationName:CUSTOM_GLOSSARY_DATABASE_UPDATED_NOTIFICATION object:self];
 }
 
 - (void)updateRow:(CustomGlossaryRow *)row {
@@ -77,6 +79,7 @@
         row.target,
         row.id,
     ]];
+    [[NSNotificationCenter defaultCenter] postNotificationName:CUSTOM_GLOSSARY_DATABASE_UPDATED_NOTIFICATION object:self];
 }
 
 - (NSArray<CustomGlossaryRow *> *)rowsWithSourceLocale:(NSString * _Nullable)sourceLocale

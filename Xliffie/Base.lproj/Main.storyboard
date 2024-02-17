@@ -846,7 +846,7 @@
                                 </toolbarItem>
                                 <searchToolbarItem implicitItemIdentifier="920B8A6B-DE65-4B42-8055-76D40AE30DA8" label="Filter" paletteLabel="Search" visibilityPriority="1001" id="ngi-bY-i0Q">
                                     <nil key="toolTip"/>
-                                    <searchField key="view" verticalHuggingPriority="750" textCompletion="NO" id="3ri-Q7-ugC" customClass="BRCategorySearchField">
+                                    <searchField key="view" focusRingType="none" verticalHuggingPriority="750" textCompletion="NO" id="3ri-Q7-ugC" customClass="BRCategorySearchField">
                                         <rect key="frame" x="0.0" y="0.0" width="100" height="21"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Filter" usesSingleLineMode="YES" bezelStyle="round" id="iTq-RF-k3S" customClass="BRCategorySearchFieldCell">
@@ -951,7 +951,7 @@
                                     <constraint firstAttribute="height" constant="21" id="XfO-6B-vOw"/>
                                 </constraints>
                             </popUpButton>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="P7f-Ad-tvF">
+                            <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="P7f-Ad-tvF">
                                 <rect key="frame" x="93" y="251" width="264" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="260" id="rFV-qk-geO"/>
@@ -980,7 +980,7 @@ DQ
                                     <action selector="okClicked:" target="mnY-ir-nI3" id="5qA-3h-Wvr"/>
                                 </connections>
                             </button>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="qB4-Zb-HdZ">
+                            <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="qB4-Zb-HdZ">
                                 <rect key="frame" x="93" y="166" width="264" height="69"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="260" id="Ird-Qm-hzI"/>
@@ -992,7 +992,7 @@ DQ
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Xyr-Z8-8Jk">
+                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Xyr-Z8-8Jk">
                                 <rect key="frame" x="203" y="88" width="45" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="DOD-aC-wFl"/>
@@ -1118,6 +1118,12 @@ DQ
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
                                 <action selector="markAsTranslated:" target="5gI-5U-AMq" id="69G-Wr-9G4"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem title="Add to Custom Glossary" identifier="addToCustomGlossary" id="dO0-6s-jRN">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="addToCustomGlossary:" target="5gI-5U-AMq" id="rH7-cZ-b44"/>
                             </connections>
                         </menuItem>
                     </items>

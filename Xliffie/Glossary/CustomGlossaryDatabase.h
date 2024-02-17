@@ -12,6 +12,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+#define CUSTOM_GLOSSARY_DATABASE_UPDATED_NOTIFICATION @"CUSTOM_GLOSSARY_DATABASE_UPDATED_NOTIFICATION"
+
 @interface CustomGlossaryDatabase : NSObject <CustomGlossaryImporterDelegate>
 
 + (instancetype)shared;

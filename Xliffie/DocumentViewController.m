@@ -551,6 +551,24 @@ doCommandBySelector:(SEL)commandSelector {
             return NO;
         }
         return YES;
+    } else if ([[menuItem identifier] isEqual:@"addToCustomGlossary"]) {
+        NSInteger index = [self.outlineView clickedRow];
+        NSIndexSet *indexSet = [self.outlineView selectedRowIndexes];
+        NSIndexSet *targetIndexSet;
+        if ([indexSet containsIndex:index]) {
+            targetIndexSet = indexSet;
+        } else {
+            targetIndexSet = [NSIndexSet indexSetWithIndex:index];
+        }
+        BOOL __block allPair = YES;
+        [targetIndexSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL * _Nonnull stop) {
+            id obj = [[self outlineView] itemAtRow:idx];
+            if (![obj isKindOfClass:[TranslationPair class]]) {
+                allPair = NO;
+                *stop = YES;
+            }
+        }];
+        return allPair;
     }
     return YES;
 }
@@ -592,6 +610,28 @@ doCommandBySelector:(SEL)commandSelector {
         [self.delegate viewControllerTranslationProgressUpdated:self];
     }
     [self.outlineView reloadDataForRowIndexes:targetIndexSet columnIndexes:[NSIndexSet indexSetWithIndex:1]];
+}
+
+- (IBAction)addToCustomGlossary:(id)sender {
+    NSInteger index = [self.outlineView clickedRow];
+    NSIndexSet *indexSet = [self.outlineView selectedRowIndexes];
+    NSIndexSet *targetIndexSet;
+    if (index < 0) {
+        targetIndexSet = indexSet;
+    } else if ([indexSet containsIndex:index]) {
+        targetIndexSet = indexSet;
+    } else {
+        targetIndexSet = [NSIndexSet indexSetWithIndex:index];
+    }
+    [targetIndexSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL * _Nonnull stop) {
+        id obj = [[self outlineView] itemAtRow:idx];
+        if (![obj isKindOfClass:[TranslationPair class]]) return;
+        TranslationPair *pair = (TranslationPair*)obj;
+        [[CustomGlossaryDatabase shared] insertWithSourceLocale:pair.file.sourceLanguage
+                                                   targetLocale:pair.file.targetLanguage
+                                                         source:pair.source
+                                                         target:pair.target];
+    }];
 }
 
 - (IBAction)copySourceToTarget:(id)sender {
