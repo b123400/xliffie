@@ -41,8 +41,9 @@
     }
     
     [self.sourceButton addItemsWithTitles:[sourceTitles array]];
-
-    NSMenu *targetLocaleMenu = [Utilities menuOfAllAvailableLocalesWithTarget:self action:@selector(selectedTargetItem:)];
+    
+    NSMenu *targetLocaleMenu = [[NSMenu alloc] init];
+    [Utilities refillMenu:targetLocaleMenu withAllAvailableLocalesWithTarget:self action:@selector(selectedTargetItem:)];
     [self.targetButton setMenu:targetLocaleMenu];
     
     [self.targetButton setTitle:@"Choose language here"];

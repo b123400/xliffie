@@ -29,6 +29,10 @@
                                                  selector:@selector(customGlossaryDatabaseUpdated:)
                                                      name:CUSTOM_GLOSSARY_DATABASE_UPDATED_NOTIFICATION
                                                    object:[CustomGlossaryDatabase shared]];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(localeCellWllDisplayMenu:)
+                                                     name:NSPopUpButtonCellWillPopUpNotification
+                                                   object:nil];
     }
     return self;
 }
@@ -69,46 +73,61 @@
 - (void)tableView:(NSTableView *)tableView willDisplayCell:(id)cell forTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
     CustomGlossaryRow *r = self.rows[row];
     if ([tableColumn.identifier isEqualTo:@"sourceLocale"] || [tableColumn.identifier isEqualTo:@"targetLocale"]) {
+        NSPopUpButtonCell *c = cell;
+        NSMenu *menu = [c menu];
+        menu.identifier = [NSString stringWithFormat:@"%@_%ld", tableColumn.identifier, row];
+        
         NSString *targetLocale = [tableColumn.identifier isEqual:@"sourceLocale"] ? r.sourceLocale
             : [tableColumn.identifier isEqual:@"targetLocale"] ? r.targetLocale
             : nil;
-        SEL targetMethod = [tableColumn.identifier isEqual:@"sourceLocale"] ? @selector(selectedSourceLocale:)
-            : [tableColumn.identifier isEqual:@"targetLocale"] ? @selector(selectedTargetLocale:)
-            : nil;
 
-        NSPopUpButtonCell *c = cell;
-        NSMenu *menu = [Utilities menuOfAllAvailableLocalesWithTarget:self action:targetMethod];
-        menu.identifier = [self.numberFormatter stringFromNumber:@(row)];
-        NSMenuItem *anyItem = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"Any", @"Custom glossary locale")
-                                                         action:targetMethod
-                                                  keyEquivalent:@""];
-        anyItem.target = self;
-        [menu insertItem:anyItem atIndex:0];
-        c.menu = menu;
-        
-        if (targetLocale) {
-            NSMenuItem *rootItem = nil;
-            for (NSMenuItem *item in menu.itemArray) {
-                if ([item.representedObject isEqual:targetLocale]) {
-                    rootItem = item;
-                    break;
-                }
+        NSString *languageName = targetLocale
+            ? [[NSLocale currentLocale] displayNameForKey:NSLocaleIdentifier value:targetLocale]
+            : NSLocalizedString(@"Any", @"");
+        [c setTitle:languageName];
+    }
+}
+
+- (void)localeCellWllDisplayMenu:(NSNotification *)notification {
+    NSPopUpButtonCell *cell = [notification object];
+    NSMenu *menu = [cell menu];
+    NSArray *components = [[menu identifier] componentsSeparatedByString:@"_"];
+    NSString *columnId = components[0];
+    NSInteger row = [[self.numberFormatter numberFromString:components[1]] integerValue];
+    CustomGlossaryRow *r = self.rows[row];
+    NSString *targetLocale = [columnId isEqual:@"sourceLocale"] ? r.sourceLocale
+        : [columnId isEqual:@"targetLocale"] ? r.targetLocale
+        : nil;
+    SEL targetMethod = @selector(selectedLocale:);
+    [Utilities refillMenu:menu withAllAvailableLocalesWithTarget:self action:targetMethod];
+    NSMenuItem *anyItem = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"Any", @"Custom glossary locale")
+                                                     action:targetMethod
+                                              keyEquivalent:@""];
+    anyItem.target = self;
+    [menu insertItem:anyItem atIndex:0];
+    
+    if (targetLocale) {
+        NSMenuItem *rootItem = nil;
+        for (NSMenuItem *item in menu.itemArray) {
+            if ([item.representedObject isEqual:targetLocale]) {
+                rootItem = item;
+                break;
             }
-            if (rootItem) {
-                [menu removeItem:rootItem];
-                [menu insertItem:rootItem atIndex:0];
-                [c selectItem:rootItem];
-            } else {
-                NSString *languageName = [[NSLocale currentLocale] displayNameForKey:NSLocaleIdentifier
-                                                                               value:targetLocale];
-                NSMenuItem *newSelectedItem = [[NSMenuItem alloc] initWithTitle:languageName ?: @""
-                                                                         action:targetMethod
-                                                                  keyEquivalent:@""];
-                newSelectedItem.target = self;
-                newSelectedItem.representedObject = targetLocale;
-                [menu insertItem:newSelectedItem atIndex:0];
-                [c selectItem:newSelectedItem];
-            }
+        }
+        if (rootItem) {
+            [menu removeItem:rootItem];
+            [menu insertItem:rootItem atIndex:0];
+            [cell selectItem:rootItem];
+        } else {
+            NSString *languageName = [[NSLocale currentLocale] displayNameForKey:NSLocaleIdentifier
+                                                                           value:targetLocale];
+            NSMenuItem *newSelectedItem = [[NSMenuItem alloc] initWithTitle:languageName ?: @""
+                                                                     action:targetMethod
+                                                              keyEquivalent:@""];
+            newSelectedItem.target = self;
+            newSelectedItem.representedObject = targetLocale;
+            [menu insertItem:newSelectedItem atIndex:0];
+            [cell selectItem:newSelectedItem];
         }
     }
 }
@@ -117,25 +136,20 @@
     [self reload];
 }
 
-- (void)selectedSourceLocale:(NSMenuItem *)sender {
+- (void)selectedLocale:(NSMenuItem *)sender {
     NSString *locale = sender.representedObject;
     while (sender.parentItem) {
         sender = sender.parentItem;
     }
-    NSInteger row = [[self.numberFormatter numberFromString:sender.menu.identifier] integerValue];
+    NSArray *components = [[sender.menu identifier] componentsSeparatedByString:@"_"];
+    NSString *columnId = components[0];
+    NSInteger row = [[self.numberFormatter numberFromString:components[1]] integerValue];
     CustomGlossaryRow *obj = self.rows[row];
-    obj.sourceLocale = locale;
-    [[CustomGlossaryDatabase shared] updateRow:obj];
-}
-
-- (void)selectedTargetLocale:(NSMenuItem *)sender {
-    NSString *locale = sender.representedObject;
-    while (sender.parentItem) {
-        sender = sender.parentItem;
+    if ([columnId isEqual:@"sourceLocale"]) {
+        obj.sourceLocale = locale;
+    } else if ([columnId isEqual:@"targetLocale"]) {
+        obj.targetLocale = locale;
     }
-    NSInteger row = [[self.numberFormatter numberFromString:sender.menu.identifier] integerValue];
-    CustomGlossaryRow *obj = self.rows[row];
-    obj.targetLocale = locale;
     [[CustomGlossaryDatabase shared] updateRow:obj];
 }
 

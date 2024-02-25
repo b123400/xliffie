@@ -28,7 +28,7 @@ typedef enum : NSUInteger {
 
 + (NSString *)stringForDevice:(NSString *)deviceString;
 
-+ (NSMenu *)menuOfAllAvailableLocalesWithTarget:(id)target action:(SEL)action;
++ (void)refillMenu:(NSMenu *)result withAllAvailableLocalesWithTarget:(id)target action:(SEL)action;
 
 + (NSArray<NSString*> *)fallbacksWithLocale:(NSString*)localeCode;
 

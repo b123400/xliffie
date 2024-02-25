@@ -91,8 +91,8 @@
     return nil;
 }
 
-+ (NSMenu *)menuOfAllAvailableLocalesWithTarget:(id)target action:(SEL)action {
-    NSMenu *result = [[NSMenu alloc] init];
++ (void)refillMenu:(NSMenu *)result withAllAvailableLocalesWithTarget:(id)target action:(SEL)action {
+    [result removeAllItems];
     NSMutableArray <LanguageSet*> *targetLanguages = [[NSMutableArray alloc] init];
     
     for (NSString *localeIdentifier in [[NSLocale availableLocaleIdentifiers] sortedArrayUsingSelector:@selector(compare:)]) {
@@ -182,7 +182,6 @@
             menuItem.representedObject = preferredLangaugeIdentifier;
         }
     }
-    return result;
 }
 
 /**
