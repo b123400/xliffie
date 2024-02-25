@@ -192,43 +192,57 @@
 
 #pragma mark - CSV
 
-- (void)exportToFile:(NSString *)path {
-    if (![self open]) return;
-
-    CHCSVWriter *writer = [[CHCSVWriter alloc] initForWritingToCSVFile:path];
-    [writer writeLineOfFields:@[@"source_locale", @"target_locale", @"source", @"target"]];
+- (NSProgress *)exportToFile:(NSString *)path withTotalCount:(int64_t)total callback:(void (^)(NSError *error))callback {
+    if (![self open]) return nil;
     
-    NSString *sql = @"SELECT source_locale, target_locale, source, target FROM glossary";
+    NSProgress *progress = [NSProgress progressWithTotalUnitCount:total];
     
-    sqlite3_stmt *compiledStatement = nil;
-    int rc = 0;
-    if ((rc = sqlite3_prepare_v2(_sqlite, [sql UTF8String], -1, &compiledStatement, nil)) != SQLITE_OK) {
-        NSLog(@"Cannot prepare sql (%d) : %@", rc, sql);
-        return;
-    }
-
-    while (sqlite3_step(compiledStatement) == SQLITE_ROW) {
-        for (int i = 0; i < sqlite3_column_count(compiledStatement); i++) {
-            int colType = sqlite3_column_type(compiledStatement, i);
-            if (colType == SQLITE_TEXT) {
-                const char *col = (const char *)sqlite3_column_text(compiledStatement, i);
-                id value = [[NSString alloc] initWithUTF8String:col];
-                [writer writeField:value];
-            } else if (colType == SQLITE_NULL) {
-                [writer writeField:@""];
-            } else {
-                NSLog(@"%s Unknown data type.", __FUNCTION__);
-            }
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        CHCSVWriter *writer = [[CHCSVWriter alloc] initForWritingToCSVFile:path];
+        [writer writeLineOfFields:@[@"source_locale", @"target_locale", @"source", @"target"]];
+        
+        NSString *sql = @"SELECT source_locale, target_locale, source, target FROM glossary";
+        
+        sqlite3_stmt *compiledStatement = nil;
+        int rc = 0;
+        if ((rc = sqlite3_prepare_v2(_sqlite, [sql UTF8String], -1, &compiledStatement, nil)) != SQLITE_OK) {
+            NSLog(@"Cannot prepare sql (%d) : %@", rc, sql);
+            callback([NSError errorWithDomain:@"net.b123400.xliffie.error" code:0 userInfo:@{
+                NSLocalizedDescriptionKey: @"Cannot prepare export SQL"
+            }]);
+            return;
         }
-        [writer finishLine];
-    }
-    sqlite3_finalize(compiledStatement);
+        int completeCount = 0;
+        while (sqlite3_step(compiledStatement) == SQLITE_ROW) {
+            for (int i = 0; i < sqlite3_column_count(compiledStatement); i++) {
+                int colType = sqlite3_column_type(compiledStatement, i);
+                if (colType == SQLITE_TEXT) {
+                    const char *col = (const char *)sqlite3_column_text(compiledStatement, i);
+                    id value = [[NSString alloc] initWithUTF8String:col];
+                    [writer writeField:value];
+                } else if (colType == SQLITE_NULL) {
+                    [writer writeField:@""];
+                } else {
+                    NSLog(@"%s Unknown data type.", __FUNCTION__);
+                }
+            }
+            [writer finishLine];
+            completeCount++;
+            [progress setCompletedUnitCount:completeCount];
+        }
+        sqlite3_finalize(compiledStatement);
+        callback(nil);
+    });
+    return progress;
 }
 
-- (void)importWithFile:(NSURL *)url {
+- (NSProgress *)importWithFile:(NSURL *)url callback:(void (^)(NSError *error))callback {
     CustomGlossaryImporter *importer = [[CustomGlossaryImporter alloc] init];
     importer.delegate = self;
-    [importer importFromFile:url];
+    return [importer importFromFile:url withCallback:^(NSError * _Nonnull error) {
+        callback(error);
+        [[NSNotificationCenter defaultCenter] postNotificationName:CUSTOM_GLOSSARY_DATABASE_UPDATED_NOTIFICATION object:self];
+    }];
 }
 
 - (void)didReadRow:(CustomGlossaryRow *)row fromImporter:(id)importer {

@@ -13,15 +13,26 @@
 
 @property (nonatomic, strong) CustomGlossaryRow *currentRow;
 @property (nonatomic, assign) NSInteger rowNumber;
+@property (nonatomic, strong) NSProgress *progress;
+@property (nonatomic, copy) void (^callback)(NSError * _Nullable error);
 
 @end
 
 @implementation CustomGlossaryImporter
 
-- (void)importFromFile:(NSURL *)url {
-    CHCSVParser *parser = [[CHCSVParser alloc] initWithContentsOfCSVURL:url];
-    parser.delegate = self;
-    [parser parse];
+- (NSProgress *)importFromFile:(NSURL *)url withCallback:(void (^)(NSError *error))callback {
+    self.callback = callback;
+    NSNumber *fileSize = nil;
+    NSError *error = nil;
+    [url getResourceValue:&fileSize forKey:NSURLFileSizeKey error:&error];
+    NSProgress *progress = [NSProgress progressWithTotalUnitCount:[fileSize unsignedIntegerValue]];
+    self.progress = progress;
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0),^{
+        CHCSVParser *parser = [[CHCSVParser alloc] initWithContentsOfCSVURL:url];
+        parser.delegate = self;
+        [parser parse];
+    });
+    return progress;
 }
 
 - (void)parser:(CHCSVParser *)parser didBeginLine:(NSUInteger)recordNumber {
@@ -47,9 +58,22 @@
     }
 }
 
+- (void)parser:(CHCSVParser *)parser didFailWithError:(NSError *)error {
+    if (self.callback) {
+        self.callback(error);
+    }
+}
+
 - (void)parser:(CHCSVParser *)parser didEndLine:(NSUInteger)recordNumber {
     if (self.rowNumber == 1) return;
+    [self.progress setCompletedUnitCount:[parser totalBytesRead]];
     [self.delegate didReadRow:self.currentRow fromImporter:self];
+}
+
+- (void)parserDidEndDocument:(CHCSVParser *)parser {
+    if (self.callback) {
+        self.callback(nil);
+    }
 }
 
 @end

@@ -187,7 +187,15 @@
     [panel setNameFieldStringValue:@"glossary.csv"];
     NSModalResponse response = [panel runModal];
     if (response == NSModalResponseOK) {
-        [[CustomGlossaryDatabase shared] exportToFile:[[panel URL] path]];
+        NSProgress *progress = [[CustomGlossaryDatabase shared] exportToFile:[[panel URL] path]
+                                       withTotalCount:self.rows.count
+                                             callback:^(NSError * _Nonnull error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (error) {
+                    [[NSAlert alertWithError:error] runModal];
+                }
+            });
+        }];
     }
 }
 
@@ -198,7 +206,8 @@
     panel.allowsMultipleSelection = NO;
     panel.allowedFileTypes = @[@"csv"];
     if ([panel runModal] == NSModalResponseOK) {
-        [[CustomGlossaryDatabase shared] importWithFile:panel.URL];
+        NSProgress *progress = [[CustomGlossaryDatabase shared] importWithFile:panel.URL callback:^(NSError * _Nonnull error) {
+        }];
     }
 }
 

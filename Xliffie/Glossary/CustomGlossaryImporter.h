@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, weak) id <CustomGlossaryImporterDelegate> delegate;
 
-- (void)importFromFile:(NSURL *)url;
+- (NSProgress *)importFromFile:(NSURL *)url withCallback:(void (^)(NSError *error))callback;
 
 @end
 

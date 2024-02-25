@@ -32,8 +32,10 @@ NS_ASSUME_NONNULL_BEGIN
                                                 source:(NSString *)source;
 - (NSArray<CustomGlossaryRow *> *)allRows;
 
-- (void)exportToFile:(NSString *)path;
-- (void)importWithFile:(NSURL *)url;
+- (NSProgress *)exportToFile:(NSString *)path
+              withTotalCount:(int64_t)total
+                    callback:(void (^)(NSError *error))callback;
+- (NSProgress *)importWithFile:(NSURL *)url callback:(void (^)(NSError *error))callback;
 
 @end
 
