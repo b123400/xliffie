@@ -9,11 +9,13 @@
 #import "CustomGlossaryWindowController.h"
 #import "Utilities.h"
 #import "CustomGlossaryDatabase.h"
+#import "ProgressLoadingWindowController.h"
 
 @interface CustomGlossaryWindowController () <NSTableViewDelegate, NSTableViewDataSource>
 
 @property (nonatomic, strong) NSArray<CustomGlossaryRow *> *rows;
 @property (weak) IBOutlet NSTableView *tableView;
+@property (nonatomic, strong) ProgressLoadingWindowController *loadingModal;
 
 @property (nonatomic, strong) NSNumberFormatter *numberFormatter;
 
@@ -194,8 +196,13 @@
                 if (error) {
                     [[NSAlert alertWithError:error] runModal];
                 }
+                [self.window endSheet:self.loadingModal.window];
+                self.loadingModal = nil;
             });
         }];
+        ProgressLoadingWindowController *loading = [[ProgressLoadingWindowController alloc] initWithProgress:progress];
+        [self.window beginSheet:loading.window completionHandler:nil];
+        self.loadingModal = loading;
     }
 }
 
@@ -207,7 +214,14 @@
     panel.allowedFileTypes = @[@"csv"];
     if ([panel runModal] == NSModalResponseOK) {
         NSProgress *progress = [[CustomGlossaryDatabase shared] importWithFile:panel.URL callback:^(NSError * _Nonnull error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.window endSheet:self.loadingModal.window];
+                self.loadingModal = nil;
+            });
         }];
+        ProgressLoadingWindowController *loading = [[ProgressLoadingWindowController alloc] initWithProgress:progress];
+        [self.window beginSheet:loading.window completionHandler:nil];
+        self.loadingModal = loading;
     }
 }
 
