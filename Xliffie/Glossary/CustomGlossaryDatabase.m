@@ -27,6 +27,7 @@
 - (instancetype)init {
     if (self = [super init]) {
         [self open];
+        self.notificationEnabled = YES;
     }
     return self;
 }
@@ -62,13 +63,17 @@
         source ?: @"",
         target ?: @"",
     ]];
-    [[NSNotificationCenter defaultCenter] postNotificationName:CUSTOM_GLOSSARY_DATABASE_UPDATED_NOTIFICATION object:self];
+    if (self.notificationEnabled) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:CUSTOM_GLOSSARY_DATABASE_UPDATED_NOTIFICATION object:self];
+    }
     return [[self rowsToObjects:insertResult] firstObject];
 }
 
 - (void)deleteRow:(CustomGlossaryRow *)row {
     [self query:@"DELETE FROM glossary WHERE id = ?" withParams:@[row.id]];
-    [[NSNotificationCenter defaultCenter] postNotificationName:CUSTOM_GLOSSARY_DATABASE_UPDATED_NOTIFICATION object:self];
+    if (self.notificationEnabled) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:CUSTOM_GLOSSARY_DATABASE_UPDATED_NOTIFICATION object:self];
+    }
 }
 
 - (void)updateRow:(CustomGlossaryRow *)row {
@@ -79,7 +84,9 @@
         row.target,
         row.id,
     ]];
-    [[NSNotificationCenter defaultCenter] postNotificationName:CUSTOM_GLOSSARY_DATABASE_UPDATED_NOTIFICATION object:self];
+    if (self.notificationEnabled) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:CUSTOM_GLOSSARY_DATABASE_UPDATED_NOTIFICATION object:self];
+    }
 }
 
 - (NSArray<CustomGlossaryRow *> *)rowsWithSourceLocale:(NSString * _Nullable)sourceLocale
@@ -237,9 +244,11 @@
 }
 
 - (NSProgress *)importWithFile:(NSURL *)url callback:(void (^)(NSError *error))callback {
+    self.notificationEnabled = NO;
     CustomGlossaryImporter *importer = [[CustomGlossaryImporter alloc] init];
     importer.delegate = self;
     return [importer importFromFile:url withCallback:^(NSError * _Nonnull error) {
+        self.notificationEnabled = YES;
         callback(error);
         [[NSNotificationCenter defaultCenter] postNotificationName:CUSTOM_GLOSSARY_DATABASE_UPDATED_NOTIFICATION object:self];
     }];

@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CustomGlossaryDatabase : NSObject <CustomGlossaryImporterDelegate>
 
+@property (nonatomic, assign) BOOL notificationEnabled;
+
 + (instancetype)shared;
 
 - (CustomGlossaryRow *)insertWithSourceLocale:(NSString  * _Nullable)sourceLocale

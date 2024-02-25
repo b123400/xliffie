@@ -178,10 +178,13 @@
 - (IBAction)deleteButtonPressed:(id)sender {
     NSIndexSet *indexes = [self.tableView selectedRowIndexes];
     NSArray *rows = self.rows;
+    [CustomGlossaryDatabase shared].notificationEnabled = NO;
     [indexes enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL * _Nonnull stop) {
         CustomGlossaryRow *row = rows[idx];
         [[CustomGlossaryDatabase shared] deleteRow:row];
     }];
+    [CustomGlossaryDatabase shared].notificationEnabled = YES;
+    [self reload];
 }
 
 - (IBAction)exportButtonPressed:(id)sender {
