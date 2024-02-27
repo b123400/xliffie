@@ -131,6 +131,8 @@
             [menu insertItem:newSelectedItem atIndex:0];
             [cell selectItem:newSelectedItem];
         }
+    } else {
+        [cell selectItem:anyItem];
     }
 }
 
