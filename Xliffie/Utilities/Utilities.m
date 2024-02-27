@@ -123,16 +123,14 @@
         }
     }
     [targetLanguages sortUsingComparator:^NSComparisonResult(LanguageSet *obj1, LanguageSet *obj2) {
-        NSString *displayName1 = [[NSLocale currentLocale] displayNameForKey:NSLocaleIdentifier
-                                                                       value:obj1.mainLanguage];
-        NSString *displayName2 = [[NSLocale currentLocale] displayNameForKey:NSLocaleIdentifier
-                                                                       value:obj2.mainLanguage];
+        NSString *displayName1 = [Utilities displayNameForLocaleIdentifier:obj1.mainLanguage];
+        NSString *displayName2 = [Utilities displayNameForLocaleIdentifier:obj2.mainLanguage];
         return [displayName1 compare:displayName2];
     }];
     
     for (LanguageSet *languageSet in targetLanguages) {
-        NSString *languageName = [[NSLocale currentLocale] displayNameForKey:NSLocaleIdentifier
-                                                                       value:languageSet.mainLanguage];
+        
+        NSString *languageName = [Utilities displayNameForLocaleIdentifier:languageSet.mainLanguage];
         NSMenuItem *thisItem = [[NSMenuItem alloc] initWithTitle:languageName
                                                           action:action
                                                    keyEquivalent:@""];
@@ -152,8 +150,7 @@
             
             // all sub languages
             for (NSString *subLanguage in languageSet.subLanguages) {
-                NSString *subLanguageName = [[NSLocale currentLocale] displayNameForKey:NSLocaleIdentifier
-                                                                                  value:subLanguage];
+                NSString *subLanguageName = [Utilities displayNameForLocaleIdentifier:subLanguage];
                 NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:subLanguageName
                                                               action:action
                                                        keyEquivalent:@""];
@@ -171,8 +168,7 @@
         [result insertItem:[NSMenuItem separatorItem] atIndex:0];
         // more likely to be selected, so put to top
         for (NSString *preferredLangaugeIdentifier in [[NSLocale preferredLanguages] reverseObjectEnumerator]) {
-            NSString *preferredLanguage = [[NSLocale currentLocale] displayNameForKey:NSLocaleIdentifier
-                                                                                value:preferredLangaugeIdentifier];
+            NSString *preferredLanguage = [Utilities displayNameForLocaleIdentifier:preferredLangaugeIdentifier];
             
             NSMenuItem *menuItem = [result insertItemWithTitle:preferredLanguage
                                                         action:action
@@ -182,6 +178,19 @@
             menuItem.representedObject = preferredLangaugeIdentifier;
         }
     }
+}
+
++ (NSString *)displayNameForLocaleIdentifier:(NSString *)identifier {
+    if (!identifier) return nil;
+    
+    NSString *languageName = [[NSLocale currentLocale] displayNameForKey:NSLocaleIdentifier
+                                                                   value:identifier];
+    if (languageName) return languageName;
+    // It looks like there's a locale "bgc" which only has name in the en locale
+    // we need a backup locale if our current locale doesn't know the name
+    NSLocale *backupLocale = [NSLocale localeWithLocaleIdentifier:@"en"];
+    return [backupLocale displayNameForKey:NSLocaleIdentifier
+                                     value:identifier];
 }
 
 /**

@@ -36,8 +36,7 @@
     
     NSMutableOrderedSet *sourceTitles = [NSMutableOrderedSet orderedSet];
     for (File *file in self.document.files) {
-        [sourceTitles addObject:[[NSLocale currentLocale] displayNameForKey:NSLocaleIdentifier
-                                                                      value:file.sourceLanguage]];
+        [sourceTitles addObject:[Utilities displayNameForLocaleIdentifier:file.sourceLanguage]];
     }
     
     [self.sourceButton addItemsWithTitles:[sourceTitles array]];

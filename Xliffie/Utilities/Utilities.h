@@ -30,6 +30,8 @@ typedef enum : NSUInteger {
 
 + (void)refillMenu:(NSMenu *)result withAllAvailableLocalesWithTarget:(id)target action:(SEL)action;
 
++ (NSString *)displayNameForLocaleIdentifier:(NSString *)identifier;
+
 + (NSArray<NSString*> *)fallbacksWithLocale:(NSString*)localeCode;
 
 @end

@@ -82,10 +82,8 @@
         NSString *targetLocale = [tableColumn.identifier isEqual:@"sourceLocale"] ? r.sourceLocale
             : [tableColumn.identifier isEqual:@"targetLocale"] ? r.targetLocale
             : nil;
-
-        NSString *languageName = targetLocale
-            ? [[NSLocale currentLocale] displayNameForKey:NSLocaleIdentifier value:targetLocale]
-            : NSLocalizedString(@"Any", @"");
+        
+        NSString *languageName = [Utilities displayNameForLocaleIdentifier:targetLocale] ?: NSLocalizedString(@"Any", @"");
         [c setTitle:languageName];
     }
 }
@@ -121,8 +119,7 @@
             [menu insertItem:rootItem atIndex:0];
             [cell selectItem:rootItem];
         } else {
-            NSString *languageName = [[NSLocale currentLocale] displayNameForKey:NSLocaleIdentifier
-                                                                           value:targetLocale];
+            NSString *languageName = [Utilities displayNameForLocaleIdentifier:targetLocale];
             NSMenuItem *newSelectedItem = [[NSMenuItem alloc] initWithTitle:languageName ?: @""
                                                                      action:targetMethod
                                                               keyEquivalent:@""];
