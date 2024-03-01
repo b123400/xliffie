@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -97,19 +97,19 @@
 		CF94FCA51A5C365400EE8BD5 /* File.m in Sources */ = {isa = PBXBuildFile; fileRef = CF94FCA41A5C365400EE8BD5 /* File.m */; };
 		CF94FCA81A5C37A900EE8BD5 /* TranslationPair.m in Sources */ = {isa = PBXBuildFile; fileRef = CF94FCA71A5C37A900EE8BD5 /* TranslationPair.m */; };
 		CF99B3412B6BE0480025B1C2 /* CustomGlossaryWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF99B33F2B6BE0480025B1C2 /* CustomGlossaryWindowController.m */; };
-		CF99B3422B6BE0480025B1C2 /* CustomGlossaryWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF99B3402B6BE0480025B1C2 /* CustomGlossaryWindowController.xib */; };
 		CF9A36ED29CD8F3C00FB8763 /* ProgressWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF9A36EF29CD8F3C00FB8763 /* ProgressWindowController.xib */; };
 		CF9A370029CDE6BE00FB8763 /* DocumentTextFinderClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9A36FF29CDE6BE00FB8763 /* DocumentTextFinderClient.m */; };
 		CF9A3D5529DEB61D00807F3D /* NSImage+SystemImage.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9A3D5429DEB61D00807F3D /* NSImage+SystemImage.m */; };
 		CF9FDB8E2AE8D73B00D76DEA /* TranslationPairGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9FDB8D2AE8D73B00D76DEA /* TranslationPairGroup.m */; };
 		CFA091E029CB18F800F33979 /* BRProgressButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA091DF29CB18F800F33979 /* BRProgressButton.m */; };
+		CFB58D0A2B9203F4006E211F /* CustomGlossaryWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFB58D0C2B9203F4006E211F /* CustomGlossaryWindowController.xib */; };
+		CFB58D0E2B92040B006E211F /* ProgressLoadingWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFB58D102B92040B006E211F /* ProgressLoadingWindowController.xib */; };
 		CFC6CC602702E8E300F7850C /* GlossaryWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC6CC5E2702E8E300F7850C /* GlossaryWindowController.m */; };
 		CFC6CC642703152400F7850C /* GlossaryRow.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC6CC632703152400F7850C /* GlossaryRow.m */; };
 		CFC6CC672703163700F7850C /* GlossaryFileRow.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC6CC662703163700F7850C /* GlossaryFileRow.m */; };
 		CFCD4B341A6D0C7200BA8826 /* DocumentWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCD4B331A6D0C7200BA8826 /* DocumentWindow.m */; };
 		CFD234FA1A5E44C700B52088 /* XMLOutlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD234F91A5E44C700B52088 /* XMLOutlineView.m */; };
 		CFD4C7562B8B602600CC6750 /* ProgressLoadingWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD4C7542B8B602600CC6750 /* ProgressLoadingWindowController.m */; };
-		CFD4C7572B8B602600CC6750 /* ProgressLoadingWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFD4C7552B8B602600CC6750 /* ProgressLoadingWindowController.xib */; };
 		CFE1AF972ADCF60100093FD1 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = CFE1AF962ADCF60100093FD1 /* Localizable.xcstrings */; };
 		CFE39FA11A767252004644C8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CFE39FA31A767252004644C8 /* InfoPlist.strings */; };
 		CFE39FA61A767253004644C8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CFE39FA81A767253004644C8 /* InfoPlist.strings */; };
@@ -281,7 +281,6 @@
 		CF94FCA71A5C37A900EE8BD5 /* TranslationPair.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TranslationPair.m; sourceTree = "<group>"; };
 		CF99B33E2B6BE0480025B1C2 /* CustomGlossaryWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomGlossaryWindowController.h; sourceTree = "<group>"; };
 		CF99B33F2B6BE0480025B1C2 /* CustomGlossaryWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomGlossaryWindowController.m; sourceTree = "<group>"; };
-		CF99B3402B6BE0480025B1C2 /* CustomGlossaryWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomGlossaryWindowController.xib; sourceTree = "<group>"; };
 		CF9A36EE29CD8F3C00FB8763 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ProgressWindowController.xib; sourceTree = "<group>"; };
 		CF9A36F129CD8F4100FB8763 /* zh-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-TW"; path = "zh-TW.lproj/ProgressWindowController.strings"; sourceTree = "<group>"; };
 		CF9A36F529CD8F4200FB8763 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/ProgressWindowController.strings; sourceTree = "<group>"; };
@@ -294,6 +293,10 @@
 		CF9FDB8D2AE8D73B00D76DEA /* TranslationPairGroup.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TranslationPairGroup.m; sourceTree = "<group>"; };
 		CFA091DE29CB18F800F33979 /* BRProgressButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRProgressButton.h; sourceTree = "<group>"; };
 		CFA091DF29CB18F800F33979 /* BRProgressButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRProgressButton.m; sourceTree = "<group>"; };
+		CFB58D0B2B9203F4006E211F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/CustomGlossaryWindowController.xib; sourceTree = "<group>"; };
+		CFB58D0D2B9203F4006E211F /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/CustomGlossaryWindowController.xcstrings; sourceTree = "<group>"; };
+		CFB58D0F2B92040B006E211F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ProgressLoadingWindowController.xib; sourceTree = "<group>"; };
+		CFB58D112B92040B006E211F /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/ProgressLoadingWindowController.xcstrings; sourceTree = "<group>"; };
 		CFC6CC5D2702E8E300F7850C /* GlossaryWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlossaryWindowController.h; sourceTree = "<group>"; };
 		CFC6CC5E2702E8E300F7850C /* GlossaryWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GlossaryWindowController.m; sourceTree = "<group>"; };
 		CFC6CC622703152400F7850C /* GlossaryRow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlossaryRow.h; sourceTree = "<group>"; };
@@ -306,7 +309,6 @@
 		CFD234F91A5E44C700B52088 /* XMLOutlineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLOutlineView.m; sourceTree = "<group>"; };
 		CFD4C7532B8B602600CC6750 /* ProgressLoadingWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProgressLoadingWindowController.h; sourceTree = "<group>"; };
 		CFD4C7542B8B602600CC6750 /* ProgressLoadingWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProgressLoadingWindowController.m; sourceTree = "<group>"; };
-		CFD4C7552B8B602600CC6750 /* ProgressLoadingWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProgressLoadingWindowController.xib; sourceTree = "<group>"; };
 		CFE1AF962ADCF60100093FD1 /* Localizable.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		CFE39F6F1A764526004644C8 /* Xliffie.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Xliffie.entitlements; sourceTree = "<group>"; };
 		CFE39F9D1A765863004644C8 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
@@ -532,7 +534,7 @@
 				CF610CFC2A978AC50026AAC5 /* GlossaryDownloadWindowController.xib */,
 				CF99B33E2B6BE0480025B1C2 /* CustomGlossaryWindowController.h */,
 				CF99B33F2B6BE0480025B1C2 /* CustomGlossaryWindowController.m */,
-				CF99B3402B6BE0480025B1C2 /* CustomGlossaryWindowController.xib */,
+				CFB58D0C2B9203F4006E211F /* CustomGlossaryWindowController.xib */,
 				CF83DC7B2B7508A400713410 /* CustomGlossaryDatabase.h */,
 				CF83DC7C2B7508A400713410 /* CustomGlossaryDatabase.m */,
 				CF83DC7E2B7509D500713410 /* CustomGlossaryRow.h */,
@@ -654,7 +656,7 @@
 				CF2498482ADF6F5300285DB2 /* NSTextView+CopyAttachment.m */,
 				CFD4C7532B8B602600CC6750 /* ProgressLoadingWindowController.h */,
 				CFD4C7542B8B602600CC6750 /* ProgressLoadingWindowController.m */,
-				CFD4C7552B8B602600CC6750 /* ProgressLoadingWindowController.xib */,
+				CFB58D102B92040B006E211F /* ProgressLoadingWindowController.xib */,
 			);
 			path = "UI Elements";
 			sourceTree = "<group>";
@@ -821,7 +823,7 @@
 				CFE1AF972ADCF60100093FD1 /* Localizable.xcstrings in Resources */,
 				CF740AD12701CE7900F31F26 /* no.glossary in Resources */,
 				CF740AE02701CE7900F31F26 /* cs.glossary in Resources */,
-				CF99B3422B6BE0480025B1C2 /* CustomGlossaryWindowController.xib in Resources */,
+				CFB58D0A2B9203F4006E211F /* CustomGlossaryWindowController.xib in Resources */,
 				CF610CF72A978AC00026AAC5 /* GlossaryManagerWindowController.xib in Resources */,
 				CF740AF42701CE7900F31F26 /* ru.glossary in Resources */,
 				CF78DC492A91090F000B33B5 /* zh_hk.glossary in Resources */,
@@ -831,7 +833,7 @@
 				CF78DC452A91090F000B33B5 /* pt_br.glossary in Resources */,
 				CF78DC462A91090F000B33B5 /* fr_ca.glossary in Resources */,
 				CF660EF31C5401B2007A0B28 /* Credits.rtf in Resources */,
-				CFD4C7572B8B602600CC6750 /* ProgressLoadingWindowController.xib in Resources */,
+				CFB58D0E2B92040B006E211F /* ProgressLoadingWindowController.xib in Resources */,
 				CF740AE32701CE7900F31F26 /* pl.glossary in Resources */,
 				CF78DC4D2A91090F000B33B5 /* zh_cn.glossary in Resources */,
 				CF5FC8A01A5ABFF700538E60 /* Main.storyboard in Resources */,
@@ -1082,6 +1084,24 @@
 			name = ProgressWindowController.xib;
 			sourceTree = "<group>";
 		};
+		CFB58D0C2B9203F4006E211F /* CustomGlossaryWindowController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CFB58D0B2B9203F4006E211F /* Base */,
+				CFB58D0D2B9203F4006E211F /* mul */,
+			);
+			name = CustomGlossaryWindowController.xib;
+			sourceTree = "<group>";
+		};
+		CFB58D102B92040B006E211F /* ProgressLoadingWindowController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CFB58D0F2B92040B006E211F /* Base */,
+				CFB58D112B92040B006E211F /* mul */,
+			);
+			name = ProgressLoadingWindowController.xib;
+			sourceTree = "<group>";
+		};
 		CFE39FA31A767252004644C8 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1201,7 +1221,10 @@
 				INFOPLIST_FILE = Xliffie/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Xliffie;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = 2.1.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1233,7 +1256,10 @@
 				INFOPLIST_FILE = Xliffie/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Xliffie;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = 2.1.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1263,7 +1289,11 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = XliffieTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Xliffie.app/Contents/MacOS/Xliffie";
@@ -1284,7 +1314,11 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = XliffieTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Xliffie.app/Contents/MacOS/Xliffie";

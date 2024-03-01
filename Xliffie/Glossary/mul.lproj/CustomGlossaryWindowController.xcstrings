@@ -1,0 +1,270 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "1kD-pX-47m.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Text Cell\"; ObjectID = \"1kD-pX-47m\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Text Cell"
+          }
+        }
+      }
+    },
+    "5hc-98-zoN.headerCell.title" : {
+      "comment" : "Class = \"NSTableColumn\"; headerCell.title = \"Source Locale\"; ObjectID = \"5hc-98-zoN\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Source Locale"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "原文言語"
+          }
+        },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "原文語言"
+          }
+        }
+      }
+    },
+    "79r-Si-EHo.headerCell.title" : {
+      "comment" : "Class = \"NSTableColumn\"; headerCell.title = \"Source\"; ObjectID = \"79r-Si-EHo\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Source"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "原文"
+          }
+        },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "原文"
+          }
+        }
+      }
+    },
+    "dFT-3f-8KD.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Item 1\"; ObjectID = \"dFT-3f-8KD\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Item 1"
+          }
+        }
+      }
+    },
+    "F0z-JX-Cv5.title" : {
+      "comment" : "Class = \"NSWindow\"; title = \"Custom Glossary\"; ObjectID = \"F0z-JX-Cv5\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Custom Glossary"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カスタム用語集"
+          }
+        },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自定義詞庫"
+          }
+        }
+      }
+    },
+    "FV1-3g-hu1.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Item 2\"; ObjectID = \"FV1-3g-hu1\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Item 2"
+          }
+        }
+      }
+    },
+    "Fvr-de-Q22.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Item 3\"; ObjectID = \"Fvr-de-Q22\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Item 3"
+          }
+        }
+      }
+    },
+    "J5T-aF-WpL.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Import...\"; ObjectID = \"J5T-aF-WpL\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Import..."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "読み込む..."
+          }
+        },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "匯入..."
+          }
+        }
+      }
+    },
+    "kQd-Sl-w0M.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Item 1\"; ObjectID = \"kQd-Sl-w0M\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Item 1"
+          }
+        }
+      }
+    },
+    "lpd-EJ-VJA.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Export...\"; ObjectID = \"lpd-EJ-VJA\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Export..."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "書き出す…"
+          }
+        },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "匯出..."
+          }
+        }
+      }
+    },
+    "qKK-mn-aou.headerCell.title" : {
+      "comment" : "Class = \"NSTableColumn\"; headerCell.title = \"Target Locale\"; ObjectID = \"qKK-mn-aou\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Target Locale"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "訳文言語"
+          }
+        },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "譯文語言"
+          }
+        }
+      }
+    },
+    "tIg-qk-n1g.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Text Cell\"; ObjectID = \"tIg-qk-n1g\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Text Cell"
+          }
+        }
+      }
+    },
+    "wdz-gh-SOc.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Item 3\"; ObjectID = \"wdz-gh-SOc\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Item 3"
+          }
+        }
+      }
+    },
+    "WTc-g9-N3R.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Item 2\"; ObjectID = \"WTc-g9-N3R\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Item 2"
+          }
+        }
+      }
+    },
+    "ZdN-T6-0Hz.headerCell.title" : {
+      "comment" : "Class = \"NSTableColumn\"; headerCell.title = \"Target\"; ObjectID = \"ZdN-T6-0Hz\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Target"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "訳文"
+          }
+        },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "譯文"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

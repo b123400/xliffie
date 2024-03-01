@@ -151,6 +151,9 @@
 /* Class = "NSMenuItem"; title = "File"; ObjectID = "dMs-cI-mzQ"; */
 "dMs-cI-mzQ.title" = "檔案";
 
+/* Class = "NSMenuItem"; title = "Add to Custom Glossary"; ObjectID = "dO0-6s-jRN"; */
+"dO0-6s-jRN.title" = "加到自定義詞庫";
+
 /* Class = "NSMenuItem"; title = "Undo"; ObjectID = "dRJ-4n-Yzg"; */
 "dRJ-4n-Yzg.title" = "還原";
 
@@ -285,6 +288,9 @@
 
 /* Class = "NSMenuItem"; title = "Paste Ruler"; ObjectID = "LVM-kO-fVI"; */
 "LVM-kO-fVI.title" = "貼上尺標";
+
+/* Class = "NSMenuItem"; title = "Custom Glossary..."; ObjectID = "M2z-fQ-iSb"; */
+"M2z-fQ-iSb.title" = "自定義詞庫...";
 
 /* Class = "NSMenuItem"; title = "Check Grammar With Spelling"; ObjectID = "mK6-2p-4JG"; */
 "mK6-2p-4JG.title" = "檢查拼字文法";

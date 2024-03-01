@@ -26,7 +26,7 @@
                     <progressIndicator maxValue="100" doubleValue="50" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="EqY-4A-F5F">
                         <rect key="frame" x="20" y="43" width="440" height="20"/>
                     </progressIndicator>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VlY-t6-oqk">
+                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VlY-t6-oqk">
                         <rect key="frame" x="18" y="20" width="37" height="16"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="StC-pl-HFX">
                             <font key="font" usesAppearanceFont="YES"/>
