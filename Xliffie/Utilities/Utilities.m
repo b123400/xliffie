@@ -199,6 +199,7 @@
  * Outout: [zh_Hant_HK, zh_Hant, zh]
  */
 + (NSArray<NSString*> *)fallbacksWithLocale:(NSString*)localeCode {
+    if (!localeCode) return @[];
     NSMutableArray *results = [NSMutableArray array];
     [results addObject: localeCode];
     for (NSInteger i = localeCode.length - 1; i >= 0; i--) {

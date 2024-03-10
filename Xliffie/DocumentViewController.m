@@ -467,7 +467,7 @@ doCommandBySelector:(SEL)commandSelector {
     if ([pair isKindOfClass:[TranslationPairGroup class]]) {
         pair = [(TranslationPairGroup*)pair mainPair];
     }
-    NSArray *warnings = [pair formatWarningsForProposedTranslation:proposed];
+    NSArray *warnings = [pair warningsForProposedTranslation:proposed];
     if ([warnings count]) {
         NSAlert *alert = [[NSAlert alloc] init];
         [alert addButtonWithTitle:NSLocalizedString(@"Apply it anyway",nil)];

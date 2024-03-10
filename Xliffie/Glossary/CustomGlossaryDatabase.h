@@ -34,6 +34,11 @@ NS_ASSUME_NONNULL_BEGIN
                                                 source:(NSString *)source;
 - (NSArray<CustomGlossaryRow *> *)allRows;
 
+- (BOOL)doesRowExistWithSourceLocale:(NSString * _Nullable)sourceLocale
+                        targetLocale:(NSString * _Nullable)targetLocale
+                              source:(NSString *)source
+                              target:(NSString *)target;
+
 - (NSProgress *)exportToFile:(NSString *)path
               withTotalCount:(int64_t)total
                     callback:(void (^)(NSError *error))callback;

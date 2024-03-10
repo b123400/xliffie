@@ -131,6 +131,42 @@
     return [self rowsToObjects:rows];
 }
 
+- (BOOL)doesRowExistWithSourceLocale:(NSString * _Nullable)sourceLocale
+                        targetLocale:(NSString * _Nullable)targetLocale
+                              source:(NSString *)source
+                              target:(NSString *)target {
+    NSArray *sourceLocales = [Utilities fallbacksWithLocale:sourceLocale];
+    NSArray *targetLocales = [Utilities fallbacksWithLocale:targetLocale];
+    NSMutableString *sourcePlaceholders = @"".mutableCopy;
+    NSMutableString *targetPlaceholders = @"".mutableCopy;
+    NSMutableArray *params = [NSMutableArray array];
+    for (NSString *l in sourceLocales) {
+        if (sourcePlaceholders.length > 0) {
+            [sourcePlaceholders appendFormat:@","];
+        }
+        [sourcePlaceholders appendFormat:@"?"];
+        [params addObject:[l.lowercaseString stringByReplacingOccurrencesOfString:@"_" withString:@"-"]];
+    }
+    for (NSString *l in targetLocales) {
+        if (targetPlaceholders.length > 0) {
+            [targetPlaceholders appendFormat:@","];
+        }
+        [targetPlaceholders appendFormat:@"?"];
+        [params addObject:[l.lowercaseString stringByReplacingOccurrencesOfString:@"_" withString:@"-"]];
+    }
+    NSString *sourceCondition = sourceLocales.count == 0 ? @"" : [NSString stringWithFormat:@"REPLACE(LOWER(source_locale), '_', '-') IN (%@) OR", sourcePlaceholders];
+    NSString *targetCondition = targetLocales.count == 0 ? @"" : [NSString stringWithFormat:@"REPLACE(LOWER(target_locale), '_', '-') IN (%@) OR", targetPlaceholders];
+    NSString *query  = [NSString stringWithFormat:@"SELECT COUNT(id) FROM glossary WHERE (%@ source_locale IS NULL) AND (%@ target_locale IS NULL) AND source = ? AND target = ? COLLATE NOCASE", sourceCondition, targetCondition];
+    [params addObject:source];
+    [params addObject:target];
+    NSArray *countId = [self query:query withParams:params];
+    NSNumber *count = [[countId firstObject] firstObject];
+    if ([count isKindOfClass:[NSNumber class]] && [count integerValue] >= 1) {
+        return YES;
+    }
+    return NO;
+}
+
 - (NSArray<CustomGlossaryRow *> *)rowsToObjects:(NSArray *)rows {
     NSMutableArray<CustomGlossaryRow*> *results = [NSMutableArray array];
     for (NSArray *columns in rows) {
