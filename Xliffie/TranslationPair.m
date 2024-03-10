@@ -11,6 +11,7 @@
 #import "Glossary.h"
 #import "BRTextAttachmentCell.h"
 #import "Utilities/Utilities.h"
+#import "CustomGlossaryDatabase.h"
 
 #define FORMAT_SPECIFIER_REGEX @"%(?:([0-9])\\$)?(?:[0-9]?.[0-9])?((?:h|hh|l|ll|q|L|z|t|j)?([@dDuUxXoOfeEgGcCsSpaAF]|#@([a-zA-Z0-9_-]+)@))"
 
@@ -264,6 +265,13 @@
                 return TranslationPairStateTranslated;
             }
         }
+        BOOL inCustomGlossary = [[CustomGlossaryDatabase shared] doesRowExistWithSourceLocale:self.file.sourceLanguage
+                                                                           targetLocale:self.file.targetLanguage
+                                                                                 source:self.source
+                                                                                 target:self.target];
+        if (inCustomGlossary) {
+            return TranslationPairStateTranslated;
+        }
         return TranslationPairStateSame;
     }
     if ([self warningsForTarget].count) {
@@ -356,7 +364,7 @@
 - (NSArray <NSString*> *)warningsForTarget {
     if (!self.cachedTargetWarnings) {
         if (self.target) {
-            self.cachedTargetWarnings = [self formatWarningsForProposedTranslation:self.target];
+            self.cachedTargetWarnings = [self warningsForProposedTranslation:self.target];
         } else {
             self.cachedTargetWarnings = @[];
         }
@@ -386,7 +394,7 @@
         [self.note.lowercaseString containsString:filter];
 }
 
-- (NSArray*)formatWarningsForProposedTranslation:(NSString*)newTranslation {
+- (NSArray*)warningsForProposedTranslation:(NSString*)newTranslation {
     NSDictionary *thatFormats = [self formatSpecifiersInString:newTranslation];
     NSString *alternativeSource = self.alternativePair.target.length ? self.alternativePair.target : nil;
     NSDictionary *thisFormats = [self formatSpecifiersInString:alternativeSource ?: self.source];

@@ -16,6 +16,7 @@
 #import "GlossaryDatabase.h"
 #import "XclocDocument.h"
 #import "TranslationPairGroup.h"
+#import "CustomGlossaryDatabase.h"
 
 @interface DocumentViewController () <SuggestionsWindowControllerDelegate>
 
@@ -394,6 +395,19 @@ doCommandBySelector:(SEL)commandSelector {
     NSMutableArray<Suggestion*> *suggestions = [NSMutableArray array];
     // Dedup suggestions by title
     NSMutableSet<NSString*> *addedSuggestions = [NSMutableSet set];
+    
+    NSArray<CustomGlossaryRow *> *customRows = [[CustomGlossaryDatabase shared] rowsWithSourceLocale:pair.file.sourceLanguage
+                                                                             targetLocale:pair.file.targetLanguage
+                                                                                   source:pair.source];
+    for (CustomGlossaryRow *customRow in customRows) {
+        if ([customRow.target isEqual:pair.target]) continue;
+        Suggestion *s = [[Suggestion alloc] init];
+        s.title = customRow.target;
+        s.source = SuggestionSourceCustomGlossary;
+        [suggestions addObject:s];
+        [addedSuggestions addObject:customRow.target];
+    }
+    
     Glossary *glossary = [Glossary sharedGlossaryWithLocale:pair.file.targetLanguage];
     NSArray<NSString *> *glossaryTranslations = [glossary translate:pair.source];
     for (NSString *glossaryTranslation in glossaryTranslations) {
@@ -421,6 +435,7 @@ doCommandBySelector:(SEL)commandSelector {
             }
         }
     }
+    
     GlossaryPlatform platform = [self.document isKindOfClass:[XclocDocument class]]
         ? [(XclocDocument*)self.document glossaryPlatformWithSourcePath:pair.file.original]
         : GlossaryPlatformAny;
@@ -452,7 +467,7 @@ doCommandBySelector:(SEL)commandSelector {
     if ([pair isKindOfClass:[TranslationPairGroup class]]) {
         pair = [(TranslationPairGroup*)pair mainPair];
     }
-    NSArray *warnings = [pair formatWarningsForProposedTranslation:proposed];
+    NSArray *warnings = [pair warningsForProposedTranslation:proposed];
     if ([warnings count]) {
         NSAlert *alert = [[NSAlert alloc] init];
         [alert addButtonWithTitle:NSLocalizedString(@"Apply it anyway",nil)];
@@ -536,6 +551,24 @@ doCommandBySelector:(SEL)commandSelector {
             return NO;
         }
         return YES;
+    } else if ([[menuItem identifier] isEqual:@"addToCustomGlossary"]) {
+        NSInteger index = [self.outlineView clickedRow];
+        NSIndexSet *indexSet = [self.outlineView selectedRowIndexes];
+        NSIndexSet *targetIndexSet;
+        if ([indexSet containsIndex:index]) {
+            targetIndexSet = indexSet;
+        } else {
+            targetIndexSet = [NSIndexSet indexSetWithIndex:index];
+        }
+        BOOL __block allPair = YES;
+        [targetIndexSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL * _Nonnull stop) {
+            id obj = [[self outlineView] itemAtRow:idx];
+            if (![obj isKindOfClass:[TranslationPair class]]) {
+                allPair = NO;
+                *stop = YES;
+            }
+        }];
+        return allPair;
     }
     return YES;
 }
@@ -577,6 +610,28 @@ doCommandBySelector:(SEL)commandSelector {
         [self.delegate viewControllerTranslationProgressUpdated:self];
     }
     [self.outlineView reloadDataForRowIndexes:targetIndexSet columnIndexes:[NSIndexSet indexSetWithIndex:1]];
+}
+
+- (IBAction)addToCustomGlossary:(id)sender {
+    NSInteger index = [self.outlineView clickedRow];
+    NSIndexSet *indexSet = [self.outlineView selectedRowIndexes];
+    NSIndexSet *targetIndexSet;
+    if (index < 0) {
+        targetIndexSet = indexSet;
+    } else if ([indexSet containsIndex:index]) {
+        targetIndexSet = indexSet;
+    } else {
+        targetIndexSet = [NSIndexSet indexSetWithIndex:index];
+    }
+    [targetIndexSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL * _Nonnull stop) {
+        id obj = [[self outlineView] itemAtRow:idx];
+        if (![obj isKindOfClass:[TranslationPair class]]) return;
+        TranslationPair *pair = (TranslationPair*)obj;
+        [[CustomGlossaryDatabase shared] insertWithSourceLocale:pair.file.sourceLanguage
+                                                   targetLocale:pair.file.targetLanguage
+                                                         source:pair.source
+                                                         target:pair.target];
+    }];
 }
 
 - (IBAction)copySourceToTarget:(id)sender {

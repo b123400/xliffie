@@ -9,20 +9,8 @@
 #import "TargetMissingViewController.h"
 #import "File.h"
 #import "TranslationUtility.h"
-
-@interface LanguageSet : NSObject
-// language code, not name
-@property NSString *mainLanguage;
-@property NSMutableArray <NSString*> *subLanguages;
-@end
-
-@implementation LanguageSet
-- (id)init {
-    self = [super init];
-    self.subLanguages = [NSMutableArray array];
-    return self;
-}
-@end
+#import "LanguageSet.h"
+#import "Utilities.h"
 
 @interface TargetMissingViewController ()
 
@@ -48,99 +36,15 @@
     
     NSMutableOrderedSet *sourceTitles = [NSMutableOrderedSet orderedSet];
     for (File *file in self.document.files) {
-        [sourceTitles addObject:[[NSLocale currentLocale] displayNameForKey:NSLocaleIdentifier
-                                                                      value:file.sourceLanguage]];
+        [sourceTitles addObject:[Utilities displayNameForLocaleIdentifier:file.sourceLanguage]];
     }
     
     [self.sourceButton addItemsWithTitles:[sourceTitles array]];
     
-    NSMutableArray <LanguageSet*> *targetLanguages = [[NSMutableArray alloc] init];
+    NSMenu *targetLocaleMenu = [[NSMenu alloc] init];
+    [Utilities refillMenu:targetLocaleMenu withAllAvailableLocalesWithTarget:self action:@selector(selectedTargetItem:)];
+    [self.targetButton setMenu:targetLocaleMenu];
     
-    for (NSString *localeIdentifier in [[NSLocale availableLocaleIdentifiers] sortedArrayUsingSelector:@selector(compare:)]) {
-        NSLocale *locale = [NSLocale localeWithLocaleIdentifier:localeIdentifier];
-        NSString *thisLanguageCode = [locale objectForKey:NSLocaleLanguageCode];
-        NSString *thisLanguageScript = [locale objectForKey:NSLocaleScriptCode];
-        
-        LanguageSet *lastLanguageSet = [targetLanguages lastObject];
-        NSString *lastLanguageIdentifier = [lastLanguageSet mainLanguage];
-        NSLocale *lastLocale = [NSLocale localeWithLocaleIdentifier:lastLanguageIdentifier];
-        NSString *lastLanguageCode = [lastLocale objectForKey:NSLocaleLanguageCode];
-        NSString *lastLanguageScript = [lastLocale objectForKey:NSLocaleScriptCode];
-        
-        if (![lastLanguageCode isEqualToString:thisLanguageCode] ||
-            ([lastLanguageCode isEqualToString:thisLanguageCode] &&
-             thisLanguageScript &&
-             ![lastLanguageScript isEqualToString:thisLanguageScript])) {
-            
-            // make new language set
-            LanguageSet *thisLanguageSet = [[LanguageSet alloc] init];
-            thisLanguageSet.mainLanguage = localeIdentifier;
-            [targetLanguages addObject:thisLanguageSet];
-            
-        } else {
-            // this code is same as last code, means this is a sub-language of the last one
-            // like: zh_Hant -> zh_Hang_HK
-            [lastLanguageSet.subLanguages addObject:localeIdentifier];
-        }
-    }
-    [targetLanguages sortUsingComparator:^NSComparisonResult(LanguageSet *obj1, LanguageSet *obj2) {
-        NSString *displayName1 = [[NSLocale currentLocale] displayNameForKey:NSLocaleIdentifier
-                                                                       value:obj1.mainLanguage];
-        NSString *displayName2 = [[NSLocale currentLocale] displayNameForKey:NSLocaleIdentifier
-                                                                       value:obj2.mainLanguage];
-        return [displayName1 compare:displayName2];
-    }];
-    
-    for (LanguageSet *languageSet in targetLanguages) {
-        NSString *languageName = [[NSLocale currentLocale] displayNameForKey:NSLocaleIdentifier
-                                                                       value:languageSet.mainLanguage];
-        NSMenuItem *thisItem = [[NSMenuItem alloc] initWithTitle:languageName
-                                                          action:@selector(selectedTargetItem:)
-                                                   keyEquivalent:@""];
-        thisItem.target = self;
-        thisItem.representedObject = languageSet.mainLanguage;
-        
-        if (languageSet.subLanguages.count) {
-            // one more same item in sub menu
-            NSMenu *subMenu = [[NSMenu alloc] init];
-            [thisItem setSubmenu:subMenu];
-            NSMenuItem *subItem = [[NSMenuItem alloc] initWithTitle:languageName
-                                                              action:@selector(selectedTargetItem:)
-                                                       keyEquivalent:@""];
-            thisItem.target = self;
-            thisItem.representedObject = languageSet.mainLanguage;
-            [subMenu addItem:subItem];
-            
-            // all sub languages
-            for (NSString *subLanguage in languageSet.subLanguages) {
-                NSString *subLanguageName = [[NSLocale currentLocale] displayNameForKey:NSLocaleIdentifier
-                                                                                  value:subLanguage];
-                NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:subLanguageName
-                                                              action:@selector(selectedTargetItem:)
-                                                       keyEquivalent:@""];
-                item.representedObject = subLanguage;
-                [subMenu addItem:item];
-            }
-        }
-        
-        [[self.targetButton menu] addItem:thisItem];
-    }
-    
-    // preferred language in systems
-    if ([[NSLocale preferredLanguages] count] > 0) {
-        [[self.targetButton menu] insertItem:[NSMenuItem separatorItem] atIndex:0];
-        // more likely to be selected, so put to top
-        for (NSString *preferredLangaugeIdentifier in [[NSLocale preferredLanguages] reverseObjectEnumerator]) {
-            NSString *preferredLanguage = [[NSLocale currentLocale] displayNameForKey:NSLocaleIdentifier
-                                                                                value:preferredLangaugeIdentifier];
-            
-            NSMenuItem *menuItem = [[self.targetButton menu] insertItemWithTitle:preferredLanguage
-                                                                          action:@selector(selectedTargetItem:)
-                                                                   keyEquivalent:@""
-                                                                         atIndex:0];
-            menuItem.representedObject = preferredLangaugeIdentifier;
-        }
-    }
     [self.targetButton setTitle:@"Choose language here"];
     self.okButton.enabled = NO;
 }

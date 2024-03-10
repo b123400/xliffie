@@ -151,6 +151,9 @@
 /* Class = "NSMenuItem"; title = "File"; ObjectID = "dMs-cI-mzQ"; */
 "dMs-cI-mzQ.title" = "ファイル";
 
+/* Class = "NSMenuItem"; title = "Add to Custom Glossary"; ObjectID = "dO0-6s-jRN"; */
+"dO0-6s-jRN.title" = "カスタム用語集に追加";
+
 /* Class = "NSMenuItem"; title = "Undo"; ObjectID = "dRJ-4n-Yzg"; */
 "dRJ-4n-Yzg.title" = "取り消す";
 
@@ -285,6 +288,9 @@
 
 /* Class = "NSMenuItem"; title = "Paste Ruler"; ObjectID = "LVM-kO-fVI"; */
 "LVM-kO-fVI.title" = "ルーラのペースト";
+
+/* Class = "NSMenuItem"; title = "Custom Glossary..."; ObjectID = "M2z-fQ-iSb"; */
+"M2z-fQ-iSb.title" = "カスタム用語集";
 
 /* Class = "NSMenuItem"; title = "Check Grammar With Spelling"; ObjectID = "mK6-2p-4JG"; */
 "mK6-2p-4JG.title" = "スペルと一緒に文法をチェック";

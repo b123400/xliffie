@@ -18,6 +18,7 @@
 #import "NSImage+SystemImage.h"
 #import "GlossaryManagerWindowController.h"
 #import "RoundedCornersView.h"
+#import "Utilities/Utilities.h"
 
 #define DOCUMENT_WINDOW_MIN_SIZE NSMakeSize(600, 600)
 #define DOCUMENT_WINDOW_LAST_FRAME_KEY @"DOCUMENT_WINDOW_LAST_FRAME_KEY"
@@ -762,11 +763,8 @@
     
     [sourceCodes unionOrderedSet:targetCodes];
     
-    NSLocale *locale = [NSLocale currentLocale];
-    
     for (NSString *languageCode in sourceCodes) {
-        NSString *languageName = [locale displayNameForKey:NSLocaleIdentifier
-                                                     value:languageCode];
+        NSString *languageName = [Utilities displayNameForLocaleIdentifier:languageCode];
         NSMenuItem *menuItem = [[NSMenuItem alloc] initWithTitle:languageName
                                                           action:@selector(selectedSourceLanguage:)
                                                    keyEquivalent:@""];
@@ -776,8 +774,7 @@
     }
     
     for (NSString *languageCode in targetCodes) {
-        NSString *languageName = [locale displayNameForKey:NSLocaleIdentifier
-                                                     value:languageCode];
+        NSString *languageName = [Utilities displayNameForLocaleIdentifier:languageCode];
         NSMenuItem *menuItem = [[NSMenuItem alloc] initWithTitle:languageName
                                                           action:@selector(selectedTargetLanguage:)
                                                    keyEquivalent:@""];

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22155"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22505"/>
         <capability name="Search Toolbar Item" minToolsVersion="12.0" minSystemVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -599,6 +599,12 @@
                                                 <action selector="glossaryMenuPressed:" target="Voe-Tx-rLC" id="fgb-ij-erN"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem title="Custom Glossary..." id="M2z-fQ-iSb">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="customGlossaryMenuPressed:" target="Voe-Tx-rLC" id="4b4-Ft-cDP"/>
+                                            </connections>
+                                        </menuItem>
                                     </items>
                                 </menu>
                             </menuItem>
@@ -1112,6 +1118,12 @@ DQ
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
                                 <action selector="markAsTranslated:" target="5gI-5U-AMq" id="69G-Wr-9G4"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem title="Add to Custom Glossary" identifier="addToCustomGlossary" id="dO0-6s-jRN">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="addToCustomGlossary:" target="5gI-5U-AMq" id="rH7-cZ-b44"/>
                             </connections>
                         </menuItem>
                     </items>

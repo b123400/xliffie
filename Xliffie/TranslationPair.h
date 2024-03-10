@@ -37,7 +37,7 @@ typedef enum : NSUInteger {
 - (instancetype)initWithXMLElement:(NSXMLElement*)element;
 
 - (BOOL)matchSearchFilter:(NSString*)filter;
-- (NSArray*)formatWarningsForProposedTranslation:(NSString*)newTranslation;
+- (NSArray*)warningsForProposedTranslation:(NSString*)newTranslation;
 
 - (NSString*)sourceForDisplay;
 - (NSString*)plainSourceForDisplayWithModifier;

@@ -74,10 +74,40 @@
               "formatSpecifier" : "d",
               "variations" : {
                 "plural" : {
+                  "few" : {
+                    "stringUnit" : {
+                      "state" : "new",
+                      "value" : "%arg records are"
+                    }
+                  },
+                  "many" : {
+                    "stringUnit" : {
+                      "state" : "new",
+                      "value" : "%arg records are"
+                    }
+                  },
+                  "one" : {
+                    "stringUnit" : {
+                      "state" : "new",
+                      "value" : "1 record is"
+                    }
+                  },
                   "other" : {
                     "stringUnit" : {
                       "state" : "translated",
                       "value" : "%arg records are"
+                    }
+                  },
+                  "two" : {
+                    "stringUnit" : {
+                      "state" : "new",
+                      "value" : "%arg records are"
+                    }
+                  },
+                  "zero" : {
+                    "stringUnit" : {
+                      "state" : "new",
+                      "value" : "No record is"
                     }
                   }
                 }
@@ -145,10 +175,40 @@
         "zh-TW" : {
           "variations" : {
             "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "new",
+                  "value" : "%lu records are going to be translated using %@."
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "new",
+                  "value" : "%lu records are going to be translated using %@."
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "new",
+                  "value" : "%lu record is going to be translated using %@."
+                }
+              },
               "other" : {
                 "stringUnit" : {
                   "state" : "translated",
                   "value" : "將會用 %2$@ 翻譯 %1$lu 段文字"
+                }
+              },
+              "two" : {
+                "stringUnit" : {
+                  "state" : "new",
+                  "value" : "%lu records are going to be translated using %@."
+                }
+              },
+              "zero" : {
+                "stringUnit" : {
+                  "state" : "new",
+                  "value" : "%lu records are going to be translated using %@."
                 }
               }
             }
@@ -202,6 +262,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "全部"
+          }
+        }
+      }
+    },
+    "Any" : {
+      "comment" : "Custom glossary locale",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "任意"
+          }
+        },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "任何語言"
           }
         }
       }
@@ -400,6 +477,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "來自 %@"
+          }
+        }
+      }
+    },
+    "From 📖Custom Glossary" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "📖カスタム用語集から"
+          }
+        },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "來自📖自定義詞庫"
           }
         }
       }
