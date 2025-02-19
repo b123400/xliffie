@@ -642,7 +642,7 @@
             NSString *source = [GlossaryDatabase normalizedLocale:[docWinController detectedSourceLocale] withPlatform:platform];
             NSString *target = [GlossaryDatabase normalizedLocale:[docWinController detectedTargetLocale] withPlatform:platform];
             NSArray *downloadedLocales = [[GlossaryDatabase downloadedDatabasesWithPlatform:platform] valueForKeyPath:@"locale.lowercaseString"];
-            if (![downloadedLocales containsObject:source] || ![downloadedLocales containsObject:target]) {
+            if (![downloadedLocales containsObject:source.lowercaseString] || ![downloadedLocales containsObject:target.lowercaseString]) {
                 needDot = YES;
                 break;
             }
