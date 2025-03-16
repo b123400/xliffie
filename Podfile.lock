@@ -1,22 +1,22 @@
 PODS:
-  - AFNetworking (2.6.3):
-    - AFNetworking/NSURLConnection (= 2.6.3)
-    - AFNetworking/NSURLSession (= 2.6.3)
-    - AFNetworking/Reachability (= 2.6.3)
-    - AFNetworking/Security (= 2.6.3)
-    - AFNetworking/Serialization (= 2.6.3)
-    - AFNetworking/UIKit (= 2.6.3)
-  - AFNetworking/NSURLConnection (2.6.3):
+  - AFNetworking (2.7.0):
+    - AFNetworking/NSURLConnection (= 2.7.0)
+    - AFNetworking/NSURLSession (= 2.7.0)
+    - AFNetworking/Reachability (= 2.7.0)
+    - AFNetworking/Security (= 2.7.0)
+    - AFNetworking/Serialization (= 2.7.0)
+    - AFNetworking/UIKit (= 2.7.0)
+  - AFNetworking/NSURLConnection (2.7.0):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/NSURLSession (2.6.3):
+  - AFNetworking/NSURLSession (2.7.0):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/Reachability (2.6.3)
-  - AFNetworking/Security (2.6.3)
-  - AFNetworking/Serialization (2.6.3)
+  - AFNetworking/Reachability (2.7.0)
+  - AFNetworking/Security (2.7.0)
+  - AFNetworking/Serialization (2.7.0)
   - BRLocaleMap (1.1.0)
   - CHCSVParser (2.1.0)
   - FGTranslator (1.2):
@@ -27,7 +27,7 @@ PODS:
   - XMLDictionary (1.4.1)
 
 DEPENDENCIES:
-  - BRLocaleMap (~> 1.1.0)
+  - BRLocaleMap (from `https://github.com/b123400/BRLocaleMap.git`, branch `master`)
   - CHCSVParser (~> 2.1)
   - FGTranslator (from `https://github.com/b123400/FGTranslator.git`, branch `refactor`)
   - PINCache (~> 2.3)
@@ -35,29 +35,34 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - AFNetworking
-    - BRLocaleMap
     - CHCSVParser
     - PINCache
     - XMLDictionary
 
 EXTERNAL SOURCES:
+  BRLocaleMap:
+    :branch: master
+    :git: https://github.com/b123400/BRLocaleMap.git
   FGTranslator:
     :branch: refactor
     :git: https://github.com/b123400/FGTranslator.git
 
 CHECKOUT OPTIONS:
+  BRLocaleMap:
+    :commit: de16d4197e48f269a1f57a0f8bc59737233e24fa
+    :git: https://github.com/b123400/BRLocaleMap.git
   FGTranslator:
-    :commit: ecf3326ca94f2100b08f29933ac89bc0f0aca92c
+    :commit: a190da0362300c01b93ef495d8cb0d7360569f3f
     :git: https://github.com/b123400/FGTranslator.git
 
 SPEC CHECKSUMS:
-  AFNetworking: a926f9357e3bc39d2c49c547e8e8dc90b36259b6
-  BRLocaleMap: d95d85d69bee230c745a2ba11730e2e99c0bf66e
+  AFNetworking: 9d57de7506959955d82fb5274ee4bec86b930e52
+  BRLocaleMap: 5e509a771d33d90ddeea6ed38c8e76b39ee0ee28
   CHCSVParser: 3bcc7bdb72111a31222e95d57eacceefe4e537e8
-  FGTranslator: 7726c0c380beaa28cb6bb23950cd7d00ab341203
+  FGTranslator: 55261154dc168a4fb142abb1d4bf2cfd425b2cac
   PINCache: ce36ed282031b92fc7733ffe831f474ff80fddc2
   XMLDictionary: fa07b6ff422b3a91d47a5de9bc82e3fc04fbd167
 
-PODFILE CHECKSUM: f3e98ad456d84016842e8feb85aa7a75a4b3edac
+PODFILE CHECKSUM: 36fa2699628c6d8429879da5bba78ad35aa5b27c
 
-COCOAPODS: 1.13.0
+COCOAPODS: 1.16.2
