@@ -13,7 +13,8 @@
 
 @interface TranslationUtility : NSObject
 
-+ (BOOL)isLocale:(NSString*)locale supportedForService:(BRLocaleMapService)service;
++ (BOOL)isSourceLocale:(NSString*)locale supportedForService:(BRLocaleMapService)service;
++ (BOOL)isTargetLocale:(NSString*)locale supportedForService:(BRLocaleMapService)service;
 
 + (void)translateTexts:(NSArray <NSString*> *)texts
           fromLanguage:(NSString*)sourceLocaleCode

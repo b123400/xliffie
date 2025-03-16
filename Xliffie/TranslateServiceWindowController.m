@@ -71,7 +71,7 @@
         [[self serviceButton] addItemWithTitle:@"No service available"];
     }
     
-    if (self.nonTranslatedStringOnlyButton.state == NSOnState) {
+    if (self.nonTranslatedStringOnlyButton.state == NSControlStateValueOn) {
         self.ignoreEqualButton.enabled = NO;
     } else {
         self.ignoreEqualButton.enabled = YES;
@@ -140,11 +140,11 @@
             }
         }
         
-        if (self.nonTranslatedStringOnlyButton.state == NSOnState && pair.isTranslated) {
+        if (self.nonTranslatedStringOnlyButton.state == NSControlStateValueOn && pair.isTranslated) {
             return NO;
         }
         
-        if (self.ignoreEqualButton.state == NSOnState && [pair.target isEqualToString:pair.source]) {
+        if (self.ignoreEqualButton.state == NSControlStateValueOn && [pair.target isEqualToString:pair.source]) {
             return NO;
         }
         
@@ -170,10 +170,10 @@
 }
 
 -(BOOL)canTranslateWithService:(BRLocaleMapService)service {
-    return [TranslationUtility isLocale:self.xliffDocument.files[0].sourceLanguage
-                    supportedForService:service] &&
-           [TranslationUtility isLocale:self.xliffDocument.files[0].targetLanguage
-                    supportedForService:service];
+    return [TranslationUtility isSourceLocale:self.xliffDocument.files[0].sourceLanguage
+                          supportedForService:service] &&
+           [TranslationUtility isTargetLocale:self.xliffDocument.files[0].targetLanguage
+                          supportedForService:service];
 }
 
 @end

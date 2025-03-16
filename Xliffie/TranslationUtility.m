@@ -13,8 +13,12 @@
 
 @implementation TranslationUtility
 
-+ (BOOL)isLocale:(NSString*)locale supportedForService:(BRLocaleMapService)service {
-    return [BRLocaleMap locale:locale forService:service] != nil;
++ (BOOL)isSourceLocale:(NSString*)locale supportedForService:(BRLocaleMapService)service {
+    return [BRLocaleMap sourceLocale:locale forService:service] != nil;
+}
+
++ (BOOL)isTargetLocale:(NSString*)locale supportedForService:(BRLocaleMapService)service {
+    return [BRLocaleMap targetLocale:locale forService:service] != nil;
 }
 
 + (void)translateTexts:(NSArray <NSString*> *)texts
@@ -99,8 +103,8 @@
 
     FGTranslator *translator = [self translatorWithService:service];
 
-    NSString *sourceCode = [BRLocaleMap locale:sourceLocaleCode forService:service];
-    NSString *targetCode = [BRLocaleMap locale:targetLocaleCode forService:service];
+    NSString *sourceCode = [BRLocaleMap sourceLocale:sourceLocaleCode forService:service];
+    NSString *targetCode = [BRLocaleMap targetLocale:targetLocaleCode forService:service];
 
     if (!sourceCode) {
         NSError *error = [NSError errorWithDomain:TRANSLATION_ERROR_DOMAIN
@@ -147,8 +151,10 @@
             translator = [[FGTranslator alloc] initWithGoogleAPIKey:GOOGLE_TRANSLATE_API_KEY];
             // We need to to pretend to be sending from a browser
             translator.referer = GOOGLE_TRANSLATE_REFERER;
+            break;
 
-        default:
+        case BRLocaleMapServiceDeepl:
+            translator = [[FGTranslator alloc] initWithDeepLAPIKey:DEEPL_TRANSLATE_API_KEY];
             break;
     }
     translator.preferSourceGuess = NO;

@@ -14,4 +14,6 @@
 #define GOOGLE_TRANSLATE_API_KEY @""
 #define GOOGLE_TRANSLATE_REFERER @""
 
+#define DEEPL_TRANSLATE_API_KEY @""
+
 #endif /* APIKeys_h */
