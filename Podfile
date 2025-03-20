@@ -6,7 +6,7 @@
 platform :osx, '10.12'
 
 pod "FGTranslator", :git => "https://github.com/b123400/FGTranslator.git", :branch => "refactor"
-pod "BRLocaleMap", :git => "https://github.com/b123400/BRLocaleMap.git", :branch => "master"
+pod "BRLocaleMap", :git => "https://github.com/b123400/BRLocaleMap.git", :branch => "master", :submodules => true
 pod 'PINCache', '~> 2.3'
 pod 'CHCSVParser', '~> 2.1'
 
