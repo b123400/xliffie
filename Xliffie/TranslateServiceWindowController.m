@@ -36,6 +36,9 @@
     if ([self canTranslateWithService:BRLocaleMapServiceGoogle]) {
         [services addObject:@(BRLocaleMapServiceGoogle)];
     }
+    if ([self canTranslateWithService:BRLocaleMapServiceDeepl]) {
+        [services addObject:@(BRLocaleMapServiceDeepl)];
+    }
     self.translationServices = services;
     
     return self;
@@ -54,6 +57,9 @@
                 [[self serviceButton] addItemWithTitle:[self nameOfTranslationService:service]];
                 break;
             case BRLocaleMapServiceGoogle:
+                [[self serviceButton] addItemWithTitle:[self nameOfTranslationService:service]];
+                break;
+            case BRLocaleMapServiceDeepl:
                 [[self serviceButton] addItemWithTitle:[self nameOfTranslationService:service]];
                 break;
         }
@@ -160,8 +166,8 @@
             return @"Bing Translate";
         case BRLocaleMapServiceGoogle:
             return @"Google Translate";
-        default:
-            return @"Unknown";
+        case BRLocaleMapServiceDeepl:
+            return @"DeepL";
     }
 }
 
