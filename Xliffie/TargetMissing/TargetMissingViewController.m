@@ -59,9 +59,9 @@
     [self.targetButton setTitle:[sender title]];
     self.okButton.enabled = YES;
     self.selectedLanguageCode = [sender representedObject];
-    NSLog(@"Google: %@", [TranslationUtility isLocale:self.selectedLanguageCode
+    NSLog(@"Google: %@", [TranslationUtility isTargetLocale:self.selectedLanguageCode
                                   supportedForService:BRLocaleMapServiceGoogle] ? @"YES" : @"NO");
-    NSLog(@"MS: %@", [TranslationUtility isLocale:self.selectedLanguageCode
+    NSLog(@"MS: %@", [TranslationUtility isTargetLocale:self.selectedLanguageCode
                               supportedForService:BRLocaleMapServiceMicrosoft] ? @"YES" : @"NO");
 }
 
