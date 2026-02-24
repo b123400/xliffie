@@ -13,7 +13,7 @@
 @interface TranslationWindowController () <NSOutlineViewDataSource, NSOutlineViewDelegate, DocumentViewControllerDelegate>
 
 @property (nonatomic, strong) NSArray <TranslationPair*> *pairs;
-@property (nonatomic, assign) BRLocaleMapService service;
+@property (nonatomic, assign) XLFTranslationService service;
 @property (nonatomic, strong) Document *translatedDocument;
 
 @property (nonatomic, strong) NSProgressIndicator *loadingIndicator;
@@ -27,7 +27,7 @@
 @implementation TranslationWindowController
 
 - (instancetype)initWithTranslationPairs:(NSArray <TranslationPair*> *)pairs
-                      translationService:(BRLocaleMapService)service {
+                      translationService:(XLFTranslationService)service {
     self = [super initWithWindowNibName:@"TranslationWindowController"];
     self.pairs = pairs;
     self.service = service;

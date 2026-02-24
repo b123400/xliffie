@@ -11,15 +11,22 @@
 
 #define TRANSLATION_ERROR_DOMAIN @"net.b123400.xliffie.translation.error"
 
+typedef NS_ENUM(NSUInteger, XLFTranslationService) {
+    XLFTranslationServiceMicrosoft = 0,
+    XLFTranslationServiceGoogle    = 1,
+    XLFTranslationServiceDeepl     = 2,
+    XLFTranslationServiceNative    = 3,
+};
+
 @interface TranslationUtility : NSObject
 
-+ (BOOL)isSourceLocale:(NSString*)locale supportedForService:(BRLocaleMapService)service;
-+ (BOOL)isTargetLocale:(NSString*)locale supportedForService:(BRLocaleMapService)service;
++ (BOOL)isSourceLocale:(NSString*)locale supportedForService:(XLFTranslationService)service;
++ (BOOL)isTargetLocale:(NSString*)locale supportedForService:(XLFTranslationService)service;
 
 + (void)translateTexts:(NSArray <NSString*> *)texts
           fromLanguage:(NSString*)sourceLocaleCode
             toLanguage:(NSString*)targetLocaleCode
-           withService:(BRLocaleMapService)service
+           withService:(XLFTranslationService)service
              autoSplit:(BOOL)autoSplit
               callback:(void(^)(NSError*, NSArray <NSString*> *))callback;
 

@@ -19,7 +19,7 @@
 @property (weak) IBOutlet NSButton *okButton;
 
 @property (nonatomic, strong) Document *xliffDocument;
-@property (nonatomic, strong) NSArray <NSNumber*> *translationServices;
+@property (nonatomic, strong) NSArray<NSNumber *> *translationServices;
 
 @end
 
@@ -30,14 +30,17 @@
     self.xliffDocument = document;
     
     NSMutableArray *services = [NSMutableArray array];
-    if ([self canTranslateWithService:BRLocaleMapServiceMicrosoft]) {
-        [services addObject:@(BRLocaleMapServiceMicrosoft)];
+    if ([self canTranslateWithService:XLFTranslationServiceMicrosoft]) {
+        [services addObject:@(XLFTranslationServiceMicrosoft)];
     }
-    if ([self canTranslateWithService:BRLocaleMapServiceGoogle]) {
-        [services addObject:@(BRLocaleMapServiceGoogle)];
+    if ([self canTranslateWithService:XLFTranslationServiceGoogle]) {
+        [services addObject:@(XLFTranslationServiceGoogle)];
     }
-    if ([self canTranslateWithService:BRLocaleMapServiceDeepl]) {
-        [services addObject:@(BRLocaleMapServiceDeepl)];
+    if ([self canTranslateWithService:XLFTranslationServiceDeepl]) {
+        [services addObject:@(XLFTranslationServiceDeepl)];
+    }
+    if (@available(macOS 26.0, *)) {
+        [services addObject:@(XLFTranslationServiceNative)];
     }
     self.translationServices = services;
     
@@ -51,18 +54,8 @@
     [[self serviceButton] removeAllItems];
     
     for (NSNumber *_service in self.translationServices) {
-        BRLocaleMapService service = (BRLocaleMapService)[_service unsignedIntegerValue];
-        switch (service) {
-            case BRLocaleMapServiceMicrosoft:
-                [[self serviceButton] addItemWithTitle:[self nameOfTranslationService:service]];
-                break;
-            case BRLocaleMapServiceGoogle:
-                [[self serviceButton] addItemWithTitle:[self nameOfTranslationService:service]];
-                break;
-            case BRLocaleMapServiceDeepl:
-                [[self serviceButton] addItemWithTitle:[self nameOfTranslationService:service]];
-                break;
-        }
+        XLFTranslationService service = (XLFTranslationService)[_service unsignedIntegerValue];
+        [[self serviceButton] addItemWithTitle:[self nameOfTranslationService:service]];
     }
     
     [self configureView];
@@ -160,22 +153,24 @@
 
 #pragma mark translation
 
-- (NSString*)nameOfTranslationService:(BRLocaleMapService)service {
+- (NSString*)nameOfTranslationService:(XLFTranslationService)service {
     switch (service) {
-        case BRLocaleMapServiceMicrosoft:
+        case XLFTranslationServiceMicrosoft:
             return @"Bing Translate";
-        case BRLocaleMapServiceGoogle:
+        case XLFTranslationServiceGoogle:
             return @"Google Translate";
-        case BRLocaleMapServiceDeepl:
+        case XLFTranslationServiceDeepl:
             return @"DeepL";
+        case XLFTranslationServiceNative:
+            return @"On-Device Translation";
     }
 }
 
--(BRLocaleMapService)translationService {
-    return [[[self translationServices] objectAtIndex:self.serviceButton.indexOfSelectedItem] unsignedIntegerValue];
+-(XLFTranslationService)translationService {
+    return (XLFTranslationService)[[[self translationServices] objectAtIndex:self.serviceButton.indexOfSelectedItem] unsignedIntegerValue];
 }
 
--(BOOL)canTranslateWithService:(BRLocaleMapService)service {
+-(BOOL)canTranslateWithService:(XLFTranslationService)service {
     return [TranslationUtility isSourceLocale:self.xliffDocument.files[0].sourceLanguage
                           supportedForService:service] &&
            [TranslationUtility isTargetLocale:self.xliffDocument.files[0].targetLanguage

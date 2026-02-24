@@ -8,12 +8,12 @@
 
 #import <Cocoa/Cocoa.h>
 #import "TranslationPair.h"
-#import <BRLocaleMap.h>
+#import "TranslationUtility.h"
 
 @interface TranslationWindowController : NSWindowController
 
 - (instancetype)initWithTranslationPairs:(NSArray <TranslationPair*> *)pairs
-                      translationService:(BRLocaleMapService)service;
+                      translationService:(XLFTranslationService)service;
 
 
 @end
