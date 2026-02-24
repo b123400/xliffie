@@ -22,7 +22,7 @@ import Foundation
 
     // Google Translate API accepts up to 200 texts per request.
     override var batchSize: Int {
-        return 200
+        return 128
     }
 
     // MARK: Translate
