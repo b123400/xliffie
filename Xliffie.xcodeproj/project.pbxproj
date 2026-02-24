@@ -106,6 +106,9 @@
 		CF9A3D5529DEB61D00807F3D /* NSImage+SystemImage.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9A3D5429DEB61D00807F3D /* NSImage+SystemImage.m */; };
 		CF9FDB8E2AE8D73B00D76DEA /* TranslationPairGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9FDB8D2AE8D73B00D76DEA /* TranslationPairGroup.m */; };
 		CFA091E029CB18F800F33979 /* BRProgressButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA091DF29CB18F800F33979 /* BRProgressButton.m */; };
+		CFB49FCC2F4DE83300907A1B /* NativeTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB49FCB2F4DE82C00907A1B /* NativeTranslator.swift */; };
+		CFB49FCE2F4DE88400907A1B /* Translation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFB49FCD2F4DE88400907A1B /* Translation.framework */; };
+		CFB49FD02F4DE9F500907A1B /* NaturalLanguage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFB49FCF2F4DE9F500907A1B /* NaturalLanguage.framework */; };
 		CFB58D0A2B9203F4006E211F /* CustomGlossaryWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFB58D0C2B9203F4006E211F /* CustomGlossaryWindowController.xib */; };
 		CFB58D0E2B92040B006E211F /* ProgressLoadingWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFB58D102B92040B006E211F /* ProgressLoadingWindowController.xib */; };
 		CFC6CC602702E8E300F7850C /* GlossaryWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC6CC5E2702E8E300F7850C /* GlossaryWindowController.m */; };
@@ -300,6 +303,9 @@
 		CF9FDB8D2AE8D73B00D76DEA /* TranslationPairGroup.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TranslationPairGroup.m; sourceTree = "<group>"; };
 		CFA091DE29CB18F800F33979 /* BRProgressButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRProgressButton.h; sourceTree = "<group>"; };
 		CFA091DF29CB18F800F33979 /* BRProgressButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRProgressButton.m; sourceTree = "<group>"; };
+		CFB49FCB2F4DE82C00907A1B /* NativeTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeTranslator.swift; sourceTree = "<group>"; };
+		CFB49FCD2F4DE88400907A1B /* Translation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Translation.framework; path = System/Library/Frameworks/Translation.framework; sourceTree = SDKROOT; };
+		CFB49FCF2F4DE9F500907A1B /* NaturalLanguage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NaturalLanguage.framework; path = System/Library/Frameworks/NaturalLanguage.framework; sourceTree = SDKROOT; };
 		CFB58D0B2B9203F4006E211F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/CustomGlossaryWindowController.xib; sourceTree = "<group>"; };
 		CFB58D0D2B9203F4006E211F /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/CustomGlossaryWindowController.xcstrings; sourceTree = "<group>"; };
 		CFB58D0F2B92040B006E211F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ProgressLoadingWindowController.xib; sourceTree = "<group>"; };
@@ -343,6 +349,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFB49FD02F4DE9F500907A1B /* NaturalLanguage.framework in Frameworks */,
+				CFB49FCE2F4DE88400907A1B /* Translation.framework in Frameworks */,
 				CF22255D2A5EF54D00F08515 /* libsqlite3.tbd in Frameworks */,
 				53532F5E187D9C2314DF98A9 /* libPods-Xliffie.a in Frameworks */,
 			);
@@ -366,6 +374,7 @@
 				D9D69ED8EB2B4372A1F3D676 /* GoogleTranslator.swift */,
 				232F606BA30B48E5AE6C76A8 /* BingTranslator.swift */,
 				985AD678032F4861A5EBDE2B /* DeeplTranslator.swift */,
+				CFB49FCB2F4DE82C00907A1B /* NativeTranslator.swift */,
 			);
 			path = Translator;
 			sourceTree = "<group>";
@@ -384,6 +393,8 @@
 		B9A0E10FA89551832665D61C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CFB49FCF2F4DE9F500907A1B /* NaturalLanguage.framework */,
+				CFB49FCD2F4DE88400907A1B /* Translation.framework */,
 				CF22255C2A5EF53E00F08515 /* libsqlite3.tbd */,
 				8A857BFAEBC2315772F4E891 /* libPods-Xliffie.a */,
 				9B8C7EA753A4178056B36640 /* libPods-XliffieTests.a */,
@@ -992,6 +1003,7 @@
 				CF011B7D1C4641A400948323 /* TranslationWindowController.m in Sources */,
 				CF5FC8951A5ABFF700538E60 /* main.m in Sources */,
 				CF0945911C54FD3600DAEB4A /* BRArrowSegmentedCell.m in Sources */,
+				CFB49FCC2F4DE83300907A1B /* NativeTranslator.swift in Sources */,
 				CF9A370029CDE6BE00FB8763 /* DocumentTextFinderClient.m in Sources */,
 				CF12DB53293F1B8200F9C760 /* NSAttributedString+FileIcon.m in Sources */,
 				CFF70D80221E7BF2004C4C2D /* XclocDocument.m in Sources */,
