@@ -8,13 +8,24 @@
 
 import Foundation
 
-enum TranslationError: Error {
-    case networkError(Error?)
+@objc enum TranslationError: Int, Error {
+    case networkError
     case parseError
-    case unsupportedLocale(String)
+    case unsupportedLocale
+    
+    var localizedDescription: String {
+        switch self {
+        case .networkError:
+            return NSLocalizedString("Network error occurred during translation", comment: "Translation network error")
+        case .parseError:
+            return NSLocalizedString("Failed to parse translation response", comment: "Translation parse error")
+        case .unsupportedLocale:
+            return NSLocalizedString("Unsupported locale", comment: "Translation unsupported locale")
+        }
+    }
 }
 
-class Translator: NSObject {
+@objc class Translator: NSObject {
     // MARK: Batch configuration
     
     /// The maximum number of texts to include in a single translation request.
@@ -44,10 +55,26 @@ class Translator: NSObject {
             return ordered.sorted { $0.0 < $1.0 }.flatMap { $0.1 }
         }
     }
-
+    
     func translate(texts: [String], sourceLocale: String, targetLocale: String, cached: Bool, batched: Bool) async throws -> [String] {
         // TODO: cache
         return try await self.translate(texts: texts, sourceLocale: sourceLocale, targetLocale: targetLocale)
+    }
+    
+    /// Objective-C compatible translation method with completion handler
+    @objc func translate(texts: [String], 
+                        sourceLocale: String, 
+                        targetLocale: String, 
+                        completion: @escaping (NSError?, [String]?) -> Void) {
+        Task {
+            do {
+                let results = try await translate(texts: texts, sourceLocale: sourceLocale, targetLocale: targetLocale)
+                completion(nil, results)
+            } catch {
+                let nsError = error as NSError
+                completion(nsError, nil)
+            }
+        }
     }
     
     /// Translates a single batch of texts. Subclasses must override this method.

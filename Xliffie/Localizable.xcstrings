@@ -432,6 +432,7 @@
       }
     },
     "Errors during translation: %@" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -446,6 +447,9 @@
           }
         }
       }
+    },
+    "Failed to parse translation response" : {
+      "comment" : "Translation parse error"
     },
     "Filter" : {
       "comment" : "Search menu title",
@@ -612,6 +616,9 @@
         }
       }
     },
+    "Network error occurred during translation" : {
+      "comment" : "Translation network error"
+    },
     "No translation available" : {
       "localizations" : {
         "ja" : {
@@ -646,7 +653,7 @@
       }
     },
     "Not Translated" : {
-      "comment" : "Search menu title\nProgress report",
+      "comment" : "Progress report\nSearch menu title",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -877,7 +884,7 @@
       }
     },
     "Translated" : {
-      "comment" : "Search menu title\nProgress report",
+      "comment" : "Progress report\nSearch menu title",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -894,7 +901,7 @@
       }
     },
     "Translated with warnings" : {
-      "comment" : "Search menu title\nProgress report",
+      "comment" : "Progress report\nSearch menu title",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -909,6 +916,9 @@
           }
         }
       }
+    },
+    "Unsupported locale" : {
+      "comment" : "Translation unsupported locale"
     },
     "You can undo by pressing command+z" : {
       "comment" : "confirm",

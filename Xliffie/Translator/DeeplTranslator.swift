@@ -8,10 +8,10 @@
 
 import Foundation
 
-class DeeplTranslator: Translator {
+@objc class DeeplTranslator: Translator {
     let apiKey: String
 
-    init(apiKey: String) {
+    @objc init(apiKey: String) {
         self.apiKey = apiKey
         super.init()
     }
@@ -45,7 +45,7 @@ class DeeplTranslator: Translator {
 
         let (data, response) = try await URLSession.shared.data(for: request)
         guard let http = response as? HTTPURLResponse, http.statusCode == 200 else {
-            throw TranslationError.networkError(nil)
+            throw TranslationError.networkError
         }
         guard let json = try JSONSerialization.jsonObject(with: data) as? [String: Any],
               let translations = json["translations"] as? [[String: Any]] else {
