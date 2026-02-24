@@ -7,7 +7,7 @@
 //
 
 #import "TranslationUtility.h"
-#import <FGTranslator/FGTranslator.h>
+#import "Xliffie-Swift.h"
 #import <BRLocaleMap/BRLocaleMap.h>
 #import "APIKeys.h"
 
@@ -27,72 +27,14 @@
            withService:(BRLocaleMapService)service
              autoSplit:(BOOL)autoSplit
               callback:(void(^)(NSError*, NSArray <NSString*> *))callback {
-
-    NSMutableArray *allTexts = [NSMutableArray arrayWithArray:texts];
-    NSMutableArray <NSArray<NSString*>*> *chunks = [NSMutableArray array];
-    while (allTexts.count) {
-        NSUInteger chunkTextLength = 0;
-        NSMutableArray *thisChunkTexts = [NSMutableArray array];
-        while (allTexts.count) {
-            NSString *thisText = allTexts[0];
-            NSUInteger lengthIfAdded = chunkTextLength + thisText.length;
-            if (service == BRLocaleMapServiceMicrosoft) {
-                if (lengthIfAdded >= 10000 && thisChunkTexts.count) {
-                    // If there is a single entry that has > 10000 char, just let it pass
-                    break;
-                }
-            }
-            [thisChunkTexts addObject:thisText];
-            lengthIfAdded += thisText.length;
-            [allTexts removeObjectAtIndex:0];
-            if (service == BRLocaleMapServiceMicrosoft) {
-                if (thisChunkTexts.count >= 2000) {
-                    break;
-                }
-            } else if (service == BRLocaleMapServiceGoogle) {
-                if (thisChunkTexts.count >= 128) {
-                    break;
-                }
-            }
-        }
-        [chunks addObject:thisChunkTexts];
-    }
-
-    NSMutableArray *errors = [NSMutableArray arrayWithCapacity:chunks.count];
-    NSMutableArray *translatedChunks = [NSMutableArray arrayWithCapacity:chunks.count];
-    NSLock *errorArrayLock = [[NSLock alloc] init];
-    dispatch_group_t group = dispatch_group_create();
-    for (NSArray <NSString*> *thisTexts in chunks) {
-        NSMutableArray *thisChunk = [NSMutableArray array];
-        [translatedChunks addObject:thisChunk];
-        dispatch_group_enter(group);
-        [self translateTexts:thisTexts
-                fromLanguage:sourceLocaleCode
-                  toLanguage:targetLocaleCode
-                 withService:service
-                    callback:^(NSError *error, NSArray<NSString *> *results) {
-                        [thisChunk addObjectsFromArray:results];
-                        if (error) {
-                            [errorArrayLock lock];
-                            [errors addObject:error];
-                            [errorArrayLock unlock];
-                        }
-                        dispatch_group_leave(group);
-                    }];
-    }
-    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
-        if (errors.count) {
-            NSString *jointErrorString = [[errors valueForKey:@"localizedDescription"] componentsJoinedByString:@"\n"];
-            NSError *error = [NSError errorWithDomain:TRANSLATION_ERROR_DOMAIN
-                                                 code:0
-                                             userInfo:@{NSLocalizedDescriptionKey:
-                                                            [NSString stringWithFormat:NSLocalizedString(@"Errors during translation: %@", nil), jointErrorString]}];
-            callback(error, nil);
-            return;
-        }
-        NSArray <NSString*> *flattenedArray = [translatedChunks valueForKeyPath: @"@unionOfArrays.self"];
-        callback(nil, flattenedArray);
-    });
+    
+    // The new Swift Translator classes handle batching and splitting automatically,
+    // so we can simply delegate to the main translation method
+    [self translateTexts:texts
+            fromLanguage:sourceLocaleCode
+              toLanguage:targetLocaleCode
+             withService:service
+                callback:callback];
 }
 
 + (void)translateTexts:(NSArray <NSString*> *)texts
@@ -101,7 +43,7 @@
            withService:(BRLocaleMapService)service
               callback:(void(^)(NSError*, NSArray <NSString*> *))callback {
 
-    FGTranslator *translator = [self translatorWithService:service];
+    Translator *translator = [self translatorWithService:service];
 
     NSString *sourceCode = [BRLocaleMap sourceLocale:sourceLocaleCode forService:service];
     NSString *targetCode = [BRLocaleMap targetLocale:targetLocaleCode forService:service];
@@ -132,32 +74,32 @@
         return;
     }
 
-    [translator chunkedTranslateTexts:texts
-                           withSource:sourceCode
-                               target:targetCode
-                           completion:^(NSError *error, NSArray<NSString *> *translated) {
-                               callback(error, translated);
-                           }];
+    // Use the new Swift Translator API which handles batching internally
+    [translator translateWithTexts:texts
+                      sourceLocale:sourceCode
+                      targetLocale:targetCode
+                        completion:^(NSError *error, NSArray<NSString *> *translated) {
+                            callback(error, translated);
+                        }];
 }
 
-+ (FGTranslator*)translatorWithService:(BRLocaleMapService)service {
-    FGTranslator *translator;
++ (Translator*)translatorWithService:(BRLocaleMapService)service {
+    Translator *translator;
     switch (service) {
         case BRLocaleMapServiceMicrosoft:
-            translator = [[FGTranslator alloc] initWithAzureAPIKey:MICROSOFT_TRANSLATE_API_KEY];
+            translator = [[BingTranslator alloc] initWithApiKey:MICROSOFT_TRANSLATE_API_KEY];
             break;
 
-        case BRLocaleMapServiceGoogle:
-            translator = [[FGTranslator alloc] initWithGoogleAPIKey:GOOGLE_TRANSLATE_API_KEY];
-            // We need to to pretend to be sending from a browser
-            translator.referer = GOOGLE_TRANSLATE_REFERER;
+        case BRLocaleMapServiceGoogle: {
+            GoogleTranslator *googleTranslator = [[GoogleTranslator alloc] initWithApiKey:GOOGLE_TRANSLATE_API_KEY referer:GOOGLE_TRANSLATE_REFERER];
+            translator = googleTranslator;
             break;
+        }
 
         case BRLocaleMapServiceDeepl:
-            translator = [[FGTranslator alloc] initWithDeepLAPIKey:DEEPL_TRANSLATE_API_KEY];
+            translator = [[DeeplTranslator alloc] initWithApiKey:DEEPL_TRANSLATE_API_KEY];
             break;
     }
-    translator.preferSourceGuess = NO;
     return translator;
 }
 
