@@ -120,6 +120,10 @@
 		CFF4AE312A7959BA00C50D8A /* GlossarySearchResult.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF4AE302A7959BA00C50D8A /* GlossarySearchResult.m */; };
 		CFF70D80221E7BF2004C4C2D /* XclocDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF70D7F221E7BF2004C4C2D /* XclocDocument.m */; };
 		D42B8307A52A4CB70FEEA156 /* libPods-XliffieTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B8C7EA753A4178056B36640 /* libPods-XliffieTests.a */; };
+		032B00DDF4484F428F403A22 /* Translator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745157AEABDF43C798AB2A9A /* Translator.swift */; };
+		6C53E7C8B5534B6D9B317E58 /* GoogleTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D69ED8EB2B4372A1F3D676 /* GoogleTranslator.swift */; };
+		93D92B3F1D5749E8AD215168 /* BingTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232F606BA30B48E5AE6C76A8 /* BingTranslator.swift */; };
+		ADE5217B3106431DA56A81BD /* DeeplTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985AD678032F4861A5EBDE2B /* DeeplTranslator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -328,6 +332,10 @@
 		CFF70D7F221E7BF2004C4C2D /* XclocDocument.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XclocDocument.m; sourceTree = "<group>"; };
 		E63D96FADBADA5BA423F82DD /* Pods-Xliffie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Xliffie.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Xliffie/Pods-Xliffie.debug.xcconfig"; sourceTree = "<group>"; };
 		F46F3EFF87AC9239B0E767A0 /* Pods-XliffieTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XliffieTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XliffieTests/Pods-XliffieTests.debug.xcconfig"; sourceTree = "<group>"; };
+		745157AEABDF43C798AB2A9A /* Translator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translator.swift; sourceTree = "<group>"; };
+		D9D69ED8EB2B4372A1F3D676 /* GoogleTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleTranslator.swift; sourceTree = "<group>"; };
+		232F606BA30B48E5AE6C76A8 /* BingTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BingTranslator.swift; sourceTree = "<group>"; };
+		985AD678032F4861A5EBDE2B /* DeeplTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplTranslator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -460,6 +468,7 @@
 				CF9A36FA29CDE65C00FB8763 /* TargetMissing */,
 				CF9A36F929CDE64E00FB8763 /* Progress */,
 				CF5AB3BE293DCE4700C8AC7B /* Suggestions */,
+				298F1356D5D04122AF87619E /* Translator */,
 				CFB0B8F61C3073A9004DF663 /* Translator */,
 				CF34B75C1AADE02400C6A58E /* Model */,
 				CF9A3D5229DEB5E100807F3D /* UI Elements */,
@@ -659,6 +668,17 @@
 				CFB58D102B92040B006E211F /* ProgressLoadingWindowController.xib */,
 			);
 			path = "UI Elements";
+			sourceTree = "<group>";
+		};
+		298F1356D5D04122AF87619E /* Translator */ = {
+			isa = PBXGroup;
+			children = (
+				745157AEABDF43C798AB2A9A /* Translator.swift */,
+				D9D69ED8EB2B4372A1F3D676 /* GoogleTranslator.swift */,
+				232F606BA30B48E5AE6C76A8 /* BingTranslator.swift */,
+				985AD678032F4861A5EBDE2B /* DeeplTranslator.swift */,
+			);
+			path = Translator;
 			sourceTree = "<group>";
 		};
 		CFB0B8F61C3073A9004DF663 /* Translator */ = {
@@ -989,6 +1009,10 @@
 				CF50085429DBADBA007EF23A /* BRCategorySearchFieldCell.m in Sources */,
 				CFC6CC672703163700F7850C /* GlossaryFileRow.m in Sources */,
 				CF22255B2A5EA41D00F08515 /* GlossaryDatabase.m in Sources */,
+				032B00DDF4484F428F403A22 /* Translator.swift in Sources */,
+				6C53E7C8B5534B6D9B317E58 /* GoogleTranslator.swift in Sources */,
+				93D92B3F1D5749E8AD215168 /* BingTranslator.swift in Sources */,
+				ADE5217B3106431DA56A81BD /* DeeplTranslator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
