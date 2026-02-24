@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		032B00DDF4484F428F403A22 /* Translator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745157AEABDF43C798AB2A9A /* Translator.swift */; };
 		53532F5E187D9C2314DF98A9 /* libPods-Xliffie.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A857BFAEBC2315772F4E891 /* libPods-Xliffie.a */; };
+		6C53E7C8B5534B6D9B317E58 /* GoogleTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D69ED8EB2B4372A1F3D676 /* GoogleTranslator.swift */; };
+		93D92B3F1D5749E8AD215168 /* BingTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232F606BA30B48E5AE6C76A8 /* BingTranslator.swift */; };
+		ADE5217B3106431DA56A81BD /* DeeplTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985AD678032F4861A5EBDE2B /* DeeplTranslator.swift */; };
 		CF011B4B1C40FCBA00948323 /* TranslationUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = CF011B4A1C40FCBA00948323 /* TranslationUtility.m */; };
 		CF011B7D1C4641A400948323 /* TranslationWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF011B7B1C4641A400948323 /* TranslationWindowController.m */; };
 		CF02E0582ADE376D00F06091 /* BRTextAttachmentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF02E0572ADE376D00F06091 /* BRTextAttachmentCell.m */; };
@@ -133,8 +137,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		232F606BA30B48E5AE6C76A8 /* BingTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BingTranslator.swift; sourceTree = "<group>"; };
+		745157AEABDF43C798AB2A9A /* Translator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translator.swift; sourceTree = "<group>"; };
 		8A857BFAEBC2315772F4E891 /* libPods-Xliffie.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Xliffie.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F922AA3285E9DB3A6DBC09B /* Pods-XliffieTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XliffieTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-XliffieTests/Pods-XliffieTests.release.xcconfig"; sourceTree = "<group>"; };
+		985AD678032F4861A5EBDE2B /* DeeplTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplTranslator.swift; sourceTree = "<group>"; };
 		9B8C7EA753A4178056B36640 /* libPods-XliffieTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XliffieTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D0489703C74B347744F2B1A /* Pods-Xliffie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Xliffie.release.xcconfig"; path = "Pods/Target Support Files/Pods-Xliffie/Pods-Xliffie.release.xcconfig"; sourceTree = "<group>"; };
 		CF011B481C40F4B900948323 /* APIKeys.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIKeys.h; sourceTree = "<group>"; };
@@ -326,6 +333,7 @@
 		CFF4AE302A7959BA00C50D8A /* GlossarySearchResult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GlossarySearchResult.m; sourceTree = "<group>"; };
 		CFF70D7E221E7BF2004C4C2D /* XclocDocument.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XclocDocument.h; sourceTree = "<group>"; };
 		CFF70D7F221E7BF2004C4C2D /* XclocDocument.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XclocDocument.m; sourceTree = "<group>"; };
+		D9D69ED8EB2B4372A1F3D676 /* GoogleTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleTranslator.swift; sourceTree = "<group>"; };
 		E63D96FADBADA5BA423F82DD /* Pods-Xliffie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Xliffie.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Xliffie/Pods-Xliffie.debug.xcconfig"; sourceTree = "<group>"; };
 		F46F3EFF87AC9239B0E767A0 /* Pods-XliffieTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XliffieTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XliffieTests/Pods-XliffieTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -351,6 +359,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		298F1356D5D04122AF87619E /* Translator */ = {
+			isa = PBXGroup;
+			children = (
+				745157AEABDF43C798AB2A9A /* Translator.swift */,
+				D9D69ED8EB2B4372A1F3D676 /* GoogleTranslator.swift */,
+				232F606BA30B48E5AE6C76A8 /* BingTranslator.swift */,
+				985AD678032F4861A5EBDE2B /* DeeplTranslator.swift */,
+			);
+			path = Translator;
+			sourceTree = "<group>";
+		};
 		74D4C8CBAA26CAF370D43235 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -460,6 +479,7 @@
 				CF9A36FA29CDE65C00FB8763 /* TargetMissing */,
 				CF9A36F929CDE64E00FB8763 /* Progress */,
 				CF5AB3BE293DCE4700C8AC7B /* Suggestions */,
+				298F1356D5D04122AF87619E /* Translator */,
 				CFB0B8F61C3073A9004DF663 /* Translator */,
 				CF34B75C1AADE02400C6A58E /* Model */,
 				CF9A3D5229DEB5E100807F3D /* UI Elements */,
@@ -989,6 +1009,10 @@
 				CF50085429DBADBA007EF23A /* BRCategorySearchFieldCell.m in Sources */,
 				CFC6CC672703163700F7850C /* GlossaryFileRow.m in Sources */,
 				CF22255B2A5EA41D00F08515 /* GlossaryDatabase.m in Sources */,
+				032B00DDF4484F428F403A22 /* Translator.swift in Sources */,
+				6C53E7C8B5534B6D9B317E58 /* GoogleTranslator.swift in Sources */,
+				93D92B3F1D5749E8AD215168 /* BingTranslator.swift in Sources */,
+				ADE5217B3106431DA56A81BD /* DeeplTranslator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
