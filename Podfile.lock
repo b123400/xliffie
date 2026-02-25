@@ -1,20 +1,16 @@
 PODS:
   - CHCSVParser (2.1.0)
-  - PINCache (2.3)
 
 DEPENDENCIES:
   - CHCSVParser (~> 2.1)
-  - PINCache (~> 2.3)
 
 SPEC REPOS:
   trunk:
     - CHCSVParser
-    - PINCache
 
 SPEC CHECKSUMS:
   CHCSVParser: 3bcc7bdb72111a31222e95d57eacceefe4e537e8
-  PINCache: ce36ed282031b92fc7733ffe831f474ff80fddc2
 
-PODFILE CHECKSUM: 01a485a7ac8c92907b2adee16d3a9c516dcdc5dc
+PODFILE CHECKSUM: ea31763c353d4bbfe3c6ff30c4cc48b19dd2552b
 
 COCOAPODS: 1.16.2

@@ -5,7 +5,6 @@
 
 platform :osx, '10.12'
 
-pod 'PINCache', '~> 2.3'
 pod 'CHCSVParser', '~> 2.1'
 
 target 'Xliffie' do
@@ -15,4 +14,3 @@ end
 target 'XliffieTests' do
 
 end
-
