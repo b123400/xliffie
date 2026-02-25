@@ -5,8 +5,6 @@
 
 platform :osx, '10.12'
 
-pod "BRLocaleMap", :git => "https://github.com/b123400/BRLocaleMap.git", :branch => "master", :submodules => true
-pod 'PINCache', '~> 2.3'
 pod 'CHCSVParser', '~> 2.1'
 
 target 'Xliffie' do
@@ -16,4 +14,3 @@ end
 target 'XliffieTests' do
 
 end
-

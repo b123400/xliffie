@@ -332,6 +332,9 @@
         }
       }
     },
+    "Bing Translate" : {
+
+    },
     "Cancel" : {
       "localizations" : {
         "ja" : {
@@ -414,6 +417,9 @@
           }
         }
       }
+    },
+    "DeepL" : {
+
     },
     "Downloading..." : {
       "localizations" : {
@@ -549,6 +555,9 @@
         }
       }
     },
+    "Google Translate" : {
+
+    },
     "here" : {
       "comment" : "link replacement",
       "localizations" : {
@@ -618,6 +627,9 @@
     },
     "Network error occurred during translation" : {
       "comment" : "Translation network error"
+    },
+    "No service available" : {
+      "comment" : "Translation service window"
     },
     "No translation available" : {
       "localizations" : {
@@ -701,6 +713,9 @@
           }
         }
       }
+    },
+    "On-Device Translation" : {
+
     },
     "Other" : {
       "localizations" : {

@@ -1,35 +1,16 @@
 PODS:
-  - BRLocaleMap (1.1.0)
   - CHCSVParser (2.1.0)
-  - PINCache (2.3)
 
 DEPENDENCIES:
-  - BRLocaleMap (from `https://github.com/b123400/BRLocaleMap.git`, branch `master`)
   - CHCSVParser (~> 2.1)
-  - PINCache (~> 2.3)
 
 SPEC REPOS:
   trunk:
     - CHCSVParser
-    - PINCache
-
-EXTERNAL SOURCES:
-  BRLocaleMap:
-    :branch: master
-    :git: https://github.com/b123400/BRLocaleMap.git
-    :submodules: true
-
-CHECKOUT OPTIONS:
-  BRLocaleMap:
-    :commit: f052872ccde4fba3898ef69abf25dd62774f0496
-    :git: https://github.com/b123400/BRLocaleMap.git
-    :submodules: true
 
 SPEC CHECKSUMS:
-  BRLocaleMap: 5e509a771d33d90ddeea6ed38c8e76b39ee0ee28
   CHCSVParser: 3bcc7bdb72111a31222e95d57eacceefe4e537e8
-  PINCache: ce36ed282031b92fc7733ffe831f474ff80fddc2
 
-PODFILE CHECKSUM: 00cc0aa70e08ac792517c22421fa3a0f84487b8b
+PODFILE CHECKSUM: ea31763c353d4bbfe3c6ff30c4cc48b19dd2552b
 
 COCOAPODS: 1.16.2

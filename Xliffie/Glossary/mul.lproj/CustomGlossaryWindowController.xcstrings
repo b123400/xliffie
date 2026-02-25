@@ -1,18 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "1kD-pX-47m.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"Text Cell\"; ObjectID = \"1kD-pX-47m\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Text Cell"
-          }
-        }
-      }
-    },
     "5hc-98-zoN.headerCell.title" : {
       "comment" : "Class = \"NSTableColumn\"; headerCell.title = \"Source Locale\"; ObjectID = \"5hc-98-zoN\";",
       "extractionState" : "extracted_with_value",
@@ -201,18 +189,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "譯文語言"
-          }
-        }
-      }
-    },
-    "tIg-qk-n1g.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"Text Cell\"; ObjectID = \"tIg-qk-n1g\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Text Cell"
           }
         }
       }
