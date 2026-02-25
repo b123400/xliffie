@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <BRLocaleMap/BRLocaleMap.h>
 
 #define TRANSLATION_ERROR_DOMAIN @"net.b123400.xliffie.translation.error"
 

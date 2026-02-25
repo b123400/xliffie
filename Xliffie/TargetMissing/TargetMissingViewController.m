@@ -60,9 +60,9 @@
     self.okButton.enabled = YES;
     self.selectedLanguageCode = [sender representedObject];
     NSLog(@"Google: %@", [TranslationUtility isTargetLocale:self.selectedLanguageCode
-                                  supportedForService:BRLocaleMapServiceGoogle] ? @"YES" : @"NO");
+                                  supportedForService:XLFTranslationServiceGoogle] ? @"YES" : @"NO");
     NSLog(@"MS: %@", [TranslationUtility isTargetLocale:self.selectedLanguageCode
-                              supportedForService:BRLocaleMapServiceMicrosoft] ? @"YES" : @"NO");
+                              supportedForService:XLFTranslationServiceMicrosoft] ? @"YES" : @"NO");
 }
 
 - (IBAction)okClicked:(id)sender {

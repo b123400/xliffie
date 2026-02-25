@@ -106,6 +106,7 @@
 		CF9A3D5529DEB61D00807F3D /* NSImage+SystemImage.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9A3D5429DEB61D00807F3D /* NSImage+SystemImage.m */; };
 		CF9FDB8E2AE8D73B00D76DEA /* TranslationPairGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9FDB8D2AE8D73B00D76DEA /* TranslationPairGroup.m */; };
 		CFA091E029CB18F800F33979 /* BRProgressButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA091DF29CB18F800F33979 /* BRProgressButton.m */; };
+		CFA10000000000000000A002 /* LocaleMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA10000000000000000A001 /* LocaleMap.swift */; };
 		CFB49FCC2F4DE83300907A1B /* NativeTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB49FCB2F4DE82C00907A1B /* NativeTranslator.swift */; };
 		CFB49FCE2F4DE88400907A1B /* Translation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFB49FCD2F4DE88400907A1B /* Translation.framework */; };
 		CFB49FD02F4DE9F500907A1B /* NaturalLanguage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFB49FCF2F4DE9F500907A1B /* NaturalLanguage.framework */; };
@@ -303,6 +304,7 @@
 		CF9FDB8D2AE8D73B00D76DEA /* TranslationPairGroup.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TranslationPairGroup.m; sourceTree = "<group>"; };
 		CFA091DE29CB18F800F33979 /* BRProgressButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRProgressButton.h; sourceTree = "<group>"; };
 		CFA091DF29CB18F800F33979 /* BRProgressButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRProgressButton.m; sourceTree = "<group>"; };
+		CFA10000000000000000A001 /* LocaleMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleMap.swift; sourceTree = "<group>"; };
 		CFB49FCB2F4DE82C00907A1B /* NativeTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeTranslator.swift; sourceTree = "<group>"; };
 		CFB49FCD2F4DE88400907A1B /* Translation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Translation.framework; path = System/Library/Frameworks/Translation.framework; sourceTree = SDKROOT; };
 		CFB49FCF2F4DE9F500907A1B /* NaturalLanguage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NaturalLanguage.framework; path = System/Library/Frameworks/NaturalLanguage.framework; sourceTree = SDKROOT; };
@@ -703,6 +705,7 @@
 				CF660EFD1C540E27007A0B28 /* TranslationWindowController.xib */,
 				CF011B491C40FCBA00948323 /* TranslationUtility.h */,
 				CF011B4A1C40FCBA00948323 /* TranslationUtility.m */,
+				CFA10000000000000000A001 /* LocaleMap.swift */,
 			);
 			name = Translator;
 			sourceTree = "<group>";
@@ -727,7 +730,6 @@
 				CF5FC8881A5ABFF700538E60 /* Sources */,
 				CF5FC8891A5ABFF700538E60 /* Frameworks */,
 				CF5FC88A1A5ABFF700538E60 /* Resources */,
-				BC4758D2AE54F53835898B43 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -746,7 +748,6 @@
 				CF5FC8A11A5ABFF700538E60 /* Sources */,
 				CF5FC8A21A5ABFF700538E60 /* Frameworks */,
 				CF5FC8A31A5ABFF700538E60 /* Resources */,
-				5AC4F1A0DA009FA2EEFD2626 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -900,26 +901,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		5AC4F1A0DA009FA2EEFD2626 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-XliffieTests/Pods-XliffieTests-resources.sh",
-				"${PODS_ROOT}/BRLocaleMap/locale-mapping/google-translate.json",
-				"${PODS_ROOT}/BRLocaleMap/locale-mapping/microsoft-translate.json",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/google-translate.json",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/microsoft-translate.json",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-XliffieTests/Pods-XliffieTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		6C9CCE6AB169C9999AAA92F1 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -936,26 +917,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BC4758D2AE54F53835898B43 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Xliffie/Pods-Xliffie-resources.sh",
-				"${PODS_ROOT}/BRLocaleMap/locale-mapping/google-translate.json",
-				"${PODS_ROOT}/BRLocaleMap/locale-mapping/microsoft-translate.json",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/google-translate.json",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/microsoft-translate.json",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Xliffie/Pods-Xliffie-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1004,6 +965,7 @@
 				CF5FC8951A5ABFF700538E60 /* main.m in Sources */,
 				CF0945911C54FD3600DAEB4A /* BRArrowSegmentedCell.m in Sources */,
 				CFB49FCC2F4DE83300907A1B /* NativeTranslator.swift in Sources */,
+				CFA10000000000000000A002 /* LocaleMap.swift in Sources */,
 				CF9A370029CDE6BE00FB8763 /* DocumentTextFinderClient.m in Sources */,
 				CF12DB53293F1B8200F9C760 /* NSAttributedString+FileIcon.m in Sources */,
 				CFF70D80221E7BF2004C4C2D /* XclocDocument.m in Sources */,

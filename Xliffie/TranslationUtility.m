@@ -8,23 +8,16 @@
 
 #import "TranslationUtility.h"
 #import "Xliffie-Swift.h"
-#import <BRLocaleMap/BRLocaleMap.h>
 #import "APIKeys.h"
 
 @implementation TranslationUtility
 
 + (BOOL)isSourceLocale:(NSString*)locale supportedForService:(XLFTranslationService)service {
-    if (service == XLFTranslationServiceNative) {
-        return YES;
-    }
-    return [BRLocaleMap sourceLocale:locale forService:(BRLocaleMapService)service] != nil;
+    return [LocaleMap sourceLocale:locale forService:service] != nil;
 }
 
 + (BOOL)isTargetLocale:(NSString*)locale supportedForService:(XLFTranslationService)service {
-    if (service == XLFTranslationServiceNative) {
-        return YES;
-    }
-    return [BRLocaleMap targetLocale:locale forService:(BRLocaleMapService)service] != nil;
+    return [LocaleMap targetLocale:locale forService:service] != nil;
 }
 
 + (void)translateTexts:(NSArray <NSString*> *)texts
@@ -51,17 +44,8 @@
 
     Translator *translator = [self translatorWithService:service];
 
-    NSString *sourceCode;
-    NSString *targetCode;
-
-    if (service == XLFTranslationServiceNative) {
-        // NativeTranslator uses locale identifiers directly, no BRLocaleMap lookup needed
-        sourceCode = sourceLocaleCode;
-        targetCode = targetLocaleCode;
-    } else {
-        sourceCode = [BRLocaleMap sourceLocale:sourceLocaleCode forService:(BRLocaleMapService)service];
-        targetCode = [BRLocaleMap targetLocale:targetLocaleCode forService:(BRLocaleMapService)service];
-    }
+    NSString *sourceCode = [LocaleMap sourceLocale:sourceLocaleCode forService:service];
+    NSString *targetCode = [LocaleMap targetLocale:targetLocaleCode forService:service];
 
     if (!sourceCode) {
         NSError *error = [NSError errorWithDomain:TRANSLATION_ERROR_DOMAIN
