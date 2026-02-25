@@ -7,8 +7,10 @@
 //
 
 import Foundation
+import AppKit
 import Translation
 import NaturalLanguage
+import SwiftUI
 
 @available(macOS 26.0, *)
 @objc class NativeTranslator: Translator {
@@ -41,4 +43,54 @@ import NaturalLanguage
 
         return result.map { $0.targetText }
     }
+
+    // Translate API is only available in SwiftUI, so we need to make a dummy view, add to a host view to trigger it
+    // so we can finally get a proper TranslationSession.
+    @objc public static func downloadInView(host: NSView, source: String, target: String, completion: @convention(block) @escaping (Error?) -> Void) {
+        var hostingView: NSHostingView<TranslatorView>?
+        var hasResumed = false
+
+        let configuration = TranslationSession.Configuration(
+            source: Locale.Language(identifier: source),
+            target: Locale.Language(identifier: target)
+        )
+        let view = TranslatorView(
+            configuration: configuration,
+        ) { session in
+            guard !hasResumed else { return }
+            hasResumed = true
+
+            Task {
+                do {
+                    try await session.prepareTranslation()
+                } catch {
+                    completion(error)
+                    NSLog("Error \(error)")
+                    return
+                }
+                DispatchQueue.main.async {
+                    hostingView?.removeFromSuperview()
+                    hostingView = nil
+                    completion(nil)
+                }
+            }
+        }
+        let hosting = NSHostingView(rootView: view)
+        // Must be attached to a window for SwiftUI lifecycle to run
+        hosting.frame = .zero
+        hostingView = hosting
+        host.addSubview(hosting)
+    }
+
+    private struct TranslatorView: View {
+            let configuration: TranslationSession.Configuration
+            let onSession: (TranslationSession) async -> Void
+
+            var body: some View {
+                Color.clear
+                    .translationTask(configuration) { session in
+                        await onSession(session)
+                    }
+            }
+        }
 }

@@ -22,6 +22,16 @@ typedef NS_ENUM(NSUInteger, XLFTranslationService) {
 + (BOOL)isSourceLocale:(NSString*)locale supportedForService:(XLFTranslationService)service;
 + (BOOL)isTargetLocale:(NSString*)locale supportedForService:(XLFTranslationService)service;
 
++ (void)isSourceLocale:(NSString*)source
+          targetLocale:(NSString*)target
+   supportedForService:(XLFTranslationService)service
+     completionHandler:(void(^)(BOOL))callback;
+
++ (void)needsDownloadForSourceLocale:(NSString *)source
+                        targetLocale:(NSString *)target
+                             service:(XLFTranslationService)service
+                   completionHandler:(void(^)(BOOL))callback;
+
 + (void)translateTexts:(NSArray <NSString*> *)texts
           fromLanguage:(NSString*)sourceLocaleCode
             toLanguage:(NSString*)targetLocaleCode

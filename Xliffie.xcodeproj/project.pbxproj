@@ -493,7 +493,7 @@
 				CF9A36F929CDE64E00FB8763 /* Progress */,
 				CF5AB3BE293DCE4700C8AC7B /* Suggestions */,
 				298F1356D5D04122AF87619E /* Translator */,
-				CFB0B8F61C3073A9004DF663 /* Translator */,
+				CFB0B8F61C3073A9004DF663 /* Translator-UI */,
 				CF34B75C1AADE02400C6A58E /* Model */,
 				CF9A3D5229DEB5E100807F3D /* UI Elements */,
 				CFE3B1731CD8008800021D7F /* Pangu */,
@@ -694,7 +694,7 @@
 			path = "UI Elements";
 			sourceTree = "<group>";
 		};
-		CFB0B8F61C3073A9004DF663 /* Translator */ = {
+		CFB0B8F61C3073A9004DF663 /* Translator-UI */ = {
 			isa = PBXGroup;
 			children = (
 				CF662B371C307C7D00704CEA /* TranslateServiceWindowController.h */,
@@ -707,7 +707,7 @@
 				CF011B4A1C40FCBA00948323 /* TranslationUtility.m */,
 				CFA10000000000000000A001 /* LocaleMap.swift */,
 			);
-			name = Translator;
+			name = "Translator-UI";
 			sourceTree = "<group>";
 		};
 		CFE3B1731CD8008800021D7F /* Pangu */ = {

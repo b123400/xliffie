@@ -20,6 +20,20 @@
     return [LocaleMap targetLocale:locale forService:service] != nil;
 }
 
++ (void)isSourceLocale:(NSString*)source
+          targetLocale:(NSString*)target
+   supportedForService:(XLFTranslationService)service
+     completionHandler:(void(^)(BOOL))callback {
+    return [LocaleMap isTranslationPairSupportedWithSource:source target:target for:service completionHandler:callback];
+}
+
++ (void)needsDownloadForSourceLocale:(NSString *)source
+                        targetLocale:(NSString *)target
+                             service:(XLFTranslationService)service
+                   completionHandler:(void(^)(BOOL))callback {
+    [LocaleMap doesTranslationPairNeedsDownloadWithSource:source target:target for:service completionHandler:callback];
+}
+
 + (void)translateTexts:(NSArray <NSString*> *)texts
           fromLanguage:(NSString*)sourceLocaleCode
             toLanguage:(NSString*)targetLocaleCode

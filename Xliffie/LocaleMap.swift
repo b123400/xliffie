@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Translation
 
 @objc final class LocaleMap: NSObject {
 
@@ -175,6 +176,49 @@ import Foundation
             return localeCode
         @unknown default:
             return nil
+        }
+    }
+
+    @objc static func isTranslationPairSupported(source sourceLocaleCode: String, target targetLocaleCode: String, for service: XLFTranslationService) async -> Bool {
+        switch service {
+        case .microsoft:
+            return lookup(sourceLocaleCode, in: microsoftMapping) != nil && lookup(targetLocaleCode, in: microsoftMapping) != nil
+        case .google:
+            return lookup(sourceLocaleCode, in: googleMapping) != nil && lookup(targetLocaleCode, in: googleMapping) != nil
+        case .deepl:
+            guard sourceLocaleCode.count >= 2 || targetLocaleCode.count >= 2 else { return false }
+            let sourcePrefix = String(sourceLocaleCode.prefix(2)).uppercased()
+            let targetPrefix = String(targetLocaleCode.prefix(2)).uppercased()
+            return deeplSupportedLocales.contains(sourcePrefix) && deeplSupportedLocales.contains(targetPrefix)
+        case .native:
+            if #available(macOS 26.0, *) {
+                let sourceLanguage = Locale.Language(identifier: sourceLocaleCode)
+                let targetLanguage = Locale.Language(identifier: targetLocaleCode)
+                let availablity = await LanguageAvailability().status(from: sourceLanguage,
+                                                                      to: targetLanguage)
+                return availablity == .supported
+            } else {
+                return false
+            }
+        @unknown default:
+            return false
+        }
+    }
+
+    @objc static func doesTranslationPairNeedsDownload(source sourceLocaleCode: String, target targetLocaleCode: String, for service: XLFTranslationService) async -> Bool {
+        switch service {
+        case .microsoft, .google, .deepl:
+            return false
+        case .native:
+            if #available(macOS 15.0, *) {
+                let availablity = await LanguageAvailability().status(from: Locale.Language(identifier: sourceLocaleCode),
+                                                                      to: Locale.Language(identifier: targetLocaleCode))
+                return availablity != .installed
+            } else {
+                return false
+            }
+        @unknown default:
+            return false
         }
     }
 
