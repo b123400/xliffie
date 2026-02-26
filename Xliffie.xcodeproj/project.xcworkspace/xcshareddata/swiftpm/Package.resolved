@@ -1,6 +1,15 @@
 {
-  "originHash" : "5c2d6a5ab0c76fdb9d9e1e141be6e029bcbf58dd3c91b2da0c2049912f9b69ad",
+  "originHash" : "8d56aeb483f2927bf62b2a06ba1b247f4c370676cc57b896e2b288f10b535fbb",
   "pins" : [
+    {
+      "identity" : "cache",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/0xLeif/Cache.git",
+      "state" : {
+        "revision" : "ff7c208eb8311c9bd150a87792d1df36851b95f1",
+        "version" : "2.1.2"
+      }
+    },
     {
       "identity" : "csv.swift",
       "kind" : "remoteSourceControl",

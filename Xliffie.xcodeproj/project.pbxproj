@@ -27,6 +27,7 @@
 		CF22255B2A5EA41D00F08515 /* GlossaryDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = CF22255A2A5EA41D00F08515 /* GlossaryDatabase.m */; };
 		CF22255D2A5EF54D00F08515 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CF22255C2A5EF53E00F08515 /* libsqlite3.tbd */; };
 		CF2498492ADF6F5300285DB2 /* NSTextView+CopyAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2498482ADF6F5300285DB2 /* NSTextView+CopyAttachment.m */; };
+		CF29CCA72F505380007EE1BD /* Cache in Frameworks */ = {isa = PBXBuildFile; productRef = CF29CCA62F505380007EE1BD /* Cache */; };
 		CF2DF14E2A827B0D00346BE9 /* SuggestionTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2DF14D2A827B0D00346BE9 /* SuggestionTableView.m */; };
 		CF2DF1572A83DAAA00346BE9 /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2DF1562A83DAAA00346BE9 /* Utilities.m */; };
 		CF2DF1582A83DAEF00346BE9 /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2DF1562A83DAAA00346BE9 /* Utilities.m */; };
@@ -345,6 +346,7 @@
 				CFB49FCE2F4DE88400907A1B /* Translation.framework in Frameworks */,
 				CF51E30E2F50438B0081ABF4 /* CSV in Frameworks */,
 				CF22255D2A5EF54D00F08515 /* libsqlite3.tbd in Frameworks */,
+				CF29CCA72F505380007EE1BD /* Cache in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -774,6 +776,7 @@
 			mainGroup = CF5FC8831A5ABFF700538E60;
 			packageReferences = (
 				CF51E30C2F50438B0081ABF4 /* XCRemoteSwiftPackageReference "CSV.swift" */,
+				CF29CCA52F505380007EE1BD /* XCRemoteSwiftPackageReference "Cache" */,
 			);
 			productRefGroup = CF5FC88D1A5ABFF700538E60 /* Products */;
 			projectDirPath = "";
@@ -1285,6 +1288,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		CF29CCA52F505380007EE1BD /* XCRemoteSwiftPackageReference "Cache" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/0xLeif/Cache.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.2;
+			};
+		};
 		CF51E30C2F50438B0081ABF4 /* XCRemoteSwiftPackageReference "CSV.swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/yaslab/CSV.swift.git";
@@ -1296,6 +1307,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		CF29CCA62F505380007EE1BD /* Cache */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CF29CCA52F505380007EE1BD /* XCRemoteSwiftPackageReference "Cache" */;
+			productName = Cache;
+		};
 		CF51E30D2F50438B0081ABF4 /* CSV */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CF51E30C2F50438B0081ABF4 /* XCRemoteSwiftPackageReference "CSV.swift" */;

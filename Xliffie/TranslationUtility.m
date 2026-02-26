@@ -91,9 +91,10 @@
     [translator translateWithTexts:texts
                       sourceLocale:sourceCode
                       targetLocale:targetCode
-                        completion:^(NSError *error, NSArray<NSString *> *translated) {
-                            callback(error, translated);
-                        }];
+                            cached:YES
+                 completionHandler:^(NSArray<NSString *> * _Nullable translated, NSError * _Nullable error) {
+        callback(error, translated);
+    }];
 }
 
 + (Translator*)translatorWithService:(XLFTranslationService)service {

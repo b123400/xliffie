@@ -7,6 +7,9 @@
 //
 
 import Foundation
+import Cache
+
+let cache = Cache<String, String>()
 
 @objc enum TranslationError: Int, Error {
     case networkError
@@ -25,6 +28,12 @@ import Foundation
     }
 }
 
+enum TranslationIntermediateSource {
+    case new(Int)
+    case repeated(Int)
+    case cached
+}
+
 @objc class Translator: NSObject {
     // MARK: Batch configuration
     
@@ -36,7 +45,7 @@ import Foundation
     
     // MARK: Translation
     
-    func translate(texts: [String], sourceLocale: String, targetLocale: String) async throws -> [String] {
+    @objc func translate(texts: [String], sourceLocale: String, targetLocale: String) async throws -> [String] {
         let batches = toBatches(texts: texts)
         let source = filteredLocale(sourceLocale)
         let target = filteredLocale(targetLocale) ?? targetLocale
@@ -56,25 +65,45 @@ import Foundation
         }
     }
     
-    func translate(texts: [String], sourceLocale: String, targetLocale: String, cached: Bool, batched: Bool) async throws -> [String] {
-        // TODO: cache
-        return try await self.translate(texts: texts, sourceLocale: sourceLocale, targetLocale: targetLocale)
-    }
-    
-    /// Objective-C compatible translation method with completion handler
-    @objc func translate(texts: [String], 
-                        sourceLocale: String, 
-                        targetLocale: String, 
-                        completion: @escaping (NSError?, [String]?) -> Void) {
-        Task {
-            do {
-                let results = try await translate(texts: texts, sourceLocale: sourceLocale, targetLocale: targetLocale)
-                completion(nil, results)
-            } catch {
-                let nsError = error as NSError
-                completion(nsError, nil)
+    @objc func translate(texts: [String], sourceLocale: String, targetLocale: String, cached: Bool) async throws -> [String] {
+        var intermediateSources: [TranslationIntermediateSource] = []
+        var textFirstAppearedAt: [String: Int] = [:]
+        var textsToTranslate: [String] = []
+        for text in texts {
+            if cached && self.cacheFor(text: text, sourceLocale: sourceLocale, targetLocale: targetLocale) != nil {
+                intermediateSources.append(.cached)
+                continue
+            }
+            let firstAppearedAt = textFirstAppearedAt[text]
+            if let firstIndex = firstAppearedAt {
+                intermediateSources.append(.repeated(firstIndex))
+            } else {
+                // Not cache, not repeated, we need to translate this
+                let newIndex = textsToTranslate.count
+                intermediateSources.append(.new(newIndex))
+                textFirstAppearedAt[text] = newIndex
+                textsToTranslate.append(text)
             }
         }
+
+        let translatedResult = try await self.translate(texts: textsToTranslate, sourceLocale: sourceLocale, targetLocale: targetLocale)
+
+        var result: [String] = []
+        for (index, text) in texts.enumerated() {
+            switch intermediateSources[index] {
+            case let .new(i):
+                let translated = translatedResult[i]
+                result.append(translated)
+                self.setCacheFor(text: text, sourceLocale: sourceLocale, targetLocale: targetLocale, targetString: translated)
+            case let .repeated(i):
+                let translated = translatedResult[i]
+                result.append(translated)
+            case .cached:
+                result.append(self.cacheFor(text: text, sourceLocale: sourceLocale, targetLocale: targetLocale)!)
+            }
+        }
+
+        return result
     }
     
     /// Translates a single batch of texts. Subclasses must override this method.
@@ -110,12 +139,14 @@ import Foundation
     // MARK: Cache
 
     internal func cacheKeyFor(text: String, sourceLocale: String, targetLocale: String) -> String {
-        // TODO: Implement later
-        return "TODO"
+        return "\(self.className):\(sourceLocale):\(targetLocale):\(text)"
     }
 
     internal func cacheFor(text: String, sourceLocale: String, targetLocale: String) -> String? {
-        // TODO: Implement later
-        return nil
+        return cache[self.cacheKeyFor(text: text, sourceLocale: sourceLocale, targetLocale: targetLocale)]
+    }
+
+    internal func setCacheFor(text: String, sourceLocale: String, targetLocale: String, targetString: String) {
+        cache[self.cacheKeyFor(text: text, sourceLocale: sourceLocale, targetLocale: targetLocale)] = targetString
     }
 }
