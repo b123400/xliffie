@@ -7,22 +7,17 @@
 //
 
 import Foundation
+import CSV
 
 protocol CustomGlossaryImporterDelegate: AnyObject {
     func didReadRow(_ row: CustomGlossaryRow, fromImporter importer: CustomGlossaryImporter)
 }
 
-class CustomGlossaryImporter: NSObject, CHCSVParserDelegate {
+class CustomGlossaryImporter {
 
     weak var delegate: (any CustomGlossaryImporterDelegate)?
 
-    private var currentRow: CustomGlossaryRow?
-    private var rowNumber: Int = 0
-    private var progress: Progress?
-    private var callback: ((Error?) -> Void)?
-
     func importFromFile(_ url: URL, withCallback callback: @escaping (Error?) -> Void) -> Progress {
-        self.callback = callback
         let totalSize: Int64
         if let resourceValues = try? url.resourceValues(forKeys: [.fileSizeKey]),
            let fileSize = resourceValues.fileSize {
@@ -31,49 +26,26 @@ class CustomGlossaryImporter: NSObject, CHCSVParserDelegate {
             totalSize = 0
         }
         let progress = Progress(totalUnitCount: totalSize)
-        self.progress = progress
         DispatchQueue.global(qos: .userInitiated).async {
-            let parser = CHCSVParser(contentsOfCSVURL: url)
-            parser?.delegate = self
-            parser?.parse()
+            guard let stream = InputStream(url: url) else {
+                callback(NSError(domain: "CustomGlossaryImporter", code: -1, userInfo: [NSLocalizedDescriptionKey: "Cannot open file"]))
+                return
+            }
+            do {
+                let reader = try CSVReader(stream: stream, hasHeaderRow: true)
+                while let row = reader.next() {
+                    let glossaryRow = CustomGlossaryRow()
+                    glossaryRow.sourceLocale = row.count > 0 && !row[0].isEmpty ? row[0] : nil
+                    glossaryRow.targetLocale = row.count > 1 && !row[1].isEmpty ? row[1] : nil
+                    glossaryRow.source = row.count > 2 ? row[2] : ""
+                    glossaryRow.target = row.count > 3 ? row[3] : ""
+                    self.delegate?.didReadRow(glossaryRow, fromImporter: self)
+                }
+                callback(nil)
+            } catch {
+                callback(error)
+            }
         }
         return progress
-    }
-
-    // MARK: - CHCSVParserDelegate
-
-    func parser(_ parser: CHCSVParser!, didBeginLine recordNumber: UInt) {
-        currentRow = CustomGlossaryRow()
-        rowNumber = Int(recordNumber)
-    }
-
-    func parser(_ parser: CHCSVParser!, didReadField field: String!, at fieldIndex: Int) {
-        guard rowNumber != 1, let currentRow = currentRow else { return }
-        switch fieldIndex {
-        case 0:
-            currentRow.sourceLocale = field?.isEmpty == false ? field : nil
-        case 1:
-            currentRow.targetLocale = field?.isEmpty == false ? field : nil
-        case 2:
-            currentRow.source = field ?? ""
-        case 3:
-            currentRow.target = field ?? ""
-        default:
-            break
-        }
-    }
-
-    func parser(_ parser: CHCSVParser!, didFailWithError error: Error!) {
-        callback?(error)
-    }
-
-    func parser(_ parser: CHCSVParser!, didEndLine recordNumber: UInt) {
-        guard rowNumber != 1, let currentRow = currentRow else { return }
-        progress?.completedUnitCount = Int64(parser.totalBytesRead)
-        delegate?.didReadRow(currentRow, fromImporter: self)
-    }
-
-    func parserDidEndDocument(_ parser: CHCSVParser!) {
-        callback?(nil)
     }
 }

@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		032B00DDF4484F428F403A22 /* Translator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745157AEABDF43C798AB2A9A /* Translator.swift */; };
-		53532F5E187D9C2314DF98A9 /* libPods-Xliffie.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A857BFAEBC2315772F4E891 /* libPods-Xliffie.a */; };
 		6C53E7C8B5534B6D9B317E58 /* GoogleTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D69ED8EB2B4372A1F3D676 /* GoogleTranslator.swift */; };
 		93D92B3F1D5749E8AD215168 /* BingTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232F606BA30B48E5AE6C76A8 /* BingTranslator.swift */; };
 		ADE5217B3106431DA56A81BD /* DeeplTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985AD678032F4861A5EBDE2B /* DeeplTranslator.swift */; };
@@ -32,10 +31,10 @@
 		CF2DF1572A83DAAA00346BE9 /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2DF1562A83DAAA00346BE9 /* Utilities.m */; };
 		CF2DF1582A83DAEF00346BE9 /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2DF1562A83DAAA00346BE9 /* Utilities.m */; };
 		CF34B75A1AADE00A00C6A58E /* TranslationTargetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF34B7591AADE00A00C6A58E /* TranslationTargetCell.m */; };
-		CFA10000000000000000A007 /* CustomGlossaryImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA10000000000000000A008 /* CustomGlossaryImporter.swift */; };
 		CF46776C2AF12A5E00DA47F2 /* BRTextAttachmentFindResult.m in Sources */ = {isa = PBXBuildFile; fileRef = CF46776B2AF12A5E00DA47F2 /* BRTextAttachmentFindResult.m */; };
 		CF50085429DBADBA007EF23A /* BRCategorySearchFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF50085329DBADBA007EF23A /* BRCategorySearchFieldCell.m */; };
 		CF50085729DBB20F007EF23A /* BRCategorySearchField.m in Sources */ = {isa = PBXBuildFile; fileRef = CF50085629DBB20F007EF23A /* BRCategorySearchField.m */; };
+		CF51E30E2F50438B0081ABF4 /* CSV in Frameworks */ = {isa = PBXBuildFile; productRef = CF51E30D2F50438B0081ABF4 /* CSV */; };
 		CF5682EB1A6AFB9800E0DEDD /* DocumentWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5682E91A6AFB9800E0DEDD /* DocumentWindowController.m */; };
 		CF5682EF1A6B11C700E0DEDD /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5682EE1A6B11C700E0DEDD /* DetailViewController.m */; };
 		CF5AB3C2293DCE6200C8AC7B /* SuggestionsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5AB3C0293DCE6200C8AC7B /* SuggestionsWindowController.m */; };
@@ -93,8 +92,6 @@
 		CF78DC4B2A91090F000B33B5 /* en_au.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF78DC422A91090E000B33B5 /* en_au.glossary */; };
 		CF78DC4C2A91090F000B33B5 /* es_419.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF78DC432A91090E000B33B5 /* es_419.glossary */; };
 		CF78DC4D2A91090F000B33B5 /* zh_cn.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF78DC442A91090E000B33B5 /* zh_cn.glossary */; };
-		CFA10000000000000000A005 /* CustomGlossaryDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA10000000000000000A003 /* CustomGlossaryDatabase.swift */; };
-		CFA10000000000000000A006 /* CustomGlossaryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA10000000000000000A004 /* CustomGlossaryRow.swift */; };
 		CF83DC832B750D1A00713410 /* LanguageSet.m in Sources */ = {isa = PBXBuildFile; fileRef = CF83DC822B750D1A00713410 /* LanguageSet.m */; };
 		CF846CD4259E21A300CA0713 /* CustomDocumentController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF846CD3259E21A300CA0713 /* CustomDocumentController.m */; };
 		CF92FB941C24037B00700D3E /* TargetMissingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF92FB931C24037B00700D3E /* TargetMissingViewController.m */; };
@@ -107,6 +104,9 @@
 		CF9FDB8E2AE8D73B00D76DEA /* TranslationPairGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9FDB8D2AE8D73B00D76DEA /* TranslationPairGroup.m */; };
 		CFA091E029CB18F800F33979 /* BRProgressButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA091DF29CB18F800F33979 /* BRProgressButton.m */; };
 		CFA10000000000000000A002 /* LocaleMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA10000000000000000A001 /* LocaleMap.swift */; };
+		CFA10000000000000000A005 /* CustomGlossaryDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA10000000000000000A003 /* CustomGlossaryDatabase.swift */; };
+		CFA10000000000000000A006 /* CustomGlossaryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA10000000000000000A004 /* CustomGlossaryRow.swift */; };
+		CFA10000000000000000A007 /* CustomGlossaryImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA10000000000000000A008 /* CustomGlossaryImporter.swift */; };
 		CFB49FCC2F4DE83300907A1B /* NativeTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB49FCB2F4DE82C00907A1B /* NativeTranslator.swift */; };
 		CFB49FCE2F4DE88400907A1B /* Translation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFB49FCD2F4DE88400907A1B /* Translation.framework */; };
 		CFB49FD02F4DE9F500907A1B /* NaturalLanguage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFB49FCF2F4DE9F500907A1B /* NaturalLanguage.framework */; };
@@ -127,7 +127,6 @@
 		CFF4AE2E2A79577A00C50D8A /* GlossarySearchResults.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF4AE2D2A79577A00C50D8A /* GlossarySearchResults.m */; };
 		CFF4AE312A7959BA00C50D8A /* GlossarySearchResult.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF4AE302A7959BA00C50D8A /* GlossarySearchResult.m */; };
 		CFF70D80221E7BF2004C4C2D /* XclocDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF70D7F221E7BF2004C4C2D /* XclocDocument.m */; };
-		D42B8307A52A4CB70FEEA156 /* libPods-XliffieTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B8C7EA753A4178056B36640 /* libPods-XliffieTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -143,11 +142,7 @@
 /* Begin PBXFileReference section */
 		232F606BA30B48E5AE6C76A8 /* BingTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BingTranslator.swift; sourceTree = "<group>"; };
 		745157AEABDF43C798AB2A9A /* Translator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translator.swift; sourceTree = "<group>"; };
-		8A857BFAEBC2315772F4E891 /* libPods-Xliffie.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Xliffie.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8F922AA3285E9DB3A6DBC09B /* Pods-XliffieTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XliffieTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-XliffieTests/Pods-XliffieTests.release.xcconfig"; sourceTree = "<group>"; };
 		985AD678032F4861A5EBDE2B /* DeeplTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplTranslator.swift; sourceTree = "<group>"; };
-		9B8C7EA753A4178056B36640 /* libPods-XliffieTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XliffieTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9D0489703C74B347744F2B1A /* Pods-Xliffie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Xliffie.release.xcconfig"; path = "Pods/Target Support Files/Pods-Xliffie/Pods-Xliffie.release.xcconfig"; sourceTree = "<group>"; };
 		CF011B481C40F4B900948323 /* APIKeys.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIKeys.h; sourceTree = "<group>"; };
 		CF011B491C40FCBA00948323 /* TranslationUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TranslationUtility.h; sourceTree = "<group>"; };
 		CF011B4A1C40FCBA00948323 /* TranslationUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TranslationUtility.m; sourceTree = "<group>"; };
@@ -190,7 +185,6 @@
 		CF2DF1562A83DAAA00346BE9 /* Utilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
 		CF34B7581AADE00A00C6A58E /* TranslationTargetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TranslationTargetCell.h; sourceTree = "<group>"; };
 		CF34B7591AADE00A00C6A58E /* TranslationTargetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TranslationTargetCell.m; sourceTree = "<group>"; };
-		CFA10000000000000000A008 /* CustomGlossaryImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGlossaryImporter.swift; sourceTree = "<group>"; };
 		CF46776A2AF12A5E00DA47F2 /* BRTextAttachmentFindResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRTextAttachmentFindResult.h; sourceTree = "<group>"; };
 		CF46776B2AF12A5E00DA47F2 /* BRTextAttachmentFindResult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRTextAttachmentFindResult.m; sourceTree = "<group>"; };
 		CF4B0C2E1BF91239007AF981 /* zh-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-TW"; path = "zh-TW.lproj/Main.strings"; sourceTree = "<group>"; };
@@ -275,8 +269,6 @@
 		CF78DC422A91090E000B33B5 /* en_au.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = en_au.glossary; sourceTree = "<group>"; };
 		CF78DC432A91090E000B33B5 /* es_419.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = es_419.glossary; sourceTree = "<group>"; };
 		CF78DC442A91090E000B33B5 /* zh_cn.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = zh_cn.glossary; sourceTree = "<group>"; };
-		CFA10000000000000000A003 /* CustomGlossaryDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGlossaryDatabase.swift; sourceTree = "<group>"; };
-		CFA10000000000000000A004 /* CustomGlossaryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGlossaryRow.swift; sourceTree = "<group>"; };
 		CF83DC812B750D1A00713410 /* LanguageSet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LanguageSet.h; sourceTree = "<group>"; };
 		CF83DC822B750D1A00713410 /* LanguageSet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LanguageSet.m; sourceTree = "<group>"; };
 		CF846CD2259E21A300CA0713 /* CustomDocumentController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomDocumentController.h; sourceTree = "<group>"; };
@@ -302,6 +294,9 @@
 		CFA091DE29CB18F800F33979 /* BRProgressButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRProgressButton.h; sourceTree = "<group>"; };
 		CFA091DF29CB18F800F33979 /* BRProgressButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRProgressButton.m; sourceTree = "<group>"; };
 		CFA10000000000000000A001 /* LocaleMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleMap.swift; sourceTree = "<group>"; };
+		CFA10000000000000000A003 /* CustomGlossaryDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGlossaryDatabase.swift; sourceTree = "<group>"; };
+		CFA10000000000000000A004 /* CustomGlossaryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGlossaryRow.swift; sourceTree = "<group>"; };
+		CFA10000000000000000A008 /* CustomGlossaryImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGlossaryImporter.swift; sourceTree = "<group>"; };
 		CFB49FCB2F4DE82C00907A1B /* NativeTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeTranslator.swift; sourceTree = "<group>"; };
 		CFB49FCD2F4DE88400907A1B /* Translation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Translation.framework; path = System/Library/Frameworks/Translation.framework; sourceTree = SDKROOT; };
 		CFB49FCF2F4DE9F500907A1B /* NaturalLanguage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NaturalLanguage.framework; path = System/Library/Frameworks/NaturalLanguage.framework; sourceTree = SDKROOT; };
@@ -339,8 +334,6 @@
 		CFF70D7E221E7BF2004C4C2D /* XclocDocument.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XclocDocument.h; sourceTree = "<group>"; };
 		CFF70D7F221E7BF2004C4C2D /* XclocDocument.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XclocDocument.m; sourceTree = "<group>"; };
 		D9D69ED8EB2B4372A1F3D676 /* GoogleTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleTranslator.swift; sourceTree = "<group>"; };
-		E63D96FADBADA5BA423F82DD /* Pods-Xliffie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Xliffie.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Xliffie/Pods-Xliffie.debug.xcconfig"; sourceTree = "<group>"; };
-		F46F3EFF87AC9239B0E767A0 /* Pods-XliffieTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XliffieTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XliffieTests/Pods-XliffieTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -350,8 +343,8 @@
 			files = (
 				CFB49FD02F4DE9F500907A1B /* NaturalLanguage.framework in Frameworks */,
 				CFB49FCE2F4DE88400907A1B /* Translation.framework in Frameworks */,
+				CF51E30E2F50438B0081ABF4 /* CSV in Frameworks */,
 				CF22255D2A5EF54D00F08515 /* libsqlite3.tbd in Frameworks */,
-				53532F5E187D9C2314DF98A9 /* libPods-Xliffie.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,7 +352,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D42B8307A52A4CB70FEEA156 /* libPods-XliffieTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,25 +370,12 @@
 			path = Translator;
 			sourceTree = "<group>";
 		};
-		74D4C8CBAA26CAF370D43235 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				E63D96FADBADA5BA423F82DD /* Pods-Xliffie.debug.xcconfig */,
-				9D0489703C74B347744F2B1A /* Pods-Xliffie.release.xcconfig */,
-				F46F3EFF87AC9239B0E767A0 /* Pods-XliffieTests.debug.xcconfig */,
-				8F922AA3285E9DB3A6DBC09B /* Pods-XliffieTests.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		B9A0E10FA89551832665D61C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				CFB49FCF2F4DE9F500907A1B /* NaturalLanguage.framework */,
 				CFB49FCD2F4DE88400907A1B /* Translation.framework */,
 				CF22255C2A5EF53E00F08515 /* libsqlite3.tbd */,
-				8A857BFAEBC2315772F4E891 /* libPods-Xliffie.a */,
-				9B8C7EA753A4178056B36640 /* libPods-XliffieTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -455,7 +434,6 @@
 				CF5FC88E1A5ABFF700538E60 /* Xliffie */,
 				CF5FC8A81A5ABFF700538E60 /* XliffieTests */,
 				CF5FC88D1A5ABFF700538E60 /* Products */,
-				74D4C8CBAA26CAF370D43235 /* Pods */,
 				B9A0E10FA89551832665D61C /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -720,7 +698,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CF5FC8AF1A5ABFF700538E60 /* Build configuration list for PBXNativeTarget "Xliffie" */;
 			buildPhases = (
-				6C9CCE6AB169C9999AAA92F1 /* [CP] Check Pods Manifest.lock */,
 				CF5FC8881A5ABFF700538E60 /* Sources */,
 				CF5FC8891A5ABFF700538E60 /* Frameworks */,
 				CF5FC88A1A5ABFF700538E60 /* Resources */,
@@ -738,7 +715,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CF5FC8B21A5ABFF700538E60 /* Build configuration list for PBXNativeTarget "XliffieTests" */;
 			buildPhases = (
-				208530F6FEF33194A034E965 /* [CP] Check Pods Manifest.lock */,
 				CF5FC8A11A5ABFF700538E60 /* Sources */,
 				CF5FC8A21A5ABFF700538E60 /* Frameworks */,
 				CF5FC8A31A5ABFF700538E60 /* Resources */,
@@ -796,6 +772,9 @@
 				"zh-TW",
 			);
 			mainGroup = CF5FC8831A5ABFF700538E60;
+			packageReferences = (
+				CF51E30C2F50438B0081ABF4 /* XCRemoteSwiftPackageReference "CSV.swift" */,
+			);
 			productRefGroup = CF5FC88D1A5ABFF700538E60 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -875,45 +854,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		208530F6FEF33194A034E965 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-XliffieTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		6C9CCE6AB169C9999AAA92F1 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Xliffie-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CF5FC8881A5ABFF700538E60 /* Sources */ = {
@@ -1193,7 +1133,6 @@
 		};
 		CF5FC8B01A5ABFF700538E60 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E63D96FADBADA5BA423F82DD /* Pods-Xliffie.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -1229,7 +1168,6 @@
 		};
 		CF5FC8B11A5ABFF700538E60 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9D0489703C74B347744F2B1A /* Pods-Xliffie.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -1264,7 +1202,6 @@
 		};
 		CF5FC8B31A5ABFF700538E60 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F46F3EFF87AC9239B0E767A0 /* Pods-XliffieTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -1293,7 +1230,6 @@
 		};
 		CF5FC8B41A5ABFF700538E60 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8F922AA3285E9DB3A6DBC09B /* Pods-XliffieTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -1347,6 +1283,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CF51E30C2F50438B0081ABF4 /* XCRemoteSwiftPackageReference "CSV.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/yaslab/CSV.swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.5.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CF51E30D2F50438B0081ABF4 /* CSV */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CF51E30C2F50438B0081ABF4 /* XCRemoteSwiftPackageReference "CSV.swift" */;
+			productName = CSV;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CF5FC8841A5ABFF700538E60 /* Project object */;
 }
