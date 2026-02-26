@@ -11,7 +11,7 @@
 #import "Glossary.h"
 #import "BRTextAttachmentCell.h"
 #import "Utilities/Utilities.h"
-#import "CustomGlossaryDatabase.h"
+#import "Xliffie-Swift.h"
 
 #define FORMAT_SPECIFIER_REGEX @"%(?:([0-9])\\$)?(?:[0-9]?.[0-9])?((?:h|hh|l|ll|q|L|z|t|j)?([@dDuUxXoOfeEgGcCsSpaAF]|#@([a-zA-Z0-9_-]+)@))"
 
