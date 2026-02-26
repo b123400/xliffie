@@ -32,7 +32,7 @@
 		CF2DF1572A83DAAA00346BE9 /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2DF1562A83DAAA00346BE9 /* Utilities.m */; };
 		CF2DF1582A83DAEF00346BE9 /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2DF1562A83DAAA00346BE9 /* Utilities.m */; };
 		CF34B75A1AADE00A00C6A58E /* TranslationTargetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF34B7591AADE00A00C6A58E /* TranslationTargetCell.m */; };
-		CF3565932B80B15900C2C0E2 /* CustomGlossaryImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = CF3565922B80B15900C2C0E2 /* CustomGlossaryImporter.m */; };
+		CFA10000000000000000A007 /* CustomGlossaryImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA10000000000000000A008 /* CustomGlossaryImporter.swift */; };
 		CF46776C2AF12A5E00DA47F2 /* BRTextAttachmentFindResult.m in Sources */ = {isa = PBXBuildFile; fileRef = CF46776B2AF12A5E00DA47F2 /* BRTextAttachmentFindResult.m */; };
 		CF50085429DBADBA007EF23A /* BRCategorySearchFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF50085329DBADBA007EF23A /* BRCategorySearchFieldCell.m */; };
 		CF50085729DBB20F007EF23A /* BRCategorySearchField.m in Sources */ = {isa = PBXBuildFile; fileRef = CF50085629DBB20F007EF23A /* BRCategorySearchField.m */; };
@@ -190,8 +190,7 @@
 		CF2DF1562A83DAAA00346BE9 /* Utilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
 		CF34B7581AADE00A00C6A58E /* TranslationTargetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TranslationTargetCell.h; sourceTree = "<group>"; };
 		CF34B7591AADE00A00C6A58E /* TranslationTargetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TranslationTargetCell.m; sourceTree = "<group>"; };
-		CF3565912B80B15900C2C0E2 /* CustomGlossaryImporter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomGlossaryImporter.h; sourceTree = "<group>"; };
-		CF3565922B80B15900C2C0E2 /* CustomGlossaryImporter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomGlossaryImporter.m; sourceTree = "<group>"; };
+		CFA10000000000000000A008 /* CustomGlossaryImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGlossaryImporter.swift; sourceTree = "<group>"; };
 		CF46776A2AF12A5E00DA47F2 /* BRTextAttachmentFindResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRTextAttachmentFindResult.h; sourceTree = "<group>"; };
 		CF46776B2AF12A5E00DA47F2 /* BRTextAttachmentFindResult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRTextAttachmentFindResult.m; sourceTree = "<group>"; };
 		CF4B0C2E1BF91239007AF981 /* zh-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-TW"; path = "zh-TW.lproj/Main.strings"; sourceTree = "<group>"; };
@@ -568,8 +567,7 @@
 				CFB58D0C2B9203F4006E211F /* CustomGlossaryWindowController.xib */,
 				CFA10000000000000000A003 /* CustomGlossaryDatabase.swift */,
 				CFA10000000000000000A004 /* CustomGlossaryRow.swift */,
-				CF3565912B80B15900C2C0E2 /* CustomGlossaryImporter.h */,
-				CF3565922B80B15900C2C0E2 /* CustomGlossaryImporter.m */,
+				CFA10000000000000000A008 /* CustomGlossaryImporter.swift */,
 			);
 			path = Glossary;
 			sourceTree = "<group>";
@@ -932,7 +930,7 @@
 				CF2DF1572A83DAAA00346BE9 /* Utilities.m in Sources */,
 				CF83DC832B750D1A00713410 /* LanguageSet.m in Sources */,
 				CF1CE50629CB4EBD00BBFAAB /* ProgressWindowController.m in Sources */,
-				CF3565932B80B15900C2C0E2 /* CustomGlossaryImporter.m in Sources */,
+				CFA10000000000000000A007 /* CustomGlossaryImporter.swift in Sources */,
 				CF1BEBE529D5838F0000BD59 /* BaseCustomCell.m in Sources */,
 				CF34B75A1AADE00A00C6A58E /* TranslationTargetCell.m in Sources */,
 				CFF4AE2B2A79504800C50D8A /* GlossarySearchRow.m in Sources */,

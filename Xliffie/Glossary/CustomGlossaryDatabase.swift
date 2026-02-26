@@ -278,7 +278,7 @@ extension Notification.Name {
         notificationEnabled = false
         let importer = CustomGlossaryImporter()
         importer.delegate = self
-        return importer.import(fromFile: url, withCallback: { [weak self] error in
+        return importer.importFromFile(url, withCallback: { [weak self] error in
             guard let self = self else { return }
             self.notificationEnabled = true
             callback(error)
@@ -288,7 +288,7 @@ extension Notification.Name {
 
     // MARK: - CustomGlossaryImporterDelegate
 
-    @objc func didReadRow(_ row: CustomGlossaryRow, fromImporter importer: Any!) {
+    func didReadRow(_ row: CustomGlossaryRow, fromImporter importer: CustomGlossaryImporter) {
         insert(withSourceLocale: row.sourceLocale, targetLocale: row.targetLocale, source: row.source, target: row.target)
     }
 }

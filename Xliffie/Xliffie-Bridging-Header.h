@@ -5,4 +5,3 @@
 #import "TranslationUtility.h"
 #import "Utilities.h"
 #import "CHCSVParser.h"
-#import "CustomGlossaryImporter.h"
