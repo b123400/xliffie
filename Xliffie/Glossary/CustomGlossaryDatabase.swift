@@ -8,6 +8,7 @@
 
 import Foundation
 import SQLite3
+import CSV
 
 let CUSTOM_GLOSSARY_DATABASE_UPDATED_NOTIFICATION = "CUSTOM_GLOSSARY_DATABASE_UPDATED_NOTIFICATION"
 
@@ -238,37 +239,48 @@ extension Notification.Name {
                 return
             }
 
-            let writer = CHCSVWriter(forWritingToCSVFile: path)
-            writer?.writeLine(ofFields: NSArray(array: ["source_locale", "target_locale", "source", "target"]))
-
-            let sql = "SELECT source_locale, target_locale, source, target FROM glossary"
-            var compiledStatement: OpaquePointer?
-            let rc = sqlite3_prepare_v2(self.sqlite, sql, -1, &compiledStatement, nil)
-            if rc != SQLITE_OK {
-                NSLog("Cannot prepare sql (%d) : %@", rc, sql)
-                callback(NSError(domain: "net.b123400.xliffie.error", code: 0, userInfo: [NSLocalizedDescriptionKey: "Cannot prepare export SQL"]))
-                return
-            }
-
-            var completeCount: Int64 = 0
-            while sqlite3_step(compiledStatement) == SQLITE_ROW {
-                for i in 0..<sqlite3_column_count(compiledStatement) {
-                    let colType = sqlite3_column_type(compiledStatement, i)
-                    if colType == SQLITE_TEXT {
-                        let col = sqlite3_column_text(compiledStatement, i)!
-                        writer?.writeField(String(cString: col))
-                    } else if colType == SQLITE_NULL {
-                        writer?.writeField("")
-                    } else {
-                        NSLog("%s Unknown data type.", #function)
-                    }
+            do {
+                guard let outputStream = OutputStream(toFileAtPath: path, append: false) else {
+                    callback(NSError(domain: "net.b123400.xliffie.error", code: 0, userInfo: [NSLocalizedDescriptionKey: "Cannot create output file"]))
+                    return
                 }
-                writer?.finishLine()
-                completeCount += 1
-                progress.completedUnitCount = completeCount
+                let writer = try CSVWriter(stream: outputStream)
+                try writer.write(row: ["source_locale", "target_locale", "source", "target"])
+
+                let sql = "SELECT source_locale, target_locale, source, target FROM glossary"
+                var compiledStatement: OpaquePointer?
+                let rc = sqlite3_prepare_v2(self.sqlite, sql, -1, &compiledStatement, nil)
+                if rc != SQLITE_OK {
+                    NSLog("Cannot prepare sql (%d) : %@", rc, sql)
+                    callback(NSError(domain: "net.b123400.xliffie.error", code: 0, userInfo: [NSLocalizedDescriptionKey: "Cannot prepare export SQL"]))
+                    return
+                }
+
+                var completeCount: Int64 = 0
+                while sqlite3_step(compiledStatement) == SQLITE_ROW {
+                    var fields: [String] = []
+                    for i in 0..<sqlite3_column_count(compiledStatement) {
+                        let colType = sqlite3_column_type(compiledStatement, i)
+                        if colType == SQLITE_TEXT {
+                            let col = sqlite3_column_text(compiledStatement, i)!
+                            fields.append(String(cString: col))
+                        } else if colType == SQLITE_NULL {
+                            fields.append("")
+                        } else {
+                            NSLog("%s Unknown data type.", #function)
+                            fields.append("")
+                        }
+                    }
+                    try writer.write(row: fields)
+                    completeCount += 1
+                    progress.completedUnitCount = completeCount
+                }
+                sqlite3_finalize(compiledStatement)
+                writer.stream.close()
+                callback(nil)
+            } catch {
+                callback(error)
             }
-            sqlite3_finalize(compiledStatement)
-            callback(nil)
         }
 
         return progress
