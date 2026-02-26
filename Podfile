@@ -5,8 +5,6 @@
 
 platform :osx, '10.12'
 
-pod 'CHCSVParser', '~> 2.1'
-
 target 'Xliffie' do
 
 end

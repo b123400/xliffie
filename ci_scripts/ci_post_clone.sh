@@ -1,7 +1,5 @@
 #!/bin/sh
 
-brew install cocoapods
-
 cd $CI_WORKSPACE
 
 pod install
