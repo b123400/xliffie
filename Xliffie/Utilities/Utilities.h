@@ -32,7 +32,7 @@ typedef enum : NSUInteger {
 
 + (NSString *)displayNameForLocaleIdentifier:(NSString *)identifier;
 
-+ (NSArray<NSString*> *)fallbacksWithLocale:(NSString*)localeCode;
++ (NSArray<NSString*> *)fallbacksWithLocale:(NSString * _Nullable )localeCode;
 
 @end
 

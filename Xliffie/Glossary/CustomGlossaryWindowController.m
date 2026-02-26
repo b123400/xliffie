@@ -8,8 +8,8 @@
 
 #import "CustomGlossaryWindowController.h"
 #import "Utilities.h"
-#import "CustomGlossaryDatabase.h"
 #import "ProgressLoadingWindowController.h"
+#import "Xliffie-Swift.h"
 
 @interface CustomGlossaryWindowController () <NSTableViewDelegate, NSTableViewDataSource>
 
@@ -29,7 +29,7 @@
         self.numberFormatter = [[NSNumberFormatter alloc] init];
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(customGlossaryDatabaseUpdated:)
-                                                     name:CUSTOM_GLOSSARY_DATABASE_UPDATED_NOTIFICATION
+                                                     name:@"CUSTOM_GLOSSARY_DATABASE_UPDATED_NOTIFICATION"
                                                    object:[CustomGlossaryDatabase shared]];
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(localeCellWllDisplayMenu:)

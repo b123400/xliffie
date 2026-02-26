@@ -16,7 +16,7 @@
 #import "GlossaryDatabase.h"
 #import "XclocDocument.h"
 #import "TranslationPairGroup.h"
-#import "CustomGlossaryDatabase.h"
+#import "Xliffie-Swift.h"
 
 @interface DocumentViewController () <SuggestionsWindowControllerDelegate>
 

@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "CustomGlossaryRow.h"
+
+@class CustomGlossaryRow;
 
 NS_ASSUME_NONNULL_BEGIN
 

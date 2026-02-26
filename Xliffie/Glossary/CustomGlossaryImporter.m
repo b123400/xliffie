@@ -8,6 +8,7 @@
 
 #import "CustomGlossaryImporter.h"
 #import "CHCSVParser.h"
+#import "Xliffie-Swift.h"
 
 @interface CustomGlossaryImporter () <CHCSVParserDelegate>
 
