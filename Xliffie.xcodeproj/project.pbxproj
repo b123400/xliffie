@@ -32,10 +32,10 @@
 		CF2DF1572A83DAAA00346BE9 /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2DF1562A83DAAA00346BE9 /* Utilities.m */; };
 		CF2DF1582A83DAEF00346BE9 /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2DF1562A83DAAA00346BE9 /* Utilities.m */; };
 		CF34B75A1AADE00A00C6A58E /* TranslationTargetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF34B7591AADE00A00C6A58E /* TranslationTargetCell.m */; };
-		CFA10000000000000000A007 /* CustomGlossaryImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA10000000000000000A008 /* CustomGlossaryImporter.swift */; };
 		CF46776C2AF12A5E00DA47F2 /* BRTextAttachmentFindResult.m in Sources */ = {isa = PBXBuildFile; fileRef = CF46776B2AF12A5E00DA47F2 /* BRTextAttachmentFindResult.m */; };
 		CF50085429DBADBA007EF23A /* BRCategorySearchFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF50085329DBADBA007EF23A /* BRCategorySearchFieldCell.m */; };
 		CF50085729DBB20F007EF23A /* BRCategorySearchField.m in Sources */ = {isa = PBXBuildFile; fileRef = CF50085629DBB20F007EF23A /* BRCategorySearchField.m */; };
+		CF51E30E2F50438B0081ABF4 /* CSV in Frameworks */ = {isa = PBXBuildFile; productRef = CF51E30D2F50438B0081ABF4 /* CSV */; };
 		CF5682EB1A6AFB9800E0DEDD /* DocumentWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5682E91A6AFB9800E0DEDD /* DocumentWindowController.m */; };
 		CF5682EF1A6B11C700E0DEDD /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5682EE1A6B11C700E0DEDD /* DetailViewController.m */; };
 		CF5AB3C2293DCE6200C8AC7B /* SuggestionsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5AB3C0293DCE6200C8AC7B /* SuggestionsWindowController.m */; };
@@ -93,10 +93,9 @@
 		CF78DC4B2A91090F000B33B5 /* en_au.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF78DC422A91090E000B33B5 /* en_au.glossary */; };
 		CF78DC4C2A91090F000B33B5 /* es_419.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF78DC432A91090E000B33B5 /* es_419.glossary */; };
 		CF78DC4D2A91090F000B33B5 /* zh_cn.glossary in Resources */ = {isa = PBXBuildFile; fileRef = CF78DC442A91090E000B33B5 /* zh_cn.glossary */; };
-		CFA10000000000000000A005 /* CustomGlossaryDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA10000000000000000A003 /* CustomGlossaryDatabase.swift */; };
-		CFA10000000000000000A006 /* CustomGlossaryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA10000000000000000A004 /* CustomGlossaryRow.swift */; };
 		CF83DC832B750D1A00713410 /* LanguageSet.m in Sources */ = {isa = PBXBuildFile; fileRef = CF83DC822B750D1A00713410 /* LanguageSet.m */; };
 		CF846CD4259E21A300CA0713 /* CustomDocumentController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF846CD3259E21A300CA0713 /* CustomDocumentController.m */; };
+		CF9172A22F4F3909005A5DCF /* SwiftCSV in Frameworks */ = {isa = PBXBuildFile; productRef = CF9172A12F4F3909005A5DCF /* SwiftCSV */; };
 		CF92FB941C24037B00700D3E /* TargetMissingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF92FB931C24037B00700D3E /* TargetMissingViewController.m */; };
 		CF94FCA51A5C365400EE8BD5 /* File.m in Sources */ = {isa = PBXBuildFile; fileRef = CF94FCA41A5C365400EE8BD5 /* File.m */; };
 		CF94FCA81A5C37A900EE8BD5 /* TranslationPair.m in Sources */ = {isa = PBXBuildFile; fileRef = CF94FCA71A5C37A900EE8BD5 /* TranslationPair.m */; };
@@ -107,6 +106,9 @@
 		CF9FDB8E2AE8D73B00D76DEA /* TranslationPairGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9FDB8D2AE8D73B00D76DEA /* TranslationPairGroup.m */; };
 		CFA091E029CB18F800F33979 /* BRProgressButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA091DF29CB18F800F33979 /* BRProgressButton.m */; };
 		CFA10000000000000000A002 /* LocaleMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA10000000000000000A001 /* LocaleMap.swift */; };
+		CFA10000000000000000A005 /* CustomGlossaryDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA10000000000000000A003 /* CustomGlossaryDatabase.swift */; };
+		CFA10000000000000000A006 /* CustomGlossaryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA10000000000000000A004 /* CustomGlossaryRow.swift */; };
+		CFA10000000000000000A007 /* CustomGlossaryImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA10000000000000000A008 /* CustomGlossaryImporter.swift */; };
 		CFB49FCC2F4DE83300907A1B /* NativeTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB49FCB2F4DE82C00907A1B /* NativeTranslator.swift */; };
 		CFB49FCE2F4DE88400907A1B /* Translation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFB49FCD2F4DE88400907A1B /* Translation.framework */; };
 		CFB49FD02F4DE9F500907A1B /* NaturalLanguage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFB49FCF2F4DE9F500907A1B /* NaturalLanguage.framework */; };
@@ -190,7 +192,6 @@
 		CF2DF1562A83DAAA00346BE9 /* Utilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
 		CF34B7581AADE00A00C6A58E /* TranslationTargetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TranslationTargetCell.h; sourceTree = "<group>"; };
 		CF34B7591AADE00A00C6A58E /* TranslationTargetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TranslationTargetCell.m; sourceTree = "<group>"; };
-		CFA10000000000000000A008 /* CustomGlossaryImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGlossaryImporter.swift; sourceTree = "<group>"; };
 		CF46776A2AF12A5E00DA47F2 /* BRTextAttachmentFindResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRTextAttachmentFindResult.h; sourceTree = "<group>"; };
 		CF46776B2AF12A5E00DA47F2 /* BRTextAttachmentFindResult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRTextAttachmentFindResult.m; sourceTree = "<group>"; };
 		CF4B0C2E1BF91239007AF981 /* zh-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-TW"; path = "zh-TW.lproj/Main.strings"; sourceTree = "<group>"; };
@@ -275,8 +276,6 @@
 		CF78DC422A91090E000B33B5 /* en_au.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = en_au.glossary; sourceTree = "<group>"; };
 		CF78DC432A91090E000B33B5 /* es_419.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = es_419.glossary; sourceTree = "<group>"; };
 		CF78DC442A91090E000B33B5 /* zh_cn.glossary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = zh_cn.glossary; sourceTree = "<group>"; };
-		CFA10000000000000000A003 /* CustomGlossaryDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGlossaryDatabase.swift; sourceTree = "<group>"; };
-		CFA10000000000000000A004 /* CustomGlossaryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGlossaryRow.swift; sourceTree = "<group>"; };
 		CF83DC812B750D1A00713410 /* LanguageSet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LanguageSet.h; sourceTree = "<group>"; };
 		CF83DC822B750D1A00713410 /* LanguageSet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LanguageSet.m; sourceTree = "<group>"; };
 		CF846CD2259E21A300CA0713 /* CustomDocumentController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomDocumentController.h; sourceTree = "<group>"; };
@@ -302,6 +301,9 @@
 		CFA091DE29CB18F800F33979 /* BRProgressButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRProgressButton.h; sourceTree = "<group>"; };
 		CFA091DF29CB18F800F33979 /* BRProgressButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRProgressButton.m; sourceTree = "<group>"; };
 		CFA10000000000000000A001 /* LocaleMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleMap.swift; sourceTree = "<group>"; };
+		CFA10000000000000000A003 /* CustomGlossaryDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGlossaryDatabase.swift; sourceTree = "<group>"; };
+		CFA10000000000000000A004 /* CustomGlossaryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGlossaryRow.swift; sourceTree = "<group>"; };
+		CFA10000000000000000A008 /* CustomGlossaryImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGlossaryImporter.swift; sourceTree = "<group>"; };
 		CFB49FCB2F4DE82C00907A1B /* NativeTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeTranslator.swift; sourceTree = "<group>"; };
 		CFB49FCD2F4DE88400907A1B /* Translation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Translation.framework; path = System/Library/Frameworks/Translation.framework; sourceTree = SDKROOT; };
 		CFB49FCF2F4DE9F500907A1B /* NaturalLanguage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NaturalLanguage.framework; path = System/Library/Frameworks/NaturalLanguage.framework; sourceTree = SDKROOT; };
@@ -348,8 +350,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF9172A22F4F3909005A5DCF /* SwiftCSV in Frameworks */,
 				CFB49FD02F4DE9F500907A1B /* NaturalLanguage.framework in Frameworks */,
 				CFB49FCE2F4DE88400907A1B /* Translation.framework in Frameworks */,
+				CF51E30E2F50438B0081ABF4 /* CSV in Frameworks */,
 				CF22255D2A5EF54D00F08515 /* libsqlite3.tbd in Frameworks */,
 				53532F5E187D9C2314DF98A9 /* libPods-Xliffie.a in Frameworks */,
 			);
@@ -796,6 +800,9 @@
 				"zh-TW",
 			);
 			mainGroup = CF5FC8831A5ABFF700538E60;
+			packageReferences = (
+				CF51E30C2F50438B0081ABF4 /* XCRemoteSwiftPackageReference "CSV.swift" */,
+			);
 			productRefGroup = CF5FC88D1A5ABFF700538E60 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1347,6 +1354,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CF51E30C2F50438B0081ABF4 /* XCRemoteSwiftPackageReference "CSV.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/yaslab/CSV.swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.5.2;
+			};
+		};
+		CF9172A02F4F3909005A5DCF /* XCRemoteSwiftPackageReference "SwiftCSV" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/swiftcsv/SwiftCSV.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.10.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CF51E30D2F50438B0081ABF4 /* CSV */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CF51E30C2F50438B0081ABF4 /* XCRemoteSwiftPackageReference "CSV.swift" */;
+			productName = CSV;
+		};
+		CF9172A12F4F3909005A5DCF /* SwiftCSV */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CF9172A02F4F3909005A5DCF /* XCRemoteSwiftPackageReference "SwiftCSV" */;
+			productName = SwiftCSV;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CF5FC8841A5ABFF700538E60 /* Project object */;
 }
